@@ -7,191 +7,112 @@ import java.util.*;
  * 
  */
 public class Persona {
-
-    /**
-     * Default constructor
-     */
+    
+    private String nombre;
+    private String apellido;
+    private String fechaDeNac;
+    private String domicilio;
+    private int dni;
+    private int telefonoFijo;
+    private int telefonoCel;
+    private String correoE;
+    private String estadoCivil;
+    
     public Persona() {
     }
 
-    /**
-     * 
-     */
-    private String nombre;
+    public Persona(String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaDeNac = fechaDeNac;
+        this.domicilio = domicilio;
+        this.dni = dni;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoCel = telefonoCel;
+        this.correoE = correoE;
+        this.estadoCivil = estadoCivil;
+    }
 
-    /**
-     * 
-     */
-    private String apellido;
+    public Persona(String nombre, String apellido, int telefonoCel) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefonoCel = telefonoCel;
+    }
 
-    /**
-     * 
-     */
-    private String fechaDeNac;
-
-    /**
-     * 
-     */
-    private int DNI;
-
-    /**
-     * 
-     */
-    private String correo;
-
-    /**
-     * 
-     */
-    private int telefonoFijo;
-
-    /**
-     * 
-     */
-    private int telefonoCel;
-
-    /**
-     * 
-     */
-    private String correoE;
-
-    /**
-     * 
-     */
-    private String estadoCivil;
-
-    /**
-     * @return
-     */
     public String getNombre() {
-        // TODO implement here
-        return "";
+        return nombre;
     }
 
-    /**
-     * @param value
-     */
-    public void setNombre(String value) {
-        // TODO implement here
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    /**
-     * @return
-     */
     public String getApellido() {
-        // TODO implement here
-        return "";
+        return apellido;
     }
 
-    /**
-     * @param value
-     */
-    public void setApellido(String value) {
-        // TODO implement here
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    /**
-     * @return
-     */
     public String getFechaDeNac() {
-        // TODO implement here
-        return "";
+        return fechaDeNac;
     }
 
-    /**
-     * @param value
-     */
-    public void setFechaDeNac(String value) {
-        // TODO implement here
+    public void setFechaDeNac(String fechaDeNac) {
+        this.fechaDeNac = fechaDeNac;
     }
 
-    /**
-     * @return
-     */
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
     public int getDNI() {
-        // TODO implement here
-        return 0;
+        return dni;
     }
 
-    /**
-     * @param value
-     */
-    public void setDNI(int value) {
-        // TODO implement here
+    public void setDNI(int dni) {
+        this.dni = dni;
     }
 
-    /**
-     * @return
-     */
-    public String getCorreo() {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param value
-     */
-    public void setCorreo(String value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     public int getTelefonoFijo() {
-        // TODO implement here
-        return 0;
+        return telefonoFijo;
     }
 
-    /**
-     * @param value
-     */
-    public void setTelefonoFijo(int value) {
-        // TODO implement here
+    public void setTelefonoFijo(int telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
     }
 
-    /**
-     * @return
-     */
     public int getTelefonoCel() {
-        // TODO implement here
-        return 0;
+        return telefonoCel;
     }
 
-    /**
-     * @param value
-     */
-    public void setTelefonoCel(int value) {
-        // TODO implement here
+    public void setTelefonoCel(int telefonoCel) {
+        this.telefonoCel = telefonoCel;
     }
 
-    /**
-     * @return
-     */
     public String getCorreoE() {
-        // TODO implement here
-        return "";
+        return correoE;
     }
 
-    /**
-     * @param value
-     */
-    public void setCorreoE(String value) {
-        // TODO implement here
+    public void setCorreoE(String correoE) {
+        this.correoE = correoE;
     }
 
-    /**
-     * @return
-     */
     public String getEstadoCivil() {
-        // TODO implement here
-        return "";
+        return estadoCivil;
     }
 
-    /**
-     * @param value
-     */
-    public void setEstadoCivil(String value) {
-        // TODO implement here
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
 }
+
+    
+    
+   
