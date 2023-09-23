@@ -7,36 +7,28 @@ import java.util.*;
  * 
  */
 public class Recepciónista extends FuncionarioGeneral {
+    private ArrayList <Paciente> paciente;
 
-    /**
-     * Default constructor
-     */
     public Recepciónista() {
     }
 
-    /**
-     * @param DNI 
-     * @return
-     */
-    private boolean BuscarPaciente(int DNI) {
-        // TODO implement here
-        return false;
+    public Recepciónista(ArrayList<Paciente> paciente) {
+        this.paciente = paciente;
     }
 
-    /**
-     * @return
-     */
-    private Consulta CrearConsulta() {
-        // TODO implement here
-        return null;
+    public ArrayList<Paciente> getPaciente() {
+        return paciente;
     }
 
-    /**
-     * @return
-     */
-    public Paciente RegistrarPaciente() {
-        // TODO implement here
-        return null;
+    public void setPaciente(ArrayList<Paciente> paciente) {
+        this.paciente = paciente;
     }
+
+    @Override
+    public String toString() {
+        return "Recepci\u00f3nista{" + "paciente=" + paciente + '}';
+    }
+
+   
 
 }

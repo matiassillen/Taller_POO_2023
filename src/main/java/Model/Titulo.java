@@ -1,57 +1,63 @@
 package Model;
 
-
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Titulo {
 
-    /**
-     * Default constructor
-     */
+    private Medico medico;
+    private Especialidad especialidad;
+    private String universidad;
+    private String fecha;
+
     public Titulo() {
     }
 
-    /**
-     * 
-     */
-    private String Universidad;
+    public Titulo(Medico medico, Especialidad especialidad, String universidad, String fecha) {
+        this.medico = medico;
+        this.especialidad = especialidad;
+        this.universidad = universidad;
+        this.fecha = fecha;
+    }
 
-    /**
-     * 
-     */
-    private String fecha;
+    public Medico getMedico() {
+        return medico;
+    }
 
-    /**
-     * @return
-     */
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+
     public String getUniversidad() {
-        // TODO implement here
-        return "";
+        return universidad;
     }
 
-    /**
-     * @param value
-     */
-    public void setUniversidad(String value) {
-        // TODO implement here
+    public void setUniversidad(String universidad) {
+        this.universidad = universidad;
     }
 
-    /**
-     * @return
-     */
     public String getFecha() {
-        // TODO implement here
-        return "";
+        return fecha;
     }
 
-    /**
-     * @param value
-     */
-    public void setFecha(String value) {
-        // TODO implement here
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "Titulo{" + "medico=" + medico + ", especialidad=" + especialidad + ", universidad=" + universidad + ", fecha=" + fecha + '}';
+    }
+
+    
 }
