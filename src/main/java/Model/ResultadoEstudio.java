@@ -12,6 +12,15 @@ public class ResultadoEstudio {
      * Default constructor
      */
     public ResultadoEstudio() {
+        
+    }
+
+    public ResultadoEstudio(String nombre, String Informe, String hora, String Fecha, Paciente paciente) {
+        this.nombre = nombre;
+        this.Informe = Informe;
+        this.hora = hora;
+        this.Fecha = Fecha;
+        this.paciente = paciente;
     }
 
     /**
@@ -33,6 +42,11 @@ public class ResultadoEstudio {
      * 
      */
     private String Fecha;
+    
+    /**
+     * 
+     */
+    private Paciente paciente;
 
     /**
      * @return
@@ -64,6 +78,30 @@ public class ResultadoEstudio {
     public String getFecha() {
         // TODO implement here
         return "";
+    }
+
+    /**
+     * @return
+     */
+    public Paciente getPaciente() {
+        // TODO implement here
+        return paciente;
+    }
+
+    /**
+     * @param value
+     */
+    public void setPaciente(Paciente paciente) {
+       // TODO implement here
+        this.paciente = paciente;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "ResultadoEstudio{" + "nombre=" + nombre + ", Informe=" + Informe + ", hora=" + hora + ", Fecha=" + Fecha + ", paciente=" + paciente + '}';
     }
 
 }
