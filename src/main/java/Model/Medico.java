@@ -1,19 +1,43 @@
 package Model;
-
-
-import java.util.*;
-
-/**
- * 
- */
+import java.util.ArrayList;
 public class Medico extends FuncSalud {
 
-    /**
-     * Default constructor
-     */
+    private Box box;
+    private ArrayList<Especialidad>especialidad;
+    private ArrayList<Triage>triage;
     public Medico() {
     }
+    public Medico(Box box, ArrayList<Especialidad>especialidad,ArrayList<Triage>triage) {
+         
+        this.box = box;
+        this.especialidad = especialidad;
+        this.triage=triage;
+    }
 
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
+
+    public ArrayList<Especialidad> getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(ArrayList<Especialidad> especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public ArrayList<Triage> getTriage() {
+        return triage;
+    }
+
+    public void setTriage(ArrayList<Triage> triage) {
+        this.triage = triage;
+    }
+    
     /**
      * @param paciente 
      * @return
@@ -85,5 +109,6 @@ public class Medico extends FuncSalud {
         // TODO implement here
         return null;
     }
-
-}
+    }
+    
+    
