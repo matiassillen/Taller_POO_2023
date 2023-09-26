@@ -196,7 +196,7 @@ public class Sintomas {
         private final String tipo;
         private final int point;
 
-        Consciencia(String a, int b){
+        Conciencia(String a, int b){
             this.tipo = a;
             this.point = b;
         }
