@@ -1,21 +1,12 @@
 package Model;
 
+public class AdministradorDeSistema extends FuncAdministrativo{
 
-
-/**
- * 
- */
-public class AdministradorDeSistema {
-
-    /**
-     * Default constructor
-     */
+  
     public AdministradorDeSistema() {
     }
-
-    /**
-     * @return
-     */
+    
+   
     public void ModificarUsuario() {
         // TODO implement here
         
