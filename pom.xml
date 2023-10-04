@@ -9,7 +9,11 @@
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
+<<<<<<< HEAD
             <version>RELEASE190</version>
+=======
+            <version>RELEASE180</version>
+>>>>>>> e17270c9cf29a8c1a35ae350aaa26f36c2752056
         </dependency>
     </dependencies>
     <properties>

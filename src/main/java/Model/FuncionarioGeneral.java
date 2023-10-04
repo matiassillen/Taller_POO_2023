@@ -3,9 +3,10 @@ package Model;
 
 import java.util.*;
 
-
-
-public class FuncionarioGeneral extends Persona{
+/**
+ * 
+ */
+public abstract class FuncionarioGeneral extends Persona {
 
     private static int idTotales = 0;
     private String nomUsuario;
@@ -33,26 +34,26 @@ public class FuncionarioGeneral extends Persona{
         super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.nomUsuario = nomUsuario;
         this.passw = passw;
-        this.idPersonal = FuncionarioGeneral.generarId();
     }
 
     /**
      * Metodo que genera una ID para el usuario
      * Accede y modifica la variable static idTotales de la clase Funcionario General
      * @return devuelve un entero con el valor de la variable luego de su modificacion
-    */
-    private static int generarId(){
+     */
+    /**private static int generarId(){
         FuncionarioGeneral.idTotales += 1;
         return FuncionarioGeneral.idTotales;
     }
-            
+    */
+    
     public void verifLogin() {
         // TODO implement here
     }
 
     /**
      * @return Nombre de usuario
-    */
+     */
     public String getNomUsuario() {
         // TODO implement here
         return this.nomUsuario;
@@ -60,7 +61,7 @@ public class FuncionarioGeneral extends Persona{
 
     /**
      * @param value es el nuevo nombre de usuario
-    */
+     */
     public void setNomUsuario(String value) {
         this.nomUsuario = value;
     }
@@ -81,16 +82,19 @@ public class FuncionarioGeneral extends Persona{
 
     /**
      * @return retorna el id del propio usuario
-    */
+     */
+    /**
+     * 
     public String getIdPersonal() {
-        return String.format("%d",idPersonal);
+       return String.format("%d",idPersonal);
     }
+    */
 
     /**
      * Metodo para que un usuario con privilegios pueda ver la id de otro usuario
      * @param otroFuncionario funcionario a consultar la Id
      * @return retorna el valor de id del funcionario pasado por parametro
-    */
+     */
     public String getIdAdministrador(FuncionarioGeneral otroFuncionario){
         if (this instanceof AdministradorDeSistema){
             FuncionarioGeneral varTemp2 = otroFuncionario;
