@@ -8,6 +8,10 @@ package Model;
  *
  * @author Matías Sillen Ríos
  */
-class TipoColor {
-    
+public enum TipoColor {
+    ROJO,
+    NARANJA,
+    AMARILLO,
+    VERDE,
+    AZUL,
 }
