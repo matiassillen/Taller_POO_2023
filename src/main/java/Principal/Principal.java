@@ -4,6 +4,8 @@
  */
 package Principal;
 
+import VentanasGUI.Administrador;
+
 /**
  *
  * @author Matías Sillen Ríos
@@ -14,7 +16,9 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Administrador admin = new Administrador();
+        admin.setVisible(true);
+        admin.setLocationRelativeTo(null);
     }
     
 }

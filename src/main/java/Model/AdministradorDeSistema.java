@@ -14,7 +14,7 @@ public class AdministradorDeSistema extends FuncAdministrativo{
 
     /**
      * @return
-     */
+    */
     public void VerInfoAdministrativa() {
         // TODO implement here
         

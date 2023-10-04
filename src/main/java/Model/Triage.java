@@ -90,227 +90,228 @@ public class Triage {
         this.LicEnEnfermeria = lic;
         comparar();
     }
+    
 
     /**
      * @return
-     */
+    */
     public String getMotivoCambio() {
         return MotivoCambio;
     }
 
     /**
      * @param value
-     */
+    */     
     public void setMotivoCambio(String value) {
         this.MotivoCambio = value
     }
 
     /**
      * @return
-     */
+    */     
     public TipoColor getColorOriginal() {
         return ColorOriginal;
     }
 
     /**
      * @param value
-     */
+    */     
     public void setColorOriginal(String value) {
         this.ColorOriginal = value;
     }
 
     /**
      * @return
-     */
+    */
     public TipoColor getColorFinal() {
         return ColorFinal;
     }
 
     /**
      * @param value
-     */
+    */
     public void setColorFinal(String value) {
         this.ColorFinal = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getRespiración() {
         return Respiración;
     }
 
     /**
      * @param value
-     */
+    */     
     public void setRespiración(Estado value) {
         this.Respiración = value;
     }
 
     /**
      * @return
-     */
+    */
     public TDosEstados getPulso() {
         return Pulso;
     }
 
     /**
      * @param value
-     */
+    */
     public void setPulso(Boolean value) {
         this.Pulso = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getEstadoMental() {
         return EstadoMental;
     }
 
     /**
      * @param value
-     */
+    */
     public void setEstadoMental(Estado value) {
         this.EstadoMental = value;
     }
 
     /**
      * @return
-     */
+    */
     public TDosEstados getConciencia() {
         return Conciencia;
     }
 
     /**
      * @param value
-     */
+    */
     public void setConciencia(Boolean value) {
         this.Conciencia = value;
     }
 
     /**
      * @return
-     */
+    */
     public Boolean getDificultadRespiratoria() {
         return DificultadRespiratoria;
     }
 
     /**
      * @param value
-     */
+    */
     public void setDificultadRespiratoria(Boolean value) {
         this.DificultadRespiratoria = value;
     }
 
     /**
      * @return
-     */
+    */
     public Boolean getLesionesGraves() {
         return LesionesGraves;
     }
 
     /**
      * @param value
-     */
+    */
     public void setLesionesGraves(Boolean value) {
         this.LesionesGraves = value;
     }
 
     /**
      * @return
-     */
+    */
     public Boolean getLesionesLeves() {
         return LesionesLeves;
     }
 
     /**
      * @param value
-     */
+    */
     public void setLesionesLeves(Boolean value) {
         this.lesionesLeves = value;
     }
 
     /**
      * @return
-     */
+    */
     public TEdad getEdad() {
         return Edad;
     }
 
     /**
      * @param value
-     */
+    */
     public void setEdad(TEdad value) {
         this.Edad = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getFiebre() {
         return Fiebre;
     }
 
     /**
      * @param value
-     */
+    */
     public void setFiebre(Estado value) {
         this.Fiebre = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getVómitos() {
         return Vómitos;
     }
 
     /**
      * @param value
-     */
+    */
     public void setVómitos(Estado value) {
         this.Vómitos = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getDolorAbdominal() {
         return DolorAbdominal;
     }
 
     /**
      * @param value
-     */
+    */
     public void setDolorAbdominal(Estado value) {
         this.DolorAbdominal = value;
     }
 
     /**
      * @return
-     */
+    */
     public Boolean getSignosShock() {
         return SignosShock;
     }
 
     /**
      * @param value
-     */
+    */
     public void setSignosShock(Boolean value) {
         this.SignosShock = value;
     }
 
     /**
      * @return
-     */
+    */
     public Estado getSangrado() {
         return Sangrado;
     }
 
     /**
      * @param value
-     */
+    */
     public void setSangrado(Estado value) {
         this.Sangrado = value;
     }
@@ -368,7 +369,7 @@ public class Triage {
      * @param fecha1 
      * @param fecha2 
      * @return
-     */
+    */
     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
         Map<String, Integer> diccionario = new HashMap<>();
         for (Codigo Para Recorer Arbol de Tiage) {
@@ -387,7 +388,7 @@ public class Triage {
     /**
      * @param FuncAdministrativo 
      * @return
-     */
+    */
     public Integer TriagesCambiados(FuncSalud funcionario) {
         int sum = 0;
         int rango = len(funcionario.traigeHechos);
@@ -413,4 +414,5 @@ public class Triage {
                 break;
         }
     }
+
 }

@@ -3,10 +3,9 @@ package Model;
 
 import java.util.*;
 
-/**
- * 
- */
-public class FuncionarioGeneral extends Persona {
+
+
+public class FuncionarioGeneral extends Persona{
 
     private static int idTotales = 0;
     private String nomUsuario;
@@ -41,7 +40,7 @@ public class FuncionarioGeneral extends Persona {
      * Metodo que genera una ID para el usuario
      * Accede y modifica la variable static idTotales de la clase Funcionario General
      * @return devuelve un entero con el valor de la variable luego de su modificacion
-     */
+    */
     private static int generarId(){
         FuncionarioGeneral.idTotales += 1;
         return FuncionarioGeneral.idTotales;
@@ -53,7 +52,7 @@ public class FuncionarioGeneral extends Persona {
 
     /**
      * @return Nombre de usuario
-     */
+    */
     public String getNomUsuario() {
         // TODO implement here
         return this.nomUsuario;
@@ -61,7 +60,7 @@ public class FuncionarioGeneral extends Persona {
 
     /**
      * @param value es el nuevo nombre de usuario
-     */
+    */
     public void setNomUsuario(String value) {
         this.nomUsuario = value;
     }
@@ -82,7 +81,7 @@ public class FuncionarioGeneral extends Persona {
 
     /**
      * @return retorna el id del propio usuario
-     */
+    */
     public String getIdPersonal() {
         return String.format("%d",idPersonal);
     }
@@ -91,7 +90,7 @@ public class FuncionarioGeneral extends Persona {
      * Metodo para que un usuario con privilegios pueda ver la id de otro usuario
      * @param otroFuncionario funcionario a consultar la Id
      * @return retorna el valor de id del funcionario pasado por parametro
-     */
+    */
     public String getIdAdministrador(FuncionarioGeneral otroFuncionario){
         if (this instanceof AdministradorDeSistema){
             FuncionarioGeneral varTemp2 = otroFuncionario;

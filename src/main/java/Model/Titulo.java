@@ -1,10 +1,11 @@
 package Model;
 
+
 import java.util.*;
 
 /**
  *
- */
+*/
 public class Titulo {
 
     private Medico medico;
@@ -58,6 +59,4 @@ public class Titulo {
     public String toString() {
         return "Titulo{" + "medico=" + medico + ", especialidad=" + especialidad + ", universidad=" + universidad + ", fecha=" + fecha + '}';
     }
-
-    
 }

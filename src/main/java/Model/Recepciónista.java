@@ -3,10 +3,11 @@ package Model;
 
 import java.util.*;
 
-/**
- * 
- */
+
+ 
+
 public class Recepciónista extends FuncionarioGeneral {
+    
     private ArrayList <Paciente> paciente;
 
     public Recepciónista() {
@@ -29,6 +30,6 @@ public class Recepciónista extends FuncionarioGeneral {
         return "Recepci\u00f3nista{" + "paciente=" + paciente + '}';
     }
 
-   
+  
 
 }

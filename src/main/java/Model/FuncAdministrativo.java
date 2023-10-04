@@ -1,6 +1,6 @@
 package Model;
 
-public class FuncAdministrativo extends FuncionarioGeneral {
+public class FuncAdministrativo  extends FuncionarioGeneral{
     
     private Sector sector;
     public FuncAdministrativo() {
@@ -21,6 +21,5 @@ public class FuncAdministrativo extends FuncionarioGeneral {
     @Override
     public String toString() {
         return "FuncAdministrativo{" + "sector=" + sector + '}';
-    }
-    
+    }  
 }

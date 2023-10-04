@@ -10,7 +10,7 @@ public class Consulta {
 
     /**
      * Default constructor
-     */
+    */
     public Consulta() {
         
     }
@@ -29,7 +29,7 @@ public class Consulta {
     
     /**
      * 
-     */
+    */
     private String fecha;
 
     /**
@@ -39,7 +39,7 @@ public class Consulta {
 
     /**
      * 
-     */
+    */
     private String diagnConsulta;
 
     /**
@@ -64,7 +64,7 @@ public class Consulta {
     
     /**
      * 
-     */
+    */
     private Medico medico;
     
      /**
@@ -74,7 +74,7 @@ public class Consulta {
 
     /**
      * @return
-     */
+    */
     public String getFecha() {
         // TODO implement here
         return fecha;
@@ -82,7 +82,7 @@ public class Consulta {
     
     /**
      * @param value
-     */
+    */
     public void setFecha(String fecha) {
         // TODO implement here
         this.fecha = fecha;
@@ -106,7 +106,7 @@ public class Consulta {
 
     /**
      * @return
-     */
+    */
     public String getDiagnConsulta() {
         // TODO implement here
         return diagnConsulta;
@@ -114,7 +114,7 @@ public class Consulta {
 
     /**
      * @param value
-     */
+    */
     public void setDiagnConsulta(String diagnConsulta) {
         // TODO implement here
         this.diagnConsulta = diagnConsulta;
@@ -186,7 +186,7 @@ public class Consulta {
     
     /**
      * @return
-     */
+
     public Medico getMedico() {
         // TODO implement here
         return medico;
@@ -194,7 +194,7 @@ public class Consulta {
     
     /**
      * @param value
-     */
+    */
     public void setMedico(Medico medico) {
         // TODO implement here
         this.medico = medico;
@@ -218,7 +218,7 @@ public class Consulta {
     
     /**
      * @return
-     */
+    */
     @Override
     public String toString() {
         return "Consulta{" + "fecha=" + fecha + ", hora=" + hora + ", diagnConsulta=" + diagnConsulta + ", lugar=" + lugar + ", motivo=" + motivo + ", paciente=" + paciente + ", box=" + box + ", medico=" + medico + ", triage=" + triage + '}';
