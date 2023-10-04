@@ -164,4 +164,173 @@ public class Sintomas {
             return String.format("SANGRADO: 1) %s, 2) %s , 3) %s", Sangrado.NOP.getTipo(), Sangrado.MODERADO.getTipo(), Sangrado.INTENSO.getTipo());
         }
     }
+    
+    public enum Pulso{
+        NORMAL("Pulso normal", 0),
+        ANORMAL("Pulso anormal", 1);
+
+        private final String tipo;
+        private final int point;
+
+        Pulso(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("PULSO: 1) %s, 2) %s", Pulso.NORMAL.getTipo(), Pulso.ANORMAL.getTipo());
+        }
+    }
+    
+    public enum Conciencia{
+        CONCIENTE("Conciente y alerta", 0),
+        INCONCIENTE("Perdida de conciencia", 3);
+
+        private final String tipo;
+        private final int point;
+
+        Conciencia(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("CONCIENCIA: 1) %s, 2) %s", Conciencia.CONCIENTE.getTipo(), Conciencia.INCONCIENTE.getTipo());
+        }
+    }
+        
+    public enum DolorPecho{
+        NOP("No presente", 0),
+        PRESENTE("Presente", 1);
+
+        private final String tipo;
+        private final int point;
+
+        DolorPecho(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("DOLOR EN EL PECHO O DIFICULTAD PARA RESPIRAR: 1) %s, 2) %s", DolorPecho.NOP.getTipo(), DolorPecho.PRESENTE.getTipo());
+        }
+    }
+    
+    public enum LesionesGraves{
+        NOP("No presente", 0),
+        PRESENTES("Presentes", 2);
+
+        private final String tipo;
+        private final int point;
+
+        LesionesGraves(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("LESIONES GRAVES: 1) %s, 2) %s", LesionesGraves.NOP.getTipo(), LesionesGraves.PRESENTES.getTipo());
+        }
+    }
+    
+    public enum Edad{
+        ADULTO("Adulto", 0),
+        OTRO("Niño o anciano", 1);
+
+        private final String tipo;
+        private final int point;
+
+        Edad(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("EDAD: 1) %s, 2) %s", Edad.ADULTO.getTipo(), Edad.OTRO.getTipo());
+        }
+    }
+
+    public enum Shock{
+        NOP("No presente", 0),
+        PRESENTES("Presentes", 3);
+
+        private final String tipo;
+        private final int point;
+
+        Shock(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("SIGNOS DE SHOCK: 1) %s, 2) %s", Shock.NOP.getTipo(), Shock.PRESENTES.getTipo());
+        }
+    }
+
+    public enum LesionesLeves{
+        NOP("No presente", 0),
+        PRESENTES("Presentes", 1);
+
+        private final String tipo;
+        private final int point;
+
+        LesionesLeves(String a, int b){
+            this.tipo = a;
+            this.point = b;
+        }
+
+        public int getValorNumerico(){
+            return this.point;
+        }
+        public String getTipo(){
+            return this.tipo;
+        }
+
+        public static String opciones(){
+            return String.format("LESIONES LEVES: 1) %s, 2) %s", LesionesLeves.NOP.getTipo(), LesionesLeves.PRESENTES.getTipo());
+        }
+    }
+    
 }

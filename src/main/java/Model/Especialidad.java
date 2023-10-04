@@ -1,27 +1,26 @@
 package Model;
 
 
-import java.util.*;
-
-/**
- * 
- */
 public class Especialidad extends FuncionarioGeneral {
-
-    /**
-     * Default constructor
-     */
+    
+    private int numMatriculaProfesional;
+    
     public Especialidad() {
     }
 
-    /**
-     * 
-     */
-    private Integer numMatriculaProfesional;
+    public Especialidad(int numMatriculaProfesional) {
+        this.numMatriculaProfesional = numMatriculaProfesional;
+    }
 
-    /**
-     * @return
-     */
+    public int getNumMatriculaProfesional() {
+        return numMatriculaProfesional;
+    }
+
+    public void setNumMatriculaProfesional(int numMatriculaProfesional) {
+        this.numMatriculaProfesional = numMatriculaProfesional;
+    }
+    
+    
     public int getNumMatriPorf() {
         // TODO implement here
         return 0;
