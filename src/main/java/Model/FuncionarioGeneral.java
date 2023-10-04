@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public class FuncionarioGeneral extends Persona {
+public abstract class FuncionarioGeneral extends Persona {
 
     private static int idTotales = 0;
     private String nomUsuario;
@@ -34,7 +34,6 @@ public class FuncionarioGeneral extends Persona {
         super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.nomUsuario = nomUsuario;
         this.passw = passw;
-        this.idPersonal = FuncionarioGeneral.generarId();
     }
 
     /**
@@ -42,11 +41,12 @@ public class FuncionarioGeneral extends Persona {
      * Accede y modifica la variable static idTotales de la clase Funcionario General
      * @return devuelve un entero con el valor de la variable luego de su modificacion
      */
-    private static int generarId(){
+    /**private static int generarId(){
         FuncionarioGeneral.idTotales += 1;
         return FuncionarioGeneral.idTotales;
     }
-            
+    */
+    
     public void verifLogin() {
         // TODO implement here
     }
@@ -83,9 +83,12 @@ public class FuncionarioGeneral extends Persona {
     /**
      * @return retorna el id del propio usuario
      */
+    /**
+     * 
     public String getIdPersonal() {
-        return String.format("%d",idPersonal);
+       return String.format("%d",idPersonal);
     }
+    */
 
     /**
      * Metodo para que un usuario con privilegios pueda ver la id de otro usuario
