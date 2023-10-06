@@ -29,9 +29,10 @@ public class Recepcion extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnBuscarPaciente = new javax.swing.JButton();
+        btnRegistrarPaciente = new javax.swing.JButton();
+        btnCrearConsulta = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,8 +42,9 @@ public class Recepcion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(100, 196, 244));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Recepcion");
+        jLabel1.setText("Recepción");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,35 +65,48 @@ public class Recepcion extends javax.swing.JFrame {
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 120));
 
-        jButton1.setBackground(new java.awt.Color(100, 196, 244));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Buscar Paciente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPaciente.setBackground(new java.awt.Color(100, 196, 244));
+        btnBuscarPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscarPaciente.setText("Buscar Paciente");
+        btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarPacienteActionPerformed(evt);
             }
         });
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 190, 40));
+        bg.add(btnBuscarPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 190, 40));
 
-        jButton2.setBackground(new java.awt.Color(98, 196, 242));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Registrar Paciente");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarPaciente.setBackground(new java.awt.Color(98, 196, 242));
+        btnRegistrarPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRegistrarPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarPaciente.setText("Registrar Paciente");
+        btnRegistrarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrarPacienteActionPerformed(evt);
             }
         });
-        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 190, 40));
+        bg.add(btnRegistrarPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 190, 40));
 
-        jButton3.setBackground(new java.awt.Color(99, 196, 242));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Crear Consulta");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearConsulta.setBackground(new java.awt.Color(99, 196, 242));
+        btnCrearConsulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCrearConsulta.setForeground(new java.awt.Color(0, 0, 0));
+        btnCrearConsulta.setText("Crear Consulta");
+        btnCrearConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCrearConsultaActionPerformed(evt);
             }
         });
-        bg.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 333, 190, 40));
+        bg.add(btnCrearConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 333, 190, 40));
+
+        btnSalir.setBackground(new java.awt.Color(100, 196, 244));
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        bg.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,17 +122,27 @@ public class Recepcion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
+        BuscarPaciente pantallaBuscarPaciente = new BuscarPaciente();
+        pantallaBuscarPaciente.setVisible(true);
+        pantallaBuscarPaciente.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnBuscarPacienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
+        RegistrarPaciente pantallaRegistrarPaciente = new RegistrarPaciente();
+        pantallaRegistrarPaciente.setVisible(true);
+        pantallaRegistrarPaciente.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCrearConsultaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,9 +151,10 @@ public class Recepcion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnBuscarPaciente;
+    private javax.swing.JButton btnCrearConsulta;
+    private javax.swing.JButton btnRegistrarPaciente;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

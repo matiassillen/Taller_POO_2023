@@ -1,36 +1,23 @@
 package Model;
 
-
-import java.util.*;
-
-/**
- * 
- */
 public class FuncSalud extends FuncionarioGeneral {
 
-    /**
-     * Default constructor
-     */
-    public FuncSalud() {
+    public FuncSalud(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
+        super(nomUsuario, passw, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
     }
 
-    /**
-     * @return
-     */
+
+    
     public void AsignarBox() {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
+    
     public void CargarSintomas() {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
+   
     public void CambiarColor() {
         // TODO implement here
     }

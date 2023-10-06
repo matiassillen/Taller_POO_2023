@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VentanasGUI;
 
-/**
- *
- * @author Matías Sillen Ríos
- */
+package VentanasGUI;
+import Administrador;
 public class BuscarUsuario extends javax.swing.JFrame {
 
     /**
@@ -199,10 +192,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Administrador pantalla = new Administrador();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-        this.dispose();
+        Administrador pantAdministrador = new Administrador();
+        pantAdministrador.setVisible(true);
+        pantAdministrador.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
 
   
@@ -222,4 +214,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextArea txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }
