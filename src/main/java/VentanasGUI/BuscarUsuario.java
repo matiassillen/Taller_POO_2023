@@ -1,6 +1,6 @@
 
 package VentanasGUI;
-import Administrador;
+
 public class BuscarUsuario extends javax.swing.JFrame {
 
     /**
@@ -195,6 +195,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         Administrador pantAdministrador = new Administrador();
         pantAdministrador.setVisible(true);
         pantAdministrador.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
   

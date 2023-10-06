@@ -55,8 +55,10 @@ public class CrearUsuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnLimpiar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        txtDomicilio = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,7 +173,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(txtTelFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,13 +318,13 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnCrear.setBackground(new java.awt.Color(100, 196, 244));
+        btnCrear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCrear.setForeground(new java.awt.Color(0, 0, 0));
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnCrearActionPerformed(evt);
             }
         });
 
@@ -341,12 +343,12 @@ public class CrearUsuario extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(18, 18, 18)
                 .addComponent(btnLimpiar)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
+                .addComponent(btnCrear)
                 .addGap(14, 14, 14))
         );
         jPanel5Layout.setVerticalGroup(
@@ -355,12 +357,22 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnGuardar)
+                    .addComponent(btnCrear)
                     .addComponent(btnVolver))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 330, 60));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Domicilio:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, -1, -1));
+
+        txtDomicilio.setBackground(new java.awt.Color(255, 255, 255));
+        txtDomicilio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDomicilio.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 200, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -376,9 +388,20 @@ public class CrearUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String fechaNacimiento = txtFechaNacimiento.getText();
+        String dni = txtDni.getText();
+        String correoElectronico = txtCorreoElectronico.getText();
+        String telFijo = txtTelFijo.getText();
+        String telCelular = txtTelCel.getText();
+        String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
+        String nombreUsuario = txtNombreUsuario.getText();
+        String contrasenia = txtContrasenia.getText();
+        String rol = (String) cmbRol.getSelectedItem();
+        String domicilio = txtDomicilio.getText();
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtNombre.setText("");
@@ -401,7 +424,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
@@ -410,6 +433,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -427,6 +451,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDni;
+    private javax.swing.JPasswordField txtDomicilio;
     private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreUsuario;
