@@ -1,14 +1,8 @@
 package Model;
 
-
-import java.util.*;
-
-/**
- * 
- */
 public abstract class FuncionarioGeneral extends Persona {
 
-    private static int idTotales = 0;
+    private static final int idTotales = 0;
     private String nomUsuario;
     private String passw;
     private int idPersonal;

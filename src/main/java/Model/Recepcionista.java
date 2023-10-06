@@ -34,8 +34,8 @@ public class Recepcionista extends FuncionarioGeneral {
         return 0;
     }
     
-    public void RegisPaciente(ArrayList paciente){
-    
+    public void RegisPaciente(String nombre,String apellido,String dni,String fechaNacimiento,String domicilio,String estadoCivil,String correo,String telCelular,String telFijo,String personaContacto,String numContacto){
+        
     }
     
     public void CrearConsulta(){
