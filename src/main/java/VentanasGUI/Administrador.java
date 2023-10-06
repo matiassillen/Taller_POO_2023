@@ -231,6 +231,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         this.dispose();
+        //hola
     }//GEN-LAST:event_SalirActionPerformed
 
 
