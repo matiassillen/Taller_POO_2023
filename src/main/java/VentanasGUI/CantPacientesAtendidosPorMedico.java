@@ -59,6 +59,11 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         btnVolver.setBackground(new java.awt.Color(100, 196, 244));
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         btnCargarDatos.setBackground(new java.awt.Color(100, 196, 244));
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
@@ -173,6 +178,13 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        gestionHospital pantallaGestion = new gestionHospital();
+        pantallaGestion.setVisible(true);
+        pantallaGestion.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
