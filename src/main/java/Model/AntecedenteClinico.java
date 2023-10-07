@@ -1,16 +1,18 @@
 package Model;
 
+import java.io.Serializable;
 
-import java.util.*;
 
-/**
- * 
- */
-public class AntecedenteClinico {
 
-    /**
-     * Default constructor
-     */
+public class AntecedenteClinico implements Serializable {
+    
+    private Paciente paciente;
+    private String nombreDiagnostico;
+    private String fecha;
+    private String hora;
+    private Medico medico;
+    
+    
     public AntecedenteClinico() {
         
     }
@@ -22,85 +24,51 @@ public class AntecedenteClinico {
         this.medico = medico;
         this.paciente = paciente;
     }
-    
-    /**
-     * 
-     */
-    private String nombreDiagnostico;
 
-    /**
-     * 
-     */
-    private String fecha;
-
-    /**
-     * 
-     */
-    private String hora;
-
-    /**
-     * 
-     */
-    private Medico medico;
-    
-    /**
-     * 
-     */
-    private Paciente paciente;
-    
-    /**
-     * @return
-     */
     public String getNombreDiagnostico() {
-        // TODO implement here
-        return "";
+        return nombreDiagnostico;
     }
 
-    /**
-     * @return
-     */
+    public void setNombreDiagnostico(String nombreDiagnostico) {
+        this.nombreDiagnostico = nombreDiagnostico;
+    }
+
     public String getFecha() {
-        // TODO implement here
-        return "";
+        return fecha;
     }
 
-    /**
-     * @return
-     */
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
     public String getHora() {
-        // TODO implement here
-        return "";
+        return hora;
     }
 
-    /**
-     * @return
-     */
-    public String getMedico() {
-        // TODO implement here
-        return "";
+    public void setHora(String hora) {
+        this.hora = hora;
     }
-    
-    /**
-     * @return
-     */
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
     public Paciente getPaciente() {
-        // TODO implement here
         return paciente;
     }
 
-    /**
-     * @param value
-     */
     public void setPaciente(Paciente paciente) {
-        // TODO implement here
         this.paciente = paciente;
     }
 
-    /**
-     * @return
-     */
     @Override
     public String toString() {
         return "AntecedenteClinico{" + "nombreDiagnostico=" + nombreDiagnostico + ", fecha=" + fecha + ", hora=" + hora + ", medico=" + medico + ", paciente=" + paciente + '}';
     }
+
+    
 }

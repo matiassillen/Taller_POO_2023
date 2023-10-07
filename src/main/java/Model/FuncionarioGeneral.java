@@ -25,7 +25,7 @@ public abstract class FuncionarioGeneral extends Persona {
      */
     
     public FuncionarioGeneral(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        //super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.nomUsuario = nomUsuario;
         this.passw = passw;
     }

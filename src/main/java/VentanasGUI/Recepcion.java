@@ -144,11 +144,14 @@ public class Recepcion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarPacActionPerformed
 
     private void btnRegistrarPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacActionPerformed
-        // TODO add your handling code here:
+        RegistrarPaciente admin = new RegistrarPaciente();
+        admin.setVisible(true);
+        admin.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarPacActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
 
