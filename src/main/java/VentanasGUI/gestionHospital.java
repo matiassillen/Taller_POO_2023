@@ -39,6 +39,11 @@ public class GestionHospital extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCantPacienteMedico.setBackground(new java.awt.Color(100, 196, 244));
@@ -50,7 +55,7 @@ public class GestionHospital extends javax.swing.JFrame {
                 btnCantPacienteMedicoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCantPacienteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 300, 40));
+        jPanel1.add(btnCantPacienteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 300, 40));
 
         btnCantPaciente.setBackground(new java.awt.Color(100, 196, 244));
         btnCantPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -61,7 +66,7 @@ public class GestionHospital extends javax.swing.JFrame {
                 btnCantPacienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCantPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 300, 40));
+        jPanel1.add(btnCantPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 300, 40));
 
         btnPacienteMasConsulta.setBackground(new java.awt.Color(100, 196, 244));
         btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -72,7 +77,7 @@ public class GestionHospital extends javax.swing.JFrame {
                 btnPacienteMasConsultaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPacienteMasConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 300, 40));
+        jPanel1.add(btnPacienteMasConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 300, 40));
 
         btnMedicoMasPaciente.setBackground(new java.awt.Color(100, 196, 244));
         btnMedicoMasPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -83,9 +88,10 @@ public class GestionHospital extends javax.swing.JFrame {
                 btnMedicoMasPacienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMedicoMasPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 300, 40));
+        jPanel1.add(btnMedicoMasPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 300, 40));
 
         btnSalir.setBackground(new java.awt.Color(100, 196, 244));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -93,21 +99,21 @@ public class GestionHospital extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 140, 40));
 
         btnCantTriage.setBackground(new java.awt.Color(100, 196, 244));
         btnCantTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCantTriage.setForeground(new java.awt.Color(0, 0, 0));
         btnCantTriage.setText("Cant. de Triage y Color");
-        jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 300, 40));
+        jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 300, 40));
 
         btnTriageCambiado.setBackground(new java.awt.Color(100, 196, 244));
         btnTriageCambiado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTriageCambiado.setForeground(new java.awt.Color(0, 0, 0));
         btnTriageCambiado.setText("Triage Cambiados");
-        jPanel1.add(btnTriageCambiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 300, 40));
+        jPanel1.add(btnTriageCambiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 300, 40));
 
-        jPanel2.setBackground(new java.awt.Color(100, 196, 244));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -118,19 +124,19 @@ public class GestionHospital extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(263, 263, 263)
                 .addComponent(jLabel1)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,7 +146,7 @@ public class GestionHospital extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

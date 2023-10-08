@@ -43,11 +43,16 @@ public class VentanaCambiarTriage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cambiar Triage");
 
@@ -55,31 +60,37 @@ public class VentanaCambiarTriage extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(195, 195, 195)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(274, 274, 274))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Motivo:");
 
+        txtMotivo.setBackground(new java.awt.Color(255, 255, 255));
         txtMotivo.setColumns(20);
+        txtMotivo.setForeground(new java.awt.Color(0, 0, 0));
         txtMotivo.setRows(5);
         jScrollPane1.setViewportView(txtMotivo);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nuevo color:");
 
+        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton1.setText("Verde");
 
+        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("Amarillo");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,53 +98,53 @@ public class VentanaCambiarTriage extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton3.setText("Naranja");
 
+        jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton4.setText("Rojo");
 
+        jRadioButton5.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton5.setText("Azul");
 
-        btnGuardar.setBackground(new java.awt.Color(153, 204, 255));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar Cambios");
 
-        btnVolver.setBackground(new java.awt.Color(153, 204, 255));
+        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jRadioButton1)
-                        .addGap(37, 37, 37)
-                        .addComponent(jRadioButton2)
-                        .addGap(34, 34, 34)
-                        .addComponent(jRadioButton3)
-                        .addGap(37, 37, 37)
-                        .addComponent(jRadioButton4)
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jRadioButton5))))
-                .addGap(48, 48, 48))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(31, 31, 31))
+                .addGap(0, 101, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(480, 480, 480))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jRadioButton4)
+                            .addGap(18, 18, 18)
+                            .addComponent(jRadioButton3)
+                            .addGap(18, 18, 18)
+                            .addComponent(jRadioButton2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jRadioButton1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jRadioButton5)
+                            .addGap(236, 236, 236))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVolver)))
+                .addGap(109, 109, 109))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,11 +163,11 @@ public class VentanaCambiarTriage extends javax.swing.JFrame {
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton4)
                     .addComponent(jRadioButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(btnVolver)
-                .addGap(26, 26, 26))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

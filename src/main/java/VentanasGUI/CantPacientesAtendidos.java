@@ -37,36 +37,51 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         txtDatos = new javax.swing.JTextField();
-        btnVolver = new javax.swing.JButton();
         btnCargarDatos = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setVerifyInputWhenFocusTarget(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setRequestFocusEnabled(false);
+        jPanel2.setVerifyInputWhenFocusTarget(false);
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Edad:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Primera Fecha:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Segunda Fecha:");
+
+        txtEdad.setBackground(new java.awt.Color(204, 204, 204));
+        txtEdad.setForeground(new java.awt.Color(0, 0, 0));
+        txtEdad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPrimerFecha.setBackground(new java.awt.Color(204, 204, 204));
+        txtPrimerFecha.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrimerFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtSegundaFecha.setBackground(new java.awt.Color(204, 204, 204));
+        txtSegundaFecha.setForeground(new java.awt.Color(0, 0, 0));
+        txtSegundaFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jSeparator2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
 
         btnCargarDatos.setBackground(new java.awt.Color(100, 196, 244));
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
@@ -79,9 +94,6 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnVolver)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -128,11 +140,10 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
                     .addComponent(btnCargarDatos))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(btnVolver))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 390, 260));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 390, 260));
 
         jPanel3.setBackground(new java.awt.Color(100, 196, 244));
         jPanel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -145,7 +156,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -162,7 +173,18 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +194,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

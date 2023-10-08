@@ -33,12 +33,22 @@ public class VentanaMedico extends javax.swing.JFrame {
         txtTomarPaciente = new javax.swing.JButton();
         txtverHistClinica = new javax.swing.JButton();
         txtAsignarBox = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtHacerTriage.setBackground(new java.awt.Color(100, 196, 244));
         txtHacerTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
         txtHacerTriage.setText("Hacer Triage");
         txtHacerTriage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,16 +56,24 @@ public class VentanaMedico extends javax.swing.JFrame {
             }
         });
 
+        txtVerResultEstudios.setBackground(new java.awt.Color(100, 196, 244));
         txtVerResultEstudios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtVerResultEstudios.setForeground(new java.awt.Color(0, 0, 0));
         txtVerResultEstudios.setText("Ver Resultados de Estudios");
 
+        txtTomarPaciente.setBackground(new java.awt.Color(100, 196, 244));
         txtTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
         txtTomarPaciente.setText("Tomar Paciente");
 
+        txtverHistClinica.setBackground(new java.awt.Color(100, 196, 244));
         txtverHistClinica.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtverHistClinica.setForeground(new java.awt.Color(0, 0, 0));
         txtverHistClinica.setText("Ver Historia Clínica");
 
+        txtAsignarBox.setBackground(new java.awt.Color(100, 196, 244));
         txtAsignarBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtAsignarBox.setForeground(new java.awt.Color(0, 0, 0));
         txtAsignarBox.setText("Asignar box");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -98,17 +116,42 @@ public class VentanaMedico extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 260, 260));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 260, 260));
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
+
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label1.setText("Panel Medico ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(252, 252, 252)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -122,6 +165,8 @@ public class VentanaMedico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private java.awt.Label label1;
     private javax.swing.JButton txtAsignarBox;
     private javax.swing.JButton txtHacerTriage;
     private javax.swing.JButton txtTomarPaciente;

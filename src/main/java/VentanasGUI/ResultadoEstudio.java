@@ -45,26 +45,45 @@ public class ResultadoEstudio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Informe de Estudio:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hora:");
+
+        txtFecha.setBackground(new java.awt.Color(204, 204, 204));
+        txtFecha.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtHora.setBackground(new java.awt.Color(204, 204, 204));
+        txtHora.setForeground(new java.awt.Color(0, 0, 0));
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jSeparator2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         btnCargarDatos.setBackground(new java.awt.Color(100, 196, 244));
+        btnCargarDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarDatos.setText("Cargar Datos");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha:");
 
+        txtInforme.setBackground(new java.awt.Color(204, 204, 204));
+        txtInforme.setForeground(new java.awt.Color(0, 0, 0));
+
         btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +93,11 @@ public class ResultadoEstudio extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Nombre de Estudio:");
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Tipo de Estudio:");
+
+        txtNomEstudio.setBackground(new java.awt.Color(204, 204, 204));
+        txtNomEstudio.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -93,20 +116,21 @@ public class ResultadoEstudio extends javax.swing.JFrame {
                     .addComponent(txtInforme, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomEstudio, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
                 .addComponent(btnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -139,9 +163,9 @@ public class ResultadoEstudio extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 520, 290));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 520, 290));
 
-        jPanel3.setBackground(new java.awt.Color(100, 196, 244));
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
         jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -152,20 +176,20 @@ public class ResultadoEstudio extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(232, 232, 232))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

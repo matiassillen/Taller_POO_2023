@@ -32,25 +32,42 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         btnCargarDatos = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtNomDiagnostico = new javax.swing.JTextField();
-        btnVolver = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nombre Diagnostrico:");
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hora:");
+
+        txtFecha.setBackground(new java.awt.Color(204, 204, 204));
+        txtFecha.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtHora.setBackground(new java.awt.Color(204, 204, 204));
+        txtHora.setForeground(new java.awt.Color(0, 0, 0));
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jSeparator2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         btnCargarDatos.setBackground(new java.awt.Color(100, 196, 244));
+        btnCargarDatos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarDatos.setText("Cargar Datos");
         btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -59,17 +76,13 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha:");
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
+        txtNomDiagnostico.setBackground(new java.awt.Color(204, 204, 204));
+        txtNomDiagnostico.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -91,12 +104,10 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
                             .addComponent(txtHora)
                             .addComponent(txtNomDiagnostico, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 100, Short.MAX_VALUE)))
+                        .addGap(0, 104, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
                 .addComponent(btnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -122,15 +133,13 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 520, 290));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 520, 290));
 
         jPanel3.setBackground(new java.awt.Color(100, 196, 244));
         jPanel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -144,9 +153,9 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(227, 227, 227)
                 .addComponent(jLabel1)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +165,18 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 112, 41));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,7 +186,7 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -179,8 +199,11 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+is.dispose();
+    }                                         
+
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-       
+
         String nomDiagnostico = txtNomDiagnostico.getText();
         String fecha = txtFecha.getText();
         String hora = txtHora.getText();
