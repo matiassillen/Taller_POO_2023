@@ -4,7 +4,7 @@
  */
 package Principal;
 
-import VentanasGUI.gestionHospital;
+import VentanasGUI.GestionHospital;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        gestionHospital admin = new gestionHospital();
+        GestionHospital admin = new GestionHospital();
         admin.setVisible(true);
         admin.setLocationRelativeTo(null);
     }
