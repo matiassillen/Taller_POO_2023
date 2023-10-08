@@ -1,35 +1,26 @@
 package Model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-
-@Entity
-@Table(name = "persona")
+@MappedSuperclass
 public abstract class Persona implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+
     private String nombre;
     private String apellido;
     private String fechaDeNac;
     private String domicilio;
     private int dni;
-    private int telefonoFijo;
-    private int telefonoCel;
+    private String telefonoFijo;
+    private String telefonoCel;
     private String correoE;
     private String estadoCivil;
     
     public Persona() {
+        
     }
 
-    public Persona(Long id,String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        this.id = id;
+    public Persona(String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNac = fechaDeNac;
@@ -39,22 +30,6 @@ public abstract class Persona implements Serializable {
         this.telefonoCel = telefonoCel;
         this.correoE = correoE;
         this.estadoCivil = estadoCivil;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
     }
 
     public String getNombre() {
@@ -89,27 +64,27 @@ public abstract class Persona implements Serializable {
         this.domicilio = domicilio;
     }
 
-    public int getDNI() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDNI(int dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
-    public int getTelefonoFijo() {
+    public String getTelefonoFijo() {
         return telefonoFijo;
     }
 
-    public void setTelefonoFijo(int telefonoFijo) {
+    public void setTelefonoFijo(String telefonoFijo) {
         this.telefonoFijo = telefonoFijo;
     }
 
-    public int getTelefonoCel() {
+    public String getTelefonoCel() {
         return telefonoCel;
     }
 
-    public void setTelefonoCel(int telefonoCel) {
+    public void setTelefonoCel(String telefonoCel) {
         this.telefonoCel = telefonoCel;
     }
 
@@ -128,6 +103,8 @@ public abstract class Persona implements Serializable {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
+
+    
 
 }
 

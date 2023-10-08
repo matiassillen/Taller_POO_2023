@@ -10,15 +10,14 @@ public class Recepcionista extends FuncionarioGeneral {
     ControladoraPersistencia controladoraPersi = new ControladoraPersistencia();
     private ArrayList <Paciente> paciente;
 
-    public Recepcionista(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(nomUsuario, passw, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-    }
-    
-    public Recepcionista(ArrayList<Paciente> paciente, String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(nomUsuario, passw, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-        this.paciente = paciente;
+    public Recepcionista() {
     }
 
+    public Recepcionista(ArrayList<Paciente> paciente, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        this.paciente = paciente;
+    }
+    
     public ArrayList<Paciente> getPaciente() {
         return paciente;
     }

@@ -1,11 +1,22 @@
 package Model;
 
-public abstract class FuncionarioGeneral extends Persona {
+import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-    private static final int idTotales = 0;
+@Entity
+public abstract class FuncionarioGeneral extends Persona {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
     private String nomUsuario;
     private String passw;
-    private int idPersonal;
+    @ManyToMany
+    private ArrayList<Rol> rol;
+    //private static final int idTotales = 0;
     
     //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales
     
@@ -24,11 +35,20 @@ public abstract class FuncionarioGeneral extends Persona {
      * @param estadoCivil Estado civil de la persona
      */
     
-    public FuncionarioGeneral(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        //super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    
+    
+    public FuncionarioGeneral() {
+    }
+
+    public FuncionarioGeneral(long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        this.id = id;
         this.nomUsuario = nomUsuario;
         this.passw = passw;
+        this.rol = rol;
     }
+
+    
 
     /**
      * Metodo que genera una ID para el usuario
@@ -45,34 +65,38 @@ public abstract class FuncionarioGeneral extends Persona {
         // TODO implement here
     }
 
-    /**
-     * @return Nombre de usuario
-     */
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNomUsuario() {
-        // TODO implement here
-        return this.nomUsuario;
+        return nomUsuario;
     }
 
-    /**
-     * @param value es el nuevo nombre de usuario
-     */
-    public void setNomUsuario(String value) {
-        this.nomUsuario = value;
+    public void setNomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
     }
 
-    /**
-    *@return retorna la contraseña
-    */
     public String getPassw() {
         return passw;
     }
-    
-    /**
-    *@param passw es la nueva contraseña
-    */
+
     public void setPassw(String passw) {
         this.passw = passw;
     }
+
+    public ArrayList<Rol> getRol() {
+        return rol;
+    }
+
+    public void setRol(ArrayList<Rol> rol) {
+        this.rol = rol;
+    }
+}
 
     /**
      * @return retorna el id del propio usuario
@@ -89,15 +113,15 @@ public abstract class FuncionarioGeneral extends Persona {
      * @param otroFuncionario funcionario a consultar la Id
      * @return retorna el valor de id del funcionario pasado por parametro
      */
-    public String getIdAdministrador(FuncionarioGeneral otroFuncionario){
-        if (this instanceof AdministradorDeSistema){
-            FuncionarioGeneral varTemp2 = otroFuncionario;
-            return String.format("%d", varTemp2.idPersonal);
-        }
-        else {
-            return "Error, usuario sin privilegios necesarios";
-            }
-        }
-    }
+//    public String getIdAdministrador(FuncionarioGeneral otroFuncionario){
+//        if (this instanceof AdministradorDeSistema){
+//            FuncionarioGeneral varTemp2 = otroFuncionario;
+//            return String.format("%d", varTemp2.idPersonal);
+//        }
+//        else {
+//            return "Error, usuario sin privilegios necesarios";
+//            }
+//        }
+//    }
     
     // El siguiente metodo debe verificar que un funcionario tenga privilegios
