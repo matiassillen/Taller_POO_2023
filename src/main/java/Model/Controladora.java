@@ -1,6 +1,7 @@
 package Model;
 
 import Persistencia.ControladoraPersistencia;
+import java.util.List;
 
 public class Controladora {
     
@@ -24,6 +25,10 @@ public class Controladora {
         paciente.setTelDeContacto(numContacto);
         
         controladoraPersi.RegistrarPaciente(paciente);
+    }
+
+    public List<Paciente> traerPaciente() {
+        return controladoraPersi.traerPaciente();
     }
     
 }

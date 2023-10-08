@@ -4,6 +4,8 @@
  */
 package VentanasGUI;
 
+import Model.Paciente;
+
 /**
  *
  * @author Usuario
@@ -114,11 +116,11 @@ public class Recepcion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(69, 69, 69)
+                .addComponent(btnRegistrarPac, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(btnBuscarPac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(btnRegistrarPac, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
                 .addComponent(btnCrearConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnSalir)
@@ -140,7 +142,11 @@ public class Recepcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacActionPerformed
-        // TODO add your handling code here:
+        Paciente paciente = new Paciente();
+        BuscarPaciente buscar = new BuscarPaciente();
+        buscar.setVisible(true);
+        buscar.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnBuscarPacActionPerformed
 
     private void btnRegistrarPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacActionPerformed
