@@ -1,16 +1,16 @@
 package Model;
 
+import java.io.Serializable;
 
-import java.util.*;
-
-/**
- * 
- */
-public class ResultadoEstudio {
-
-    /**
-     * Default constructor
-     */
+public class ResultadoEstudio implements Serializable {
+   
+    private Paciente paciente;
+    private String nombre;
+    private String Informe;
+    private String hora;
+    private String Fecha;
+    
+    
     public ResultadoEstudio() {
         
     }
@@ -23,85 +23,51 @@ public class ResultadoEstudio {
         this.paciente = paciente;
     }
 
-    /**
-     * 
-     */
-    private String nombre;
-
-    /**
-     * 
-     */
-    private String Informe;
-
-    /**
-     * 
-     */
-    private String hora;
-
-    /**
-     * 
-     */
-    private String Fecha;
-    
-    /**
-     * 
-     */
-    private Paciente paciente;
-
-    /**
-     * @return
-     */
     public String getNombre() {
-        // TODO implement here
-        return "";
+        return nombre;
     }
 
-    /**
-     * @return
-     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getInforme() {
-        // TODO implement here
-        return "";
+        return Informe;
     }
 
-    /**
-     * @return
-     */
+    public void setInforme(String Informe) {
+        this.Informe = Informe;
+    }
+
     public String getHora() {
-        // TODO implement here
-        return "";
+        return hora;
     }
 
-    /**
-     * @return
-     */
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     public String getFecha() {
-        // TODO implement here
-        return "";
+        return Fecha;
     }
 
-    /**
-     * @return
-     */
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
+    }
+
     public Paciente getPaciente() {
-        // TODO implement here
         return paciente;
     }
 
-    /**
-     * @param value
-     */
     public void setPaciente(Paciente paciente) {
-       // TODO implement here
         this.paciente = paciente;
     }
 
-    /**
-     * @return
-     */
     @Override
     public String toString() {
         return "ResultadoEstudio{" + "nombre=" + nombre + ", Informe=" + Informe + ", hora=" + hora + ", Fecha=" + Fecha + ", paciente=" + paciente + '}';
     }
+
+    
 
 }

@@ -1,34 +1,47 @@
 package Model;
-import java.util.ArrayList;
-public class Paciente extends Persona {
-    
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "paciente")
+public class Paciente extends Persona implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int idP;
     private String persoDeContacto;
     private String telDeContacto;
-    private ArrayList<Consulta>consulta;
-    private Estadistica estadistica;
-    private ArrayList<ResultadoEstudio>resultadoEstudio;
-    private ArrayList<AntecedenteClinico>antecedenteClinico;
+    
     public Paciente() {
     }
-    
-    
-    public Paciente(String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil, String nombreP, String apellidoP, int telefonoCelP, String persoDeContacto, String telDeContacto, ArrayList<Consulta>consulta, Estadistica estadistica, ArrayList<ResultadoEstudio>resultadoEstudio, ArrayList<AntecedenteClinico>antecedenteClinico) {
-        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+
+    public Paciente(int idP, String persoDeContacto, String telDeContacto, Long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
+        super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        this.idP = idP;
         this.persoDeContacto = persoDeContacto;
         this.telDeContacto = telDeContacto;
-        this.consulta = consulta;
-        this.estadistica = estadistica;
-        this.resultadoEstudio = resultadoEstudio;
-        this.antecedenteClinico = antecedenteClinico;
     }
+
     
+
+    
+
+    public int getIdP() {
+        return idP;
+    }
+
+    public void setId(int id) {
+        this.idP = idP;
+    }
+
     public String getPersoDeContacto() {
-        
         return persoDeContacto;
     }
 
     public void setPersoDeContacto(String persoDeContacto) {
-        // TODO implement here
         this.persoDeContacto = persoDeContacto;
     }
 
@@ -40,37 +53,8 @@ public class Paciente extends Persona {
         this.telDeContacto = telDeContacto;
     }
 
-    public ArrayList<Consulta> getConsulta() {
-        return consulta;
-    }
 
-    public void setConsulta(ArrayList<Consulta> consulta) {
-        this.consulta = consulta;
-    }
-
-    public Estadistica getEstadistica() {
-        return estadistica;
-    }
-
-    public void setEstadistica(Estadistica estadistica) {
-        this.estadistica = estadistica;
-    }
-
-    public ArrayList<ResultadoEstudio> getResultadoEstudio() {
-        return resultadoEstudio;
-    }
-
-    public void setResultadoEstudio(ArrayList<ResultadoEstudio> resultadoEstudio) {
-        this.resultadoEstudio = resultadoEstudio;
-    }
-
-    public ArrayList<AntecedenteClinico> getAntecedenteClinico() {
-        return antecedenteClinico;
-    }
-
-    public void setAntecedenteClinico(ArrayList<AntecedenteClinico> antecedenteClinico) {
-        this.antecedenteClinico = antecedenteClinico;
-    }
+    
     
     
     public Paciente pacienteQMasConsulto(String fecha1, String fecha2) {

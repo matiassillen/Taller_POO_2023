@@ -1,10 +1,13 @@
 package Model;
 
 
+import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 
 
 public class Recepcionista extends FuncionarioGeneral {
+    
+    ControladoraPersistencia controladoraPersi = new ControladoraPersistencia();
     private ArrayList <Paciente> paciente;
 
     public Recepcionista(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
@@ -34,15 +37,16 @@ public class Recepcionista extends FuncionarioGeneral {
         return 0;
     }
     
-    public void RegisPaciente(String nombre,String apellido,String dni,String fechaNacimiento,String domicilio,String estadoCivil,String correo,String telCelular,String telFijo,String personaContacto,String numContacto){
-        
-    }
     
     public void CrearConsulta(){
     }
     
     public void AniadirAListaDeEsperaTriage(){
     
+    }
+
+    public void RegistrarPaciente(String nombre, String apellido, String dni, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+        
     }
     
     

@@ -1,12 +1,19 @@
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import java.util.*;
 
-/**
- * 
- */
-public abstract class Persona {
+@Entity
+@Table(name = "persona")
+public abstract class Persona implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     private String nombre;
     private String apellido;
@@ -21,7 +28,8 @@ public abstract class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
+    public Persona(Long id,String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNac = fechaDeNac;
@@ -33,10 +41,20 @@ public abstract class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    public Persona(String nombre, String apellido, int telefonoCel) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefonoCel = telefonoCel;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
