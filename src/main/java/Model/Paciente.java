@@ -17,23 +17,19 @@ public class Paciente extends Persona implements Serializable {
     
     public Paciente() {
     }
-
-    public Paciente(int idP, String persoDeContacto, String telDeContacto, Long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    
+    public Paciente(int idP, String persoDeContacto, String telDeContacto, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.idP = idP;
         this.persoDeContacto = persoDeContacto;
         this.telDeContacto = telDeContacto;
     }
 
-    
-
-    
-
     public int getIdP() {
         return idP;
     }
 
-    public void setId(int id) {
+    public void setIdP(int idP) {
         this.idP = idP;
     }
 
@@ -53,17 +49,9 @@ public class Paciente extends Persona implements Serializable {
         this.telDeContacto = telDeContacto;
     }
 
-
-    
-    
-    
     public Paciente pacienteQMasConsulto(String fecha1, String fecha2) {
         // TODO implement here
         return null;
     }
 
-    
-    
-    
-    
 }

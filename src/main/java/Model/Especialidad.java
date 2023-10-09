@@ -1,16 +1,17 @@
 package Model;
 
+import java.util.ArrayList;
+
 
 public class Especialidad extends FuncionarioGeneral {
     
     private int numMatriculaProfesional;
 
-    public Especialidad(String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(nomUsuario, passw, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public Especialidad() {
     }
 
-    public Especialidad(int numMatriculaProfesional, String nomUsuario, String passw, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, int telefonoFijo, int telefonoCel, String correoE, String estadoCivil) {
-        super(nomUsuario, passw, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public Especialidad(int numMatriculaProfesional, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.numMatriculaProfesional = numMatriculaProfesional;
     }
 

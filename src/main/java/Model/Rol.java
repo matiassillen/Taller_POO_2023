@@ -2,12 +2,28 @@ package Model;
 
 
 import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 
 /**
  * 
  */
+@Entity
 public class Rol {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private long id_rol;
+    private String nombre;
+    @ManyToMany
+    private ArrayList<FuncionarioGeneral> funcionarioGeneral;
 
+    
+    
     /**
      * Default constructor
      */
@@ -21,15 +37,13 @@ public class Rol {
         this.funcionarioGeneral = funcionarioGeneral;
     }
 
-    /**
-     * 
-     */
-    private String nombre;
-    
-    /**
-     * 
-     */
-    private ArrayList<FuncionarioGeneral> funcionarioGeneral;
+    public long getId_rol() {
+        return id_rol;
+    }
+
+    public void setId_rol(long id_rol) {
+        this.id_rol = id_rol;
+    }
 
     /**
      * @return
