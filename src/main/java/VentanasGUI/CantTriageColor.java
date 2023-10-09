@@ -41,7 +41,7 @@ public class CantTriageColor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSalir.setBackground(new java.awt.Color(100, 196, 244));
+        btnSalir.setBackground(new java.awt.Color(0, 204, 255));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Volver");
@@ -52,7 +52,7 @@ public class CantTriageColor extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 140, 30));
 
-        jPanel2.setBackground(new java.awt.Color(100, 196, 244));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));

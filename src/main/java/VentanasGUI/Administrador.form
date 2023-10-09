@@ -168,7 +168,7 @@
             <Component class="javax.swing.JButton" name="btnCrearUsuario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -185,7 +185,7 @@
             <Component class="javax.swing.JButton" name="btnBuscarUsuario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -202,7 +202,7 @@
             <Component class="javax.swing.JButton" name="btnEditarUsuario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -219,7 +219,7 @@
             <Component class="javax.swing.JButton" name="btnMostrarUsuarios">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -236,7 +236,7 @@
             <Component class="javax.swing.JButton" name="btnInfoAdministrativa">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -253,7 +253,7 @@
             <Component class="javax.swing.JButton" name="Salir">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -270,7 +270,7 @@
             <Component class="javax.swing.JButton" name="btnCrearUsuario1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>

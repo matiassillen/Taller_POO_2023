@@ -82,7 +82,7 @@ public class MostrarUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 780, 320));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");

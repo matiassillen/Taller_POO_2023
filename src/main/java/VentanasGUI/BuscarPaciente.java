@@ -115,7 +115,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 120, 40));
 
-        btnEditar.setBackground(new java.awt.Color(100, 196, 244));
+        btnEditar.setBackground(new java.awt.Color(0, 153, 102));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Editar");

@@ -33,13 +33,15 @@ public class cartel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Se registro exitosamente.");
 
-        jButton1.setBackground(new java.awt.Color(100, 196, 244));
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +60,7 @@ public class cartel extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
+                        .addGap(128, 128, 128)
                         .addComponent(jButton1)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
@@ -67,9 +69,9 @@ public class cartel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

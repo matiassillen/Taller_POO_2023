@@ -1193,7 +1193,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator10.setBackground(new java.awt.Color(100, 196, 244));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 760, 10));
 
-        jPanel27.setBackground(new java.awt.Color(100, 196, 244));
+        jPanel27.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -1218,13 +1218,13 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
-        jButton1.setBackground(new java.awt.Color(100, 196, 244));
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Volver");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 110, 40));
 
-        jButton2.setBackground(new java.awt.Color(100, 196, 244));
+        jButton2.setBackground(new java.awt.Color(0, 153, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Crear Triage");

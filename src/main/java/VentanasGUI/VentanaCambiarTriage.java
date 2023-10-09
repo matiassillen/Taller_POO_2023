@@ -107,12 +107,12 @@ public class VentanaCambiarTriage extends javax.swing.JFrame {
         jRadioButton5.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton5.setText("Azul");
 
-        btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
+        btnGuardar.setBackground(new java.awt.Color(0, 153, 102));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar Cambios");
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");

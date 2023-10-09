@@ -51,16 +51,16 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(269, 269, 269)
                 .addComponent(jLabel1)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -136,7 +136,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 490, 260));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
@@ -147,7 +147,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 90, -1));
 
-        btnBuscar.setBackground(new java.awt.Color(100, 196, 244));
+        btnBuscar.setBackground(new java.awt.Color(0, 204, 255));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setText("Buscar");

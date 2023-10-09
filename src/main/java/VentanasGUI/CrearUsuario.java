@@ -331,7 +331,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnLimpiar.setBackground(new java.awt.Color(100, 196, 244));
+        btnLimpiar.setBackground(new java.awt.Color(0, 153, 102));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setText("Limpiar");
@@ -341,7 +341,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnCrear.setBackground(new java.awt.Color(100, 196, 244));
+        btnCrear.setBackground(new java.awt.Color(0, 153, 102));
         btnCrear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(0, 0, 0));
         btnCrear.setText("Crear");
@@ -351,7 +351,30 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
+                .addComponent(btnLimpiar)
+                .addGap(31, 31, 31)
+                .addComponent(btnCrear)
+                .addGap(14, 14, 14))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnCrear))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 330, 60));
+
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
@@ -360,32 +383,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(18, 18, 18)
-                .addComponent(btnLimpiar)
-                .addGap(18, 18, 18)
-                .addComponent(btnCrear)
-                .addGap(14, 14, 14))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnCrear)
-                    .addComponent(btnVolver))
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 330, 60));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

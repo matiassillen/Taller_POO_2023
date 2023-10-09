@@ -103,7 +103,7 @@
             <Component class="javax.swing.JButton" name="txtHacerTriage">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="c4" red="64" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -120,7 +120,7 @@
             <Component class="javax.swing.JButton" name="txtVerResultEstudios">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="c4" red="64" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -134,7 +134,7 @@
             <Component class="javax.swing.JButton" name="txtTomarPaciente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="c4" red="64" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -148,7 +148,7 @@
             <Component class="javax.swing.JButton" name="txtverHistClinica">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="c4" red="64" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -162,7 +162,7 @@
             <Component class="javax.swing.JButton" name="txtAsignarBox">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="c4" red="64" type="rgb"/>
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>

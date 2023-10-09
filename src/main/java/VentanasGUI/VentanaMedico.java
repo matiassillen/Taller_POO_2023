@@ -46,7 +46,7 @@ public class VentanaMedico extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtHacerTriage.setBackground(new java.awt.Color(100, 196, 244));
+        txtHacerTriage.setBackground(new java.awt.Color(0, 204, 255));
         txtHacerTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
         txtHacerTriage.setText("Hacer Triage");
@@ -56,22 +56,22 @@ public class VentanaMedico extends javax.swing.JFrame {
             }
         });
 
-        txtVerResultEstudios.setBackground(new java.awt.Color(100, 196, 244));
+        txtVerResultEstudios.setBackground(new java.awt.Color(0, 204, 255));
         txtVerResultEstudios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtVerResultEstudios.setForeground(new java.awt.Color(0, 0, 0));
         txtVerResultEstudios.setText("Ver Resultados de Estudios");
 
-        txtTomarPaciente.setBackground(new java.awt.Color(100, 196, 244));
+        txtTomarPaciente.setBackground(new java.awt.Color(0, 204, 255));
         txtTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
         txtTomarPaciente.setText("Tomar Paciente");
 
-        txtverHistClinica.setBackground(new java.awt.Color(100, 196, 244));
+        txtverHistClinica.setBackground(new java.awt.Color(0, 204, 255));
         txtverHistClinica.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtverHistClinica.setForeground(new java.awt.Color(0, 0, 0));
         txtverHistClinica.setText("Ver Historia Clínica");
 
-        txtAsignarBox.setBackground(new java.awt.Color(100, 196, 244));
+        txtAsignarBox.setBackground(new java.awt.Color(0, 204, 255));
         txtAsignarBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAsignarBox.setForeground(new java.awt.Color(0, 0, 0));
         txtAsignarBox.setText("Asignar box");
