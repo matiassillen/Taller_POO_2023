@@ -179,7 +179,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         //Preguntamos si la lista esta vacia
         if(listaPaciente != null){
             for(Paciente paciente : listaPaciente){
-                Object[] objeto = {paciente.getId(),paciente.getNombre(),paciente.getApellido(), paciente.getDni(),paciente.getFechaDeNac(), paciente.getDomicilio(),paciente.getCorreoE(),paciente.getEstadoCivil(),paciente.getTelefonoFijo(),paciente.getTelefonoCel(),paciente.getPersoDeContacto(),paciente.getTelDeContacto()};
+                Object[] objeto = {paciente.getIdP(),paciente.getNombre(),paciente.getApellido(), paciente.getDni(),paciente.getFechaDeNac(), paciente.getDomicilio(),paciente.getCorreoE(),paciente.getEstadoCivil(),paciente.getTelefonoFijo(),paciente.getTelefonoCel(),paciente.getPersoDeContacto(),paciente.getTelDeContacto()};
                 modeloTabla.addRow(objeto);
             }    
         }

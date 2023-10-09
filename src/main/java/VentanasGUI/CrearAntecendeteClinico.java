@@ -176,9 +176,7 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
-is.dispose();
-    }                                         
+                                         
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
 

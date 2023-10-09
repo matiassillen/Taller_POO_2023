@@ -40,7 +40,7 @@ public class Login extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(100, 196, 244));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setFocusTraversalPolicyProvider(true);
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 0));
+        jButton2.setBackground(new java.awt.Color(100, 196, 244));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setLabel("Iniciar sesion");
@@ -76,7 +76,6 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setBackground(new java.awt.Color(204, 255, 255));
         jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setText("jPasswordField1");
 
         label2.setAlignment(java.awt.Label.CENTER);
         label2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N

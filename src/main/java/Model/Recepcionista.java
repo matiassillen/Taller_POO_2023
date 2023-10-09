@@ -3,11 +3,12 @@ package Model;
 
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Recepcionista extends FuncionarioGeneral {
     
-    ControladoraPersistencia controladoraPersi = new ControladoraPersistencia();
+    ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     private ArrayList <Paciente> paciente;
 
     public Recepcionista() {
@@ -26,10 +27,7 @@ public class Recepcionista extends FuncionarioGeneral {
         this.paciente = paciente;
     }
 
-    @Override
-    public String toString() {
-        return "Recepcionista{" + "paciente=" + paciente + '}';
-    }
+    
     
     public int BuscarPaciente (int dni){
         
@@ -45,8 +43,32 @@ public class Recepcionista extends FuncionarioGeneral {
     }
 
     public void RegistrarPaciente(String nombre, String apellido, String dni, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+        Paciente paciente = new Paciente();
+        int documento = Integer.parseInt(dni);
+        paciente.setNombre(nombre);
+        paciente.setApellido(apellido);
+        paciente.setDni(documento);
+        paciente.setFechaDeNac(fechaNacimiento);
+        paciente.setDomicilio(domicilio);
+        paciente.setEstadoCivil(estadoCivil);
+        paciente.setCorreoE(correo);
+        paciente.setTelefonoCel(telFijo);
+        paciente.setTelefonoFijo(telCelular);
+        paciente.setPersoDeContacto(personaContacto);
+        paciente.setTelDeContacto(numContacto);
         
+        controlPersis.RegistrarPaciente(paciente);
     }
     
     
+
+    public List<Paciente> traerPaciente() {
+        
+        return controlPersis.traerPaciente();
+    }
+    
+    @Override
+    public String toString() {
+        return "Recepcionista{" + "paciente=" + paciente + '}';
+    }
 }
