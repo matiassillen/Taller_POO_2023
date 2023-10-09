@@ -40,7 +40,7 @@ public class TriageCambiado extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSalir.setBackground(new java.awt.Color(100, 196, 244));
+        btnSalir.setBackground(new java.awt.Color(0, 204, 255));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");

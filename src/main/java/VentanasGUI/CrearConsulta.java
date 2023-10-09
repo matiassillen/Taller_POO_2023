@@ -94,12 +94,12 @@ public class CrearConsulta extends javax.swing.JFrame {
         txtMotivo.setRows(5);
         jScrollPane1.setViewportView(txtMotivo);
 
-        btnCrearConsulta.setBackground(new java.awt.Color(153, 204, 255));
+        btnCrearConsulta.setBackground(new java.awt.Color(0, 153, 102));
         btnCrearConsulta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCrearConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearConsulta.setText("Crear Consulta");
 
-        btnVolver.setBackground(new java.awt.Color(153, 204, 255));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");

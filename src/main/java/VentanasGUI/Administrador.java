@@ -69,7 +69,7 @@ public class Administrador extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnCrearUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        btnCrearUsuario.setBackground(new java.awt.Color(0, 204, 255));
         btnCrearUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrearUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearUsuario.setText("Crear Usuario");
@@ -79,7 +79,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        btnBuscarUsuario.setBackground(new java.awt.Color(0, 204, 255));
         btnBuscarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscarUsuario.setText("Buscar Usuario");
@@ -89,7 +89,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnEditarUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        btnEditarUsuario.setBackground(new java.awt.Color(0, 204, 255));
         btnEditarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEditarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnEditarUsuario.setText("Editar Usuario");
@@ -99,7 +99,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarUsuarios.setBackground(new java.awt.Color(153, 204, 255));
+        btnMostrarUsuarios.setBackground(new java.awt.Color(0, 204, 255));
         btnMostrarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMostrarUsuarios.setForeground(new java.awt.Color(0, 0, 0));
         btnMostrarUsuarios.setText("Mostrar todos los usuarios");
@@ -109,7 +109,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnInfoAdministrativa.setBackground(new java.awt.Color(153, 204, 255));
+        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 255));
         btnInfoAdministrativa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnInfoAdministrativa.setForeground(new java.awt.Color(0, 0, 0));
         btnInfoAdministrativa.setText("Ver información administrativa");
@@ -119,7 +119,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        Salir.setBackground(new java.awt.Color(153, 204, 255));
+        Salir.setBackground(new java.awt.Color(0, 204, 255));
         Salir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Salir.setForeground(new java.awt.Color(0, 0, 0));
         Salir.setText("Salir");
@@ -129,7 +129,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnCrearUsuario1.setBackground(new java.awt.Color(153, 204, 255));
+        btnCrearUsuario1.setBackground(new java.awt.Color(0, 204, 255));
         btnCrearUsuario1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrearUsuario1.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearUsuario1.setText("Borrar Usuario");

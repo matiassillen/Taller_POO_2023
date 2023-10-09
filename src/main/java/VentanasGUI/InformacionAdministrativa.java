@@ -67,7 +67,7 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         txtInfoAdministrativa.setRows(5);
         jScrollPane1.setViewportView(txtInfoAdministrativa);
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");

@@ -67,7 +67,7 @@ public class Recepcion extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        btnBuscarPac.setBackground(new java.awt.Color(153, 204, 255));
+        btnBuscarPac.setBackground(new java.awt.Color(0, 204, 255));
         btnBuscarPac.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnBuscarPac.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscarPac.setText("Buscar Paciente");
@@ -78,7 +78,7 @@ public class Recepcion extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrarPac.setBackground(new java.awt.Color(153, 204, 255));
+        btnRegistrarPac.setBackground(new java.awt.Color(0, 204, 255));
         btnRegistrarPac.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrarPac.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarPac.setText("Registrar Paciente");
@@ -88,12 +88,12 @@ public class Recepcion extends javax.swing.JFrame {
             }
         });
 
-        btnCrearConsulta.setBackground(new java.awt.Color(153, 204, 255));
+        btnCrearConsulta.setBackground(new java.awt.Color(0, 204, 255));
         btnCrearConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCrearConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearConsulta.setText("Crear Consulta");
 
-        btnSalir.setBackground(new java.awt.Color(153, 204, 255));
+        btnSalir.setBackground(new java.awt.Color(0, 204, 255));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");

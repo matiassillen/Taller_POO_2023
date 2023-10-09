@@ -49,7 +49,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         txtSegundaFecha.setBackground(new java.awt.Color(204, 204, 204));
         txtSegundaFecha.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnCargarDatos.setBackground(new java.awt.Color(100, 196, 244));
+        btnCargarDatos.setBackground(new java.awt.Color(0, 204, 255));
         btnCargarDatos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarDatos.setText("Cargar Datos");
@@ -115,7 +115,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 620, 370));
 
-        jPanel3.setBackground(new java.awt.Color(100, 196, 244));
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
         jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -145,7 +145,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");

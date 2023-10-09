@@ -327,7 +327,7 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 360, 220));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
@@ -338,7 +338,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, -1, -1));
 
-        btnLimpiar.setBackground(new java.awt.Color(100, 196, 244));
+        btnLimpiar.setBackground(new java.awt.Color(0, 153, 102));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setText("Limpiar");
@@ -349,7 +349,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
 
-        btnGuardar1.setBackground(new java.awt.Color(100, 196, 244));
+        btnGuardar1.setBackground(new java.awt.Color(0, 153, 102));
         btnGuardar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar1.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar1.setText("Guardar");
