@@ -1,15 +1,25 @@
 package Model;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
-
+@Entity
 public class AntecedenteClinico implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int numAntecedente;
+    @OneToOne
     private Paciente paciente;
     private String nombreDiagnostico;
     private String fecha;
     private String hora;
+    @OneToOne
     private Medico medico;
     
     
@@ -17,7 +27,8 @@ public class AntecedenteClinico implements Serializable {
         
     }
 
-    public AntecedenteClinico(String nombreDiagnostico, String fecha, String hora, Medico medico, Paciente paciente) {
+    public AntecedenteClinico(int numAntecedente, String nombreDiagnostico, String fecha, String hora, Medico medico, Paciente paciente) {
+        this.numAntecedente = numAntecedente;
         this.nombreDiagnostico = nombreDiagnostico;
         this.fecha = fecha;
         this.hora = hora;
@@ -25,6 +36,14 @@ public class AntecedenteClinico implements Serializable {
         this.paciente = paciente;
     }
 
+    public int getNumAntecedente() {
+        return numAntecedente;
+    }
+    
+    public void setNumAntecedente(int numAntecedente) {
+        this.numAntecedente = numAntecedente;
+    }
+    
     public String getNombreDiagnostico() {
         return nombreDiagnostico;
     }

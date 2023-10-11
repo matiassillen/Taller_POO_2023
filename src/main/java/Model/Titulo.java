@@ -19,7 +19,7 @@ public class Titulo implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_Titulo;
+    private long idTitulo;
     @OneToMany
     private Medico medico;
     @OneToMany
@@ -34,8 +34,8 @@ public class Titulo implements Serializable {
         this.fecha  = "";
     }
 
-    public Titulo(long id_Titulo, Medico medico, Especialidad especialidad, String universidad, String fecha) {
-        this.id_Titulo = id_Titulo;
+    public Titulo(long idTitulo, Medico medico, Especialidad especialidad, String universidad, String fecha) {
+        this.idTitulo = idTitulo;
         this.medico = medico;
         this.especialidad = especialidad;
         this.universidad = universidad;
@@ -43,12 +43,12 @@ public class Titulo implements Serializable {
     }
 
     
-    public long getId_Titulo() {
-        return id_Titulo;
+    public long getIdTitulo() {
+        return idTitulo;
     }
 
-    public void setId_Titulo(long id_Titulo) {
-        this.id_Titulo = id_Titulo;
+    public void setIdTitulo(long idTitulo) {
+        this.idTitulo = idTitulo;
     }
     
     public Medico getMedico() {

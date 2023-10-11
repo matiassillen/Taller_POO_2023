@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Medico extends FuncSalud{
@@ -12,9 +14,9 @@ public class Medico extends FuncSalud{
     private Box box;
     @ManyToMany
     private ArrayList<Especialidad>especialidad;
-    @ManyToMany
+    @OneToMany
     private ArrayList<Triage>triage;
-    @ManyToMany
+    @OneToMany
     private ArrayList<Consulta> consulta;
  
     public Medico() {

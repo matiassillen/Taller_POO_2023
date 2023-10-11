@@ -3,21 +3,20 @@ package Model;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-
+import javax.persistence.Id;
 @Entity
-public class Especialidad extends FuncionarioGeneral {
-    
+public class Especialidad {
+    @Id
     private String nombreEspecialidad;
     @ManyToMany
     private ArrayList<Medico> medico;
 
     public Especialidad() {
         this.nombreEspecialidad = "";
-        medico = new ArrayList<Medico>();
+        this.medico = new ArrayList<Medico>();
     }
 
-    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico) {
         this.nombreEspecialidad = nombreEspecialidad;
         this.medico = medico;
     }

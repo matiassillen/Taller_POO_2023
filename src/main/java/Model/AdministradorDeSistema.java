@@ -3,12 +3,13 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AdministradorDeSistema extends FuncAdministrativo{
     
     ControladoraPersistencia controlPersis;
-    
+    @OneToMany
     private ArrayList<FuncionarioGeneral> funcionarioGeneral;
     
     public AdministradorDeSistema() {

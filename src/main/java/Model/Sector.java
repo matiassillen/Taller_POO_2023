@@ -9,17 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- * 
- */
 
 @Entity
 public class Sector implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_Sector;
-    private String Nombre;
+    private long idSector;
+    private String nombre;
     @ManyToMany
     private ArrayList<FuncAdministrativo> funcAdministrativo;
     
@@ -28,50 +25,36 @@ public class Sector implements Serializable {
      * Default constructor
      */
     public Sector() {
-        this.Nombre = "";
+        this.nombre = "";
         this.funcAdministrativo = new ArrayList<FuncAdministrativo>();
     }
 
-    public Sector(long id_Sector, String Nombre, ArrayList<FuncAdministrativo> funcAdministrativo) {
-        this.id_Sector = id_Sector;
-        this.Nombre = Nombre;
+    public Sector(long idSector, String nombre, ArrayList<FuncAdministrativo> funcAdministrativo) {
+        this.idSector = idSector;
+        this.nombre = nombre;
         this.funcAdministrativo = funcAdministrativo;
     }
 
-    public long getId_Sector() {    
-        return id_Sector;
+    public long getIdSector() {    
+        return idSector;
     }
 
-    /**
-     * 
-     */
-    /**
-     * 
-     */
-    public void setId_Sector(long id_Sector) {    
-        this.id_Sector = id_Sector;
+    public void setIdSector(long idSector) {    
+        this.idSector = idSector;
     }
 
-    /**
-     * @return
-     */
     public String getNombre() {
-        // TODO implement here
-        return "";
+        return nombre;
     }
 
-    /**
-     * @param value
-     */
-    public void setNombre(String value) {
-        // TODO implement here
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
+
     /**
      * @return
      */
     public ArrayList<FuncAdministrativo> getFuncAdministrativo() {
-        // TODO implement here
         return funcAdministrativo;
     }
 
@@ -79,7 +62,6 @@ public class Sector implements Serializable {
      * @return
      */
     public void setFuncAdministrativo(ArrayList<FuncAdministrativo> funcAdministrativo) {
-        // TODO implement here
         this.funcAdministrativo = funcAdministrativo;
     }
 
@@ -88,6 +70,6 @@ public class Sector implements Serializable {
      */
     @Override
     public String toString() {
-        return "Sector{" + "Nombre=" + Nombre + ", funcAdministrativo=" + funcAdministrativo + '}';
+        return "Sector{" + "Nombre=" + nombre + ", funcAdministrativo=" + funcAdministrativo + '}';
     }
 }

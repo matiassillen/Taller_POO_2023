@@ -4,10 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "paciente")
 public class Paciente extends Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
