@@ -1,7 +1,10 @@
 package Model;
 
+import Persistencia.ControladoraPersistencia;
+import java.util.List;
+
 public class Controladora {
-<<<<<<< Updated upstream
+
     
     ControladoraPersistencia controladoraPersi = new ControladoraPersistencia();
 
@@ -9,8 +12,4 @@ public class Controladora {
         return controladoraPersi.traerPaciente();
     }
 
-    
-=======
-
->>>>>>> Stashed changes
 }

@@ -29,11 +29,9 @@ public class PacienteJpaController implements Serializable {
     public PacienteJpaController(){
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-<<<<<<< Updated upstream
-=======
     
     private EntityManagerFactory emf = null;
->>>>>>> Stashed changes
+
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

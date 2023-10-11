@@ -3,34 +3,26 @@ package Model;
 
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
-<<<<<<< Updated upstream
 import java.util.List;
-=======
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
->>>>>>> Stashed changes
 
 @Entity
 public class Recepcionista extends FuncionarioGeneral {
     
-<<<<<<< Updated upstream
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
-=======
-    ControladoraPersistencia control; 
+
     
     @ManyToMany
->>>>>>> Stashed changes
     private ArrayList <Paciente> paciente;
 
     public Recepcionista() {
-       control = new ControladoraPersistencia();
         this.paciente = new ArrayList<Paciente>();
     }
     
     public Recepcionista(ArrayList<Paciente> paciente, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.paciente = paciente;
-        control = new ControladoraPersistencia();
     }
     
     public ArrayList<Paciente> getPaciente() {
@@ -41,8 +33,6 @@ public class Recepcionista extends FuncionarioGeneral {
         this.paciente = paciente;
     }
 
-    
-    
     public int BuscarPaciente (int dni){
         
         return 0;

@@ -214,10 +214,10 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
-        CrearUsuario pantalla1 = new CrearUsuario();
-        pantalla1.setVisible(true);
-        pantalla1.setLocationRelativeTo(null);
-        this.dispose();
+//        CrearUsuario pantalla1 = new CrearUsuario();
+//        pantalla1.setVisible(true);
+//        pantalla1.setLocationRelativeTo(null);
+//        this.dispose();
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
