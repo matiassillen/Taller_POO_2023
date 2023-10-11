@@ -1,32 +1,42 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
-
+@Entity
 public class Especialidad extends FuncionarioGeneral {
     
-    private int numMatriculaProfesional;
+    private String nombreEspecialidad;
+    @ManyToMany
+    private ArrayList<Medico> medico;
 
     public Especialidad() {
+        this.nombreEspecialidad = "";
+        medico = new ArrayList<Medico>();
     }
 
-    public Especialidad(int numMatriculaProfesional, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-        this.numMatriculaProfesional = numMatriculaProfesional;
+        this.nombreEspecialidad = nombreEspecialidad;
+        this.medico = medico;
     }
 
-    public int getNumMatriculaProfesional() {
-        return numMatriculaProfesional;
+    public String getNombreEspecialidad() {
+        return nombreEspecialidad;
     }
 
-    public void setNumMatriculaProfesional(int numMatriculaProfesional) {
-        this.numMatriculaProfesional = numMatriculaProfesional;
+    public void setNombreEspecialidad(String nombreEspecialidad) {
+        this.nombreEspecialidad = nombreEspecialidad;
     }
+
+    public ArrayList<Medico> getMedico() {
+        return medico;
+    }
+
+    public void setMedico(ArrayList<Medico> medico) {
+        this.medico = medico;
+    }
+
     
-    
-    public int getNumMatriPorf() {
-        // TODO implement here
-        return 0;
-    }
-
 }

@@ -1,13 +1,29 @@
 package Model;
 
 
+import java.io.Serializable;
 import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * 
  */
-public class Sector {
 
+@Entity
+public class Sector implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id_Sector;
+    private String Nombre;
+    @ManyToMany
+    private ArrayList<FuncAdministrativo> funcAdministrativo;
+    
+    
     /**
      * Default constructor
      */
@@ -16,20 +32,25 @@ public class Sector {
         this.funcAdministrativo = new ArrayList<FuncAdministrativo>();
     }
 
-    public Sector(String Nombre, ArrayList<FuncAdministrativo> funcAdministrativo) {
+    public Sector(long id_Sector, String Nombre, ArrayList<FuncAdministrativo> funcAdministrativo) {
+        this.id_Sector = id_Sector;
         this.Nombre = Nombre;
         this.funcAdministrativo = funcAdministrativo;
+    }
+
+    public long getId_Sector() {    
+        return id_Sector;
     }
 
     /**
      * 
      */
-    private String Nombre;
-    
     /**
      * 
      */
-    private ArrayList<FuncAdministrativo> funcAdministrativo;
+    public void setId_Sector(long id_Sector) {    
+        this.id_Sector = id_Sector;
+    }
 
     /**
      * @return

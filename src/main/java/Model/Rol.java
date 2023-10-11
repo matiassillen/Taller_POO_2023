@@ -1,6 +1,7 @@
 package Model;
 
 
+import java.io.Serializable;
 import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import javax.persistence.ManyToMany;
  * 
  */
 @Entity
-public class Rol {
+public class Rol implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private long id_rol;
@@ -32,7 +33,8 @@ public class Rol {
         this.funcionarioGeneral = new ArrayList<FuncionarioGeneral>();
     }
 
-    public Rol(String nombre, ArrayList<FuncionarioGeneral> funcionarioGeneral) {
+    public Rol(long id_rol, String nombre, ArrayList<FuncionarioGeneral> funcionarioGeneral) {
+        this.id_rol = id_rol;
         this.nombre = nombre;
         this.funcionarioGeneral = funcionarioGeneral;
     }

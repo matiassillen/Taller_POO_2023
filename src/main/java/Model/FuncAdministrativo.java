@@ -1,12 +1,15 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.persistence.ManyToMany;
 
-public class FuncAdministrativo extends FuncionarioGeneral {
+public abstract class FuncAdministrativo extends FuncionarioGeneral {
     
+    @ManyToMany
     private Sector sector;
 
     public FuncAdministrativo() {
+        sector = null;
     }
 
     public FuncAdministrativo(Sector sector, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {

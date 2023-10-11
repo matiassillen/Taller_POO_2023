@@ -1,24 +1,37 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Medico extends FuncSalud{
-
+    
+    private int numMatriculaProfesional;
+    
     private Box box;
+    @ManyToMany
     private ArrayList<Especialidad>especialidad;
+    @ManyToMany
     private ArrayList<Triage>triage;
-
+    @ManyToMany
+    private ArrayList<Consulta> consulta;
+ 
     public Medico() {
+        box = null;
+        especialidad = new ArrayList<Especialidad>();
+        triage = new ArrayList<Triage>();
+        consulta = new ArrayList<Consulta>();
+        
     }
 
-    public Medico(Box box, ArrayList<Especialidad> especialidad, ArrayList<Triage> triage, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Medico(Box box, ArrayList<Especialidad> especialidad, ArrayList<Triage> triage, ArrayList<Consulta> consulta, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.box = box;
         this.especialidad = especialidad;
         this.triage = triage;
+        this.consulta = consulta;
     }
-
-    
-    
 
     public Box getBox() {
         return box;
@@ -43,6 +56,23 @@ public class Medico extends FuncSalud{
     public void setTriage(ArrayList<Triage> triage) {
         this.triage = triage;
     }
+
+    public ArrayList<Consulta> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList<Consulta> consulta) {
+        this.consulta = consulta;
+    }
+
+    public int getNumMatriculaProfesional() {
+        return numMatriculaProfesional;
+    }
+
+    public void setNumMatriculaProfesional(int numMatriculaProfesional) {
+        this.numMatriculaProfesional = numMatriculaProfesional;
+    }
+
     
     /**
      * @param paciente 

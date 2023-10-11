@@ -1,13 +1,16 @@
 
 package Persistencia;
 
+import Model.GestoresHospital;
 import Model.Paciente;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ControladoraPersistencia {
     
     PacienteJpaController pacienteJpa = new PacienteJpaController();
+    GestoresHospitalJpaController gestorJpa = new GestoresHospitalJpaController();
     
     public void RegistrarPaciente(Paciente paciente) {
         
@@ -20,5 +23,12 @@ public class ControladoraPersistencia {
         
         return listaPaciente;
     }
+    
+    //----------CRUD de Usuario----------
+
+    public void crearUsuario(GestoresHospital gestor) {
+        gestorJpa.create(gestor);
+    }
+    
     
 }

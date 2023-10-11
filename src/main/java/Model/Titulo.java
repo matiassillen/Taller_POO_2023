@@ -1,28 +1,56 @@
 package Model;
 
 
+
+import java.io.Serializable;
 import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
 */
-public class Titulo {
 
+@Entity
+public class Titulo implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id_Titulo;
+    @OneToMany
     private Medico medico;
+    @OneToMany
     private Especialidad especialidad;
     private String universidad;
     private String fecha;
 
     public Titulo() {
+        medico = null;
+        especialidad = null;
+        this.universidad = "";
+        this.fecha  = "";
     }
 
-    public Titulo(Medico medico, Especialidad especialidad, String universidad, String fecha) {
+    public Titulo(long id_Titulo, Medico medico, Especialidad especialidad, String universidad, String fecha) {
+        this.id_Titulo = id_Titulo;
         this.medico = medico;
         this.especialidad = especialidad;
         this.universidad = universidad;
         this.fecha = fecha;
     }
 
+    
+    public long getId_Titulo() {
+        return id_Titulo;
+    }
+
+    public void setId_Titulo(long id_Titulo) {
+        this.id_Titulo = id_Titulo;
+    }
+    
     public Medico getMedico() {
         return medico;
     }

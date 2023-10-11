@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-public class FuncSalud extends FuncionarioGeneral {
+public abstract class FuncSalud extends FuncionarioGeneral {
 
     public FuncSalud() {
     }

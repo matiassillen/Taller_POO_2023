@@ -1,14 +1,14 @@
 package Model;
 
 import java.util.ArrayList;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public abstract class FuncionarioGeneral extends Persona {
+@MappedSuperclass
+public class FuncionarioGeneral extends Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
@@ -38,6 +38,10 @@ public abstract class FuncionarioGeneral extends Persona {
     
     
     public FuncionarioGeneral() {
+        this.nomUsuario = "";
+        this.passw = "";
+        this.rol = new ArrayList<Rol>();
+        
     }
 
     public FuncionarioGeneral(long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {

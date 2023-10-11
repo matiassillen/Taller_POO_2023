@@ -1,8 +1,15 @@
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  */
+
+@Entity
 public enum Box {
     
     BOX1(1, false),
@@ -14,16 +21,21 @@ public enum Box {
     BOX7(7, false),
     BOX8(8, false);
     
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private final Integer numer;
     private Boolean estado;
+
+    
     /**
      * Default constructor
      */
-    Box(Integer numer, Boolean estado){
+    
+    private Box(Integer numer, Boolean estado) {    
         this.numer = numer;
         this.estado = estado;
     }
+
     /**
      * @return retorna un integer que es el numero especifico de cada box  
      */
