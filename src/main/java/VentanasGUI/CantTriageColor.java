@@ -41,10 +41,11 @@ public class CantTriageColor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSalir.setBackground(new java.awt.Color(0, 204, 255));
+        btnSalir.setBackground(new java.awt.Color(0, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Volver");
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -83,6 +84,7 @@ public class CantTriageColor extends javax.swing.JFrame {
         txtCantTriageColor.setForeground(new java.awt.Color(0, 0, 0));
         txtCantTriageColor.setRows(5);
         txtCantTriageColor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCantTriageColor.setCaretColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(txtCantTriageColor);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 640, 250));

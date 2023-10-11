@@ -60,7 +60,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -101,10 +101,11 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 630, 390));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVolver.setMaximumSize(new java.awt.Dimension(100, 80));
         btnVolver.setMinimumSize(new java.awt.Dimension(40, 20));
         btnVolver.setPreferredSize(new java.awt.Dimension(50, 40));
@@ -115,10 +116,11 @@ public class BuscarPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 120, 40));
 
-        btnEditar.setBackground(new java.awt.Color(0, 153, 102));
+        btnEditar.setBackground(new java.awt.Color(0, 204, 204));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Editar");
+        btnEditar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEditar.setMaximumSize(new java.awt.Dimension(100, 80));
         btnEditar.setMinimumSize(new java.awt.Dimension(40, 20));
         btnEditar.setPreferredSize(new java.awt.Dimension(50, 40));

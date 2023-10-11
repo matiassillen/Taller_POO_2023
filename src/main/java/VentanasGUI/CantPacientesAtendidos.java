@@ -84,10 +84,11 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
 
         jSeparator2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
-        btnCargarDatos.setBackground(new java.awt.Color(0, 153, 102));
+        btnCargarDatos.setBackground(new java.awt.Color(0, 204, 204));
         btnCargarDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarDatos.setText("Consultar");
+        btnCargarDatos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,10 +190,11 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
