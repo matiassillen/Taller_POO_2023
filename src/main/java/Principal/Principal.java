@@ -1,7 +1,6 @@
 
 package Principal;
 
-import VentanasGUI.GestionHospital;
 
 import VentanasGUI.Recepcion;
 

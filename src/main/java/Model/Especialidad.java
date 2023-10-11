@@ -16,7 +16,7 @@ public class Especialidad extends FuncionarioGeneral {
         medico = new ArrayList<Medico>();
     }
 
-    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.nombreEspecialidad = nombreEspecialidad;
         this.medico = medico;
@@ -38,5 +38,4 @@ public class Especialidad extends FuncionarioGeneral {
         this.medico = medico;
     }
 
-    
 }

@@ -1,24 +1,32 @@
 package Model;
 
-import Persistencia.ControladoraPersistencia;
+//import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 
 @Entity
 public class AdministradorDeSistema extends FuncAdministrativo{
     
-    ControladoraPersistencia controlPersis;
+    //ControladoraPersistencia controlPersis;
     
     private ArrayList<FuncionarioGeneral> funcionarioGeneral;
     
     public AdministradorDeSistema() {
-        controlPersis = new ControladoraPersistencia();
+        //controlPersis = new ControladoraPersistencia();
         funcionarioGeneral = new ArrayList<FuncionarioGeneral>();
     }
 
-    public AdministradorDeSistema(Sector sector, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public AdministradorDeSistema(ArrayList<FuncionarioGeneral> funcionarioGeneral, Sector sector, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(sector, id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-        controlPersis = new ControladoraPersistencia();
+        this.funcionarioGeneral = funcionarioGeneral;
+    }
+
+    public ArrayList<FuncionarioGeneral> getFuncionarioGeneral() {
+        return funcionarioGeneral;
+    }
+
+    public void setFuncionarioGeneral(ArrayList<FuncionarioGeneral> funcionarioGeneral) {
+        this.funcionarioGeneral = funcionarioGeneral;
     }
 
     public void ModificarUsuario() {
@@ -64,7 +72,7 @@ public class AdministradorDeSistema extends FuncAdministrativo{
                   gestor.setPassw(contrasenia);
                   
                   
-                  controlPersis.crearUsuario(gestor);
+                  //controlPersis.crearUsuario(gestor);
                   
                    
             }

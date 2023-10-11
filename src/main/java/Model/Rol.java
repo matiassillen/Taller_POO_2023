@@ -8,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 
 
 /**
@@ -20,7 +21,7 @@ public class Rol implements Serializable {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private long id_rol;
     private String nombre;
-    @ManyToMany
+    @OneToMany
     private ArrayList<FuncionarioGeneral> funcionarioGeneral;
 
     

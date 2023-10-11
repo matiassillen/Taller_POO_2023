@@ -1,7 +1,7 @@
 package Model;
 
 
-import Persistencia.ControladoraPersistencia;
+//import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -10,17 +10,16 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Recepcionista extends FuncionarioGeneral {
     
-    ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+    //ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
-    
     @ManyToMany
     private ArrayList <Paciente> paciente;
 
     public Recepcionista() {
         this.paciente = new ArrayList<Paciente>();
     }
-    
-    public Recepcionista(ArrayList<Paciente> paciente, long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+
+    public Recepcionista(ArrayList<Paciente> paciente, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.paciente = paciente;
     }
@@ -61,18 +60,20 @@ public class Recepcionista extends FuncionarioGeneral {
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
         
-        controlPersis.RegistrarPaciente(paciente);
+        //controlPersis.RegistrarPaciente(paciente);
     }
     
     
 
-    public List<Paciente> traerPaciente() {
-        
-        return controlPersis.traerPaciente();
-    }
+//    public List<Paciente> traerPaciente() {
+//        
+//        return controlPersis.traerPaciente();
+//    }
     
     @Override
     public String toString() {
         return "Recepcionista{" + "paciente=" + paciente + '}';
     }
+    
+    
 }

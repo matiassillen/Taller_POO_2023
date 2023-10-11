@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -20,7 +20,7 @@ public class Sector implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id_Sector;
     private String Nombre;
-    @ManyToMany
+    @OneToMany
     private ArrayList<FuncAdministrativo> funcAdministrativo;
     
     

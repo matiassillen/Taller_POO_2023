@@ -12,9 +12,10 @@ public class GestoresHospital extends FuncionarioGeneral {
     public GestoresHospital() {
         estadistica = null;
     }
-    
-    public GestoresHospital(long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+
+    public GestoresHospital(Estadistica estadistica, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        this.estadistica = estadistica;
     }
 
     public Estadistica getEstadistica() {
@@ -25,4 +26,5 @@ public class GestoresHospital extends FuncionarioGeneral {
         this.estadistica = estadistica;
     }
       
+    
 }

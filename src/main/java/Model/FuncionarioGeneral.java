@@ -1,10 +1,9 @@
 package Model;
 
-import java.util.ArrayList;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -14,8 +13,8 @@ public class FuncionarioGeneral extends Persona {
     private long id;
     private String nomUsuario;
     private String passw;
-    @ManyToMany
-    private ArrayList<Rol> rol;
+    @ManyToOne
+    private Rol rol;
     //private static final int idTotales = 0;
     
     //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales
@@ -40,19 +39,16 @@ public class FuncionarioGeneral extends Persona {
     public FuncionarioGeneral() {
         this.nomUsuario = "";
         this.passw = "";
-        this.rol = new ArrayList<Rol>();
         
     }
 
-    public FuncionarioGeneral(long id, String nomUsuario, String passw, ArrayList<Rol> rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public FuncionarioGeneral(long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.id = id;
         this.nomUsuario = nomUsuario;
         this.passw = passw;
         this.rol = rol;
     }
-
-    
 
     /**
      * Metodo que genera una ID para el usuario
@@ -93,13 +89,14 @@ public class FuncionarioGeneral extends Persona {
         this.passw = passw;
     }
 
-    public ArrayList<Rol> getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(ArrayList<Rol> rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
+
 }
 
     /**

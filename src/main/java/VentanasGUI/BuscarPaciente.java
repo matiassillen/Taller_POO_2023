@@ -174,15 +174,15 @@ public class BuscarPaciente extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
         
         //Traer de la base de datos la lista de usuarios
-        List<Paciente> listaPaciente = control.traerPaciente();
+        //List<Paciente> listaPaciente = control.traerPaciente();
         
         //Preguntamos si la lista esta vacia
-        if(listaPaciente != null){
-            for(Paciente paciente : listaPaciente){
-                Object[] objeto = {paciente.getIdP(),paciente.getNombre(),paciente.getApellido(), paciente.getDni(),paciente.getFechaDeNac(), paciente.getDomicilio(),paciente.getCorreoE(),paciente.getEstadoCivil(),paciente.getTelefonoFijo(),paciente.getTelefonoCel(),paciente.getPersoDeContacto(),paciente.getTelDeContacto()};
-                modeloTabla.addRow(objeto);
-            }    
-        }
+//        if(listaPaciente != null){
+//            for(Paciente paciente : listaPaciente){
+//                Object[] objeto = {paciente.getIdP(),paciente.getNombre(),paciente.getApellido(), paciente.getDni(),paciente.getFechaDeNac(), paciente.getDomicilio(),paciente.getCorreoE(),paciente.getEstadoCivil(),paciente.getTelefonoFijo(),paciente.getTelefonoCel(),paciente.getPersoDeContacto(),paciente.getTelDeContacto()};
+//                modeloTabla.addRow(objeto);
+//            }    
+//        }
         tablaPacientes.setModel(modeloTabla);
     }    
   
