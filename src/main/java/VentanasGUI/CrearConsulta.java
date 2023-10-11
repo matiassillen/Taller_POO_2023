@@ -78,31 +78,36 @@ public class CrearConsulta extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre:");
 
-        txtApellido.setBackground(new java.awt.Color(204, 204, 204));
+        txtApellido.setBackground(new java.awt.Color(255, 255, 255));
         txtApellido.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellido.setCaretColor(new java.awt.Color(0, 0, 0));
 
-        txtNombre.setBackground(new java.awt.Color(204, 204, 204));
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Motivo:");
 
-        txtMotivo.setBackground(new java.awt.Color(204, 204, 204));
+        txtMotivo.setBackground(new java.awt.Color(255, 255, 255));
         txtMotivo.setColumns(20);
         txtMotivo.setForeground(new java.awt.Color(0, 0, 0));
         txtMotivo.setRows(5);
+        txtMotivo.setCaretColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(txtMotivo);
 
-        btnCrearConsulta.setBackground(new java.awt.Color(0, 153, 102));
+        btnCrearConsulta.setBackground(new java.awt.Color(0, 204, 204));
         btnCrearConsulta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCrearConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearConsulta.setText("Crear Consulta");
+        btnCrearConsulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

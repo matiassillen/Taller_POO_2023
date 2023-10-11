@@ -43,7 +43,7 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,70 +69,77 @@ public class Administrador extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnCrearUsuario.setBackground(new java.awt.Color(0, 204, 255));
+        btnCrearUsuario.setBackground(new java.awt.Color(0, 204, 153));
         btnCrearUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrearUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearUsuario.setText("Crear Usuario");
+        btnCrearUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearUsuarioActionPerformed(evt);
             }
         });
 
-        btnBuscarUsuario.setBackground(new java.awt.Color(0, 204, 255));
+        btnBuscarUsuario.setBackground(new java.awt.Color(0, 204, 153));
         btnBuscarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscarUsuario.setText("Buscar Usuario");
+        btnBuscarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarUsuarioActionPerformed(evt);
             }
         });
 
-        btnEditarUsuario.setBackground(new java.awt.Color(0, 204, 255));
+        btnEditarUsuario.setBackground(new java.awt.Color(0, 204, 153));
         btnEditarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEditarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnEditarUsuario.setText("Editar Usuario");
+        btnEditarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarUsuarioActionPerformed(evt);
             }
         });
 
-        btnMostrarUsuarios.setBackground(new java.awt.Color(0, 204, 255));
+        btnMostrarUsuarios.setBackground(new java.awt.Color(0, 204, 153));
         btnMostrarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMostrarUsuarios.setForeground(new java.awt.Color(0, 0, 0));
         btnMostrarUsuarios.setText("Mostrar todos los usuarios");
+        btnMostrarUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarUsuariosActionPerformed(evt);
             }
         });
 
-        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 255));
+        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 153));
         btnInfoAdministrativa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnInfoAdministrativa.setForeground(new java.awt.Color(0, 0, 0));
         btnInfoAdministrativa.setText("Ver información administrativa");
+        btnInfoAdministrativa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnInfoAdministrativa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfoAdministrativaActionPerformed(evt);
             }
         });
 
-        Salir.setBackground(new java.awt.Color(0, 204, 255));
+        Salir.setBackground(new java.awt.Color(0, 204, 153));
         Salir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Salir.setForeground(new java.awt.Color(0, 0, 0));
         Salir.setText("Salir");
+        Salir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
 
-        btnCrearUsuario1.setBackground(new java.awt.Color(0, 204, 255));
+        btnCrearUsuario1.setBackground(new java.awt.Color(0, 204, 153));
         btnCrearUsuario1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrearUsuario1.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearUsuario1.setText("Borrar Usuario");
+        btnCrearUsuario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCrearUsuario1.setPreferredSize(new java.awt.Dimension(136, 40));
         btnCrearUsuario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

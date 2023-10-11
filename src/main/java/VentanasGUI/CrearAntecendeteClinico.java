@@ -54,16 +54,27 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hora:");
 
-        txtFecha.setBackground(new java.awt.Color(204, 204, 204));
+        txtFecha.setBackground(new java.awt.Color(255, 255, 255));
+        txtFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(0, 0, 0));
+        txtFecha.setActionCommand("<Not Set>");
+        txtFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFecha.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtFecha.setDisabledTextColor(new java.awt.Color(153, 153, 153));
 
-        txtHora.setBackground(new java.awt.Color(204, 204, 204));
+        txtHora.setBackground(new java.awt.Color(255, 255, 255));
+        txtHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtHora.setForeground(new java.awt.Color(0, 0, 0));
+        txtHora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtHora.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtHora.setDisabledTextColor(new java.awt.Color(153, 153, 153));
 
-        btnCargarDatos.setBackground(new java.awt.Color(0, 153, 102));
+        btnCargarDatos.setBackground(new java.awt.Color(0, 204, 204));
         btnCargarDatos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCargarDatos.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarDatos.setText("Cargar Datos");
+        btnCargarDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCargarDatosActionPerformed(evt);
@@ -75,8 +86,14 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha:");
 
-        txtNomDiagnostico.setBackground(new java.awt.Color(204, 204, 204));
+        txtNomDiagnostico.setBackground(new java.awt.Color(255, 255, 255));
+        txtNomDiagnostico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNomDiagnostico.setForeground(new java.awt.Color(0, 0, 0));
+        txtNomDiagnostico.setActionCommand("<Not Set>");
+        txtNomDiagnostico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNomDiagnostico.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtNomDiagnostico.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNomDiagnostico.setDisabledTextColor(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,7 +117,7 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -145,10 +162,11 @@ public class CrearAntecendeteClinico extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);

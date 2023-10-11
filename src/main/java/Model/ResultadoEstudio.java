@@ -1,21 +1,30 @@
 package Model;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class ResultadoEstudio implements Serializable {
-   
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int numResEst;
+    @OneToOne
     private Paciente paciente;
     private String nombre;
     private String Informe;
     private String hora;
     private String Fecha;
     
-    
     public ResultadoEstudio() {
         
     }
 
-    public ResultadoEstudio(String nombre, String Informe, String hora, String Fecha, Paciente paciente) {
+    public ResultadoEstudio(int numResultadoEstudio, String nombre, String Informe, String hora, String Fecha, Paciente paciente) {
+        this.numResEst = numResultadoEstudio;
         this.nombre = nombre;
         this.Informe = Informe;
         this.hora = hora;
@@ -23,6 +32,14 @@ public class ResultadoEstudio implements Serializable {
         this.paciente = paciente;
     }
 
+    public int getNumResEst() {
+        return numResEst;
+    }
+
+    public void setNumResEst(int numResEst) {
+        this.numResEst = numResEst;
+    }
+    
     public String getNombre() {
         return nombre;
     }

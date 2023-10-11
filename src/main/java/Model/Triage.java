@@ -1,10 +1,18 @@
 package Model;
 
 import Model.Sintomas.*;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
 
-
-public class Triage {
-
+@Entity
+public class Triage implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int numTriage;
     private String motivoCambio;
     private TipoColor colorOriginal;
     private TipoColor colorFinal;
@@ -21,15 +29,19 @@ public class Triage {
     private DolorAbd dolorAbdominal;
     private Shock signosShock;
     private Sangrado sangrado;
+    @OneToOne
     private Consulta consulta;
+    @OneToOne
     private Medico medico;
+    @OneToOne
     private LicEnEnfermeria enfermero;
  
 
     public Triage() {
     }
 
-    public Triage(String motivoCambio, TipoColor colorOriginal, TipoColor colorFinal, Respiracion respiración, Pulso pulso, Mental estadoMental, Conciencia conciencia, DolorPecho dificultadRespiratoria, LesionesGraves lesionesGraves, LesionesLeves lesionesLeves, Edad edad, Fiebre fiebre, Vomitos vómitos, DolorAbd dolorAbdominal, Shock signosShock, Sangrado sangrado, Consulta consulta, Medico realizoTriage, LicEnEnfermeria enfermero) {
+    public Triage(int id, String motivoCambio, TipoColor colorOriginal, TipoColor colorFinal, Respiracion respiración, Pulso pulso, Mental estadoMental, Conciencia conciencia, DolorPecho dificultadRespiratoria, LesionesGraves lesionesGraves, LesionesLeves lesionesLeves, Edad edad, Fiebre fiebre, Vomitos vómitos, DolorAbd dolorAbdominal, Shock signosShock, Sangrado sangrado, Consulta consulta, Medico realizoTriage, LicEnEnfermeria enfermero) {
+        this.numTriage = id;
         this.motivoCambio = motivoCambio;
         this.colorOriginal = colorOriginal;
         this.colorFinal = colorFinal;
@@ -51,6 +63,10 @@ public class Triage {
         this.enfermero = enfermero;
     }
 
+    public int getNumTriage() {
+        return numTriage;
+    }
+    
     public String getMotivoCambio() {
         return motivoCambio;
     }
@@ -118,13 +134,17 @@ public class Triage {
     public Consulta getConsulta() {
         return consulta;
     }
-
-    public Medico getRealizoTriage() {
+    
+    public Medico getMedico() {
         return medico;
     }
 
     public LicEnEnfermeria getEnfermero() {
         return enfermero;
+    }
+    
+    public void setNumTriage(int numTriage) {
+        this.numTriage = numTriage;
     }
 
     public void setMotivoCambio(String motivoCambio) {
@@ -194,9 +214,9 @@ public class Triage {
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
-
-    public void setRealizoTriage(Medico realizoTriage) {
-        this.medico = realizoTriage;
+    
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 
     public void setEnfermero(LicEnEnfermeria enfermero) {
