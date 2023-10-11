@@ -60,7 +60,7 @@ public class TituloJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                long id = titulo.getId_Titulo();
+                long id = titulo.getIdTitulo();
                 if (findTitulo(id) == null) {
                     throw new NonexistentEntityException("The titulo with id " + id + " no longer exists.");
                 }
@@ -81,7 +81,7 @@ public class TituloJpaController implements Serializable {
             Titulo titulo;
             try {
                 titulo = em.getReference(Titulo.class, id);
-                titulo.getId_Titulo();
+                titulo.getIdTitulo();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The titulo with id " + id + " no longer exists.", enfe);
             }

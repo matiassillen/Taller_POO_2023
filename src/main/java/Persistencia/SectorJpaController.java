@@ -60,7 +60,7 @@ public class SectorJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                long id = sector.getId_Sector();
+                long id = sector.getIdSector();
                 if (findSector(id) == null) {
                     throw new NonexistentEntityException("The sector with id " + id + " no longer exists.");
                 }
@@ -81,7 +81,7 @@ public class SectorJpaController implements Serializable {
             Sector sector;
             try {
                 sector = em.getReference(Sector.class, id);
-                sector.getId_Sector();
+                sector.getIdSector();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The sector with id " + id + " no longer exists.", enfe);
             }
