@@ -1,6 +1,5 @@
 package Model;
 
-
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.Entity;
@@ -9,24 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Sector implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-<<<<<<< HEAD
-    private long id_Sector;
-    private String Nombre;
-    @OneToMany
-=======
     private long idSector;
     private String nombre;
-    @ManyToMany
->>>>>>> 59cc8ba46e2c03981dc4685c111025819b7b014f
+    @OneToMany
     private ArrayList<FuncAdministrativo> funcAdministrativo;
-    
-    
+
     /**
      * Default constructor
      */
@@ -41,11 +32,11 @@ public class Sector implements Serializable {
         this.funcAdministrativo = funcAdministrativo;
     }
 
-    public long getIdSector() {    
+    public long getIdSector() {
         return idSector;
     }
 
-    public void setIdSector(long idSector) {    
+    public void setIdSector(long idSector) {
         this.idSector = idSector;
     }
 

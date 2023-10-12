@@ -21,7 +21,7 @@ public class Rol implements Serializable {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private long id_rol;
     private String nombre;
-    @OneToMany
+    @OneToMany(mappedBy="rol") 
     private ArrayList<FuncionarioGeneral> funcionarioGeneral;
 
     

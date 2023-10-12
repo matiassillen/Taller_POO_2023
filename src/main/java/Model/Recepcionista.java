@@ -1,7 +1,7 @@
 package Model;
 
 
-//import Persistencia.ControladoraPersistencia;
+import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Recepcionista extends FuncionarioGeneral {
     
-    //ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+    ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
     @ManyToMany
     private ArrayList <Paciente> paciente;
@@ -60,15 +60,15 @@ public class Recepcionista extends FuncionarioGeneral {
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
         
-        //controlPersis.RegistrarPaciente(paciente);
+        controlPersis.RegistrarPaciente(paciente);
     }
     
     
 
-//    public List<Paciente> traerPaciente() {
-//        
-//        return controlPersis.traerPaciente();
-//    }
+    public List<Paciente> traerPaciente() {
+        
+        return controlPersis.traerPaciente();
+    }
     
     @Override
     public String toString() {

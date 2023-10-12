@@ -1,29 +1,37 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Id;
 @Entity
-public class Especialidad {
+public class Especialidad implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
     private String nombreEspecialidad;
     @ManyToMany
     private ArrayList<Medico> medico;
 
     public Especialidad() {
         this.nombreEspecialidad = "";
-        this.medico = new ArrayList<Medico>();
+        medico = new ArrayList<Medico>();
     }
 
-<<<<<<< HEAD
-    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-=======
     public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico) {
->>>>>>> 59cc8ba46e2c03981dc4685c111025819b7b014f
         this.nombreEspecialidad = nombreEspecialidad;
         this.medico = medico;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombreEspecialidad() {
@@ -41,5 +49,5 @@ public class Especialidad {
     public void setMedico(ArrayList<Medico> medico) {
         this.medico = medico;
     }
-
+   
 }

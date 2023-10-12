@@ -4,7 +4,7 @@
  */
 package Persistencia;
 
-import Model.Sector;
+import Model.AntecedenteClinico;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -20,13 +20,13 @@ import javax.persistence.criteria.Root;
  *
  * @author Matías Sillen Ríos
  */
-public class SectorJpaController implements Serializable {
+public class AntecedenteClinicoJpaController implements Serializable {
 
-    public SectorJpaController(EntityManagerFactory emf) {
+    public AntecedenteClinicoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
-    public SectorJpaController() {
+    public AntecedenteClinicoJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
@@ -36,12 +36,12 @@ public class SectorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Sector sector) {
+    public void create(AntecedenteClinico antecedenteClinico) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(sector);
+            em.persist(antecedenteClinico);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,19 +50,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public void edit(Sector sector) throws NonexistentEntityException, Exception {
+    public void edit(AntecedenteClinico antecedenteClinico) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            sector = em.merge(sector);
+            antecedenteClinico = em.merge(antecedenteClinico);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                long id = sector.getIdSector();
-                if (findSector(id) == null) {
-                    throw new NonexistentEntityException("The sector with id " + id + " no longer exists.");
+                int id = antecedenteClinico.getNumAntecedente();
+                if (findAntecedenteClinico(id) == null) {
+                    throw new NonexistentEntityException("The antecedenteClinico with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,19 +73,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public void destroy(long id) throws NonexistentEntityException {
+    public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Sector sector;
+            AntecedenteClinico antecedenteClinico;
             try {
-                sector = em.getReference(Sector.class, id);
-                sector.getIdSector();
+                antecedenteClinico = em.getReference(AntecedenteClinico.class, id);
+                antecedenteClinico.getNumAntecedente();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The sector with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The antecedenteClinico with id " + id + " no longer exists.", enfe);
             }
-            em.remove(sector);
+            em.remove(antecedenteClinico);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -94,19 +94,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public List<Sector> findSectorEntities() {
-        return findSectorEntities(true, -1, -1);
+    public List<AntecedenteClinico> findAntecedenteClinicoEntities() {
+        return findAntecedenteClinicoEntities(true, -1, -1);
     }
 
-    public List<Sector> findSectorEntities(int maxResults, int firstResult) {
-        return findSectorEntities(false, maxResults, firstResult);
+    public List<AntecedenteClinico> findAntecedenteClinicoEntities(int maxResults, int firstResult) {
+        return findAntecedenteClinicoEntities(false, maxResults, firstResult);
     }
 
-    private List<Sector> findSectorEntities(boolean all, int maxResults, int firstResult) {
+    private List<AntecedenteClinico> findAntecedenteClinicoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Sector.class));
+            cq.select(cq.from(AntecedenteClinico.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -118,20 +118,20 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public Sector findSector(long id) {
+    public AntecedenteClinico findAntecedenteClinico(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Sector.class, id);
+            return em.find(AntecedenteClinico.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getSectorCount() {
+    public int getAntecedenteClinicoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Sector> rt = cq.from(Sector.class);
+            Root<AntecedenteClinico> rt = cq.from(AntecedenteClinico.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

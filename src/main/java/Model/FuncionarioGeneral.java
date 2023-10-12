@@ -3,6 +3,7 @@ package Model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
@@ -14,7 +15,8 @@ public class FuncionarioGeneral extends Persona {
     private String nomUsuario;
     private String passw;
     @ManyToOne
-    private Rol rol;
+    @JoinColumn(name="id_rol")
+    private Rol rol; 
     //private static final int idTotales = 0;
     
     //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales

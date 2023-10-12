@@ -26,7 +26,7 @@ public class TituloJpaController implements Serializable {
         this.emf = emf;
     }
     
-    public TituloJpaController(){
+    public TituloJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     

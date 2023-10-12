@@ -1,15 +1,29 @@
 package Model;
 
-//import Persistencia.ControladoraPersistencia;
+import Persistencia.ControladoraPersistencia;
 import java.util.List;
 
 public class Controladora {
+    ControladoraPersistencia controlPersis;
 
+    public Controladora() {
+        controlPersis = new ControladoraPersistencia();
+    }
     
-    //ControladoraPersistencia controladoraPersi = new ControladoraPersistencia();
+    
+    
+    public List<Rol> traerRoles() {
+        return controlPersis.traerRoles();
+    }
 
-//    public List<Paciente> traerPaciente() {
-//        return controladoraPersi.traerPaciente();
-//    }
-
+    public Rol traerRol(String rolRecibido) {
+        List<Rol> listaRoles = controlPersis.traerRoles();
+        
+        for (Rol rol : listaRoles) {
+            if (rol.getNombre().equals(rolRecibido)) {
+                return rol;
+            }
+        }
+        return null;
+    }
 }

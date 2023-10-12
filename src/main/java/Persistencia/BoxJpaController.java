@@ -4,7 +4,7 @@
  */
 package Persistencia;
 
-import Model.Sector;
+import Model.Box;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -20,13 +20,13 @@ import javax.persistence.criteria.Root;
  *
  * @author Matías Sillen Ríos
  */
-public class SectorJpaController implements Serializable {
+public class BoxJpaController implements Serializable {
 
-    public SectorJpaController(EntityManagerFactory emf) {
+    public BoxJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
-    public SectorJpaController() {
+    public BoxJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
@@ -36,12 +36,12 @@ public class SectorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Sector sector) {
+    public void create(Box box) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(sector);
+            em.persist(box);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,19 +50,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public void edit(Sector sector) throws NonexistentEntityException, Exception {
+    public void edit(Box box) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            sector = em.merge(sector);
+            box = em.merge(box);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                long id = sector.getIdSector();
-                if (findSector(id) == null) {
-                    throw new NonexistentEntityException("The sector with id " + id + " no longer exists.");
+                Integer id = box.getNumer();
+                if (findBox(id) == null) {
+                    throw new NonexistentEntityException("The box with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,19 +73,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public void destroy(long id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Sector sector;
+            Box box;
             try {
-                sector = em.getReference(Sector.class, id);
-                sector.getIdSector();
+                box = em.getReference(Box.class, id);
+                box.getNumer();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The sector with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The box with id " + id + " no longer exists.", enfe);
             }
-            em.remove(sector);
+            em.remove(box);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -94,19 +94,19 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public List<Sector> findSectorEntities() {
-        return findSectorEntities(true, -1, -1);
+    public List<Box> findBoxEntities() {
+        return findBoxEntities(true, -1, -1);
     }
 
-    public List<Sector> findSectorEntities(int maxResults, int firstResult) {
-        return findSectorEntities(false, maxResults, firstResult);
+    public List<Box> findBoxEntities(int maxResults, int firstResult) {
+        return findBoxEntities(false, maxResults, firstResult);
     }
 
-    private List<Sector> findSectorEntities(boolean all, int maxResults, int firstResult) {
+    private List<Box> findBoxEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Sector.class));
+            cq.select(cq.from(Box.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -118,20 +118,20 @@ public class SectorJpaController implements Serializable {
         }
     }
 
-    public Sector findSector(long id) {
+    public Box findBox(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Sector.class, id);
+            return em.find(Box.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getSectorCount() {
+    public int getBoxCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Sector> rt = cq.from(Sector.class);
+            Root<Box> rt = cq.from(Box.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
