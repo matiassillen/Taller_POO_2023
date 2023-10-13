@@ -9,12 +9,12 @@ import Model.Controladora;
  *
  * @author yairc
  */
-public class VerResultadoEstudio extends javax.swing.JFrame {
+public class VerConsultasAnteriores extends javax.swing.JFrame {
     Controladora control;
     /**
-     * Creates new form VerResultadoEstudio
+     * Creates new form VerHistClinica
      */
-    public VerResultadoEstudio(Controladora control) {
+    public VerConsultasAnteriores(Controladora control) {
         initComponents();
         this.control = control;
     }
@@ -29,17 +29,16 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtResultEst = new javax.swing.JLabel();
+        txtConsultasAnt = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
-        btnCargarNuevoRE = new javax.swing.JButton();
-        btnLeerResultEst = new javax.swing.JButton();
+        btnLeerConsAnt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtResultEst.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        txtResultEst.setText("Resultados de Estudios");
+        txtConsultasAnt.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtConsultasAnt.setText("Consultas Anteriores");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,16 +61,8 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
             }
         });
 
-        btnCargarNuevoRE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnCargarNuevoRE.setText("Crear Nuevo ");
-        btnCargarNuevoRE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarNuevoREActionPerformed(evt);
-            }
-        });
-
-        btnLeerResultEst.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnLeerResultEst.setText("Leer");
+        btnLeerConsAnt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnLeerConsAnt.setText("Leer");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,28 +71,24 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLeerResultEst, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCargarNuevoRE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addComponent(txtResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(txtResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLeerResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCargarNuevoRE, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,12 +109,6 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCargarNuevoREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarNuevoREActionPerformed
-        CrearResultadoEstudio crearResEstu = new CrearResultadoEstudio();
-        crearResEstu.setVisible(true);
-        crearResEstu.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnCargarNuevoREActionPerformed
-
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         HistoriaClinica histCli = new HistoriaClinica(control);
         histCli.setVisible(true);
@@ -135,15 +116,13 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarNuevoRE;
-    private javax.swing.JButton btnLeerResultEst;
+    private javax.swing.JButton btnLeerConsAnt;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel txtResultEst;
+    private javax.swing.JLabel txtConsultasAnt;
     // End of variables declaration//GEN-END:variables
 }
