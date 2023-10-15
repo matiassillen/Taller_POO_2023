@@ -8,14 +8,14 @@ import Model.Controladora;
  *
  * @author yairc
  */
-public class PrincipalMedico extends javax.swing.JFrame {
+public class PpalMedico extends javax.swing.JFrame {
     Controladora control;
     /**
      * Creates new form Medico
      */
-    public PrincipalMedico(Controladora control) {
+    public PpalMedico() {
         initComponents();
-        this.control = control;
+        control = new Controladora();
     }
 
     /**
@@ -31,6 +31,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtHacerTriage = new javax.swing.JButton();
         txtTomarPaciente = new javax.swing.JButton();
+        txtAsignarBox = new javax.swing.JButton();
         txtDatosDePaciente = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
@@ -65,10 +66,20 @@ public class PrincipalMedico extends javax.swing.JFrame {
             }
         });
 
+        txtAsignarBox.setBackground(new java.awt.Color(0, 204, 255));
+        txtAsignarBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtAsignarBox.setForeground(new java.awt.Color(0, 0, 0));
+        txtAsignarBox.setText("Asignar box");
+        txtAsignarBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAsignarBoxActionPerformed(evt);
+            }
+        });
+
         txtDatosDePaciente.setBackground(new java.awt.Color(0, 204, 255));
         txtDatosDePaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDatosDePaciente.setForeground(new java.awt.Color(0, 0, 0));
-        txtDatosDePaciente.setText("HistoriaClinica");
+        txtDatosDePaciente.setText("Datos de Pacientes");
         txtDatosDePaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDatosDePacienteActionPerformed(evt);
@@ -84,6 +95,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtHacerTriage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtTomarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(txtAsignarBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDatosDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -93,10 +105,12 @@ public class PrincipalMedico extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(txtTomarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(txtDatosDePaciente)
-                .addGap(18, 18, 18)
                 .addComponent(txtHacerTriage)
-                .addGap(114, 114, 114))
+                .addGap(18, 18, 18)
+                .addComponent(txtAsignarBox)
+                .addGap(18, 18, 18)
+                .addComponent(txtDatosDePaciente)
+                .addGap(63, 63, 63))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 260, 260));
@@ -111,17 +125,17 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(252, 252, 252)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(249, 249, 249))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -147,13 +161,19 @@ public class PrincipalMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_txtHacerTriageActionPerformed
 
     private void txtTomarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTomarPacienteActionPerformed
-        TomarPaciente tomarP = new TomarPaciente(control);
+        TomarPaciente tomarP = new TomarPaciente();
         tomarP.setVisible(true);
         tomarP.setLocationRelativeTo(null);
     }//GEN-LAST:event_txtTomarPacienteActionPerformed
 
+    private void txtAsignarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsignarBoxActionPerformed
+        AsignarBox aBox = new AsignarBox();
+        aBox.setVisible(true);
+        aBox.setLocationRelativeTo(null);
+    }//GEN-LAST:event_txtAsignarBoxActionPerformed
+
     private void txtDatosDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatosDePacienteActionPerformed
-        HistoriaClinica verDatoP = new HistoriaClinica(control);
+        MedicoVerDatosDePacientes verDatoP = new MedicoVerDatosDePacientes();
         verDatoP.setVisible(true);
         verDatoP.setLocationRelativeTo(null);
     }//GEN-LAST:event_txtDatosDePacienteActionPerformed
@@ -164,6 +184,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private java.awt.Label label1;
+    private javax.swing.JButton txtAsignarBox;
     private javax.swing.JButton txtDatosDePaciente;
     private javax.swing.JButton txtHacerTriage;
     private javax.swing.JButton txtTomarPaciente;

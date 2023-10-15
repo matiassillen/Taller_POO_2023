@@ -8,12 +8,12 @@ package VentanasGUI;
  *
  * @author yairc
  */
-public class VerResultadoEstudio extends javax.swing.JFrame {
+public class VerHistClinica extends javax.swing.JFrame {
 
     /**
-     * Creates new form VerResultadoEstudio
+     * Creates new form VerHistClinica
      */
-    public VerResultadoEstudio() {
+    public VerHistClinica() {
         initComponents();
     }
 
@@ -42,7 +42,6 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
