@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * 
@@ -25,6 +26,8 @@ public enum Box {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private final Integer numer;
     private Boolean estado;
+    @OneToOne
+    private Medico medico;
 
     
     /**

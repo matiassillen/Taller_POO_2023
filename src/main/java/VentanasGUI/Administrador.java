@@ -4,16 +4,33 @@
  */
 package VentanasGUI;
 
+import Model.AdministradorDeSistema;
+import Model.Controladora;
+import Model.GestoresHospital;
+import Model.LicEnEnfermeria;
+import Model.Medico;
+import Model.Recepcionista;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Matías Sillen Ríos
  */
 public class Administrador extends javax.swing.JFrame {
+    AdministradorDeSistema administrador;
+    Controladora control;
     /**
      * Creates new form Administrador
      */
     public Administrador() {
+        control = new Controladora();
+        administrador = new AdministradorDeSistema();
         initComponents();
     }
 
@@ -33,12 +50,32 @@ public class Administrador extends javax.swing.JFrame {
         btnCrearUsuario = new javax.swing.JButton();
         btnBuscarUsuario = new javax.swing.JButton();
         btnEditarUsuario = new javax.swing.JButton();
-        btnMostrarUsuarios = new javax.swing.JButton();
+        btnBorrarUsuario = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaGestores = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaRecepcionistas = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableAdministrador = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tablaMedicos = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tablaLicenciados = new javax.swing.JTable();
         btnInfoAdministrativa = new javax.swing.JButton();
-        Salir = new javax.swing.JButton();
-        btnCrearUsuario1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -54,16 +91,16 @@ public class Administrador extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
+                .addGap(309, 309, 309)
                 .addComponent(jLabel1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -102,48 +139,15 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarUsuarios.setBackground(new java.awt.Color(0, 204, 153));
-        btnMostrarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnMostrarUsuarios.setForeground(new java.awt.Color(0, 0, 0));
-        btnMostrarUsuarios.setText("Mostrar todos los usuarios");
-        btnMostrarUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        btnBorrarUsuario.setBackground(new java.awt.Color(0, 204, 153));
+        btnBorrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBorrarUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        btnBorrarUsuario.setText("Borrar Usuario");
+        btnBorrarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBorrarUsuario.setPreferredSize(new java.awt.Dimension(136, 40));
+        btnBorrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarUsuariosActionPerformed(evt);
-            }
-        });
-
-        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 153));
-        btnInfoAdministrativa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnInfoAdministrativa.setForeground(new java.awt.Color(0, 0, 0));
-        btnInfoAdministrativa.setText("Ver información administrativa");
-        btnInfoAdministrativa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnInfoAdministrativa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInfoAdministrativaActionPerformed(evt);
-            }
-        });
-
-        Salir.setBackground(new java.awt.Color(0, 204, 153));
-        Salir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Salir.setForeground(new java.awt.Color(0, 0, 0));
-        Salir.setText("Salir");
-        Salir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
-
-        btnCrearUsuario1.setBackground(new java.awt.Color(0, 204, 153));
-        btnCrearUsuario1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCrearUsuario1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCrearUsuario1.setText("Borrar Usuario");
-        btnCrearUsuario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnCrearUsuario1.setPreferredSize(new java.awt.Dimension(136, 40));
-        btnCrearUsuario1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuario1ActionPerformed(evt);
+                btnBorrarUsuarioActionPerformed(evt);
             }
         });
 
@@ -152,20 +156,13 @@ public class Administrador extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCrearUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMostrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnInfoAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,34 +173,222 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btnCrearUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnMostrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnInfoAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1015, 1500));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Gestores");
+
+        tablaGestores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaGestores.setPreferredSize(new java.awt.Dimension(30, 85));
+        jScrollPane2.setViewportView(tablaGestores);
+
+        tablaRecepcionistas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaRecepcionistas.setPreferredSize(new java.awt.Dimension(30, 85));
+        jScrollPane5.setViewportView(tablaRecepcionistas);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Recepcionistas");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Médicos");
+
+        tableAdministrador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tableAdministrador.setPreferredSize(new java.awt.Dimension(30, 85));
+        jScrollPane6.setViewportView(tableAdministrador);
+
+        tablaMedicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaMedicos.setPreferredSize(new java.awt.Dimension(30, 85));
+        jScrollPane7.setViewportView(tablaMedicos);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Administradores de Sistema");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Licenciados en Enfermería");
+
+        tablaLicenciados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaLicenciados.setPreferredSize(new java.awt.Dimension(30, 85));
+        jScrollPane8.setViewportView(tablaLicenciados);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(455, 455, 455))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(455, 455, 455))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(344, 344, 344))))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(374, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(345, 345, 345)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel4)
+                .addGap(262, 262, 262)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(302, 302, 302)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(350, 350, 350)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(934, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(859, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(609, 609, 609)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(909, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(375, 375, 375)))
+        );
+
+        jScrollPane1.setViewportView(jPanel4);
+
+        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 153));
+        btnInfoAdministrativa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnInfoAdministrativa.setForeground(new java.awt.Color(0, 0, 0));
+        btnInfoAdministrativa.setText("Ver infromación administrativa");
+        btnInfoAdministrativa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnInfoAdministrativa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoAdministrativaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(144, 144, 144))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInfoAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnInfoAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,7 +409,7 @@ public class Administrador extends javax.swing.JFrame {
         CrearUsuario pantalla1 = new CrearUsuario();
         pantalla1.setVisible(true);
         pantalla1.setLocationRelativeTo(null);
-        this.dispose();
+        this.dispose(); 
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
@@ -235,18 +420,177 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
-        EditarUsuario pantalla3 = new EditarUsuario();
-        pantalla3.setVisible(true);
-        pantalla3.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnEditarUsuarioActionPerformed
+        tablaGestores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
-    private void btnMostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarUsuariosActionPerformed
-        MostrarUsuario pantalla4 = new MostrarUsuario();
-        pantalla4.setVisible(true);
-        pantalla4.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnMostrarUsuariosActionPerformed
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 11));
+                        
+                        //Llamo a la ventana EditarUsuario 
+                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+                        editar.setVisible(true);
+                        editar.setLocationRelativeTo(null);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaGestores();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaRecepcionistas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 11));
+                        
+                        //Llamo a la ventana EditarUsuario 
+                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+                        editar.setVisible(true);
+                        editar.setLocationRelativeTo(null);
+                        
+                        
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaRecepcionistas();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaMedicos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 11));
+                        
+                        //Llamo a la ventana EditarUsuario 
+                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+                        editar.setVisible(true);
+                        editar.setLocationRelativeTo(null);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaMedicos();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaLicenciados.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
+                        
+                        //Llamo a la ventana EditarUsuario 
+                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+                        editar.setVisible(true);
+                        editar.setLocationRelativeTo(null);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaLicenciados();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tableAdministrador.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
+                        
+                        //Llamo a la ventana EditarUsuario 
+                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+                        editar.setVisible(true);
+                        editar.setLocationRelativeTo(null);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaAdministrador();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+    }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
     private void btnInfoAdministrativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAdministrativaActionPerformed
         InformacionAdministrativa pantalla5 = new InformacionAdministrativa();
@@ -255,27 +599,379 @@ public class Administrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInfoAdministrativaActionPerformed
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        this.dispose();
-        //hola
-    }//GEN-LAST:event_SalirActionPerformed
+    private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
+        tablaGestores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
-    private void btnCrearUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuario1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearUsuario1ActionPerformed
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
 
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 11));
+                        //Llamo al método borrar 
+                        administrador.borrarUsuario(id, rol);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaGestores();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaRecepcionistas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 11));
+                        //Llamo al método borrar 
+                        administrador.borrarUsuario(id, rol);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaRecepcionistas();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaMedicos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 11));
+                        //Llamo al método borrar 
+                        administrador.borrarUsuario(id, rol);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaMedicos();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tablaLicenciados.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
+                        //Llamo al método borrar 
+                        administrador.borrarUsuario(id, rol);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaLicenciados();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+        
+        tableAdministrador.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
+                // Aquí puedes hacer lo que quieras con la tabla seleccionada
+
+                //Validar que la tabla tenga elementos
+                if (table.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (table.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar
+                        long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
+                        String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
+                        //Llamo al método borrar 
+                        administrador.borrarUsuario(id, rol);
+
+                        //Avisar al administrador que se borro correctamente
+                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+
+                        cargarTablaAdministrador();
+                    } else {
+                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+                    }
+                } else {
+                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+                }
+
+            }
+        });
+    }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaGestores();
+        cargarTablaRecepcionistas();
+        cargarTablaMedicos();
+        cargarTablaLicenciados();
+        cargarTablaAdministrador();
+    }//GEN-LAST:event_formWindowOpened
+
+    //Metodo que muestra un mensaje por pantalla
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Salir;
+    private javax.swing.JButton btnBorrarUsuario;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnCrearUsuario;
-    private javax.swing.JButton btnCrearUsuario1;
     private javax.swing.JButton btnEditarUsuario;
     private javax.swing.JButton btnInfoAdministrativa;
-    private javax.swing.JButton btnMostrarUsuarios;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTable tablaGestores;
+    private javax.swing.JTable tablaLicenciados;
+    private javax.swing.JTable tablaMedicos;
+    private javax.swing.JTable tablaRecepcionistas;
+    private javax.swing.JTable tableAdministrador;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTablaGestores() {
+        //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<GestoresHospital> listaGestores = control.traerGestores();
+
+        if (listaGestores != null) {
+
+            for (GestoresHospital gestor : listaGestores) {
+                Object[] objeto = {gestor.getNombre(), gestor.getApellido(), gestor.getFechaDeNac(),
+                    gestor.getDni(), gestor.getDomicilio(), gestor.getTelefonoFijo(), gestor.getTelefonoCel(),
+                    gestor.getCorreoE(), gestor.getEstadoCivil(), gestor.getNomUsuario(), gestor.getRol().getNombre()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaGestores.setModel(modeloTabla);
+    }
+
+    private void cargarTablaRecepcionistas() {
+        //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<Recepcionista> listaRecepcionistas = control.traerRecepcionistas();
+
+        if (listaRecepcionistas != null) {
+
+            for (Recepcionista recepcionista : listaRecepcionistas) {
+                Object[] objeto = {recepcionista.getNombre(), recepcionista.getApellido(), recepcionista.getFechaDeNac(),
+                    recepcionista.getDni(), recepcionista.getDomicilio(), recepcionista.getTelefonoFijo(), recepcionista.getTelefonoCel(),
+                    recepcionista.getCorreoE(), recepcionista.getEstadoCivil(), recepcionista.getNomUsuario(), recepcionista.getRol().getNombre()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaRecepcionistas.setModel(modeloTabla);
+    }
+    
+
+    private void cargarTablaMedicos() {
+        //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Numero Matricula", "Nombre de Usuario", "Rol"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<Medico> listaMedicos = control.traerMedicos();
+
+        if (listaMedicos != null) {
+
+            for (Medico medico : listaMedicos) {
+                Object[] objeto = {medico.getNombre(), medico.getApellido(), medico.getFechaDeNac(),
+                    medico.getDni(), medico.getDomicilio(), medico.getTelefonoFijo(), medico.getTelefonoCel(),
+                    medico.getCorreoE(), medico.getEstadoCivil(), medico.getNumMatriculaProfesional(), medico.getNomUsuario(), medico.getRol().getNombre()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaMedicos.setModel(modeloTabla);
+    }
+
+    private void cargarTablaLicenciados() {
+        //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<LicEnEnfermeria> listalicenciados = control.traerLicenciadosEnEnfermeria();
+
+        if (listalicenciados != null) {
+
+            for (LicEnEnfermeria licenciado : listalicenciados) {
+                Object[] objeto = {licenciado.getNombre(), licenciado.getApellido(), licenciado.getFechaDeNac(),
+                    licenciado.getDni(), licenciado.getDomicilio(), licenciado.getTelefonoFijo(), licenciado.getTelefonoCel(),
+                    licenciado.getCorreoE(), licenciado.getEstadoCivil(), licenciado.getNomUsuario(), licenciado.getRol().getNombre()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaLicenciados.setModel(modeloTabla);
+    }
+
+    private void cargarTablaAdministrador() {
+        //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol", "Sector"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<AdministradorDeSistema> listaAdministradores = control.traerAdministradoresDeSistema();
+
+        if (listaAdministradores != null) {
+
+            for (AdministradorDeSistema administrador : listaAdministradores) {
+                Object[] objeto = {administrador.getNombre(), administrador.getApellido(), administrador.getFechaDeNac(),
+                    administrador.getDni(), administrador.getDomicilio(), administrador.getTelefonoFijo(), administrador.getTelefonoCel(),
+                    administrador.getCorreoE(), administrador.getEstadoCivil(), administrador.getNomUsuario(), administrador.getRol().getNombre(), administrador.getSector().getNombre()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tableAdministrador.setModel(modeloTabla);
+    }
 }
+
+   
+

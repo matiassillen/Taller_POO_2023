@@ -29,7 +29,7 @@ public class PacienteJpaController implements Serializable {
     public PacienteJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

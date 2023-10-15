@@ -4,6 +4,8 @@ import Model.AdministradorDeSistema;
 import Model.Controladora;
 import Model.Rol;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +62,8 @@ public class CrearUsuario extends javax.swing.JFrame {
         txtNombreUsuario = new javax.swing.JTextField();
         txtContrasenia = new javax.swing.JPasswordField();
         cbRol = new javax.swing.JComboBox<>();
+        jLabelNumMatricula = new javax.swing.JLabel();
+        txtNumMatricula = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -86,16 +90,16 @@ public class CrearUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(296, 296, 296)
+                .addGap(289, 289, 289)
                 .addComponent(jLabel1)
-                .addContainerGap(667, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -295,6 +299,20 @@ public class CrearUsuario extends javax.swing.JFrame {
         cbRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbRol.setForeground(new java.awt.Color(0, 0, 0));
         cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Gestor", "Recepcionista", "Medico", "Licenciado en Enferemieria", "Administrador de Sistema" }));
+        cbRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRolActionPerformed(evt);
+            }
+        });
+
+        jLabelNumMatricula.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelNumMatricula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelNumMatricula.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelNumMatricula.setText("Numero de matricula:");
+
+        txtNumMatricula.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumMatricula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNumMatricula.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -318,7 +336,9 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumMatricula)
+                    .addComponent(txtNumMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -340,7 +360,11 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13)
                     .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelNumMatricula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNumMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -423,10 +447,10 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -437,7 +461,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCorreoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoEActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtCorreoEActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -455,8 +479,11 @@ public class CrearUsuario extends javax.swing.JFrame {
         String contrasenia = txtContrasenia.getText();
         String rol = (String) cbRol.getSelectedItem();
         
+        
         administrador.crearUsuario(nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel, 
                 correoE, estadoCivil, nombreUsuario, contrasenia, rol);
+        
+        mostrarMensaje("Usuario creado correctamente", "Info", "Creación exitosa");
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -475,7 +502,10 @@ public class CrearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-
+        Administrador pantalla = new Administrador();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -486,9 +516,32 @@ public class CrearUsuario extends javax.swing.JFrame {
                 cbRol.addItem(rol.getNombre());
             }
         }
+        
+        jLabelNumMatricula.setVisible(false);
+        txtNumMatricula.setVisible(false);
 
     }//GEN-LAST:event_formWindowOpened
 
+    private void cbRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRolActionPerformed
+        String rol = (String) cbRol.getSelectedItem();
+        
+        if(rol.equalsIgnoreCase("Medico")) {
+            jLabelNumMatricula.setVisible(true);
+            txtNumMatricula.setVisible(true);
+        }
+    }//GEN-LAST:event_cbRolActionPerformed
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if(tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
@@ -509,6 +562,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelNumMatricula;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -522,6 +576,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JTextField txtNumMatricula;
     private javax.swing.JTextField txtTelCel;
     private javax.swing.JTextField txtTelFijo;
     // End of variables declaration//GEN-END:variables

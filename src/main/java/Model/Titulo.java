@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -20,9 +20,9 @@ public class Titulo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idTitulo;
-    @OneToMany
+    @OneToOne
     private Medico medico;
-    @OneToMany
+    @OneToOne
     private Especialidad especialidad;
     private String universidad;
     private String fecha;
@@ -42,7 +42,6 @@ public class Titulo implements Serializable {
         this.fecha = fecha;
     }
 
-    
     public long getIdTitulo() {
         return idTitulo;
     }

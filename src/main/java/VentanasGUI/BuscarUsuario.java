@@ -1,12 +1,15 @@
 
 package VentanasGUI;
 
-public class BuscarUsuario extends javax.swing.JFrame {
+import Model.AdministradorDeSistema;
 
+public class BuscarUsuario extends javax.swing.JFrame {
+    AdministradorDeSistema administrador;
     /**
      * Creates new form BuscarUsuario
      */
     public BuscarUsuario() {
+        administrador = new AdministradorDeSistema();
         initComponents();
     }
 
@@ -28,7 +31,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtUsuario = new javax.swing.JTextArea();
+        txtMostrarUsuario = new javax.swing.JTextArea();
         btnVolver = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
 
@@ -51,16 +54,16 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(269, 269, 269)
+                .addGap(265, 265, 265)
                 .addComponent(jLabel1)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -127,14 +130,15 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 310, 110));
 
-        txtUsuario.setEditable(false);
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setColumns(20);
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        txtUsuario.setRows(5);
-        jScrollPane1.setViewportView(txtUsuario);
+        txtMostrarUsuario.setEditable(false);
+        txtMostrarUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtMostrarUsuario.setColumns(20);
+        txtMostrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMostrarUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtMostrarUsuario.setRows(5);
+        jScrollPane1.setViewportView(txtMostrarUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 490, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 760, 260));
 
         btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -175,7 +179,12 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        
+        String usuario = administrador.buscarUsuario(nombre, apellido);
+        
+        txtMostrarUsuario.setText(usuario);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -206,8 +215,8 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextArea txtMostrarUsuario;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextArea txtUsuario;
     // End of variables declaration//GEN-END:variables
 
     

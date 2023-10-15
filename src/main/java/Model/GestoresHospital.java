@@ -1,11 +1,12 @@
 package Model;
 
 
+import java.io.Serializable;
 import java.util.*;
 import javax.persistence.Entity;
 
 @Entity
-public class GestoresHospital extends FuncionarioGeneral {
+public class GestoresHospital extends FuncionarioGeneral implements Serializable{
     
     private Estadistica estadistica;
     

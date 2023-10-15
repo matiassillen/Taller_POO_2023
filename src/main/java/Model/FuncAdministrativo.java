@@ -1,9 +1,8 @@
 package Model;
 
-import java.util.ArrayList;
 import javax.persistence.ManyToOne;
 
-public abstract class FuncAdministrativo extends FuncionarioGeneral {
+public class FuncAdministrativo extends FuncionarioGeneral {
     
     @ManyToOne
     private Sector sector;
