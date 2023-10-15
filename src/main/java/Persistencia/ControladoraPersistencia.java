@@ -115,7 +115,7 @@ public class ControladoraPersistencia implements Serializable{
     
     //Metodo para editar usuario
     
-        public GestoresHospital traerGestor(long idUsuario) {
+    public GestoresHospital traerGestor(long idUsuario) {
         return gestorJpa.findGestoresHospital(idUsuario);
     }
 

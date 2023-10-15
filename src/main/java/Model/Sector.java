@@ -15,21 +15,21 @@ public class Sector implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idSector;
     private String nombre;
-//    @OneToMany
-//    private ArrayList<FuncAdministrativo> funcAdministrativo;
+    @OneToMany
+    private ArrayList<FuncAdministrativo> funcAdministrativo;
 
     /**
      * Default constructor
      */
     public Sector() {
         this.nombre = "";
-//        this.funcAdministrativo = new ArrayList<FuncAdministrativo>();
+        this.funcAdministrativo = new ArrayList<FuncAdministrativo>();
     }
 
     public Sector(long idSector, String nombre, ArrayList<FuncAdministrativo> funcAdministrativo) {
         this.idSector = idSector;
         this.nombre = nombre;
-//        this.funcAdministrativo = funcAdministrativo;
+        this.funcAdministrativo = funcAdministrativo;
     }
 
     public long getIdSector() {
@@ -56,16 +56,16 @@ public class Sector implements Serializable {
     /**
      * @return
      */
-//    public ArrayList<FuncAdministrativo> getFuncAdministrativo() {
-//        return funcAdministrativo;
-//    }
+    public ArrayList<FuncAdministrativo> getFuncAdministrativo() {
+        return funcAdministrativo;
+    }
 
     /**
      * @return
      */
-//    public void setFuncAdministrativo(ArrayList<FuncAdministrativo> funcAdministrativo) {
-//        this.funcAdministrativo = funcAdministrativo;
-//    }
+    public void setFuncAdministrativo(ArrayList<FuncAdministrativo> funcAdministrativo) {
+        this.funcAdministrativo = funcAdministrativo;
+    }
 
     /**
      * @return
