@@ -8,12 +8,12 @@ package VentanasGUI;
  *
  * @author trapo
  */
-public class cartel extends javax.swing.JFrame {
+public class Cartel extends javax.swing.JFrame {
 
     /**
      * Creates new form cartel
      */
-    public cartel() {
+    public Cartel() {
         initComponents();
     }
 

@@ -4,18 +4,16 @@
  */
 package VentanasGUI;
 
-import java.awt.Color;
-
 /**
  *
  * @author Usuario
  */
-public class Login extends javax.swing.JFrame {
+public class GuiLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public GuiLogin() {
         initComponents();
     }
 
