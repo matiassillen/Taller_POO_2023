@@ -12,8 +12,7 @@ public class Controladora implements Serializable{
         controlPersis = new ControladoraPersistencia();
     }
     
-    
-    
+
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
@@ -28,8 +27,6 @@ public class Controladora implements Serializable{
         }
         return null;
     }
-    
-    
 
     public int buscarUltimaIdGestores() {
         List<GestoresHospital> listaGestores = this.traerGestores();
@@ -104,23 +101,23 @@ public class Controladora implements Serializable{
         return listaFuncionariosEnGeneral;
     }
 
-    public GestoresHospital traerGestores(long idUsuario) {
+    public GestoresHospital traerGestor(long idUsuario) {
         return controlPersis.traerGestor(idUsuario);
     }
 
     public Recepcionista traerRecepcionista(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return controlPersis.traerRecepcionista(idUsuario);
     }
 
     public Medico traerMedico(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerMedico(idUsuario);
     }
 
     public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerLicEnEnfermeria(idUsuario);
     }
 
     public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerAdministradorDeSistemas(idUsuario);
     }
 }

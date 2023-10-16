@@ -49,7 +49,7 @@ public class ControladoraPersistencia implements Serializable{
 
     //----------CRUD de Usuario----------
     
-    // Metodo para crear los ususarios
+    // Metodos para crear los ususarios
     
     public void crearGestor(GestoresHospital gestor) {
         gestorJpa.create(gestor);
@@ -71,7 +71,7 @@ public class ControladoraPersistencia implements Serializable{
         administradorJpa.create(administrador);
     }    
     
-    //Metodo para borrar un usuario
+    //Metodos para borrar un usuarios
     
     public void borrarGestor(long id) {
         try {
@@ -113,12 +113,8 @@ public class ControladoraPersistencia implements Serializable{
         }
     }
     
-    //Metodo para editar usuario
+    //Metodos para editar usuarios
     
-    public GestoresHospital traerGestor(long idUsuario) {
-        return gestorJpa.findGestoresHospital(idUsuario);
-    }
-
     public void editarGestor(GestoresHospital gestor) {
         try {
             gestorJpa.edit(gestor);
@@ -206,6 +202,28 @@ public class ControladoraPersistencia implements Serializable{
 
     public void crearSector(Sector sector) {
         sectorJpa.create(sector);
+    }
+    
+    //Metodos para buscar usuarios
+    
+    public GestoresHospital traerGestor(long idUsuario) {
+        return gestorJpa.findGestoresHospital(idUsuario);
+    }
+    
+    public Recepcionista traerRecepcionista(long idUsuario) {
+        return recepcionistaJpa.findRecepcionista(idUsuario);
+    }
+
+    public Medico traerMedico(long idUsuario) {
+        return medicoJpa.findMedico(idUsuario);
+    }
+
+    public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
+        return licEnEnfermeriaJpa.findLicEnEnfermeria(idUsuario);
+    }
+
+    public AdministradorDeSistema traerAdministradorDeSistemas(long idUsuario) {
+        return administradorJpa.findAdministradorDeSistema(idUsuario);
     }
     
 }

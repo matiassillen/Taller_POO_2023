@@ -420,11 +420,13 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
+        
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaGestores.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -454,11 +456,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaRecepcionistas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -489,11 +492,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaMedicos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -523,11 +527,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaLicenciados.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -557,11 +562,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tableAdministrador.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -600,11 +606,13 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoAdministrativaActionPerformed
 
     private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
+        
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaGestores.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -631,11 +639,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaRecepcionistas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -662,11 +671,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaMedicos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -693,11 +703,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tablaLicenciados.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
@@ -724,11 +735,12 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
+        //Evento para saber si la tabla fue seleccionada
+        
         tableAdministrador.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JTable table = (JTable) e.getSource();
-                // Aquí puedes hacer lo que quieras con la tabla seleccionada
 
                 //Validar que la tabla tenga elementos
                 if (table.getRowCount() > 0) {
