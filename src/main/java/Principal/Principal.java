@@ -3,6 +3,7 @@ package Principal;
 
 
 import VentanasGUI.Administrador;
+import VentanasGUI.HacerTriage;
 import VentanasGUI.Recepcion;
 
 
@@ -14,13 +15,13 @@ public class Principal {
 
         //GestionHospital admin = new GestionHospital();
 
-//        Recepcion admin = new Recepcion();
-//        admin.setVisible(true);
-//        admin.setLocationRelativeTo(null);
+        HacerTriage admin = new HacerTriage();
+        admin.setVisible(true);
+        admin.setLocationRelativeTo(null);
         
-          Administrador pantalla = new Administrador();
-          pantalla.setVisible(true);
-          pantalla.setLocationRelativeTo(null);
+//          Administrador pantalla = new Administrador();
+//          pantalla.setVisible(true);
+//          pantalla.setLocationRelativeTo(null);
     }
     
 }
