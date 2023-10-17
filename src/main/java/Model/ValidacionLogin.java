@@ -4,6 +4,8 @@
  */
 package Model;
 
+import java.util.List;
+
 /**
  *
  * @author Usuario
@@ -18,22 +20,28 @@ public abstract class ValidacionLogin{
         return validacion(uss, pass);
     }
   
+    /*
+    * Validacion hace la logica de buscar y confirmar la existencia del usuario
+    * @return boolean
+    */
     private boolean validacion(String us, String pas){
         try{
-            String usernameValidation = us;
-            String passwordValidation = pas;
-            // Aca va un if que consulta en la base de datos si estan los datos us y pas
-            // va a devolver un booleano que usara otro modulo para abrir la ventana correcta
-            //if (boolean algo) {
-            //    
-            //    return true;
-            //}
-            //else {
-                return false;
-            //}
+            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+            for (FuncionarioGeneral comprobar : listaBusqueda) {
+                if (comprobar.getNomUsuario() == us){
+                    if(comprobar.getPassw() == pas) {
+                        return true;
+                        
+                    }
+                    else {}
+                }
+                else {}
+            }
+            return false;
         }
         catch (Exception e) {
             return false;
         }
+        
     }
 }
