@@ -3,18 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VentanasGUI;
-
+import Model.Controladora;
 /**
  *
  * @author yairc
  */
-public class VentanaMedico extends javax.swing.JFrame {
-
+public class PpalMedico extends javax.swing.JFrame {
+    Controladora control;
     /**
      * Creates new form Medico
      */
-    public VentanaMedico() {
+    public PpalMedico() {
         initComponents();
+        control = new Controladora();
     }
 
     /**
@@ -29,10 +30,9 @@ public class VentanaMedico extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtHacerTriage = new javax.swing.JButton();
-        txtVerResultEstudios = new javax.swing.JButton();
         txtTomarPaciente = new javax.swing.JButton();
-        txtverHistClinica = new javax.swing.JButton();
         txtAsignarBox = new javax.swing.JButton();
+        txtDatosDePaciente = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
 
@@ -56,25 +56,35 @@ public class VentanaMedico extends javax.swing.JFrame {
             }
         });
 
-        txtVerResultEstudios.setBackground(new java.awt.Color(0, 204, 255));
-        txtVerResultEstudios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtVerResultEstudios.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerResultEstudios.setText("Ver Resultados de Estudios");
-
         txtTomarPaciente.setBackground(new java.awt.Color(0, 204, 255));
         txtTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
         txtTomarPaciente.setText("Tomar Paciente");
-
-        txtverHistClinica.setBackground(new java.awt.Color(0, 204, 255));
-        txtverHistClinica.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtverHistClinica.setForeground(new java.awt.Color(0, 0, 0));
-        txtverHistClinica.setText("Ver Historia Clínica");
+        txtTomarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTomarPacienteActionPerformed(evt);
+            }
+        });
 
         txtAsignarBox.setBackground(new java.awt.Color(0, 204, 255));
         txtAsignarBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAsignarBox.setForeground(new java.awt.Color(0, 0, 0));
         txtAsignarBox.setText("Asignar box");
+        txtAsignarBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAsignarBoxActionPerformed(evt);
+            }
+        });
+
+        txtDatosDePaciente.setBackground(new java.awt.Color(0, 204, 255));
+        txtDatosDePaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDatosDePaciente.setForeground(new java.awt.Color(0, 0, 0));
+        txtDatosDePaciente.setText("Datos de Pacientes");
+        txtDatosDePaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatosDePacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -84,10 +94,9 @@ public class VentanaMedico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtHacerTriage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTomarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtverHistClinica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTomarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                     .addComponent(txtAsignarBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtVerResultEstudios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                    .addComponent(txtDatosDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -98,12 +107,10 @@ public class VentanaMedico extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtHacerTriage)
                 .addGap(18, 18, 18)
-                .addComponent(txtVerResultEstudios)
-                .addGap(18, 18, 18)
-                .addComponent(txtverHistClinica)
-                .addGap(18, 18, 18)
                 .addComponent(txtAsignarBox)
-                .addGap(12, 12, 12))
+                .addGap(18, 18, 18)
+                .addComponent(txtDatosDePaciente)
+                .addGap(63, 63, 63))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 260, 260));
@@ -148,8 +155,28 @@ public class VentanaMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHacerTriageActionPerformed
-        // TODO add your handling code here:
+        HacerTriage hacerT = new HacerTriage();
+        hacerT.setVisible(true);
+        hacerT.setLocationRelativeTo(null);
     }//GEN-LAST:event_txtHacerTriageActionPerformed
+
+    private void txtTomarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTomarPacienteActionPerformed
+        TomarPaciente tomarP = new TomarPaciente();
+        tomarP.setVisible(true);
+        tomarP.setLocationRelativeTo(null);
+    }//GEN-LAST:event_txtTomarPacienteActionPerformed
+
+    private void txtAsignarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsignarBoxActionPerformed
+        AsignarBox aBox = new AsignarBox();
+        aBox.setVisible(true);
+        aBox.setLocationRelativeTo(null);
+    }//GEN-LAST:event_txtAsignarBoxActionPerformed
+
+    private void txtDatosDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatosDePacienteActionPerformed
+        MedicoVerDatosDePacientes verDatoP = new MedicoVerDatosDePacientes();
+        verDatoP.setVisible(true);
+        verDatoP.setLocationRelativeTo(null);
+    }//GEN-LAST:event_txtDatosDePacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,9 +185,8 @@ public class VentanaMedico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private java.awt.Label label1;
     private javax.swing.JButton txtAsignarBox;
+    private javax.swing.JButton txtDatosDePaciente;
     private javax.swing.JButton txtHacerTriage;
     private javax.swing.JButton txtTomarPaciente;
-    private javax.swing.JButton txtVerResultEstudios;
-    private javax.swing.JButton txtverHistClinica;
     // End of variables declaration//GEN-END:variables
 }
