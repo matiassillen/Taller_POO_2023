@@ -8,9 +8,8 @@ package Model;
  *
  * @author Usuario
  */
-public class ValidacionLogin{
+public abstract class ValidacionLogin{
 
-    private String rolUsuario;
     
     /*
     * El siguiente modulo debe validar tomando como datos de entrada 2 String
@@ -18,12 +17,7 @@ public class ValidacionLogin{
     public boolean validar(String uss, String pass){
         return validacion(uss, pass);
     }
-    
-    // OPCION rolUsuario, tambien puede estar en otra clase principal luego de la validacion
-    public String rolUsuario(String user, String passw){
-        return extraerRol(user, passw);
-    }
-    
+  
     private boolean validacion(String us, String pas){
         try{
             String usernameValidation = us;
@@ -42,23 +36,4 @@ public class ValidacionLogin{
             return false;
         }
     }
-    
-    /*
-    * OPCIONAL, puede estar en otra clase despues de la validacion
-    * El siguiente metodo debe extraer el rol del usuario
-    * para asignarle la interfaz que le corresponda
-    */
-    
-    private String extraerRol(String us2, String pas2) {
-        try{
-            //Extraccion del rol mediante consulta a base de datos
-            // utilizando us2 y pas2
-            
-            this.rolUsuario = "";
-            return this.rolUsuario;
-        }
-        catch (Exception e) {
-            return "Rol no encontrado";
-        }
-    } 
 }
