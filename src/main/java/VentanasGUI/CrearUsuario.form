@@ -646,7 +646,7 @@
                     <StringItem index="1" value="Gestor"/>
                     <StringItem index="2" value="Recepcionista"/>
                     <StringItem index="3" value="Medico"/>
-                    <StringItem index="4" value="Licenciado en Enferemieria"/>
+                    <StringItem index="4" value="Licenciado en Enfermeria"/>
                     <StringItem index="5" value="Administrador de Sistema"/>
                   </StringArray>
                 </Property>

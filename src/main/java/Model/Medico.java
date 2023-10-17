@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -15,61 +16,30 @@ public class Medico extends FuncSalud{
     @OneToOne
     private Box box;
     @ManyToMany
-    private ArrayList<Especialidad>especialidad;
+    private List<Especialidad> especialidad;
     @OneToMany
-    private ArrayList<Triage>triage;
+    private List<Triage> triage;
     @OneToMany
-    private ArrayList<Consulta> consulta;
+    private List<Consulta> consulta;
     @ManyToOne
     private Titulo titulo;
  
     public Medico() {
         box = null;
-        especialidad = new ArrayList<Especialidad>();
-        triage = new ArrayList<Triage>();
-        consulta = new ArrayList<Consulta>();
+        especialidad = new ArrayList<>();
+        triage = new ArrayList<>();
+        consulta = new ArrayList<>();
         
     }
 
-    public Medico(int numMatriculaProfesional, Box box, ArrayList<Especialidad> especialidad, ArrayList<Triage> triage, ArrayList<Consulta> consulta, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Medico(int numMatriculaProfesional, Box box, List<Especialidad> especialidad, List<Triage> triage, List<Consulta> consulta, Titulo titulo, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.numMatriculaProfesional = numMatriculaProfesional;
         this.box = box;
         this.especialidad = especialidad;
         this.triage = triage;
         this.consulta = consulta;
-    }
-
-    public Box getBox() {
-        return box;
-    }
-
-    public void setBox(Box box) {
-        this.box = box;
-    }
-
-    public ArrayList<Especialidad> getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(ArrayList<Especialidad> especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    public ArrayList<Triage> getTriage() {
-        return triage;
-    }
-
-    public void setTriage(ArrayList<Triage> triage) {
-        this.triage = triage;
-    }
-
-    public ArrayList<Consulta> getConsulta() {
-        return consulta;
-    }
-
-    public void setConsulta(ArrayList<Consulta> consulta) {
-        this.consulta = consulta;
+        this.titulo = titulo;
     }
 
     public int getNumMatriculaProfesional() {
@@ -80,6 +50,49 @@ public class Medico extends FuncSalud{
         this.numMatriculaProfesional = numMatriculaProfesional;
     }
 
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
+
+    public List<Especialidad> getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(List<Especialidad> especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public List<Triage> getTriage() {
+        return triage;
+    }
+
+    public void setTriage(List<Triage> triage) {
+        this.triage = triage;
+    }
+
+    public List<Consulta> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(List<Consulta> consulta) {
+        this.consulta = consulta;
+    }
+
+    public Titulo getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(Titulo titulo) {
+        this.titulo = titulo;
+    }
+
+    
+
+   
     
     /**
      * @param paciente 

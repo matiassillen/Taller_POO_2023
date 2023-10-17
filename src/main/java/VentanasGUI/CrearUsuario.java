@@ -298,7 +298,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         cbRol.setBackground(new java.awt.Color(255, 255, 255));
         cbRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbRol.setForeground(new java.awt.Color(0, 0, 0));
-        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Gestor", "Recepcionista", "Medico", "Licenciado en Enferemieria", "Administrador de Sistema" }));
+        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Gestor", "Recepcionista", "Medico", "Licenciado en Enfermeria", "Administrador de Sistema" }));
         cbRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbRolActionPerformed(evt);

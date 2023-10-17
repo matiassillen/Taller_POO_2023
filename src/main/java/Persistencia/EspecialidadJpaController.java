@@ -46,7 +46,7 @@ public class EspecialidadJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ArrayList<Medico> attachedMedico = new ArrayList<Medico>();
+            List<Medico> attachedMedico = new ArrayList<Medico>();
             for (Medico medicoMedicoToAttach : especialidad.getMedico()) {
                 medicoMedicoToAttach = em.getReference(medicoMedicoToAttach.getClass(), medicoMedicoToAttach.getId());
                 attachedMedico.add(medicoMedicoToAttach);
@@ -71,9 +71,9 @@ public class EspecialidadJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Especialidad persistentEspecialidad = em.find(Especialidad.class, especialidad.getId());
-            ArrayList<Medico> medicoOld = persistentEspecialidad.getMedico();
-            ArrayList<Medico> medicoNew = especialidad.getMedico();
-            ArrayList<Medico> attachedMedicoNew = new ArrayList<Medico>();
+            List<Medico> medicoOld = persistentEspecialidad.getMedico();
+            List<Medico> medicoNew = especialidad.getMedico();
+            List<Medico> attachedMedicoNew = new ArrayList<Medico>();
             for (Medico medicoNewMedicoToAttach : medicoNew) {
                 medicoNewMedicoToAttach = em.getReference(medicoNewMedicoToAttach.getClass(), medicoNewMedicoToAttach.getId());
                 attachedMedicoNew.add(medicoNewMedicoToAttach);
@@ -122,7 +122,7 @@ public class EspecialidadJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The especialidad with id " + id + " no longer exists.", enfe);
             }
-            ArrayList<Medico> medico = especialidad.getMedico();
+            List<Medico> medico = especialidad.getMedico();
             for (Medico medicoMedico : medico) {
                 medicoMedico.getEspecialidad().remove(especialidad);
                 medicoMedico = em.merge(medicoMedico);

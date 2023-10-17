@@ -4,6 +4,7 @@ import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -12,8 +13,7 @@ public class Controladora implements Serializable{
         controlPersis = new ControladoraPersistencia();
     }
     
-    
-    
+
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
@@ -28,8 +28,6 @@ public class Controladora implements Serializable{
         }
         return null;
     }
-    
-    
 
     public int buscarUltimaIdGestores() {
         List<GestoresHospital> listaGestores = this.traerGestores();
@@ -88,7 +86,7 @@ public class Controladora implements Serializable{
     }
 
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
-        ArrayList<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
+        List<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
         List<GestoresHospital> listaGestores = this.traerGestores();
         List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
         List<Medico> listaMedicos = this.traerMedicos();
@@ -104,23 +102,53 @@ public class Controladora implements Serializable{
         return listaFuncionariosEnGeneral;
     }
 
-    public GestoresHospital traerGestores(long idUsuario) {
+    public GestoresHospital traerGestor(long idUsuario) {
         return controlPersis.traerGestor(idUsuario);
     }
 
     public Recepcionista traerRecepcionista(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return controlPersis.traerRecepcionista(idUsuario);
     }
 
     public Medico traerMedico(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerMedico(idUsuario);
     }
 
     public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerLicEnEnfermeria(idUsuario);
     }
 
     public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerAdministradorDeSistemas(idUsuario);
     }
+    
+    /*
+    * Validar es el metodo publico que llama a validacion
+    * @return retorna un booleano true o false
+    */
+    public boolean validar(String uss, String pass){
+        return validacion(uss, pass);
+    }
+  
+    /*
+    * Validacion hace la logica de buscar y confirmar la existencia del usuario
+    * @return boolean
+    */
+    private boolean validacion(String us, String pas){
+        try{
+            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+            for (FuncionarioGeneral comprobar : listaBusqueda) {
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
+                    return true;
+                }
+                else {}
+            }
+            return false;
+        }
+        catch (Exception e) {
+            return false;
+        }
+        
+    }
+    
 }

@@ -545,7 +545,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         if (rolUsuario.equalsIgnoreCase("Gestor")) {
             //Buscar el gestor
 
-            gestor = control.traerGestores(idUsuario);
+            gestor = control.traerGestor(idUsuario);
             txtNombreUsuario.setText(gestor.getNomUsuario());
             txtContrasenia.setText(gestor.getPassw());
 

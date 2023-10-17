@@ -1,10 +1,12 @@
 package Model;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 public class FuncAdministrativo extends FuncionarioGeneral {
     
-    @ManyToOne
+    //@ManyToOne
+   @Transient
     private Sector sector;
 
     public FuncAdministrativo() {

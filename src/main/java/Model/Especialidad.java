@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,14 +15,15 @@ public class Especialidad implements Serializable {
     private long id;
     private String nombreEspecialidad;
     @ManyToMany
-    private ArrayList<Medico> medico;
+    private List<Medico> medico;
 
     public Especialidad() {
         this.nombreEspecialidad = "";
-        medico = new ArrayList<Medico>();
+        medico = new ArrayList<>();
     }
 
-    public Especialidad(String nombreEspecialidad, ArrayList<Medico> medico) {
+    public Especialidad(long id, String nombreEspecialidad, List<Medico> medico) {
+        this.id = id;
         this.nombreEspecialidad = nombreEspecialidad;
         this.medico = medico;
     }
@@ -42,12 +44,12 @@ public class Especialidad implements Serializable {
         this.nombreEspecialidad = nombreEspecialidad;
     }
 
-    public ArrayList<Medico> getMedico() {
+    public List<Medico> getMedico() {
         return medico;
     }
 
-    public void setMedico(ArrayList<Medico> medico) {
+    public void setMedico(List<Medico> medico) {
         this.medico = medico;
     }
-   
+
 }

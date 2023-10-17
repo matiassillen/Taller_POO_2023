@@ -4,6 +4,7 @@ import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AdministradorDeSistema extends FuncAdministrativo {
@@ -11,29 +12,31 @@ public class AdministradorDeSistema extends FuncAdministrativo {
     Controladora control;
     ControladoraPersistencia controlPersis;
 
-//    @OneToMany
-//    private ArrayList<FuncionarioGeneral> funcionarioGeneral;
+    @OneToMany
+    private List<FuncionarioGeneral> funcionarioGeneral;
+
     public AdministradorDeSistema() {
         control = new Controladora();
         controlPersis = new ControladoraPersistencia();
-//        funcionarioGeneral = new ArrayList<FuncionarioGeneral>();
+        funcionarioGeneral = new ArrayList<>();
     }
 
-    public AdministradorDeSistema(ArrayList<FuncionarioGeneral> funcionarioGeneral, Sector sector, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public AdministradorDeSistema(Controladora control, ControladoraPersistencia controlPersis, List<FuncionarioGeneral> funcionarioGeneral, Sector sector, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(sector, id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-//        this.funcionarioGeneral = funcionarioGeneral;
-        control = new Controladora();
-        controlPersis = new ControladoraPersistencia();
+        this.control = control;
+        this.controlPersis = controlPersis;
+        this.funcionarioGeneral = funcionarioGeneral;
     }
 
-//    public ArrayList<FuncionarioGeneral> getFuncionarioGeneral() {
-//        return funcionarioGeneral;
-//    }
-//    public void setFuncionarioGeneral(ArrayList<FuncionarioGeneral> funcionarioGeneral) {
-//        this.funcionarioGeneral = funcionarioGeneral;
-//    }
+    public List<FuncionarioGeneral> getFuncionarioGeneral() {
+        return funcionarioGeneral;
+    }
+
+    public void setFuncionarioGeneral(List<FuncionarioGeneral> funcionarioGeneral) {
+        this.funcionarioGeneral = funcionarioGeneral;
+    }
+
     /**
-     * @return
      */
     public void VerInfoAdministrativa() {
         // TODO implement here
@@ -41,110 +44,112 @@ public class AdministradorDeSistema extends FuncAdministrativo {
     }
 
     /**
+     * @param nombre
+     * @param apellido
      * @return
      */
     public String buscarUsuario(String nombre, String apellido) {
         String cadena = "";
         List<GestoresHospital> listaGestores = control.traerGestores();
-        
+
         if (listaGestores != null) {
 
             for (GestoresHospital gestor : listaGestores) {
-                
+
                 if (gestor.getNombre().equals(nombre) && gestor.getApellido().equalsIgnoreCase(apellido)) {
-                    
-                    cadena = "Id: " + gestor.getId() + " Nombre: " + gestor.getNombre() + " Apellido: " + 
-                                    gestor.getApellido() + " Fecha de nacimiento: " + gestor.getFechaDeNac() + 
-                                    " DNI: " + gestor.getDni() + " Domicilio: " + gestor.getDomicilio() + 
-                                    " Tel Fijo: " + gestor.getTelefonoFijo() + " Tel Cel: " + gestor.getTelefonoCel() + 
-                                    "Correo Electrónico: " + gestor.getCorreoE() + "Estado Civil: " + gestor.getEstadoCivil() + 
-                                    "Nombre Usuario: " + gestor.getNomUsuario() + " Rol: " + gestor.getRol().getNombre();
+
+                    cadena = "Id: " + gestor.getId() + " Nombre: " + gestor.getNombre() + " Apellido: "
+                            + gestor.getApellido() + " Fecha de nacimiento: " + gestor.getFechaDeNac()
+                            + " DNI: " + gestor.getDni() + " Domicilio: " + gestor.getDomicilio()
+                            + " Tel Fijo: " + gestor.getTelefonoFijo() + " Tel Cel: " + gestor.getTelefonoCel()
+                            + "Correo Electrónico: " + gestor.getCorreoE() + "Estado Civil: " + gestor.getEstadoCivil()
+                            + "Nombre Usuario: " + gestor.getNomUsuario() + " Rol: " + gestor.getRol().getNombre();
                     return cadena;
                 }
-                
+
             }
-        }    
-        
+        }
+
         //Traer de la DB la lista de Gestores
         List<Recepcionista> listaRecepcionistas = control.traerRecepcionistas();
 
         if (listaRecepcionistas != null) {
 
             for (Recepcionista recepcionista : listaRecepcionistas) {
-                
+
                 if (recepcionista.getNombre().equals(nombre) && recepcionista.getApellido().equalsIgnoreCase(apellido)) {
-                    
-                    cadena = "Id: " + recepcionista.getId() + " Nombre: " + recepcionista.getNombre() + " Apellido: " + 
-                                    recepcionista.getApellido() + " Fecha de nacimiento: " + recepcionista.getFechaDeNac() + 
-                                    " DNI: " + recepcionista.getDni() + " Domicilio: " + recepcionista.getDomicilio() + 
-                                    " Tel Fijo: " + recepcionista.getTelefonoFijo() + " Tel Cel: " + recepcionista.getTelefonoCel() + 
-                                    "Correo Electrónico: " + recepcionista.getCorreoE() + "Estado Civil: " + recepcionista.getEstadoCivil() + 
-                                    "Nombre Usuario: " + recepcionista.getNomUsuario() + " Rol: " + recepcionista.getRol().getNombre();
+
+                    cadena = "Id: " + recepcionista.getId() + " Nombre: " + recepcionista.getNombre() + " Apellido: "
+                            + recepcionista.getApellido() + " Fecha de nacimiento: " + recepcionista.getFechaDeNac()
+                            + " DNI: " + recepcionista.getDni() + " Domicilio: " + recepcionista.getDomicilio()
+                            + " Tel Fijo: " + recepcionista.getTelefonoFijo() + " Tel Cel: " + recepcionista.getTelefonoCel()
+                            + "Correo Electrónico: " + recepcionista.getCorreoE() + "Estado Civil: " + recepcionista.getEstadoCivil()
+                            + "Nombre Usuario: " + recepcionista.getNomUsuario() + " Rol: " + recepcionista.getRol().getNombre();
                     return cadena;
                 }
             }
-        }    
-        
+        }
+
         //Traer de la DB la lista de Gestores
         List<Medico> listaMedicos = control.traerMedicos();
 
         if (listaMedicos != null) {
 
             for (Medico medico : listaMedicos) {
-                
+
                 if (medico.getNombre().equals(nombre) && medico.getApellido().equalsIgnoreCase(apellido)) {
-                    
-                    cadena = "Id: " + medico.getId() + " Nombre: " + medico.getNombre() + " Apellido: " + 
-                                    medico.getApellido() + " Fecha de nacimiento: " + medico.getFechaDeNac() + 
-                                    " DNI: " + medico.getDni() + " Domicilio: " + medico.getDomicilio() + 
-                                    " Tel Fijo: " + medico.getTelefonoFijo() + " Tel Cel: " + medico.getTelefonoCel() + 
-                                    "Correo Electrónico: " + medico.getCorreoE() + "Estado Civil: " + medico.getEstadoCivil() + 
-                                    "Nombre Usuario: " + medico.getNomUsuario() + " Rol: " + medico.getRol().getNombre();
+
+                    cadena = "Id: " + medico.getId() + " Nombre: " + medico.getNombre() + " Apellido: "
+                            + medico.getApellido() + " Fecha de nacimiento: " + medico.getFechaDeNac()
+                            + " DNI: " + medico.getDni() + " Domicilio: " + medico.getDomicilio()
+                            + " Tel Fijo: " + medico.getTelefonoFijo() + " Tel Cel: " + medico.getTelefonoCel()
+                            + "Correo Electrónico: " + medico.getCorreoE() + "Estado Civil: " + medico.getEstadoCivil()
+                            + "Nombre Usuario: " + medico.getNomUsuario() + " Rol: " + medico.getRol().getNombre();
                     return cadena;
                 }
             }
-        }    
-        
+        }
+
         //Traer de la DB la lista de Gestores
         List<LicEnEnfermeria> listalicenciados = control.traerLicenciadosEnEnfermeria();
 
         if (listalicenciados != null) {
 
             for (LicEnEnfermeria licenciado : listalicenciados) {
-                
+
                 if (licenciado.getNombre().equals(nombre) && licenciado.getApellido().equalsIgnoreCase(apellido)) {
-                    
-                    cadena = "Id: " + licenciado.getId() + " Nombre: " + licenciado.getNombre() + " Apellido: " + 
-                                    licenciado.getApellido() + " Fecha de nacimiento: " + licenciado.getFechaDeNac() + 
-                                    " DNI: " + licenciado.getDni() + " Domicilio: " + licenciado.getDomicilio() + 
-                                    " Tel Fijo: " + licenciado.getTelefonoFijo() + " Tel Cel: " + licenciado.getTelefonoCel() + 
-                                    "Correo Electrónico: " + licenciado.getCorreoE() + "Estado Civil: " + licenciado.getEstadoCivil() + 
-                                    "Nombre Usuario: " + licenciado.getNomUsuario() + " Rol: " + licenciado.getRol().getNombre();
+
+                    cadena = "Id: " + licenciado.getId() + " Nombre: " + licenciado.getNombre() + " Apellido: "
+                            + licenciado.getApellido() + " Fecha de nacimiento: " + licenciado.getFechaDeNac()
+                            + " DNI: " + licenciado.getDni() + " Domicilio: " + licenciado.getDomicilio()
+                            + " Tel Fijo: " + licenciado.getTelefonoFijo() + " Tel Cel: " + licenciado.getTelefonoCel()
+                            + "Correo Electrónico: " + licenciado.getCorreoE() + "Estado Civil: " + licenciado.getEstadoCivil()
+                            + "Nombre Usuario: " + licenciado.getNomUsuario() + " Rol: " + licenciado.getRol().getNombre();
                     return cadena;
                 }
             }
-        }    
-        
+        }
+
         //Traer de la DB la lista de Gestores
         List<AdministradorDeSistema> listaAdministradores = control.traerAdministradoresDeSistema();
 
         if (listaAdministradores != null) {
 
             for (AdministradorDeSistema administrador : listaAdministradores) {
-                
+
                 if (administrador.getNombre().equals(nombre) && administrador.getApellido().equalsIgnoreCase(apellido)) {
-                    
-                    cadena = "Id: " + administrador.getId() + " Nombre: " + administrador.getNombre() + " Apellido: " + 
-                                    administrador.getApellido() + " Fecha de nacimiento: " + administrador.getFechaDeNac() + 
-                                    " DNI: " + administrador.getDni() + " Domicilio: " + administrador.getDomicilio() + 
-                                    " Tel Fijo: " + administrador.getTelefonoFijo() + " Tel Cel: " + administrador.getTelefonoCel() + 
-                                    "Correo Electrónico: " + administrador.getCorreoE() + "Estado Civil: " + administrador.getEstadoCivil() + 
-                                    "Nombre Usuario: " + administrador.getNomUsuario() + " Rol: " + administrador.getRol().getNombre();
+
+                    cadena = "Id: " + administrador.getId() + " Nombre: " + administrador.getNombre() + " Apellido: "
+                            + administrador.getApellido() + " Fecha de nacimiento: " + administrador.getFechaDeNac()
+                            + " DNI: " + administrador.getDni() + " Domicilio: " + administrador.getDomicilio()
+                            + " Tel Fijo: " + administrador.getTelefonoFijo() + " Tel Cel: " + administrador.getTelefonoCel()
+                            + "Correo Electrónico: " + administrador.getCorreoE() + "Estado Civil: " + administrador.getEstadoCivil()
+                            + "Nombre Usuario: " + administrador.getNomUsuario() + " Rol: " + administrador.getRol().getNombre();
                     return cadena;
                 }
             }
-        }    
-        
+        }
+
         return null;
     }
 
@@ -296,14 +301,14 @@ public class AdministradorDeSistema extends FuncAdministrativo {
 
             sector.setNombre("Informatica");
             administrador.setSector(sector);
-//            ArrayList<FuncAdministrativo> listaFuncAdministrativo = new ArrayList<FuncAdministrativo>();
-//            listaFuncAdministrativo.addAll(control.traerAdministradoresDeSistema());
-//            sector.setFuncAdministrativo(listaFuncAdministrativo);
+            List<FuncAdministrativo> listaFuncAdministrativo = new ArrayList<FuncAdministrativo>();
+            listaFuncAdministrativo.addAll(control.traerAdministradoresDeSistema());
+            sector.setFuncAdministrativo(listaFuncAdministrativo);
 
             controlPersis.crearSector(sector);
 
-//            List<FuncionarioGeneral> listaFuncionariosEnGeneral = control.traerFuncionariosEnGeneral();
-//            administrador.setFuncionarioGeneral((ArrayList<FuncionarioGeneral>) listaFuncionariosEnGeneral);
+            List<FuncionarioGeneral> listaFuncionariosEnGeneral = control.traerFuncionariosEnGeneral();
+            administrador.setFuncionarioGeneral((ArrayList<FuncionarioGeneral>) listaFuncionariosEnGeneral);
             Rol rolEncontrado = new Rol();
             rolEncontrado = control.traerRol(rolRecibido);
             if (rolEncontrado != null) {
@@ -365,7 +370,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
         }
 
         if (rolRecibido.equalsIgnoreCase("Recepcionista")) {
-            
+
             recepcionista.setNombre(nombre);
             recepcionista.setApellido(apellido);
             recepcionista.setFechaDeNac(FechaNacimiento);
@@ -388,7 +393,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
         }
 
         if (rolRecibido.equalsIgnoreCase("Medico")) {
-            
+
             medico.setNombre(nombre);
             medico.setApellido(apellido);
             medico.setFechaDeNac(FechaNacimiento);
@@ -407,12 +412,12 @@ public class AdministradorDeSistema extends FuncAdministrativo {
             if (rolEncontrado != null) {
                 medico.setRol(rolEncontrado);
             }
-            
+
             controlPersis.editarMedico(medico);
         }
 
         if (rolRecibido.equalsIgnoreCase("Licenciado en Enfermeria")) {
-            
+
             licenciado.setNombre(nombre);
             licenciado.setApellido(apellido);
             licenciado.setFechaDeNac(FechaNacimiento);
@@ -430,12 +435,12 @@ public class AdministradorDeSistema extends FuncAdministrativo {
             if (rolEncontrado != null) {
                 licenciado.setRol(rolEncontrado);
             }
-            
+
             controlPersis.editarlicEnEnfermeria(licenciado);
         }
 
         if (rolRecibido.equalsIgnoreCase("Administrador de Sistema")) {
-            
+
             admin.setNombre(nombre);
             admin.setApellido(apellido);
             admin.setFechaDeNac(FechaNacimiento);
@@ -453,7 +458,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
             if (rolEncontrado != null) {
                 admin.setRol(rolEncontrado);
             }
-            
+
             controlPersis.editarAdministradorDeSitema(admin);
         }
     }
