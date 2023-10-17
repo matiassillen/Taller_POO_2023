@@ -4,6 +4,7 @@ import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -135,22 +136,23 @@ public class Controladora implements Serializable{
     */
     private boolean validacion(String us, String pas){
         try{
-            String usernameValidation = us;
-            String passwordValidation = pas;
-            ArrayList<FuncionarioGeneral>
-            // Aca va un if que consulta en la base de datos si estan los datos us y pas
-            // va a devolver un booleano que usara otro modulo para abrir la ventana correcta
-            //if (boolean algo) {
-            //    
-            //    return true;
-            //}
-            //else {
-                return false;
-            //}
+            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+            for (FuncionarioGeneral comprobar : listaBusqueda) {
+                if (comprobar.getNomUsuario() == us){
+                    if(comprobar.getPassw() == pas) {
+                        return true;
+                        
+                    }
+                    else {}
+                }
+                else {}
+            }
+            return false;
         }
         catch (Exception e) {
             return false;
         }
+        
     }
     
 }
