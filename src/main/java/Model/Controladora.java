@@ -150,12 +150,8 @@ public class Controladora implements Serializable{
         try{
             List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
             for (FuncionarioGeneral comprobar : listaBusqueda) {
-                if (comprobar.getNomUsuario() == us){
-                    if(comprobar.getPassw() == pas) {
-                        return true;
-                        
-                    }
-                    else {}
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
+                    return true;
                 }
                 else {}
             }

@@ -202,7 +202,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
             recepcionista.setNomUsuario(nombreUsuario);
             recepcionista.setPassw(contrasenia);
 
-            List<Paciente> listaPacientes = controlPersis.traerPaciente();
+            List<Paciente> listaPacientes = controlPersis.traerPacientes();
             recepcionista.setPaciente((ArrayList<Paciente>) listaPacientes);
 
             Rol rolEncontrado = new Rol();

@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class ControladoraPersistencia implements Serializable{
     
-    PacienteJpaController pacientee = new PacienteJpaController();
+    PacienteJpaController pacienteJpa = new PacienteJpaController();
     RolJpaController rolJpa = new RolJpaController();
     GestoresHospitalJpaController gestorJpa = new GestoresHospitalJpaController();
     RecepcionistaJpaController recepcionistaJpa = new RecepcionistaJpaController();
@@ -36,17 +36,29 @@ public class ControladoraPersistencia implements Serializable{
     ConsultaJpaController consultaJpa = new ConsultaJpaController();
     SectorJpaController sectorJpa = new SectorJpaController();
     
-    //----------CRUD de Paceinte----------
+    //---------Metodos para Paciente---------
 
     public void RegistrarPaciente(Paciente paciente) {
-        pacientee.create(paciente);
+        pacienteJpa.create(paciente);
         
     }
 
-    public List<Paciente> traerPaciente() {
-        return pacientee.findPacienteEntities();
+    public List<Paciente> traerPacientes() {
+        return pacienteJpa.findPacienteEntities();
     }
-
+    
+    public Paciente traerPaciente(int id_Paciente) {
+        
+        return pacienteJpa.findPaciente(id_Paciente);
+    }
+    
+    //---------Metodos para Consulta---------
+    
+    public void CrearConsulta(Consulta consulta) {
+        consultaJpa.create(consulta);
+        
+    }
+    
     //----------CRUD de Usuario----------
     
     // Metodos para crear los ususarios
@@ -203,6 +215,10 @@ public class ControladoraPersistencia implements Serializable{
     public void crearSector(Sector sector) {
         sectorJpa.create(sector);
     }
+
+    
+
+    
     
     //Metodos para buscar usuarios
     
