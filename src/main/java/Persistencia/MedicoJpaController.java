@@ -9,14 +9,15 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Model.Titulo;
 import Model.Rol;
 import Model.Especialidad;
 import java.util.ArrayList;
+import java.util.List;
 import Model.Triage;
 import Model.Consulta;
 import Model.Medico;
 import Persistencia.exceptions.NonexistentEntityException;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -55,30 +56,44 @@ public class MedicoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Titulo titulo = medico.getTitulo();
+            if (titulo != null) {
+                titulo = em.getReference(titulo.getClass(), titulo.getIdTitulo());
+                medico.setTitulo(titulo);
+            }
             Rol rol = medico.getRol();
             if (rol != null) {
                 rol = em.getReference(rol.getClass(), rol.getId_rol());
                 medico.setRol(rol);
             }
-            ArrayList<Especialidad> attachedEspecialidad = new ArrayList<Especialidad>();
+            List<Especialidad> attachedEspecialidad = new ArrayList<Especialidad>();
             for (Especialidad especialidadEspecialidadToAttach : medico.getEspecialidad()) {
                 especialidadEspecialidadToAttach = em.getReference(especialidadEspecialidadToAttach.getClass(), especialidadEspecialidadToAttach.getId());
                 attachedEspecialidad.add(especialidadEspecialidadToAttach);
             }
             medico.setEspecialidad(attachedEspecialidad);
-            ArrayList<Triage> attachedTriage = new ArrayList<Triage>();
+            List<Triage> attachedTriage = new ArrayList<Triage>();
             for (Triage triageTriageToAttach : medico.getTriage()) {
                 triageTriageToAttach = em.getReference(triageTriageToAttach.getClass(), triageTriageToAttach.getNumTriage());
                 attachedTriage.add(triageTriageToAttach);
             }
             medico.setTriage(attachedTriage);
-            ArrayList<Consulta> attachedConsulta = new ArrayList<Consulta>();
+            List<Consulta> attachedConsulta = new ArrayList<Consulta>();
             for (Consulta consultaConsultaToAttach : medico.getConsulta()) {
                 consultaConsultaToAttach = em.getReference(consultaConsultaToAttach.getClass(), consultaConsultaToAttach.getNumConsulta());
                 attachedConsulta.add(consultaConsultaToAttach);
             }
             medico.setConsulta(attachedConsulta);
             em.persist(medico);
+            if (titulo != null) {
+                Medico oldMedicoOfTitulo = titulo.getMedico();
+                if (oldMedicoOfTitulo != null) {
+                    oldMedicoOfTitulo.setTitulo(null);
+                    oldMedicoOfTitulo = em.merge(oldMedicoOfTitulo);
+                }
+                titulo.setMedico(medico);
+                titulo = em.merge(titulo);
+            }
             if (rol != null) {
                 rol.getFuncionarioGeneral().add(medico);
                 rol = em.merge(rol);
@@ -119,33 +134,39 @@ public class MedicoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Medico persistentMedico = em.find(Medico.class, medico.getId());
+            Titulo tituloOld = persistentMedico.getTitulo();
+            Titulo tituloNew = medico.getTitulo();
             Rol rolOld = persistentMedico.getRol();
             Rol rolNew = medico.getRol();
-            ArrayList<Especialidad> especialidadOld = persistentMedico.getEspecialidad();
-            ArrayList<Especialidad> especialidadNew = medico.getEspecialidad();
-            ArrayList<Triage> triageOld = persistentMedico.getTriage();
-            ArrayList<Triage> triageNew = medico.getTriage();
-            ArrayList<Consulta> consultaOld = persistentMedico.getConsulta();
-            ArrayList<Consulta> consultaNew = medico.getConsulta();
+            List<Especialidad> especialidadOld = persistentMedico.getEspecialidad();
+            List<Especialidad> especialidadNew = medico.getEspecialidad();
+            List<Triage> triageOld = persistentMedico.getTriage();
+            List<Triage> triageNew = medico.getTriage();
+            List<Consulta> consultaOld = persistentMedico.getConsulta();
+            List<Consulta> consultaNew = medico.getConsulta();
+            if (tituloNew != null) {
+                tituloNew = em.getReference(tituloNew.getClass(), tituloNew.getIdTitulo());
+                medico.setTitulo(tituloNew);
+            }
             if (rolNew != null) {
                 rolNew = em.getReference(rolNew.getClass(), rolNew.getId_rol());
                 medico.setRol(rolNew);
             }
-            ArrayList<Especialidad> attachedEspecialidadNew = new ArrayList<Especialidad>();
+            List<Especialidad> attachedEspecialidadNew = new ArrayList<Especialidad>();
             for (Especialidad especialidadNewEspecialidadToAttach : especialidadNew) {
                 especialidadNewEspecialidadToAttach = em.getReference(especialidadNewEspecialidadToAttach.getClass(), especialidadNewEspecialidadToAttach.getId());
                 attachedEspecialidadNew.add(especialidadNewEspecialidadToAttach);
             }
             especialidadNew = attachedEspecialidadNew;
             medico.setEspecialidad(especialidadNew);
-            ArrayList<Triage> attachedTriageNew = new ArrayList<Triage>();
+            List<Triage> attachedTriageNew = new ArrayList<Triage>();
             for (Triage triageNewTriageToAttach : triageNew) {
                 triageNewTriageToAttach = em.getReference(triageNewTriageToAttach.getClass(), triageNewTriageToAttach.getNumTriage());
                 attachedTriageNew.add(triageNewTriageToAttach);
             }
             triageNew = attachedTriageNew;
             medico.setTriage(triageNew);
-            ArrayList<Consulta> attachedConsultaNew = new ArrayList<Consulta>();
+            List<Consulta> attachedConsultaNew = new ArrayList<Consulta>();
             for (Consulta consultaNewConsultaToAttach : consultaNew) {
                 consultaNewConsultaToAttach = em.getReference(consultaNewConsultaToAttach.getClass(), consultaNewConsultaToAttach.getNumConsulta());
                 attachedConsultaNew.add(consultaNewConsultaToAttach);
@@ -153,6 +174,19 @@ public class MedicoJpaController implements Serializable {
             consultaNew = attachedConsultaNew;
             medico.setConsulta(consultaNew);
             medico = em.merge(medico);
+            if (tituloOld != null && !tituloOld.equals(tituloNew)) {
+                tituloOld.setMedico(null);
+                tituloOld = em.merge(tituloOld);
+            }
+            if (tituloNew != null && !tituloNew.equals(tituloOld)) {
+                Medico oldMedicoOfTitulo = tituloNew.getMedico();
+                if (oldMedicoOfTitulo != null) {
+                    oldMedicoOfTitulo.setTitulo(null);
+                    oldMedicoOfTitulo = em.merge(oldMedicoOfTitulo);
+                }
+                tituloNew.setMedico(medico);
+                tituloNew = em.merge(tituloNew);
+            }
             if (rolOld != null && !rolOld.equals(rolNew)) {
                 rolOld.getFuncionarioGeneral().remove(medico);
                 rolOld = em.merge(rolOld);
@@ -236,22 +270,27 @@ public class MedicoJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The medico with id " + id + " no longer exists.", enfe);
             }
+            Titulo titulo = medico.getTitulo();
+            if (titulo != null) {
+                titulo.setMedico(null);
+                titulo = em.merge(titulo);
+            }
             Rol rol = medico.getRol();
             if (rol != null) {
                 rol.getFuncionarioGeneral().remove(medico);
                 rol = em.merge(rol);
             }
-            ArrayList<Especialidad> especialidad = medico.getEspecialidad();
+            List<Especialidad> especialidad = medico.getEspecialidad();
             for (Especialidad especialidadEspecialidad : especialidad) {
                 especialidadEspecialidad.getMedico().remove(medico);
                 especialidadEspecialidad = em.merge(especialidadEspecialidad);
             }
-            ArrayList<Triage> triage = medico.getTriage();
+            List<Triage> triage = medico.getTriage();
             for (Triage triageTriage : triage) {
                 triageTriage.setMedico(null);
                 triageTriage = em.merge(triageTriage);
             }
-            ArrayList<Consulta> consulta = medico.getConsulta();
+            List<Consulta> consulta = medico.getConsulta();
             for (Consulta consultaConsulta : consulta) {
                 consultaConsulta.setMedico(null);
                 consultaConsulta = em.merge(consultaConsulta);

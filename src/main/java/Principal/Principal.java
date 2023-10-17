@@ -3,7 +3,6 @@ package Principal;
 
 
 import VentanasGUI.Administrador;
-import VentanasGUI.Recepcion;
 
 
 

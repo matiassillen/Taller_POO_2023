@@ -31,7 +31,6 @@ public class RolJpaController implements Serializable {
     public RolJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-
     
     private EntityManagerFactory emf = null;
 
@@ -47,7 +46,7 @@ public class RolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ArrayList<FuncionarioGeneral> attachedFuncionarioGeneral = new ArrayList<FuncionarioGeneral>();
+            List<FuncionarioGeneral> attachedFuncionarioGeneral = new ArrayList<FuncionarioGeneral>();
             for (FuncionarioGeneral funcionarioGeneralFuncionarioGeneralToAttach : rol.getFuncionarioGeneral()) {
                 funcionarioGeneralFuncionarioGeneralToAttach = em.getReference(funcionarioGeneralFuncionarioGeneralToAttach.getClass(), funcionarioGeneralFuncionarioGeneralToAttach.getId());
                 attachedFuncionarioGeneral.add(funcionarioGeneralFuncionarioGeneralToAttach);
@@ -77,9 +76,9 @@ public class RolJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Rol persistentRol = em.find(Rol.class, rol.getId_rol());
-            ArrayList<FuncionarioGeneral> funcionarioGeneralOld = persistentRol.getFuncionarioGeneral();
-            ArrayList<FuncionarioGeneral> funcionarioGeneralNew = rol.getFuncionarioGeneral();
-            ArrayList<FuncionarioGeneral> attachedFuncionarioGeneralNew = new ArrayList<FuncionarioGeneral>();
+            List<FuncionarioGeneral> funcionarioGeneralOld = persistentRol.getFuncionarioGeneral();
+            List<FuncionarioGeneral> funcionarioGeneralNew = rol.getFuncionarioGeneral();
+            List<FuncionarioGeneral> attachedFuncionarioGeneralNew = new ArrayList<FuncionarioGeneral>();
             for (FuncionarioGeneral funcionarioGeneralNewFuncionarioGeneralToAttach : funcionarioGeneralNew) {
                 funcionarioGeneralNewFuncionarioGeneralToAttach = em.getReference(funcionarioGeneralNewFuncionarioGeneralToAttach.getClass(), funcionarioGeneralNewFuncionarioGeneralToAttach.getId());
                 attachedFuncionarioGeneralNew.add(funcionarioGeneralNewFuncionarioGeneralToAttach);
@@ -133,7 +132,7 @@ public class RolJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The rol with id " + id + " no longer exists.", enfe);
             }
-            ArrayList<FuncionarioGeneral> funcionarioGeneral = rol.getFuncionarioGeneral();
+            List<FuncionarioGeneral> funcionarioGeneral = rol.getFuncionarioGeneral();
             for (FuncionarioGeneral funcionarioGeneralFuncionarioGeneral : funcionarioGeneral) {
                 funcionarioGeneralFuncionarioGeneral.setRol(null);
                 funcionarioGeneralFuncionarioGeneral = em.merge(funcionarioGeneralFuncionarioGeneral);

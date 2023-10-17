@@ -85,7 +85,7 @@ public class Controladora implements Serializable{
     }
 
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
-        ArrayList<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
+        List<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
         List<GestoresHospital> listaGestores = this.traerGestores();
         List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
         List<Medico> listaMedicos = this.traerMedicos();

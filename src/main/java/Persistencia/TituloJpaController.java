@@ -4,17 +4,18 @@
  */
 package Persistencia;
 
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Model.Medico;
 import Model.Titulo;
 import Persistencia.exceptions.NonexistentEntityException;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
@@ -41,7 +42,21 @@ public class TituloJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Medico medico = titulo.getMedico();
+            if (medico != null) {
+                medico = em.getReference(medico.getClass(), medico.getId());
+                titulo.setMedico(medico);
+            }
             em.persist(titulo);
+            if (medico != null) {
+                Titulo oldTituloOfMedico = medico.getTitulo();
+                if (oldTituloOfMedico != null) {
+                    oldTituloOfMedico.setMedico(null);
+                    oldTituloOfMedico = em.merge(oldTituloOfMedico);
+                }
+                medico.setTitulo(titulo);
+                medico = em.merge(medico);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +70,27 @@ public class TituloJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Titulo persistentTitulo = em.find(Titulo.class, titulo.getIdTitulo());
+            Medico medicoOld = persistentTitulo.getMedico();
+            Medico medicoNew = titulo.getMedico();
+            if (medicoNew != null) {
+                medicoNew = em.getReference(medicoNew.getClass(), medicoNew.getId());
+                titulo.setMedico(medicoNew);
+            }
             titulo = em.merge(titulo);
+            if (medicoOld != null && !medicoOld.equals(medicoNew)) {
+                medicoOld.setTitulo(null);
+                medicoOld = em.merge(medicoOld);
+            }
+            if (medicoNew != null && !medicoNew.equals(medicoOld)) {
+                Titulo oldTituloOfMedico = medicoNew.getTitulo();
+                if (oldTituloOfMedico != null) {
+                    oldTituloOfMedico.setMedico(null);
+                    oldTituloOfMedico = em.merge(oldTituloOfMedico);
+                }
+                medicoNew.setTitulo(titulo);
+                medicoNew = em.merge(medicoNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -84,6 +119,11 @@ public class TituloJpaController implements Serializable {
                 titulo.getIdTitulo();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The titulo with id " + id + " no longer exists.", enfe);
+            }
+            Medico medico = titulo.getMedico();
+            if (medico != null) {
+                medico.setTitulo(null);
+                medico = em.merge(medico);
             }
             em.remove(titulo);
             em.getTransaction().commit();

@@ -22,7 +22,7 @@ public class Rol implements Serializable {
     private long id_rol;
     private String nombre;
     @OneToMany(mappedBy="rol") 
-    private ArrayList<FuncionarioGeneral> funcionarioGeneral;
+    private List<FuncionarioGeneral> funcionarioGeneral;
 
     
     
@@ -31,14 +31,16 @@ public class Rol implements Serializable {
      */
     public Rol() {
         this.nombre = "";
-        this.funcionarioGeneral = new ArrayList<FuncionarioGeneral>();
+        this.funcionarioGeneral = new ArrayList<>();
     }
 
-    public Rol(long id_rol, String nombre, ArrayList<FuncionarioGeneral> funcionarioGeneral) {
+    public Rol(long id_rol, String nombre, List<FuncionarioGeneral> funcionarioGeneral) {
         this.id_rol = id_rol;
         this.nombre = nombre;
         this.funcionarioGeneral = funcionarioGeneral;
     }
+
+    
 
     public long getId_rol() {
         return id_rol;
@@ -66,15 +68,16 @@ public class Rol implements Serializable {
     /**
      * @return
      */
-    public ArrayList<FuncionarioGeneral> getFuncionarioGeneral() {
+    public List<FuncionarioGeneral> getFuncionarioGeneral() {
         // TODO implement here
         return funcionarioGeneral;
     }
     
     /**
-     * @param value
+     * @param funcionarioGeneral
+     * 
      */
-    public void setFuncionarioGeneral(ArrayList<FuncionarioGeneral> funcionarioGeneral) {
+    public void setFuncionarioGeneral(List<FuncionarioGeneral> funcionarioGeneral) {
         // TODO implement here
         this.funcionarioGeneral = funcionarioGeneral;
     }
