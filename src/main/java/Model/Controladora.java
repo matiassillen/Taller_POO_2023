@@ -101,6 +101,18 @@ public class Controladora implements Serializable{
 
         return listaFuncionariosEnGeneral;
     }
+    
+   public List<FuncSalud> traerFuncionariosSalud() {
+        List<FuncSalud> listaFuncionariosSalud = new ArrayList<FuncSalud>();
+        List<Medico> listaMedicos = this.traerMedicos();
+        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
+        
+        
+        listaFuncionariosSalud.addAll(listaMedicos);
+        listaFuncionariosSalud.addAll(listaLicenciados);
+
+        return listaFuncionariosSalud;
+    }
 
     public GestoresHospital traerGestor(long idUsuario) {
         return controlPersis.traerGestor(idUsuario);

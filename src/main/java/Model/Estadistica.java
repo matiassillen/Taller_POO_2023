@@ -28,8 +28,8 @@ public class Estadistica implements Serializable{
     //    return diccionario;
     // }
 
-    // public Integer TriagesCambiados(FuncSalud funcionario) {
-    //    int sum = 0;
+     public Integer triagesCambiados(FuncSalud funcionario) {
+        int sum = 0;
     //    int rango = len(funcionario.traigeHechos);
     //    for (i= 0; i<rango; i++) {
     //        Triage triageN = funcionario.traigeHechos[i];
@@ -37,7 +37,7 @@ public class Estadistica implements Serializable{
     //            sum += 1;
     //        }
     //    }
-    //    return sum;
+        return sum;
     // }
 
 }
