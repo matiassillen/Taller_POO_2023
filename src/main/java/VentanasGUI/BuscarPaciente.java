@@ -4,18 +4,19 @@
  */
 package VentanasGUI;
 
-import Model.Controladora;
+
 import Model.Paciente;
-import java.util.List;
+import Model.Recepcionista;
+
 import javax.swing.table.DefaultTableModel;
 
 
 public class BuscarPaciente extends javax.swing.JFrame {
     
-    Controladora control;
+    Recepcionista recepcion;
     public BuscarPaciente() {
         initComponents();
-        control = new Controladora();
+        recepcion = new Recepcionista();
         
     }
 
@@ -153,7 +154,25 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
+        //Validar que la tabla tenga elementos
+        if(tablaPacientes.getRowCount() > 0){
+            //Controlar que se haya seleccionado un elemento
+            if(tablaPacientes.getSelectedRow()!= -1){
+                
+                //Obtengo la ID del paciente que quiero eliminar
+                
+                int id_Paciente = Integer.parseInt(String.valueOf(tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(),0)));
+                
+                //Llamo a la ventana de edición
+                
+                EditarPaciente editar = new EditarPaciente(recepcion,id_Paciente);
+                editar.setVisible(true);
+                editar.setLocationRelativeTo(null);
+                this.dispose();
+                
+            }
+            
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

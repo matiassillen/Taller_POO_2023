@@ -127,31 +127,24 @@ public class HacerTriage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 90, 37, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion.setText("Respiración:");
-        txtRespiracion.setToolTipText("");
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.setToolTipText("");
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton1.setText("Normal");
-        jRadioButton1.setContentAreaFilled(false);
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -159,10 +152,12 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("Moderada");
 
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton3.setText("Grave");
 
@@ -218,19 +213,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel11.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion4.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion4.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion4.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion4.setText("Lesiones Leves:");
-        txtRespiracion4.setToolTipText("");
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setForeground(new java.awt.Color(0, 0, 0));
 
         jRadioButton13.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup5.add(jRadioButton13);
         jRadioButton13.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton13.setText("No Presente");
         jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +232,9 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton14.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup5.add(jRadioButton14);
         jRadioButton14.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton14.setText("Presente");
-        jRadioButton14.setToolTipText("");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -292,20 +284,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel19.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion8.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion8.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion8.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion8.setText("Dolor en el Pecho:");
-        txtRespiracion8.setToolTipText("");
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel20.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel20.setToolTipText("");
 
         jRadioButton25.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup9.add(jRadioButton25);
         jRadioButton25.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton25.setText("No Presente");
         jRadioButton25.addActionListener(new java.awt.event.ActionListener() {
@@ -315,6 +303,7 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton26.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup9.add(jRadioButton26);
         jRadioButton26.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton26.setText("Presente");
 
@@ -366,20 +355,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel21.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion9.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion9.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion9.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion9.setText("Pulso:");
-        txtRespiracion9.setToolTipText("");
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel22.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel22.setToolTipText("");
 
         jRadioButton28.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup10.add(jRadioButton28);
         jRadioButton28.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton28.setText("Normal");
         jRadioButton28.addActionListener(new java.awt.event.ActionListener() {
@@ -389,6 +374,7 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton29.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup10.add(jRadioButton29);
         jRadioButton29.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton29.setText("Anormal");
 
@@ -440,20 +426,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel13.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion5.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion5.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion5.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion5.setText("Fiebre:");
-        txtRespiracion5.setToolTipText("");
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel14.setToolTipText("");
 
         jRadioButton16.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jRadioButton16);
         jRadioButton16.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton16.setText("Sin Fiebre");
         jRadioButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -463,10 +445,12 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton17.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jRadioButton17);
         jRadioButton17.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton17.setText("Moderada");
 
         jRadioButton18.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jRadioButton18);
         jRadioButton18.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton18.setText("Alta");
 
@@ -522,20 +506,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel5.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion1.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion1.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion1.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion1.setText("Dolor Abdominal:");
-        txtRespiracion1.setToolTipText("");
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel6.setToolTipText("");
 
         jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jRadioButton4);
         jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton4.setText("No Presente");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -545,10 +525,12 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton5.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jRadioButton5);
         jRadioButton5.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton5.setText("Moderada");
 
         jRadioButton6.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jRadioButton6);
         jRadioButton6.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton6.setText("Severo");
 
@@ -604,20 +586,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel7.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion2.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion2.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion2.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion2.setText("Sangrado:");
-        txtRespiracion2.setToolTipText("");
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel8.setToolTipText("");
 
         jRadioButton7.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jRadioButton7);
         jRadioButton7.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton7.setText("No Presente");
         jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -627,10 +605,12 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton8.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jRadioButton8);
         jRadioButton8.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton8.setText("Moderada");
 
         jRadioButton9.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jRadioButton9);
         jRadioButton9.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton9.setText("Intenso");
 
@@ -686,20 +666,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel15.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion6.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion6.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion6.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion6.setText("Estado Mental:");
-        txtRespiracion6.setToolTipText("");
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel16.setToolTipText("");
 
         jRadioButton19.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jRadioButton19);
         jRadioButton19.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton19.setText("Normal");
         jRadioButton19.addActionListener(new java.awt.event.ActionListener() {
@@ -709,10 +685,12 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton20.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jRadioButton20);
         jRadioButton20.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton20.setText("Leve");
 
         jRadioButton21.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jRadioButton21);
         jRadioButton21.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton21.setText("Grave");
 
@@ -768,19 +746,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel23.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion10.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion10.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion10.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion10.setText("Vómitos:");
-        txtRespiracion10.setToolTipText("");
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel24.setForeground(new java.awt.Color(0, 0, 0));
 
         jRadioButton31.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jRadioButton31);
         jRadioButton31.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton31.setText("Sin Vómito");
         jRadioButton31.addActionListener(new java.awt.event.ActionListener() {
@@ -790,13 +765,14 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton32.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jRadioButton32);
         jRadioButton32.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton32.setText("Moderada");
 
         jRadioButton33.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jRadioButton33);
         jRadioButton33.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton33.setText("Intenso");
-        jRadioButton33.setToolTipText("");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -850,20 +826,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel25.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion11.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion11.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion11.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion11.setText("Conciencia:");
-        txtRespiracion11.setToolTipText("");
 
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel26.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel26.setToolTipText("");
 
         jRadioButton34.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup12.add(jRadioButton34);
         jRadioButton34.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton34.setText("Conciente");
         jRadioButton34.addActionListener(new java.awt.event.ActionListener() {
@@ -873,6 +845,7 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton35.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup12.add(jRadioButton35);
         jRadioButton35.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton35.setText("Inconciente");
 
@@ -924,20 +897,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel17.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion7.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion7.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion7.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion7.setText("Signos de Shock:");
-        txtRespiracion7.setToolTipText("");
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel18.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.setToolTipText("");
 
         jRadioButton22.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup8.add(jRadioButton22);
         jRadioButton22.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton22.setText("No Presente");
         jRadioButton22.addActionListener(new java.awt.event.ActionListener() {
@@ -947,6 +916,7 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton23.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup8.add(jRadioButton23);
         jRadioButton23.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton23.setText("Presente");
 
@@ -998,20 +968,16 @@ public class HacerTriage extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel9.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtRespiracion3.setBackground(new java.awt.Color(255, 255, 255));
+        txtRespiracion3.setBackground(new java.awt.Color(0, 0, 0));
         txtRespiracion3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRespiracion3.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion3.setText("Lesiones Graves:");
-        txtRespiracion3.setToolTipText("");
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel10.setToolTipText("");
 
         jRadioButton10.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup4.add(jRadioButton10);
         jRadioButton10.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton10.setText("No Presente");
         jRadioButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -1021,6 +987,7 @@ public class HacerTriage extends javax.swing.JFrame {
         });
 
         jRadioButton11.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup4.add(jRadioButton11);
         jRadioButton11.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton11.setText("Presente");
 
@@ -1193,7 +1160,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator10.setBackground(new java.awt.Color(100, 196, 244));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 760, 10));
 
-        jPanel27.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel27.setBackground(new java.awt.Color(100, 196, 244));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -1206,7 +1173,7 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGap(336, 336, 336)
                 .addComponent(jLabel2)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1218,92 +1185,93 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(100, 196, 244));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Volver");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 110, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 102));
+        jButton2.setBackground(new java.awt.Color(100, 196, 244));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Crear Triage");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 630, 140, 50));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 660, 140, 50));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Edad:");
-        jLabel3.setToolTipText("");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Niño/Anciano" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 100, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 834, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton34ActionPerformed
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton34ActionPerformed
-
-    private void jRadioButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton31ActionPerformed
-
-    private void jRadioButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton28ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton28ActionPerformed
-
-    private void jRadioButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton25ActionPerformed
-
-    private void jRadioButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton22ActionPerformed
-
-    private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton19ActionPerformed
-
-    private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton16ActionPerformed
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
-    private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
+    private void jRadioButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton25ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton10ActionPerformed
+    }//GEN-LAST:event_jRadioButton25ActionPerformed
 
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+    private void jRadioButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton28ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
+    }//GEN-LAST:event_jRadioButton28ActionPerformed
+
+    private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton16ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
+
+    private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton19ActionPerformed
+
+    private void jRadioButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton31ActionPerformed
+
+    private void jRadioButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton34ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton34ActionPerformed
+
+    private void jRadioButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton22ActionPerformed
+
+    private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton10ActionPerformed
 
     /**
      * @param args the command line arguments

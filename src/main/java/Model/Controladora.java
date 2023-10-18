@@ -4,6 +4,7 @@ import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -99,6 +100,18 @@ public class Controladora implements Serializable{
 
         return listaFuncionariosEnGeneral;
     }
+    
+   public List<FuncSalud> traerFuncionariosSalud() {
+        List<FuncSalud> listaFuncionariosSalud = new ArrayList<FuncSalud>();
+        List<Medico> listaMedicos = this.traerMedicos();
+        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
+        
+        
+        listaFuncionariosSalud.addAll(listaMedicos);
+        listaFuncionariosSalud.addAll(listaLicenciados);
+
+        return listaFuncionariosSalud;
+    }
 
     public GestoresHospital traerGestor(long idUsuario) {
         return controlPersis.traerGestor(idUsuario);
@@ -119,4 +132,34 @@ public class Controladora implements Serializable{
     public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
         return controlPersis.traerAdministradorDeSistemas(idUsuario);
     }
+    
+    /*
+    * Validar es el metodo publico que llama a validacion
+    * @return retorna un booleano true o false
+    */
+    public boolean validar(String uss, String pass){
+        return validacion(uss, pass);
+    }
+  
+    /*
+    * Validacion hace la logica de buscar y confirmar la existencia del usuario
+    * @return boolean
+    */
+    private boolean validacion(String us, String pas){
+        try{
+            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+            for (FuncionarioGeneral comprobar : listaBusqueda) {
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
+                    return true;
+                }
+                else {}
+            }
+            return false;
+        }
+        catch (Exception e) {
+            return false;
+        }
+        
+    }
+    
 }

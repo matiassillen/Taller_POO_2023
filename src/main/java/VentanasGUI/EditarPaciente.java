@@ -4,18 +4,17 @@
  */
 package VentanasGUI;
 
-import static java.awt.SystemColor.control;
+import Model.Paciente;
+import Model.Recepcionista;
 
-/**
- *
- * @author trapo
- */
 public class EditarPaciente extends javax.swing.JFrame {
-
-    int idPaciente;
-    public EditarPaciente(int idPaciente) {
+    Recepcionista recepcion;
+    int id_Paciente;
+    public EditarPaciente(Recepcionista recepcion, int id_Paciente) {
         initComponents();
-        this.idPaciente = idPaciente;
+        this.recepcion = recepcion;
+        this.id_Paciente = id_Paciente;
+        
     }
 
     /**
@@ -45,7 +44,7 @@ public class EditarPaciente extends javax.swing.JFrame {
         txtTelFijo = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
+        btnGuardarCambios = new javax.swing.JButton();
         cmbEstadoCivil = new javax.swing.JComboBox<>();
         btnVolver = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -54,7 +53,7 @@ public class EditarPaciente extends javax.swing.JFrame {
         txtPersonaContacto = new javax.swing.JTextField();
         txtNumContacto = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -172,14 +171,14 @@ public class EditarPaciente extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        btnRegistrar.setBackground(new java.awt.Color(0, 204, 204));
-        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCambios.setBackground(new java.awt.Color(0, 204, 204));
+        btnGuardarCambios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarCambios.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardarCambios.setText("Guardar Cambios");
+        btnGuardarCambios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnGuardarCambiosActionPerformed(evt);
             }
         });
 
@@ -234,13 +233,13 @@ public class EditarPaciente extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Persona de contacto:");
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Limpiar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -285,12 +284,12 @@ public class EditarPaciente extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(215, 215, 215))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -342,10 +341,10 @@ public class EditarPaciente extends javax.swing.JFrame {
                     .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(38, 38, 38)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnLimpiar)
                     .addComponent(btnVolver))
                 .addGap(23, 23, 23))
         );
@@ -374,7 +373,7 @@ public class EditarPaciente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String dni = txtDni.getText();
@@ -387,12 +386,12 @@ public class EditarPaciente extends javax.swing.JFrame {
         String personaContacto = txtPersonaContacto.getText();
         String numContacto = txtNumContacto.getText();
 
-        //control.RegistrarPaciente(nombre, apellido, dni, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+        recepcion.RegistrarPaciente(nombre, apellido, dni, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
 
         cartel cart = new cartel();
         cart.setVisible(true);
         cart.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnGuardarCambiosActionPerformed
 
     private void cmbEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoCivilActionPerformed
         // TODO add your handling code here:
@@ -405,7 +404,7 @@ public class EditarPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtNombre.setText("");
         txtApellido.setText("");
         txtDni.setText("");
@@ -416,11 +415,21 @@ public class EditarPaciente extends javax.swing.JFrame {
         txtPersonaContacto.setText("");
         txtNumContacto.setText("");
         txtFechaNacimiento.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        
+        Paciente paciente = recepcion.traerPaciente(id_Paciente);
+        String documento = Integer. toString(paciente.getDni());
+        txtNombre.setText(paciente.getNombre());
+        txtApellido.setText(paciente.getApellido());
+        txtDni.setText(documento);
+        txtDomicilio.setText(paciente.getDomicilio());
+        txtCorreo.setText(paciente.getCorreoE());
+        txtTelCelular.setText(paciente.getTelefonoCel());
+        txtTelFijo.setText(paciente.getTelefonoFijo());
+        txtPersonaContacto.setText(paciente.getPersoDeContacto());
+        txtNumContacto.setText(paciente.getTelDeContacto());
+        txtFechaNacimiento.setText(paciente.getFechaDeNac());
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -429,10 +438,10 @@ public class EditarPaciente extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnGuardarCambios;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
