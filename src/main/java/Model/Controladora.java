@@ -12,7 +12,6 @@ public class Controladora implements Serializable{
         controlPersis = new ControladoraPersistencia();
     }
     
-
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
