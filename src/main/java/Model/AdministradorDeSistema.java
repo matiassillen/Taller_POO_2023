@@ -48,6 +48,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
      * @param apellido
      * @return
      */
+    
     public String buscarUsuario(String nombre, String apellido) {
         String cadena = "";
         List<GestoresHospital> listaGestores = control.traerGestores();
