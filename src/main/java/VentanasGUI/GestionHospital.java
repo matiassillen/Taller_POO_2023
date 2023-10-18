@@ -40,7 +40,6 @@ public class GestionHospital extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel1.setName(""); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -48,7 +47,6 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnCantPacienteMedico.setBackground(new java.awt.Color(0, 204, 255));
         btnCantPacienteMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnCantPacienteMedico.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPacienteMedico.setText("Cant. de Pacientes Atendidos Por Médico");
         btnCantPacienteMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +57,6 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnCantPaciente.setBackground(new java.awt.Color(0, 204, 255));
         btnCantPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPaciente.setText("Cant. Pacientes Atendidos");
         btnCantPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +67,6 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 255));
         btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPacienteMasConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnPacienteMasConsulta.setText("Paciente con más Consultas");
         btnPacienteMasConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +77,6 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnMedicoMasPaciente.setBackground(new java.awt.Color(0, 204, 255));
         btnMedicoMasPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnMedicoMasPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnMedicoMasPaciente.setText("Médico con más Pacientes");
         btnMedicoMasPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +87,6 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnSalir.setBackground(new java.awt.Color(0, 204, 255));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,20 +97,22 @@ public class GestionHospital extends javax.swing.JFrame {
 
         btnCantTriage.setBackground(new java.awt.Color(0, 204, 255));
         btnCantTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantTriage.setForeground(new java.awt.Color(0, 0, 0));
         btnCantTriage.setText("Cant. de Triage y Color");
         jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 300, 40));
 
         btnTriageCambiado.setBackground(new java.awt.Color(0, 204, 255));
         btnTriageCambiado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnTriageCambiado.setForeground(new java.awt.Color(0, 0, 0));
         btnTriageCambiado.setText("Triage Cambiados");
+        btnTriageCambiado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTriageCambiadoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnTriageCambiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 300, 40));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestores Hospitalarios");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -185,10 +181,16 @@ public class GestionHospital extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
+    private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
+        
+        TriageCambiado triagesCambiados = new TriageCambiado();
+        triagesCambiados.setVisible(true);
+        triagesCambiados.setLocationRelativeTo(null);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnTriageCambiadoActionPerformed
+
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCantPaciente;
