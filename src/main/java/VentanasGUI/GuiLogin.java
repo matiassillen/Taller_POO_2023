@@ -156,22 +156,37 @@ public class GuiLogin extends javax.swing.JFrame {
             
             switch (rolEncontrado) {
                 case "Gestor":
-                    
+                    GestionHospital pantalla1 = new GestionHospital();
+                    pantalla1.setVisible(true);
+                    pantalla1.setLocationRelativeTo(null);
+                    this.dispose();
                     break;
                 
                 case "Recepcionista":
+                    Recepcion pantalla2 = new Recepcion();
+                    pantalla2.setVisible(true);
+                    pantalla2.setLocationRelativeTo(null);
+                    this.dispose();
                     break;
                 
                 case "Medico":
+                    PpalMedico pantalla3 = new PpalMedico();
+                    pantalla3.setVisible(true);
+                    pantalla3.setLocationRelativeTo(null);
+                    this.dispose();
                     break;
                 
                 case "Licenciando en Enfermeria":
+                    PpalMedico pantalla4 = new PpalMedico();
+                    pantalla4.setVisible(true);
+                    pantalla4.setLocationRelativeTo(null);
+                    this.dispose();
                     break;
                 
                 case "Administrador de Sistema":
-                    Administrador pantalla = new Administrador();
-                    pantalla.setVisible(true);
-                    pantalla.setLocationRelativeTo(null);
+                    Administrador pantalla5 = new Administrador();
+                    pantalla5.setVisible(true);
+                    pantalla5.setLocationRelativeTo(null);
                     this.dispose();
                     break;
                 
