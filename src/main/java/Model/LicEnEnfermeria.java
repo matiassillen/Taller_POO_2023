@@ -6,7 +6,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class LicEnEnfermeria extends FuncionarioGeneral {
+public class LicEnEnfermeria extends FuncSalud {
     
     @OneToMany
     ArrayList<Triage> triage;

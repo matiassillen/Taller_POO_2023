@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VentanasGUI;
-import Model.Controladora;
+
 import Model.FuncionarioGeneral;
+import java.util.ArrayList;
 import java.util.List;
+import java.lang.Object;
 /**
  *
  * @author Agus
@@ -34,7 +36,7 @@ public class GuiLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         usuario = new javax.swing.JTextField();
-        contraseña = new javax.swing.JPasswordField();
+        contrasenia = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,18 +103,18 @@ public class GuiLogin extends javax.swing.JFrame {
         });
         jPanel4.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 127, 174, 34));
 
-        contraseña.setBackground(new java.awt.Color(255, 255, 255));
-        contraseña.setForeground(new java.awt.Color(0, 0, 0));
-        contraseña.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        contraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        contraseña.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        contraseña.setSelectionColor(new java.awt.Color(204, 204, 204));
-        contraseña.addActionListener(new java.awt.event.ActionListener() {
+        contrasenia.setBackground(new java.awt.Color(255, 255, 255));
+        contrasenia.setForeground(new java.awt.Color(0, 0, 0));
+        contrasenia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        contrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        contrasenia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        contrasenia.setSelectionColor(new java.awt.Color(204, 204, 204));
+        contrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaActionPerformed(evt);
+                contraseniaActionPerformed(evt);
             }
         });
-        jPanel4.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
+        jPanel4.add(contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -125,6 +127,11 @@ public class GuiLogin extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
@@ -133,6 +140,7 @@ public class GuiLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
 //        String usern = usuario.getText();
 //        String passw = String.valueOf(contraseña.getPassword());
 //        Controladora verif = new Controladora();
@@ -173,6 +181,56 @@ public class GuiLogin extends javax.swing.JFrame {
             
          
         
+//        String usern = usuario.getText();
+//        String passw = String.valueOf(contrasenia.getPassword());
+//        Controladora verif = new Controladora();
+//        ArrayList<Object> resultado = verif.validar(usern, passw);
+//        String idUser = "";
+//        String rolEncontrado = "";
+//        if ((Boolean) resultado.get(0)) {
+//            idUser = (String) resultado.get(1);
+//            rolEncontrado = (String) resultado.get(2);
+//        }
+//            
+//        switch (rolEncontrado) {
+//            case "Gestor":
+//                //GestionHospital pantalla1 = new GestionHospital();
+//                pantalla1.setVisible(true);
+//                pantalla1.setLocationRelativeTo(null);
+//                this.dispose();
+//                break;
+//                
+//            case "Recepcionista":
+//                //Recepcion pantalla2 = new Recepcion();
+//                pantalla2.setVisible(true);
+//                pantalla2.setLocationRelativeTo(null);
+//                this.dispose();
+//                break;
+//                
+//            case "Medico":
+//                PpalMedico pantalla3 = new PpalMedico();
+//                pantalla3.setVisible(true);
+//                pantalla3.setLocationRelativeTo(null);
+//                this.dispose();
+//                break;
+//                
+//            case "Licenciando en Enfermeria":
+//                PpalMedico pantalla4 = new PpalMedico();
+//                pantalla4.setVisible(true);
+//                pantalla4.setLocationRelativeTo(null);
+//                this.dispose();
+//                break;
+//                
+//            case "Administrador de Sistema":
+//                Administrador pantalla5 = new Administrador();
+//                pantalla5.setVisible(true);
+//                pantalla5.setLocationRelativeTo(null);
+//                this.dispose();
+//                break;
+//                
+//            default:
+//                break;
+//                }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
@@ -183,12 +241,20 @@ public class GuiLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseñaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void contraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contraseniaActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField contraseña;
+    private javax.swing.JPasswordField contrasenia;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

@@ -225,13 +225,13 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         Calendar fechaOne = jDateChooser1.getCalendar();
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
-        int diaOne = fechaOne.get(Calendar.DATE);
-        int medOne = fechaOne.get(Calendar.MONTH);
-        int yearOne = fechaOne.get(Calendar.YEAR);
+        Calendar diaOne = fechaOne.get(Calendar.DATE);
+        Calendar medOne = fechaOne.get(Calendar.MONTH);
+        Calendar yearOne = fechaOne.get(Calendar.YEAR);
         
-        int diaTwo = fechaTwo.get(Calendar.DATE);
-        int mesTwo = fechaTwo.get(Calendar.MONTH);
-        int anioTwo = fechaTwo.get(Calendar.YEAR);
+        Calendar diaTwo = fechaTwo.get(Calendar.DATE);
+        Calendar mesTwo = fechaTwo.get(Calendar.MONTH);
+        Calendar anioTwo = fechaTwo.get(Calendar.YEAR);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
