@@ -5,7 +5,9 @@
 package VentanasGUI;
 import Model.Controladora;
 import Model.FuncionarioGeneral;
+import java.util.ArrayList;
 import java.util.List;
+import java.lang.Object;
 /**
  *
  * @author Agus
@@ -141,62 +143,53 @@ public class GuiLogin extends javax.swing.JFrame {
         String usern = usuario.getText();
         String passw = String.valueOf(contrasenia.getPassword());
         Controladora verif = new Controladora();
-        boolean resultado = verif.validar(usern, passw);
-        if (resultado) {
-            String rolEncontrado = null;
-            List<FuncionarioGeneral> listFunGral = verif.traerFuncionariosEnGeneral();
-            if (!listFunGral.isEmpty()) {
-                for (FuncionarioGeneral buscar : listFunGral) {
-                    if (usern == buscar.getNomUsuario()) {
-                        rolEncontrado = buscar.getRol().getNombre();
-                        break;
-                    }
-                }
-            }
+        ArrayList<Object> resultado = verif.validar(usern, passw);
+        String idUser = "";
+        String rolEncontrado = "";
+        if ((Boolean) resultado.get(0)) {
+            idUser = (String) resultado.get(1);
+            rolEncontrado = (String) resultado.get(2);
+        }
             
-            switch (rolEncontrado) {
-                case "Gestor":
-                    GestionHospital pantalla1 = new GestionHospital();
-                    pantalla1.setVisible(true);
-                    pantalla1.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+        switch (rolEncontrado) {
+            case "Gestor":
+                GestionHospital pantalla1 = new GestionHospital();
+                pantalla1.setVisible(true);
+                pantalla1.setLocationRelativeTo(null);
+                this.dispose();
+                break;
                 
-                case "Recepcionista":
-                    Recepcion pantalla2 = new Recepcion();
-                    pantalla2.setVisible(true);
-                    pantalla2.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+            case "Recepcionista":
+                Recepcion pantalla2 = new Recepcion();
+                pantalla2.setVisible(true);
+                pantalla2.setLocationRelativeTo(null);
+                this.dispose();
+                break;
                 
-                case "Medico":
-                    PpalMedico pantalla3 = new PpalMedico();
-                    pantalla3.setVisible(true);
-                    pantalla3.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+            case "Medico":
+                PpalMedico pantalla3 = new PpalMedico();
+                pantalla3.setVisible(true);
+                pantalla3.setLocationRelativeTo(null);
+                this.dispose();
+                break;
                 
-                case "Licenciando en Enfermeria":
-                    PpalMedico pantalla4 = new PpalMedico();
-                    pantalla4.setVisible(true);
-                    pantalla4.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+            case "Licenciando en Enfermeria":
+                PpalMedico pantalla4 = new PpalMedico();
+                pantalla4.setVisible(true);
+                pantalla4.setLocationRelativeTo(null);
+                this.dispose();
+                break;
                 
-                case "Administrador de Sistema":
-                    Administrador pantalla5 = new Administrador();
-                    pantalla5.setVisible(true);
-                    pantalla5.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+            case "Administrador de Sistema":
+                Administrador pantalla5 = new Administrador();
+                pantalla5.setVisible(true);
+                pantalla5.setLocationRelativeTo(null);
+                this.dispose();
+                break;
                 
-                default:
-                    break;
+            default:
+                break;
                 }
-            }
-            
-         
-        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed

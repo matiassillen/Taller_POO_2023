@@ -45,6 +45,11 @@ public class CrearConsulta extends javax.swing.JFrame {
         txtDiagnConsulta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -86,6 +91,11 @@ public class CrearConsulta extends javax.swing.JFrame {
         txtFecha.setBackground(new java.awt.Color(255, 255, 255));
         txtFecha.setForeground(new java.awt.Color(0, 0, 0));
         txtFecha.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -218,14 +228,22 @@ public class CrearConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-        String fecha = txtFecha.getText();
-        String hora = txtHora.getText();
+
         String lugar = txtLugar.getText();
         String diagnConsulta = txtDiagnConsulta.getText();
         String motivo = txtMotivo.getText();
         
         recepcion.CrearConsulta(fecha,hora,lugar,diagnConsulta,motivo);
     }//GEN-LAST:event_btnCrearConsultaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Agregar txtFecha = date.fecha()
+        // Agregar txtHora = date.hora()
+    }//GEN-LAST:event_formWindowOpened
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
