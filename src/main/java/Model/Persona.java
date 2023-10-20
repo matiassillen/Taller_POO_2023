@@ -1,11 +1,17 @@
 package Model;
 
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Persona implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
     private String nombre;
     private String apellido;
     private String fechaDeNac;
@@ -20,7 +26,8 @@ public abstract class Persona implements Serializable {
         
     }
 
-    public Persona(String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Persona(long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNac = fechaDeNac;
@@ -30,6 +37,14 @@ public abstract class Persona implements Serializable {
         this.telefonoCel = telefonoCel;
         this.correoE = correoE;
         this.estadoCivil = estadoCivil;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -104,7 +119,6 @@ public abstract class Persona implements Serializable {
         this.estadoCivil = estadoCivil;
     }
 
-    
 
 }
 

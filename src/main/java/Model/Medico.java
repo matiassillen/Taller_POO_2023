@@ -3,25 +3,21 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
+import javax.persistence.Transient;
 
 @Entity
 public class Medico extends FuncSalud{
     
     private int numMatriculaProfesional;
-    @OneToOne
+    @Transient
     private Box box;
-    @ManyToMany
+    @Transient
     private List<Especialidad> especialidad;
-    @OneToMany
+    @Transient
     private List<Triage> triage;
-    @OneToMany
+    @Transient
     private List<Consulta> consulta;
-    @ManyToOne
+    @Transient
     private Titulo titulo;
  
     public Medico() {
@@ -32,8 +28,8 @@ public class Medico extends FuncSalud{
         
     }
 
-    public Medico(int numMatriculaProfesional, Box box, List<Especialidad> especialidad, List<Triage> triage, List<Consulta> consulta, Titulo titulo, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public Medico(int numMatriculaProfesional, Box box, List<Especialidad> especialidad, List<Triage> triage, List<Consulta> consulta, Titulo titulo, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.numMatriculaProfesional = numMatriculaProfesional;
         this.box = box;
         this.especialidad = especialidad;
@@ -90,10 +86,7 @@ public class Medico extends FuncSalud{
         this.titulo = titulo;
     }
 
-    
-
    
-    
     /**
      * @param paciente 
      * @return

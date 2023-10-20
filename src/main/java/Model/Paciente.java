@@ -8,9 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Paciente extends Persona implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int idP;
+
     private String persoDeContacto;
     private String telDeContacto;
     private List <AntecedenteClinico> antecedenteClinico;
@@ -19,23 +17,14 @@ public class Paciente extends Persona implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(int idP, String persoDeContacto, String telDeContacto, List<AntecedenteClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-        this.idP = idP;
+    public Paciente(String persoDeContacto, String telDeContacto, List<AntecedenteClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.persoDeContacto = persoDeContacto;
         this.telDeContacto = telDeContacto;
         this.antecedenteClinico = antecedenteClinico;
         this.resultadoEstudio = resultadoEstudio;
     }
-
-    public int getIdP() {
-        return idP;
-    }
-
-    public void setIdP(int idP) {
-        this.idP = idP;
-    }
-
+    
     public String getPersoDeContacto() {
         return persoDeContacto;
     }

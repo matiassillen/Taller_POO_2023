@@ -1,23 +1,21 @@
 package Model;
 
+import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
-
-@MappedSuperclass
+@Entity
 public class FuncionarioGeneral extends Persona {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-    private String nomUsuario;
-    private String passw;
-    @ManyToOne
-    @JoinColumn(name="id_rol")
-    private Rol rol; 
+    
+    @OneToOne
+    private Usuario usu;
+    
+    
     //private static final int idTotales = 0;
     
     //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales
@@ -40,18 +38,23 @@ public class FuncionarioGeneral extends Persona {
     
     
     public FuncionarioGeneral() {
-        this.nomUsuario = "";
-        this.passw = "";
+        
         
     }
 
-    public FuncionarioGeneral(long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
-        this.id = id;
-        this.nomUsuario = nomUsuario;
-        this.passw = passw;
-        this.rol = rol;
+    public FuncionarioGeneral(Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+        this.usu = usu;
     }
+
+    public Usuario getUsu() {
+        return usu;
+    }
+
+    public void setUsu(Usuario usu) {
+        this.usu = usu;
+    }
+
 
     /**
      * Metodo que genera una ID para el usuario
@@ -68,37 +71,8 @@ public class FuncionarioGeneral extends Persona {
         // TODO implement here
     }
 
-    public long getId() {
-        return id;
-    }
+   
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNomUsuario() {
-        return nomUsuario;
-    }
-
-    public void setNomUsuario(String nomUsuario) {
-        this.nomUsuario = nomUsuario;
-    }
-
-    public String getPassw() {
-        return passw;
-    }
-
-    public void setPassw(String passw) {
-        this.passw = passw;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
 
 }
 

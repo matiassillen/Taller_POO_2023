@@ -29,7 +29,7 @@ public class TriageJpaController implements Serializable {
         this.emf = emf;
     }
     
-    public TriageJpaController() {
+     public TriageJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     

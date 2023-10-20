@@ -8,46 +8,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-
+import javax.persistence.ManyToMany;
 
 /**
  * 
  */
 @Entity
 public class Rol implements Serializable {
+    
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private long id_rol;
     private String nombre;
-    @OneToMany(mappedBy="rol") 
-    private List<FuncionarioGeneral> funcionarioGeneral;
-
-    
+    @ManyToMany(mappedBy="rol") 
+    private List<Usuario> usuario;
     
     /**
      * Default constructor
      */
     public Rol() {
         this.nombre = "";
-        this.funcionarioGeneral = new ArrayList<>();
+        this.usuario = new ArrayList<>();
     }
 
-    public Rol(long id_rol, String nombre, List<FuncionarioGeneral> funcionarioGeneral) {
+    public Rol(long id_rol, String nombre, List<Usuario> usuario) {
         this.id_rol = id_rol;
         this.nombre = nombre;
-        this.funcionarioGeneral = funcionarioGeneral;
-    }
-
-    
-
-    public long getId_rol() {
-        return id_rol;
-    }
-
-    public void setId_rol(long id_rol) {
-        this.id_rol = id_rol;
+        this.usuario = usuario;
     }
 
     /**
@@ -64,31 +51,29 @@ public class Rol implements Serializable {
     public void setNombre(String value) {
         // TODO implement here
     }
-    
-    /**
-     * @return
-     */
-    public List<FuncionarioGeneral> getFuncionarioGeneral() {
-        // TODO implement here
-        return funcionarioGeneral;
+
+    public long getId_rol() {
+        return id_rol;
     }
-    
-    /**
-     * @param funcionarioGeneral
-     * 
-     */
-    public void setFuncionarioGeneral(List<FuncionarioGeneral> funcionarioGeneral) {
-        // TODO implement here
-        this.funcionarioGeneral = funcionarioGeneral;
+
+    public void setId_rol(long id_rol) {
+        this.id_rol = id_rol;
     }
-    
+
+    public List<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(List<Usuario> usuario) {
+        this.usuario = usuario;
+    }
+ 
     /**
      * @return
      */
     @Override
     public String toString() {
-        // TODO implement here
-        return "Rol{" + "nombre=" + nombre + ", funcionarioGeneral=" + funcionarioGeneral + '}';
+        return "Rol{" + "id_rol=" + id_rol + ", nombre=" + nombre + ", usuario=" + usuario + '}';
     }
 
 }

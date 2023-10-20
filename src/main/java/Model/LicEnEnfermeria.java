@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -9,27 +10,27 @@ import javax.persistence.OneToMany;
 public class LicEnEnfermeria extends FuncSalud {
     
     @OneToMany
-    ArrayList<Triage> triage;
+    List<Triage> triage;
     
     public LicEnEnfermeria() {
-        triage = new ArrayList<Triage>();
+        triage = new ArrayList<>();
     }
 
-    public LicEnEnfermeria(ArrayList<Triage> triage, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public LicEnEnfermeria(List<Triage> triage, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.triage = triage;
     }
 
-    
-
-    public ArrayList<Triage> getTriage() {
+    public List<Triage> getTriage() {
         return triage;
+    }
+
+    public void setTriage(List<Triage> triage) {
+        this.triage = triage;
     }
 
     public void setTriage(ArrayList<Triage> triage) {
         this.triage = triage;
     }
-    
-    
-    
+   
 }

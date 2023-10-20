@@ -68,6 +68,7 @@ public class TriageCambiado extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Triage cambiados");
 
@@ -145,11 +146,11 @@ public class TriageCambiado extends javax.swing.JFrame {
         
        List <FuncSalud> listaFuncionariosSalud= control.traerFuncionariosSalud();
        
-       if (listaFuncionariosSalud != null){
-           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
-           tabla.addRow(objeto);
-           }
-       }
+//       if (listaFuncionariosSalud != null){
+//           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
+//           tabla.addRow(objeto);
+//           }
+//       }
        
         
 

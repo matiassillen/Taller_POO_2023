@@ -1,31 +1,30 @@
 package Model;
 
-
 import static Model.Paciente_.antecedenteClinico;
 import static Model.Paciente_.resultadoEstudio;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Recepcionista extends FuncionarioGeneral {
     
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
-    @ManyToMany
+    @OneToMany
     private List <Paciente> paciente;
 
     public Recepcionista() {
         this.paciente = new ArrayList<>();
     }
 
-    public Recepcionista(List<Paciente> paciente, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public Recepcionista(List<Paciente> paciente, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.paciente = paciente;
     }
-    
+
     public List<Paciente> getPaciente() {
         return paciente;
     }

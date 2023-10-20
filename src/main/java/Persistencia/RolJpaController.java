@@ -4,13 +4,13 @@
  */
 package Persistencia;
 
+import Model.Rol;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Model.FuncionarioGeneral;
-import Model.Rol;
+import Model.Usuario;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class RolJpaController implements Serializable {
         this.emf = emf;
     }
     
-    public RolJpaController() {
+     public RolJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
@@ -39,28 +39,23 @@ public class RolJpaController implements Serializable {
     }
 
     public void create(Rol rol) {
-        if (rol.getFuncionarioGeneral() == null) {
-            rol.setFuncionarioGeneral(new ArrayList<FuncionarioGeneral>());
+        if (rol.getUsuario() == null) {
+            rol.setUsuario(new ArrayList<Usuario>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<FuncionarioGeneral> attachedFuncionarioGeneral = new ArrayList<FuncionarioGeneral>();
-            for (FuncionarioGeneral funcionarioGeneralFuncionarioGeneralToAttach : rol.getFuncionarioGeneral()) {
-                funcionarioGeneralFuncionarioGeneralToAttach = em.getReference(funcionarioGeneralFuncionarioGeneralToAttach.getClass(), funcionarioGeneralFuncionarioGeneralToAttach.getId());
-                attachedFuncionarioGeneral.add(funcionarioGeneralFuncionarioGeneralToAttach);
+            List<Usuario> attachedUsuario = new ArrayList<Usuario>();
+            for (Usuario usuarioUsuarioToAttach : rol.getUsuario()) {
+                usuarioUsuarioToAttach = em.getReference(usuarioUsuarioToAttach.getClass(), usuarioUsuarioToAttach.getId());
+                attachedUsuario.add(usuarioUsuarioToAttach);
             }
-            rol.setFuncionarioGeneral(attachedFuncionarioGeneral);
+            rol.setUsuario(attachedUsuario);
             em.persist(rol);
-            for (FuncionarioGeneral funcionarioGeneralFuncionarioGeneral : rol.getFuncionarioGeneral()) {
-                Rol oldRolOfFuncionarioGeneralFuncionarioGeneral = funcionarioGeneralFuncionarioGeneral.getRol();
-                funcionarioGeneralFuncionarioGeneral.setRol(rol);
-                funcionarioGeneralFuncionarioGeneral = em.merge(funcionarioGeneralFuncionarioGeneral);
-                if (oldRolOfFuncionarioGeneralFuncionarioGeneral != null) {
-                    oldRolOfFuncionarioGeneralFuncionarioGeneral.getFuncionarioGeneral().remove(funcionarioGeneralFuncionarioGeneral);
-                    oldRolOfFuncionarioGeneralFuncionarioGeneral = em.merge(oldRolOfFuncionarioGeneralFuncionarioGeneral);
-                }
+            for (Usuario usuarioUsuario : rol.getUsuario()) {
+                usuarioUsuario.getRol().add(rol);
+                usuarioUsuario = em.merge(usuarioUsuario);
             }
             em.getTransaction().commit();
         } finally {
@@ -76,31 +71,26 @@ public class RolJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Rol persistentRol = em.find(Rol.class, rol.getId_rol());
-            List<FuncionarioGeneral> funcionarioGeneralOld = persistentRol.getFuncionarioGeneral();
-            List<FuncionarioGeneral> funcionarioGeneralNew = rol.getFuncionarioGeneral();
-            List<FuncionarioGeneral> attachedFuncionarioGeneralNew = new ArrayList<FuncionarioGeneral>();
-            for (FuncionarioGeneral funcionarioGeneralNewFuncionarioGeneralToAttach : funcionarioGeneralNew) {
-                funcionarioGeneralNewFuncionarioGeneralToAttach = em.getReference(funcionarioGeneralNewFuncionarioGeneralToAttach.getClass(), funcionarioGeneralNewFuncionarioGeneralToAttach.getId());
-                attachedFuncionarioGeneralNew.add(funcionarioGeneralNewFuncionarioGeneralToAttach);
+            List<Usuario> usuarioOld = persistentRol.getUsuario();
+            List<Usuario> usuarioNew = rol.getUsuario();
+            List<Usuario> attachedUsuarioNew = new ArrayList<Usuario>();
+            for (Usuario usuarioNewUsuarioToAttach : usuarioNew) {
+                usuarioNewUsuarioToAttach = em.getReference(usuarioNewUsuarioToAttach.getClass(), usuarioNewUsuarioToAttach.getId());
+                attachedUsuarioNew.add(usuarioNewUsuarioToAttach);
             }
-            funcionarioGeneralNew = attachedFuncionarioGeneralNew;
-            rol.setFuncionarioGeneral(funcionarioGeneralNew);
+            usuarioNew = attachedUsuarioNew;
+            rol.setUsuario(usuarioNew);
             rol = em.merge(rol);
-            for (FuncionarioGeneral funcionarioGeneralOldFuncionarioGeneral : funcionarioGeneralOld) {
-                if (!funcionarioGeneralNew.contains(funcionarioGeneralOldFuncionarioGeneral)) {
-                    funcionarioGeneralOldFuncionarioGeneral.setRol(null);
-                    funcionarioGeneralOldFuncionarioGeneral = em.merge(funcionarioGeneralOldFuncionarioGeneral);
+            for (Usuario usuarioOldUsuario : usuarioOld) {
+                if (!usuarioNew.contains(usuarioOldUsuario)) {
+                    usuarioOldUsuario.getRol().remove(rol);
+                    usuarioOldUsuario = em.merge(usuarioOldUsuario);
                 }
             }
-            for (FuncionarioGeneral funcionarioGeneralNewFuncionarioGeneral : funcionarioGeneralNew) {
-                if (!funcionarioGeneralOld.contains(funcionarioGeneralNewFuncionarioGeneral)) {
-                    Rol oldRolOfFuncionarioGeneralNewFuncionarioGeneral = funcionarioGeneralNewFuncionarioGeneral.getRol();
-                    funcionarioGeneralNewFuncionarioGeneral.setRol(rol);
-                    funcionarioGeneralNewFuncionarioGeneral = em.merge(funcionarioGeneralNewFuncionarioGeneral);
-                    if (oldRolOfFuncionarioGeneralNewFuncionarioGeneral != null && !oldRolOfFuncionarioGeneralNewFuncionarioGeneral.equals(rol)) {
-                        oldRolOfFuncionarioGeneralNewFuncionarioGeneral.getFuncionarioGeneral().remove(funcionarioGeneralNewFuncionarioGeneral);
-                        oldRolOfFuncionarioGeneralNewFuncionarioGeneral = em.merge(oldRolOfFuncionarioGeneralNewFuncionarioGeneral);
-                    }
+            for (Usuario usuarioNewUsuario : usuarioNew) {
+                if (!usuarioOld.contains(usuarioNewUsuario)) {
+                    usuarioNewUsuario.getRol().add(rol);
+                    usuarioNewUsuario = em.merge(usuarioNewUsuario);
                 }
             }
             em.getTransaction().commit();
@@ -132,10 +122,10 @@ public class RolJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The rol with id " + id + " no longer exists.", enfe);
             }
-            List<FuncionarioGeneral> funcionarioGeneral = rol.getFuncionarioGeneral();
-            for (FuncionarioGeneral funcionarioGeneralFuncionarioGeneral : funcionarioGeneral) {
-                funcionarioGeneralFuncionarioGeneral.setRol(null);
-                funcionarioGeneralFuncionarioGeneral = em.merge(funcionarioGeneralFuncionarioGeneral);
+            List<Usuario> usuario = rol.getUsuario();
+            for (Usuario usuarioUsuario : usuario) {
+                usuarioUsuario.getRol().remove(rol);
+                usuarioUsuario = em.merge(usuarioUsuario);
             }
             em.remove(rol);
             em.getTransaction().commit();

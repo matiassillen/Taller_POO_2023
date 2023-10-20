@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Model.Medico;
 import Model.Triage;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
@@ -43,21 +42,12 @@ public class ConsultaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Medico medico = consulta.getMedico();
-            if (medico != null) {
-                medico = em.getReference(medico.getClass(), medico.getId());
-                consulta.setMedico(medico);
-            }
             Triage triage = consulta.getTriage();
             if (triage != null) {
                 triage = em.getReference(triage.getClass(), triage.getNumTriage());
                 consulta.setTriage(triage);
             }
             em.persist(consulta);
-            if (medico != null) {
-                medico.getConsulta().add(consulta);
-                medico = em.merge(medico);
-            }
             if (triage != null) {
                 Consulta oldConsultaOfTriage = triage.getConsulta();
                 if (oldConsultaOfTriage != null) {
@@ -81,27 +71,13 @@ public class ConsultaJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Consulta persistentConsulta = em.find(Consulta.class, consulta.getNumConsulta());
-            Medico medicoOld = persistentConsulta.getMedico();
-            Medico medicoNew = consulta.getMedico();
             Triage triageOld = persistentConsulta.getTriage();
             Triage triageNew = consulta.getTriage();
-            if (medicoNew != null) {
-                medicoNew = em.getReference(medicoNew.getClass(), medicoNew.getId());
-                consulta.setMedico(medicoNew);
-            }
             if (triageNew != null) {
                 triageNew = em.getReference(triageNew.getClass(), triageNew.getNumTriage());
                 consulta.setTriage(triageNew);
             }
             consulta = em.merge(consulta);
-            if (medicoOld != null && !medicoOld.equals(medicoNew)) {
-                medicoOld.getConsulta().remove(consulta);
-                medicoOld = em.merge(medicoOld);
-            }
-            if (medicoNew != null && !medicoNew.equals(medicoOld)) {
-                medicoNew.getConsulta().add(consulta);
-                medicoNew = em.merge(medicoNew);
-            }
             if (triageOld != null && !triageOld.equals(triageNew)) {
                 triageOld.setConsulta(null);
                 triageOld = em.merge(triageOld);
@@ -143,11 +119,6 @@ public class ConsultaJpaController implements Serializable {
                 consulta.getNumConsulta();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The consulta with id " + id + " no longer exists.", enfe);
-            }
-            Medico medico = consulta.getMedico();
-            if (medico != null) {
-                medico.getConsulta().remove(consulta);
-                medico = em.merge(medico);
             }
             Triage triage = consulta.getTriage();
             if (triage != null) {

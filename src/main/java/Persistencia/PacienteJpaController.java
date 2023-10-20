@@ -60,7 +60,7 @@ public class PacienteJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = paciente.getIdP();
+                long id = paciente.getId();
                 if (findPaciente(id) == null) {
                     throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.");
                 }
@@ -73,7 +73,7 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,7 +81,7 @@ public class PacienteJpaController implements Serializable {
             Paciente paciente;
             try {
                 paciente = em.getReference(Paciente.class, id);
-                paciente.getIdP();
+                paciente.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.", enfe);
             }
@@ -118,7 +118,7 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
-    public Paciente findPaciente(int id) {
+    public Paciente findPaciente(long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Paciente.class, id);

@@ -4,17 +4,18 @@
  */
 package Persistencia;
 
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Model.Paciente;
 import Model.ResultadoEstudio;
 import Persistencia.exceptions.NonexistentEntityException;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
@@ -41,7 +42,16 @@ public class ResultadoEstudioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Paciente paciente = resultadoEstudio.getPaciente();
+            if (paciente != null) {
+                paciente = em.getReference(paciente.getClass(), paciente.getId());
+                resultadoEstudio.setPaciente(paciente);
+            }
             em.persist(resultadoEstudio);
+            if (paciente != null) {
+                paciente.getResultadoEstudio().add(resultadoEstudio);
+                paciente = em.merge(paciente);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +65,22 @@ public class ResultadoEstudioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            ResultadoEstudio persistentResultadoEstudio = em.find(ResultadoEstudio.class, resultadoEstudio.getNumResEst());
+            Paciente pacienteOld = persistentResultadoEstudio.getPaciente();
+            Paciente pacienteNew = resultadoEstudio.getPaciente();
+            if (pacienteNew != null) {
+                pacienteNew = em.getReference(pacienteNew.getClass(), pacienteNew.getId());
+                resultadoEstudio.setPaciente(pacienteNew);
+            }
             resultadoEstudio = em.merge(resultadoEstudio);
+            if (pacienteOld != null && !pacienteOld.equals(pacienteNew)) {
+                pacienteOld.getResultadoEstudio().remove(resultadoEstudio);
+                pacienteOld = em.merge(pacienteOld);
+            }
+            if (pacienteNew != null && !pacienteNew.equals(pacienteOld)) {
+                pacienteNew.getResultadoEstudio().add(resultadoEstudio);
+                pacienteNew = em.merge(pacienteNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -84,6 +109,11 @@ public class ResultadoEstudioJpaController implements Serializable {
                 resultadoEstudio.getNumResEst();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The resultadoEstudio with id " + id + " no longer exists.", enfe);
+            }
+            Paciente paciente = resultadoEstudio.getPaciente();
+            if (paciente != null) {
+                paciente.getResultadoEstudio().remove(resultadoEstudio);
+                paciente = em.merge(paciente);
             }
             em.remove(resultadoEstudio);
             em.getTransaction().commit();

@@ -4,7 +4,7 @@
  */
 package Persistencia;
 
-import Model.Box;
+import Model.FuncionarioGeneral;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -20,13 +20,13 @@ import javax.persistence.criteria.Root;
  *
  * @author Matías Sillen Ríos
  */
-public class BoxJpaController implements Serializable {
+public class FuncionarioGeneralJpaController implements Serializable {
 
-    public BoxJpaController(EntityManagerFactory emf) {
+    public FuncionarioGeneralJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
-    public BoxJpaController() {
+    public FuncionarioGeneralJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
@@ -36,12 +36,12 @@ public class BoxJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Box box) {
+    public void create(FuncionarioGeneral funcionarioGeneral) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(box);
+            em.persist(funcionarioGeneral);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,19 +50,19 @@ public class BoxJpaController implements Serializable {
         }
     }
 
-    public void edit(Box box) throws NonexistentEntityException, Exception {
+    public void edit(FuncionarioGeneral funcionarioGeneral) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            box = em.merge(box);
+            funcionarioGeneral = em.merge(funcionarioGeneral);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = box.getNumer();
-                if (findBox(id) == null) {
-                    throw new NonexistentEntityException("The box with id " + id + " no longer exists.");
+                long id = funcionarioGeneral.getId();
+                if (findFuncionarioGeneral(id) == null) {
+                    throw new NonexistentEntityException("The funcionarioGeneral with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,19 +73,19 @@ public class BoxJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Box box;
+            FuncionarioGeneral funcionarioGeneral;
             try {
-                box = em.getReference(Box.class, id);
-                box.getNumer();
+                funcionarioGeneral = em.getReference(FuncionarioGeneral.class, id);
+                funcionarioGeneral.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The box with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The funcionarioGeneral with id " + id + " no longer exists.", enfe);
             }
-            em.remove(box);
+            em.remove(funcionarioGeneral);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -94,19 +94,19 @@ public class BoxJpaController implements Serializable {
         }
     }
 
-    public List<Box> findBoxEntities() {
-        return findBoxEntities(true, -1, -1);
+    public List<FuncionarioGeneral> findFuncionarioGeneralEntities() {
+        return findFuncionarioGeneralEntities(true, -1, -1);
     }
 
-    public List<Box> findBoxEntities(int maxResults, int firstResult) {
-        return findBoxEntities(false, maxResults, firstResult);
+    public List<FuncionarioGeneral> findFuncionarioGeneralEntities(int maxResults, int firstResult) {
+        return findFuncionarioGeneralEntities(false, maxResults, firstResult);
     }
 
-    private List<Box> findBoxEntities(boolean all, int maxResults, int firstResult) {
+    private List<FuncionarioGeneral> findFuncionarioGeneralEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Box.class));
+            cq.select(cq.from(FuncionarioGeneral.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -118,20 +118,20 @@ public class BoxJpaController implements Serializable {
         }
     }
 
-    public Box findBox(Integer id) {
+    public FuncionarioGeneral findFuncionarioGeneral(long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Box.class, id);
+            return em.find(FuncionarioGeneral.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getBoxCount() {
+    public int getFuncionarioGeneralCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Box> rt = cq.from(Box.class);
+            Root<FuncionarioGeneral> rt = cq.from(FuncionarioGeneral.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

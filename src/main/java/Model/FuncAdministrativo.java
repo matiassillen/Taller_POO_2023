@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.List;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
@@ -13,11 +14,10 @@ public class FuncAdministrativo extends FuncionarioGeneral {
         sector = null;
     }
 
-    public FuncAdministrativo(Sector sector, long id, String nomUsuario, String passw, Rol rol, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
-        super(id, nomUsuario, passw, rol, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
+    public FuncAdministrativo(Sector sector, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+        super(usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.sector = sector;
     }
-
 
     public Sector getSector() {
         return sector;

@@ -5,16 +5,17 @@
 package Persistencia;
 
 import Model.AntecedenteClinico;
-import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Model.Paciente;
+import Persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
@@ -41,7 +42,16 @@ public class AntecedenteClinicoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Paciente paciente = antecedenteClinico.getPaciente();
+            if (paciente != null) {
+                paciente = em.getReference(paciente.getClass(), paciente.getId());
+                antecedenteClinico.setPaciente(paciente);
+            }
             em.persist(antecedenteClinico);
+            if (paciente != null) {
+                paciente.getAntecedenteClinico().add(antecedenteClinico);
+                paciente = em.merge(paciente);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +65,22 @@ public class AntecedenteClinicoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            AntecedenteClinico persistentAntecedenteClinico = em.find(AntecedenteClinico.class, antecedenteClinico.getNumAntecedente());
+            Paciente pacienteOld = persistentAntecedenteClinico.getPaciente();
+            Paciente pacienteNew = antecedenteClinico.getPaciente();
+            if (pacienteNew != null) {
+                pacienteNew = em.getReference(pacienteNew.getClass(), pacienteNew.getId());
+                antecedenteClinico.setPaciente(pacienteNew);
+            }
             antecedenteClinico = em.merge(antecedenteClinico);
+            if (pacienteOld != null && !pacienteOld.equals(pacienteNew)) {
+                pacienteOld.getAntecedenteClinico().remove(antecedenteClinico);
+                pacienteOld = em.merge(pacienteOld);
+            }
+            if (pacienteNew != null && !pacienteNew.equals(pacienteOld)) {
+                pacienteNew.getAntecedenteClinico().add(antecedenteClinico);
+                pacienteNew = em.merge(pacienteNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -84,6 +109,11 @@ public class AntecedenteClinicoJpaController implements Serializable {
                 antecedenteClinico.getNumAntecedente();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The antecedenteClinico with id " + id + " no longer exists.", enfe);
+            }
+            Paciente paciente = antecedenteClinico.getPaciente();
+            if (paciente != null) {
+                paciente.getAntecedenteClinico().remove(antecedenteClinico);
+                paciente = em.merge(paciente);
             }
             em.remove(antecedenteClinico);
             em.getTransaction().commit();

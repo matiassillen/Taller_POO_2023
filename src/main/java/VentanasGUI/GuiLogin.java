@@ -148,28 +148,29 @@ public class GuiLogin extends javax.swing.JFrame {
                     }
                 }
             }
+        }
             
-            switch (rolEncontrado) {
-                case "Gestor":
-                    
-                    break;
-                
-                case "Recepcionista":
-                    break;
-                
-                case "Medico":
-                    break;
-                
-                case "Licenciando en Enfermeria":
-                    break;
-                
-                case "Administrador de Sistema":
-                    break;
-                
-                default:
-                    break;
-                }
-            }
+//            switch (rolEncontrado) {
+//                case "Gestor":
+//                    
+//                    break;
+//                
+//                case "Recepcionista":
+//                    break;
+//                
+//                case "Medico":
+//                    break;
+//                
+//                case "Licenciando en Enfermeria":
+//                    break;
+//                
+//                case "Administrador de Sistema":
+//                    break;
+//                
+//                default:
+//                    break;
+//                }
+//            }
             
          
         

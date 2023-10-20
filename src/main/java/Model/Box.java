@@ -1,9 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -11,52 +13,64 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
-public enum Box {
-    
-    BOX1(1, false),
-    BOX2(2, false),
-    BOX3(3, false),
-    BOX4(4, false),
-    BOX5(5, false),
-    BOX6(6, false),
-    BOX7(7, false),
-    BOX8(8, false);
-    
+public class Box implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private final Integer numer;
+    private  long id;
     private Boolean estado;
-    @OneToOne
+    @ManyToOne
     private Medico medico;
-
+     @OneToOne
+    private Paciente pacienteActual;
     
+    public Box() {
+    }
+
     /**
      * Default constructor
+     * @param id
+     * @param estado
+     * @param medico
+     * @param pacienteActual
      */
-    
-    private Box(Integer numer, Boolean estado) {    
-        this.numer = numer;
+    public Box(long id, Boolean estado, Medico medico, Paciente pacienteActual) {
+        this.id = id;
         this.estado = estado;
+        this.medico = medico;
+        this.pacienteActual = pacienteActual;
     }
 
-    /**
-     * @return retorna un integer que es el numero especifico de cada box  
-     */
-    public Integer getNumer() {
-        return numer;
+    public long getId() {
+        return id;
     }
-  
-    /**
-     * @return retorna un booleano del estado del box, true = ocupado y false = libre
-     */
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public Boolean getEstado() {
         return estado;
     }
-    /**
-     * Cambia el estado del box
-     */
-    public void setEstado() {
-        this.estado = !this.estado;
-                
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Paciente getPacienteActual() {
+        return pacienteActual;
+    }
+
+    public void setPacienteActual(Paciente pacienteActual) {
+        this.pacienteActual = pacienteActual;
+    }
+
 }

@@ -38,6 +38,6 @@ public class Estadistica implements Serializable{
     //        }
     //    }
         return sum;
-    // }
+    }
 
 }
