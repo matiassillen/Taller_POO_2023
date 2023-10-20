@@ -3,6 +3,14 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.util.List;
+<<<<<<< HEAD
+=======
+
+import java.lang.Object;
+import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -11,10 +19,18 @@ public class Controladora implements Serializable{
         controlPersis = new ControladoraPersistencia();
     }
     
+<<<<<<< HEAD
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
 //    }
 
+=======
+
+//    public List<Rol> traerRoles() {
+//        return controlPersis.traerRoles();
+//    }
+//
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //    public Rol traerRol(String rolRecibido) {
 //        List<Rol> listaRoles = controlPersis.traerRoles();
 //        
@@ -25,6 +41,7 @@ public class Controladora implements Serializable{
 //        }
 //        return null;
 //    }
+<<<<<<< HEAD
 
 //    public int buscarUltimaIdFuncionariosEnGeneral() {
 //        List<FuncionarioGeneral> listaFuncionariosEnGeneral = controlPersis.traerFuncionariosEnGeneral();
@@ -34,6 +51,8 @@ public class Controladora implements Serializable{
 //        
 //    }
     
+=======
+//
 //    public int buscarUltimaIdGestores() {
 //        List<GestoresHospital> listaGestores = this.traerGestores();
 //        
@@ -106,19 +125,7 @@ public class Controladora implements Serializable{
 //
 //        return listaFuncionariosEnGeneral;
 //    }
-//    
-//   public List<FuncSalud> traerFuncionariosSalud() {
-//        List<FuncSalud> listaFuncionariosSalud = new ArrayList<FuncSalud>();
-//        List<Medico> listaMedicos = this.traerMedicos();
-//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
-//        
-//        
-//        listaFuncionariosSalud.addAll(listaMedicos);
-//        listaFuncionariosSalud.addAll(listaLicenciados);
 //
-//        return listaFuncionariosSalud;
-//    }
-
 //    public GestoresHospital traerGestor(long idUsuario) {
 //        return controlPersis.traerGestor(idUsuario);
 //    }
@@ -138,22 +145,194 @@ public class Controladora implements Serializable{
 //    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
 //        return controlPersis.traerAdministradorDeSistemas(idUsuario);
 //    }
+
+//    public List<Rol> traerRoles() {
+//        return controlPersis.traerRoles();
+//    }
+//
+//    public Rol traerRol(String rolRecibido) {
+//        List<Rol> listaRoles = controlPersis.traerRoles();
+//        
+//        for (Rol rol : listaRoles) {
+//            if (rol.getNombre().equals(rolRecibido)) {
+//                return rol;
+//            }
+//        }
+//        return null;
+//    }
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public int buscarUltimaIdGestores() {
+//        List<GestoresHospital> listaGestores = this.traerGestores();
+//        
+//        GestoresHospital gestor = listaGestores.get(listaGestores.size()-1);
+//        return (int) gestor.getId();
+//        
+//    }
+<<<<<<< HEAD
+//
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public List<GestoresHospital> traerGestores() {
+//        return controlPersis.traerGestores(); 
+//    }
+//
+//    public int buscarUltimaIdRecepcionistas() {
+//        List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
+//        
+//        Recepcionista recepcionista = listaRecepcionistas.get(listaRecepcionistas.size()-1);
+//        return (int) recepcionista.getId();
+//    }
+//
+//    public List<Recepcionista> traerRecepcionistas() {
+//        return controlPersis.traerRecepcionistas();
+//    }
+<<<<<<< HEAD
+//
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public int buscarUltimaIdMedicos() {
+//        List<Medico> listaMedicos = this.traerMedicos();
+//        
+//        Medico medico = listaMedicos.get(listaMedicos.size()-1);
+//        return (int) medico.getId();
+//    }
+<<<<<<< HEAD
+//
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public List<Medico> traerMedicos() {
+//        return controlPersis.traerMedicos();
+//    }
+//
+//    public int buscarUltimaIdlicenciadosEnEnfermeria() {
+//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
+//        
+//        LicEnEnfermeria licEnEnfermeria = listaLicenciados.get(listaLicenciados.size()-1);
+//        return (int) licEnEnfermeria.getId();
+//    }
+//
+//    public List<LicEnEnfermeria> traerLicenciadosEnEnfermeria() {
+//        return controlPersis.traerLicenciadosEnEnfermeria();
+//    }
+<<<<<<< HEAD
+//
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public int buscarUltimaIdAdministradoresDeSistema() {
+//        List<AdministradorDeSistema> listaAdministradores = this.traerAdministradoresDeSistema();
+//        
+//        AdministradorDeSistema administrador = listaAdministradores.get(listaAdministradores.size()-1);
+//        return (int) administrador.getId();
+//    }
+<<<<<<< HEAD
+//
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public List<AdministradorDeSistema> traerAdministradoresDeSistema() {
+//        return controlPersis.traerAdministradoresDeSistema();
+//    }
+//
+//    public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
+//        List<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
+//        List<GestoresHospital> listaGestores = this.traerGestores();
+//        List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
+//        List<Medico> listaMedicos = this.traerMedicos();
+//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
+//        List<AdministradorDeSistema> listaAdministradores = this.traerAdministradoresDeSistema();
+//        
+//        listaFuncionariosEnGeneral.addAll(listaGestores);
+//        listaFuncionariosEnGeneral.addAll(listaRecepcionistas);
+//        listaFuncionariosEnGeneral.addAll(listaMedicos);
+//        listaFuncionariosEnGeneral.addAll(listaLicenciados);
+//        listaFuncionariosEnGeneral.addAll(listaAdministradores);
+//
+//        return listaFuncionariosEnGeneral;
+//    }
+//    
+<<<<<<< HEAD
+//   public List<FuncSalud> traerFuncionariosSalud() {
+=======
+//    public List<FuncSalud> traerFuncionariosSalud() {
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//        List<FuncSalud> listaFuncionariosSalud = new ArrayList<FuncSalud>();
+//        List<Medico> listaMedicos = this.traerMedicos();
+//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
+//        
+//        
+//        listaFuncionariosSalud.addAll(listaMedicos);
+//        listaFuncionariosSalud.addAll(listaLicenciados);
+//
+//        return listaFuncionariosSalud;
+//    }
+<<<<<<< HEAD
+
+=======
+//
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//    public GestoresHospital traerGestor(long idUsuario) {
+//        return controlPersis.traerGestor(idUsuario);
+//    }
+//
+//    public Recepcionista traerRecepcionista(long idUsuario) {
+//       return controlPersis.traerRecepcionista(idUsuario);
+//    }
+//
+//    public Medico traerMedico(long idUsuario) {
+//        return controlPersis.traerMedico(idUsuario);
+//    }
+//
+//    public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
+//        return controlPersis.traerLicEnEnfermeria(idUsuario);
+//    }
+//
+//    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
+//        return controlPersis.traerAdministradorDeSistemas(idUsuario);
+//    }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     
     /*
     * Validar es el metodo publico que llama a validacion
     * @return retorna un booleano true o false
     */
+<<<<<<< HEAD
 //    public boolean validar(String uss, String pass){
 //        return validacion(uss, pass);
 //    }
+=======
+
+//    public boolean validar(String uss, String pass){
+//        return validacion(uss, pass);
+//    }
+
+//    public ArrayList<Object> validar(String uss, String pass){
+//        return validacion(uss, pass);
+//    }
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
   
     /*
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
     * @return boolean
     */
+<<<<<<< HEAD
 //    private boolean validacion(String us, String pas){
 //        try{
 //            List<FuncionarioGeneral> listaBusqueda = controlPersis.traerFuncionariosEnGeneral();
+=======
+
+//    private boolean validacion(String us, String pas){
+//        try{
+//            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //            for (FuncionarioGeneral comprobar : listaBusqueda) {
 //                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
 //                    return true;
@@ -165,6 +344,7 @@ public class Controladora implements Serializable{
 //        catch (Exception e) {
 //            return false;
 //        }
+<<<<<<< HEAD
 
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
         return controlPersis.traerFuncionariosEnGeneral();
@@ -180,3 +360,58 @@ public class Controladora implements Serializable{
         
     }
     
+=======
+//        
+//    }
+    //--------Metodos Recepcionista--------
+    
+//    public Object[] ValidarPaciente(String dniPaciente) {
+//        List<Paciente> listPaciente = controlPersis.TraerPaciente();
+//        for(Paciente paciente : listPaciente){
+//            String dniPac = Integer.toString(paciente.getDni());
+//            
+//            if(dniPac.equals(dniPaciente)){
+//               
+//                String dni = dniPaciente;
+//                String apellido = paciente.getApellido();
+//                String nombre = paciente.getNombre();
+//                String fechaNacimiento = paciente.getFechaDeNac();
+//                String estadoCivil = paciente.getEstadoCivil();
+//                String correo = paciente.getCorreoE();
+//                String domicilio = paciente.getDomicilio();
+//                String telFijo = paciente.getTelefonoFijo();
+//                String telCel = paciente.getTelefonoCel();
+//                String persoContacto = paciente.getPersoDeContacto();
+//                String telContacto = paciente.getTelDeContacto();
+//                
+//                Object [] pacientee = {dni,apellido,nombre,fechaNacimiento,estadoCivil,correo,domicilio,telFijo,telCel,persoContacto,telContacto};
+//                return pacientee;
+//            }
+//        }           
+//    private ArrayList<Object> validacion(String us, String pas){
+//        ArrayList<Object> parValor = new ArrayList<>();
+//        try{
+//            List<FuncionarioGeneral> listaBusqueda = traerFuncionariosEnGeneral();
+//            for (FuncionarioGeneral comprobar : listaBusqueda) {
+//                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))){
+//                    // para completar
+//                    //return parValor;
+//                }
+//                else {}
+//
+//            }
+//
+//            //return parValor;
+//        }
+//        catch (Exception e) {
+//            //return parValor;
+//        }
+//        
+//        String vacio = "";
+//        Object[] pacientee ={vacio};
+//        return pacientee;
+//    }
+//        
+ 
+}
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6

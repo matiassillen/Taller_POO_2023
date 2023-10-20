@@ -5,6 +5,7 @@
 package Persistencia;
 
 import Model.FuncionarioGeneral;
+<<<<<<< HEAD
 import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -19,18 +20,42 @@ import javax.persistence.criteria.Root;
 /**
  *
  * @author Matías Sillen Ríos
+=======
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Model.Rol;
+import Persistencia.exceptions.NonexistentEntityException;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+/**
+ *
+ * @author trapo
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
  */
 public class FuncionarioGeneralJpaController implements Serializable {
 
     public FuncionarioGeneralJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+<<<<<<< HEAD
+=======
+    private EntityManagerFactory emf = null;
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     
     public FuncionarioGeneralJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
+<<<<<<< HEAD
     
     private EntityManagerFactory emf = null;
+=======
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -41,7 +66,20 @@ public class FuncionarioGeneralJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+<<<<<<< HEAD
             em.persist(funcionarioGeneral);
+=======
+            Rol rol = funcionarioGeneral.getRol();
+            if (rol != null) {
+                rol = em.getReference(rol.getClass(), rol.getId_rol());
+                funcionarioGeneral.setRol(rol);
+            }
+            em.persist(funcionarioGeneral);
+            if (rol != null) {
+                rol.getFuncionarioGeneral().add(funcionarioGeneral);
+                rol = em.merge(rol);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +93,26 @@ public class FuncionarioGeneralJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+<<<<<<< HEAD
             funcionarioGeneral = em.merge(funcionarioGeneral);
+=======
+            FuncionarioGeneral persistentFuncionarioGeneral = em.find(FuncionarioGeneral.class, funcionarioGeneral.getId());
+            Rol rolOld = persistentFuncionarioGeneral.getRol();
+            Rol rolNew = funcionarioGeneral.getRol();
+            if (rolNew != null) {
+                rolNew = em.getReference(rolNew.getClass(), rolNew.getId_rol());
+                funcionarioGeneral.setRol(rolNew);
+            }
+            funcionarioGeneral = em.merge(funcionarioGeneral);
+            if (rolOld != null && !rolOld.equals(rolNew)) {
+                rolOld.getFuncionarioGeneral().remove(funcionarioGeneral);
+                rolOld = em.merge(rolOld);
+            }
+            if (rolNew != null && !rolNew.equals(rolOld)) {
+                rolNew.getFuncionarioGeneral().add(funcionarioGeneral);
+                rolNew = em.merge(rolNew);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -85,6 +142,14 @@ public class FuncionarioGeneralJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The funcionarioGeneral with id " + id + " no longer exists.", enfe);
             }
+<<<<<<< HEAD
+=======
+            Rol rol = funcionarioGeneral.getRol();
+            if (rol != null) {
+                rol.getFuncionarioGeneral().remove(funcionarioGeneral);
+                rol = em.merge(rol);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             em.remove(funcionarioGeneral);
             em.getTransaction().commit();
         } finally {

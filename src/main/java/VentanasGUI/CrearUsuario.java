@@ -161,11 +161,74 @@ public class CrearUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         cbTomarPaciente.setSelected(false);
         cbTriagiador.setSelected(false);
         
+=======
+    private void txtCorreoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoEActionPerformed
+        
+    }//GEN-LAST:event_txtCorreoEActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String FechaNacimiento = txtFechaNacimiento.getText();
+        int documento = Integer.parseInt(txtDni.getText());
+        String domicilio = txtDomicilio.getText();
+        String telFijo = txtTelFijo.getText();
+        String telCel = txtTelCel.getText();
+        String correoE = txtCorreoE.getText();
+        String estadoCivil = (String) cbEstadoCivil.getSelectedItem();
+        String nombreUsuario = txtNombreUsuario.getText();
+        String contrasenia = txtContrasenia.getText();
+        String rol = (String) cbRol.getSelectedItem();
+        
+        
+//        administrador.crearUsuario(nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel, 
+//                correoE, estadoCivil, nombreUsuario, contrasenia, rol);
+//        
+//        mostrarMensaje("Usuario creado correctamente", "Info", "Creación exitosa");
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtFechaNacimiento.setText("");
+        txtDni.setText("");
+        txtDomicilio.setText("");
+        txtTelFijo.setText("");
+        txtTelCel.setText("");
+        txtCorreoE.setText("");
+        cbEstadoCivil.setSelectedItem("");
+        txtNombreUsuario.setText("");
+        txtContrasenia.setText("");
+        cbRol.setSelectedItem("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Administrador pantalla = new Administrador();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+//        List<Rol> listaRoles = control.traerRoles();
+//
+//        if (listaRoles != null) {
+//            for (Rol rol : listaRoles) {
+//                cbRol.addItem(rol.getNombre());
+//            }
+//        }
+//        
+//        jLabelNumMatricula.setVisible(false);
+//        txtNumMatricula.setVisible(false);
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     }//GEN-LAST:event_formWindowOpened
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

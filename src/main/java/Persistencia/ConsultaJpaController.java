@@ -10,6 +10,11 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+<<<<<<< HEAD
+=======
+import Model.Paciente;
+import Model.Medico;
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 import Model.Triage;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
@@ -19,19 +24,18 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * @author trapo
  */
 public class ConsultaJpaController implements Serializable {
 
     public ConsultaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
     
     public ConsultaJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -42,12 +46,36 @@ public class ConsultaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+<<<<<<< HEAD
+=======
+            Paciente paciente = consulta.getPaciente();
+            if (paciente != null) {
+                paciente = em.getReference(paciente.getClass(), paciente.getIdP());
+                consulta.setPaciente(paciente);
+            }
+            Medico medico = consulta.getMedico();
+            if (medico != null) {
+                medico = em.getReference(medico.getClass(), medico.getId());
+                consulta.setMedico(medico);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             Triage triage = consulta.getTriage();
             if (triage != null) {
                 triage = em.getReference(triage.getClass(), triage.getNumTriage());
                 consulta.setTriage(triage);
             }
             em.persist(consulta);
+<<<<<<< HEAD
+=======
+            if (paciente != null) {
+                paciente.getConsulta().add(consulta);
+                paciente = em.merge(paciente);
+            }
+            if (medico != null) {
+                medico.getConsulta().add(consulta);
+                medico = em.merge(medico);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             if (triage != null) {
                 Consulta oldConsultaOfTriage = triage.getConsulta();
                 if (oldConsultaOfTriage != null) {
@@ -71,13 +99,49 @@ public class ConsultaJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Consulta persistentConsulta = em.find(Consulta.class, consulta.getNumConsulta());
+<<<<<<< HEAD
             Triage triageOld = persistentConsulta.getTriage();
             Triage triageNew = consulta.getTriage();
+=======
+            Paciente pacienteOld = persistentConsulta.getPaciente();
+            Paciente pacienteNew = consulta.getPaciente();
+            Medico medicoOld = persistentConsulta.getMedico();
+            Medico medicoNew = consulta.getMedico();
+            Triage triageOld = persistentConsulta.getTriage();
+            Triage triageNew = consulta.getTriage();
+            if (pacienteNew != null) {
+                pacienteNew = em.getReference(pacienteNew.getClass(), pacienteNew.getIdP());
+                consulta.setPaciente(pacienteNew);
+            }
+            if (medicoNew != null) {
+                medicoNew = em.getReference(medicoNew.getClass(), medicoNew.getId());
+                consulta.setMedico(medicoNew);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             if (triageNew != null) {
                 triageNew = em.getReference(triageNew.getClass(), triageNew.getNumTriage());
                 consulta.setTriage(triageNew);
             }
             consulta = em.merge(consulta);
+<<<<<<< HEAD
+=======
+            if (pacienteOld != null && !pacienteOld.equals(pacienteNew)) {
+                pacienteOld.getConsulta().remove(consulta);
+                pacienteOld = em.merge(pacienteOld);
+            }
+            if (pacienteNew != null && !pacienteNew.equals(pacienteOld)) {
+                pacienteNew.getConsulta().add(consulta);
+                pacienteNew = em.merge(pacienteNew);
+            }
+            if (medicoOld != null && !medicoOld.equals(medicoNew)) {
+                medicoOld.getConsulta().remove(consulta);
+                medicoOld = em.merge(medicoOld);
+            }
+            if (medicoNew != null && !medicoNew.equals(medicoOld)) {
+                medicoNew.getConsulta().add(consulta);
+                medicoNew = em.merge(medicoNew);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             if (triageOld != null && !triageOld.equals(triageNew)) {
                 triageOld.setConsulta(null);
                 triageOld = em.merge(triageOld);
@@ -120,6 +184,19 @@ public class ConsultaJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The consulta with id " + id + " no longer exists.", enfe);
             }
+<<<<<<< HEAD
+=======
+            Paciente paciente = consulta.getPaciente();
+            if (paciente != null) {
+                paciente.getConsulta().remove(consulta);
+                paciente = em.merge(paciente);
+            }
+            Medico medico = consulta.getMedico();
+            if (medico != null) {
+                medico.getConsulta().remove(consulta);
+                medico = em.merge(medico);
+            }
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
             Triage triage = consulta.getTriage();
             if (triage != null) {
                 triage.setConsulta(null);

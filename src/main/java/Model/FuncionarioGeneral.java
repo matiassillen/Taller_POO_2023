@@ -1,6 +1,9 @@
 package Model;
 
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 @Entity
 public class FuncionarioGeneral extends Persona {
     

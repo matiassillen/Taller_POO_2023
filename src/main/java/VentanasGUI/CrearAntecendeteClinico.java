@@ -6,10 +6,10 @@ import Model.AntecedenteClinico;
 
 public class CrearAntecendeteClinico extends javax.swing.JFrame {
 
-    RegistrarPaciente regisPaciente;
+    BuscarPaciente regisPaciente;
     public CrearAntecendeteClinico() {
         initComponents();
-        regisPaciente = new RegistrarPaciente();
+        regisPaciente = new BuscarPaciente();
     }
 
     /**

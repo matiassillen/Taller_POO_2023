@@ -1,11 +1,14 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Consulta implements Serializable {
@@ -14,27 +17,28 @@ public class Consulta implements Serializable {
     private int numConsulta;
     @OneToOne
     private Paciente paciente;
-    private String fecha;
-    private int hora;
+    private Date fecha;
+    private Long hora;
     private String diagnConsulta;
     private String lugar;
     private String motivo;
+    @Transient
     private Box box;
-    @OneToOne
+    @ManyToOne
     private Medico medico;
     @OneToOne
     private Triage triage;
     
     public Consulta(){}
 
-    public Consulta(int numConsulta, String fecha, int hora, String diagnConsulta, String lugar, String motivo, Paciente paciente, Box box, Medico medico, Triage triage) {
+    public Consulta(int numConsulta, Paciente paciente, Date fecha, Long hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
         this.numConsulta = numConsulta;
+        this.paciente = paciente;
         this.fecha = fecha;
         this.hora = hora;
         this.diagnConsulta = diagnConsulta;
         this.lugar = lugar;
         this.motivo = motivo;
-        this.paciente = paciente;
         this.box = box;
         this.medico = medico;
         this.triage = triage;
@@ -47,28 +51,28 @@ public class Consulta implements Serializable {
     public void setNumConsulta(int numConsulta) {
         this.numConsulta = numConsulta;
     }
-    
+
     public Paciente getPaciente() {
         return paciente;
     }
-    
+
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public int getHora() {
+    public Long getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
+    public void setHora(Long hora) {
         this.hora = hora;
     }
 
@@ -119,6 +123,8 @@ public class Consulta implements Serializable {
     public void setTriage(Triage triage) {
         this.triage = triage;
     }
+
+    
 
     @Override
     public String toString() {

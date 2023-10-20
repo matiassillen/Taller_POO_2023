@@ -24,13 +24,24 @@ import java.util.logging.Logger;
 public class ControladoraPersistencia implements Serializable{
     
     PacienteJpaController pacienteJpa = new PacienteJpaController();
+<<<<<<< HEAD
     FuncionarioGeneralJpaController funcionarioGeneralJpa = new FuncionarioGeneralJpaController();
     UsuarioJpaController usuJpa = new UsuarioJpaController();
     RolJpaController rolJpa = new RolJpaController();
     MedicoJpaController medicoJpa = new MedicoJpaController();
     TriageJpaController triageJpa = new TriageJpaController();
+=======
+    //RolJpaController rolJpa = new RolJpaController();
+    //GestoresHospitalJpaController gestorJpa = new GestoresHospitalJpaController();
+    //RecepcionistaJpaController recepcionistaJpa = new RecepcionistaJpaController();
+    //MedicoJpaController medicoJpa = new MedicoJpaController();
+    //LicEnEnfermeriaJpaController licEnEnfermeriaJpa = new LicEnEnfermeriaJpaController();
+    //AdministradorDeSistemaJpaController administradorJpa = new AdministradorDeSistemaJpaController();
+    //EspecialidadJpaController especialidadJpa = new EspecialidadJpaController();
+    //TriageJpaController triageJpa = new TriageJpaController();
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     ConsultaJpaController consultaJpa = new ConsultaJpaController();
-    SectorJpaController sectorJpa = new SectorJpaController();
+    //SectorJpaController sectorJpa = new SectorJpaController();
     
     //---------Metodos para Paciente---------
 
@@ -39,14 +50,16 @@ public class ControladoraPersistencia implements Serializable{
         
     }
 
-    public List<Paciente> traerPacientes() {
-        return pacienteJpa.findPacienteEntities();
+    public List<Paciente> TraerPaciente() {
+        return pacienteJpa.findPacienteEntities();    
     }
     
-    public Paciente traerPaciente(int id_Paciente) {
+    public Paciente TraerPaciente(int dni) {
         
-        return pacienteJpa.findPaciente(id_Paciente);
+        return pacienteJpa.findPaciente(dni);
+        
     }
+
     
     //---------Metodos para Consulta---------
     
@@ -54,6 +67,8 @@ public class ControladoraPersistencia implements Serializable{
 //        consultaJpa.create(consulta);
 //        
 //    }
+    
+    
     
     //----------CRUD de Usuario----------
     
@@ -78,6 +93,7 @@ public class ControladoraPersistencia implements Serializable{
 //    public void crearAdministrador(AdministradorDeSistema administrador) {
 //        administradorJpa.create(administrador);
 //    }    
+<<<<<<< HEAD
     
     //Metodo para borrar un usuario
     
@@ -88,6 +104,10 @@ public class ControladoraPersistencia implements Serializable{
 //            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+=======
+//    
+//    //Metodos para borrar un usuarios
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //    
 //    public void borrarGestor(long id) {
 //        try {
@@ -129,6 +149,7 @@ public class ControladoraPersistencia implements Serializable{
 //        }
 //    }
 //    
+<<<<<<< HEAD
     //Metodo para editar usuario
 //    
 //    public void editarFuncionarioGeneral(FuncionarioGeneral funcionarioGeneral) {
@@ -139,6 +160,10 @@ public class ControladoraPersistencia implements Serializable{
 //        }
 //    }
     
+=======
+//    //Metodos para editar usuarios
+//    
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //    public void editarGestor(GestoresHospital gestor) {
 //        try {
 //            gestorJpa.edit(gestor);
@@ -178,6 +203,7 @@ public class ControladoraPersistencia implements Serializable{
 //            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+<<<<<<< HEAD
     
     //----------Rol----------
 //    public List<Rol> traerRoles() {
@@ -188,6 +214,58 @@ public class ControladoraPersistencia implements Serializable{
 //        List<FuncionarioGeneral> listaFuncionariosEnGeneral = funcionarioGeneralJpa.findFuncionarioGeneralEntities();
 //        return listaFuncionariosEnGeneral;
 //    }
+=======
+//    
+//    //----------Rol----------
+//    public List<Rol> traerRoles() {
+//        return rolJpa.findRolEntities();
+//    }
+//
+//    public List<GestoresHospital> traerGestores() {
+//        List<GestoresHospital> listaGestores = gestorJpa.findGestoresHospitalEntities();
+//        return listaGestores;
+//    }
+//
+//    public List<Recepcionista> traerRecepcionistas() {
+//        List<Recepcionista> listaRecepcionistas = recepcionistaJpa.findRecepcionistaEntities();
+//        return listaRecepcionistas;
+//    }
+//
+//    public List<Medico> traerMedicos() {
+//        List<Medico> listaMedicos = medicoJpa.findMedicoEntities();
+//        return listaMedicos;
+//    }
+//
+//    public List<LicEnEnfermeria> traerLicenciadosEnEnfermeria() {
+//        List<LicEnEnfermeria> listaLicenciados = licEnEnfermeriaJpa.findLicEnEnfermeriaEntities();
+//        return listaLicenciados;
+//    }
+//
+//    public List<AdministradorDeSistema> traerAdministradoresDeSistema() {
+//        List<AdministradorDeSistema> listaAdministradores = administradorJpa.findAdministradorDeSistemaEntities();
+//        return listaAdministradores;
+//    }
+//
+//    public List<Especialidad> traerEspecialidades() {
+//        List<Especialidad> listaEspecialidades = especialidadJpa.findEspecialidadEntities();
+//        return listaEspecialidades;
+//    }
+//
+//    public List<Triage> traeTriageRealizados() {
+//        List<Triage> listaTriageRealizados = triageJpa.findTriageEntities();
+//        return listaTriageRealizados;
+//    }
+//
+//    public List<Consulta> traerConsultas() {
+//        List<Consulta> listaConsultas = consultaJpa.findConsultaEntities();
+//        return listaConsultas;
+//    }
+//
+//    public void crearSector(Sector sector) {
+//        sectorJpa.create(sector);
+//    }
+
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     
 //    public List<GestoresHospital> traerGestores() {
 //        List<GestoresHospital> listaGestores = gestorJpa.findGestoresHospitalEntities();
@@ -235,10 +313,13 @@ public class ControladoraPersistencia implements Serializable{
 
     //Metodos para buscar usuarios
     
+<<<<<<< HEAD
 //    public FuncionarioGeneral traerFuncionarioGeneral(long idUsuario) {
 //        return funcionarioGeneralJpa.findFuncionarioGeneral(idUsuario);
 //    }
 //    
+=======
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //    public GestoresHospital traerGestor(long idUsuario) {
 //        return gestorJpa.findGestoresHospital(idUsuario);
 //    }
@@ -259,6 +340,7 @@ public class ControladoraPersistencia implements Serializable{
 //        return administradorJpa.findAdministradorDeSistema(idUsuario);
 //    }
 
+<<<<<<< HEAD
     public void CrearConsulta(Consulta consulta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -286,5 +368,9 @@ public class ControladoraPersistencia implements Serializable{
     public void crearUsuario(Usuario usu) {
         usuJpa.create(usu);
     }
+=======
+    
+    
+>>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     
 }
