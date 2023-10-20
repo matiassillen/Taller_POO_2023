@@ -529,73 +529,73 @@ public class Administrador extends javax.swing.JFrame {
         
         //Evento para saber si la tabla fue seleccionada
         
-        tablaLicenciados.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
-                        
-                        //Llamo a la ventana EditarUsuario 
-                        EditarUsuario editar = new EditarUsuario(control, id, rol);
-                        editar.setVisible(true);
-                        editar.setLocationRelativeTo(null);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaLicenciados();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tableAdministrador.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
-                        
-                        //Llamo a la ventana EditarUsuario 
-                        EditarUsuario editar = new EditarUsuario(control, id, rol);
-                        editar.setVisible(true);
-                        editar.setLocationRelativeTo(null);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaAdministrador();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
+//        tablaLicenciados.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                JTable table = (JTable) e.getSource();
+//
+//                //Validar que la tabla tenga elementos
+//                if (table.getRowCount() > 0) {
+//                    //Controlar que se haya seleccionado un elemento
+//                    if (table.getSelectedRow() != -1) {
+//
+//                        //Obtener la id del elemento a seleccionar
+//                        long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
+//                        String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
+//                        
+//                        //Llamo a la ventana EditarUsuario 
+//                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+//                        editar.setVisible(true);
+//                        editar.setLocationRelativeTo(null);
+//
+//                        //Avisar al administrador que se borro correctamente
+//                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+//
+//                        cargarTablaLicenciados();
+//                    } else {
+//                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+//                    }
+//                } else {
+//                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+//                }
+//
+//            }
+//        });
+//        
+//        //Evento para saber si la tabla fue seleccionada
+//        
+//        tableAdministrador.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                JTable table = (JTable) e.getSource();
+//
+//                //Validar que la tabla tenga elementos
+//                if (table.getRowCount() > 0) {
+//                    //Controlar que se haya seleccionado un elemento
+//                    if (table.getSelectedRow() != -1) {
+//
+//                        //Obtener la id del elemento a seleccionar
+//                        long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
+//                        String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
+//                        
+//                        //Llamo a la ventana EditarUsuario 
+//                        EditarUsuario editar = new EditarUsuario(control, id, rol);
+//                        editar.setVisible(true);
+//                        editar.setLocationRelativeTo(null);
+//
+//                        //Avisar al administrador que se borro correctamente
+//                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
+//
+//                        cargarTablaAdministrador();
+//                    } else {
+//                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
+//                    }
+//                } else {
+//                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
+//                }
+//
+//            }
+//        });
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
     private void btnInfoAdministrativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAdministrativaActionPerformed
@@ -623,7 +623,7 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 0)));
                         String rol = String.valueOf(tablaGestores.getValueAt(tablaGestores.getSelectedRow(), 11));
                         //Llamo al método borrar 
-                        administrador.borrarUsuario(id, rol);
+                        //administrador.borrarUsuario(id, rol);
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
@@ -655,7 +655,7 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 0)));
                         String rol = String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 11));
                         //Llamo al método borrar 
-                        administrador.borrarUsuario(id, rol);
+                        //administrador.borrarUsuario(id, rol);
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
@@ -687,7 +687,7 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 0)));
                         String rol = String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 11));
                         //Llamo al método borrar 
-                        administrador.borrarUsuario(id, rol);
+                        //administrador.borrarUsuario(id, rol);
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
@@ -719,12 +719,12 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
                         String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
                         //Llamo al método borrar 
-                        administrador.borrarUsuario(id, rol);
+                       // administrador.borrarUsuario(id, rol);
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
 
-                        cargarTablaLicenciados();
+                        //cargarTablaLicenciados();
                     } else {
                         mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
                     }
@@ -751,12 +751,12 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
                         String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
                         //Llamo al método borrar 
-                        administrador.borrarUsuario(id, rol);
+                        //administrador.borrarUsuario(id, rol);
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
 
-                        cargarTablaAdministrador();
+                        //cargarTablaAdministrador();
                     } else {
                         mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
                     }
@@ -769,11 +769,11 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaGestores();
-        cargarTablaRecepcionistas();
-        cargarTablaMedicos();
-        cargarTablaLicenciados();
-        cargarTablaAdministrador();
+//        cargarTablaGestores();
+//        cargarTablaRecepcionistas();
+//        cargarTablaMedicos();
+//        cargarTablaLicenciados();
+//        cargarTablaAdministrador();
     }//GEN-LAST:event_formWindowOpened
 
     //Metodo que muestra un mensaje por pantalla
@@ -835,18 +835,18 @@ public class Administrador extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
-        List<GestoresHospital> listaGestores = control.traerGestores();
+        //List<GestoresHospital> listaGestores = control.traerGestores();
 
-        if (listaGestores != null) {
-
-            for (GestoresHospital gestor : listaGestores) {
-                Object[] objeto = {gestor.getNombre(), gestor.getApellido(), gestor.getFechaDeNac(),
-                    gestor.getDni(), gestor.getDomicilio(), gestor.getTelefonoFijo(), gestor.getTelefonoCel(),
-                    gestor.getCorreoE(), gestor.getEstadoCivil(), gestor.getNomUsuario(), gestor.getRol().getNombre()};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
+//        if (listaGestores != null) {
+//
+//            for (GestoresHospital gestor : listaGestores) {
+//                Object[] objeto = {gestor.getNombre(), gestor.getApellido(), gestor.getFechaDeNac(),
+//                    gestor.getDni(), gestor.getDomicilio(), gestor.getTelefonoFijo(), gestor.getTelefonoCel(),
+//                    gestor.getCorreoE(), gestor.getEstadoCivil(), gestor.getNomUsuario(), gestor.getRol().getNombre()};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
 
         tablaGestores.setModel(modeloTabla);
     }
@@ -868,18 +868,18 @@ public class Administrador extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
-        List<Recepcionista> listaRecepcionistas = control.traerRecepcionistas();
-
-        if (listaRecepcionistas != null) {
-
-            for (Recepcionista recepcionista : listaRecepcionistas) {
-                Object[] objeto = {recepcionista.getNombre(), recepcionista.getApellido(), recepcionista.getFechaDeNac(),
-                    recepcionista.getDni(), recepcionista.getDomicilio(), recepcionista.getTelefonoFijo(), recepcionista.getTelefonoCel(),
-                    recepcionista.getCorreoE(), recepcionista.getEstadoCivil(), recepcionista.getNomUsuario(), recepcionista.getRol().getNombre()};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
+//        List<Recepcionista> listaRecepcionistas = control.traerRecepcionistas();
+//
+//        if (listaRecepcionistas != null) {
+//
+//            for (Recepcionista recepcionista : listaRecepcionistas) {
+//                Object[] objeto = {recepcionista.getNombre(), recepcionista.getApellido(), recepcionista.getFechaDeNac(),
+//                    recepcionista.getDni(), recepcionista.getDomicilio(), recepcionista.getTelefonoFijo(), recepcionista.getTelefonoCel(),
+//                    recepcionista.getCorreoE(), recepcionista.getEstadoCivil(), recepcionista.getNomUsuario(), recepcionista.getRol().getNombre()};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
 
         tablaRecepcionistas.setModel(modeloTabla);
     }
@@ -902,88 +902,88 @@ public class Administrador extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
-        List<Medico> listaMedicos = control.traerMedicos();
+//        List<Medico> listaMedicos = control.traerMedicos();
+//
+//        if (listaMedicos != null) {
+//
+//            for (Medico medico : listaMedicos) {
+//                Object[] objeto = {medico.getNombre(), medico.getApellido(), medico.getFechaDeNac(),
+//                    medico.getDni(), medico.getDomicilio(), medico.getTelefonoFijo(), medico.getTelefonoCel(),
+//                    medico.getCorreoE(), medico.getEstadoCivil(), medico.getNumMatriculaProfesional(), medico.getNomUsuario(), medico.getRol().getNombre()};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
+//
+//        tablaMedicos.setModel(modeloTabla);
+//    }
 
-        if (listaMedicos != null) {
-
-            for (Medico medico : listaMedicos) {
-                Object[] objeto = {medico.getNombre(), medico.getApellido(), medico.getFechaDeNac(),
-                    medico.getDni(), medico.getDomicilio(), medico.getTelefonoFijo(), medico.getTelefonoCel(),
-                    medico.getCorreoE(), medico.getEstadoCivil(), medico.getNumMatriculaProfesional(), medico.getNomUsuario(), medico.getRol().getNombre()};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
-
-        tablaMedicos.setModel(modeloTabla);
-    }
-
-    private void cargarTablaLicenciados() {
-        //Definimos el modelo que queremos que tenga la tabla
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
-
-            //Que fila y columna no sean editables
-            @Override
-            public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
-
-        //Establecemos los nombres de las columnas
-        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
-            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol"};
-        modeloTabla.setColumnIdentifiers(titulos);
-
-        //Traer de la DB la lista de Gestores
-        List<LicEnEnfermeria> listalicenciados = control.traerLicenciadosEnEnfermeria();
-
-        if (listalicenciados != null) {
-
-            for (LicEnEnfermeria licenciado : listalicenciados) {
-                Object[] objeto = {licenciado.getNombre(), licenciado.getApellido(), licenciado.getFechaDeNac(),
-                    licenciado.getDni(), licenciado.getDomicilio(), licenciado.getTelefonoFijo(), licenciado.getTelefonoCel(),
-                    licenciado.getCorreoE(), licenciado.getEstadoCivil(), licenciado.getNomUsuario(), licenciado.getRol().getNombre()};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
-
-        tablaLicenciados.setModel(modeloTabla);
-    }
-
-    private void cargarTablaAdministrador() {
-        //Definimos el modelo que queremos que tenga la tabla
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
-
-            //Que fila y columna no sean editables
-            @Override
-            public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
-
-        //Establecemos los nombres de las columnas
-        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
-            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol", "Sector"};
-        modeloTabla.setColumnIdentifiers(titulos);
-
-        //Traer de la DB la lista de Gestores
-        List<AdministradorDeSistema> listaAdministradores = control.traerAdministradoresDeSistema();
-
-        if (listaAdministradores != null) {
-
-            for (AdministradorDeSistema administrador : listaAdministradores) {
-                Object[] objeto = {administrador.getNombre(), administrador.getApellido(), administrador.getFechaDeNac(),
-                    administrador.getDni(), administrador.getDomicilio(), administrador.getTelefonoFijo(), administrador.getTelefonoCel(),
-                    administrador.getCorreoE(), administrador.getEstadoCivil(), administrador.getNomUsuario(), administrador.getRol().getNombre(), administrador.getSector().getNombre()};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
-
-        tableAdministrador.setModel(modeloTabla);
-    }
+//    private void cargarTablaLicenciados() {
+//        //Definimos el modelo que queremos que tenga la tabla
+//        DefaultTableModel modeloTabla = new DefaultTableModel() {
+//
+//            //Que fila y columna no sean editables
+//            @Override
+//            public boolean isCellEditable(int row, int colum) {
+//                return false;
+//            }
+//        };
+//
+//        //Establecemos los nombres de las columnas
+//        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+//            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol"};
+//        modeloTabla.setColumnIdentifiers(titulos);
+//
+//        //Traer de la DB la lista de Gestores
+//        List<LicEnEnfermeria> listalicenciados = control.traerLicenciadosEnEnfermeria();
+//
+//        if (listalicenciados != null) {
+//
+//            for (LicEnEnfermeria licenciado : listalicenciados) {
+//                Object[] objeto = {licenciado.getNombre(), licenciado.getApellido(), licenciado.getFechaDeNac(),
+//                    licenciado.getDni(), licenciado.getDomicilio(), licenciado.getTelefonoFijo(), licenciado.getTelefonoCel(),
+//                    licenciado.getCorreoE(), licenciado.getEstadoCivil(), licenciado.getNomUsuario(), licenciado.getRol().getNombre()};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
+//
+//        tablaLicenciados.setModel(modeloTabla);
+//    }
+//
+//    private void cargarTablaAdministrador() {
+//        //Definimos el modelo que queremos que tenga la tabla
+//        DefaultTableModel modeloTabla = new DefaultTableModel() {
+//
+//            //Que fila y columna no sean editables
+//            @Override
+//            public boolean isCellEditable(int row, int colum) {
+//                return false;
+//            }
+//        };
+//
+//        //Establecemos los nombres de las columnas
+//        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
+//            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Nombre de Usuario", "Rol", "Sector"};
+//        modeloTabla.setColumnIdentifiers(titulos);
+//
+//        //Traer de la DB la lista de Gestores
+//        List<AdministradorDeSistema> listaAdministradores = control.traerAdministradoresDeSistema();
+//
+//        if (listaAdministradores != null) {
+//
+//            for (AdministradorDeSistema administrador : listaAdministradores) {
+//                Object[] objeto = {administrador.getNombre(), administrador.getApellido(), administrador.getFechaDeNac(),
+//                    administrador.getDni(), administrador.getDomicilio(), administrador.getTelefonoFijo(), administrador.getTelefonoCel(),
+//                    administrador.getCorreoE(), administrador.getEstadoCivil(), administrador.getNomUsuario(), administrador.getRol().getNombre(), administrador.getSector().getNombre()};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
+//
+//        tableAdministrador.setModel(modeloTabla);
+//    }
 }
-
+}
    
 

@@ -18,19 +18,18 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * @author trapo
  */
 public class PacienteJpaController implements Serializable {
 
     public PacienteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
     
     public PacienteJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

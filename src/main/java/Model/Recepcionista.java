@@ -1,10 +1,8 @@
 package Model;
 
-
-import static Model.Paciente_.antecedenteClinico;
-import static Model.Paciente_.resultadoEstudio;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -40,20 +38,19 @@ public class Recepcionista extends FuncionarioGeneral {
     }
     
     //---------Metodos para Consulta---------
-    public void CrearConsulta(String fecha, String hora, String diagnConsulta, String lugar, String motivo){
+    public void CrearConsulta(Date fecha, Long hora, String lugar, String Motivo, Paciente paciente){
         Consulta consulta = new Consulta();
-        Paciente pac = new Paciente();
+        
         Medico medico = new Medico();
         Triage triage = new Triage();
-        consulta.setPaciente(pac);
-        consulta.setMotivo(motivo);
+        
+        consulta.setPaciente(paciente);
         consulta.setLugar(lugar);
         consulta.setFecha(fecha);
-        consulta.setHora(0);
+        consulta.setHora(hora);
         consulta.setMedico(medico);
-        consulta.setBox(Box.BOX1);
         consulta.setTriage(triage);
-        consulta.setDiagnConsulta(diagnConsulta);
+        consulta.setDiagnConsulta("");
         controlPersis.CrearConsulta(consulta);
     }
     
@@ -62,8 +59,9 @@ public class Recepcionista extends FuncionarioGeneral {
     }
     
     //---------Metodos para Paciente---------
-    public void RegistrarPaciente(String nombre, String apellido, String dni, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public void RegistrarPaciente(String dni, String nombre, String apellido,  String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
+        
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
@@ -76,22 +74,28 @@ public class Recepcionista extends FuncionarioGeneral {
         paciente.setTelefonoFijo(telCelular);
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
-        paciente.setAntecedenteClinico((List<AntecedenteClinico>) antecedenteClinico);
-        paciente.setResultadoEstudio((List<ResultadoEstudio>) resultadoEstudio);
+        
+        List <AntecedenteClinico>listAntecedenteClinico = new ArrayList <AntecedenteClinico>();
+        List <ResultadoEstudio>listResultadoEstudio = new ArrayList <ResultadoEstudio>();
+        List <Consulta>listConsulta = new ArrayList <Consulta>();
+        
+        paciente.setAntecedenteClinico(listAntecedenteClinico);
+        paciente.setResultadoEstudio(listResultadoEstudio);
+        paciente.setConsulta(listConsulta);
+        
         controlPersis.RegistrarPaciente(paciente);
     }
     
-    public List<Paciente> traerPacientes() {
+    public Paciente TraerPaciente(int dni) {
         
-        return controlPersis.traerPacientes();
+        return controlPersis.TraerPaciente(dni);
     }
     
-    public Paciente traerPaciente(int id_Paciente) {
-        return controlPersis.traerPaciente(id_Paciente);
-    }
     
     @Override
     public String toString() {
         return "Recepcionista{" + "paciente=" + paciente + '}';
     }
+
+    
 }

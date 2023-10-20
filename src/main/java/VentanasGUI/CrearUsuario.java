@@ -480,10 +480,10 @@ public class CrearUsuario extends javax.swing.JFrame {
         String rol = (String) cbRol.getSelectedItem();
         
         
-        administrador.crearUsuario(nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel, 
-                correoE, estadoCivil, nombreUsuario, contrasenia, rol);
-        
-        mostrarMensaje("Usuario creado correctamente", "Info", "Creación exitosa");
+//        administrador.crearUsuario(nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel, 
+//                correoE, estadoCivil, nombreUsuario, contrasenia, rol);
+//        
+//        mostrarMensaje("Usuario creado correctamente", "Info", "Creación exitosa");
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -509,16 +509,16 @@ public class CrearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        List<Rol> listaRoles = control.traerRoles();
-
-        if (listaRoles != null) {
-            for (Rol rol : listaRoles) {
-                cbRol.addItem(rol.getNombre());
-            }
-        }
-        
-        jLabelNumMatricula.setVisible(false);
-        txtNumMatricula.setVisible(false);
+//        List<Rol> listaRoles = control.traerRoles();
+//
+//        if (listaRoles != null) {
+//            for (Rol rol : listaRoles) {
+//                cbRol.addItem(rol.getNombre());
+//            }
+//        }
+//        
+//        jLabelNumMatricula.setVisible(false);
+//        txtNumMatricula.setVisible(false);
 
     }//GEN-LAST:event_formWindowOpened
 

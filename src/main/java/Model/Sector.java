@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Sector implements Serializable {
@@ -15,7 +16,7 @@ public class Sector implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idSector;
     private String nombre;
-    @OneToMany
+    @Transient
     private List<FuncAdministrativo> funcAdministrativo;
 
     /**

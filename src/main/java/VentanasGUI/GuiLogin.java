@@ -133,43 +133,43 @@ public class GuiLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String usern = usuario.getText();
-        String passw = String.valueOf(contraseña.getPassword());
-        Controladora verif = new Controladora();
-        boolean resultado = verif.validar(usern, passw);
-        if (resultado) {
-            String rolEncontrado;
-            List<FuncionarioGeneral> listFunGral = verif.traerFuncionariosEnGeneral();
-            if (!listFunGral.isEmpty()) {
-                for (FuncionarioGeneral buscar : listFunGral) {
-                    if (usern == buscar.getNomUsuario()) {
-                        rolEncontrado = buscar.getRol().getNombre();
-                        break;
-                    }
-                }
-            }
-            
-            switch (rolEncontrado) {
-                case "Gestor":
-                    
-                    break;
-                
-                case "Recepcionista":
-                    break;
-                
-                case "Medico":
-                    break;
-                
-                case "Licenciando en Enfermeria":
-                    break;
-                
-                case "Administrador de Sistema":
-                    break;
-                
-                default:
-                    break;
-                }
-            }
+//        String usern = usuario.getText();
+//        String passw = String.valueOf(contraseña.getPassword());
+//        Controladora verif = new Controladora();
+//        boolean resultado = verif.validar(usern, passw);
+//        if (resultado) {
+//            String rolEncontrado;
+//            List<FuncionarioGeneral> listFunGral = verif.traerFuncionariosEnGeneral();
+//            if (!listFunGral.isEmpty()) {
+//                for (FuncionarioGeneral buscar : listFunGral) {
+//                    if (usern == buscar.getNomUsuario()) {
+//                        rolEncontrado = buscar.getRol().getNombre();
+//                        break;
+//                    }
+//                }
+//            }
+//            
+//            switch (rolEncontrado) {
+//                case "Gestor":
+//                    
+//                    break;
+//                
+//                case "Recepcionista":
+//                    break;
+//                
+//                case "Medico":
+//                    break;
+//                
+//                case "Licenciando en Enfermeria":
+//                    break;
+//                
+//                case "Administrador de Sistema":
+//                    break;
+//                
+//                default:
+//                    break;
+//                }
+//            }
             
          
         

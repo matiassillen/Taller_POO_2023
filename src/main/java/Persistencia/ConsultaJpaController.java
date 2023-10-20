@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Model.Paciente;
 import Model.Medico;
 import Model.Triage;
 import Persistencia.exceptions.NonexistentEntityException;
@@ -20,19 +21,18 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * @author trapo
  */
 public class ConsultaJpaController implements Serializable {
 
     public ConsultaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
     
     public ConsultaJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -43,6 +43,11 @@ public class ConsultaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Paciente paciente = consulta.getPaciente();
+            if (paciente != null) {
+                paciente = em.getReference(paciente.getClass(), paciente.getIdP());
+                consulta.setPaciente(paciente);
+            }
             Medico medico = consulta.getMedico();
             if (medico != null) {
                 medico = em.getReference(medico.getClass(), medico.getId());
@@ -54,6 +59,10 @@ public class ConsultaJpaController implements Serializable {
                 consulta.setTriage(triage);
             }
             em.persist(consulta);
+            if (paciente != null) {
+                paciente.getConsulta().add(consulta);
+                paciente = em.merge(paciente);
+            }
             if (medico != null) {
                 medico.getConsulta().add(consulta);
                 medico = em.merge(medico);
@@ -81,10 +90,16 @@ public class ConsultaJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Consulta persistentConsulta = em.find(Consulta.class, consulta.getNumConsulta());
+            Paciente pacienteOld = persistentConsulta.getPaciente();
+            Paciente pacienteNew = consulta.getPaciente();
             Medico medicoOld = persistentConsulta.getMedico();
             Medico medicoNew = consulta.getMedico();
             Triage triageOld = persistentConsulta.getTriage();
             Triage triageNew = consulta.getTriage();
+            if (pacienteNew != null) {
+                pacienteNew = em.getReference(pacienteNew.getClass(), pacienteNew.getIdP());
+                consulta.setPaciente(pacienteNew);
+            }
             if (medicoNew != null) {
                 medicoNew = em.getReference(medicoNew.getClass(), medicoNew.getId());
                 consulta.setMedico(medicoNew);
@@ -94,6 +109,14 @@ public class ConsultaJpaController implements Serializable {
                 consulta.setTriage(triageNew);
             }
             consulta = em.merge(consulta);
+            if (pacienteOld != null && !pacienteOld.equals(pacienteNew)) {
+                pacienteOld.getConsulta().remove(consulta);
+                pacienteOld = em.merge(pacienteOld);
+            }
+            if (pacienteNew != null && !pacienteNew.equals(pacienteOld)) {
+                pacienteNew.getConsulta().add(consulta);
+                pacienteNew = em.merge(pacienteNew);
+            }
             if (medicoOld != null && !medicoOld.equals(medicoNew)) {
                 medicoOld.getConsulta().remove(consulta);
                 medicoOld = em.merge(medicoOld);
@@ -143,6 +166,11 @@ public class ConsultaJpaController implements Serializable {
                 consulta.getNumConsulta();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The consulta with id " + id + " no longer exists.", enfe);
+            }
+            Paciente paciente = consulta.getPaciente();
+            if (paciente != null) {
+                paciente.getConsulta().remove(consulta);
+                paciente = em.merge(paciente);
             }
             Medico medico = consulta.getMedico();
             if (medico != null) {

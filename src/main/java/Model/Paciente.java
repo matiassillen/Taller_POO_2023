@@ -15,17 +15,19 @@ public class Paciente extends Persona implements Serializable {
     private String telDeContacto;
     private List <AntecedenteClinico> antecedenteClinico;
     private List <ResultadoEstudio> resultadoEstudio;
+    private List <Consulta> consulta;
     
     public Paciente() {
     }
-
-    public Paciente(int idP, String persoDeContacto, String telDeContacto, List<AntecedenteClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    
+    public Paciente(int idP, String persoDeContacto, String telDeContacto, List<AntecedenteClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, List<Consulta> consulta, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.idP = idP;
         this.persoDeContacto = persoDeContacto;
         this.telDeContacto = telDeContacto;
         this.antecedenteClinico = antecedenteClinico;
         this.resultadoEstudio = resultadoEstudio;
+        this.consulta = consulta;
     }
 
     public int getIdP() {
@@ -67,6 +69,16 @@ public class Paciente extends Persona implements Serializable {
     public void setResultadoEstudio(List<ResultadoEstudio> resultadoEstudio) {
         this.resultadoEstudio = resultadoEstudio;
     }
+
+    public List<Consulta> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(List<Consulta> consulta) {
+        this.consulta = consulta;
+    }
+    
+    
 
     public Paciente pacienteQMasConsulto(String fecha1, String fecha2) {
         // TODO implement here

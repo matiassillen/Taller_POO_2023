@@ -182,9 +182,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         
-        String usuario = administrador.buscarUsuario(nombre, apellido);
+        //String usuario = administrador.buscarUsuario(nombre, apellido);
         
-        txtMostrarUsuario.setText(usuario);
+        //txtMostrarUsuario.setText(usuario);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed

@@ -1,17 +1,20 @@
 package Model;
 
+
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
  * 
  */
 
-@Entity
-public enum Box {
+
+public enum Box implements Serializable{
     
     BOX1(1, false),
     BOX2(2, false),
@@ -28,7 +31,8 @@ public enum Box {
     private Boolean estado;
     @OneToOne
     private Medico medico;
-
+    @OneToMany
+    private Consulta consulta;
     
     /**
      * Default constructor

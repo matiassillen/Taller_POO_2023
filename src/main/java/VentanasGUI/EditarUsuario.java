@@ -534,10 +534,10 @@ public class EditarUsuario extends javax.swing.JFrame {
         int numMatricula = Integer.parseInt(txtNumMatricula.getText());
         
 
-        administrador.editarUsuario(gestor, recepcionista, medico, licenciado, admin, nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel,
-                correoE, estadoCivil, nombreUsuario, contrasenia, rol, numMatricula);
-
-        mostrarMensaje("Usuario editado correctamente", "Info", "Edición exitosa");
+//        administrador.editarUsuario(gestor, recepcionista, medico, licenciado, admin, nombre, apellido, FechaNacimiento, documento, domicilio, telFijo, telCel,
+//                correoE, estadoCivil, nombreUsuario, contrasenia, rol, numMatricula);
+//
+//        mostrarMensaje("Usuario editado correctamente", "Info", "Edición exitosa");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -545,18 +545,18 @@ public class EditarUsuario extends javax.swing.JFrame {
         if (rolUsuario.equalsIgnoreCase("Gestor")) {
             //Buscar el gestor
 
-            gestor = control.traerGestor(idUsuario);
-            txtNombreUsuario.setText(gestor.getNomUsuario());
-            txtContrasenia.setText(gestor.getPassw());
+//            gestor = control.traerGestor(idUsuario);
+//            txtNombreUsuario.setText(gestor.getNomUsuario());
+//            txtContrasenia.setText(gestor.getPassw());
 
             //cargar roles de forma genérica
-            List<Rol> listaRoles = control.traerRoles();
+//            List<Rol> listaRoles = control.traerRoles();
 
-            if (listaRoles != null) {
-                for (Rol rol : listaRoles) {
-                    cbRol.addItem(rol.getNombre());
-                }
-            }
+//            if (listaRoles != null) {
+//                for (Rol rol : listaRoles) {
+//                    cbRol.addItem(rol.getNombre());
+//                }
+//            }
 
             //Marcar/Selecionar el rol del usuario
             String rol = gestor.getRol().getNombre();
@@ -570,117 +570,117 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         }
         
-        if (rolUsuario.equalsIgnoreCase("Recepcionista")) {
-            //Buscar el Recepcionista
+//        if (rolUsuario.equalsIgnoreCase("Recepcionista")) {
+//            //Buscar el Recepcionista
+//
+//            recepcionista = control.traerRecepcionista(idUsuario);
+//            txtNombreUsuario.setText(recepcionista.getNomUsuario());
+//            txtContrasenia.setText(recepcionista.getPassw());
+//
+//            //cargar roles de forma genérica
+//            List<Rol> listaRoles = control.traerRoles();
 
-            recepcionista = control.traerRecepcionista(idUsuario);
-            txtNombreUsuario.setText(recepcionista.getNomUsuario());
-            txtContrasenia.setText(recepcionista.getPassw());
-
-            //cargar roles de forma genérica
-            List<Rol> listaRoles = control.traerRoles();
-
-            if (listaRoles != null) {
-                for (Rol rol : listaRoles) {
-                    cbRol.addItem(rol.getNombre());
-                }
-            }
-
-            //Marcar/Selecionar el rol del usuario
-            String rol = recepcionista.getRol().getNombre();
-
-            int cantidadItems = cbRol.getItemCount();
-
-            for (int i = 0; i < cantidadItems; i++) {
-                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-                    cbRol.setSelectedIndex(i);
-                }
-            }
-        }
-        
-        if (rolUsuario.equalsIgnoreCase("Medico")) {
-            //Buscar el Recepcionista
-
-            medico = control.traerMedico(idUsuario);
-            txtNombreUsuario.setText(medico.getNomUsuario());
-            txtContrasenia.setText(medico.getPassw());
-
-            //cargar roles de forma genérica
-            List<Rol> listaRoles = control.traerRoles();
-
-            if (listaRoles != null) {
-                for (Rol rol : listaRoles) {
-                    cbRol.addItem(rol.getNombre());
-                }
-            }
-
-            //Marcar/Selecionar el rol del usuario
-            String rol = medico.getRol().getNombre();
-
-            int cantidadItems = cbRol.getItemCount();
-
-            for (int i = 0; i < cantidadItems; i++) {
-                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-                    cbRol.setSelectedIndex(i);
-                }
-            }
-        }
-        
-        if (rolUsuario.equalsIgnoreCase("Licenciado en Enfermeria")) {
-            //Buscar el Recepcionista
-
-            licenciado = control.traerLicEnEnfermeria(idUsuario);
-            txtNombreUsuario.setText(licenciado.getNomUsuario());
-            txtContrasenia.setText(licenciado.getPassw());
-
-            //cargar roles de forma genérica
-            List<Rol> listaRoles = control.traerRoles();
-
-            if (listaRoles != null) {
-                for (Rol rol : listaRoles) {
-                    cbRol.addItem(rol.getNombre());
-                }
-            }
-
-            //Marcar/Selecionar el rol del usuario
-            String rol = licenciado.getRol().getNombre();
-
-            int cantidadItems = cbRol.getItemCount();
-
-            for (int i = 0; i < cantidadItems; i++) {
-                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-                    cbRol.setSelectedIndex(i);
-                }
-            }
-        }
-        
-        if (rolUsuario.equalsIgnoreCase("Administrador de Sistema")) {
-            //Buscar el Recepcionista
-
-            admin = control.traerAdministradorDeSitema(idUsuario);
-            txtNombreUsuario.setText(admin.getNomUsuario());
-            txtContrasenia.setText(admin.getPassw());
-
-            //cargar roles de forma genérica
-            List<Rol> listaRoles = control.traerRoles();
-
-            if (listaRoles != null) {
-                for (Rol rol : listaRoles) {
-                    cbRol.addItem(rol.getNombre());
-                }
-            }
-
-            //Marcar/Selecionar el rol del usuario
-            String rol = admin.getRol().getNombre();
-
-            int cantidadItems = cbRol.getItemCount();
-
-            for (int i = 0; i < cantidadItems; i++) {
-                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-                    cbRol.setSelectedIndex(i);
-                }
-            }
-        }
+//            if (listaRoles != null) {
+//                for (Rol rol : listaRoles) {
+//                    cbRol.addItem(rol.getNombre());
+//                }
+//            }
+//
+//            //Marcar/Selecionar el rol del usuario
+//            String rol = recepcionista.getRol().getNombre();
+//
+//            int cantidadItems = cbRol.getItemCount();
+//
+//            for (int i = 0; i < cantidadItems; i++) {
+//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
+//                    cbRol.setSelectedIndex(i);
+//                }
+//            }
+//        }
+//        
+//        if (rolUsuario.equalsIgnoreCase("Medico")) {
+//            //Buscar el Recepcionista
+//
+//            medico = control.traerMedico(idUsuario);
+//            txtNombreUsuario.setText(medico.getNomUsuario());
+//            txtContrasenia.setText(medico.getPassw());
+//
+//            //cargar roles de forma genérica
+//            List<Rol> listaRoles = control.traerRoles();
+//
+//            if (listaRoles != null) {
+//                for (Rol rol : listaRoles) {
+//                    cbRol.addItem(rol.getNombre());
+//                }
+//            }
+//
+//            //Marcar/Selecionar el rol del usuario
+//            String rol = medico.getRol().getNombre();
+//
+//            int cantidadItems = cbRol.getItemCount();
+//
+//            for (int i = 0; i < cantidadItems; i++) {
+//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
+//                    cbRol.setSelectedIndex(i);
+//                }
+//            }
+//        }
+//        
+//        if (rolUsuario.equalsIgnoreCase("Licenciado en Enfermeria")) {
+//            //Buscar el Recepcionista
+//
+//            licenciado = control.traerLicEnEnfermeria(idUsuario);
+//            txtNombreUsuario.setText(licenciado.getNomUsuario());
+//            txtContrasenia.setText(licenciado.getPassw());
+//
+//            //cargar roles de forma genérica
+//            List<Rol> listaRoles = control.traerRoles();
+//
+//            if (listaRoles != null) {
+//                for (Rol rol : listaRoles) {
+//                    cbRol.addItem(rol.getNombre());
+//                }
+//            }
+//
+//            //Marcar/Selecionar el rol del usuario
+//            String rol = licenciado.getRol().getNombre();
+//
+//            int cantidadItems = cbRol.getItemCount();
+//
+//            for (int i = 0; i < cantidadItems; i++) {
+//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
+//                    cbRol.setSelectedIndex(i);
+//                }
+//            }
+//        }
+//        
+//        if (rolUsuario.equalsIgnoreCase("Administrador de Sistema")) {
+//            //Buscar el Recepcionista
+//
+//            admin = control.traerAdministradorDeSitema(idUsuario);
+//            txtNombreUsuario.setText(admin.getNomUsuario());
+//            txtContrasenia.setText(admin.getPassw());
+//
+//            //cargar roles de forma genérica
+//            List<Rol> listaRoles = control.traerRoles();
+//
+//            if (listaRoles != null) {
+//                for (Rol rol : listaRoles) {
+//                    cbRol.addItem(rol.getNombre());
+//                }
+//            }
+//
+//            //Marcar/Selecionar el rol del usuario
+//            String rol = admin.getRol().getNombre();
+//
+//            int cantidadItems = cbRol.getItemCount();
+//
+//            for (int i = 0; i < cantidadItems; i++) {
+//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
+//                    cbRol.setSelectedIndex(i);
+//                }
+//            }
+//        }
 
 //        jLabelNumMatricula.setVisible(false);
 //        txtNumMatricula.setVisible(false);
