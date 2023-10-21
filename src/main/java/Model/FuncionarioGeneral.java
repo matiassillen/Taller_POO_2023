@@ -1,24 +1,15 @@
 package Model;
 
-<<<<<<< HEAD
-import java.util.List;
-=======
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToOne;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 @Entity
 public class FuncionarioGeneral extends Persona {
     
+    @JoinColumn(name="id_Usuario")
     @OneToOne
     private Usuario usu;
     
@@ -26,24 +17,7 @@ public class FuncionarioGeneral extends Persona {
     //private static final int idTotales = 0;
     
     //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales
-    
-    /**
-     * Constructor de la clase Funcionario General
-     * @param nomUsuario Nombre de usuario para el sistema
-     * @param passw contraseña para la cuenta personal
-     * @param nombre Nombre real de la persona
-     * @param apellido  Apellido real de la persona
-     * @param fechaDeNac Fecha de nacimiento de la persona
-     * @param domicilio Domicilio de la persona
-     * @param dni numero de DNI de la persona
-     * @param telefonoFijo Numero de telefono fijo de la persona
-     * @param telefonoCel Numero de telefono movil de la persona
-     * @param correoE Correo electronico de la persona
-     * @param estadoCivil Estado civil de la persona
-     */
-    
-    
-    
+ 
     public FuncionarioGeneral() {
         
         

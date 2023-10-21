@@ -158,7 +158,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-<<<<<<< HEAD
         try {
 
           int doc = Integer.parseInt(txtDni.getText());
@@ -173,11 +172,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
         String usuario = administrador.buscarUsuario(dni);
 
         txtMostrarUsuario.setText(usuario);
-=======
-        //String usuario = administrador.buscarUsuario(nombre, apellido);
-        
-        //txtMostrarUsuario.setText(usuario);
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed

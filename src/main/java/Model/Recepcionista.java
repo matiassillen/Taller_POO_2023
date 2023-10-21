@@ -1,13 +1,9 @@
 package Model;
 
-<<<<<<< HEAD
-import static Model.Paciente_.antecedenteClinico;
-import static Model.Paciente_.resultadoEstudio;
-=======
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
+//import static Model.Paciente_.antecedenteClinico;
+//import static Model.Paciente_.resultadoEstudio;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -43,19 +39,20 @@ public class Recepcionista extends FuncionarioGeneral {
     }
     
     //---------Metodos para Consulta---------
-    public void CrearConsulta(Date fecha, Long hora, String lugar, String Motivo, Paciente paciente){
+    public void CrearConsulta(String fecha, String hora, String diagnConsulta, String lugar, String motivo){
         Consulta consulta = new Consulta();
-        
+        Paciente pac = new Paciente();
         Medico medico = new Medico();
         Triage triage = new Triage();
-        
-        consulta.setPaciente(paciente);
+        consulta.setPaciente(pac);
+        consulta.setMotivo(motivo);
         consulta.setLugar(lugar);
         consulta.setFecha(fecha);
-        consulta.setHora(hora);
+        consulta.setHora(0);
         consulta.setMedico(medico);
+        consulta.setBox(Box.BOX1);
         consulta.setTriage(triage);
-        consulta.setDiagnConsulta("");
+        consulta.setDiagnConsulta(diagnConsulta);
         controlPersis.CrearConsulta(consulta);
     }
     
@@ -64,9 +61,8 @@ public class Recepcionista extends FuncionarioGeneral {
     }
     
     //---------Metodos para Paciente---------
-    public void RegistrarPaciente(String dni, String nombre, String apellido,  String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public void RegistrarPaciente(String nombre, String apellido, String dni, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
-        
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
@@ -79,28 +75,22 @@ public class Recepcionista extends FuncionarioGeneral {
         paciente.setTelefonoFijo(telCelular);
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
-        
-        List <AntecedenteClinico>listAntecedenteClinico = new ArrayList <AntecedenteClinico>();
-        List <ResultadoEstudio>listResultadoEstudio = new ArrayList <ResultadoEstudio>();
-        List <Consulta>listConsulta = new ArrayList <Consulta>();
-        
-        paciente.setAntecedenteClinico(listAntecedenteClinico);
-        paciente.setResultadoEstudio(listResultadoEstudio);
-        paciente.setConsulta(listConsulta);
-        
+//        paciente.setAntecedenteClinico((List<AntecedenteClinico>) antecedenteClinico);
+//        paciente.setResultadoEstudio((List<ResultadoEstudio>) resultadoEstudio);
         controlPersis.RegistrarPaciente(paciente);
     }
     
-    public Paciente TraerPaciente(int dni) {
+    public List<Paciente> traerPacientes() {
         
-        return controlPersis.TraerPaciente(dni);
+        return controlPersis.traerPacientes();
     }
     
+    public Paciente traerPaciente(int id_Paciente) {
+        return controlPersis.traerPaciente(id_Paciente);
+    }
     
     @Override
     public String toString() {
         return "Recepcionista{" + "paciente=" + paciente + '}';
     }
-
-    
 }

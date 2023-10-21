@@ -1,7 +1,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 
 
@@ -29,8 +28,8 @@ public class Estadistica implements Serializable{
     //    return diccionario;
     // }
 
-    //public Integer triagesCambiados(FuncSalud funcionario) {
-    //  int sum = 0;
+     public Integer triagesCambiados(FuncSalud funcionario) {
+        int sum = 0;
     //    int rango = len(funcionario.traigeHechos);
     //    for (i= 0; i<rango; i++) {
     //        Triage triageN = funcionario.traigeHechos[i];
@@ -38,17 +37,7 @@ public class Estadistica implements Serializable{
     //            sum += 1;
     //        }
     //    }
-<<<<<<< HEAD
         return sum;
     }
-=======
-    //  return sum;
-    //}
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
-//    public filtraFecha(Calendar anio, Calendar mes, Calendar dia) {
-//        LocalDateTime fecha1 = new LocalDateTime.now();
-//    }
-    
-    
 }

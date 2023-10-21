@@ -1,22 +1,12 @@
 package Model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-<<<<<<< HEAD
 import javax.persistence.Transient;
-=======
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import javax.persistence.Transient;
-
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
 @Entity
-public class Medico extends FuncSalud implements Serializable{
+public class Medico extends FuncSalud{
     
     private int numMatriculaProfesional;
     @Transient

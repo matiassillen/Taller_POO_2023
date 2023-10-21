@@ -5,14 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ResultadoEstudio implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int numResEst;
-    @OneToOne
+    @ManyToOne
     private Paciente paciente;
     private String nombre;
     private String Informe;

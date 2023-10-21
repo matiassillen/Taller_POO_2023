@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -14,14 +15,13 @@ public class AntecedenteClinico implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int numAntecedente;
-    @OneToOne
+    @ManyToOne
     private Paciente paciente;
     private String nombreDiagnostico;
     private String fecha;
     private String hora;
     @OneToOne
     private Medico medico;
-    
     
     public AntecedenteClinico() {
         

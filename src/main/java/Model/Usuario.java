@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
     @ManyToMany
     @JoinColumn(name="id_rol")
     private List<Rol> rol; 
-    @OneToOne
+    @OneToOne(mappedBy="usu")
     private FuncionarioGeneral funcionarioGeneral;
 
     public Usuario() {

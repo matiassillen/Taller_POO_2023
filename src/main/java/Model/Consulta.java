@@ -15,14 +15,14 @@ public class Consulta implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int numConsulta;
-    @OneToOne
+    @ManyToOne
     private Paciente paciente;
     private Date fecha;
     private Long hora;
     private String diagnConsulta;
     private String lugar;
     private String motivo;
-    @Transient
+    @OneToOne
     private Box box;
     @ManyToOne
     private Medico medico;

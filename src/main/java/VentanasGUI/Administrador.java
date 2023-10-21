@@ -374,11 +374,7 @@ public class Administrador extends javax.swing.JFrame {
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
 
-<<<<<<< HEAD
                         cargarTablaUsuarios();
-=======
-                        cargarTablaGestores();
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
                     } else {
                         mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
                     }
@@ -388,7 +384,6 @@ public class Administrador extends javax.swing.JFrame {
 
             }
         });
-<<<<<<< HEAD
 //        
 //        tablaUsuarios.addMouseListener(new MouseAdapter() {
 //            @Override
@@ -459,90 +454,11 @@ public class Administrador extends javax.swing.JFrame {
 //            }
 //        });
 //        
-=======
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tablaRecepcionistas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 11));
-                        
-                        //Llamo a la ventana EditarUsuario 
-                        EditarUsuario editar = new EditarUsuario(control, id, rol);
-                        editar.setVisible(true);
-                        editar.setLocationRelativeTo(null);
-                        
-                        
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaRecepcionistas();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tablaMedicos.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 11));
-                        
-                        //Llamo a la ventana EditarUsuario 
-                        EditarUsuario editar = new EditarUsuario(control, id, rol);
-                        editar.setVisible(true);
-                        editar.setLocationRelativeTo(null);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaMedicos();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //        tablaLicenciados.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
 //                JTable table = (JTable) e.getSource();
-<<<<<<< HEAD
 //                // Aquí puedes hacer lo que quieras con la tabla seleccionada
-=======
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //
 //                //Validar que la tabla tenga elementos
 //                if (table.getRowCount() > 0) {
@@ -572,19 +488,11 @@ public class Administrador extends javax.swing.JFrame {
 //            }
 //        });
 //        
-<<<<<<< HEAD
-=======
-//        //Evento para saber si la tabla fue seleccionada
-//        
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //        tableAdministrador.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
 //                JTable table = (JTable) e.getSource();
-<<<<<<< HEAD
 //                // Aquí puedes hacer lo que quieras con la tabla seleccionada
-=======
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //
 //                //Validar que la tabla tenga elementos
 //                if (table.getRowCount() > 0) {
@@ -643,11 +551,7 @@ public class Administrador extends javax.swing.JFrame {
                         long id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
                         
                         //Llamo al método borrar 
-<<<<<<< HEAD
                         administrador.borrarUsuario(id);
-=======
-                        //administrador.borrarUsuario(id, rol);
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
                         //Avisar al administrador que se borro correctamente
                         mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
@@ -663,7 +567,6 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         
-<<<<<<< HEAD
 //        tablaUsuarios.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
@@ -792,140 +695,6 @@ public class Administrador extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaFuncionariosEnGeneral();
         cargarTablaUsuarios();
-=======
-        //Evento para saber si la tabla fue seleccionada
-        
-        tablaRecepcionistas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaRecepcionistas.getValueAt(tablaRecepcionistas.getSelectedRow(), 11));
-                        //Llamo al método borrar 
-                        //administrador.borrarUsuario(id, rol);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaRecepcionistas();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tablaMedicos.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 11));
-                        //Llamo al método borrar 
-                        //administrador.borrarUsuario(id, rol);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        cargarTablaMedicos();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tablaLicenciados.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tablaLicenciados.getValueAt(tablaLicenciados.getSelectedRow(), 11));
-                        //Llamo al método borrar 
-                       // administrador.borrarUsuario(id, rol);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        //cargarTablaLicenciados();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-        
-        //Evento para saber si la tabla fue seleccionada
-        
-        tableAdministrador.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 0)));
-                        String rol = String.valueOf(tableAdministrador.getValueAt(tableAdministrador.getSelectedRow(), 11));
-                        //Llamo al método borrar 
-                        //administrador.borrarUsuario(id, rol);
-
-                        //Avisar al administrador que se borro correctamente
-                        mostrarMensaje("Se borró el usuario conrrectamente", "Info", "Eliminación correcta");
-
-                        //cargarTablaAdministrador();
-                    } else {
-                        mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
-                    }
-                } else {
-                    mostrarMensaje("La tabla est{a vacía", "Error", "Error al borrar");
-                }
-
-            }
-        });
-    }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//        cargarTablaGestores();
-//        cargarTablaRecepcionistas();
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //        cargarTablaMedicos();
 //        cargarTablaLicenciados();
 //        cargarTablaAdministrador();
@@ -981,7 +750,6 @@ public class Administrador extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
-<<<<<<< HEAD
         List<FuncionarioGeneral> listaFuncionariosEnGeneral = control.traerFuncionariosEnGeneral();
         
         if (listaFuncionariosEnGeneral != null) {
@@ -994,20 +762,6 @@ public class Administrador extends javax.swing.JFrame {
                 modeloTabla.addRow(objeto);
             }
         }
-=======
-        //List<GestoresHospital> listaGestores = control.traerGestores();
-
-//        if (listaGestores != null) {
-//
-//            for (GestoresHospital gestor : listaGestores) {
-//                Object[] objeto = {gestor.getNombre(), gestor.getApellido(), gestor.getFechaDeNac(),
-//                    gestor.getDni(), gestor.getDomicilio(), gestor.getTelefonoFijo(), gestor.getTelefonoCel(),
-//                    gestor.getCorreoE(), gestor.getEstadoCivil(), gestor.getNomUsuario(), gestor.getRol().getNombre()};
-//
-//                modeloTabla.addRow(objeto);
-//            }
-//        }
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
         tablaFuncionariosEnGeneral.setModel(modeloTabla);
     }
@@ -1028,7 +782,6 @@ public class Administrador extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
-<<<<<<< HEAD
         List<Usuario> listaUsuarios = control.traerUsuarios();
 
         if (listaUsuarios != null) {
@@ -1039,26 +792,11 @@ public class Administrador extends javax.swing.JFrame {
                 modeloTabla.addRow(objeto);
             }
         }
-=======
-//        List<Recepcionista> listaRecepcionistas = control.traerRecepcionistas();
-//
-//        if (listaRecepcionistas != null) {
-//
-//            for (Recepcionista recepcionista : listaRecepcionistas) {
-//                Object[] objeto = {recepcionista.getNombre(), recepcionista.getApellido(), recepcionista.getFechaDeNac(),
-//                    recepcionista.getDni(), recepcionista.getDomicilio(), recepcionista.getTelefonoFijo(), recepcionista.getTelefonoCel(),
-//                    recepcionista.getCorreoE(), recepcionista.getEstadoCivil(), recepcionista.getNomUsuario(), recepcionista.getRol().getNombre()};
-//
-//                modeloTabla.addRow(objeto);
-//            }
-//        }
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 
         tablaUsuarios.setModel(modeloTabla);
     }
     
 
-<<<<<<< HEAD
 //    private void cargarTablaMedicos() {
 //        //Definimos el modelo que queremos que tenga la tabla
 //        DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -1076,25 +814,6 @@ public class Administrador extends javax.swing.JFrame {
 //        modeloTabla.setColumnIdentifiers(titulos);
 //
 //        //Traer de la DB la lista de Gestores
-=======
-    private void cargarTablaMedicos() {
-        //Definimos el modelo que queremos que tenga la tabla
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
-
-            //Que fila y columna no sean editables
-            @Override
-            public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
-
-        //Establecemos los nombres de las columnas
-        String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
-            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Numero Matricula", "Nombre de Usuario", "Rol"};
-        modeloTabla.setColumnIdentifiers(titulos);
-
-        //Traer de la DB la lista de Gestores
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //        List<Medico> listaMedicos = control.traerMedicos();
 //
 //        if (listaMedicos != null) {
@@ -1110,11 +829,7 @@ public class Administrador extends javax.swing.JFrame {
 //
 //        tablaMedicos.setModel(modeloTabla);
 //    }
-<<<<<<< HEAD
 //
-=======
-
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
 //    private void cargarTablaLicenciados() {
 //        //Definimos el modelo que queremos que tenga la tabla
 //        DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -1180,10 +895,7 @@ public class Administrador extends javax.swing.JFrame {
 //
 //        tableAdministrador.setModel(modeloTabla);
 //    }
-<<<<<<< HEAD
-=======
 }
->>>>>>> f1b2a889c99d5a30cb19cdc03a672a061b0e52e6
-}
+
    
 
