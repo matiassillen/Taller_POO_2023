@@ -6,10 +6,22 @@ import java.util.List;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
+    private Usuario usu;
     
     public Controladora() {
-        controlPersis = new ControladoraPersistencia();
+        this.controlPersis = new ControladoraPersistencia();
+        this.usu = null;
     }
+
+    public void setUsu(Usuario usu) {
+        this.usu = usu;
+    }
+
+    public Usuario getUsu() {
+        return usu;
+    }
+    
+    
     
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
@@ -178,5 +190,34 @@ public class Controladora implements Serializable{
         return controlPersis.traerUsuarios(idUsuario);
     }
         
-    }
-    
+//    public List<Consulta> TraerPacientesTriageados() {
+//        List<Consulta> consultas = controlPersis.traerConsultas();
+//        Iterator<Consulta> iterator = consultas.iterator();
+//        while (iterator.hasNext()) {
+//            Consulta consulta = iterator.next();
+//            if (consulta.getMedico() != null) {
+//             iterator.remove();
+//            }
+//            if (consulta.getTriage() == null) {
+//                iterator.remove();
+//            }
+//        }
+//        return consultas;
+//    }
+//
+//    public List<Box> TraerBoxDelMedico() {
+//        long idMedico = this.usu.getFuncionarioGeneral().getId();
+//        Medico medico = this.controlPersis.traerMedico(idMedico);
+//        List<Box> boxes = medico.getBoxes();
+//        return boxes;
+//    }
+//
+//    public void terminarConsulta(Long boxSeleccionadoId) {
+//        Box boxABorrar = this.controlPersis.traerBox(boxSeleccionadoId);
+//        long idMedico = this.usu.getFuncionarioGeneral().getId();
+//        Medico medico = this.controlPersis.traerMedico(idMedico);
+//        List<Box> boxes = medico.getBoxes();
+//        boxes.remove(boxABorrar); 
+//        
+//    }
+}

@@ -3,18 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VentanasGUI;
+import Model.Controladora;
+import Model.ResultadoEstudio;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author yairc
  */
 public class VerResultadoEstudio extends javax.swing.JFrame {
-
+    Controladora control;
     /**
      * Creates new form VerResultadoEstudio
      */
-    public VerResultadoEstudio() {
+    public VerResultadoEstudio(Controladora control) {
         initComponents();
+        this.control = control;
     }
 
     /**
@@ -26,24 +31,175 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaResultEstudios = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+        btnCargarNuevoRE = new javax.swing.JButton();
+        btnLeerResultEst = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        txtResultEst = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        tablaResultEstudios.setBackground(new java.awt.Color(255, 255, 255));
+        tablaResultEstudios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaResultEstudios);
+
+        btnVolver.setBackground(new java.awt.Color(51, 153, 255));
+        btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnCargarNuevoRE.setBackground(new java.awt.Color(0, 204, 153));
+        btnCargarNuevoRE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnCargarNuevoRE.setForeground(new java.awt.Color(0, 0, 0));
+        btnCargarNuevoRE.setText("Crear Nuevo ");
+        btnCargarNuevoRE.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCargarNuevoRE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarNuevoREActionPerformed(evt);
+            }
+        });
+
+        btnLeerResultEst.setBackground(new java.awt.Color(0, 204, 153));
+        btnLeerResultEst.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnLeerResultEst.setForeground(new java.awt.Color(0, 0, 0));
+        btnLeerResultEst.setText("Leer");
+        btnLeerResultEst.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+
+        txtResultEst.setBackground(new java.awt.Color(0, 204, 204));
+        txtResultEst.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        txtResultEst.setForeground(new java.awt.Color(0, 0, 0));
+        txtResultEst.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtResultEst.setText("Resultados de Estudios");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(txtResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(txtResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLeerResultEst, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnCargarNuevoRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLeerResultEst, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCargarNuevoRE, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCargarNuevoREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarNuevoREActionPerformed
+        CrearResultadoEstudio crearResEstu = new CrearResultadoEstudio();
+        crearResEstu.setVisible(true);
+        crearResEstu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCargarNuevoREActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        HistoriaClinicaa histCli = new HistoriaClinicaa(control);
+        histCli.setVisible(true);
+        histCli.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        
+        String titutlos[] = {"Nombre","info"};
+        modeloTabla.setColumnIdentifiers(titutlos);
+        
+        List<ResultadoEstudio> listaResultEstu = control.TraerResultEstudios();
+        
+        
+        
+        tablaResultEstudios.setModel(modeloTabla);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargarNuevoRE;
+    private javax.swing.JButton btnLeerResultEst;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaResultEstudios;
+    private javax.swing.JLabel txtResultEst;
     // End of variables declaration//GEN-END:variables
 }
