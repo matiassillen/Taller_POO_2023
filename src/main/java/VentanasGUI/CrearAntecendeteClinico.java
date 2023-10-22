@@ -1,7 +1,7 @@
 
 package VentanasGUI;
 
-import Model.AntecedenteClinico;
+import Model.DiagnosticoClinico;
 
 
 public class CrearAntecendeteClinico extends javax.swing.JFrame {

@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Model.Titulo;
 import Model.Medico;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
@@ -18,20 +19,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author trapo
- */
+
 public class EspecialidadJpaController implements Serializable {
 
     public EspecialidadJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
     
     public EspecialidadJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
+    
+    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -45,6 +44,11 @@ public class EspecialidadJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Titulo titulo = especialidad.getTitulo();
+            if (titulo != null) {
+                titulo = em.getReference(titulo.getClass(), titulo.getId());
+                especialidad.setTitulo(titulo);
+            }
             List<Medico> attachedMedico = new ArrayList<Medico>();
             for (Medico medicoMedicoToAttach : especialidad.getMedico()) {
                 medicoMedicoToAttach = em.getReference(medicoMedicoToAttach.getClass(), medicoMedicoToAttach.getId());
@@ -52,6 +56,15 @@ public class EspecialidadJpaController implements Serializable {
             }
             especialidad.setMedico(attachedMedico);
             em.persist(especialidad);
+            if (titulo != null) {
+                Especialidad oldEspecialidadOfTitulo = titulo.getEspecialidad();
+                if (oldEspecialidadOfTitulo != null) {
+                    oldEspecialidadOfTitulo.setTitulo(null);
+                    oldEspecialidadOfTitulo = em.merge(oldEspecialidadOfTitulo);
+                }
+                titulo.setEspecialidad(especialidad);
+                titulo = em.merge(titulo);
+            }
             for (Medico medicoMedico : especialidad.getMedico()) {
                 medicoMedico.getEspecialidad().add(especialidad);
                 medicoMedico = em.merge(medicoMedico);
@@ -70,8 +83,14 @@ public class EspecialidadJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Especialidad persistentEspecialidad = em.find(Especialidad.class, especialidad.getId());
+            Titulo tituloOld = persistentEspecialidad.getTitulo();
+            Titulo tituloNew = especialidad.getTitulo();
             List<Medico> medicoOld = persistentEspecialidad.getMedico();
             List<Medico> medicoNew = especialidad.getMedico();
+            if (tituloNew != null) {
+                tituloNew = em.getReference(tituloNew.getClass(), tituloNew.getId());
+                especialidad.setTitulo(tituloNew);
+            }
             List<Medico> attachedMedicoNew = new ArrayList<Medico>();
             for (Medico medicoNewMedicoToAttach : medicoNew) {
                 medicoNewMedicoToAttach = em.getReference(medicoNewMedicoToAttach.getClass(), medicoNewMedicoToAttach.getId());
@@ -80,6 +99,19 @@ public class EspecialidadJpaController implements Serializable {
             medicoNew = attachedMedicoNew;
             especialidad.setMedico(medicoNew);
             especialidad = em.merge(especialidad);
+            if (tituloOld != null && !tituloOld.equals(tituloNew)) {
+                tituloOld.setEspecialidad(null);
+                tituloOld = em.merge(tituloOld);
+            }
+            if (tituloNew != null && !tituloNew.equals(tituloOld)) {
+                Especialidad oldEspecialidadOfTitulo = tituloNew.getEspecialidad();
+                if (oldEspecialidadOfTitulo != null) {
+                    oldEspecialidadOfTitulo.setTitulo(null);
+                    oldEspecialidadOfTitulo = em.merge(oldEspecialidadOfTitulo);
+                }
+                tituloNew.setEspecialidad(especialidad);
+                tituloNew = em.merge(tituloNew);
+            }
             for (Medico medicoOldMedico : medicoOld) {
                 if (!medicoNew.contains(medicoOldMedico)) {
                     medicoOldMedico.getEspecialidad().remove(especialidad);
@@ -120,6 +152,11 @@ public class EspecialidadJpaController implements Serializable {
                 especialidad.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The especialidad with id " + id + " no longer exists.", enfe);
+            }
+            Titulo titulo = especialidad.getTitulo();
+            if (titulo != null) {
+                titulo.setEspecialidad(null);
+                titulo = em.merge(titulo);
             }
             List<Medico> medico = especialidad.getMedico();
             for (Medico medicoMedico : medico) {

@@ -2,23 +2,13 @@
 package Persistencia;
 
 import Model.Consulta;
-import Model.Especialidad;
 import Model.FuncionarioGeneral;
-import Model.GestoresHospital;
 import Model.Paciente;
-import Model.Rol;
-import Model.Triage;
 import Model.Usuario;
-import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- *
- * @author Matías Sillen Ríos
- */
 
 public class ControladoraPersistencia implements Serializable{
     
@@ -30,6 +20,12 @@ public class ControladoraPersistencia implements Serializable{
     TriageJpaController triageJpa = new TriageJpaController();
     ConsultaJpaController consultaJpa = new ConsultaJpaController();
     SectorJpaController sectorJpa = new SectorJpaController();
+    TituloJpaController tituloJpa = new TituloJpaController();
+    ResultadoEstudioJpaController resEstudioJpa = new ResultadoEstudioJpaController();
+    FuncAdministrativoJpaController funcAdminJpa = new FuncAdministrativoJpaController();
+    EspecialidadJpaController especialidadJpa = new EspecialidadJpaController();
+    DiagnosticoClinicoJpaController diagnosticoJpa = new DiagnosticoClinicoJpaController();
+    BoxJpaController boxJpa = new BoxJpaController();
     
     //---------Metodos para Paciente---------
 

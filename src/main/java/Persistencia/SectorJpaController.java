@@ -4,22 +4,20 @@
  */
 package Persistencia;
 
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Model.FuncAdministrativo;
 import Model.Sector;
 import Persistencia.exceptions.NonexistentEntityException;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
-/**
- *
- * @author Matías Sillen Ríos
- */
 public class SectorJpaController implements Serializable {
 
     public SectorJpaController(EntityManagerFactory emf) {
@@ -37,11 +35,29 @@ public class SectorJpaController implements Serializable {
     }
 
     public void create(Sector sector) {
+        if (sector.getFuncAdministrativo() == null) {
+            sector.setFuncAdministrativo(new ArrayList<FuncAdministrativo>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            List<FuncAdministrativo> attachedFuncAdministrativo = new ArrayList<FuncAdministrativo>();
+            for (FuncAdministrativo funcAdministrativoFuncAdministrativoToAttach : sector.getFuncAdministrativo()) {
+                funcAdministrativoFuncAdministrativoToAttach = em.getReference(funcAdministrativoFuncAdministrativoToAttach.getClass(), funcAdministrativoFuncAdministrativoToAttach.getId());
+                attachedFuncAdministrativo.add(funcAdministrativoFuncAdministrativoToAttach);
+            }
+            sector.setFuncAdministrativo(attachedFuncAdministrativo);
             em.persist(sector);
+            for (FuncAdministrativo funcAdministrativoFuncAdministrativo : sector.getFuncAdministrativo()) {
+                Sector oldSectorOfFuncAdministrativoFuncAdministrativo = funcAdministrativoFuncAdministrativo.getSector();
+                funcAdministrativoFuncAdministrativo.setSector(sector);
+                funcAdministrativoFuncAdministrativo = em.merge(funcAdministrativoFuncAdministrativo);
+                if (oldSectorOfFuncAdministrativoFuncAdministrativo != null) {
+                    oldSectorOfFuncAdministrativoFuncAdministrativo.getFuncAdministrativo().remove(funcAdministrativoFuncAdministrativo);
+                    oldSectorOfFuncAdministrativoFuncAdministrativo = em.merge(oldSectorOfFuncAdministrativoFuncAdministrativo);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +71,34 @@ public class SectorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Sector persistentSector = em.find(Sector.class, sector.getIdSector());
+            List<FuncAdministrativo> funcAdministrativoOld = persistentSector.getFuncAdministrativo();
+            List<FuncAdministrativo> funcAdministrativoNew = sector.getFuncAdministrativo();
+            List<FuncAdministrativo> attachedFuncAdministrativoNew = new ArrayList<FuncAdministrativo>();
+            for (FuncAdministrativo funcAdministrativoNewFuncAdministrativoToAttach : funcAdministrativoNew) {
+                funcAdministrativoNewFuncAdministrativoToAttach = em.getReference(funcAdministrativoNewFuncAdministrativoToAttach.getClass(), funcAdministrativoNewFuncAdministrativoToAttach.getId());
+                attachedFuncAdministrativoNew.add(funcAdministrativoNewFuncAdministrativoToAttach);
+            }
+            funcAdministrativoNew = attachedFuncAdministrativoNew;
+            sector.setFuncAdministrativo(funcAdministrativoNew);
             sector = em.merge(sector);
+            for (FuncAdministrativo funcAdministrativoOldFuncAdministrativo : funcAdministrativoOld) {
+                if (!funcAdministrativoNew.contains(funcAdministrativoOldFuncAdministrativo)) {
+                    funcAdministrativoOldFuncAdministrativo.setSector(null);
+                    funcAdministrativoOldFuncAdministrativo = em.merge(funcAdministrativoOldFuncAdministrativo);
+                }
+            }
+            for (FuncAdministrativo funcAdministrativoNewFuncAdministrativo : funcAdministrativoNew) {
+                if (!funcAdministrativoOld.contains(funcAdministrativoNewFuncAdministrativo)) {
+                    Sector oldSectorOfFuncAdministrativoNewFuncAdministrativo = funcAdministrativoNewFuncAdministrativo.getSector();
+                    funcAdministrativoNewFuncAdministrativo.setSector(sector);
+                    funcAdministrativoNewFuncAdministrativo = em.merge(funcAdministrativoNewFuncAdministrativo);
+                    if (oldSectorOfFuncAdministrativoNewFuncAdministrativo != null && !oldSectorOfFuncAdministrativoNewFuncAdministrativo.equals(sector)) {
+                        oldSectorOfFuncAdministrativoNewFuncAdministrativo.getFuncAdministrativo().remove(funcAdministrativoNewFuncAdministrativo);
+                        oldSectorOfFuncAdministrativoNewFuncAdministrativo = em.merge(oldSectorOfFuncAdministrativoNewFuncAdministrativo);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -84,6 +127,11 @@ public class SectorJpaController implements Serializable {
                 sector.getIdSector();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The sector with id " + id + " no longer exists.", enfe);
+            }
+            List<FuncAdministrativo> funcAdministrativo = sector.getFuncAdministrativo();
+            for (FuncAdministrativo funcAdministrativoFuncAdministrativo : funcAdministrativo) {
+                funcAdministrativoFuncAdministrativo.setSector(null);
+                funcAdministrativoFuncAdministrativo = em.merge(funcAdministrativoFuncAdministrativo);
             }
             em.remove(sector);
             em.getTransaction().commit();

@@ -3,7 +3,6 @@
   <persistence-unit name="TallerPooPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Model.Sector</class>
-    <class>Model.AntecedenteClinico</class>
     <class>Model.Consulta</class>
     <class>Model.ResultadoEstudio</class>
     <class>Model.Triage</class>
@@ -12,6 +11,11 @@
     <class>Model.Rol</class>
     <class>Model.FuncionarioGeneral</class>
     <class>Model.Usuario</class>
+    <class>Model.DiagnosticoClinico</class>
+    <class>Model.Box</class>
+    <class>Model.Especialidad</class>
+    <class>Model.FuncAdministrativo</class>
+    <class>Model.Titulo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://bast8q2iyq5mvzgrsnpr-mysql.services.clever-cloud.com:3306/bast8q2iyq5mvzgrsnpr?serviceTimezone = UTC"/>
       <property name="javax.persistence.jdbc.user" value="uoebki81fw5wgu0t"/>

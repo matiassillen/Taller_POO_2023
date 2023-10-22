@@ -17,10 +17,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author Matías Sillen Ríos
- */
 public class ResultadoEstudioJpaController implements Serializable {
 
     public ResultadoEstudioJpaController(EntityManagerFactory emf) {
@@ -65,7 +61,7 @@ public class ResultadoEstudioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ResultadoEstudio persistentResultadoEstudio = em.find(ResultadoEstudio.class, resultadoEstudio.getNumResEst());
+            ResultadoEstudio persistentResultadoEstudio = em.find(ResultadoEstudio.class, resultadoEstudio.getId());
             Paciente pacienteOld = persistentResultadoEstudio.getPaciente();
             Paciente pacienteNew = resultadoEstudio.getPaciente();
             if (pacienteNew != null) {
@@ -85,7 +81,7 @@ public class ResultadoEstudioJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = resultadoEstudio.getNumResEst();
+                long id = resultadoEstudio.getId();
                 if (findResultadoEstudio(id) == null) {
                     throw new NonexistentEntityException("The resultadoEstudio with id " + id + " no longer exists.");
                 }
@@ -98,7 +94,7 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -106,7 +102,7 @@ public class ResultadoEstudioJpaController implements Serializable {
             ResultadoEstudio resultadoEstudio;
             try {
                 resultadoEstudio = em.getReference(ResultadoEstudio.class, id);
-                resultadoEstudio.getNumResEst();
+                resultadoEstudio.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The resultadoEstudio with id " + id + " no longer exists.", enfe);
             }
@@ -148,7 +144,7 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
-    public ResultadoEstudio findResultadoEstudio(int id) {
+    public ResultadoEstudio findResultadoEstudio(long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(ResultadoEstudio.class, id);

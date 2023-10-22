@@ -4,7 +4,7 @@
  */
 package VentanasGUI;
 import Model.Controladora;
-import Model.AntecedenteClinico;
+import Model.DiagnosticoClinico;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -185,7 +185,7 @@ public class VerAntecedenteClinico extends javax.swing.JFrame {
         String titutlos[] = {"Nombre","info"};
         modeloTabla.setColumnIdentifiers(titutlos);
         
-        List<AntecedenteClinico> listaAntClinico = control.TraerAntClinico();
+        List<DiagnosticoClinico> listaAntClinico = control.TraerAntClinico();
         
         
         
