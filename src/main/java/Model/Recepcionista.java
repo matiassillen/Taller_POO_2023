@@ -5,15 +5,11 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
-@Entity
 public class Recepcionista extends FuncionarioGeneral {
     
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
-    @OneToMany
     private List <Paciente> paciente;
 
     public Recepcionista() {
@@ -47,10 +43,10 @@ public class Recepcionista extends FuncionarioGeneral {
         consulta.setPaciente(pac);
         consulta.setMotivo(motivo);
         consulta.setLugar(lugar);
-        consulta.setFecha(fecha);
-        consulta.setHora(0);
-        consulta.setMedico(medico);
-        consulta.setBox(Box.BOX1);
+//        consulta.setFecha(fecha);
+//        consulta.setHora(0);
+//        consulta.setMedico(medico);
+//        consulta.setBox(Box.BOX1);
         consulta.setTriage(triage);
         consulta.setDiagnConsulta(diagnConsulta);
         controlPersis.CrearConsulta(consulta);

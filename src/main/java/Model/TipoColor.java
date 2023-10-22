@@ -4,10 +4,6 @@
  */
 package Model;
 
-/**
- *
- * @author Matías Sillen Ríos
- */
 public enum TipoColor {
     ROJO,
     NARANJA,

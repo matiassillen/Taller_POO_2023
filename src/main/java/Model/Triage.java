@@ -6,217 +6,218 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Triage implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int numTriage;
-    private String motivoCambio;
-    private TipoColor colorOriginal;
+    private long id;
+    private String motCambio;
+    private TipoColor colorInicial;
     private TipoColor colorFinal;
-    private Respiracion respiración;
+    private Respiracion resp;
     private Pulso pulso;
-    private Mental estadoMental;
+    private Mental estMental;
     private Conciencia conciencia;
-    private DolorPecho dificultadRespiratoria;
-    private LesionesGraves lesionesGraves;
-    private LesionesLeves lesionesLeves;
+    private DolorPecho difiResp;
+    private LesionesGraves lesGraves;
+    private LesionesLeves lesLeves;
     private Edad edad;
     private Fiebre fiebre;
     private Vomitos vómitos;
-    private DolorAbd dolorAbdominal;
-    private Shock signosShock;
+    private DolorAbd dolorAbd;
+    private Shock shock;
     private Sangrado sangrado;
-    @OneToOne
+    @OneToOne(mappedBy="triage")
     private Consulta consulta;
-    @OneToOne
+    @ManyToOne
     private Medico medico;
-    @OneToOne
+    @ManyToOne
     private LicEnEnfermeria enfermero;
  
-
     public Triage() {
+        
     }
 
     public Triage(int id, String motivoCambio, TipoColor colorOriginal, TipoColor colorFinal, Respiracion respiración, Pulso pulso, Mental estadoMental, Conciencia conciencia, DolorPecho dificultadRespiratoria, LesionesGraves lesionesGraves, LesionesLeves lesionesLeves, Edad edad, Fiebre fiebre, Vomitos vómitos, DolorAbd dolorAbdominal, Shock signosShock, Sangrado sangrado, Consulta consulta, Medico realizoTriage, LicEnEnfermeria enfermero) {
-        this.numTriage = id;
-        this.motivoCambio = motivoCambio;
-        this.colorOriginal = colorOriginal;
+        this.id = id;
+        this.motCambio = motivoCambio;
+        this.colorInicial = colorOriginal;
         this.colorFinal = colorFinal;
-        this.respiración = respiración;
+        this.resp = respiración;
         this.pulso = pulso;
-        this.estadoMental = estadoMental;
+        this.estMental = estadoMental;
         this.conciencia = conciencia;
-        this.dificultadRespiratoria = dificultadRespiratoria;
-        this.lesionesGraves = lesionesGraves;
-        this.lesionesLeves = lesionesLeves;
+        this.difiResp = dificultadRespiratoria;
+        this.lesGraves = lesionesGraves;
+        this.lesLeves = lesionesLeves;
         this.edad = edad;
         this.fiebre = fiebre;
         this.vómitos = vómitos;
-        this.dolorAbdominal = dolorAbdominal;
-        this.signosShock = signosShock;
+        this.dolorAbd = dolorAbdominal;
+        this.shock = signosShock;
         this.sangrado = sangrado;
         this.consulta = consulta;
         this.medico = realizoTriage;
         this.enfermero = enfermero;
     }
 
-    public int getNumTriage() {
-        return numTriage;
-    }
-    
-    public String getMotivoCambio() {
-        return motivoCambio;
+    public long getId() {
+        return id;
     }
 
-    public TipoColor getColorOriginal() {
-        return colorOriginal;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getMotCambio() {
+        return motCambio;
+    }
+
+    public void setMotCambio(String motCambio) {
+        this.motCambio = motCambio;
+    }
+
+    public TipoColor getColorInicial() {
+        return colorInicial;
+    }
+
+    public void setColorInicial(TipoColor colorInicial) {
+        this.colorInicial = colorInicial;
     }
 
     public TipoColor getColorFinal() {
         return colorFinal;
     }
 
-    public Respiracion getRespiración() {
-        return respiración;
+    public void setColorFinal(TipoColor colorFinal) {
+        this.colorFinal = colorFinal;
+    }
+
+    public Respiracion getResp() {
+        return resp;
+    }
+
+    public void setResp(Respiracion resp) {
+        this.resp = resp;
     }
 
     public Pulso getPulso() {
         return pulso;
     }
 
-    public Mental getEstadoMental() {
-        return estadoMental;
+    public void setPulso(Pulso pulso) {
+        this.pulso = pulso;
+    }
+
+    public Mental getEstMental() {
+        return estMental;
+    }
+
+    public void setEstMental(Mental estMental) {
+        this.estMental = estMental;
     }
 
     public Conciencia getConciencia() {
         return conciencia;
     }
 
-    public DolorPecho getDificultadRespiratoria() {
-        return dificultadRespiratoria;
+    public void setConciencia(Conciencia conciencia) {
+        this.conciencia = conciencia;
     }
 
-    public LesionesGraves getLesionesGraves() {
-        return lesionesGraves;
+    public DolorPecho getDifiResp() {
+        return difiResp;
     }
 
-    public LesionesLeves getLesionesLeves() {
-        return lesionesLeves;
+    public void setDifiResp(DolorPecho difiResp) {
+        this.difiResp = difiResp;
+    }
+
+    public LesionesGraves getLesGraves() {
+        return lesGraves;
+    }
+
+    public void setLesGraves(LesionesGraves lesGraves) {
+        this.lesGraves = lesGraves;
+    }
+
+    public LesionesLeves getLesLeves() {
+        return lesLeves;
+    }
+
+    public void setLesLeves(LesionesLeves lesLeves) {
+        this.lesLeves = lesLeves;
     }
 
     public Edad getEdad() {
         return edad;
     }
 
-    public Fiebre getFiebre() {
-        return fiebre;
-    }
-
-    public Vomitos getVómitos() {
-        return vómitos;
-    }
-
-    public DolorAbd getDolorAbdominal() {
-        return dolorAbdominal;
-    }
-
-    public Shock getSignosShock() {
-        return signosShock;
-    }
-
-    public Sangrado getSangrado() {
-        return sangrado;
-    }
-
-    public Consulta getConsulta() {
-        return consulta;
-    }
-    
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public LicEnEnfermeria getEnfermero() {
-        return enfermero;
-    }
-    
-    public void setNumTriage(int numTriage) {
-        this.numTriage = numTriage;
-    }
-
-    public void setMotivoCambio(String motivoCambio) {
-        this.motivoCambio = motivoCambio;
-    }
-
-    public void setColorOriginal(TipoColor colorOriginal) {
-        this.colorOriginal = colorOriginal;
-    }
-
-    public void setColorFinal(TipoColor colorFinal) {
-        this.colorFinal = colorFinal;
-    }
-
-    public void setRespiración(Respiracion respiración) {
-        this.respiración = respiración;
-    }
-
-    public void setPulso(Pulso pulso) {
-        this.pulso = pulso;
-    }
-
-    public void setEstadoMental(Mental estadoMental) {
-        this.estadoMental = estadoMental;
-    }
-
-    public void setConciencia(Conciencia conciencia) {
-        this.conciencia = conciencia;
-    }
-
-    public void setDificultadRespiratoria(DolorPecho dificultadRespiratoria) {
-        this.dificultadRespiratoria = dificultadRespiratoria;
-    }
-
-    public void setLesionesGraves(LesionesGraves lesionesGraves) {
-        this.lesionesGraves = lesionesGraves;
-    }
-
-    public void setLesionesLeves(LesionesLeves lesionesLeves) {
-        this.lesionesLeves = lesionesLeves;
-    }
-
     public void setEdad(Edad edad) {
         this.edad = edad;
+    }
+
+    public Fiebre getFiebre() {
+        return fiebre;
     }
 
     public void setFiebre(Fiebre fiebre) {
         this.fiebre = fiebre;
     }
 
+    public Vomitos getVómitos() {
+        return vómitos;
+    }
+
     public void setVómitos(Vomitos vómitos) {
         this.vómitos = vómitos;
     }
 
-    public void setDolorAbdominal(DolorAbd dolorAbdominal) {
-        this.dolorAbdominal = dolorAbdominal;
+    public DolorAbd getDolorAbd() {
+        return dolorAbd;
     }
 
-    public void setSignosShock(Shock signosShock) {
-        this.signosShock = signosShock;
+    public void setDolorAbd(DolorAbd dolorAbd) {
+        this.dolorAbd = dolorAbd;
+    }
+
+    public Shock getShock() {
+        return shock;
+    }
+
+    public void setShock(Shock shock) {
+        this.shock = shock;
+    }
+
+    public Sangrado getSangrado() {
+        return sangrado;
     }
 
     public void setSangrado(Sangrado sangrado) {
         this.sangrado = sangrado;
     }
 
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
-    
+
+    public Medico getMedico() {
+        return medico;
+    }
+
     public void setMedico(Medico medico) {
         this.medico = medico;
+    }
+
+    public LicEnEnfermeria getEnfermero() {
+        return enfermero;
     }
 
     public void setEnfermero(LicEnEnfermeria enfermero) {
@@ -225,20 +226,20 @@ public class Triage implements Serializable {
 
    public void obtenerPuntos() {
        int puntos = 0;
-       puntos += this.respiración.getValorNumerico();
-       puntos += this.dolorAbdominal.getValorNumerico();
+       puntos += this.resp.getValorNumerico();
+       puntos += this.dolorAbd.getValorNumerico();
        puntos += this.sangrado.getValorNumerico();
-       puntos += this.estadoMental.getValorNumerico();
-       puntos += this.signosShock.getValorNumerico();
+       puntos += this.estMental.getValorNumerico();
+       puntos += this.shock.getValorNumerico();
        puntos += this.edad.getValorNumerico();
-       puntos += this.dificultadRespiratoria.getValorNumerico();
+       puntos += this.difiResp.getValorNumerico();
        puntos += this.pulso.getValorNumerico();
        puntos += this.conciencia.getValorNumerico();
-       puntos += this.lesionesGraves.getValorNumerico();
-       puntos += this.lesionesLeves.getValorNumerico();
+       puntos += this.lesGraves.getValorNumerico();
+       puntos += this.lesLeves.getValorNumerico();
        puntos += this.fiebre.getValorNumerico();
        puntos += this.vómitos.getValorNumerico();
-       this.setColorOriginal(obtenerColor(puntos));
+       this.setColorInicial(obtenerColor(puntos));
    }
 
    public TipoColor obtenerColor(int puntos) {

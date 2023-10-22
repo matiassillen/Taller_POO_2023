@@ -11,35 +11,47 @@ import javax.persistence.ManyToOne;
 public class ResultadoEstudio implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int numResEst;
+    private long id;
     @ManyToOne
     private Paciente paciente;
     private String nombre;
     private String Informe;
     private String hora;
-    private String Fecha;
+    private String fecha;
     
     public ResultadoEstudio() {
-        
+        this.paciente = null;
+        this.nombre = null;
+        this.Informe = null;
+        this.hora = null;
+        this.fecha = null;
     }
 
-    public ResultadoEstudio(int numResultadoEstudio, String nombre, String Informe, String hora, String Fecha, Paciente paciente) {
-        this.numResEst = numResultadoEstudio;
+    public ResultadoEstudio(long id, Paciente paciente, String nombre, String Informe, String hora, String Fecha) {
+        this.id = id;
+        this.paciente = paciente;
         this.nombre = nombre;
         this.Informe = Informe;
         this.hora = hora;
-        this.Fecha = Fecha;
+        this.fecha = Fecha;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public int getNumResEst() {
-        return numResEst;
-    }
-
-    public void setNumResEst(int numResEst) {
-        this.numResEst = numResEst;
-    }
-    
     public String getNombre() {
         return nombre;
     }
@@ -65,26 +77,11 @@ public class ResultadoEstudio implements Serializable {
     }
 
     public String getFecha() {
-        return Fecha;
+        return fecha;
     }
 
-    public void setFecha(String Fecha) {
-        this.Fecha = Fecha;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    @Override
-    public String toString() {
-        return "ResultadoEstudio{" + "nombre=" + nombre + ", Informe=" + Informe + ", hora=" + hora + ", Fecha=" + Fecha + ", paciente=" + paciente + '}';
-    }
-
-    
 
 }

@@ -12,15 +12,9 @@ public class FuncionarioGeneral extends Persona {
     @JoinColumn(name="id_Usuario")
     @OneToOne
     private Usuario usu;
-    
-    
-    //private static final int idTotales = 0;
-    
-    //A debatir, si asignar rangos de id con privilegios segun rol o generar id globales
  
     public FuncionarioGeneral() {
-        
-        
+       
     }
 
     public FuncionarioGeneral(Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {

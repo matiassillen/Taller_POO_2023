@@ -21,7 +21,123 @@ public class Controladora implements Serializable{
         return usu;
     }
     
+    public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
+        return controlPersis.traerFuncionariosEnGeneral();
+    }
+
+    public List<Usuario> traerUsuarios() {
+        return controlPersis. traerUsuarios();
+    }
+
+    public Usuario traerUsuario(long idUsuario) {
+        return controlPersis.traerUsuarios(idUsuario);
+    }
     
+    //----------Metodos que estaban en la clase Medico----------
+    
+     /**
+     * @param paciente 
+     * @return
+    */
+    public void tomarPaciente(Paciente paciente) {
+        // TODO implement here
+    }
+
+    /**
+     * @param paciente 
+     * @return
+    */
+    public void VerTriage(Paciente paciente) {
+        // TODO implement here
+    }
+
+    /**
+     * @param paciente 
+     * @return
+    */
+    public void VerConsulta(Paciente paciente) {
+        // TODO implement here
+    }
+
+    /**
+     * @param paciente 
+     * @return
+    */
+    public void VerResultadoEstudios(Paciente paciente) {
+        // TODO implement here
+    }
+
+    /**
+     * @param paciente 
+     * @return
+    */
+    public void VerAntecedenteClinico(Paciente paciente) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fecha1 
+     * @param fecha2 
+     * @return
+    */
+    public Integer CantidadPacientesAtendidos(String fecha1, String fecha2) {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @param fecha1 
+     * @param fecha2 
+     * @param edad1 
+     * @param edad2 
+     * @return
+    */
+    public Integer PacientesAtendidosPorEdad(String fecha1, String fecha2, String edad1, String edad2) {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @param fecha1 
+     * @param fecha2 
+     * @return
+    */
+    public Medico MedicoConMasPacientes(String fecha1, String fecha2) {
+        // TODO implement here
+        return null;
+    }
+    
+    //---------Metodos estadiscticos----------
+    
+    public void VerEstadistica() {
+        // TODO implement here
+    }
+    // public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
+    //    Map<String, Integer> diccionario = new HashMap<>();
+    //    for (Codigo Para Recorer Arbol de Tiage) {
+    //        if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
+    //            tipoColor clave = Triage.ColorFinal;
+    //            if(diccionario.containsKey(clave)){
+    //                diccionario.merge(clave, 1, Integer::sum);
+    //            }else{
+    //                diccionario.put(clave, 1);
+    //            }
+    //        }            
+    //    }
+    //    return diccionario;
+    // }
+
+     public Integer triagesCambiados() {
+        int sum = 0;
+    //    int rango = len(funcionario.traigeHechos);
+    //    for (i= 0; i<rango; i++) {
+    //        Triage triageN = funcionario.traigeHechos[i];
+    //        if (triageN.colorFinal=!null) {
+    //            sum += 1;
+    //        }
+    //    }
+        return sum;
+    }
     
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
@@ -178,17 +294,7 @@ public class Controladora implements Serializable{
 //            return false;
 //        }
 
-    public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
-        return controlPersis.traerFuncionariosEnGeneral();
-    }
 
-    public List<Usuario> traerUsuarios() {
-        return controlPersis. traerUsuarios();
-    }
-
-    public Usuario traerUsuario(long idUsuario) {
-        return controlPersis.traerUsuarios(idUsuario);
-    }
         
 //    public List<Consulta> TraerPacientesTriageados() {
 //        List<Consulta> consultas = controlPersis.traerConsultas();

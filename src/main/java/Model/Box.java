@@ -8,21 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/**
- * 
- */
-
 @Entity
 public class Box implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private  long id;
-    private Boolean estado;
     @ManyToOne
     private Medico medico;
-     @OneToOne
+    @OneToOne
     private Paciente pacienteActual;
+    @OneToOne(mappedBy="box") 
+    private Consulta consulta;
     
     public Box() {
     }
@@ -30,15 +27,16 @@ public class Box implements Serializable {
     /**
      * Default constructor
      * @param id
-     * @param estado
      * @param medico
      * @param pacienteActual
+     * @param consulta
      */
-    public Box(long id, Boolean estado, Medico medico, Paciente pacienteActual) {
+
+    public Box(long id, Medico medico, Paciente pacienteActual, Consulta consulta) {
         this.id = id;
-        this.estado = estado;
         this.medico = medico;
         this.pacienteActual = pacienteActual;
+        this.consulta = consulta;
     }
 
     public long getId() {
@@ -49,13 +47,6 @@ public class Box implements Serializable {
         this.id = id;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
 
     public Medico getMedico() {
         return medico;
@@ -73,4 +64,12 @@ public class Box implements Serializable {
         this.pacienteActual = pacienteActual;
     }
 
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
+    }
+    
 }

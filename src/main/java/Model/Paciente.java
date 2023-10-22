@@ -11,8 +11,8 @@ public class Paciente extends Persona implements Serializable {
     private String persoDeContacto;
     private String telDeContacto;
     @OneToMany
-    @JoinColumn(name="id_antecedenteClinico")
-    private List <AntecedenteClinico> antecedenteClinico;
+    @JoinColumn(name="id_diagnosticoClinico")
+    private List <DiagnosticoClinico> diagnosticoClinico;
      @OneToMany
      @JoinColumn(name="id_resultadoEstudiol")
     private List <ResultadoEstudio> resultadoEstudio;
@@ -23,11 +23,11 @@ public class Paciente extends Persona implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(String persoDeContacto, String telDeContacto, List<AntecedenteClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, List<Consulta> consultas, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
+    public Paciente(String persoDeContacto, String telDeContacto, List<DiagnosticoClinico> antecedenteClinico, List<ResultadoEstudio> resultadoEstudio, List<Consulta> consultas, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.persoDeContacto = persoDeContacto;
         this.telDeContacto = telDeContacto;
-        this.antecedenteClinico = antecedenteClinico;
+        this.diagnosticoClinico = antecedenteClinico;
         this.resultadoEstudio = resultadoEstudio;
         this.consultas = consultas;
     }
@@ -48,12 +48,12 @@ public class Paciente extends Persona implements Serializable {
         this.telDeContacto = telDeContacto;
     }
 
-    public List<AntecedenteClinico> getAntecedenteClinico() {
-        return antecedenteClinico;
+    public List<DiagnosticoClinico> getDiagnosticoClinico() {
+        return diagnosticoClinico;
     }
 
-    public void setAntecedenteClinico(List<AntecedenteClinico> antecedenteClinico) {
-        this.antecedenteClinico = antecedenteClinico;
+    public void setDiagnosticoClinico(List<DiagnosticoClinico> diagnosticoClinico) {
+        this.diagnosticoClinico = diagnosticoClinico;
     }
 
     public List<ResultadoEstudio> getResultadoEstudio() {

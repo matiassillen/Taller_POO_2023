@@ -8,24 +8,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 @Entity
 public class Especialidad implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private String nombreEspecialidad;
-    @ManyToMany
+    private String nombre;
+    @ManyToMany(mappedBy="especialidad")
     private List<Medico> medico;
+    @OneToOne
+    @JoinColumn(name="id_titulo")
+    private Titulo titulo;
 
     public Especialidad() {
-        this.nombreEspecialidad = "";
         medico = new ArrayList<>();
     }
 
-    public Especialidad(long id, String nombreEspecialidad, List<Medico> medico) {
+    public Especialidad(long id, String nombre, List<Medico> medico, Titulo titulo) {
         this.id = id;
-        this.nombreEspecialidad = nombreEspecialidad;
+        this.nombre = nombre;
         this.medico = medico;
+        this.titulo = titulo;
     }
 
     public long getId() {
@@ -36,12 +43,12 @@ public class Especialidad implements Serializable {
         this.id = id;
     }
 
-    public String getNombreEspecialidad() {
-        return nombreEspecialidad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreEspecialidad(String nombreEspecialidad) {
-        this.nombreEspecialidad = nombreEspecialidad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public List<Medico> getMedico() {
@@ -50,6 +57,14 @@ public class Especialidad implements Serializable {
 
     public void setMedico(List<Medico> medico) {
         this.medico = medico;
+    }
+
+    public Titulo getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(Titulo titulo) {
+        this.titulo = titulo;
     }
 
 }

@@ -6,44 +6,52 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 
 @Entity
-public class AntecedenteClinico implements Serializable {
+public class DiagnosticoClinico implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int numAntecedente;
+    private int id;
     @ManyToOne
     private Paciente paciente;
     private String nombreDiagnostico;
     private String fecha;
     private String hora;
-    @OneToOne
+    private String descripcion;
+    @ManyToOne
     private Medico medico;
     
-    public AntecedenteClinico() {
-        
+    public DiagnosticoClinico() {
+
     }
 
-    public AntecedenteClinico(int numAntecedente, String nombreDiagnostico, String fecha, String hora, Medico medico, Paciente paciente) {
-        this.numAntecedente = numAntecedente;
+    public DiagnosticoClinico(int numAntecedente, Paciente paciente, String nombreDiagnostico, String fecha, String hora, String descripcion, Medico medico) {
+        this.id = numAntecedente;
+        this.paciente = paciente;
         this.nombreDiagnostico = nombreDiagnostico;
         this.fecha = fecha;
         this.hora = hora;
+        this.descripcion = descripcion;
         this.medico = medico;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public int getNumAntecedente() {
-        return numAntecedente;
-    }
-    
-    public void setNumAntecedente(int numAntecedente) {
-        this.numAntecedente = numAntecedente;
-    }
-    
     public String getNombreDiagnostico() {
         return nombreDiagnostico;
     }
@@ -68,6 +76,14 @@ public class AntecedenteClinico implements Serializable {
         this.hora = hora;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Medico getMedico() {
         return medico;
     }
@@ -76,18 +92,4 @@ public class AntecedenteClinico implements Serializable {
         this.medico = medico;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    @Override
-    public String toString() {
-        return "AntecedenteClinico{" + "nombreDiagnostico=" + nombreDiagnostico + ", fecha=" + fecha + ", hora=" + hora + ", medico=" + medico + ", paciente=" + paciente + '}';
-    }
-
-    
 }

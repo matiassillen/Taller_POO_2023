@@ -1,15 +1,17 @@
 package Model;
 
-import java.util.List;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class FuncAdministrativo extends FuncionarioGeneral {
     
-    //@ManyToOne
-   @Transient
+    @ManyToOne
+    @JoinColumn(name="id_sector")
     private Sector sector;
-
+    
     public FuncAdministrativo() {
         sector = null;
     }

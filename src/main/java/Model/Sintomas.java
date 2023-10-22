@@ -4,11 +4,6 @@
  */
 package Model;
 
-/**
- *
- * @author Agustin C
- * 
- */
 public class Sintomas {
     // enumeracion de sintomas de respiracion
     public enum Respiracion {

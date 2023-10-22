@@ -6,33 +6,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
 
 @Entity
 public class Consulta implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int numConsulta;
+    private int id;
     @ManyToOne
     private Paciente paciente;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-    private Long hora;
+    private String hora;
     private String diagnConsulta;
     private String lugar;
     private String motivo;
     @OneToOne
+    @JoinColumn(name="id_box")
     private Box box;
     @ManyToOne
     private Medico medico;
     @OneToOne
+    @JoinColumn(name="id_triage")
     private Triage triage;
     
-    public Consulta(){}
+    public Consulta(){
+        
+    }
 
-    public Consulta(int numConsulta, Paciente paciente, Date fecha, Long hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
-        this.numConsulta = numConsulta;
+    public Consulta(int numConsulta, Paciente paciente, Date fecha, String hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
+        this.id = numConsulta;
         this.paciente = paciente;
         this.fecha = fecha;
         this.hora = hora;
@@ -44,12 +50,12 @@ public class Consulta implements Serializable {
         this.triage = triage;
     }
 
-    public int getNumConsulta() {
-        return numConsulta;
+    public int getId() {
+        return id;
     }
 
-    public void setNumConsulta(int numConsulta) {
-        this.numConsulta = numConsulta;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Paciente getPaciente() {
@@ -68,11 +74,11 @@ public class Consulta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Long getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Long hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -123,14 +129,5 @@ public class Consulta implements Serializable {
     public void setTriage(Triage triage) {
         this.triage = triage;
     }
-
-    
-
-    @Override
-    public String toString() {
-        return "Consulta{" + "paciente=" + paciente + ", fecha=" + fecha + ", hora=" + hora + ", diagnConsulta=" + diagnConsulta + ", lugar=" + lugar + ", motivo=" + motivo + ", box=" + box + ", medico=" + medico + ", triage=" + triage + '}';
-    }
-    
-    
 
 }

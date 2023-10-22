@@ -14,10 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author Matías Sillen Ríos
- */
 @Entity
 public class Usuario implements Serializable {
     
