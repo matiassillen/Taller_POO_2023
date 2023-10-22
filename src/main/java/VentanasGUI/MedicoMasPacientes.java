@@ -1,10 +1,12 @@
 package VentanasGUI;
 
+import Model.Controladora;
 import static java.lang.Integer.parseInt;
 import java.util.Calendar;
 
 
 public class MedicoMasPacientes extends javax.swing.JFrame {
+    Controladora control= new Controladora();
 
    
     public MedicoMasPacientes() {
@@ -196,6 +198,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
        
+       // control.MedicoConMasPacientes(fecha1, fecha2)
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
