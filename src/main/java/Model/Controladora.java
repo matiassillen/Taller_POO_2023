@@ -2,6 +2,7 @@ package Model;
 
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Controladora implements Serializable{
@@ -102,8 +103,8 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
-    public Medico MedicoConMasPacientes(String fecha1, String fecha2) {
-        // TODO implement here
+    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+        
         return null;
     }
     
