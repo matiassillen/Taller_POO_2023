@@ -195,13 +195,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         int diaTwo = fechaTwo.get(Calendar.DATE);
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
-        try {
-            Integer pruebaDni = Integer.parseInt(txtDNI.getText());
-            txtAdvertencia.setVisible(false);
-        }
-        catch (Exception e){
-            txtAdvertencia.setVisible(true);
-        }
+       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
