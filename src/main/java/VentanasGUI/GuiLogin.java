@@ -4,14 +4,15 @@
  */
 package VentanasGUI;
 import Model.Controladora;
-import Model.FuncionarioGeneral;
+import Model.Rol;
+import Model.Usuario;
 import java.util.List;
 /**
  *
  * @author Agus
  */
 public class GuiLogin extends javax.swing.JFrame {
-
+    Controladora verif = new Controladora();
     /**
      * Creates new form Login
      */
@@ -33,8 +34,8 @@ public class GuiLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        usuario = new javax.swing.JTextField();
-        contraseña = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,34 +86,34 @@ public class GuiLogin extends javax.swing.JFrame {
         jLabel4.setText("Usuario:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 127, 147, 34));
 
-        usuario.setBackground(new java.awt.Color(255, 255, 255));
-        usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        usuario.setForeground(new java.awt.Color(0, 0, 0));
-        usuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        usuario.setCaretColor(new java.awt.Color(0, 0, 0));
-        usuario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        usuario.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        usuario.setSelectionColor(new java.awt.Color(204, 204, 204));
-        usuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtUsuario.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtUsuario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtUsuario.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtUsuario.setSelectionColor(new java.awt.Color(204, 204, 204));
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        jPanel4.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 127, 174, 34));
+        jPanel4.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 127, 174, 34));
 
-        contraseña.setBackground(new java.awt.Color(255, 255, 255));
-        contraseña.setForeground(new java.awt.Color(0, 0, 0));
-        contraseña.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        contraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        contraseña.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        contraseña.setSelectionColor(new java.awt.Color(204, 204, 204));
-        contraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
+        txtContrasenia.setForeground(new java.awt.Color(0, 0, 0));
+        txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtContrasenia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtContrasenia.setSelectionColor(new java.awt.Color(204, 204, 204));
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaActionPerformed(evt);
+                txtContraseniaActionPerformed(evt);
             }
         });
-        jPanel4.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
+        jPanel4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -125,6 +126,11 @@ public class GuiLogin extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
@@ -133,23 +139,14 @@ public class GuiLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String usern = usuario.getText();
-        String passw = String.valueOf(contraseña.getPassword());
-        Controladora verif = new Controladora();
-        boolean resultado = verif.validar(usern, passw);
-        if (resultado) {
-            String rolEncontrado;
-            List<FuncionarioGeneral> listFunGral = verif.traerFuncionariosEnGeneral();
-            if (!listFunGral.isEmpty()) {
-                for (FuncionarioGeneral buscar : listFunGral) {
-                    if (usern == buscar.getNomUsuario()) {
-                        rolEncontrado = buscar.getRol().getNombre();
-                        break;
-                    }
-                }
-            }
-        }
-            
+//        String usern = txtUsuario.getText();
+//        String passw = String.valueOf(txtContrasenia.getPassword());
+//        List<Object> resultado = verif.validar(usern, passw);
+//        if ((boolean)resultado.get(0)) {
+//            Usuario temporalUsuario = (Usuario) resultado.get(1);
+//            Rol rolEncontrado  = temporalUsuario.getRol();
+//            }
+//            
 //            switch (rolEncontrado) {
 //                case "Gestor":
 //                    
@@ -172,13 +169,11 @@ public class GuiLogin extends javax.swing.JFrame {
 //                }
 //            }
             
-         
-        
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
         // TODO add your handling code here:
@@ -189,13 +184,13 @@ public class GuiLogin extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField contraseña;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JPasswordField txtContrasenia;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
