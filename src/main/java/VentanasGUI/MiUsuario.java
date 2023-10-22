@@ -11,15 +11,16 @@ import static java.lang.String.valueOf;
  * @author Usuario
  */
 public class MiUsuario extends javax.swing.JFrame {
-    FuncionarioGeneral UsuarioRegistrado;
+    private FuncionarioGeneral usuarioRegistrado;
+    private Usuario user;
     /**
      * Creates new form MiUsuario
      * @param user Es el usuario que ingreso en la aplicacion 
      */
     public MiUsuario(Usuario user) {
-        UsuarioRegistrado = user.getFuncionarioGeneral();
+        this.usuarioRegistrado = user.getFuncionarioGeneral();
         initComponents();
-        this.setMuestra(user);
+        this.setMuestra();
     }
 
     /**
@@ -230,16 +231,16 @@ public class MiUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
     
-    private void setMuestra(Usuario fun) {
-        txtNombre2.setText(fun.getFuncionarioGeneral().getNombre());    
-        txtApellido2.setText(fun.getFuncionarioGeneral().getApellido());
-        txtCorreo2.setText(fun.getFuncionarioGeneral().getCorreoE());
-        txtDni2.setText(String.valueOf(fun.getFuncionarioGeneral().getDni()));
-        txtEstado2.setText(fun.getFuncionarioGeneral().getEstadoCivil());
-        txtFechaN.setText(fun.getFuncionarioGeneral().getFechaDeNac());
-        txtTelC2.setText(fun.getFuncionarioGeneral().getTelefonoFijo());
-        txtTelF2.setText(fun.getFuncionarioGeneral().getTelefonoCel());
-        txtIdNum.setText(valueOf(fun.getId()));
+    private void setMuestra() {
+        txtNombre2.setText(usuarioRegistrado.getNombre());    
+        txtApellido2.setText(usuarioRegistrado.getApellido());
+        txtCorreo2.setText(usuarioRegistrado.getCorreoE());
+        txtDni2.setText(String.valueOf(usuarioRegistrado.getDni()));
+        txtEstado2.setText(usuarioRegistrado.getEstadoCivil());
+        txtFechaN.setText(usuarioRegistrado.getFechaDeNac());
+        txtTelC2.setText(usuarioRegistrado.getTelefonoFijo());
+        txtTelF2.setText(usuarioRegistrado.getTelefonoCel());
+        txtIdNum.setText(String.valueOf(user.getId()));
     }
     
     /**
