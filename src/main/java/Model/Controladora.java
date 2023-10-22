@@ -271,7 +271,7 @@ public class Controladora implements Serializable{
     * Validar es el metodo publico que llama a validacion
     * @return retorna un booleano true o false
     */
-    public List<Object> validar(String uss, String pass){
+    public Usuario validar(String uss, String pass){
         return validacion(uss, pass);
     }
   
@@ -279,16 +279,13 @@ public class Controladora implements Serializable{
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
     * @return boolean
     */
-    private List<Object> validacion(String us, String pas){
-        List<Object> resultado = null;
-        resultado.add(false);
-        resultado.add(null);
+    private Usuario validacion(String us, String pas){
+        Usuario resultado = null;
         try{
             List<Usuario> listaBusqueda = controlPersis.traerUsuarios();
             for (Usuario comprobar : listaBusqueda) {
                 if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
-                    resultado.set(0,true);
-                    resultado.set(1,comprobar);
+                    resultado = comprobar;
                     return resultado;
                 }
                 else {}
