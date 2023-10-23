@@ -5,6 +5,7 @@
 package VentanasGUI;
 import Model.Controladora;
 import Model.Consulta;
+import Model.Paciente;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,12 +15,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VerConsultasAnteriores extends javax.swing.JFrame {
     Controladora control;
+    Paciente paciente;
     /**
-     * Creates new form VerHistClinica
+     * Creates new form VerConsultasAnteriores
      */
-    public VerConsultasAnteriores(Controladora control) {
+    public VerConsultasAnteriores(Controladora control, Paciente paciente) {
         initComponents();
         this.control = control;
+        this.paciente = paciente;
     }
 
     /**
@@ -33,7 +36,7 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaConsAnt = new javax.swing.JTable();
+        tablaConsAnteriores = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
         btnLeerConsAnt = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -48,9 +51,9 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaConsAnt.setBackground(new java.awt.Color(255, 255, 255));
-        tablaConsAnt.setForeground(new java.awt.Color(0, 0, 0));
-        tablaConsAnt.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConsAnteriores.setBackground(new java.awt.Color(255, 255, 255));
+        tablaConsAnteriores.setForeground(new java.awt.Color(0, 0, 0));
+        tablaConsAnteriores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -61,7 +64,7 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaConsAnt);
+        jScrollPane1.setViewportView(tablaConsAnteriores);
 
         btnVolver.setBackground(new java.awt.Color(0, 153, 153));
         btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -93,45 +96,46 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(337, 337, 337)
                 .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(217, 217, 217))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1005, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(68, 68, 68))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,7 +153,7 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        HistoriaClinicaa histCli = new HistoriaClinicaa(control);
+        DatosDePaciente histCli = new DatosDePaciente(control, paciente);
         histCli.setVisible(true);
         histCli.setLocationRelativeTo(null);
         this.dispose();
@@ -161,15 +165,16 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
     private void cargarTabla() {
         DefaultTableModel modeloTabla = new DefaultTableModel();
-        
-        String titutlos[] = {"Nombre","info"};
+        String titutlos[] = {"Medico","Fecha","Hora","Diagnostico"};
         modeloTabla.setColumnIdentifiers(titutlos);
-        
-        List<Consulta> listaConsulAnt = control.TraerConsultasAnteriores();
-        
-        
-        
-        tablaConsAnt.setModel(modeloTabla);
+        List<Consulta> listCon = this.paciente.getConsultas();
+        if (listCon!=null){
+            for(Consulta Con : listCon){
+                Object[] objeto = {Con.getMedico().getNumMat(),Con.getFecha(),Con.getHora(),Con.getDiagnConsulta()};
+                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
+            }
+        }
+        tablaConsAnteriores.setModel(modeloTabla);
     }
     
 
@@ -179,7 +184,7 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaConsAnt;
+    private javax.swing.JTable tablaConsAnteriores;
     private javax.swing.JLabel txtConsultasAnt;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,9 +3,11 @@ package Persistencia;
 
 import Model.Box;
 import Model.Consulta;
+import Model.DiagnosticoClinico;
 import Model.FuncionarioGeneral;
 import Model.Medico;
 import Model.Paciente;
+import Model.ResultadoEstudio;
 import Model.Rol;
 import Model.Usuario;
 import Persistencia.exceptions.NonexistentEntityException;
@@ -326,6 +328,46 @@ public class ControladoraPersistencia implements Serializable{
         try {
             usuJpa.destroy(id);
         } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public List<ResultadoEstudio> TraerResultadosEst() {
+        return this.resEstudioJpa.findResultadoEstudioEntities();
+    }
+
+    public List<DiagnosticoClinico> traerDiagnosticoClinico() {
+        return this.diagnosticoJpa.findDiagnosticoClinicoEntities();
+    }
+
+    public void crearResultadoEstudio(ResultadoEstudio res) {
+        this.resEstudioJpa.create(res);
+    }
+
+    public void cargarNuevoDiagClinico(DiagnosticoClinico diag) {
+        this.diagnosticoJpa.create(diag);
+    }
+
+    public void editarPaciente(Paciente paciente) {
+        try {
+            this.pacienteJpa.edit(paciente);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarConsulta(Consulta consulta) {
+        try {
+            this.consultaJpa.edit(consulta);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarBox(Box boxAVaciar) {
+        try {
+            this.boxJpa.edit(boxAVaciar);
+        } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
