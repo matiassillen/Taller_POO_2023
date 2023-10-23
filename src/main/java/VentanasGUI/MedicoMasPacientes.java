@@ -1,6 +1,7 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Medico;
 import java.time.LocalDate;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -226,8 +227,13 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
             }
         
         };
-        String titulos []= {"Nombre","Apellido","Matricula","Cantidad de pacientes",};
+        String titulos []= {"Nombre","Apellido","Matricula","Cantidad de pacientes atendidos",};
         modeloTabla.setColumnIdentifiers(titulos);
+        Medico medi= control.medicoConMasPacientes(fecha1, fecha2);
+        if(medi != null){
+                Object[] objeto= {medi.getNombre(),medi.getApellido(),medi.getNumMat(),};
+                modeloTabla.addRow(objeto);
+            }
         
         
         

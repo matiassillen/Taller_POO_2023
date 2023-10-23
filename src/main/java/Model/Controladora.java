@@ -3,6 +3,7 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -117,9 +118,12 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
-    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-        
-        return Medico;
+    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+        while (!fecha1.isAfter(fecha2)) {
+            fecha1 = fecha1.plus(1, ChronoUnit.DAYS); // Avanzar un día
+        }
+    
+        return null;
     }
     
     //---------Metodos estadiscticos----------
@@ -345,12 +349,8 @@ public class Controladora implements Serializable{
 //    }
 
     public List<Usuario> traerTriagesCambiados() {
-        List <Usuario> usu= traerUsuarios();
-        for(Usuario rol: usu){
-           Object objeto []={};
+        List <Rol> usu= traerRoles();
         
-        }
-    
        return null;
     }
     public List<Box> TraerBoxDisponibles() {
