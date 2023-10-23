@@ -13,7 +13,6 @@ public class AdministradorDeSistema extends FuncAdministrativo {
     public AdministradorDeSistema(Sector sector, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(sector, usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
     }
-
     
     /**
      */
@@ -21,27 +20,35 @@ public class AdministradorDeSistema extends FuncAdministrativo {
         // TODO implement here
     }
 
-    public String buscarUsuario(int dni) {
+     public void crearUsuario(String nombreUsuario, String contrasenia, List<Rol> roles, FuncionarioGeneral funcGeneral) {
+        Usuario usu = new Usuario();
+        
+        usu.setNomUsuario(nombreUsuario);
+        usu.setPassw(contrasenia);
+        usu.setRol(roles);  
+        usu.setFuncionarioGeneral(funcGeneral);
 
-        String cadena = "";
+        control.controlPersis.crearUsuario(usu);
+    }
+    
+    public Usuario buscarUsuario(int dni) {
+
+        
         List<Usuario> listaUsuarios = control.controlPersis.traerUsuarios();
 
         if (listaUsuarios != null) {
 
             for (Usuario usu : listaUsuarios) {
 
-//                if (usu. == dni) {
-//
-//                    cadena = "Id: " + funcionarioGeneral.getId() + " Nombre: " + funcionarioGeneral.getNombre() + " Apellido: "
-//                            + funcionarioGeneral.getApellido() + " Fecha de nacimiento: " + funcionarioGeneral.getFechaDeNac()
-//                            + " DNI: " + funcionarioGeneral.getDni() + " Domicilio: " + funcionarioGeneral.getDomicilio()
-//                            + " Tel Fijo: " + funcionarioGeneral.getTelefonoFijo() + " Tel Cel: " + funcionarioGeneral.getTelefonoCel()
-//                            + "Correo Electrónico: " + funcionarioGeneral.getCorreoE() + "Estado Civil: " + funcionarioGeneral.getEstadoCivil()
-//                            + "Nombre Usuario: " + funcionarioGeneral.getNomUsuario() + " Rol: " + funcionarioGeneral.getRol().getNombre();
-//                    return cadena;
-//                }
-
+                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                    
+                    control.mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
+                    return control.controlPersis.traerUsuario(usu.getId());  
+                    
+                }
             }
+        } else {
+            control.mostrarMensaje("Usuario no encontrado", "Error", "Error");  
         }
 
 //        //Traer de la DB la lista de Gestores
@@ -297,6 +304,13 @@ public class AdministradorDeSistema extends FuncAdministrativo {
 //    }
     public void borrarUsuario(long id) {
 
+        Usuario usuario = control.controlPersis.traerUsuario(id);
+        FuncionarioGeneral funcioGeneral = usuario.getFuncionarioGeneral();
+        
+        control.controlPersis.borrarUsuario(id);
+               
+        funcioGeneral.setUsu(null);
+        
         //controlPersis.borrarFuncionarioGeneral(id);
 //        if (rol.equalsIgnoreCase("Gestor")) {
 //            controlPersis.borrarGestor(id);
@@ -437,14 +451,5 @@ public class AdministradorDeSistema extends FuncAdministrativo {
 //
 //            controlPersis.editarAdministradorDeSitema(admin);
 //        }
-
-    public void crearUsuario(String nombreUsuario, String contrasenia, List<Rol> roles) {
-        Usuario usu = new Usuario();
-        
-        usu.setNomUsuario(nombreUsuario);
-        usu.setPassw(contrasenia);
-        usu.setRol(roles);
-        
-        control.controlPersis.crearUsuario(usu);
-    }
+ 
 }

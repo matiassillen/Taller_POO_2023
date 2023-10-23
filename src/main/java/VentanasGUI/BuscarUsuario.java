@@ -1,18 +1,20 @@
 package VentanasGUI;
 
 import Model.AdministradorDeSistema;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import Model.Controladora;
 
 public class BuscarUsuario extends javax.swing.JFrame {
 
     AdministradorDeSistema administrador;
-
+    Controladora control;
     /**
      * Creates new form BuscarUsuario
+     * @param administrador
+     * @param control
      */
-    public BuscarUsuario() {
-        administrador = new AdministradorDeSistema();
+    public BuscarUsuario(AdministradorDeSistema administrador, Controladora control) {
+        this.administrador = administrador;
+        this.control = control;
         initComponents();
     }
 
@@ -55,19 +57,19 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(265, 265, 265)
+                .addGap(266, 266, 266)
                 .addComponent(jLabel1)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 783, 60));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -106,7 +108,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 280, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 280, 60));
 
         txtMostrarUsuario.setEditable(false);
         txtMostrarUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -116,7 +118,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtMostrarUsuario.setRows(5);
         jScrollPane1.setViewportView(txtMostrarUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 760, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 760, 260));
 
         btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -140,7 +142,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,7 +152,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
 
         pack();
@@ -162,20 +164,20 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
           int doc = Integer.parseInt(txtDni.getText());
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             txtDni.setText("");
-            mostrarMensaje("DNI no valido", "Error", "Error");
+            control.mostrarMensaje("DNI no valido", "Error", "Error");
         }
         
         int dni = Integer.parseInt(txtDni.getText());
 
-        String usuario = administrador.buscarUsuario(dni);
-
+        String usuario = control.mostrarUsuario(administrador.buscarUsuario(dni));
+        
         txtMostrarUsuario.setText(usuario);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Administrador pantAdministrador = new Administrador();
+        Administrador pantAdministrador = new Administrador(control);
         pantAdministrador.setVisible(true);
         pantAdministrador.setLocationRelativeTo(null);
         this.dispose();
@@ -184,19 +186,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
-    
-     //Metodo que muestra un mensaje por pantalla
-    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equals("info")) {
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equals("Error")) {
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-        }
-        JDialog dialog = optionPane.createDialog(titulo);
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

@@ -461,10 +461,10 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Recepcion recep = new Recepcion();
-//        recep.setVisible(true);
-//        recep.setLocationRelativeTo(null);
-//        this.dispose();
+        Recepcion recep = new Recepcion();
+        recep.setVisible(true);
+        recep.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

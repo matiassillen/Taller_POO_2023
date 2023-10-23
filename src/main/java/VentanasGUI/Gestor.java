@@ -201,12 +201,10 @@ public class Gestor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
-
         TriageCambiado triagesCambiados = new TriageCambiado();
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
         this.dispose();
-
     }//GEN-LAST:event_btnTriageCambiadoActionPerformed
 
     /**
