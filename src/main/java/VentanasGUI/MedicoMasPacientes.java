@@ -2,6 +2,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 
@@ -197,8 +198,12 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         int diaTwo = fechaTwo.get(Calendar.DATE);
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
+        
+        LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
+        LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+                
        
-       // control.MedicoConMasPacientes(fecha1, fecha2)
+        control.MedicoConMasPacientes(fecha1, fecha2);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
