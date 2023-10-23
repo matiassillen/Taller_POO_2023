@@ -38,7 +38,7 @@ public class Rol implements Serializable {
      * @return
      */
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
     
     /**

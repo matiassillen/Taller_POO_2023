@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VentanasGUI;
-    
 
 import Model.Box;
 import Model.Controladora;
-import Model.Paciente;
+import Model.FuncionarioGeneral;
+import Model.Medico;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,16 +18,18 @@ import javax.swing.table.DefaultTableModel;
  * @author yairc
  */
 public class AsignarBox extends javax.swing.JFrame {
+
     Controladora control;
-    String dniPacienteSelecionado;
-    Box boxSeleccionado; 
+    Box boxSeleccionado;
+
     /**
      * Creates new form AsignarBox
+     *
      * @param control
      */
     public AsignarBox(Controladora control) {
         initComponents();
-        this.control = control;  
+        this.control = control;
     }
 
     /**
@@ -187,15 +191,17 @@ public class AsignarBox extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverAPrincipalActionPerformed
 
     private void btnSeleccionarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarBoxActionPerformed
-        String dniP = this.dniPacienteSelecionado;
-        FuncionarioGeneral medico = control.getUsu().getFuncionarioGeneral();
-        Medico medico = (Medico)medico;
-        Paciente paciente = control.tomarPaciente(boxSeleccionado,medico);
-
-        HistoriaClinicaa histoCli = new HistoriaClinicaa(control, paciente);
-        histoCli.setVisible(true);
-        histoCli.setLocationRelativeTo(null);
-        this.dispose();  
+        FuncionarioGeneral func = control.getUsu().getFuncionarioGeneral();
+        Medico medico = (Medico) func;
+        try {
+            control.tomarPaciente(boxSeleccionado, medico);
+        } catch (Exception ex) {
+            Logger.getLogger(AsignarBox.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GestionDePacientes gestP = new GestionDePacientes(control);
+        gestP.setVisible(true);
+        gestP.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnSeleccionarBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -226,14 +232,13 @@ public class AsignarBox extends javax.swing.JFrame {
         String titutlos[] = {"numero"};
         modeloTabla.setColumnIdentifiers(titutlos);
         List<Box> boxes = control.TraerBoxDisponibles();
-        if (boxes!=null){
-            for(Box box : boxes){
+        if (boxes != null) {
+            for (Box box : boxes) {
                 Object[] objeto = {box.getId()};
-                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
+                modeloTabla.addRow(objeto);
             }
         }
-        tablaBox.setModel(modeloTabla);// Establece el modelo de tabla como modeloTabla.
-    
+        tablaBox.setModel(modeloTabla);
     }
 
 

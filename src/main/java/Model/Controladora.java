@@ -118,6 +118,7 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
+
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
         while (!fecha1.isAfter(fecha2)) {
             fecha1 = fecha1.plus(1, ChronoUnit.DAYS); // Avanzar un día
@@ -125,6 +126,12 @@ public class Controladora implements Serializable{
     
         return null;
     }
+=======
+//    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+//        
+//        return Medico;
+//    }
+
     
     //---------Metodos estadiscticos----------
     
@@ -322,31 +329,18 @@ public class Controladora implements Serializable{
     }
 
 
-        
-    public List<Consulta> TraerPacientesTriageados() {
-        EsperaAtencion.
-    }
 
     public List<Box> TraerBoxDelMedico() {
         long idMedico = this.usu.getFuncionarioGeneral().getId();
         Medico medico = this.controlPersis.traerMedico(idMedico);
         List<Box> boxes = this.controlPersis.traerBoxes();
         for(Box box : boxes){
-            if(box.getMedico()!=medico){
+            if(box.getConsulta().getMedico()!=medico){
                 boxes.remove(box);
             }
         }
         return boxes;
     }
-//
-//    public void terminarConsulta(Long boxSeleccionadoId) {
-//        Box boxABorrar = this.controlPersis.traerBox(boxSeleccionadoId);
-//        long idMedico = this.usu.getFuncionarioGeneral().getId();
-//        Medico medico = this.controlPersis.traerMedico(idMedico);
-//        List<Box> boxes = medico.getBoxes();
-//        boxes.remove(boxABorrar); 
-//        
-//    }
 
     public List<Usuario> traerTriagesCambiados() {
         List <Rol> usu= traerRoles();
@@ -356,7 +350,7 @@ public class Controladora implements Serializable{
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
         for(Box box : boxes){
-            if(box.getMedico()!=null){
+            if(box.getConsulta().getMedico()!=null){
                 boxes.remove(box);
             }
         }
@@ -367,17 +361,84 @@ public class Controladora implements Serializable{
         return this.controlPersis.traerBox(idBox); 
     }
     
-    public Paciente tomarPaciente(Box box, Medico medico) throws Exception {
+    public void tomarPaciente(Box box, Medico medico) throws Exception {
         List<Object> objetos = this.esperaAtencion.moverPaciente(box, medico);
         Consulta consuAct = (Consulta)objetos.get(0);
         Medico medAct = (Medico)objetos.get(1);
         Box boxAct = (Box)objetos.get(2);
         this.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
-
-        
     }
 
     private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
         this.controlPersis.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+    }
+
+    public Paciente traerPacienteEnElBox(String idBox) {
+        long id = Long.parseLong(idBox);
+        return this.controlPersis.traerBox(id).getConsulta().getPaciente();
+    }
+
+    public List<ResultadoEstudio> TraerResultEstudio(Paciente paciente) {
+        List<ResultadoEstudio> restEstu = paciente.getResultadoEstudio();
+        return restEstu;
+    }
+
+    public List<DiagnosticoClinico> traerDiagnosticoClinico(Paciente paciente) {
+        List<DiagnosticoClinico> diagCli = paciente.getDiagnosticoClinico();
+        return diagCli;
+    }
+
+    public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
+        String hora = "";
+        String fecha = "";
+        
+        ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion ,hora ,fecha);
+        
+        this.controlPersis.crearResultadoEstudio(res);
+        
+        paciente.getResultadoEstudio().add(res);
+        this.controlPersis.editarPaciente(paciente);
+        
+    }
+    
+    public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
+        String hora = "";
+        String fecha = "";
+        FuncionarioGeneral func = this.usu.getFuncionarioGeneral();
+        Medico medico = (Medico) func;
+        
+        DiagnosticoClinico diag = new DiagnosticoClinico(paciente, titulo, fecha, hora, descripcion, medico);
+        
+        this.controlPersis.cargarNuevoDiagClinico(diag);
+        
+        paciente.getDiagnosticoClinico().add(diag);
+        this.controlPersis.editarPaciente(paciente);
+    }
+
+    public void terminarConsulta(String diagnostico, String idBox) {
+        long id = Long.parseLong(idBox);
+        
+        
+        Box boxAVaciar = this.controlPersis.traerBox(id);
+        Consulta consulta = boxAVaciar.getConsulta();
+        
+        consulta.setDiagnConsulta(diagnostico);
+        this.controlPersis.editarConsulta(consulta);
+        
+        boxAVaciar.setConsulta(null);
+        this.controlPersis.editarBox(boxAVaciar);
+        
+    }
+         //Metodo que muestra un mensaje por pantalla
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }

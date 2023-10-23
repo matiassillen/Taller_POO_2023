@@ -27,8 +27,7 @@ public class ResultadoEstudio implements Serializable {
         this.fecha = null;
     }
 
-    public ResultadoEstudio(long id, Paciente paciente, String nombre, String Informe, String hora, String Fecha) {
-        this.id = id;
+    public ResultadoEstudio(Paciente paciente, String nombre, String Informe, String hora, String Fecha) {
         this.paciente = paciente;
         this.nombre = nombre;
         this.Informe = Informe;

@@ -5,19 +5,24 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Paciente;
 
 /**
  *
  * @author yairc
  */
-public class HistoriaClinicaa extends javax.swing.JFrame {
+public class DatosDePaciente extends javax.swing.JFrame {
     Controladora control;
+    Paciente paciente;
     /**
-     * Creates new form HistoriaClinicaa
+     * Creates new form DatosDePaciente
+     * @param control
+     * @param paciente
      */
-    public HistoriaClinicaa(Controladora control) {
+    public DatosDePaciente(Controladora control, Paciente paciente) {
         initComponents();
         this.control = control;
+        this.paciente = paciente;
     }
 
     /**
@@ -122,16 +127,16 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Historia Clinica");
+        jLabel1.setText("Datos De Paciente");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(97, 97, 97)
                 .addComponent(jLabel1)
-                .addContainerGap(527, Short.MAX_VALUE))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,30 +163,30 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtVerDiagnosticosClinicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerDiagnosticosClinicosActionPerformed
-        VerAntecedenteClinico verAntCli = new VerAntecedenteClinico(control);
+        VerDiagnosticoClinico verAntCli = new VerDiagnosticoClinico(control, paciente);
         verAntCli.setVisible(true);
         verAntCli.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_txtVerDiagnosticosClinicosActionPerformed
 
     private void txtVerResultEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerResultEstudiosActionPerformed
-        VerResultadoEstudio verResEstu = new VerResultadoEstudio(control);
+        VerResultadoEstudio verResEstu = new VerResultadoEstudio(control, paciente);
         verResEstu.setVisible(true);
         verResEstu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_txtVerResultEstudiosActionPerformed
 
     private void txtVerConsultasAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerConsultasAnterioresActionPerformed
-        VerConsultasAnteriores verHistCli = new VerConsultasAnteriores(control);
+        VerConsultasAnteriores verHistCli = new VerConsultasAnteriores(control, paciente);
         verHistCli.setVisible(true);
         verHistCli.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_txtVerConsultasAnterioresActionPerformed
 
     private void btnVolverPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPrincipalActionPerformed
-        PrincipalMedico ppalMedico = new PrincipalMedico(control);
-        ppalMedico.setVisible(true);
-        ppalMedico.setLocationRelativeTo(null);
+        GestionDePacientes gestP = new GestionDePacientes(control);
+        gestP.setVisible(true);
+        gestP.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverPrincipalActionPerformed
 

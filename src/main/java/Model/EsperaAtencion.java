@@ -16,14 +16,12 @@ public class EsperaAtencion {
     public List<Object> moverPaciente(Box box, Medico medico) {
         List<Object> objetos = new ArrayList<>();
         Consulta consu = enEspera.poll();
-        Paciente paciente = consu.getPaciente();
     
         consu.setBox(box);
         consu.setMedico(medico);
         objetos.add(consu);
         
-        box.setMedico(medico);
-        box.setPacienteActual(paciente);
+        box.setConsulta(consu);
         objetos.add(box);
         
         medico.getConsulta().add(consu);

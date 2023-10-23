@@ -61,7 +61,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnNuevoPaciente" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnVerDatosDePaciente" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="btnDatosMedicos" min="-2" pref="129" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnVolver" min="-2" pref="89" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -69,7 +69,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txfMotivoConsulta" min="-2" pref="920" max="-2" attributes="0"/>
+                                  <Component id="txbMotivoConsulta" min="-2" pref="920" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnDarDeAlta" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
@@ -93,7 +93,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="txtTitulo2" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btnNuevoPaciente" alignment="0" pref="38" max="32767" attributes="0"/>
-                      <Component id="btnVerDatosDePaciente" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnDatosMedicos" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnVolver" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -101,7 +101,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnDarDeAlta" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="txfMotivoConsulta" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txbMotivoConsulta" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               </Group>
@@ -240,15 +240,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDarDeAltaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txfMotivoConsulta">
+        <Component class="javax.swing.JTextField" name="txbMotivoConsulta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingrese diagnostico de la consulta antes "/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfMotivoConsultaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txbMotivoConsultaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnVerDatosDePaciente">
+        <Component class="javax.swing.JButton" name="btnDatosMedicos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -267,7 +267,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerDatosDePacienteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatosMedicosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNuevoPaciente">

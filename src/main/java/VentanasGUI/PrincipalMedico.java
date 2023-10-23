@@ -1,6 +1,8 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Rol;
+import java.util.List;
 /**
  *
  * @author yairc
@@ -9,6 +11,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
     Controladora control;
     /**
      * Constructor de PrincipalMedico
+     * @param control
      */
     public PrincipalMedico(Controladora control) {
         initComponents();
@@ -149,17 +152,27 @@ public class PrincipalMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestioDePacienteActionPerformed
 
     private void identificarRol() {
-        String nombreRol = this.control.getUsu().getRol().getNombre();
-        if(nombreRol=="Medico - Atencion"){
-            btnGestioDePaciente.setEnabled(true);
-            btnHacerTriage.setEnabled(false);
-        } else if  (nombreRol=="Medico - Triage"){
-            btnGestioDePaciente.setEnabled(false);
-            btnHacerTriage.setEnabled(true);
-        }else {
-            btnGestioDePaciente.setEnabled(true);
-            btnHacerTriage.setEnabled(true);
+        List<Rol> roles = this.control.getUsu().getRol();
+        for (Rol rol : roles){
+            String nombreRol = rol.getNombre();
+            switch (nombreRol) {
+                case "Medico - Atencion" -> {
+                    btnGestioDePaciente.setEnabled(true);
+                    btnHacerTriage.setEnabled(false);
+                }
+                case "Medico - Triage" -> {
+                    btnGestioDePaciente.setEnabled(false);
+                    btnHacerTriage.setEnabled(true);
+                }
+                default -> {
+                    btnGestioDePaciente.setEnabled(true);
+                    btnHacerTriage.setEnabled(true);
+                }
+            }
         }
+        
+        
+        
     }
     
     

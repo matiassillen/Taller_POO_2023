@@ -2,9 +2,8 @@
 package VentanasGUI;
 
 import Model.Box;
-import Model.Consulta;
 import Model.Controladora;
-import Model.EsperaAtencion;
+import Model.Paciente;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,16 +13,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionDePacientes extends javax.swing.JFrame {
     Controladora control;
-    String boxSeleccionadoId;
-    String dniPacienteSelecionado;
+    Paciente pacienteSelecionado;
+    String idBox;
     /**
      * Creates new form TomarPaciente
      */
     public GestionDePacientes(Controladora control) {
         initComponents();
         this.control = control;
-        this.boxSeleccionadoId = null;
-        btnAsignarBox.setEnabled(false);
+        btnDatosMedicos.setEnabled(false);
         btnDarDeAlta.setEnabled(false);
     }
 
@@ -44,8 +42,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
         tablaBoxAtendidos = new javax.swing.JTable();
         txtTitulo2 = new javax.swing.JLabel();
         btnDarDeAlta = new javax.swing.JButton();
-        txfMotivoConsulta = new javax.swing.JTextField();
-        btnVerDatosDePaciente = new javax.swing.JButton();
+        txbMotivoConsulta = new javax.swing.JTextField();
+        btnDatosMedicos = new javax.swing.JButton();
         btnNuevoPaciente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,21 +126,21 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
-        txfMotivoConsulta.setText("Ingrese diagnostico de la consulta antes ");
-        txfMotivoConsulta.addActionListener(new java.awt.event.ActionListener() {
+        txbMotivoConsulta.setText("Ingrese diagnostico de la consulta antes ");
+        txbMotivoConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfMotivoConsultaActionPerformed(evt);
+                txbMotivoConsultaActionPerformed(evt);
             }
         });
 
-        btnVerDatosDePaciente.setBackground(new java.awt.Color(0, 204, 153));
-        btnVerDatosDePaciente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnVerDatosDePaciente.setForeground(new java.awt.Color(0, 0, 0));
-        btnVerDatosDePaciente.setText("Datos Medicos");
-        btnVerDatosDePaciente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVerDatosDePaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnDatosMedicos.setBackground(new java.awt.Color(0, 204, 153));
+        btnDatosMedicos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnDatosMedicos.setForeground(new java.awt.Color(0, 0, 0));
+        btnDatosMedicos.setText("Datos Medicos");
+        btnDatosMedicos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDatosMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDatosDePacienteActionPerformed(evt);
+                btnDatosMedicosActionPerformed(evt);
             }
         });
 
@@ -169,14 +167,14 @@ public class GestionDePacientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVerDatosDePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDatosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txfMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txbMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
@@ -193,14 +191,14 @@ public class GestionDePacientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTitulo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(btnVerDatosDePaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDatosMedicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txbMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
 
@@ -244,26 +242,29 @@ public class GestionDePacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void tablaBoxAtendidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxAtendidosMouseClicked
-        if (tablaPEnEspera.getRowCount() > 0) {
-            if (tablaPEnEspera.getSelectedRow() != -1) {
-                int row = tablaPEnEspera.getSelectedRow();
-                String idBox = tablaPEnEspera.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
-                this.boxSeleccionadoId = idBox;
+        if (tablaBoxAtendidos.getRowCount() > 0) {
+            if (tablaBoxAtendidos.getSelectedRow() != -1) {
+                int row = tablaBoxAtendidos.getSelectedRow();
+                this.idBox = tablaBoxAtendidos.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
+                Paciente p = this.control.traerPacienteEnElBox(idBox);
+                this.pacienteSelecionado = p;
                 btnDarDeAlta.setEnabled(true);
+                btnDatosMedicos.setEnabled(true);
             }
         }
     }//GEN-LAST:event_tablaBoxAtendidosMouseClicked
 
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
-        control.terminarConsulta(boxSeleccionadoId);
+        String diagnostico = this.txbMotivoConsulta.getSelectedText();
+        this.control.terminarConsulta(diagnostico, idBox);
     }//GEN-LAST:event_btnDarDeAltaActionPerformed
 
-    private void btnVerDatosDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosDePacienteActionPerformed
-        DatosDePacientes datosP = new DatosDePacientes(control);
+    private void btnDatosMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosMedicosActionPerformed
+        DatosDePaciente datosP = new DatosDePaciente(control,pacienteSelecionado);
         datosP.setVisible(true);
         datosP.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnVerDatosDePacienteActionPerformed
+    }//GEN-LAST:event_btnDatosMedicosActionPerformed
 
     private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
         AsignarBox asigBox = new AsignarBox(control);
@@ -272,9 +273,9 @@ public class GestionDePacientes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnNuevoPacienteActionPerformed
 
-    private void txfMotivoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfMotivoConsultaActionPerformed
+    private void txbMotivoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txbMotivoConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfMotivoConsultaActionPerformed
+    }//GEN-LAST:event_txbMotivoConsultaActionPerformed
     
     /**
      * Este método carga los datos de los Box atendidos por el medico a una tabla.
@@ -286,7 +287,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         List<Box> boxes = control.TraerBoxDelMedico();// Obtiene una lista de boxes usando el controlador.
         if (boxes!=null){
             for(Box box : boxes){
-                Object[] objeto = {box.getId(),box.getPacienteActual().getDni(),box.getPacienteActual().getApellido()};
+                Object[] objeto = {box.getId(),box.getConsulta().getPaciente().getDni(),box.getConsulta().getPaciente().getApellido()};
                 modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
             }
         }
@@ -295,14 +296,14 @@ public class GestionDePacientes extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDarDeAlta;
+    private javax.swing.JButton btnDatosMedicos;
     private javax.swing.JButton btnNuevoPaciente;
-    private javax.swing.JButton btnVerDatosDePaciente;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaBoxAtendidos;
-    private javax.swing.JTextField txfMotivoConsulta;
+    private javax.swing.JTextField txbMotivoConsulta;
     private javax.swing.JLabel txtTitulo2;
     private javax.swing.JLabel txtTituloPrincipal;
     // End of variables declaration//GEN-END:variables
