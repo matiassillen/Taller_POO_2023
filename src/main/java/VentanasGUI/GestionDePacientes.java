@@ -4,7 +4,7 @@ package VentanasGUI;
 import Model.Box;
 import Model.Consulta;
 import Model.Controladora;
-import Model.Medico;
+import Model.EsperaAtencion;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,17 +12,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yairc
  */
-public class TomarPaciente extends javax.swing.JFrame {
+public class GestionDePacientes extends javax.swing.JFrame {
     Controladora control;
     String boxSeleccionadoId;
+    String dniPacienteSelecionado;
     /**
      * Creates new form TomarPaciente
      */
-    public TomarPaciente(Controladora control) {
+    public GestionDePacientes(Controladora control) {
         initComponents();
         this.control = control;
         this.boxSeleccionadoId = null;
-        btnElegirP.setEnabled(false);
+        btnAsignarBox.setEnabled(false);
         btnDarDeAlta.setEnabled(false);
     }
 
@@ -36,20 +37,16 @@ public class TomarPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPEnEspera = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
-        btnElegirP = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtTituloPrincipal = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaBoxAtendidos = new javax.swing.JTable();
-        txtTitulo1 = new javax.swing.JLabel();
         txtTitulo2 = new javax.swing.JLabel();
         btnDarDeAlta = new javax.swing.JButton();
         txfMotivoConsulta = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaBox = new javax.swing.JTable();
+        btnVerDatosDePaciente = new javax.swing.JButton();
+        btnNuevoPaciente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -60,26 +57,6 @@ public class TomarPaciente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaPEnEspera.setBackground(new java.awt.Color(255, 255, 255));
-        tablaPEnEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tablaPEnEspera.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tablaPEnEspera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaPEnEsperaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tablaPEnEspera);
-
         btnVolver.setBackground(new java.awt.Color(0, 153, 153));
         btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,17 +65,6 @@ public class TomarPaciente extends javax.swing.JFrame {
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
-            }
-        });
-
-        btnElegirP.setBackground(new java.awt.Color(0, 204, 153));
-        btnElegirP.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnElegirP.setForeground(new java.awt.Color(0, 0, 0));
-        btnElegirP.setText("Asignar Box");
-        btnElegirP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnElegirP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnElegirPActionPerformed(evt);
             }
         });
 
@@ -115,16 +81,16 @@ public class TomarPaciente extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(410, 410, 410)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtTituloPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(393, 393, 393))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTituloPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtTituloPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         tablaBoxAtendidos.setModel(new javax.swing.table.DefaultTableModel(
@@ -145,12 +111,6 @@ public class TomarPaciente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaBoxAtendidos);
 
-        txtTitulo1.setBackground(new java.awt.Color(0, 153, 153));
-        txtTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtTitulo1.setForeground(new java.awt.Color(0, 0, 0));
-        txtTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtTitulo1.setText("Pacientes en Espera");
-
         txtTitulo2.setBackground(new java.awt.Color(0, 153, 153));
         txtTitulo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtTitulo2.setForeground(new java.awt.Color(0, 0, 0));
@@ -168,75 +128,80 @@ public class TomarPaciente extends javax.swing.JFrame {
             }
         });
 
-        txfMotivoConsulta.setText("Ingrese diagnostico de la consulta");
-
-        tablaBox.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+        txfMotivoConsulta.setText("Ingrese diagnostico de la consulta antes ");
+        txfMotivoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfMotivoConsultaActionPerformed(evt);
             }
-        ));
-        jScrollPane3.setViewportView(tablaBox);
+        });
+
+        btnVerDatosDePaciente.setBackground(new java.awt.Color(0, 204, 153));
+        btnVerDatosDePaciente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnVerDatosDePaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnVerDatosDePaciente.setText("Datos Medicos");
+        btnVerDatosDePaciente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerDatosDePaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerDatosDePacienteActionPerformed(evt);
+            }
+        });
+
+        btnNuevoPaciente.setBackground(new java.awt.Color(0, 204, 255));
+        btnNuevoPaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNuevoPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnNuevoPaciente.setText("Nuevo Paciente");
+        btnNuevoPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtTitulo1)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(txfMotivoConsulta))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(74, 74, 74)
-                                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1))
-                    .addComponent(txtTitulo2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnElegirP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(txtTitulo2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVerDatosDePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txfMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
+                        .addContainerGap(18, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTitulo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(btnVerDatosDePaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnElegirP, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txfMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,7 +216,7 @@ public class TomarPaciente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,38 +233,15 @@ public class TomarPaciente extends javax.swing.JFrame {
         princM.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    /**
-     * Este método se activa cuando se hace clic en el botón btnElegirP.
-     * Crea una nueva instancia de la clase AsignarBox, la hace visible y la centra en la pantalla.
-     * Cierra la instancia actual.
-     * @param evt El evento de acción que ocurrió.
-     */
-    private void btnElegirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirPActionPerformed
-        AsignarBox asigBox = new AsignarBox(control);
-        asigBox.setVisible(true);
-        asigBox.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnElegirPActionPerformed
-    /**
+
+   /**
      * Este método se activa cuando se abre la ventana.
      * Llama al método cargarTabla().
      * @param evt El evento de ventana que ocurrió.
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTabla();
         cargarTablaBoxAtendidos();
     }//GEN-LAST:event_formWindowOpened
-
-    private void tablaPEnEsperaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPEnEsperaMouseClicked
-        if (tablaPEnEspera.getRowCount() > 0) {
-            if (tablaPEnEspera.getSelectedRow() != -1) {
-                int row = tablaPEnEspera.getSelectedRow();
-                String dni = tablaPEnEspera.getModel().getValueAt(row, 0).toString();
-                this.dniP = dni;
-                btnElegirP.setEnabled(true);
-            }
-        }
-    }//GEN-LAST:event_tablaPEnEsperaMouseClicked
 
     private void tablaBoxAtendidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxAtendidosMouseClicked
         if (tablaPEnEspera.getRowCount() > 0) {
@@ -313,25 +255,27 @@ public class TomarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaBoxAtendidosMouseClicked
 
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
-        
         control.terminarConsulta(boxSeleccionadoId);
     }//GEN-LAST:event_btnDarDeAltaActionPerformed
-    /**
-     * Este método carga los datos de los pacientes triageados en una tabla.
-     */
-    private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();        
-        String titutlos[] = {"Dni","Nombre","Color Triage","Motivo Consulta"};
-        modeloTabla.setColumnIdentifiers(titutlos);        
-        List<Consulta> listP = control.TraerPacientesTriageados();// Obtiene una lista de pacientes triageados utilizando el controlador.
-        if (listP!=null){
-            for(Consulta consu : listP){
-                Object[] objeto = {consu.getPaciente().getDni(), consu.getPaciente().getNombre()+""+consu.getPaciente().getApellido(), consu.getTriage().getColorFinal(), consu.getMotivo()};
-                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada paciente triageado en listP.
-            }
-        }
-        tablaPEnEspera.setModel(modeloTabla);// Establece el modelo de tabla como modeloTabla.
-    }
+
+    private void btnVerDatosDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosDePacienteActionPerformed
+        DatosDePacientes datosP = new DatosDePacientes(control);
+        datosP.setVisible(true);
+        datosP.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVerDatosDePacienteActionPerformed
+
+    private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
+        AsignarBox asigBox = new AsignarBox(control);
+        asigBox.setVisible(true);
+        asigBox.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnNuevoPacienteActionPerformed
+
+    private void txfMotivoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfMotivoConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfMotivoConsultaActionPerformed
+    
     /**
      * Este método carga los datos de los Box atendidos por el medico a una tabla.
      */
@@ -351,18 +295,14 @@ public class TomarPaciente extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDarDeAlta;
-    private javax.swing.JButton btnElegirP;
+    private javax.swing.JButton btnNuevoPaciente;
+    private javax.swing.JButton btnVerDatosDePaciente;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tablaBox;
     private javax.swing.JTable tablaBoxAtendidos;
-    private javax.swing.JTable tablaPEnEspera;
     private javax.swing.JTextField txfMotivoConsulta;
-    private javax.swing.JLabel txtTitulo1;
     private javax.swing.JLabel txtTitulo2;
     private javax.swing.JLabel txtTituloPrincipal;
     // End of variables declaration//GEN-END:variables

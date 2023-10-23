@@ -8,14 +8,14 @@ import Model.Controladora;
  *
  * @author yairc
  */
-public class MedicoVerDatosDePacientes extends javax.swing.JFrame {
+public class DatosDePacientes extends javax.swing.JFrame {
     Controladora control;
     /**
      * Creates new form Medico
      */
-    public MedicoVerDatosDePacientes() {
+    public DatosDePacientes(Controladora control) {
         initComponents();
-        control = new Controladora();
+        this.control = control;
     }
 
     /**

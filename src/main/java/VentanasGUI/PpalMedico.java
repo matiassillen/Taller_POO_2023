@@ -13,9 +13,8 @@ public class PpalMedico extends javax.swing.JFrame {
     /**
      * Creates new form Medico
      */
-    public PpalMedico() {
-        initComponents();
-        control = new Controladora();
+    public PpalMedico(Controladora control) {
+
     }
 
     /**
@@ -29,14 +28,18 @@ public class PpalMedico extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtHacerTriage = new javax.swing.JButton();
-        txtTomarPaciente = new javax.swing.JButton();
-        txtAsignarBox = new javax.swing.JButton();
-        txtDatosDePaciente = new javax.swing.JButton();
+        btnHacerTriage = new javax.swing.JButton();
+        btnGestioDePaciente = new javax.swing.JButton();
+        btnTomarPaciente = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -46,43 +49,33 @@ public class PpalMedico extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtHacerTriage.setBackground(new java.awt.Color(0, 204, 255));
-        txtHacerTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
-        txtHacerTriage.setText("Hacer Triage");
-        txtHacerTriage.addActionListener(new java.awt.event.ActionListener() {
+        btnHacerTriage.setBackground(new java.awt.Color(0, 204, 255));
+        btnHacerTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
+        btnHacerTriage.setText("Hacer Triage");
+        btnHacerTriage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHacerTriageActionPerformed(evt);
+                btnHacerTriageActionPerformed(evt);
             }
         });
 
-        txtTomarPaciente.setBackground(new java.awt.Color(0, 204, 255));
-        txtTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
-        txtTomarPaciente.setText("Tomar Paciente");
-        txtTomarPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnGestioDePaciente.setBackground(new java.awt.Color(0, 204, 255));
+        btnGestioDePaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnGestioDePaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnGestioDePaciente.setText("Gestion de Pacientes");
+        btnGestioDePaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTomarPacienteActionPerformed(evt);
+                btnGestioDePacienteActionPerformed(evt);
             }
         });
 
-        txtAsignarBox.setBackground(new java.awt.Color(0, 204, 255));
-        txtAsignarBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtAsignarBox.setForeground(new java.awt.Color(0, 0, 0));
-        txtAsignarBox.setText("Asignar box");
-        txtAsignarBox.addActionListener(new java.awt.event.ActionListener() {
+        btnTomarPaciente.setBackground(new java.awt.Color(0, 204, 255));
+        btnTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        btnTomarPaciente.setText("Tomar Paciente");
+        btnTomarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAsignarBoxActionPerformed(evt);
-            }
-        });
-
-        txtDatosDePaciente.setBackground(new java.awt.Color(0, 204, 255));
-        txtDatosDePaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtDatosDePaciente.setForeground(new java.awt.Color(0, 0, 0));
-        txtDatosDePaciente.setText("Datos de Pacientes");
-        txtDatosDePaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDatosDePacienteActionPerformed(evt);
+                btnTomarPacienteActionPerformed(evt);
             }
         });
 
@@ -91,29 +84,26 @@ public class PpalMedico extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHacerTriage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTomarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                    .addComponent(txtAsignarBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDatosDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGestioDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                    .addComponent(btnTomarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHacerTriage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(txtTomarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(txtHacerTriage)
-                .addGap(18, 18, 18)
-                .addComponent(txtAsignarBox)
-                .addGap(18, 18, 18)
-                .addComponent(txtDatosDePaciente)
-                .addGap(63, 63, 63))
+                .addGap(37, 37, 37)
+                .addComponent(btnHacerTriage)
+                .addGap(30, 30, 30)
+                .addComponent(btnTomarPaciente)
+                .addGap(26, 26, 26)
+                .addComponent(btnGestioDePaciente)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 260, 260));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 420, 240));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -126,16 +116,16 @@ public class PpalMedico extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(252, 252, 252)
+                .addGap(259, 259, 259)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -154,39 +144,34 @@ public class PpalMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHacerTriageActionPerformed
-        HacerTriage hacerT = new HacerTriage();
-        hacerT.setVisible(true);
-        hacerT.setLocationRelativeTo(null);
-    }//GEN-LAST:event_txtHacerTriageActionPerformed
+    private void btnHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTriageActionPerformed
 
-    private void txtTomarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTomarPacienteActionPerformed
-        TomarPaciente tomarP = new TomarPaciente();
-        tomarP.setVisible(true);
-        tomarP.setLocationRelativeTo(null);
-    }//GEN-LAST:event_txtTomarPacienteActionPerformed
+    }//GEN-LAST:event_btnHacerTriageActionPerformed
 
-    private void txtAsignarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsignarBoxActionPerformed
-        AsignarBox aBox = new AsignarBox();
-        aBox.setVisible(true);
-        aBox.setLocationRelativeTo(null);
-    }//GEN-LAST:event_txtAsignarBoxActionPerformed
+    private void btnGestioDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestioDePacienteActionPerformed
+  
+    }//GEN-LAST:event_btnGestioDePacienteActionPerformed
 
-    private void txtDatosDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatosDePacienteActionPerformed
-        MedicoVerDatosDePacientes verDatoP = new MedicoVerDatosDePacientes();
-        verDatoP.setVisible(true);
-        verDatoP.setLocationRelativeTo(null);
-    }//GEN-LAST:event_txtDatosDePacienteActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
+    private void btnTomarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTomarPacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTomarPacienteActionPerformed
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGestioDePaciente;
+    private javax.swing.JButton btnHacerTriage;
+    private javax.swing.JButton btnTomarPaciente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private java.awt.Label label1;
-    private javax.swing.JButton txtAsignarBox;
-    private javax.swing.JButton txtDatosDePaciente;
-    private javax.swing.JButton txtHacerTriage;
-    private javax.swing.JButton txtTomarPaciente;
     // End of variables declaration//GEN-END:variables
+
+    
 }
