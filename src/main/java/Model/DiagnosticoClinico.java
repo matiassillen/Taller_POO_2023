@@ -12,7 +12,7 @@ public class DiagnosticoClinico implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int id;
+    private long id;
     @ManyToOne
     private Paciente paciente;
     private String nombreDiagnostico;
@@ -23,11 +23,16 @@ public class DiagnosticoClinico implements Serializable {
     private Medico medico;
     
     public DiagnosticoClinico() {
+        this.paciente = null;
+        this.nombreDiagnostico = null;
+        this.fecha = null;
+        this.hora = null;
+        this.descripcion = null;
+        this.medico = null;
 
     }
 
-    public DiagnosticoClinico(int numAntecedente, Paciente paciente, String nombreDiagnostico, String fecha, String hora, String descripcion, Medico medico) {
-        this.id = numAntecedente;
+    public DiagnosticoClinico( Paciente paciente, String nombreDiagnostico, String fecha, String hora, String descripcion, Medico medico) {
         this.paciente = paciente;
         this.nombreDiagnostico = nombreDiagnostico;
         this.fecha = fecha;
@@ -36,7 +41,7 @@ public class DiagnosticoClinico implements Serializable {
         this.medico = medico;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

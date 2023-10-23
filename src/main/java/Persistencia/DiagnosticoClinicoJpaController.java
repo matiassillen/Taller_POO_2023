@@ -81,7 +81,7 @@ public class DiagnosticoClinicoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = diagnosticoClinico.getId();
+                long id = diagnosticoClinico.getId();
                 if (findDiagnosticoClinico(id) == null) {
                     throw new NonexistentEntityException("The diagnosticoClinico with id " + id + " no longer exists.");
                 }
@@ -144,7 +144,7 @@ public class DiagnosticoClinicoJpaController implements Serializable {
         }
     }
 
-    public DiagnosticoClinico findDiagnosticoClinico(int id) {
+    public DiagnosticoClinico findDiagnosticoClinico(long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(DiagnosticoClinico.class, id);

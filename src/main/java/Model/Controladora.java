@@ -117,10 +117,10 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
-    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-        
-        return Medico;
-    }
+//    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+//        
+//        return Medico;
+//    }
     
     //---------Metodos estadiscticos----------
     
@@ -324,7 +324,7 @@ public class Controladora implements Serializable{
         Medico medico = this.controlPersis.traerMedico(idMedico);
         List<Box> boxes = this.controlPersis.traerBoxes();
         for(Box box : boxes){
-            if(box.getMedico()!=medico){
+            if(box.getConsulta().getMedico()!=medico){
                 boxes.remove(box);
             }
         }
@@ -343,7 +343,7 @@ public class Controladora implements Serializable{
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
         for(Box box : boxes){
-            if(box.getMedico()!=null){
+            if(box.getConsulta().getMedico()!=null){
                 boxes.remove(box);
             }
         }
@@ -368,7 +368,7 @@ public class Controladora implements Serializable{
 
     public Paciente traerPacienteEnElBox(String idBox) {
         long id = Long.parseLong(idBox);
-        return this.controlPersis.traerBox(id).getPacienteActual();
+        return this.controlPersis.traerBox(id).getConsulta().getPaciente();
     }
 
     public List<ResultadoEstudio> TraerResultEstudio(Paciente paciente) {

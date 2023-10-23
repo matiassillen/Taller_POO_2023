@@ -4,17 +4,20 @@
  */
 package VentanasGUI;
 
+import Model.Controladora;
+
 /**
  *
  * @author trapo
  */
 public class HacerTriage extends javax.swing.JFrame {
-
+    Controladora control;
     /**
      * Creates new form HacerTriage2
      */
-    public HacerTriage() {
+    public HacerTriage(Controladora control) {
         initComponents();
+        this.control = control;
     }
 
     /**
