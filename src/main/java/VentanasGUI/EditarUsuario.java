@@ -8,11 +8,8 @@ import Model.AdministradorDeSistema;
 import Model.Controladora;
 import Model.Rol;
 import Model.Usuario;
-import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,28 +18,20 @@ import javax.swing.JOptionPane;
 public class EditarUsuario extends javax.swing.JFrame {
 
     Controladora control;
-    ControladoraPersistencia controlPersis;
     long idUsuario;
-    String rolUusario;
-//    GestoresHospital gestor;
-//    Recepcionista recepcionista;
-//    Medico medico;
-//    LicEnEnfermeria licenciado;
     AdministradorDeSistema administrador;
-//      FuncionarioGeneral funcionarioGeneral;
-//    AdministradorDeSistema admin;
     Usuario usuario;
 
     /**
      * Creates new form EditarUsuario
+     *
+     * @param administrador
      * @param control
      * @param idUsuario
-     * @param rolUsuario
      */
-    public EditarUsuario(Controladora control, long idUsuario) {
-        administrador = new AdministradorDeSistema();
+    public EditarUsuario(AdministradorDeSistema administrador, Controladora control, long idUsuario) {
+        this.administrador = administrador;
         control = new Controladora();
-        controlPersis = new ControladoraPersistencia();
         this.idUsuario = idUsuario;
         this.control = new Controladora();
         initComponents();
@@ -65,8 +54,6 @@ public class EditarUsuario extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         txtContrasenia = new javax.swing.JPasswordField();
-        cbTomarPaciente = new javax.swing.JCheckBox();
-        cbTriagiador = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         cmbRol = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
@@ -93,9 +80,9 @@ public class EditarUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(82, 82, 82)
                 .addComponent(jLabel1)
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(495, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,14 +112,6 @@ public class EditarUsuario extends javax.swing.JFrame {
         txtContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtContrasenia.setForeground(new java.awt.Color(0, 0, 0));
 
-        cbTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
-        cbTomarPaciente.setText("Tomar Paciente");
-
-        cbTriagiador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbTriagiador.setForeground(new java.awt.Color(0, 0, 0));
-        cbTriagiador.setText("Triagiador");
-
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Rol:");
@@ -160,11 +139,8 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTomarPaciente)
-                            .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbTriagiador))))
-                .addContainerGap(158, Short.MAX_VALUE))
+                        .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,14 +157,21 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbTomarPaciente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbTriagiador)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 211, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
 
         btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -200,23 +183,6 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(btnGuardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -227,11 +193,13 @@ public class EditarUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(224, 224, 224)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGuardar)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -240,9 +208,11 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar)
+                .addGap(124, 124, 124)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 370));
@@ -261,7 +231,6 @@ public class EditarUsuario extends javax.swing.JFrame {
 //        String telCel = txtTelCel.getText();
 //        String correoE = txtCorreoE.getText();
 //        String estadoCivil = (String) cbEstadoCivil.getSelectedItem();
-
         String nombreUsuario = txtNombreUsuario.getText();
         String contrasenia = txtContrasenia.getText();
         String rolUsu = (String) cmbRol.getSelectedItem();
@@ -272,58 +241,37 @@ public class EditarUsuario extends javax.swing.JFrame {
         List<Rol> roles = new ArrayList<>();
         roles.add(rol);
 
-        if (rolUsu.equalsIgnoreCase("Medico")) {
-            cbTomarPaciente.setSelected(true);
-            cbTriagiador.setSelected(true);
-
-            if (cbTomarPaciente.isSelected()) {
-                rol.setNombre("Tomar Paciente");
-                roles.add(rol);
-            }
-
-            if (cbTriagiador.isSelected()) {
-                rol.setNombre("Triagiador");
-                roles.add(rol);
-            }
-
-        }
-
         administrador.editarUsuario(usuario, nombreUsuario, contrasenia, roles);
 
-        mostrarMensaje("Usuario editado correctamente", "Info", "Edición exitosa");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       
-        cbTomarPaciente.setSelected(false);
-        cbTriagiador.setSelected(false);
 
         usuario = control.traerUsuario(idUsuario);
 
         txtNombreUsuario.setText(usuario.getNomUsuario());
         txtContrasenia.setText(usuario.getPassw());
-        
-        
-        //cmbRol.setSelectedValue(usuario.getRol());
+
+        cmbRol.setSelectedItem(usuario.getRol());
         //cargar roles de forma genérica
-//            List<Rol> listaRoles = control.traerRoles();
-//
-//            if (listaRoles != null) {
-//                for (Rol rol : listaRoles) {
-//                    cbRol.addItem(rol.getNombre());
-//                }
-//            }
-//
-//            //Marcar/Selecionar el rol del usuario
-//            String rol = funcionarioGeneral.getRol().getNombre();
-//
-//            int cantidadItems = cbRol.getItemCount();
-//
-//            for (int i = 0; i < cantidadItems; i++) {
-//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-//                    cbRol.setSelectedIndex(i);
-//                }
-//            }
+        List<Rol> listaRoles = control.traerRoles();
+
+        if (listaRoles != null) {
+            for (Rol rol : listaRoles) {
+                cmbRol.addItem(rol.getNombre());
+            }
+        }
+
+        //Marcar/Selecionar el rol del usuario
+        String rol = usuario.getRol().getFirst().getNombre();
+
+        int cantidadItems = cmbRol.getItemCount();
+
+        for (int i = 0; i < cantidadItems; i++) {
+            if (String.valueOf(cmbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
+                cmbRol.setSelectedIndex(i);
+            }
+        }
 
 //        if (rolUsuario.equalsIgnoreCase("Recepcionista")) {
 //            //Buscar el Recepcionista
@@ -440,22 +388,9 @@ public class EditarUsuario extends javax.swing.JFrame {
 //        txtNumMatricula.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
-    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equals("info")) {
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equals("Error")) {
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-        }
-        JDialog dialog = optionPane.createDialog(titulo);
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JCheckBox cbTomarPaciente;
-    private javax.swing.JCheckBox cbTriagiador;
     private javax.swing.JComboBox<String> cmbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

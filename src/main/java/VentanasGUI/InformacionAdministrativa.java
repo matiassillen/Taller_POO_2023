@@ -4,17 +4,24 @@
  */
 package VentanasGUI;
 
+import Model.Controladora;
+
 /**
  *
  * @author Matías Sillen Ríos
  */
 public class InformacionAdministrativa extends javax.swing.JFrame {
 
+    Controladora control;
+
     /**
      * Creates new form InformacionAdministrativa
+     *
+     * @param control
      */
-    public InformacionAdministrativa() {
+    public InformacionAdministrativa(Controladora control) {
         initComponents();
+        this.control = control;
     }
 
     /**
@@ -117,12 +124,11 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Administrador pantalla = new Administrador();
+        Administrador pantalla = new Administrador(control);
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -38,15 +38,14 @@ public class Rol implements Serializable {
      * @return
      */
     public String getNombre() {
-        // TODO implement here
-        return "";
+        return nombre;
     }
     
     /**
-     * @param value
+     * @param nombre
      */
-    public void setNombre(String value) {
-        // TODO implement here
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public long getId_rol() {
@@ -63,14 +62,6 @@ public class Rol implements Serializable {
 
     public void setUsuario(List<Usuario> usuario) {
         this.usuario = usuario;
-    }
- 
-    /**
-     * @return
-     */
-    @Override
-    public String toString() {
-        return "Rol{" + "id_rol=" + id_rol + ", nombre=" + nombre + ", usuario=" + usuario + '}';
     }
 
 }

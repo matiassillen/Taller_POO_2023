@@ -4,6 +4,8 @@ import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -333,4 +335,33 @@ public class Controladora implements Serializable{
 //        boxes.remove(boxABorrar); 
 //        
 //    }
+
+    public List<Rol> traerRoles() {
+       return  controlPersis.traerRoles();
+    }
+
+    public FuncionarioGeneral traerFuncionarioGeneral(long id) {
+        return controlPersis.traerFuncionarioGeneral(id);
+    }
+
+    public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
+        controlPersis.editarFuncionarioGeneral(funcGeneral);
+    }
+    
+    public String mostrarUsuario(Usuario buscarUsuario) {
+        return "id: " + buscarUsuario.getId() + "\nNombre Usuario: " + buscarUsuario.getNomUsuario() + "\nRol: " + buscarUsuario.getRol().getFirst().getNombre();
+    }
+    
+    //Metodo que muestra un mensaje por pantalla
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equalsIgnoreCase("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equalsIgnoreCase("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 }

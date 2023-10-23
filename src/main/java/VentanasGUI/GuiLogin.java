@@ -108,11 +108,6 @@ public class GuiLogin extends javax.swing.JFrame {
         txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtContrasenia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtContrasenia.setSelectionColor(new java.awt.Color(204, 204, 204));
-        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseniaActionPerformed(evt);
-            }
-        });
         jPanel4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
@@ -124,11 +119,6 @@ public class GuiLogin extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
@@ -177,6 +167,7 @@ public class GuiLogin extends javax.swing.JFrame {
 
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_contraseñaActionPerformed
 
     /**
