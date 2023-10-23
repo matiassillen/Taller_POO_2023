@@ -8,6 +8,7 @@ import Model.Rol;
 import Model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Agus
@@ -128,20 +129,25 @@ public class GuiLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /*
+    * Al cliquear el boton de iniciar sesion se ejecuta toda la comprobacion y seleccion de ventana
+    */
     private void buttonSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSesionMouseClicked
         String usern = txtUsuario.getText();
         String passw = String.valueOf(txtContrasenia.getPassword());
         Usuario resultado = verif.validar(usern, passw);
+        
         if (resultado != null) {
+            verif.setUsu(resultado);
+            
             List<Rol> rolUser = resultado.getRol();
             
             ArrayList<String> funcionarioSalud = new ArrayList<String>();
             String[] listaRoles = {"Medico - Atencion ", "Medico - Triagiador", "Medico - Atencion - Triagiador", "Licenciado en Enfermeria"};
+            
             for (String agregarRol : listaRoles){
                 funcionarioSalud.add(agregarRol);
             }
-            
             if (funcionarioSalud.contains(rolUser.get(0).getNombre())) {
                 PrincipalMedico pantallaSalud = new PrincipalMedico(verif);
                 pantallaSalud.setVisible(true);
@@ -151,21 +157,21 @@ public class GuiLogin extends javax.swing.JFrame {
             
             switch (rolUser.get(0).getNombre()) {
                 case "Gestor":
-                    GestionHospital pantallaGestion = new GestionHospital();
+                    GestionHospital pantallaGestion = new GestionHospital(verif);
                     pantallaGestion.setVisible(true);
                     pantallaGestion.setLocationRelativeTo(null);
                     this.dispose();
                     break;
                 
                 case "Recepcionista":
-                    BuscarPaciente pantallaRecepcion = new BuscarPaciente();
+                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
                     pantallaRecepcion.setVisible(true);
                     pantallaRecepcion.setLocationRelativeTo(null);
                     this.dispose();                    
                     break;
                 
                 case "Administrador de Sistema":
-                    Administrador pantallaAdmin = new Administrador();
+                    Administrador pantallaAdmin = new Administrador(verif);
                     pantallaAdmin.setVisible(true);
                     pantallaAdmin.setLocationRelativeTo(null);
                     this.dispose();
@@ -174,6 +180,10 @@ public class GuiLogin extends javax.swing.JFrame {
                 default:
                     break;
                 }
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Usuario no Encontrado");
+        
         }
     }//GEN-LAST:event_buttonSesionMouseClicked
 
