@@ -267,18 +267,23 @@ public class Controladora implements Serializable{
 //    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
 //        return controlPersis.traerAdministradorDeSistemas(idUsuario);
 //    }
-    
+
+    // -----
     /*
     * Validar es el metodo publico que llama a validacion
-    * @return retorna un booleano true o false
+    * @return retorna un objeto Usuario
     */
     public Usuario validar(String uss, String pass){
         return validacion(uss, pass);
     }
-  
+    /*
+    * @param uss String de nombre de usuario
+    * @param pass String de contraseña
+    */
+    
     /*
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
-    * @return boolean
+    * @return Usuario
     */
     private Usuario validacion(String us, String pas){
         Usuario resultado = null;
