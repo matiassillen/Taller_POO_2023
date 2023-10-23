@@ -27,8 +27,13 @@ public class Controladora implements Serializable{
     }
 
     public List<Usuario> traerUsuarios() {
-        return controlPersis. traerUsuarios();
+        return controlPersis.traerUsuarios();
     }
+    
+    public List<Rol> traerRoles() {
+        return controlPersis.traerRoles();
+    }
+    
 
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
@@ -105,7 +110,7 @@ public class Controladora implements Serializable{
     */
     public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
         
-        return null;
+        return Medico;
     }
     
     //---------Metodos estadiscticos----------
@@ -330,4 +335,14 @@ public class Controladora implements Serializable{
 //        boxes.remove(boxABorrar); 
 //        
 //    }
+
+    public List<Usuario> traerTriagesCambiados() {
+        List <Usuario> usu= traerUsuarios();
+        for(Usuario rol: usu){
+           Object objeto []={};
+        
+        }
+    
+       return null;
+    }
 }
