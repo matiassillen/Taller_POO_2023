@@ -4,6 +4,7 @@ package Persistencia;
 import Model.Consulta;
 import Model.FuncionarioGeneral;
 import Model.Paciente;
+import Model.Rol;
 import Model.Usuario;
 import java.io.Serializable;
 import java.util.List;
@@ -280,6 +281,10 @@ public class ControladoraPersistencia implements Serializable{
 
     public void crearUsuario(Usuario usu) {
         usuJpa.create(usu);
+    }
+    
+     public List<Rol> traerRoles() {
+        return rolJpa.findRolEntities();
     }
     
 }
