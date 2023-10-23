@@ -36,8 +36,13 @@ public class Controladora implements Serializable{
     }
 
     public List<Usuario> traerUsuarios() {
-        return controlPersis. traerUsuarios();
+        return controlPersis.traerUsuarios();
     }
+    
+    public List<Rol> traerRoles() {
+        return controlPersis.traerRoles();
+    }
+    
 
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
@@ -114,7 +119,7 @@ public class Controladora implements Serializable{
     */
     public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
         
-        return null;
+        return Medico;
     }
     
     //---------Metodos estadiscticos----------
@@ -326,33 +331,14 @@ public class Controladora implements Serializable{
         return boxes;
     }
 
-    public List<Rol> traerRoles() {
-       return  controlPersis.traerRoles();
-    }
-
-    public FuncionarioGeneral traerFuncionarioGeneral(long id) {
-        return controlPersis.traerFuncionarioGeneral(id);
-    }
-
-    public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
-        controlPersis.editarFuncionarioGeneral(funcGeneral);
-    }
-    
-    public String mostrarUsuario(Usuario buscarUsuario) {
-        return "id: " + buscarUsuario.getId() + "\nNombre Usuario: " + buscarUsuario.getNomUsuario() + "\nRol: " + buscarUsuario.getRol().getFirst().getNombre();
-    }
-    
-    //Metodo que muestra un mensaje por pantalla
-    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equalsIgnoreCase("Info")) {
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equalsIgnoreCase("Error")) {
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+    public List<Usuario> traerTriagesCambiados() {
+        List <Usuario> usu= traerUsuarios();
+        for(Usuario rol: usu){
+           Object objeto []={};
+        
         }
-        JDialog dialog = optionPane.createDialog(titulo);
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
+    
+       return null;
     }
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
@@ -435,5 +421,17 @@ public class Controladora implements Serializable{
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
         
+    }
+         //Metodo que muestra un mensaje por pantalla
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }

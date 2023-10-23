@@ -123,11 +123,7 @@ public class GuiLogin extends javax.swing.JFrame {
                 buttonSesionMouseClicked(evt);
             }
         });
-<<<<<<< HEAD
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
-=======
         jPanel4.add(buttonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
->>>>>>> d85885808c1035e700441b5909596827da702522
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
 
@@ -161,7 +157,7 @@ public class GuiLogin extends javax.swing.JFrame {
             
             switch (rolUser.get(0).getNombre()) {
                 case "Gestor":
-                    GestionHospital pantallaGestion = new GestionHospital(verif);
+                    Gestor pantallaGestion = new Gestor(verif);
                     pantallaGestion.setVisible(true);
                     pantallaGestion.setLocationRelativeTo(null);
                     this.dispose();
@@ -197,7 +193,6 @@ public class GuiLogin extends javax.swing.JFrame {
 
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_contraseñaActionPerformed
 
     /**

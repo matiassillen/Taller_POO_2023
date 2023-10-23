@@ -1,8 +1,6 @@
 package Model;
 
 import java.util.List;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public class AdministradorDeSistema extends FuncAdministrativo {
 
