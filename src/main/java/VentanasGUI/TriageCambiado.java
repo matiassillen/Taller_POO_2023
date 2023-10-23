@@ -6,7 +6,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Estadistica;
-import Model.FuncSalud;
+//import Model.FuncSalud;
 import Model.LicEnEnfermeria;
 import Model.Medico;
 import java.util.List;
@@ -114,6 +114,9 @@ public class TriageCambiado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        Gestor pantallaGestion = new Gestor();
+        pantallaGestion.setVisible(true);
+        pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -146,11 +149,11 @@ public class TriageCambiado extends javax.swing.JFrame {
         
        List <FuncSalud> listaFuncionariosSalud= control.traerFuncionariosSalud();
        
-//       if (listaFuncionariosSalud != null){
-//           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
-//           tabla.addRow(objeto);
-//           }
-//       }
+       if (listaFuncionariosSalud != null){
+           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
+           tabla.addRow(objeto);
+           }
+       }
        
         
 

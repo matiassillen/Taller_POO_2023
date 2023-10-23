@@ -6,14 +6,14 @@ package VentanasGUI;
 
 /**
  *
- * @author trapo
+ * @author Usuario
  */
-public class GestionHospital extends javax.swing.JFrame {
+public class Gestor extends javax.swing.JFrame {
 
     /**
-     * Creates new form gestionHospital
+     * Creates new form Gestor
      */
-    public GestionHospital() {
+    public Gestor() {
         initComponents();
     }
 
@@ -153,19 +153,19 @@ public class GestionHospital extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCantPacienteMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteMedicoActionPerformed
         CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico();
@@ -175,38 +175,42 @@ public class GestionHospital extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCantPacienteMedicoActionPerformed
 
     private void btnCantPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteActionPerformed
-        
+
         CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos();
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
-        this.dispose();     
+        this.dispose();
     }//GEN-LAST:event_btnCantPacienteActionPerformed
 
     private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
         PacientesMasConsultas masConsulta = new PacientesMasConsultas();
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
-        this.dispose();  
+        this.dispose();
     }//GEN-LAST:event_btnPacienteMasConsultaActionPerformed
 
     private void btnMedicoMasPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoMasPacienteActionPerformed
         MedicoMasPacientes masPaciente = new MedicoMasPacientes();
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
-        
         TriageCambiado triagesCambiados = new TriageCambiado();
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
         this.dispose();
-        
     }//GEN-LAST:event_btnTriageCambiadoActionPerformed
 
-  
-
+    /**
+     * @param args the command line arguments
+     */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCantPaciente;
     private javax.swing.JButton btnCantPacienteMedico;

@@ -6,7 +6,9 @@ import Model.Consulta;
 import Model.FuncionarioGeneral;
 import Model.Medico;
 import Model.Paciente;
+import Model.Rol;
 import Model.Usuario;
+import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -300,4 +302,32 @@ public class ControladoraPersistencia implements Serializable{
         consultaJpa.edit(consuAct);
     }
     
+    public List<Rol>  traerRoles() {
+        return rolJpa.findRolEntities();
+    }
+
+    public FuncionarioGeneral traerFuncionarioGeneral(long id) {
+        return funcionarioGeneralJpa.findFuncionarioGeneral(id);
+    }
+
+    public Usuario traerUsuario(long id) {
+        return usuJpa.findUsuario(id);
+    }
+
+    public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
+        try {
+            funcionarioGeneralJpa.edit(funcGeneral);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void borrarUsuario(long id) {
+        try {
+            usuJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

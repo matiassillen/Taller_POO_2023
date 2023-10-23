@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VentanasGUI;
+import Model.Controladora;
 import Model.FuncionarioGeneral;
 import Model.Usuario;
 import static java.lang.String.valueOf;
@@ -12,13 +13,14 @@ import static java.lang.String.valueOf;
  */
 public class MiUsuario extends javax.swing.JFrame {
     private FuncionarioGeneral usuarioRegistrado;
-    private Usuario user;
+    private Controladora user;
     /**
      * Creates new form MiUsuario
      * @param user Es el usuario que ingreso en la aplicacion 
      */
-    public MiUsuario(Usuario user) {
-        this.usuarioRegistrado = user.getFuncionarioGeneral();
+    public MiUsuario(Controladora user) {
+        this.usuarioRegistrado = user.getUsu().getFuncionarioGeneral();
+        //getFuncionarioGeneral();
         initComponents();
         this.setMuestra();
     }
@@ -240,7 +242,7 @@ public class MiUsuario extends javax.swing.JFrame {
         txtFechaN.setText(usuarioRegistrado.getFechaDeNac());
         txtTelC2.setText(usuarioRegistrado.getTelefonoFijo());
         txtTelF2.setText(usuarioRegistrado.getTelefonoCel());
-        txtIdNum.setText(String.valueOf(user.getId()));
+        txtIdNum.setText(String.valueOf(user.getUsu().getId()));
     }
     
     /**

@@ -6,6 +6,7 @@ package VentanasGUI;
 
 import Model.AdministradorDeSistema;
 import Model.Controladora;
+import Model.FuncionarioGeneral;
 import Model.Rol;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,21 +16,28 @@ import java.util.List;
  * @author Matías Sillen Ríos
  */
 public class CrearUsuario extends javax.swing.JFrame {
-    AdministradorDeSistema administrador = null;
+
+    AdministradorDeSistema administrador;
     Controladora control;
+    long id;
     String nombre;
     String apellido;
     int dni;
+
     /**
      * Creates new form CrearUsuario
+     *
+     * @param administrador
      * @param control
+     * @param id
      * @param nombre
      * @param apellido
      * @param dni
      */
-    public CrearUsuario(Controladora control, String nombre, String apellido, int dni) {
-        administrador = new AdministradorDeSistema();
+    public CrearUsuario(AdministradorDeSistema administrador, Controladora control, long id, String nombre, String apellido, int dni) {
+        this.administrador = administrador;
         this.control = control;
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -50,9 +58,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmbRol = new javax.swing.JComboBox<>();
-        cbTriagiador = new javax.swing.JCheckBox();
         btnGuardar = new javax.swing.JButton();
-        cbTomarPaciente = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,7 +82,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(jLabel1)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,11 +99,6 @@ public class CrearUsuario extends javax.swing.JFrame {
         cmbRol.setBackground(new java.awt.Color(255, 255, 255));
         cmbRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbRol.setForeground(new java.awt.Color(0, 0, 0));
-        cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor", "Recepcionista", "Medico - Atencion ", "Medico - Triagiador", "Medico - Atencion - Triagiador", "Licenciado en Enfermeria", "Administrador de Sistema" }));
-
-        cbTriagiador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbTriagiador.setForeground(new java.awt.Color(0, 0, 0));
-        cbTriagiador.setText("Triagiador");
 
         btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -109,10 +110,6 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        cbTomarPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbTomarPaciente.setForeground(new java.awt.Color(0, 0, 0));
-        cbTomarPaciente.setText("Tomar Paciente");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,13 +119,9 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbTriagiador)
-                    .addComponent(cbTomarPaciente)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnGuardar)))
+                .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,11 +133,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar))
-                .addGap(15, 15, 15)
-                .addComponent(cbTomarPaciente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbTriagiador)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,9 +152,12 @@ public class CrearUsuario extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        cbTomarPaciente.setSelected(false);
-        cbTriagiador.setSelected(false);
-        
+        List<Rol> listaRoles = control.traerRoles();
+        if (listaRoles != null) {
+            for (Rol rol : listaRoles) {
+                cmbRol.addItem(rol.getNombre());
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -173,42 +165,47 @@ public class CrearUsuario extends javax.swing.JFrame {
         String nombreUsaurio = nombre + "  " + apellido;
 
         String contrasenia = String.valueOf(dni);
-        
+
         String rolUsu = String.valueOf(cmbRol.getSelectedItem());
 
         Rol rol = new Rol();
         rol.setNombre(rolUsu);
 
         List<Rol> roles = new ArrayList<>();
-        
+
         roles.add(rol);
 
-        if (rolUsu.equalsIgnoreCase("Medico")) {
-            
-            cbTomarPaciente.setSelected(true);
-            cbTriagiador.setSelected(true);
+        FuncionarioGeneral funcGeneral = control.traerFuncionarioGeneral(id);
 
-            if (cbTomarPaciente.isSelected()) {
-                
-                rol.setNombre("Tomar Paciente");
-                roles.add(rol);
-            }
+        administrador.crearUsuario(nombreUsaurio, contrasenia, roles, funcGeneral);
 
-            if (cbTriagiador.isSelected()) {
-                
-                rol.setNombre("Triagiador");
-                roles.add(rol);
-            }
-        }
-            administrador.crearUsuario(nombreUsaurio, contrasenia, roles);
+        funcGeneral.setUsu(administrador.buscarUsuario(dni));
+
+        control.editarFuncionarioGeneral(funcGeneral);
+
+//        if (rolUsu.equalsIgnoreCase("Medico")) {
+//            
+//            cbTomarPaciente.setSelected(true);
+//            cbTriagiador.setSelected(true);
+//
+//            if (cbTomarPaciente.isSelected()) {
+//                
+//                rol.setNombre("Tomar Paciente");
+//                roles.add(rol);
+//            }
+//
+//            if (cbTriagiador.isSelected()) {
+//                
+//                rol.setNombre("Triagiador");
+//                roles.add(rol);
+//            }
+//        }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JCheckBox cbTomarPaciente;
-    private javax.swing.JCheckBox cbTriagiador;
     private javax.swing.JComboBox<String> cmbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

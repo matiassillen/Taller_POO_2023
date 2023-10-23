@@ -21,16 +21,13 @@ public class EsperaAtencion {
         consu.setBox(box);
         consu.setMedico(medico);
         objetos.add(consu);
-        control.controlPersis.consultaJpa.edit(consu);
         
         box.setMedico(medico);
         box.setPacienteActual(paciente);
         objetos.add(box);
-        control.controlPersis.boxJpa.edit(box);
         
         medico.getConsulta().add(consu);
         objetos.add(medico);
-        control.controlPersis.medicoJpa.edit(medico);
         
         return objetos;      
     }

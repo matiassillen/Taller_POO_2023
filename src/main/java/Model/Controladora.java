@@ -4,6 +4,8 @@ import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
@@ -274,29 +276,31 @@ public class Controladora implements Serializable{
 //    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
 //        return controlPersis.traerAdministradorDeSistemas(idUsuario);
 //    }
-    
+
+    // -----
     /*
     * Validar es el metodo publico que llama a validacion
-    * @return retorna un booleano true o false
+    * @return retorna un objeto Usuario
     */
-    public List<Object> validar(String uss, String pass){
+    public Usuario validar(String uss, String pass){
         return validacion(uss, pass);
     }
-  
+    /*
+    * @param uss String de nombre de usuario
+    * @param pass String de contraseña
+    */
+    
     /*
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
-    * @return boolean
+    * @return Usuario
     */
-    private List<Object> validacion(String us, String pas){
-        List<Object> resultado = null;
-        resultado.add(false);
-        resultado.add(null);
+    private Usuario validacion(String us, String pas){
+        Usuario resultado = null;
         try{
             List<Usuario> listaBusqueda = controlPersis.traerUsuarios();
             for (Usuario comprobar : listaBusqueda) {
                 if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
-                    resultado.set(0,true);
-                    resultado.set(1,comprobar);
+                    resultado = comprobar;
                     return resultado;
                 }
                 else {}
@@ -335,6 +339,34 @@ public class Controladora implements Serializable{
 //        
 //    }
 
+    public List<Rol> traerRoles() {
+       return  controlPersis.traerRoles();
+    }
+
+    public FuncionarioGeneral traerFuncionarioGeneral(long id) {
+        return controlPersis.traerFuncionarioGeneral(id);
+    }
+
+    public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
+        controlPersis.editarFuncionarioGeneral(funcGeneral);
+    }
+    
+    public String mostrarUsuario(Usuario buscarUsuario) {
+        return "id: " + buscarUsuario.getId() + "\nNombre Usuario: " + buscarUsuario.getNomUsuario() + "\nRol: " + buscarUsuario.getRol().getFirst().getNombre();
+    }
+    
+    //Metodo que muestra un mensaje por pantalla
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equalsIgnoreCase("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equalsIgnoreCase("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
         for(Box box : boxes){
@@ -349,7 +381,7 @@ public class Controladora implements Serializable{
         return this.controlPersis.traerBox(idBox); 
     }
     
-    public Paciente tomarPaciente(Box box, Medico medico) {
+    public Paciente tomarPaciente(Box box, Medico medico) throws Exception {
         List<Object> objetos = this.esperaAtencion.moverPaciente(box, medico);
         Consulta consuAct = (Consulta)objetos.get(0);
         Medico medAct = (Medico)objetos.get(1);
@@ -359,7 +391,7 @@ public class Controladora implements Serializable{
         
     }
 
-    private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) {
+    private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
         this.controlPersis.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
     }
 }

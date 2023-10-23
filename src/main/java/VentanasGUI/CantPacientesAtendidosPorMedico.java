@@ -245,7 +245,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        GestionHospital pantallaGestion = new GestionHospital();
+        Gestor pantallaGestion = new Gestor();
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();

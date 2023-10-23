@@ -6,7 +6,9 @@ package VentanasGUI;
 import Model.Controladora;
 import Model.Rol;
 import Model.Usuario;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Agus
@@ -36,7 +38,7 @@ public class GuiLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         txtContrasenia = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        buttonSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -108,68 +110,86 @@ public class GuiLogin extends javax.swing.JFrame {
         txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtContrasenia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtContrasenia.setSelectionColor(new java.awt.Color(204, 204, 204));
-        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseniaActionPerformed(evt);
-            }
-        });
         jPanel4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
 
-        jButton1.setBackground(new java.awt.Color(102, 204, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Iniciar sesion");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setInheritsPopupMenu(true);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonSesion.setBackground(new java.awt.Color(102, 204, 255));
+        buttonSesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonSesion.setForeground(new java.awt.Color(0, 0, 0));
+        buttonSesion.setText("Iniciar sesion");
+        buttonSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonSesion.setInheritsPopupMenu(true);
+        buttonSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                buttonSesionMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+<<<<<<< HEAD
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
+=======
+        jPanel4.add(buttonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 282, 174, 37));
+>>>>>>> d85885808c1035e700441b5909596827da702522
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-//        String usern = txtUsuario.getText();
-//        String passw = String.valueOf(txtContrasenia.getPassword());
-//        List<Object> resultado = verif.validar(usern, passw);
-//        if ((boolean)resultado.get(0)) {
-//            Usuario temporalUsuario = (Usuario) resultado.get(1);
-//            Rol rolEncontrado  = temporalUsuario.getRol();
-//            }
-//            
-//            switch (rolEncontrado) {
-//                case "Gestor":
-//                    
-//                    break;
-//                
-//                case "Recepcionista":
-//                    break;
-//                
-//                case "Medico":
-//                    break;
-//                
-//                case "Licenciando en Enfermeria":
-//                    break;
-//                
-//                case "Administrador de Sistema":
-//                    break;
-//                
-//                default:
-//                    break;
-//                }
-//            }
+    /*
+    * Al cliquear el boton de iniciar sesion se ejecuta toda la comprobacion y seleccion de ventana
+    */
+    private void buttonSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSesionMouseClicked
+        String usern = txtUsuario.getText();
+        String passw = String.valueOf(txtContrasenia.getPassword());
+        Usuario resultado = verif.validar(usern, passw);
+        
+        if (resultado != null) {
+            verif.setUsu(resultado);
             
-    }//GEN-LAST:event_jButton1MouseClicked
+            List<Rol> rolUser = resultado.getRol();
+            
+            ArrayList<String> funcionarioSalud = new ArrayList<String>();
+            String[] listaRoles = {"Medico - Atencion ", "Medico - Triagiador", "Medico - Atencion - Triagiador", "Licenciado en Enfermeria"};
+            
+            for (String agregarRol : listaRoles){
+                funcionarioSalud.add(agregarRol);
+            }
+            if (funcionarioSalud.contains(rolUser.get(0).getNombre())) {
+                PrincipalMedico pantallaSalud = new PrincipalMedico(verif);
+                pantallaSalud.setVisible(true);
+                pantallaSalud.setLocationRelativeTo(null);
+                this.dispose();    
+            }
+            
+            switch (rolUser.get(0).getNombre()) {
+                case "Gestor":
+                    GestionHospital pantallaGestion = new GestionHospital(verif);
+                    pantallaGestion.setVisible(true);
+                    pantallaGestion.setLocationRelativeTo(null);
+                    this.dispose();
+                    break;
+                
+                case "Recepcionista":
+                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
+                    pantallaRecepcion.setVisible(true);
+                    pantallaRecepcion.setLocationRelativeTo(null);
+                    this.dispose();                    
+                    break;
+                
+                case "Administrador de Sistema":
+                    Administrador pantallaAdmin = new Administrador(verif);
+                    pantallaAdmin.setVisible(true);
+                    pantallaAdmin.setLocationRelativeTo(null);
+                    this.dispose();
+                    break;
+                
+                default:
+                    break;
+                }
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Usuario no Encontrado");
+        
+        }
+    }//GEN-LAST:event_buttonSesionMouseClicked
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
@@ -177,6 +197,7 @@ public class GuiLogin extends javax.swing.JFrame {
 
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_contraseñaActionPerformed
 
     /**
@@ -184,7 +205,7 @@ public class GuiLogin extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
