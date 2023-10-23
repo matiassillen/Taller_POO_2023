@@ -31,12 +31,12 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtVerAntecedentesClinicos = new javax.swing.JButton();
+        txtVerDiagnosticosClinicos = new javax.swing.JButton();
         txtVerResultEstudios = new javax.swing.JButton();
         txtVerConsultasAnteriores = new javax.swing.JButton();
+        btnVolverPrincipal = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnVolverr = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,13 +48,13 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtVerAntecedentesClinicos.setBackground(new java.awt.Color(0, 204, 255));
-        txtVerAntecedentesClinicos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtVerAntecedentesClinicos.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerAntecedentesClinicos.setText("Ver Antecedentes Clinicos");
-        txtVerAntecedentesClinicos.addActionListener(new java.awt.event.ActionListener() {
+        txtVerDiagnosticosClinicos.setBackground(new java.awt.Color(0, 204, 255));
+        txtVerDiagnosticosClinicos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtVerDiagnosticosClinicos.setForeground(new java.awt.Color(0, 0, 0));
+        txtVerDiagnosticosClinicos.setText("Ver Diagnosticos Clinicos");
+        txtVerDiagnosticosClinicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVerAntecedentesClinicosActionPerformed(evt);
+                txtVerDiagnosticosClinicosActionPerformed(evt);
             }
         });
 
@@ -78,6 +78,14 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
             }
         });
 
+        btnVolverPrincipal.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnVolverPrincipal.setText("Volver");
+        btnVolverPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverPrincipalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -85,24 +93,30 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtVerAntecedentesClinicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtVerDiagnosticosClinicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtVerResultEstudios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                     .addComponent(txtVerConsultasAnteriores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(btnVolverPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(txtVerResultEstudios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtVerResultEstudios)
                 .addGap(18, 18, 18)
-                .addComponent(txtVerAntecedentesClinicos)
+                .addComponent(txtVerDiagnosticosClinicos)
                 .addGap(18, 18, 18)
                 .addComponent(txtVerConsultasAnteriores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(114, 114, 114))
+                .addGap(18, 18, 18)
+                .addComponent(btnVolverPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 260, 220));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 260, 220));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -114,34 +128,26 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(324, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(113, 113, 113)
                 .addComponent(jLabel1)
-                .addGap(316, 316, 316))
+                .addContainerGap(527, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
-
-        btnVolverr.setText("Volver");
-        btnVolverr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverrActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnVolverr, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,42 +157,43 @@ public class HistoriaClinicaa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtVerAntecedentesClinicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerAntecedentesClinicosActionPerformed
+    private void txtVerDiagnosticosClinicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerDiagnosticosClinicosActionPerformed
         VerAntecedenteClinico verAntCli = new VerAntecedenteClinico(control);
         verAntCli.setVisible(true);
         verAntCli.setLocationRelativeTo(null);
-    }//GEN-LAST:event_txtVerAntecedentesClinicosActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_txtVerDiagnosticosClinicosActionPerformed
 
     private void txtVerResultEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerResultEstudiosActionPerformed
         VerResultadoEstudio verResEstu = new VerResultadoEstudio(control);
         verResEstu.setVisible(true);
         verResEstu.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_txtVerResultEstudiosActionPerformed
 
     private void txtVerConsultasAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerConsultasAnterioresActionPerformed
         VerConsultasAnteriores verHistCli = new VerConsultasAnteriores(control);
         verHistCli.setVisible(true);
         verHistCli.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_txtVerConsultasAnterioresActionPerformed
 
-    private void btnVolverrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverrActionPerformed
+    private void btnVolverPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPrincipalActionPerformed
         PrincipalMedico ppalMedico = new PrincipalMedico(control);
         ppalMedico.setVisible(true);
         ppalMedico.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnVolverrActionPerformed
+    }//GEN-LAST:event_btnVolverPrincipalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolver;
-    private javax.swing.JButton btnVolver1;
-    private javax.swing.JButton btnVolverr;
+    private javax.swing.JButton btnVolverPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton txtVerAntecedentesClinicos;
     private javax.swing.JButton txtVerConsultasAnteriores;
+    private javax.swing.JButton txtVerDiagnosticosClinicos;
     private javax.swing.JButton txtVerResultEstudios;
     // End of variables declaration//GEN-END:variables
 }

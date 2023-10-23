@@ -9,7 +9,14 @@ import javax.swing.JOptionPane;
 
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
-    private Usuario usu;
+    Usuario usu;
+    
+    private EsperaAtencion esperaAtencion = new EsperaAtencion();
+    
+    
+    
+    
+    
     
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
@@ -312,27 +319,21 @@ public class Controladora implements Serializable{
 
 
         
-//    public List<Consulta> TraerPacientesTriageados() {
-//        List<Consulta> consultas = controlPersis.traerConsultas();
-//        Iterator<Consulta> iterator = consultas.iterator();
-//        while (iterator.hasNext()) {
-//            Consulta consulta = iterator.next();
-//            if (consulta.getMedico() != null) {
-//             iterator.remove();
-//            }
-//            if (consulta.getTriage() == null) {
-//                iterator.remove();
-//            }
-//        }
-//        return consultas;
-//    }
-//
-//    public List<Box> TraerBoxDelMedico() {
-//        long idMedico = this.usu.getFuncionarioGeneral().getId();
-//        Medico medico = this.controlPersis.traerMedico(idMedico);
-//        List<Box> boxes = medico.getBoxes();
-//        return boxes;
-//    }
+    public List<Consulta> TraerPacientesTriageados() {
+        EsperaAtencion.
+    }
+
+    public List<Box> TraerBoxDelMedico() {
+        long idMedico = this.usu.getFuncionarioGeneral().getId();
+        Medico medico = this.controlPersis.traerMedico(idMedico);
+        List<Box> boxes = this.controlPersis.traerBoxes();
+        for(Box box : boxes){
+            if(box.getMedico()!=medico){
+                boxes.remove(box);
+            }
+        }
+        return boxes;
+    }
 //
 //    public void terminarConsulta(Long boxSeleccionadoId) {
 //        Box boxABorrar = this.controlPersis.traerBox(boxSeleccionadoId);
@@ -351,5 +352,32 @@ public class Controladora implements Serializable{
         }
     
        return null;
+    }
+    public List<Box> TraerBoxDisponibles() {
+        List<Box> boxes = this.controlPersis.traerBoxes();
+        for(Box box : boxes){
+            if(box.getMedico()!=null){
+                boxes.remove(box);
+            }
+        }
+        return boxes;
+    }
+
+    public Box traerBox(long idBox) {
+        return this.controlPersis.traerBox(idBox); 
+    }
+    
+    public Paciente tomarPaciente(Box box, Medico medico) throws Exception {
+        List<Object> objetos = this.esperaAtencion.moverPaciente(box, medico);
+        Consulta consuAct = (Consulta)objetos.get(0);
+        Medico medAct = (Medico)objetos.get(1);
+        Box boxAct = (Box)objetos.get(2);
+        this.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+
+        
+    }
+
+    private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
+        this.controlPersis.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
     }
 }

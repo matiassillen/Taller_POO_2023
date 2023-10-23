@@ -7,6 +7,7 @@ package VentanasGUI;
 
 import Model.Box;
 import Model.Controladora;
+import Model.Paciente;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,12 +17,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AsignarBox extends javax.swing.JFrame {
     Controladora control;
+    String dniPacienteSelecionado;
+    Box boxSeleccionado; 
     /**
      * Creates new form AsignarBox
+     * @param control
      */
     public AsignarBox(Controladora control) {
         initComponents();
-        this.control = control;
+        this.control = control;  
     }
 
     /**
@@ -34,12 +38,13 @@ public class AsignarBox extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaBox = new javax.swing.JTable();
-        btnVolver2 = new javax.swing.JButton();
-        txtSeleccionarBox = new javax.swing.JButton();
+        btnVolverAPrincipal = new javax.swing.JButton();
+        btnSeleccionarBox = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaBox = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,39 +55,25 @@ public class AsignarBox extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaBox.setBackground(new java.awt.Color(255, 255, 255));
-        tablaBox.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane3.setViewportView(tablaBox);
-
-        btnVolver2.setBackground(new java.awt.Color(0, 204, 255));
-        btnVolver2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVolver2.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver2.setText("Volver");
-        btnVolver2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVolver2.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverAPrincipal.setBackground(new java.awt.Color(0, 204, 255));
+        btnVolverAPrincipal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVolverAPrincipal.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolverAPrincipal.setText("Principal");
+        btnVolverAPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolverAPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolver2ActionPerformed(evt);
+                btnVolverAPrincipalActionPerformed(evt);
             }
         });
 
-        txtSeleccionarBox.setBackground(new java.awt.Color(0, 204, 153));
-        txtSeleccionarBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        txtSeleccionarBox.setForeground(new java.awt.Color(0, 0, 0));
-        txtSeleccionarBox.setText("Seleccionar");
-        txtSeleccionarBox.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        txtSeleccionarBox.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarBox.setBackground(new java.awt.Color(0, 204, 153));
+        btnSeleccionarBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSeleccionarBox.setForeground(new java.awt.Color(0, 0, 0));
+        btnSeleccionarBox.setText("Seleccionar");
+        btnSeleccionarBox.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSeleccionarBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSeleccionarBoxActionPerformed(evt);
+                btnSeleccionarBoxActionPerformed(evt);
             }
         });
 
@@ -98,17 +89,46 @@ public class AsignarBox extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addGap(312, 312, 312)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
+
+        tablaBox.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaBoxMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablaBox);
+
+        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
+        btnVolver.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -116,27 +136,31 @@ public class AsignarBox extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtSeleccionarBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolverAPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSeleccionarBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVolver2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(txtSeleccionarBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btnSeleccionarBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVolverAPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,51 +171,80 @@ public class AsignarBox extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver2ActionPerformed
-        TomarPaciente tomarP = new TomarPaciente(control);
+    private void btnVolverAPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAPrincipalActionPerformed
+        PrincipalMedico principal = new PrincipalMedico(control);
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverAPrincipalActionPerformed
+
+    private void btnSeleccionarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarBoxActionPerformed
+        String dniP = this.dniPacienteSelecionado;
+        FuncionarioGeneral medico = control.getUsu().getFuncionarioGeneral();
+        Medico medico = (Medico)medico;
+        Paciente paciente = control.tomarPaciente(boxSeleccionado,medico);
+
+        HistoriaClinicaa histoCli = new HistoriaClinicaa(control, paciente);
+        histoCli.setVisible(true);
+        histoCli.setLocationRelativeTo(null);
+        this.dispose();  
+    }//GEN-LAST:event_btnSeleccionarBoxActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaBoxDisponibles();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        GestionDePacientes tomarP = new GestionDePacientes(control);
         tomarP.setVisible(true);
         tomarP.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnVolver2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtSeleccionarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSeleccionarBoxActionPerformed
-        HistoriaClinicaa histoCli = new HistoriaClinicaa(control);
-        histoCli.setVisible(true);
-        histoCli.setLocationRelativeTo(null);
-        this.dispose();        
-    }//GEN-LAST:event_txtSeleccionarBoxActionPerformed
+    private void tablaBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxMouseClicked
+        if (tablaBox.getRowCount() > 0) {
+            if (tablaBox.getSelectedRow() != -1) {
+                int row = tablaBox.getSelectedRow();
+                String idBox = tablaBox.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
+                long id = Long.parseLong(idBox);
+                this.boxSeleccionado = control.traerBox(id);
+                btnSeleccionarBox.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_tablaBoxMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTabla();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void cargarTabla() {
+    private void cargarTablaBoxDisponibles() {
         DefaultTableModel modeloTabla = new DefaultTableModel();
-        
-        String titutlos[] = {"Nombre","info"};
+        String titutlos[] = {"numero"};
         modeloTabla.setColumnIdentifiers(titutlos);
-        
-        List<Box> listaBoxDispo = control.TraerBoxDisponibles();
-        
-        
-        
-        tablaBox.setModel(modeloTabla);
+        List<Box> boxes = control.TraerBoxDisponibles();
+        if (boxes!=null){
+            for(Box box : boxes){
+                Object[] objeto = {box.getId()};
+                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
+            }
+        }
+        tablaBox.setModel(modeloTabla);// Establece el modelo de tabla como modeloTabla.
+    
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolver2;
+    private javax.swing.JButton btnSeleccionarBox;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnVolverAPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tablaBox;
-    private javax.swing.JButton txtSeleccionarBox;
     // End of variables declaration//GEN-END:variables
 }

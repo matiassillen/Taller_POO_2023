@@ -1,8 +1,10 @@
 
 package Persistencia;
 
+import Model.Box;
 import Model.Consulta;
 import Model.FuncionarioGeneral;
+import Model.Medico;
 import Model.Paciente;
 import Model.Rol;
 import Model.Usuario;
@@ -244,9 +246,7 @@ public class ControladoraPersistencia implements Serializable{
 //        return recepcionistaJpa.findRecepcionista(idUsuario);
 //    }
 //
-//    public Medico traerMedico(long idUsuario) {
-//        return medicoJpa.findMedico(idUsuario);
-//    }
+
 //
 //    public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
 //        return licEnEnfermeriaJpa.findLicEnEnfermeria(idUsuario);
@@ -284,6 +284,24 @@ public class ControladoraPersistencia implements Serializable{
         usuJpa.create(usu);
     }
 
+    public Medico traerMedico(long idUsuario) {
+        return medicoJpa.findMedico(idUsuario);
+    }
+
+    public List<Box> traerBoxes() {
+        return boxJpa.findBoxEntities();
+    }
+
+    public Box traerBox(long idBox) {
+        return boxJpa.findBox(idBox);
+    }
+
+    public void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
+        boxJpa.edit(boxAct);
+        medicoJpa.edit(medAct);
+        consultaJpa.edit(consuAct);
+    }
+    
     public List<Rol>  traerRoles() {
         return rolJpa.findRolEntities();
     }
@@ -312,9 +330,12 @@ public class ControladoraPersistencia implements Serializable{
         }
     }
 
+<<<<<<< HEAD
     
      public List<Rol> traerRoles() {
         return rolJpa.findRolEntities();
     }
     
+=======
+>>>>>>> 56e831adf79567e76f0b750a52a08c634d6bca96
 }
