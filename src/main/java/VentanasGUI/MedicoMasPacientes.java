@@ -1,9 +1,9 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Medico;
 import java.time.LocalDate;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -195,7 +195,6 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         
         Calendar fechaOne = jDateChooser1.getCalendar();
         Calendar fechaTwo = jDateChooser2.getCalendar();
-        if (fechaTwo<= fechaTwo)
         
         int diaOne = fechaOne.get(Calendar.DATE);
         int medOne = fechaOne.get(Calendar.MONTH);
@@ -207,6 +206,15 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         
         LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+        
+        if(fecha2.isBefore(fecha2)){
+        JOptionPane.showMessageDialog(
+            null,
+            "La segunda fecha no puede ser mayor que la primera.", 
+            "Error",  
+            JOptionPane.ERROR_MESSAGE  
+        );
+        }else{
                 
        
  
@@ -218,26 +226,17 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
             }
         
         };
-        String titulos []= {"Nombre","Apellido","Fecha de Nac","Domicilio","Telefono", "Celular","Correo","Est.Civil"};
+        String titulos []= {"Nombre","Apellido","Matricula","Cantidad de pacientes",};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        Medico medi= control.MedicoConMasPacientes(fecha1, fecha2);
-        medi.getNombre();
-        medi.getApellido();
-        medi.getFechaDeNac();
-        medi.getDomicilio();
-        medi.getDomicilio();
-        medi.getTelefonoFijo();
-        medi.getTelefonoCel();
-        medi.getCorreoE();
-        medi.getEstadoCivil();
-        modeloTabla.addRow(medi);
+        
         
         tablaMedico.setModel(modeloTabla);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaMedicoMasPacientes();
+
     }//GEN-LAST:event_formWindowOpened
 
 
@@ -256,22 +255,6 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
     private javax.swing.JTable tablaMedico;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarTablaMedicoMasPacientes() {
-        DefaultTableModel modeloTabla= new DefaultTableModel(){
-            @Override
-            public boolean isCellEditable(int row,int column){
-                return false;
-            
-            }
-        
-        };
-        String titulos []= {"Nombre","Apellido","Fecha de Nac","Domicilio","Telefono", "Celular","Correo","Est.Civil"};
-        modeloTabla.setColumnIdentifiers(titulos);
-        modeloTabla.addRow(titulos);
-        
-        
-        
-    }
 
     
 }
