@@ -8,12 +8,12 @@ package VentanasGUI;
  *
  * @author trapo
  */
-public class gestionHospital extends javax.swing.JFrame {
+public class GestionHospital extends javax.swing.JFrame {
 
     /**
      * Creates new form gestionHospital
      */
-    public gestionHospital() {
+    public GestionHospital() {
         initComponents();
     }
 
