@@ -13,8 +13,9 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
 
    
     public MedicoMasPacientes() {
-        control=new Controladora();
+        
         initComponents();
+        this.control = control;
         //txtAdvertencia.setVisible(false);
     }
 
