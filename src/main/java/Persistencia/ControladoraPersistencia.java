@@ -373,7 +373,10 @@ public class ControladoraPersistencia implements Serializable{
     }
 
     public void traerRol(String rolRecibido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+}
+
+    public List<Consulta> traerConsultas() {
+        return consultaJpa.findConsultaEntities();
     }
 
     
