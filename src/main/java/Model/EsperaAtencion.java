@@ -11,9 +11,13 @@ import java.util.PriorityQueue;
  */
 public class EsperaAtencion {
     
-    private PriorityQueue<Consulta> enEspera = new PriorityQueue<>(new ComparadorDeConsultas());
+    private PriorityQueue<Consulta> enEspera;
+
+    public EsperaAtencion() {
+        this.enEspera = new PriorityQueue<>(new ComparadorDeConsultas());
+    }
     
-    public List<Object> moverPaciente(Box box, Medico medico) {
+    public List<Object> quitarDeFila(Box box, Medico medico) {
         List<Object> objetos = new ArrayList<>();
         Consulta consu = enEspera.poll();
     
@@ -24,7 +28,9 @@ public class EsperaAtencion {
         box.setConsulta(consu);
         objetos.add(box);
         
-        medico.getConsulta().add(consu);
+        List<Consulta> consultas = medico.getConsulta();
+        consultas.add(consu);
+        medico.setConsulta(consultas);
         objetos.add(medico);
         
         return objetos;      
@@ -34,7 +40,7 @@ public class EsperaAtencion {
         return enEspera;
     }
     
-    public void AñadirConsulta(Consulta consu){
+    public void añadirAFila(Consulta consu){
         enEspera.add(consu);
     }
     public class ComparadorDeConsultas implements Comparator<Consulta> {

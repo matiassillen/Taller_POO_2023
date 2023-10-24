@@ -14,6 +14,8 @@ public class Controladora implements Serializable{
     Usuario usu;
     
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
+    private EsperaTriage esperaAtencionTriage = new EsperaTriage();
+    
 
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
@@ -377,7 +379,7 @@ public class Controladora implements Serializable{
     }
     
     public void tomarPaciente(Box box, Medico medico) throws Exception {
-        List<Object> objetos = this.esperaAtencion.moverPaciente(box, medico);
+        List<Object> objetos = this.esperaAtencion.quitarDeFila(box, medico);
         Consulta consuAct = (Consulta)objetos.get(0);
         Medico medAct = (Medico)objetos.get(1);
         Box boxAct = (Box)objetos.get(2);
