@@ -3,8 +3,9 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -37,6 +38,10 @@ public class Controladora implements Serializable{
     
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
+    }
+    
+    public List<Consulta> traerConsultas() {
+        return controlPersis.traerConsultas();
     }
     
 
@@ -110,11 +115,25 @@ public class Controladora implements Serializable{
     */
 
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-        while (!fecha1.isAfter(fecha2)) {
-            fecha1 = fecha1.plus(1, ChronoUnit.DAYS); // Avanzar un día
+        Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        Medico medicoConMasPacientes = null;
+        int maxConsultas = 0;
+
+        for (Consulta consulta : consultas) {
+            LocalDate fechaConsulta = consulta.getFecha();
+            if (fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                Medico medico = consulta.getMedico();
+                int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
+                conteoConsultas.put(medico, consultasMedico);
+
+                if (consultasMedico > maxConsultas) {
+                    maxConsultas = consultasMedico;
+                    medicoConMasPacientes = medico;
+                }
+            }
         }
-    
-        return null;
+
+        return medicoConMasPacientes;
     }
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {

@@ -1,7 +1,7 @@
 package Model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +18,7 @@ public class Consulta implements Serializable {
     private int id;
     @ManyToOne
     private Paciente paciente;
-    private Date fecha;
+    private LocalDate fecha;
     private String hora;
     private String diagnConsulta;
     private String lugar;
@@ -37,7 +37,7 @@ public class Consulta implements Serializable {
         
     }
 
-    public Consulta(int numConsulta, Paciente paciente, Date fecha, String hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
+    public Consulta(int numConsulta, Paciente paciente, LocalDate fecha, String hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
         this.id = numConsulta;
         this.paciente = paciente;
         this.fecha = fecha;
@@ -66,11 +66,11 @@ public class Consulta implements Serializable {
         this.paciente = paciente;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
