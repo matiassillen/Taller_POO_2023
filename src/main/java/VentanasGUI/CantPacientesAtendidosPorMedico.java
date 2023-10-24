@@ -278,7 +278,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
 
     private void buttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseClicked
         try {
-            this.dniValido = Integer.parseInt(txtDNI.setText());
+            //this.dniValido = Integer.parseInt(txtDNI.setText());
         }
         catch (Exception e){
             txtAdvertencia.setVisible(true);

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -15,7 +16,7 @@ public class Medico extends FuncionarioGeneral {
     @ManyToMany
     @JoinColumn(name="id_especialidad")
     private List<Especialidad> especialidad;
-    @OneToMany
+    @OneToMany(mappedBy="medico")
     private List<Consulta> consulta;
     @OneToOne
     @JoinColumn(name="id_titulo")

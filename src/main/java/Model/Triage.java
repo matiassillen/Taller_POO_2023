@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Triage implements Serializable {
@@ -34,7 +35,8 @@ public class Triage implements Serializable {
     private Consulta consulta;
     @ManyToOne
     private Medico medico;
-    @ManyToOne
+    //@ManyToOne
+    @Transient
     private LicEnEnfermeria enfermero;
  
     public Triage() {

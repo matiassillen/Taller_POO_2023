@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdministradorDeSistema extends FuncAdministrativo {
@@ -20,12 +21,24 @@ public class AdministradorDeSistema extends FuncAdministrativo {
         // TODO implement here
     }
 
-     public void crearUsuario(String nombreUsuario, String contrasenia, List<Rol> roles, FuncionarioGeneral funcGeneral) {
+     public void crearUsuario(String nombreUsuario, String contrasenia, String rolRecibido, FuncionarioGeneral funcGeneral) {
         Usuario usu = new Usuario();
         
         usu.setNomUsuario(nombreUsuario);
         usu.setPassw(contrasenia);
-        usu.setRol(roles);  
+//        usu.setRol(roles);  
+
+        Rol rolEncontrado = new Rol();
+        rolEncontrado = control.traerRol(rolRecibido);
+        
+        if (rolEncontrado != null) {
+            
+            List<Rol> roles = new ArrayList<>();
+            roles.add(rolEncontrado);
+        
+            usu.setRol(roles);
+        }
+
         usu.setFuncionarioGeneral(funcGeneral);
 
         control.controlPersis.crearUsuario(usu);
@@ -333,12 +346,21 @@ public class AdministradorDeSistema extends FuncAdministrativo {
 //        }
     }
 
-    public void editarUsuario(Usuario usuario, String nombreUsuario, String contrasenia, List<Rol> roles) {
+    public void editarUsuario(Usuario usuario, String nombreUsuario, String contrasenia, String rolRecibido) {
             
         usuario.setNomUsuario(nombreUsuario);
         usuario.setPassw(contrasenia);
-        usuario.setRol(roles);
         
+        Rol rolEncontrado = new Rol();
+        rolEncontrado = control.traerRol(rolRecibido);
+        
+        if (rolEncontrado != null) {
+            
+            List<Rol> roles = new ArrayList<>();
+            roles.add(rolEncontrado);
+        
+            usuario.setRol(roles);
+        }
 //        funcionarioGeneral.setNombre(nombre);
 //        funcionarioGeneral.setApellido(apellido);
 //        funcionarioGeneral.setFechaDeNac(FechaNacimiento);

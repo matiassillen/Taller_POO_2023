@@ -1,12 +1,17 @@
 package Model;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import javax.persistence.JoinColumn;
 
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_entidad")
 public class FuncionarioGeneral extends Persona {
     
     @JoinColumn(name="id_Usuario")

@@ -461,10 +461,10 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Recepcion recep = new Recepcion();
-        recep.setVisible(true);
-        recep.setLocationRelativeTo(null);
-        this.dispose();
+//        Recepcion recep = new Recepcion();
+//        recep.setVisible(true);
+//        recep.setLocationRelativeTo(null);
+//        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -498,28 +498,28 @@ public class BuscarPaciente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
         }
         
-        Object[] dni = control.ValidarPaciente(txtDni.getText());
+        //Object[] dni = control.ValidarPaciente(txtDni.getText());
         
         String vacio = "";
-        
-        if (dni[0].equals(vacio)){
-           btnGuardar.setEnabled(true);
-           btnCrearConsulta.setEnabled(false);
-        }else{
-            
-            txtDni.setText((String) dni[0]);
-            txtApellido.setText((String) dni[1]);
-            txtNombre.setText((String) dni[2]);
-            txtFechaNacimiento.setText((String) dni[3]);
-            cmbEstadoCivil.setSelectedItem((String) dni[4]);
-            txtCorreo.setText((String) dni[5]);
-            txtDomicilio.setText((String) dni[6]);
-            txtTelFijo.setText((String) dni[7]);
-            txtTelCelular.setText((String) dni[8]);
-            txtPersoContacto.setText((String) dni[9]);
-            txtTelContacto.setText((String) dni[10]);
-            btnCrearConsulta.setEnabled(true);
-        }    
+//        
+//        if (dni[0].equals(vacio)){
+//           btnGuardar.setEnabled(true);
+//           btnCrearConsulta.setEnabled(false);
+//        }else{
+//            
+//            txtDni.setText((String) dni[0]);
+//            txtApellido.setText((String) dni[1]);
+//            txtNombre.setText((String) dni[2]);
+//            txtFechaNacimiento.setText((String) dni[3]);
+//            cmbEstadoCivil.setSelectedItem((String) dni[4]);
+//            txtCorreo.setText((String) dni[5]);
+//            txtDomicilio.setText((String) dni[6]);
+//            txtTelFijo.setText((String) dni[7]);
+//            txtTelCelular.setText((String) dni[8]);
+//            txtPersoContacto.setText((String) dni[9]);
+//            txtTelContacto.setText((String) dni[10]);
+//            btnCrearConsulta.setEnabled(true);
+//        }    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -529,16 +529,16 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-        Date date = new Date();
-        Long time = date.getTime();
-        String lugar =("Hospital Masvernat");
-        String motivo = txtMotivo.getText();
-        int dni = Integer.parseInt(txtDni.getText());
-        paciente = recepcion.TraerPaciente(dni);
-        recepcion.CrearConsulta(date,time,lugar,motivo,paciente);
-        
-        btnCrearConsulta.setEnabled(false);
-        txtMotivo.setText("");
+//        Date date = new Date();
+//        Long time = date.getTime();
+//        String lugar =("Hospital Masvernat");
+//        String motivo = txtMotivo.getText();
+//        int dni = Integer.parseInt(txtDni.getText());
+//        paciente = recepcion.TraerPaciente(dni);
+//        recepcion.CrearConsulta(date,time,lugar,motivo,paciente);
+//        
+//        btnCrearConsulta.setEnabled(false);
+//        txtMotivo.setText("");
     }//GEN-LAST:event_btnCrearConsultaActionPerformed
     
 

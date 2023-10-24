@@ -13,12 +13,7 @@ public class Controladora implements Serializable{
     Usuario usu;
     
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
-    
-    
-    
-    
-    
-    
+
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
@@ -52,40 +47,35 @@ public class Controladora implements Serializable{
     //----------Metodos que estaban en la clase Medico----------
     
      /**
-     * @param paciente 
-     * @return
+     * @param paciente
     */
     public void tomarPaciente(Paciente paciente) {
         // TODO implement here
     }
 
     /**
-     * @param paciente 
-     * @return
+     * @param paciente
     */
     public void VerTriage(Paciente paciente) {
         // TODO implement here
     }
 
     /**
-     * @param paciente 
-     * @return
+     * @param paciente
     */
     public void VerConsulta(Paciente paciente) {
         // TODO implement here
     }
 
     /**
-     * @param paciente 
-     * @return
+     * @param paciente
     */
     public void VerResultadoEstudios(Paciente paciente) {
         // TODO implement here
     }
 
     /**
-     * @param paciente 
-     * @return
+     * @param paciente
     */
     public void VerAntecedenteClinico(Paciente paciente) {
         // TODO implement here
@@ -126,7 +116,7 @@ public class Controladora implements Serializable{
     
         return null;
     }
-=======
+
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
 //        
 //        return Medico;
@@ -315,7 +305,7 @@ public class Controladora implements Serializable{
         try{
             List<Usuario> listaBusqueda = controlPersis.traerUsuarios();
             for (Usuario comprobar : listaBusqueda) {
-                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw() == pas)){
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))){
                     resultado = comprobar;
                     return resultado;
                 }
@@ -440,5 +430,29 @@ public class Controladora implements Serializable{
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
+    }
+
+    public FuncionarioGeneral traerFuncionarioGeneral(long id) {
+        return controlPersis.traerFuncionarioGeneral(id);
+    }
+
+    public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
+        controlPersis.editarFuncionarioGeneral(funcGeneral);
+    }
+
+    public String mostrarUsuario(Usuario buscarUsuario) {
+        return "Id: " + buscarUsuario.getId() + "\nNombre de Usuario: " + buscarUsuario.getNomUsuario() + "\nRol/es: " + buscarUsuario.getRol().getFirst().getNombre();
+    }
+
+    public Rol traerRol(String rolRecibido) {
+        List<Rol> listaRoles = this.traerRoles();
+        
+        for (Rol rol : listaRoles) {
+            
+            if (rol.getNombre().equalsIgnoreCase(rolRecibido)) {
+                return rol;
+            }
+        }
+        return null;
     }
 }

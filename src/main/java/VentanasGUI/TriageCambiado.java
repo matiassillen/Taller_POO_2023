@@ -147,13 +147,13 @@ public class TriageCambiado extends javax.swing.JFrame {
         tabla.setColumnIdentifiers(titulos);
         
         
-       List <FuncSalud> listaFuncionariosSalud= control.traerFuncionariosSalud();
-       
-       if (listaFuncionariosSalud != null){
-           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
-           tabla.addRow(objeto);
-           }
-       }
+//       List <FuncSalud> listaFuncionariosSalud= control.traerFuncionariosSalud();
+//       
+//       if (listaFuncionariosSalud != null){
+//           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
+//           tabla.addRow(objeto);
+//           }
+//       }
        
         
 

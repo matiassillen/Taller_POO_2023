@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
+
 
 @Entity
 public class Consulta implements Serializable {
@@ -18,7 +18,6 @@ public class Consulta implements Serializable {
     private int id;
     @ManyToOne
     private Paciente paciente;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     private String hora;
     private String diagnConsulta;
@@ -28,6 +27,7 @@ public class Consulta implements Serializable {
     @JoinColumn(name="id_box")
     private Box box;
     @ManyToOne
+    @JoinColumn(name="id_medico")
     private Medico medico;
     @OneToOne
     @JoinColumn(name="id_triage")

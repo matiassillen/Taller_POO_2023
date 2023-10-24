@@ -156,26 +156,26 @@ public class GuiLogin extends javax.swing.JFrame {
             }
             
             switch (rolUser.get(0).getNombre()) {
-                case "Gestor":
-                    Gestor pantallaGestion = new Gestor(verif);
-                    pantallaGestion.setVisible(true);
-                    pantallaGestion.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
-                
-                case "Recepcionista":
-                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
-                    pantallaRecepcion.setVisible(true);
-                    pantallaRecepcion.setLocationRelativeTo(null);
-                    this.dispose();                    
-                    break;
-                
-                case "Administrador de Sistema":
-                    Administrador pantallaAdmin = new Administrador(verif);
-                    pantallaAdmin.setVisible(true);
-                    pantallaAdmin.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
+//                case "Gestor":
+//                    Gestor pantallaGestion = new Gestor(verif);
+//                    pantallaGestion.setVisible(true);
+//                    pantallaGestion.setLocationRelativeTo(null);
+//                    this.dispose();
+//                    break;
+//                
+//                case "Recepcionista":
+//                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
+//                    pantallaRecepcion.setVisible(true);
+//                    pantallaRecepcion.setLocationRelativeTo(null);
+//                    this.dispose();                    
+//                    break;
+//                
+//                case "Administrador de Sistema":
+//                    Administrador pantallaAdmin = new Administrador(verif);
+//                    pantallaAdmin.setVisible(true);
+//                    pantallaAdmin.setLocationRelativeTo(null);
+//                    this.dispose();
+//                    break;
                 
                 default:
                     break;

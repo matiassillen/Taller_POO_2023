@@ -176,10 +176,10 @@ public class CantTriageColor extends javax.swing.JFrame {
         
         List <Usuario> listaTriages=control.traerTriagesCambiados();
         if(listaTriages != null){
-            for(Rol triagiadores: listaTriages){
-                Object[] objeto= {};
-                modeloTabla.addRow(objeto);
-            }
+//            for(Rol triagiadores: listaTriages){
+//                Object[] objeto= {};
+//                modeloTabla.addRow(objeto);
+//            }
         
         }
         tablaTriagesCambiados.setModel(modeloTabla);

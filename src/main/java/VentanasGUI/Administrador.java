@@ -315,18 +315,18 @@ public class Administrador extends javax.swing.JFrame {
                     if (table.getSelectedRow() != -1) {
 
                         //Obtener la id del elemento a seleccionar 
-                        long id = Integer.parseInt(String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 0)));
-                        String nombre = String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 1));
-                        String apellido = String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 2));
-                        int dni = Integer.parseInt(String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 4)));
+                        long id = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 0)));
+                        String nombre = String.valueOf(table.getValueAt(table.getSelectedRow(), 1));
+                        String apellido = String.valueOf(table.getValueAt(table.getSelectedRow(), 2));
+                        int dni = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 4)));
 
-                        //Llamo a la ventana EditarUsuario 
+                        //Llamo a la ventana CrearUsuario 
                         CrearUsuario pantalla1 = new CrearUsuario(administrador, control, id, nombre, apellido, dni);
                         pantalla1.setVisible(true);
                         pantalla1.setLocationRelativeTo(null);
 
-                        //Avisar al administrador que se borro correctamente
-                        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación correcta");
+                        //Avisar al administrador que se creó correctamente
+                        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
 
                         cargarTablaUsuarios();
                     } else {
@@ -545,7 +545,7 @@ public class Administrador extends javax.swing.JFrame {
                     if (table.getSelectedRow() != -1) {
 
                         //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
+                        long id = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 0)));
 
                         //Llamo al método borrar 
                         administrador.borrarUsuario(id);
@@ -730,7 +730,7 @@ public class Administrador extends javax.swing.JFrame {
 
         //Establecemos los nombres de las columnas
         String titulos[] = {"Id", "Nombre", "Apellido", "Fecha de nacimiento", "DNI", "Domicilio",
-            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil", "Id_usuario: "};
+            "Teléfono Fíjo", "Teléfono Celular", "Correo Electrónico", "Estado Civil"};
         modeloTabla.setColumnIdentifiers(titulos);
 
         //Traer de la DB la lista de Gestores
@@ -739,9 +739,9 @@ public class Administrador extends javax.swing.JFrame {
         if (listaFuncionariosEnGeneral != null) {
 
             for (FuncionarioGeneral funcionarioGeneral : listaFuncionariosEnGeneral) {
-                Object[] objeto = {funcionarioGeneral.getNombre(), funcionarioGeneral.getApellido(), funcionarioGeneral.getFechaDeNac(),
+                Object[] objeto = {funcionarioGeneral.getId(), funcionarioGeneral.getNombre(), funcionarioGeneral.getApellido(), funcionarioGeneral.getFechaDeNac(),
                     funcionarioGeneral.getDni(), funcionarioGeneral.getDomicilio(), funcionarioGeneral.getTelefonoFijo(), funcionarioGeneral.getTelefonoCel(),
-                    funcionarioGeneral.getCorreoE(), funcionarioGeneral.getEstadoCivil(),};
+                    funcionarioGeneral.getCorreoE(), funcionarioGeneral.getEstadoCivil()};
 
                 modeloTabla.addRow(objeto);
             }

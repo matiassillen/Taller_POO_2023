@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,7 +19,7 @@ public class Especialidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String nombre;
-    @ManyToMany(mappedBy="especialidad")
+    @ManyToMany(mappedBy = "especialidad")
     private List<Medico> medico;
     @OneToOne
     @JoinColumn(name="id_titulo")
