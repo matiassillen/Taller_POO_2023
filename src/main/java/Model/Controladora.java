@@ -115,13 +115,16 @@ public class Controladora implements Serializable{
     */
 
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-        Map<Medico, Integer> conteoConsultas = new HashMap<>();
-        Medico medicoConMasPacientes = null;
+          Map<Medico, Integer> conteoConsultas = new HashMap<>();
+    Medico medicoConMasPacientes = null;
+    List<Consulta> consultas = traerConsultas();
+
+    if (consultas != null) { 
         int maxConsultas = 0;
 
         for (Consulta consulta : consultas) {
             LocalDate fechaConsulta = consulta.getFecha();
-            if (fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+            if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                 Medico medico = consulta.getMedico();
                 int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
                 conteoConsultas.put(medico, consultasMedico);
@@ -132,8 +135,11 @@ public class Controladora implements Serializable{
                 }
             }
         }
+    } else {
+        return null;
+    }
 
-        return medicoConMasPacientes;
+    return medicoConMasPacientes;
     }
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {

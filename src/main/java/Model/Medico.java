@@ -17,7 +17,7 @@ public class Medico extends FuncionarioGeneral {
     @JoinColumn(name="id_especialidad")
     private List<Especialidad> especialidad;
     @OneToMany(mappedBy="medico")
-    private List<Consulta> consulta;
+    private List<Consulta> consultas;
     @OneToOne
     @JoinColumn(name="id_titulo")
     private Titulo titulo;
@@ -25,7 +25,7 @@ public class Medico extends FuncionarioGeneral {
     public Medico() {
         this.numMat = null;
         this.especialidad = new ArrayList<>();
-        this.consulta = new ArrayList<>();
+        this.consultas = new ArrayList<>();
         this.titulo = null;
     }
 
@@ -33,7 +33,7 @@ public class Medico extends FuncionarioGeneral {
         super(usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.numMat = numMat;
         this.especialidad = especialidad;
-        this.consulta = consulta;
+        this.consultas = consulta;
         this.titulo = titulo;
     }
 
@@ -54,11 +54,11 @@ public class Medico extends FuncionarioGeneral {
     }
 
     public List<Consulta> getConsulta() {
-        return consulta;
+        return consultas;
     }
 
     public void setConsulta(List<Consulta> consulta) {
-        this.consulta = consulta;
+        this.consultas = consulta;
     }
 
     public Titulo getTitulo() {
