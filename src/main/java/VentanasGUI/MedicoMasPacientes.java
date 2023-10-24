@@ -227,7 +227,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
             }
         
         };
-        String titulos []= {"Nombre","Apellido","Matricula","Cantidad de pacientes atendidos",};
+        String titulos []= {"Nombre","Apellido","Matricula",};
         modeloTabla.setColumnIdentifiers(titulos);
         Medico medi= control.medicoConMasPacientes(fecha1, fecha2);
         if(medi != null){
