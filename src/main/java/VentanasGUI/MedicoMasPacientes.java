@@ -13,8 +13,9 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
 
    
     public MedicoMasPacientes() {
-        control=new Controladora();
+        
         initComponents();
+        this.control = control;
         //txtAdvertencia.setVisible(false);
     }
 
@@ -208,7 +209,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
         
-        if(fecha2.isBefore(fecha2)){
+        if(fecha2.isBefore(fecha1)){
         JOptionPane.showMessageDialog(
             null,
             "La segunda fecha no puede ser mayor que la primera.", 
