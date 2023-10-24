@@ -12,8 +12,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
     Controladora control= null;
 
    
-    public MedicoMasPacientes() {
-        
+    public MedicoMasPacientes(Controladora control) {
         initComponents();
         this.control = control;
         //txtAdvertencia.setVisible(false);
@@ -187,7 +186,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor();
+        Gestor pantallaGestion = new Gestor(this.control);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();

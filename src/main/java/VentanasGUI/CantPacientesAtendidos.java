@@ -5,15 +5,19 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Medico;
 import Model.Paciente;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author trapo/Agus
  */
 public class CantPacientesAtendidos extends javax.swing.JFrame {
-    Controladora controlP;
+    public Controladora controlP;
     /**
      * Creates new form CantPacientesAtendidos
      */
@@ -227,7 +231,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor(controlP);
+        Gestor pantallaGestion = new Gestor(this.controlP);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
@@ -245,14 +249,26 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
-            // LOGICA CALENDAR
-        Calendar fecha1;
-        Calendar fecha2;
-        Integer contador = 0;
-        // el siguiente Calendar fechaConsulta debe ser dentro de un bucle for
-        Calendar fechaConsulta; 
-        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
-            contador += 1;
+        LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
+        LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+                
+        if(fecha1.isBefore(fecha2)){
+        JOptionPane.showMessageDialog(
+            null,
+            "La segunda fecha no puede ser mayor que la primera.", 
+            "Error",  
+            JOptionPane.ERROR_MESSAGE  
+        );
+        }else{
+ 
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+                 
+        String titulos []= {"Nombre","Apellido","Matricula",};
         }
         
     }//GEN-LAST:event_btnConsultarActionPerformed
