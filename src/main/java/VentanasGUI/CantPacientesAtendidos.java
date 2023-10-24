@@ -4,18 +4,22 @@
  */
 package VentanasGUI;
 
+import Model.Controladora;
+import Model.Paciente;
+import java.util.ArrayList;
 import java.util.Calendar;
 /**
  *
  * @author trapo/Agus
  */
 public class CantPacientesAtendidos extends javax.swing.JFrame {
-
+    Controladora controlP;
     /**
      * Creates new form CantPacientesAtendidos
      */
-    public CantPacientesAtendidos() {
+    public CantPacientesAtendidos(Controladora control) {
         initComponents();
+        this.controlP = control;
     }
 
     /**
@@ -223,7 +227,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor();
+        Gestor pantallaGestion = new Gestor(controlP);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
@@ -240,6 +244,17 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         int diaTwo = fechaTwo.get(Calendar.DATE);
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
+        
+            // LOGICA CALENDAR
+        Calendar fecha1;
+        Calendar fecha2;
+        Integer contador = 0;
+        // el siguiente Calendar fechaConsulta debe ser dentro de un bucle for
+        Calendar fechaConsulta; 
+        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
+            contador += 1;
+        }
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
