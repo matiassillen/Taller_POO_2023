@@ -12,26 +12,28 @@ import javax.persistence.criteria.Root;
 import Model.Titulo;
 import Model.Usuario;
 import Model.Especialidad;
-import java.util.ArrayList;
-import java.util.List;
-import Model.Consulta;
 import Model.Medico;
 import Persistencia.exceptions.NonexistentEntityException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Usuario
+ */
 public class MedicoJpaController implements Serializable {
 
     public MedicoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
     
     public MedicoJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -40,9 +42,6 @@ public class MedicoJpaController implements Serializable {
     public void create(Medico medico) {
         if (medico.getEspecialidad() == null) {
             medico.setEspecialidad(new ArrayList<Especialidad>());
-        }
-        if (medico.getConsulta() == null) {
-            medico.setConsulta(new ArrayList<Consulta>());
         }
         EntityManager em = null;
         try {
@@ -64,12 +63,6 @@ public class MedicoJpaController implements Serializable {
                 attachedEspecialidad.add(especialidadEspecialidadToAttach);
             }
             medico.setEspecialidad(attachedEspecialidad);
-            List<Consulta> attachedConsulta = new ArrayList<Consulta>();
-            for (Consulta consultaConsultaToAttach : medico.getConsulta()) {
-                consultaConsultaToAttach = em.getReference(consultaConsultaToAttach.getClass(), consultaConsultaToAttach.getId());
-                attachedConsulta.add(consultaConsultaToAttach);
-            }
-            medico.setConsulta(attachedConsulta);
             em.persist(medico);
             if (titulo != null) {
                 Medico oldMedicoOfTitulo = titulo.getMedico();
@@ -93,15 +86,6 @@ public class MedicoJpaController implements Serializable {
                 especialidadEspecialidad.getMedico().add(medico);
                 especialidadEspecialidad = em.merge(especialidadEspecialidad);
             }
-            for (Consulta consultaConsulta : medico.getConsulta()) {
-                Medico oldMedicoOfConsultaConsulta = consultaConsulta.getMedico();
-                consultaConsulta.setMedico(medico);
-                consultaConsulta = em.merge(consultaConsulta);
-                if (oldMedicoOfConsultaConsulta != null) {
-                    oldMedicoOfConsultaConsulta.getConsulta().remove(consultaConsulta);
-                    oldMedicoOfConsultaConsulta = em.merge(oldMedicoOfConsultaConsulta);
-                }
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -122,8 +106,6 @@ public class MedicoJpaController implements Serializable {
             Usuario usuNew = medico.getUsu();
             List<Especialidad> especialidadOld = persistentMedico.getEspecialidad();
             List<Especialidad> especialidadNew = medico.getEspecialidad();
-            List<Consulta> consultaOld = persistentMedico.getConsulta();
-            List<Consulta> consultaNew = medico.getConsulta();
             if (tituloNew != null) {
                 tituloNew = em.getReference(tituloNew.getClass(), tituloNew.getId());
                 medico.setTitulo(tituloNew);
@@ -139,13 +121,6 @@ public class MedicoJpaController implements Serializable {
             }
             especialidadNew = attachedEspecialidadNew;
             medico.setEspecialidad(especialidadNew);
-            List<Consulta> attachedConsultaNew = new ArrayList<Consulta>();
-            for (Consulta consultaNewConsultaToAttach : consultaNew) {
-                consultaNewConsultaToAttach = em.getReference(consultaNewConsultaToAttach.getClass(), consultaNewConsultaToAttach.getId());
-                attachedConsultaNew.add(consultaNewConsultaToAttach);
-            }
-            consultaNew = attachedConsultaNew;
-            medico.setConsulta(consultaNew);
             medico = em.merge(medico);
             if (tituloOld != null && !tituloOld.equals(tituloNew)) {
                 tituloOld.setMedico(null);
@@ -183,23 +158,6 @@ public class MedicoJpaController implements Serializable {
                 if (!especialidadOld.contains(especialidadNewEspecialidad)) {
                     especialidadNewEspecialidad.getMedico().add(medico);
                     especialidadNewEspecialidad = em.merge(especialidadNewEspecialidad);
-                }
-            }
-            for (Consulta consultaOldConsulta : consultaOld) {
-                if (!consultaNew.contains(consultaOldConsulta)) {
-                    consultaOldConsulta.setMedico(null);
-                    consultaOldConsulta = em.merge(consultaOldConsulta);
-                }
-            }
-            for (Consulta consultaNewConsulta : consultaNew) {
-                if (!consultaOld.contains(consultaNewConsulta)) {
-                    Medico oldMedicoOfConsultaNewConsulta = consultaNewConsulta.getMedico();
-                    consultaNewConsulta.setMedico(medico);
-                    consultaNewConsulta = em.merge(consultaNewConsulta);
-                    if (oldMedicoOfConsultaNewConsulta != null && !oldMedicoOfConsultaNewConsulta.equals(medico)) {
-                        oldMedicoOfConsultaNewConsulta.getConsulta().remove(consultaNewConsulta);
-                        oldMedicoOfConsultaNewConsulta = em.merge(oldMedicoOfConsultaNewConsulta);
-                    }
                 }
             }
             em.getTransaction().commit();
@@ -245,11 +203,6 @@ public class MedicoJpaController implements Serializable {
             for (Especialidad especialidadEspecialidad : especialidad) {
                 especialidadEspecialidad.getMedico().remove(medico);
                 especialidadEspecialidad = em.merge(especialidadEspecialidad);
-            }
-            List<Consulta> consulta = medico.getConsulta();
-            for (Consulta consultaConsulta : consulta) {
-                consultaConsulta.setMedico(null);
-                consultaConsulta = em.merge(consultaConsulta);
             }
             em.remove(medico);
             em.getTransaction().commit();

@@ -443,8 +443,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             String personaContacto = txtPersoContacto.getText();
             String numContacto = txtTelContacto.getText();
        
-            Paciente p = this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
-            this.paciente = p;
+            this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
         } 
@@ -476,26 +476,30 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         try{            
             int doc = Integer.parseInt(txtDni.getText());
             Object[] dni;
-            dni = this.control.ValidarPaciente(doc);
+            //dni = this.control.ValidarPaciente(doc);
         
         String vacio = "";
+        Paciente paci = new Paciente();
         
-        if (dni[0].equals(vacio)){
+        int docu = Integer.parseInt(txtDni.getText());
+        paci = this.control.buscarPacientePorDni(docu);
+        
+        if (paci.getDni() == 0){
            btnGuardar.setEnabled(true);
            btnCrearConsulta.setEnabled(false);
         }else{
             
-            txtDni.setText((String) dni[0]);
-            txtApellido.setText((String) dni[1]);
-            txtNombre.setText((String) dni[2]);
-            txtFechaNacimiento.setText((String) dni[3]);
-            cmbEstadoCivil.setSelectedItem((String) dni[4]);
-            txtCorreo.setText((String) dni[5]);
-            txtDomicilio.setText((String) dni[6]);
-            txtTelFijo.setText((String) dni[7]);
-            txtTelCelular.setText((String) dni[8]);
-            txtPersoContacto.setText((String) dni[9]);
-            txtTelContacto.setText((String) dni[10]);
+            txtDni.setText(txtDni.getText());
+            txtApellido.setText(paci.getApellido());
+            txtNombre.setText(paci.getNombre());
+            txtFechaNacimiento.setText(paci.getFechaDeNac());
+            cmbEstadoCivil.setSelectedItem(paci.getEstadoCivil());
+            txtCorreo.setText(paci.getCorreoE());
+            txtDomicilio.setText(paci.getDomicilio());
+            txtTelFijo.setText(paci.getTelefonoFijo());
+            txtTelCelular.setText(paci.getTelefonoCel());
+            txtPersoContacto.setText(paci.getPersoDeContacto());
+            txtTelContacto.setText(paci.getTelDeContacto());
             btnCrearConsulta.setEnabled(true);
         }    
         }catch(NumberFormatException e){

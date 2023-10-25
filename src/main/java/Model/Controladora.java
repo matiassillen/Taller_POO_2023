@@ -525,7 +525,7 @@ public class Controladora implements Serializable{
         return null;
     }
 
-    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public void registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
@@ -544,7 +544,6 @@ public class Controladora implements Serializable{
         
         controlPersis.RegistrarPaciente(paciente);
         
-        return paciente;
     }
 
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
@@ -559,27 +558,27 @@ public class Controladora implements Serializable{
         
     }
 
-    public Object[] ValidarPaciente(int doc) {
-        List<Paciente> pacientes = this.controlPersis.traerPacientes();
-        Object[] objetos = {11};
-        for(Paciente p : pacientes){
-            if(p.getDni()==doc){
-                objetos[0] = p.getDni();
-                objetos[1] = p.getApellido();
-                objetos[2] = p.getNombre();
-                objetos[3] = p.getFechaDeNac();
-                objetos[4] = p.getEstadoCivil();
-                objetos[5] = p.getCorreoE();
-                objetos[6] = p.getDomicilio();
-                objetos[7] = p.getTelefonoCel();
-                objetos[8] = p.getTelefonoFijo();
-                objetos[9] = p.getPersoDeContacto();
-                objetos[10] = p.getTelDeContacto();        
-                break;
-            }
-        }
-        return objetos;
-    }
+//    public Object[] ValidarPaciente(int doc) {
+//        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+//        Object[] objetos = {11};
+//        for(Paciente p : pacientes){
+//            if(p.getDni()==doc){
+//                objetos[0] = p.getDni();
+//                objetos[1] = p.getApellido();
+//                objetos[2] = p.getNombre();
+//                objetos[3] = p.getFechaDeNac();
+//                objetos[4] = p.getEstadoCivil();
+//                objetos[5] = p.getCorreoE();
+//                objetos[6] = p.getDomicilio();
+//                objetos[7] = p.getTelefonoCel();
+//                objetos[8] = p.getTelefonoFijo();
+//                objetos[9] = p.getPersoDeContacto();
+//                objetos[10] = p.getTelDeContacto();        
+//                break;
+//            }
+//        }
+//        return objetos;
+//    }
 
     public List<Consulta> traerPacientesEnEspera() {
         List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();

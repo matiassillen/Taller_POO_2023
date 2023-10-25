@@ -24,9 +24,9 @@ public class Principal {
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
-//        RegistrarPaciente buscar = new RegistrarPaciente();
-//        buscar.setVisible(true);
-//        buscar.setLocationRelativeTo(null);
+        RegistrarPaciente buscar = new RegistrarPaciente(control);
+        buscar.setVisible(true);
+        buscar.setLocationRelativeTo(null);
 
 //        VerDiagnosticoClinico pantalla = new VerDiagnosticoClinico(control,p);
 //        pantalla.setVisible(true);
