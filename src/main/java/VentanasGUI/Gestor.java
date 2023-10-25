@@ -4,17 +4,20 @@
  */
 package VentanasGUI;
 
+import Model.Controladora;
+
 /**
  *
  * @author Usuario
  */
 public class Gestor extends javax.swing.JFrame {
-
+    Controladora controlG;
     /**
      * Creates new form Gestor
      */
-    public Gestor() {
+    public Gestor(Controladora control) {
         initComponents();
+        this.controlG = control;
     }
 
     /**
@@ -168,29 +171,29 @@ public class Gestor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCantPacienteMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteMedicoActionPerformed
-        CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico();
+        CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.controlG);
         cantMedico.setVisible(true);
         cantMedico.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnCantPacienteMedicoActionPerformed
 
     private void btnCantPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteActionPerformed
-//
-//        CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos();
-//        cantPaciente.setVisible(true);
-//        cantPaciente.setLocationRelativeTo(null);
-//        this.dispose();
+
+        CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.controlG);
+        cantPaciente.setVisible(true);
+        cantPaciente.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnCantPacienteActionPerformed
 
     private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
-        PacientesMasConsultas masConsulta = new PacientesMasConsultas();
+        PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.controlG);
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnPacienteMasConsultaActionPerformed
 
     private void btnMedicoMasPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoMasPacienteActionPerformed
-        MedicoMasPacientes masPaciente = new MedicoMasPacientes();
+        MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.controlG);
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
         this.dispose();
@@ -201,7 +204,7 @@ public class Gestor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
-        TriageCambiado triagesCambiados = new TriageCambiado();
+        TriageCambiado triagesCambiados = new TriageCambiado(this.controlG);
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
         this.dispose();

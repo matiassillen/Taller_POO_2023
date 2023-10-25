@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import static java.time.temporal.ChronoUnit.YEARS;
+import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -120,15 +122,15 @@ public class Controladora implements Serializable{
     */
 
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-          Map<Medico, Integer> conteoConsultas = new HashMap<>();
-    Medico medicoConMasPacientes = null;
-    List<Consulta> consultas = traerConsultas();
+        Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        Medico medicoConMasPacientes = null;
+        List<Consulta> consultas = traerConsultas();
 
     if (consultas != null) { 
         int maxConsultas = 0;
 
         for (Consulta consulta : consultas) {
-            LocalDate fechaConsulta = consulta.getFecha();
+            LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
             if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                 Medico medico = consulta.getMedico();
                 int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
@@ -146,6 +148,43 @@ public class Controladora implements Serializable{
 
     return medicoConMasPacientes;
     }
+    
+    
+    
+    public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<Consulta> listaFiltrada = null;
+        List<Consulta> consultas = traerConsultas();
+
+        if (!consultas.isEmpty()) { 
+            for (Consulta consulta : consultas) {
+                LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
+//                LocalDate fechaConsulta = consulta.getFecha();
+                if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                    listaFiltrada.add(consulta);
+                }
+            } 
+        } 
+        else {
+            return listaFiltrada;
+        }
+
+        return listaFiltrada;
+    }
+    
+    public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
+        Integer contador = 0;
+        LocalDate fechaActual = LocalDate.now();
+        for (Consulta consultaPaciente : listaFiltrada) {
+            LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
+            Integer edadPaciente = (int)fechaNacimiento.until(fechaActual, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente < edad2)){
+                contador = +1;
+            }
+        }
+        return contador;
+    }
+    
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
 //        
