@@ -18,7 +18,7 @@ public class Consulta implements Serializable {
     private int id;
     @ManyToOne
     private Paciente paciente;
-    private LocalDate fecha;
+    private String fecha;
     private String hora;
     private String diagnConsulta;
     private String lugar;
@@ -37,8 +37,7 @@ public class Consulta implements Serializable {
         
     }
 
-    public Consulta(int numConsulta, Paciente paciente, LocalDate fecha, String hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
-        this.id = numConsulta;
+    public Consulta(Paciente paciente, String fecha, String hora, String diagnConsulta, String lugar, String motivo, Box box, Medico medico, Triage triage) {
         this.paciente = paciente;
         this.fecha = fecha;
         this.hora = hora;
@@ -66,11 +65,11 @@ public class Consulta implements Serializable {
         this.paciente = paciente;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

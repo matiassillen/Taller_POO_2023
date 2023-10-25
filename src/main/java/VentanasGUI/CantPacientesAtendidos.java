@@ -5,19 +5,15 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Medico;
 import Model.Paciente;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author trapo/Agus
  */
 public class CantPacientesAtendidos extends javax.swing.JFrame {
-    public Controladora controlP;
+    Controladora controlP;
     /**
      * Creates new form CantPacientesAtendidos
      */
@@ -268,10 +264,10 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor(this.controlP);
-        pantallaGestion.setVisible(true);
-        pantallaGestion.setLocationRelativeTo(null);
-        this.dispose();
+//        Gestor pantallaGestion = new Gestor(controlP);
+//        pantallaGestion.setVisible(true);
+//        pantallaGestion.setLocationRelativeTo(null);
+//        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed

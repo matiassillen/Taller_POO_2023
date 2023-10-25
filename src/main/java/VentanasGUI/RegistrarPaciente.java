@@ -1,26 +1,16 @@
 package VentanasGUI;
 
-import Model.Consulta;
 import Model.Controladora;
 import Model.Paciente;
-import Model.Recepcionista;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-public class BuscarPaciente extends javax.swing.JFrame {
+public class RegistrarPaciente extends javax.swing.JFrame {
     Paciente paciente;
     Controladora control;
-    Recepcionista recepcion;
-    public BuscarPaciente(Controladora control) {
+    public RegistrarPaciente(Controladora control) {
         initComponents();
         this.control = control;
-        recepcion = new Recepcionista();
+        
     }
 
     /**
@@ -32,7 +22,6 @@ public class BuscarPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -55,6 +44,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
+        txtFechaNacimiento = new javax.swing.JTextField();
         txtDomicilio = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtTelFijo = new javax.swing.JTextField();
@@ -64,7 +54,6 @@ public class BuscarPaciente extends javax.swing.JFrame {
         cmbEstadoCivil = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         btnCrearConsulta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -199,6 +188,8 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        txtFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         txtDomicilio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -248,20 +239,20 @@ public class BuscarPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtTelFijo, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtTelCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtPersoContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtTelContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(cmbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(34, 34, 34)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -287,9 +278,9 @@ public class BuscarPaciente extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -318,7 +309,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(txtTelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel4);
@@ -352,20 +343,19 @@ public class BuscarPaciente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(61, 61, 61)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCrearConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
                                 .addComponent(btnVolver)
-                                .addGap(148, 148, 148)
+                                .addGap(158, 158, 158)
                                 .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
@@ -382,16 +372,16 @@ public class BuscarPaciente extends javax.swing.JFrame {
                                         .addGap(68, 68, 68)
                                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -408,7 +398,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCrearConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -435,8 +425,6 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-       
-        
         if (txtDni.getText().length() > 8) {
             JOptionPane.showMessageDialog(null, "Dni no valido");
             txtDni.setText("");
@@ -446,10 +434,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String dni = txtDni.getText();
-            // Formateo de fecha
-            Calendar fechaCal = jDateChooser1.getCalendar();
-            LocalDate fechaParse = LocalDate.of(fechaCal.YEAR, fechaCal.MONTH, fechaCal.DATE);
-            String fechaNacimiento = fechaParse.toString();
+            String fechaNacimiento = txtFechaNacimiento.getText();
             String domicilio = txtDomicilio.getText();
             String estadoCivil = (String)cmbEstadoCivil.getSelectedItem();
             String correo = txtCorreo.getText();
@@ -458,19 +443,13 @@ public class BuscarPaciente extends javax.swing.JFrame {
             String personaContacto = txtPersoContacto.getText();
             String numContacto = txtTelContacto.getText();
        
-            recepcion.RegistrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            Paciente p = this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            this.paciente = p;
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
         } 
         
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Recepcion recep = new Recepcion();
-//        recep.setVisible(true);
-//        recep.setLocationRelativeTo(null);
-//        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtDni.setText("");
@@ -482,6 +461,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         txtTelFijo.setText("");
         txtPersoContacto.setText("");
         txtTelContacto.setText("");
+        txtFechaNacimiento.setText("");
         txtMotivo.setText("");
         btnCrearConsulta.setEnabled(false);
         btnGuardar.setEnabled(false);
@@ -493,37 +473,37 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-        try{
+        try{            
+            int doc = Integer.parseInt(txtDni.getText());
+            Object[] dni;
+            dni = this.control.ValidarPaciente(doc);
+        
+        String vacio = "";
+        
+        if (dni[0].equals(vacio)){
+           btnGuardar.setEnabled(true);
+           btnCrearConsulta.setEnabled(false);
+        }else{
             
-           int doc = Integer.parseInt(txtDni.getText());
-            
-        }catch(Exception e){
+            txtDni.setText((String) dni[0]);
+            txtApellido.setText((String) dni[1]);
+            txtNombre.setText((String) dni[2]);
+            txtFechaNacimiento.setText((String) dni[3]);
+            cmbEstadoCivil.setSelectedItem((String) dni[4]);
+            txtCorreo.setText((String) dni[5]);
+            txtDomicilio.setText((String) dni[6]);
+            txtTelFijo.setText((String) dni[7]);
+            txtTelCelular.setText((String) dni[8]);
+            txtPersoContacto.setText((String) dni[9]);
+            txtTelContacto.setText((String) dni[10]);
+            btnCrearConsulta.setEnabled(true);
+        }    
+        }catch(NumberFormatException e){
             txtDni.setText("");
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
         }
         
-        //Object[] dni = control.ValidarPaciente(txtDni.getText());
         
-        String vacio = "";
-//        
-//        if (dni[0].equals(vacio)){
-//           btnGuardar.setEnabled(true);
-//           btnCrearConsulta.setEnabled(false);
-//        }else{
-//            
-//            txtDni.setText((String) dni[0]);
-//            txtApellido.setText((String) dni[1]);
-//            txtNombre.setText((String) dni[2]);
-//            txtFechaNacimiento.setText((String) dni[3]);
-//            cmbEstadoCivil.setSelectedItem((String) dni[4]);
-//            txtCorreo.setText((String) dni[5]);
-//            txtDomicilio.setText((String) dni[6]);
-//            txtTelFijo.setText((String) dni[7]);
-//            txtTelCelular.setText((String) dni[8]);
-//            txtPersoContacto.setText((String) dni[9]);
-//            txtTelContacto.setText((String) dni[10]);
-//            btnCrearConsulta.setEnabled(true);
-//        }    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -533,17 +513,21 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-//        Date date = new Date();
-//        Long time = date.getTime();
-//        String lugar =("Hospital Masvernat");
-//        String motivo = txtMotivo.getText();
-//        int dni = Integer.parseInt(txtDni.getText());
-//        paciente = recepcion.TraerPaciente(dni);
-//        recepcion.CrearConsulta(date,time,lugar,motivo,paciente);
-//        
-//        btnCrearConsulta.setEnabled(false);
-//        txtMotivo.setText("");
+        String lugar =("Hospital Masvernat");
+        String motivo = txtMotivo.getText();
+        Paciente p = this.paciente;
+        this.control.CrearConsulta(lugar,motivo,p);
+        
+        btnCrearConsulta.setEnabled(false);
+        txtMotivo.setText("");
     }//GEN-LAST:event_btnCrearConsultaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MiUsuario miUsu = new MiUsuario(control);
+        miUsu.setVisible(true);
+        miUsu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -553,8 +537,6 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -581,6 +563,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDomicilio;
+    private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextArea txtMotivo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPersoContacto;

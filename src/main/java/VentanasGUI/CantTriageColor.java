@@ -140,10 +140,10 @@ public class CantTriageColor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Gestor pantallaGestion = new Gestor();
-        pantallaGestion.setVisible(true);
-        pantallaGestion.setLocationRelativeTo(null);
-        this.dispose();
+//        Gestor pantallaGestion = new Gestor();
+//        pantallaGestion.setVisible(true);
+//        pantallaGestion.setLocationRelativeTo(null);
+//        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
