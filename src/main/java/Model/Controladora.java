@@ -585,4 +585,21 @@ public class Controladora implements Serializable{
         }
         return objetos;
     }
+
+    public List<Consulta> traerPacientesEnEspera() {
+        List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
+        return  consultas;
+    }
+
+    public Paciente buscarPacientePorDni(int dni) {
+        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+        Paciente paciente = new Paciente();
+        for(Paciente p : pacientes){
+            if(p.getDni()==dni){
+               paciente = p;
+               break;   
+            }
+        }
+        return paciente;
+    }
 }

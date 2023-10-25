@@ -5,6 +5,7 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Paciente;
 
 /**
  *
@@ -12,12 +13,14 @@ import Model.Controladora;
  */
 public class HacerTriage extends javax.swing.JFrame {
     Controladora control;
+    private final Paciente paciente;
     /**
      * Creates new form HacerTriage2
      */
-    public HacerTriage(Controladora control) {
+    public HacerTriage(Controladora control, Paciente pacienteSelecionado) {
         initComponents();
         this.control = control;
+        this.paciente = pacienteSelecionado;
     }
 
     /**

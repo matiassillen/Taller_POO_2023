@@ -151,7 +151,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
      * @param evt El evento de acción que ocurrió.
      */
     private void btnHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTriageActionPerformed
-        HacerTriage hacerT = new HacerTriage(control);
+        EsperaTriage hacerT = new EsperaTriage(control);
         hacerT.setVisible(true);
         hacerT.setLocationRelativeTo(null);
         this.dispose();
