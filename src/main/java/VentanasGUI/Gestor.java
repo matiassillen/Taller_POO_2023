@@ -11,12 +11,13 @@ import Model.Controladora;
  * @author Usuario
  */
 public class Gestor extends javax.swing.JFrame {
-<<<<<<< HEAD
-=======
+
+
     public Controladora controlG;
->>>>>>> dbe3731f1e008f17edca8f453752dce8b5b87af3
+
     /**
      * Creates new form Gestor
+     * @param control
      */
     public Gestor(Controladora control) {
         initComponents();
@@ -182,17 +183,17 @@ public class Gestor extends javax.swing.JFrame {
 
     private void btnCantPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteActionPerformed
 
-<<<<<<< HEAD
+
 //        CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos();
 //        cantPaciente.setVisible(true);
 //        cantPaciente.setLocationRelativeTo(null);
 //        this.dispose();
-=======
+
         CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.controlG);
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
         this.dispose();
->>>>>>> dbe3731f1e008f17edca8f453752dce8b5b87af3
+
     }//GEN-LAST:event_btnCantPacienteActionPerformed
 
     private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
