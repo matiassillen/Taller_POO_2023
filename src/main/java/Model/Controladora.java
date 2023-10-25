@@ -1,6 +1,7 @@
 package Model;
 
 import Persistencia.ControladoraPersistencia;
+import static java.awt.SystemColor.control;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -45,6 +46,10 @@ public class Controladora implements Serializable{
     
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
+    }
+    
+    public List<Triage> traerTriages() {
+        return controlPersis.traerTriages();
     }
     
     public List<Consulta> traerConsultas() {
@@ -212,17 +217,7 @@ public class Controladora implements Serializable{
     //    return diccionario;
     // }
 
-     public Integer triagesCambiados() {
-        int sum = 0;
-    //    int rango = len(funcionario.traigeHechos);
-    //    for (i= 0; i<rango; i++) {
-    //        Triage triageN = funcionario.traigeHechos[i];
-    //        if (triageN.colorFinal=!null) {
-    //            sum += 1;
-    //        }
-    //    }
-        return sum;
-    }
+
     
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
@@ -602,4 +597,6 @@ public class Controladora implements Serializable{
         }
         return paciente;
     }
+
+ 
 }

@@ -7,6 +7,7 @@ import Model.Paciente;
 import VentanasGUI.Administrador;
 import VentanasGUI.MedicoMasPacientes;
 import VentanasGUI.RegistrarPaciente;
+import VentanasGUI.TriageCambiado;
 import VentanasGUI.VerDiagnosticoClinico;
 
 public class Principal {
@@ -15,9 +16,13 @@ public class Principal {
         Controladora control = new Controladora();
         Paciente p = new Paciente();
         
-        MedicoMasPacientes pantalla= new MedicoMasPacientes(control);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+//        TriageCambiado pantalla= new TriageCambiado(control);
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
+        
+//        MedicoMasPacientes pantalla= new MedicoMasPacientes(control);
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
         
 //        RegistrarPaciente buscar = new RegistrarPaciente();
 //        buscar.setVisible(true);

@@ -9,6 +9,7 @@ import Model.Medico;
 import Model.Paciente;
 import Model.ResultadoEstudio;
 import Model.Rol;
+import Model.Triage;
 import Model.Usuario;
 import Persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
@@ -377,6 +378,10 @@ public class ControladoraPersistencia implements Serializable{
 
     public List<Consulta> traerConsultas() {
         return consultaJpa.findConsultaEntities();
+    }
+
+    public List<Triage> traerTriages() {
+        return triageJpa.findTriageEntities();
     }
 
     
