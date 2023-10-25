@@ -46,7 +46,7 @@ public class Controladora implements Serializable{
         return controlPersis.traerConsultas();
     }
     
-
+    
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
     }
@@ -478,6 +478,25 @@ public class Controladora implements Serializable{
             
             if (rol.getNombre().equalsIgnoreCase(rolRecibido)) {
                 return rol;
+            }
+        }
+        return null;
+    }
+
+    public Usuario traerUsu(int dni) {
+        
+        List<Usuario> listaUsuarios = controlPersis.traerUsuarios();
+
+        if (listaUsuarios != null) {
+
+            for (Usuario usu : listaUsuarios) {
+
+                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                    
+                    mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
+                    return controlPersis.traerUsuario(usu.getId());  
+                    
+                }
             }
         }
         return null;

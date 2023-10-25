@@ -16,13 +16,13 @@ public class Principal {
 //        buscar.setVisible(true);
 //        buscar.setLocationRelativeTo(null);
         
-//        Administrador pantalla = new Administrador(control);
-//        pantalla.setVisible(true);
-//        pantalla.setLocationRelativeTo(null);
+        Administrador pantalla = new Administrador(control);
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
 
-          GuiLogin pantalla = new GuiLogin();
-          pantalla.setVisible(true);
-          pantalla.setLocationRelativeTo(null);
+//          GuiLogin pantalla = new GuiLogin();
+//          pantalla.setVisible(true);
+//          pantalla.setLocationRelativeTo(null);
           
     }
     

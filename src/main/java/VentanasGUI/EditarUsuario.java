@@ -21,6 +21,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     long idUsuario;
     AdministradorDeSistema administrador;
     Usuario usuario;
+    Administrador admin;
 
     /**
      * Creates new form EditarUsuario
@@ -34,6 +35,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         control = new Controladora();
         this.idUsuario = idUsuario;
         this.control = new Controladora();
+        admin = new Administrador(control);
         initComponents();
     }
 
@@ -231,7 +233,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 403, 312));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,7 +260,11 @@ public class EditarUsuario extends javax.swing.JFrame {
 //        roles.add(rol);
 
         administrador.editarUsuario(usuario, nombreUsuario, contrasenia, rolUsu);
-
+        
+        //Avisar al administrador que se borro correctamente
+        control.mostrarMensaje("Se editó el usuario conrrectamente", "info", "Edición correcta");
+        admin.recargarTablaUsuarios();
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
