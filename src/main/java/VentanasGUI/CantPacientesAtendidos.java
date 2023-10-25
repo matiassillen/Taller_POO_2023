@@ -16,6 +16,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     Controladora controlP;
     /**
      * Creates new form CantPacientesAtendidos
+     * @param control
      */
     public CantPacientesAtendidos(Controladora control) {
         initComponents();
@@ -227,7 +228,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor(controlP);
+        Gestor pantallaGestion = new Gestor();
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
@@ -250,10 +251,10 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         Calendar fecha2;
         Integer contador = 0;
         // el siguiente Calendar fechaConsulta debe ser dentro de un bucle for
-        Calendar fechaConsulta; 
-        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
-            contador += 1;
-        }
+//        Calendar fechaConsulta; 
+//        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
+//            contador += 1;
+//        }
         
     }//GEN-LAST:event_btnConsultarActionPerformed
 
