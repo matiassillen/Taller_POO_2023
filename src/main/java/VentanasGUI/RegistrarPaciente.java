@@ -1,23 +1,16 @@
 package VentanasGUI;
 
-import Model.Consulta;
 import Model.Controladora;
 import Model.Paciente;
-import Model.Recepcionista;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-public class BuscarPaciente extends javax.swing.JFrame {
+public class RegistrarPaciente extends javax.swing.JFrame {
     Paciente paciente;
     Controladora control;
-    Recepcionista recepcion;
-    public BuscarPaciente() {
+    public RegistrarPaciente(Controladora control) {
         initComponents();
-        control = new Controladora();
-        recepcion = new Recepcionista();
+        this.control = control;
+        
     }
 
     /**
@@ -316,7 +309,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(txtTelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel4);
@@ -350,20 +343,19 @@ public class BuscarPaciente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(61, 61, 61)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCrearConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
                                 .addComponent(btnVolver)
-                                .addGap(148, 148, 148)
+                                .addGap(158, 158, 158)
                                 .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
@@ -380,16 +372,16 @@ public class BuscarPaciente extends javax.swing.JFrame {
                                         .addGap(68, 68, 68)
                                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -406,7 +398,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCrearConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -433,8 +425,6 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-       
-        
         if (txtDni.getText().length() > 8) {
             JOptionPane.showMessageDialog(null, "Dni no valido");
             txtDni.setText("");
@@ -453,19 +443,13 @@ public class BuscarPaciente extends javax.swing.JFrame {
             String personaContacto = txtPersoContacto.getText();
             String numContacto = txtTelContacto.getText();
        
-            recepcion.RegistrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            Paciente p = this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            this.paciente = p;
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
         } 
         
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Recepcion recep = new Recepcion();
-//        recep.setVisible(true);
-//        recep.setLocationRelativeTo(null);
-//        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtDni.setText("");
@@ -489,37 +473,37 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-        try{
+        try{            
+            int doc = Integer.parseInt(txtDni.getText());
+            Object[] dni;
+            dni = this.control.ValidarPaciente(doc);
+        
+        String vacio = "";
+        
+        if (dni[0].equals(vacio)){
+           btnGuardar.setEnabled(true);
+           btnCrearConsulta.setEnabled(false);
+        }else{
             
-           int doc = Integer.parseInt(txtDni.getText());
-            
-        }catch(Exception e){
+            txtDni.setText((String) dni[0]);
+            txtApellido.setText((String) dni[1]);
+            txtNombre.setText((String) dni[2]);
+            txtFechaNacimiento.setText((String) dni[3]);
+            cmbEstadoCivil.setSelectedItem((String) dni[4]);
+            txtCorreo.setText((String) dni[5]);
+            txtDomicilio.setText((String) dni[6]);
+            txtTelFijo.setText((String) dni[7]);
+            txtTelCelular.setText((String) dni[8]);
+            txtPersoContacto.setText((String) dni[9]);
+            txtTelContacto.setText((String) dni[10]);
+            btnCrearConsulta.setEnabled(true);
+        }    
+        }catch(NumberFormatException e){
             txtDni.setText("");
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
         }
         
-        //Object[] dni = control.ValidarPaciente(txtDni.getText());
         
-        String vacio = "";
-//        
-//        if (dni[0].equals(vacio)){
-//           btnGuardar.setEnabled(true);
-//           btnCrearConsulta.setEnabled(false);
-//        }else{
-//            
-//            txtDni.setText((String) dni[0]);
-//            txtApellido.setText((String) dni[1]);
-//            txtNombre.setText((String) dni[2]);
-//            txtFechaNacimiento.setText((String) dni[3]);
-//            cmbEstadoCivil.setSelectedItem((String) dni[4]);
-//            txtCorreo.setText((String) dni[5]);
-//            txtDomicilio.setText((String) dni[6]);
-//            txtTelFijo.setText((String) dni[7]);
-//            txtTelCelular.setText((String) dni[8]);
-//            txtPersoContacto.setText((String) dni[9]);
-//            txtTelContacto.setText((String) dni[10]);
-//            btnCrearConsulta.setEnabled(true);
-//        }    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -529,17 +513,21 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-//        Date date = new Date();
-//        Long time = date.getTime();
-//        String lugar =("Hospital Masvernat");
-//        String motivo = txtMotivo.getText();
-//        int dni = Integer.parseInt(txtDni.getText());
-//        paciente = recepcion.TraerPaciente(dni);
-//        recepcion.CrearConsulta(date,time,lugar,motivo,paciente);
-//        
-//        btnCrearConsulta.setEnabled(false);
-//        txtMotivo.setText("");
+        String lugar =("Hospital Masvernat");
+        String motivo = txtMotivo.getText();
+        Paciente p = this.paciente;
+        this.control.CrearConsulta(lugar,motivo,p);
+        
+        btnCrearConsulta.setEnabled(false);
+        txtMotivo.setText("");
     }//GEN-LAST:event_btnCrearConsultaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MiUsuario miUsu = new MiUsuario(control);
+        miUsu.setVisible(true);
+        miUsu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

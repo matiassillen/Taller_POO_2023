@@ -3,6 +3,9 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -406,8 +409,10 @@ public class Controladora implements Serializable{
     }
 
     public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
-        String hora = "";
-        String fecha = "";
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
         
         ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion ,hora ,fecha);
         
@@ -419,11 +424,14 @@ public class Controladora implements Serializable{
     }
     
     public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
-        String hora = "";
-        String fecha = "";
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        
         FuncionarioGeneral func = this.usu.getFuncionarioGeneral();
         Medico medico = (Medico) func;
-        
+  
         DiagnosticoClinico diag = new DiagnosticoClinico(paciente, titulo, fecha, hora, descripcion, medico);
         
         this.controlPersis.cargarNuevoDiagClinico(diag);
@@ -481,5 +489,61 @@ public class Controladora implements Serializable{
             }
         }
         return null;
+    }
+
+    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+        Paciente paciente = new Paciente();
+        int documento = Integer.parseInt(dni);
+        paciente.setNombre(nombre);
+        paciente.setApellido(apellido);
+        paciente.setDni(documento);
+        paciente.setFechaDeNac(fechaNacimiento);
+        paciente.setDomicilio(domicilio);
+        paciente.setEstadoCivil(estadoCivil);
+        paciente.setCorreoE(correo);
+        paciente.setTelefonoCel(telFijo);
+        paciente.setTelefonoFijo(telCelular);
+        paciente.setPersoDeContacto(personaContacto);
+        paciente.setTelDeContacto(numContacto);
+        paciente.setDiagnosticoClinico(null);
+        paciente.setResultadoEstudio(null);
+        
+        controlPersis.RegistrarPaciente(paciente);
+        
+        return paciente;
+    }
+
+    public void CrearConsulta(String lugar, String motivo, Paciente p) {
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        
+        Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
+        this.controlPersis.CrearConsulta(consu);
+        this.esperaAtencionTriage.AñadirALaFila(consu);
+        
+    }
+
+    public Object[] ValidarPaciente(int doc) {
+        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+        Object[] objetos = {11};
+        for(Paciente p : pacientes){
+            if(p.getDni()==doc){
+                objetos[0] = p.getDni();
+                objetos[1] = p.getApellido();
+                objetos[2] = p.getNombre();
+                objetos[3] = p.getFechaDeNac();
+                objetos[4] = p.getEstadoCivil();
+                objetos[5] = p.getCorreoE();
+                objetos[6] = p.getDomicilio();
+                objetos[7] = p.getTelefonoCel();
+                objetos[8] = p.getTelefonoFijo();
+                objetos[9] = p.getPersoDeContacto();
+                objetos[10] = p.getTelDeContacto();        
+                break;
+            }
+        }
+        return objetos;
     }
 }

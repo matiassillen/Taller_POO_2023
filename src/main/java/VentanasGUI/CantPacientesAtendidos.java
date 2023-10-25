@@ -227,10 +227,10 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor(controlP);
-        pantallaGestion.setVisible(true);
-        pantallaGestion.setLocationRelativeTo(null);
-        this.dispose();
+//        Gestor pantallaGestion = new Gestor(controlP);
+//        pantallaGestion.setVisible(true);
+//        pantallaGestion.setLocationRelativeTo(null);
+//        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -251,9 +251,9 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         Integer contador = 0;
         // el siguiente Calendar fechaConsulta debe ser dentro de un bucle for
         Calendar fechaConsulta; 
-        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
-            contador += 1;
-        }
+//        if (fechaConsulta.after(fecha1) && fechaConsulta.before(fecha2)){
+//            contador += 1;
+//        }
         
     }//GEN-LAST:event_btnConsultarActionPerformed
 
