@@ -23,9 +23,9 @@ public class TriageCambiado extends javax.swing.JFrame {
     /**
      * Creates new form TriageCambiado
      */
-    public TriageCambiado() {
-        control= new Controladora();
-        estadistica =new Estadistica();
+    public TriageCambiado(Controladora control) {
+        this.control = control;
+        estadistica = new Estadistica();
         initComponents();
     }
 

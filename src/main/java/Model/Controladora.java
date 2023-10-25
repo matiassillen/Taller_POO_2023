@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import static java.time.temporal.ChronoUnit.YEARS;
+import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,7 +130,7 @@ public class Controladora implements Serializable{
         int maxConsultas = 0;
 
         for (Consulta consulta : consultas) {
-            LocalDate fechaConsulta = consulta.getFecha();
+            LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
             if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                 Medico medico = consulta.getMedico();
                 int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
