@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class MedicoMasPacientes extends javax.swing.JFrame {
-    Controladora control= null;
+    Controladora control;
 
    
     public MedicoMasPacientes(Controladora control) {
@@ -205,7 +205,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
-        LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
+        LocalDate fecha1= LocalDate.of(yearOne,medOne,diaOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
         
         if(fecha2.isBefore(fecha1)){
