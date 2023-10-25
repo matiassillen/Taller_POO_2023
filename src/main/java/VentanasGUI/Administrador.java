@@ -51,6 +51,7 @@ public class Administrador extends javax.swing.JFrame {
         btnBuscarUsuario = new javax.swing.JButton();
         btnEditarUsuario = new javax.swing.JButton();
         btnBorrarUsuario = new javax.swing.JButton();
+        btnRecargarTablas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -71,7 +72,7 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(100, 196, 244));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -82,7 +83,7 @@ public class Administrador extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(358, 358, 358)
+                .addGap(301, 301, 301)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -141,18 +142,34 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        btnRecargarTablas.setBackground(new java.awt.Color(0, 204, 153));
+        btnRecargarTablas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRecargarTablas.setForeground(new java.awt.Color(0, 0, 0));
+        btnRecargarTablas.setText("Recargar Tablas");
+        btnRecargarTablas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnRecargarTablas.setPreferredSize(new java.awt.Dimension(136, 40));
+        btnRecargarTablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarTablasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(btnEditarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +181,12 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel4.setBackground(new java.awt.Color(100, 196, 244));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1015, 550));
 
@@ -176,6 +195,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel2.setText("Funcionarios en General");
 
         tablaFuncionariosEnGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        tablaFuncionariosEnGeneral.setForeground(new java.awt.Color(255, 255, 255));
         tablaFuncionariosEnGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -188,9 +208,15 @@ public class Administrador extends javax.swing.JFrame {
             }
         ));
         tablaFuncionariosEnGeneral.setPreferredSize(new java.awt.Dimension(30, 85));
+        tablaFuncionariosEnGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaFuncionariosEnGeneralMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaFuncionariosEnGeneral);
 
         tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -203,6 +229,11 @@ public class Administrador extends javax.swing.JFrame {
             }
         ));
         tablaUsuarios.setPreferredSize(new java.awt.Dimension(30, 85));
+        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tablaUsuarios);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -214,17 +245,19 @@ public class Administrador extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(362, 362, 362)
-                .addComponent(jLabel2)
-                .addGap(0, 449, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(376, 376, 376)
+                        .addComponent(jLabel2)
+                        .addGap(0, 429, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(448, 448, 448)
+                .addGap(453, 453, 453)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -235,9 +268,9 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -299,47 +332,6 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
-
-        /**
-         * Comprobamos que la tabla FuncionarioGeneral fue seleccionada
-         */
-        tablaFuncionariosEnGeneral.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
-
-                //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
-                    //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
-
-                        //Obtener la id del elemento a seleccionar 
-                        long id = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 0)));
-                        String nombre = String.valueOf(table.getValueAt(table.getSelectedRow(), 1));
-                        String apellido = String.valueOf(table.getValueAt(table.getSelectedRow(), 2));
-                        int dni = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 4)));
-
-                        //Llamo a la ventana CrearUsuario 
-                        CrearUsuario pantalla1 = new CrearUsuario(administrador, control, id, nombre, apellido, dni);
-                        pantalla1.setVisible(true);
-                        pantalla1.setLocationRelativeTo(null);
-
-                        //Avisar al administrador que se creó correctamente
-                        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
-
-                        cargarTablaUsuarios();
-                    } else {
-                        control.mostrarMensaje("No selecciono ningún registro", "Error", "Error al crear");
-                    }
-                } else {
-                    control.mostrarMensaje("La tabla está vacía", "Error", "Error al crear");
-                }
-
-            }
-        });
-    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
-
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
         BuscarUsuario pantalla2 = new BuscarUsuario(administrador, control);
         pantalla2.setVisible(true);
@@ -352,15 +344,15 @@ public class Administrador extends javax.swing.JFrame {
         /**
          * Comprobamos que la tabla Usuarios fue seleccionada
          */
-        tablaUsuarios.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
+//        tablaUsuarios.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                JTable table = (JTable) e.getSource();
 
                 //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
+                if (tablaUsuarios.getRowCount() > 0) {
                     //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
+                    if (tablaUsuarios.getSelectedRow() != -1) {
 
                         //Obtener la id del elemento a seleccionar
                         long id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
@@ -372,7 +364,8 @@ public class Administrador extends javax.swing.JFrame {
 
                         //Avisar al administrador que se borro correctamente
                         control.mostrarMensaje("Se editó el usuario conrrectamente", "info", "Edición correcta");
-
+                        
+                        cargarTablaFuncionariosEnGeneral();
                         cargarTablaUsuarios();
                     } else {
                         control.mostrarMensaje("No selecciono ningún registro", "Error", "Error al editar");
@@ -381,8 +374,8 @@ public class Administrador extends javax.swing.JFrame {
                     control.mostrarMensaje("La tabla esta vacía", "Error", "Error al editar");
                 }
 
-            }
-        });
+//            }
+//        });
 //        
 //        tablaUsuarios.addMouseListener(new MouseAdapter() {
 //            @Override
@@ -534,18 +527,18 @@ public class Administrador extends javax.swing.JFrame {
         /**
          * Comprobamos que la tabla Usuarios fue seleccionada
          */
-        tablaUsuarios.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JTable table = (JTable) e.getSource();
+//        tablaUsuarios.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                JTable table = (JTable) e.getSource();
 
                 //Validar que la tabla tenga elementos
-                if (table.getRowCount() > 0) {
+                if (tablaUsuarios.getRowCount() > 0) {
                     //Controlar que se haya seleccionado un elemento
-                    if (table.getSelectedRow() != -1) {
+                    if (tablaUsuarios.getSelectedRow() != -1) {
 
                         //Obtener la id del elemento a seleccionar
-                        long id = Integer.parseInt(String.valueOf(table.getValueAt(table.getSelectedRow(), 0)));
+                        long id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
 
                         //Llamo al método borrar 
                         administrador.borrarUsuario(id);
@@ -554,6 +547,8 @@ public class Administrador extends javax.swing.JFrame {
                         control.mostrarMensaje("Se borró el usuario conrrectamente", "info", "Eliminación correcta");
 
                         cargarTablaFuncionariosEnGeneral();
+                        cargarTablaUsuarios();
+                        
                     } else {
                         control.mostrarMensaje("No selecciono ningún registro", "Error", "Error al borrar");
                     }
@@ -561,8 +556,8 @@ public class Administrador extends javax.swing.JFrame {
                     control.mostrarMensaje("La tabla está vacía", "Error", "Error al borrar");
                 }
 
-            }
-        });
+//            }
+//        });
 
 //        tablaUsuarios.addMouseListener(new MouseAdapter() {
 //            @Override
@@ -695,7 +690,73 @@ public class Administrador extends javax.swing.JFrame {
 //        cargarTablaMedicos();
 //        cargarTablaLicenciados();
 //        cargarTablaAdministrador();
+          btnCrearUsuario.setEnabled(false);
+          btnBorrarUsuario.setEnabled(false);
+          btnBuscarUsuario.setEnabled(false);
+          btnEditarUsuario.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void tablaFuncionariosEnGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFuncionariosEnGeneralMouseClicked
+        btnCrearUsuario.setEnabled(true);
+        btnBorrarUsuario.setEnabled(false);
+        btnBuscarUsuario.setEnabled(false);
+        btnEditarUsuario.setEnabled(false);
+        cargarTablaUsuarios();
+    }//GEN-LAST:event_tablaFuncionariosEnGeneralMouseClicked
+
+    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
+        btnCrearUsuario.setEnabled(false);
+        btnBorrarUsuario.setEnabled(true);
+        btnBuscarUsuario.setEnabled(true);
+        btnEditarUsuario.setEnabled(true);
+        cargarTablaFuncionariosEnGeneral();
+    }//GEN-LAST:event_tablaUsuariosMouseClicked
+
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+        /**
+         * Comprobamos que la tabla FuncionarioGeneral fue seleccionada
+         */
+//        tablaFuncionariosEnGeneral.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                JTable table = (JTable) e.getSource();
+
+                //Validar que la tabla tenga elementos
+                if (tablaFuncionariosEnGeneral.getRowCount() > 0) {
+                    //Controlar que se haya seleccionado un elemento
+                    if (tablaFuncionariosEnGeneral.getSelectedRow() != -1) {
+
+                        //Obtener la id del elemento a seleccionar 
+                        long id = Integer.parseInt(String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 0)));
+                        String nombre = String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 1));
+                        String apellido = String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 2));
+                        int dni = Integer.parseInt(String.valueOf(tablaFuncionariosEnGeneral.getValueAt(tablaFuncionariosEnGeneral.getSelectedRow(), 4)));
+
+                        //Llamo a la ventana CrearUsuario 
+                        CrearUsuario pantalla1 = new CrearUsuario(administrador, control, id, nombre, apellido, dni);
+                        pantalla1.setVisible(true);
+                        pantalla1.setLocationRelativeTo(null);
+
+                        //Avisar al administrador que se creó correctamente
+                        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
+
+                        cargarTablaFuncionariosEnGeneral();
+                        cargarTablaUsuarios();
+                    } else {
+                        control.mostrarMensaje("No selecciono ningún registro", "Error", "Error al crear");
+                    }
+                } else {
+                    control.mostrarMensaje("La tabla está vacía", "Error", "Error al crear");
+                }
+
+//            }
+//        });
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
+
+    private void btnRecargarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarTablasActionPerformed
+        cargarTablaFuncionariosEnGeneral();
+        cargarTablaUsuarios();
+    }//GEN-LAST:event_btnRecargarTablasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarUsuario;
@@ -703,6 +764,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnEditarUsuario;
     private javax.swing.JButton btnInfoAdministrativa;
+    private javax.swing.JButton btnRecargarTablas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
