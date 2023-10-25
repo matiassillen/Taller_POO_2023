@@ -1,16 +1,19 @@
 
 package VentanasGUI;
 
+import Model.Controladora;
 import java.util.Calendar;
 
 
 public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
-
+    public Controladora controlPA;
     /**
      * Creates new form CantPacientesAtendidos
+     * @param control es la controladora que se pasa entre ventanas
      */
-    public CantPacientesAtendidosPorMedico() {
+    public CantPacientesAtendidosPorMedico(Controladora control) {
         initComponents();
+        this.controlPA = control;
     }
 
     /**
@@ -245,7 +248,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor();
+        Gestor pantallaGestion = new Gestor(this.controlPA);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();

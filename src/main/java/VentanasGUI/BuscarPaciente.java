@@ -14,9 +14,9 @@ public class BuscarPaciente extends javax.swing.JFrame {
     Paciente paciente;
     Controladora control;
     Recepcionista recepcion;
-    public BuscarPaciente() {
+    public BuscarPaciente(Controladora control) {
         initComponents();
-        control = new Controladora();
+        this.control = control;
         recepcion = new Recepcionista();
     }
 
