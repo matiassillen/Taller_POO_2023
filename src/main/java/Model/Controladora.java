@@ -51,6 +51,9 @@ public class Controladora implements Serializable{
     public List<Triage> traerTriages() {
         return controlPersis.traerTriages();
     }
+    public List<Medico> traerMedicos() {
+        return controlPersis.traerMedicos();
+    }
     
     public List<Consulta> traerConsultas() {
         return controlPersis.traerConsultas();
