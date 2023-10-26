@@ -2,7 +2,11 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.FuncionarioGeneral;
+import Model.Medico;
 import java.util.Calendar;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 
 public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
@@ -39,7 +43,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMedicos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtCargaDNI = new javax.swing.JTextField();
         txtAdvertencia = new javax.swing.JLabel();
@@ -127,10 +131,10 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Resultado:");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setForeground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMedicos.setBackground(new java.awt.Color(255, 255, 255));
+        tablaMedicos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tablaMedicos.setForeground(new java.awt.Color(204, 204, 204));
+        tablaMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -143,8 +147,8 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
                 "Nombre", "Apellido", "DNI"
             }
         ));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tablaMedicos.setShowGrid(true);
+        jScrollPane1.setViewportView(tablaMedicos);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -270,7 +274,38 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
     private void txtCargaDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCargaDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCargaDNIActionPerformed
-
+//////////////    
+//////////////    private void cargarMedicos(){
+//////////////            //Definimos el modelo que queremos que tenga la tabla
+//////////////        DefaultTableModel modeloTabla = new DefaultTableModel() {
+//////////////
+//////////////            //Que fila y columna no sean editables
+//////////////            @Override
+//////////////            public boolean isCellEditable(int row, int colum) {
+//////////////                return false;
+//////////////            }
+//////////////        };
+//////////////
+//////////////        //Establecemos los nombres de las columnas
+//////////////        String titulos[] = {"Nombre", "Apellido", "DNI"};
+//////////////        modeloTabla.setColumnIdentifiers(titulos);
+//////////////
+//////////////        //Traer de la DB la lista de Gestores
+//////////////        List<Medicos> listaMedicos = controlPA.traerMedicos();
+//////////////
+//////////////        if (listaMedicos != null) {
+//////////////
+//////////////            for (Medico medicoAux : listaMedicos) {
+//////////////                
+//////////////                Object[] objeto = {medicoAux.getNombre(), medicoAux.getApellido(), medicoAux.getDni()};
+//////////////
+//////////////                modeloTabla.addRow(objeto);
+//////////////            }
+//////////////        }
+//////////////        tablaMedicos.setModel(modeloTabla);
+//////////////    }
+    
+    }
     /**
      * @param args the command line arguments
      */
@@ -292,7 +327,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaMedicos;
     private javax.swing.JLabel txtAdvertencia;
     private javax.swing.JTextField txtCargaDNI;
     // End of variables declaration//GEN-END:variables

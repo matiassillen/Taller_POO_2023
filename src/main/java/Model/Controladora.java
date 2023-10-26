@@ -106,10 +106,6 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
-    public Integer CantidadPacientesAtendidos(String fecha1, String fecha2) {
-        // TODO implement here
-        return null;
-    }
 
 
     /**
@@ -147,7 +143,12 @@ public class Controladora implements Serializable{
     }
     
     
-    
+    /*
+    * Metodo que devuelve una lista de consultas entre dos fechas
+    * @return ArrayList<Consulta>
+    * @param LocalDate fecha1 es la fecha limite inferior para filtrar
+    * @param LocalDate fecha2 es la fecha limite superior para filtrar
+    */
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
@@ -181,6 +182,81 @@ public class Controladora implements Serializable{
         return contador;
     }
     
+    
+    /* Metodo que devuelve un ArrayList utilizado una lista pasada por parametro
+    *@return un objeto Paciente y un int de la cantidad de veces que se repite dicho objeto en una lista
+    * @param fecha1 es un objeto LocalDate con una fecha limite inferior para filtrar
+    * @param fecha2 es un objeto LocalDate con una fecha limite superior para filtrar 
+    */
+    
+    /*
+    *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
+    *@return ArrayList<Object> con un objeto Paciente y un int contador de ocurrencias
+    * @param LocalDate fecha1 parametro para pasar como argumento a otra funcion
+    * @param LocalDate fecha2 parametro para pasar como argumento a otra funcion
+    * @param ArrayList<Object> listaFiel lista donde se realizara el conteo
+    */
+    public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
+////////////////        ArrayList<Consulta> listaFiltro = listaFiel;
+////////////////        Paciente pacienteOne = null;
+////////////////        ArrayList<Object> devolver = new ArrayList<>();
+////////////////        Integer contador = 0;
+////////////////        
+////////////////        if (listaFiltro.isEmpty()) {
+////////////////            devolver.add(pacienteOne);
+////////////////            devolver.add(contador);
+////////////////            return devolver;
+////////////////        }
+////////////////        
+////////////////        ArrayList<Consulta> noRepetir = new ArrayList<>();
+////////////////        for (Consulta leerConsulta : listaFiltro){
+////////////////
+////////////////            if (noRepetir.contains(leerConsulta)){
+////////////////                continue;
+////////////////            }
+////////////////            else {
+////////////////                noRepetir.add(leerConsulta);
+////////////////            }
+////////////////            Integer contadorAux = 0;
+////////////////            for (Consulta leerAux : listaFiltro) {
+////////////////                if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
+////////////////                    contadorAux ++;
+////////////////                }
+////////////////                if (contadorAux > contador) {
+////////////////                    pacienteOne = leerConsulta.getPaciente();
+////////////////                    contador = contadorAux;
+////////////////                }
+////////////////            }
+////////////////        }
+////////////////
+////////////////        devolver.add(pacienteOne);
+////////////////        devolver.add(contador);
+////////////////        return devolver;
+    }
+    
+////////////////    /**
+////////////////     *
+////////////////     * @param fecha1
+////////////////     * @param fecha2
+////////////////     * @return
+////////////////     */
+    public HashMap<int, ArrayList<Object>> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+        Paciente pacienteAux = null;
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+        Map<int, ArrayList<Object>> accesoDirecto = new HashMap<>();
+        
+        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+            
+            ArrayList<Object> agregarPaciente = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+            pacienteAux = (Paciente) agregarPaciente.get(0);
+            
+            accesoDirecto.put((repeticiones +1), agregarPaciente);
+            listaFiltro.remove(pacienteAux);
+            
+            }
+        return accesoDirecto;
+    }
+
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
 //        
@@ -193,20 +269,20 @@ public class Controladora implements Serializable{
     public void VerEstadistica() {
         // TODO implement here
     }
-    // public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
-    //    Map<String, Integer> diccionario = new HashMap<>();
-    //    for (Codigo Para Recorer Arbol de Tiage) {
-    //        if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
-    //            tipoColor clave = Triage.ColorFinal;
-    //            if(diccionario.containsKey(clave)){
-    //                diccionario.merge(clave, 1, Integer::sum);
-    //            }else{
-    //                diccionario.put(clave, 1);
-    //            }
-    //        }            
-    //    }
-    //    return diccionario;
-    // }
+     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
+//        Map<String, Integer> diccionario = new HashMap<>();
+//        for (Codigo Para Recorer Arbol de Tiage) {
+//            if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
+//                tipoColor clave = Triage.ColorFinal;
+//                if(diccionario.containsKey(clave)){
+//                    diccionario.merge(clave, 1, Integer::sum);
+//                }else{
+//                    diccionario.put(clave, 1);
+//                }
+//            }            
+//        }
+//        return diccionario;
+    }
 
 
     
