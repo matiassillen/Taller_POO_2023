@@ -5,6 +5,8 @@ package Principal;
 import Model.Controladora;
 import Model.Paciente;
 import VentanasGUI.Administrador;
+import VentanasGUI.CantTriageColor;
+import VentanasGUI.GuiLogin;
 import VentanasGUI.MedicoMasPacientes;
 import VentanasGUI.RegistrarPaciente;
 import VentanasGUI.TriageCambiado;
@@ -16,6 +18,10 @@ public class Principal {
         Controladora control = new Controladora();
         Paciente p = new Paciente();
         
+        CantTriageColor pantalla= new CantTriageColor();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        
 //        TriageCambiado pantalla= new TriageCambiado(control);
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
@@ -24,9 +30,9 @@ public class Principal {
 //        buscar.setVisible(true);
 //        buscar.setLocationRelativeTo(null);
         
-        Administrador pantalla = new Administrador(control);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+//        Administrador pantalla = new Administrador(control);
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
 //        MedicoMasPacientes pantalla= new MedicoMasPacientes(control);
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
@@ -35,10 +41,10 @@ public class Principal {
 //        buscar.setVisible(true);
 //        buscar.setLocationRelativeTo(null);
 
-//          GuiLogin pantalla = new GuiLogin();
-//          pantalla.setVisible(true);
-//          pantalla.setLocationRelativeTo(null);
-          
+//        GuiLogin pantalla = new GuiLogin();
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
+//          
     }
     
 }
