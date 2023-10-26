@@ -302,6 +302,12 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         try {
             edadOne = Integer.parseInt(txtEdad1.getText());
             edadTwo = Integer.parseInt(txtEdad2.getText());
+            
+            if (edadOne > edadTwo) {
+                Integer aux = edadTwo;
+                edadTwo = edadOne;
+                edadOne = aux;
+            }
         }
         catch(Exception e) {
             txtAdvertenciaOne.setVisible(true);
@@ -329,19 +335,10 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
             JOptionPane.ERROR_MESSAGE  
         );
         }else{
- 
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
-            @Override
-            public boolean isCellEditable(int row,int column){
-                return false;
-            }
-        };
-                 
-        String titulos []= {"Nombre","Apellido","Matricula",};
+            Integer resultadoCant = this.controlP.contadorPacientesEdad(edadOne, edadTwo, fecha1, fecha2);
+            txtCantidad.setText(String.valueOf(resultadoCant));
         }
-        
-        Integer resultadoCant = this.controlP.contadorPacientesEdad(edadOne, edadTwo, fecha1, fecha2);
-        txtCantidad.setText(String.valueOf(resultadoCant));
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void txtEdad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdad1ActionPerformed

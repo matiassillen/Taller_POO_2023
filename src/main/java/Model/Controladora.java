@@ -174,7 +174,7 @@ public class Controladora implements Serializable{
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
             Integer edadPaciente = (int)fechaNacimiento.until(fecha2, YEARS);
-            if ((edadPaciente >= edad1) && (edadPaciente =< edad2)){
+            if ((edadPaciente >= edad1) && (edadPaciente <= edad2)){
                 contador = +1;
             }
         }
