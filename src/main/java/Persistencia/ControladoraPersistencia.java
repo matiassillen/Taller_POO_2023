@@ -384,6 +384,10 @@ public class ControladoraPersistencia implements Serializable{
         return triageJpa.findTriageEntities();
     }
 
+    public List<Medico> traerMedicos() {
+        return medicoJpa.findMedicoEntities();
+    }
+
     
 }
     
