@@ -20,18 +20,19 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Usuario
+ * @author Matías Sillen Ríos
  */
 public class RolJpaController implements Serializable {
 
     public RolJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
     
     public RolJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
+    
+    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

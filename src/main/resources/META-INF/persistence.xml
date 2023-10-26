@@ -17,10 +17,10 @@
     <class>Model.Triage</class>
     <class>Model.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://bifyjl7edip8qurgezil-mysql.services.clever-cloud.com:3306/bifyjl7edip8qurgezil"/>
-      <property name="javax.persistence.jdbc.user" value="ufxeblvicangqjqc"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://bb8kmyfcoeui7b21ztq2-mysql.services.clever-cloud.com:3306/bb8kmyfcoeui7b21ztq2?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="ucn31oab6wl0jbip"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="BE4PC2pKtbWV1GNkH0eJ"/>
+      <property name="javax.persistence.jdbc.password" value="bgDVShbpU7XiUYIXM6Dl"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>

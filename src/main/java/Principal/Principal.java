@@ -31,9 +31,9 @@ public class Principal {
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
-        RegistrarPaciente buscar = new RegistrarPaciente(control);
-        buscar.setVisible(true);
-        buscar.setLocationRelativeTo(null);
+//        RegistrarPaciente buscar = new RegistrarPaciente(control);
+//        buscar.setVisible(true);
+//        buscar.setLocationRelativeTo(null);
 
 //          GuiLogin pantalla = new GuiLogin();
 //          pantalla.setVisible(true);
