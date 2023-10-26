@@ -3,6 +3,11 @@ package Model;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.ChronoUnit.YEARS;
+import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -117,15 +122,15 @@ public class Controladora implements Serializable{
     */
 
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-          Map<Medico, Integer> conteoConsultas = new HashMap<>();
-    Medico medicoConMasPacientes = null;
-    List<Consulta> consultas = traerConsultas();
+        Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        Medico medicoConMasPacientes = null;
+        List<Consulta> consultas = traerConsultas();
 
     if (consultas != null) { 
         int maxConsultas = 0;
 
         for (Consulta consulta : consultas) {
-            LocalDate fechaConsulta = consulta.getFecha();
+            LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
             if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                 Medico medico = consulta.getMedico();
                 int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
@@ -143,6 +148,43 @@ public class Controladora implements Serializable{
 
     return medicoConMasPacientes;
     }
+    
+    
+    
+    public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<Consulta> listaFiltrada = null;
+        List<Consulta> consultas = traerConsultas();
+
+        if (!consultas.isEmpty()) { 
+            for (Consulta consulta : consultas) {
+                LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
+//                LocalDate fechaConsulta = consulta.getFecha();
+                if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                    listaFiltrada.add(consulta);
+                }
+            } 
+        } 
+        else {
+            return listaFiltrada;
+        }
+
+        return listaFiltrada;
+    }
+    
+    public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
+        Integer contador = 0;
+        LocalDate fechaActual = LocalDate.now();
+        for (Consulta consultaPaciente : listaFiltrada) {
+            LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
+            Integer edadPaciente = (int)fechaNacimiento.until(fechaActual, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente < edad2)){
+                contador = +1;
+            }
+        }
+        return contador;
+    }
+    
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
 //        
@@ -406,8 +448,10 @@ public class Controladora implements Serializable{
     }
 
     public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
-        String hora = "";
-        String fecha = "";
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
         
         ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion ,hora ,fecha);
         
@@ -419,11 +463,14 @@ public class Controladora implements Serializable{
     }
     
     public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
-        String hora = "";
-        String fecha = "";
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        
         FuncionarioGeneral func = this.usu.getFuncionarioGeneral();
         Medico medico = (Medico) func;
-        
+  
         DiagnosticoClinico diag = new DiagnosticoClinico(paciente, titulo, fecha, hora, descripcion, medico);
         
         this.controlPersis.cargarNuevoDiagClinico(diag);
@@ -500,5 +547,76 @@ public class Controladora implements Serializable{
             }
         }
         return null;
+    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+        Paciente paciente = new Paciente();
+        int documento = Integer.parseInt(dni);
+        paciente.setNombre(nombre);
+        paciente.setApellido(apellido);
+        paciente.setDni(documento);
+        paciente.setFechaDeNac(fechaNacimiento);
+        paciente.setDomicilio(domicilio);
+        paciente.setEstadoCivil(estadoCivil);
+        paciente.setCorreoE(correo);
+        paciente.setTelefonoCel(telFijo);
+        paciente.setTelefonoFijo(telCelular);
+        paciente.setPersoDeContacto(personaContacto);
+        paciente.setTelDeContacto(numContacto);
+        paciente.setDiagnosticoClinico(null);
+        paciente.setResultadoEstudio(null);
+        
+        controlPersis.RegistrarPaciente(paciente);
+        
+        return paciente;
+    }
+
+    public void CrearConsulta(String lugar, String motivo, Paciente p) {
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
+        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        
+        Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
+        this.controlPersis.CrearConsulta(consu);
+        this.esperaAtencionTriage.AñadirALaFila(consu);
+        
+    }
+
+    public Object[] ValidarPaciente(int doc) {
+        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+        Object[] objetos = {11};
+        for(Paciente p : pacientes){
+            if(p.getDni()==doc){
+                objetos[0] = p.getDni();
+                objetos[1] = p.getApellido();
+                objetos[2] = p.getNombre();
+                objetos[3] = p.getFechaDeNac();
+                objetos[4] = p.getEstadoCivil();
+                objetos[5] = p.getCorreoE();
+                objetos[6] = p.getDomicilio();
+                objetos[7] = p.getTelefonoCel();
+                objetos[8] = p.getTelefonoFijo();
+                objetos[9] = p.getPersoDeContacto();
+                objetos[10] = p.getTelDeContacto();        
+                break;
+            }
+        }
+        return objetos;
+    }
+
+    public List<Consulta> traerPacientesEnEspera() {
+        List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
+        return  consultas;
+    }
+
+    public Paciente buscarPacientePorDni(int dni) {
+        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+        Paciente paciente = new Paciente();
+        for(Paciente p : pacientes){
+            if(p.getDni()==dni){
+               paciente = p;
+               break;   
+            }
+        }
+        return paciente;
     }
 }

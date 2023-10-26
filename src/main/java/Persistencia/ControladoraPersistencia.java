@@ -258,8 +258,8 @@ public class ControladoraPersistencia implements Serializable{
 //        return administradorJpa.findAdministradorDeSistema(idUsuario);
 //    }
 
-    public void CrearConsulta(Consulta consulta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void CrearConsulta(Consulta consu) {
+        this.consultaJpa.create(consu);
     }
 
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {

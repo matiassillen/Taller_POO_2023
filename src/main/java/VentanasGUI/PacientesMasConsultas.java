@@ -4,6 +4,7 @@
  */
 package VentanasGUI;
 
+import Model.Controladora;
 import java.util.Calendar;
 
 /**
@@ -11,12 +12,13 @@ import java.util.Calendar;
  * @author trapo
  */
 public class PacientesMasConsultas extends javax.swing.JFrame {
-
+    Controladora controlP;
     /**
      * Creates new form CantPacientesAtendidos
      */
-    public PacientesMasConsultas() {
+    public PacientesMasConsultas(Controladora control) {
         initComponents();
+        this.controlP = control;
     }
 
     /**
