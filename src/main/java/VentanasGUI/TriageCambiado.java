@@ -5,10 +5,8 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Estadistica;
 //import Model.FuncSalud;
-import Model.LicEnEnfermeria;
-import Model.Medico;
+import Model.Triage;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,14 +16,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TriageCambiado extends javax.swing.JFrame {
     Controladora control;
-    Estadistica estadistica;
 
     /**
      * Creates new form TriageCambiado
      */
     public TriageCambiado(Controladora control) {
         this.control = control;
-        estadistica = new Estadistica();
         initComponents();
     }
 
@@ -42,8 +38,9 @@ public class TriageCambiado extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtTriageCambiados = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaTriagesCambiados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,13 +88,33 @@ public class TriageCambiado extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
 
-        txtTriageCambiados.setEditable(false);
-        txtTriageCambiados.setBackground(new java.awt.Color(204, 204, 204));
-        txtTriageCambiados.setColumns(20);
-        txtTriageCambiados.setRows(5);
-        jScrollPane1.setViewportView(txtTriageCambiados);
+        tablaTriagesCambiados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 660, 320));
+            }
+        ));
+        jScrollPane2.setViewportView(tablaTriagesCambiados);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 770, 310));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,15 +131,12 @@ public class TriageCambiado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-//        Gestor pantallaGestion = new Gestor();
-//        pantallaGestion.setVisible(true);
-//        pantallaGestion.setLocationRelativeTo(null);
-//        this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        cargarTabla();
+        cargarTablaTriagesCambiados();
     }//GEN-LAST:event_formWindowOpened
 
 
@@ -131,34 +145,36 @@ public class TriageCambiado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtTriageCambiados;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tablaTriagesCambiados;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarTabla() {
-        DefaultTableModel tabla = new DefaultTableModel(){
+    private void cargarTablaTriagesCambiados() {
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
         
         @Override
         public boolean isCellEditable(int row, int column){
             return false;
         }
     };
-        String [] titulos= {"Triagador", "Cantidad","Color original", "Color cambiado"};
-        tabla.setColumnIdentifiers(titulos);
+        String [] titulos= {"Triagiador", "Color original", "Color cambiado"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List <Triage> listaTriages=control.traerTriages();
+        if(listaTriages != null){
+            for(Triage triages: listaTriages){
+                if(triages.getColorInicial()!= triages.getColorFinal()){
+                Object[] objeto= {triages.getEnfermero(), triages.getColorInicial(),triages.getColorFinal()};
+                modeloTabla.addRow(objeto);
+                }
+            }
+        
+        }
+        tablaTriagesCambiados.setModel(modeloTabla);
         
         
-//       List <FuncSalud> listaFuncionariosSalud= control.traerFuncionariosSalud();
-//       
-//       if (listaFuncionariosSalud != null){
-//           Object [] objeto= {estadistica.triagesCambiados(funcionario)};
-//           tabla.addRow(objeto);
-//           }
-//       }
        
-        
-
-
-
 
 }
 }

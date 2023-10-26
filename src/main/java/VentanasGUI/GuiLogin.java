@@ -164,7 +164,7 @@ public class GuiLogin extends javax.swing.JFrame {
                     break;
                 
                 case "Recepcionista":
-                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
+                    RegistrarPaciente pantallaRecepcion = new RegistrarPaciente(verif);
                     pantallaRecepcion.setVisible(true);
                     pantallaRecepcion.setLocationRelativeTo(null);
                     this.dispose();                    

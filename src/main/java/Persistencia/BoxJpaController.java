@@ -17,18 +17,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Usuario
+ */
 public class BoxJpaController implements Serializable {
 
     public BoxJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+    private EntityManagerFactory emf = null;
     public BoxJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
-    private EntityManagerFactory emf = null;
-
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
