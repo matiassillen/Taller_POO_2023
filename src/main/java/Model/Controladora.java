@@ -111,17 +111,6 @@ public class Controladora implements Serializable{
         return null;
     }
 
-    /**
-     * @param fecha1 
-     * @param fecha2 
-     * @param edad1 
-     * @param edad2 
-     * @return
-    */
-    public Integer PacientesAtendidosPorEdad(String fecha1, String fecha2, String edad1, String edad2) {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @param fecha1 
@@ -182,11 +171,10 @@ public class Controladora implements Serializable{
     public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
-        LocalDate fechaActual = LocalDate.now();
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
-            Integer edadPaciente = (int)fechaNacimiento.until(fechaActual, YEARS);
-            if ((edadPaciente >= edad1) && (edadPaciente < edad2)){
+            Integer edadPaciente = (int)fechaNacimiento.until(fecha2, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente =< edad2)){
                 contador = +1;
             }
         }
