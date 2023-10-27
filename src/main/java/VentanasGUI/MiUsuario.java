@@ -226,7 +226,7 @@ public class MiUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonVolverMiUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverMiUActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_buttonVolverMiUActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

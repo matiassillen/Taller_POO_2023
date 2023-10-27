@@ -271,9 +271,6 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Gestor pantallaGestion = new Gestor(this.controlPA);
-        pantallaGestion.setVisible(true);
-        pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -296,7 +293,6 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         try {
             pruebaId = Integer.parseInt(this.txtCargaId.getText());
             
-            txtAdvertencia.setVisible(false);
             if (pruebaId != null && pruebaId > 0) {
                 estado = true;
             }

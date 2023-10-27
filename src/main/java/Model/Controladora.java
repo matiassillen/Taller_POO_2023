@@ -103,10 +103,10 @@ public class Controladora implements Serializable{
 
     
     /**
-     * @param idMedico
-     * @param fecha1 
-     * @param fecha2 
-     * @return
+     * @param idMedico es el numero para identificar al medico
+     * @param fecha1 parametro limite inferior
+     * @param fecha2 parametro limite superior
+     * @return String del contador de ocurrencias
     */
     public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
         ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
@@ -124,8 +124,6 @@ public class Controladora implements Serializable{
         }
         return String.valueOf(contador);
     }
-    
-
 
     /**
      * @param fecha1 
@@ -231,42 +229,41 @@ public class Controladora implements Serializable{
     * @param ArrayList listaFiel lista donde se realizara el conteo
     */
     public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
-////////////////        ArrayList<Consulta> listaFiltro = listaFiel;
-////////////////        Paciente pacienteOne = null;
-////////////////        ArrayList<Object> devolver = new ArrayList<>();
-////////////////        Integer contador = 0;
-////////////////        
-////////////////        if (listaFiltro.isEmpty()) {
-////////////////            devolver.add(pacienteOne);
-////////////////            devolver.add(contador);
-////////////////            return devolver;
-////////////////        }
-////////////////        
-////////////////        ArrayList<Consulta> noRepetir = new ArrayList<>();
-////////////////        for (Consulta leerConsulta : listaFiltro){
-////////////////
-////////////////            if (noRepetir.contains(leerConsulta)){
-////////////////                continue;
-////////////////            }
-////////////////            else {
-////////////////                noRepetir.add(leerConsulta);
-////////////////            }
-////////////////            Integer contadorAux = 0;
-////////////////            for (Consulta leerAux : listaFiltro) {
-////////////////                if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
-////////////////                    contadorAux ++;
-////////////////                }
-////////////////                if (contadorAux > contador) {
-////////////////                    pacienteOne = leerConsulta.getPaciente();
-////////////////                    contador = contadorAux;
-////////////////                }
-////////////////            }
-////////////////        }
-////////////////
-////////////////        devolver.add(pacienteOne);
-////////////////        devolver.add(contador);
-////////////////        return devolver;
-        return null;
+        ArrayList<Consulta> listaFiltro = listaFiel;
+        Paciente pacienteOne = null;
+        ArrayList<Object> devolver = new ArrayList<>();
+        Integer contador = 0;
+        
+        if (listaFiltro.isEmpty()) {
+            devolver.add(pacienteOne);
+            devolver.add(contador);
+            return devolver;
+        }
+        
+        ArrayList<Consulta> noRepetir = new ArrayList<>();
+        for (Consulta leerConsulta : listaFiltro){
+
+            if (noRepetir.contains(leerConsulta)){
+                continue;
+            }
+            else {
+                noRepetir.add(leerConsulta);
+            }
+            Integer contadorAux = 0;
+            for (Consulta leerAux : listaFiltro) {
+                if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
+                    contadorAux ++;
+                }
+                if (contadorAux > contador) {
+                    pacienteOne = leerConsulta.getPaciente();
+                    contador = contadorAux;
+                }
+            }
+        }
+
+        devolver.add(pacienteOne);
+        devolver.add(contador);
+        return devolver;
     }
     
 ////////////////    /**

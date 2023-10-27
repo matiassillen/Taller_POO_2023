@@ -184,10 +184,7 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Gestor pantallaGestion = new Gestor();
-//        pantallaGestion.setVisible(true);
-//        pantallaGestion.setLocationRelativeTo(null);
-//        this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
