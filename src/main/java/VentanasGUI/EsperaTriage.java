@@ -175,7 +175,7 @@ public class EsperaTriage extends javax.swing.JFrame {
         // Comprueba si se ha seleccionado un paciente
         if (pacienteSelecionado != null) {
             // Si se ha seleccionado un paciente, crea una nueva instancia de HacerTriage
-            HacerTriage hacerT = new HacerTriage(control, pacienteSelecionado);
+            HacerTriage hacerT = new HacerTriage(control, idConsulta);
             // Hace visible la nueva instancia de HacerTriage
             hacerT.setVisible(true);
             // Centra la nueva instancia de HacerTriage en la pantalla

@@ -5,23 +5,19 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Paciente;
 import Model.Triage;
 import Model.Usuario;
-import static java.awt.SystemColor.control;
 import javax.swing.JOptionPane;
 
 public class HacerTriage extends javax.swing.JFrame {
     Controladora control;
-    private final Paciente paciente;
     int idConsulta;
     Triage triage;
-    public HacerTriage(Controladora control, Paciente pacienteSelecionado, int idConsulta,Triage triage) {
+    public HacerTriage(Controladora control, int idConsulta) {
         initComponents();
         this.control = control;
-        this.paciente = pacienteSelecionado;
         this.idConsulta = idConsulta;
-        this.triage = triage;
+        
     }
 
     /**
