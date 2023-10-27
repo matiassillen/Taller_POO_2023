@@ -52,6 +52,8 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         txtAdvertencia3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -106,7 +108,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 80, 30));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 100, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -316,7 +318,7 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnCargarDatosActionPerformed
-// ------------------------ Arrba arreglar----------------------------------------
+
     
     private void txtCargaIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCargaIdActionPerformed
         // TODO add your handling code here:
