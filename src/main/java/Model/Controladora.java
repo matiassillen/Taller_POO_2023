@@ -127,7 +127,7 @@ public class Controladora implements Serializable{
     }
 
     
-    /** Metodo que cuenta cuantos pacientes atendio un medico
+    /** 
      * @param idMedico es el numero para identificar al medico
      * @param fecha1 parametro limite inferior
      * @param fecha2 parametro limite superior
