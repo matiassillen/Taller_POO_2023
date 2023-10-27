@@ -1,8 +1,6 @@
 
 package Principal;
 
-import Model.Controladora;
-import VentanasGUI.EsperaTriage;
 import VentanasGUI.GuiLogin;
 
 public class Principal {
@@ -12,8 +10,6 @@ public class Principal {
         GuiLogin pantalla= new GuiLogin();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
-        
-        
     }
     
 }
