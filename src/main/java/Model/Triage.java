@@ -27,7 +27,7 @@ public class Triage implements Serializable {
     private LesionesLeves lesLeves;
     private Edad edad;
     private Fiebre fiebre;
-    private Vomitos vómitos;
+    private Vomitos vomitos;
     private DolorAbd dolorAbd;
     private Shock shock;
     private Sangrado sangrado;
@@ -57,7 +57,7 @@ public class Triage implements Serializable {
         this.lesLeves = lesionesLeves;
         this.edad = edad;
         this.fiebre = fiebre;
-        this.vómitos = vómitos;
+        this.vomitos = vomitos;
         this.dolorAbd = dolorAbdominal;
         this.shock = signosShock;
         this.sangrado = sangrado;
@@ -170,12 +170,12 @@ public class Triage implements Serializable {
         this.fiebre = fiebre;
     }
 
-    public Vomitos getVómitos() {
-        return vómitos;
+    public Vomitos getVomitos() {
+        return vomitos;
     }
 
-    public void setVómitos(Vomitos vómitos) {
-        this.vómitos = vómitos;
+    public void setVomitos(Vomitos vomitos) {
+        this.vomitos = vomitos;
     }
 
     public DolorAbd getDolorAbd() {
@@ -240,7 +240,7 @@ public class Triage implements Serializable {
        puntos += this.lesGraves.getValorNumerico();
        puntos += this.lesLeves.getValorNumerico();
        puntos += this.fiebre.getValorNumerico();
-       puntos += this.vómitos.getValorNumerico();
+       puntos += this.vomitos.getValorNumerico();
        this.setColorInicial(obtenerColor(puntos));
    }
 

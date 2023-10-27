@@ -6,6 +6,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Paciente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,69 +51,69 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         txtRespiracion = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        jrbNormalRespiracion = new javax.swing.JRadioButton();
+        jrbModeradaRespiracion = new javax.swing.JRadioButton();
+        jrbGraveRespiracion = new javax.swing.JRadioButton();
         jPanel11 = new javax.swing.JPanel();
         txtRespiracion4 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jRadioButton13 = new javax.swing.JRadioButton();
-        jRadioButton14 = new javax.swing.JRadioButton();
+        jrbNoPresenteLesionL = new javax.swing.JRadioButton();
+        jrbPresenteLesionL = new javax.swing.JRadioButton();
         jPanel19 = new javax.swing.JPanel();
         txtRespiracion8 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
-        jRadioButton25 = new javax.swing.JRadioButton();
-        jRadioButton26 = new javax.swing.JRadioButton();
+        jrbNoPresenteDolorPecho = new javax.swing.JRadioButton();
+        jrbPresenteDolorPecho = new javax.swing.JRadioButton();
         jPanel21 = new javax.swing.JPanel();
         txtRespiracion9 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
-        jRadioButton28 = new javax.swing.JRadioButton();
-        jRadioButton29 = new javax.swing.JRadioButton();
+        jrbNormalPulso = new javax.swing.JRadioButton();
+        jrbAnormalPulso = new javax.swing.JRadioButton();
         jPanel13 = new javax.swing.JPanel();
         txtRespiracion5 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jRadioButton16 = new javax.swing.JRadioButton();
-        jRadioButton17 = new javax.swing.JRadioButton();
-        jRadioButton18 = new javax.swing.JRadioButton();
+        jrbSinFiebre = new javax.swing.JRadioButton();
+        jrbModeradoFiebre = new javax.swing.JRadioButton();
+        jrbAltaFiebre = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         txtRespiracion1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        jrbNoPresenteAbd = new javax.swing.JRadioButton();
+        jrbModeradaAbd = new javax.swing.JRadioButton();
+        jrbSeveroAbd = new javax.swing.JRadioButton();
         jPanel7 = new javax.swing.JPanel();
         txtRespiracion2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
+        jrbNoPresenteSangrado = new javax.swing.JRadioButton();
+        jrbModeradoSangrado = new javax.swing.JRadioButton();
+        jrbIntensoSangrado = new javax.swing.JRadioButton();
         jPanel15 = new javax.swing.JPanel();
         txtRespiracion6 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jRadioButton19 = new javax.swing.JRadioButton();
-        jRadioButton20 = new javax.swing.JRadioButton();
-        jRadioButton21 = new javax.swing.JRadioButton();
+        jrbNormalEstadoMental = new javax.swing.JRadioButton();
+        jrbLeveEstadoMental = new javax.swing.JRadioButton();
+        jrbGraveEstadoMental = new javax.swing.JRadioButton();
         jPanel23 = new javax.swing.JPanel();
         txtRespiracion10 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
-        jRadioButton31 = new javax.swing.JRadioButton();
-        jRadioButton32 = new javax.swing.JRadioButton();
-        jRadioButton33 = new javax.swing.JRadioButton();
+        jrbSinVomito = new javax.swing.JRadioButton();
+        jrbModeradoVomito = new javax.swing.JRadioButton();
+        jrbIntensoVomito = new javax.swing.JRadioButton();
         jPanel25 = new javax.swing.JPanel();
         txtRespiracion11 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
-        jRadioButton34 = new javax.swing.JRadioButton();
-        jRadioButton35 = new javax.swing.JRadioButton();
+        jrbConciente = new javax.swing.JRadioButton();
+        jrbInconciente = new javax.swing.JRadioButton();
         jPanel17 = new javax.swing.JPanel();
         txtRespiracion7 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        jRadioButton22 = new javax.swing.JRadioButton();
-        jRadioButton23 = new javax.swing.JRadioButton();
+        jrbNoPresenteSignoShock = new javax.swing.JRadioButton();
+        jrbPresenteSignoShock = new javax.swing.JRadioButton();
         jPanel9 = new javax.swing.JPanel();
         txtRespiracion3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jRadioButton10 = new javax.swing.JRadioButton();
-        jRadioButton11 = new javax.swing.JRadioButton();
+        jrbNoPresenteLesionG = new javax.swing.JRadioButton();
+        jrbPresenteLesionG = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -125,10 +126,10 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         jPanel27 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        btnCrearTriage = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbEdad = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,25 +148,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Normal");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jrbNormalRespiracion.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jrbNormalRespiracion);
+        jrbNormalRespiracion.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNormalRespiracion.setText("Normal");
+        jrbNormalRespiracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                jrbNormalRespiracionActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Moderada");
+        jrbModeradaRespiracion.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jrbModeradaRespiracion);
+        jrbModeradaRespiracion.setForeground(new java.awt.Color(0, 0, 0));
+        jrbModeradaRespiracion.setText("Moderada");
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton3.setText("Grave");
+        jrbGraveRespiracion.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jrbGraveRespiracion);
+        jrbGraveRespiracion.setForeground(new java.awt.Color(0, 0, 0));
+        jrbGraveRespiracion.setText("Grave");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -174,23 +175,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNormalRespiracion, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbModeradaRespiracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbGraveRespiracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jRadioButton1)
+                .addComponent(jrbNormalRespiracion)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton2)
+                .addComponent(jrbModeradaRespiracion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton3)
+                .addComponent(jrbGraveRespiracion)
                 .addContainerGap())
         );
 
@@ -227,20 +228,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton13.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup5.add(jRadioButton13);
-        jRadioButton13.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton13.setText("No Presente");
-        jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteLesionL.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup5.add(jrbNoPresenteLesionL);
+        jrbNoPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteLesionL.setText("No Presente");
+        jrbNoPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton13ActionPerformed(evt);
+                jrbNoPresenteLesionLActionPerformed(evt);
             }
         });
 
-        jRadioButton14.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup5.add(jRadioButton14);
-        jRadioButton14.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton14.setText("Presente");
+        jrbPresenteLesionL.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup5.add(jrbPresenteLesionL);
+        jrbPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
+        jrbPresenteLesionL.setText("Presente");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -249,19 +250,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jRadioButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteLesionL, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbPresenteLesionL, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jRadioButton13)
+                .addComponent(jrbNoPresenteLesionL)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton14)
+                .addComponent(jrbPresenteLesionL)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -298,20 +299,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton25.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup9.add(jRadioButton25);
-        jRadioButton25.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton25.setText("No Presente");
-        jRadioButton25.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteDolorPecho.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup9.add(jrbNoPresenteDolorPecho);
+        jrbNoPresenteDolorPecho.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteDolorPecho.setText("No Presente");
+        jrbNoPresenteDolorPecho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton25ActionPerformed(evt);
+                jrbNoPresenteDolorPechoActionPerformed(evt);
             }
         });
 
-        jRadioButton26.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup9.add(jRadioButton26);
-        jRadioButton26.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton26.setText("Presente");
+        jrbPresenteDolorPecho.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup9.add(jrbPresenteDolorPecho);
+        jrbPresenteDolorPecho.setForeground(new java.awt.Color(0, 0, 0));
+        jrbPresenteDolorPecho.setText("Presente");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -320,19 +321,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jRadioButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteDolorPecho, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbPresenteDolorPecho, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addComponent(jRadioButton25)
+                .addComponent(jrbNoPresenteDolorPecho)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton26)
+                .addComponent(jrbPresenteDolorPecho)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -369,20 +370,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton28.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup10.add(jRadioButton28);
-        jRadioButton28.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton28.setText("Normal");
-        jRadioButton28.addActionListener(new java.awt.event.ActionListener() {
+        jrbNormalPulso.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup10.add(jrbNormalPulso);
+        jrbNormalPulso.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNormalPulso.setText("Normal");
+        jrbNormalPulso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton28ActionPerformed(evt);
+                jrbNormalPulsoActionPerformed(evt);
             }
         });
 
-        jRadioButton29.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup10.add(jRadioButton29);
-        jRadioButton29.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton29.setText("Anormal");
+        jrbAnormalPulso.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup10.add(jrbAnormalPulso);
+        jrbAnormalPulso.setForeground(new java.awt.Color(0, 0, 0));
+        jrbAnormalPulso.setText("Anormal");
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -391,19 +392,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jRadioButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNormalPulso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbAnormalPulso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
-                .addComponent(jRadioButton28)
+                .addComponent(jrbNormalPulso)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton29)
+                .addComponent(jrbAnormalPulso)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -440,25 +441,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton16.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup6.add(jRadioButton16);
-        jRadioButton16.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton16.setText("Sin Fiebre");
-        jRadioButton16.addActionListener(new java.awt.event.ActionListener() {
+        jrbSinFiebre.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jrbSinFiebre);
+        jrbSinFiebre.setForeground(new java.awt.Color(0, 0, 0));
+        jrbSinFiebre.setText("Sin Fiebre");
+        jrbSinFiebre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton16ActionPerformed(evt);
+                jrbSinFiebreActionPerformed(evt);
             }
         });
 
-        jRadioButton17.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup6.add(jRadioButton17);
-        jRadioButton17.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton17.setText("Moderada");
+        jrbModeradoFiebre.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jrbModeradoFiebre);
+        jrbModeradoFiebre.setForeground(new java.awt.Color(0, 0, 0));
+        jrbModeradoFiebre.setText("Moderada");
 
-        jRadioButton18.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup6.add(jRadioButton18);
-        jRadioButton18.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton18.setText("Alta");
+        jrbAltaFiebre.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup6.add(jrbAltaFiebre);
+        jrbAltaFiebre.setForeground(new java.awt.Color(0, 0, 0));
+        jrbAltaFiebre.setText("Alta");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -467,23 +468,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jRadioButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbSinFiebre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbModeradoFiebre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbAltaFiebre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jRadioButton16)
+                .addComponent(jrbSinFiebre)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton17)
+                .addComponent(jrbModeradoFiebre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton18)
+                .addComponent(jrbAltaFiebre)
                 .addContainerGap())
         );
 
@@ -520,25 +521,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton4.setText("No Presente");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteAbd.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jrbNoPresenteAbd);
+        jrbNoPresenteAbd.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteAbd.setText("No Presente");
+        jrbNoPresenteAbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                jrbNoPresenteAbdActionPerformed(evt);
             }
         });
 
-        jRadioButton5.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup2.add(jRadioButton5);
-        jRadioButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton5.setText("Moderada");
+        jrbModeradaAbd.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jrbModeradaAbd);
+        jrbModeradaAbd.setForeground(new java.awt.Color(0, 0, 0));
+        jrbModeradaAbd.setText("Moderada");
 
-        jRadioButton6.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup2.add(jRadioButton6);
-        jRadioButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton6.setText("Severo");
+        jrbSeveroAbd.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(jrbSeveroAbd);
+        jrbSeveroAbd.setForeground(new java.awt.Color(0, 0, 0));
+        jrbSeveroAbd.setText("Severo");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -547,23 +548,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteAbd, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbModeradaAbd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbSeveroAbd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jRadioButton4)
+                .addComponent(jrbNoPresenteAbd)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton5)
+                .addComponent(jrbModeradaAbd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton6)
+                .addComponent(jrbSeveroAbd)
                 .addContainerGap())
         );
 
@@ -600,25 +601,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton7.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup3.add(jRadioButton7);
-        jRadioButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton7.setText("No Presente");
-        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteSangrado.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jrbNoPresenteSangrado);
+        jrbNoPresenteSangrado.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteSangrado.setText("No Presente");
+        jrbNoPresenteSangrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton7ActionPerformed(evt);
+                jrbNoPresenteSangradoActionPerformed(evt);
             }
         });
 
-        jRadioButton8.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup3.add(jRadioButton8);
-        jRadioButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton8.setText("Moderada");
+        jrbModeradoSangrado.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jrbModeradoSangrado);
+        jrbModeradoSangrado.setForeground(new java.awt.Color(0, 0, 0));
+        jrbModeradoSangrado.setText("Moderada");
 
-        jRadioButton9.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup3.add(jRadioButton9);
-        jRadioButton9.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton9.setText("Intenso");
+        jrbIntensoSangrado.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup3.add(jrbIntensoSangrado);
+        jrbIntensoSangrado.setForeground(new java.awt.Color(0, 0, 0));
+        jrbIntensoSangrado.setText("Intenso");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -627,23 +628,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jRadioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteSangrado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbModeradoSangrado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbIntensoSangrado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jRadioButton7)
+                .addComponent(jrbNoPresenteSangrado)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton8)
+                .addComponent(jrbModeradoSangrado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton9)
+                .addComponent(jrbIntensoSangrado)
                 .addContainerGap())
         );
 
@@ -680,25 +681,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton19.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup7.add(jRadioButton19);
-        jRadioButton19.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton19.setText("Normal");
-        jRadioButton19.addActionListener(new java.awt.event.ActionListener() {
+        jrbNormalEstadoMental.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jrbNormalEstadoMental);
+        jrbNormalEstadoMental.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNormalEstadoMental.setText("Normal");
+        jrbNormalEstadoMental.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton19ActionPerformed(evt);
+                jrbNormalEstadoMentalActionPerformed(evt);
             }
         });
 
-        jRadioButton20.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup7.add(jRadioButton20);
-        jRadioButton20.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton20.setText("Leve");
+        jrbLeveEstadoMental.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jrbLeveEstadoMental);
+        jrbLeveEstadoMental.setForeground(new java.awt.Color(0, 0, 0));
+        jrbLeveEstadoMental.setText("Leve");
 
-        jRadioButton21.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup7.add(jRadioButton21);
-        jRadioButton21.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton21.setText("Grave");
+        jrbGraveEstadoMental.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup7.add(jrbGraveEstadoMental);
+        jrbGraveEstadoMental.setForeground(new java.awt.Color(0, 0, 0));
+        jrbGraveEstadoMental.setText("Grave");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -707,23 +708,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jRadioButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNormalEstadoMental, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbLeveEstadoMental, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbGraveEstadoMental, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(jRadioButton19)
+                .addComponent(jrbNormalEstadoMental)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton20)
+                .addComponent(jrbLeveEstadoMental)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton21)
+                .addComponent(jrbGraveEstadoMental)
                 .addContainerGap())
         );
 
@@ -760,25 +761,25 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton31.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup11.add(jRadioButton31);
-        jRadioButton31.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton31.setText("Sin Vómito");
-        jRadioButton31.addActionListener(new java.awt.event.ActionListener() {
+        jrbSinVomito.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jrbSinVomito);
+        jrbSinVomito.setForeground(new java.awt.Color(0, 0, 0));
+        jrbSinVomito.setText("Sin Vómito");
+        jrbSinVomito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton31ActionPerformed(evt);
+                jrbSinVomitoActionPerformed(evt);
             }
         });
 
-        jRadioButton32.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup11.add(jRadioButton32);
-        jRadioButton32.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton32.setText("Moderada");
+        jrbModeradoVomito.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jrbModeradoVomito);
+        jrbModeradoVomito.setForeground(new java.awt.Color(0, 0, 0));
+        jrbModeradoVomito.setText("Moderada");
 
-        jRadioButton33.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup11.add(jRadioButton33);
-        jRadioButton33.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton33.setText("Intenso");
+        jrbIntensoVomito.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup11.add(jrbIntensoVomito);
+        jrbIntensoVomito.setForeground(new java.awt.Color(0, 0, 0));
+        jrbIntensoVomito.setText("Intenso");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -787,23 +788,23 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createSequentialGroup()
-                        .addComponent(jRadioButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbSinVomito, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jrbModeradoVomito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbIntensoVomito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
-                .addComponent(jRadioButton31)
+                .addComponent(jrbSinVomito)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton32)
+                .addComponent(jrbModeradoVomito)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton33)
+                .addComponent(jrbIntensoVomito)
                 .addContainerGap())
         );
 
@@ -840,20 +841,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton34.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup12.add(jRadioButton34);
-        jRadioButton34.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton34.setText("Conciente");
-        jRadioButton34.addActionListener(new java.awt.event.ActionListener() {
+        jrbConciente.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup12.add(jrbConciente);
+        jrbConciente.setForeground(new java.awt.Color(0, 0, 0));
+        jrbConciente.setText("Conciente");
+        jrbConciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton34ActionPerformed(evt);
+                jrbConcienteActionPerformed(evt);
             }
         });
 
-        jRadioButton35.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup12.add(jRadioButton35);
-        jRadioButton35.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton35.setText("Inconciente");
+        jrbInconciente.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup12.add(jrbInconciente);
+        jrbInconciente.setForeground(new java.awt.Color(0, 0, 0));
+        jrbInconciente.setText("Inconciente");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -862,19 +863,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addComponent(jRadioButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbConciente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbInconciente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
-                .addComponent(jRadioButton34)
+                .addComponent(jrbConciente)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton35)
+                .addComponent(jrbInconciente)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -911,20 +912,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton22.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup8.add(jRadioButton22);
-        jRadioButton22.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton22.setText("No Presente");
-        jRadioButton22.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteSignoShock.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup8.add(jrbNoPresenteSignoShock);
+        jrbNoPresenteSignoShock.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteSignoShock.setText("No Presente");
+        jrbNoPresenteSignoShock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton22ActionPerformed(evt);
+                jrbNoPresenteSignoShockActionPerformed(evt);
             }
         });
 
-        jRadioButton23.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup8.add(jRadioButton23);
-        jRadioButton23.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton23.setText("Presente");
+        jrbPresenteSignoShock.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup8.add(jrbPresenteSignoShock);
+        jrbPresenteSignoShock.setForeground(new java.awt.Color(0, 0, 0));
+        jrbPresenteSignoShock.setText("Presente");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -933,19 +934,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jRadioButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteSignoShock, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbPresenteSignoShock, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addComponent(jRadioButton22)
+                .addComponent(jrbNoPresenteSignoShock)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton23)
+                .addComponent(jrbPresenteSignoShock)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -982,20 +983,20 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jRadioButton10.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup4.add(jRadioButton10);
-        jRadioButton10.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton10.setText("No Presente");
-        jRadioButton10.addActionListener(new java.awt.event.ActionListener() {
+        jrbNoPresenteLesionG.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup4.add(jrbNoPresenteLesionG);
+        jrbNoPresenteLesionG.setForeground(new java.awt.Color(0, 0, 0));
+        jrbNoPresenteLesionG.setText("No Presente");
+        jrbNoPresenteLesionG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton10ActionPerformed(evt);
+                jrbNoPresenteLesionGActionPerformed(evt);
             }
         });
 
-        jRadioButton11.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup4.add(jRadioButton11);
-        jRadioButton11.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton11.setText("Presente");
+        jrbPresenteLesionG.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup4.add(jrbPresenteLesionG);
+        jrbPresenteLesionG.setForeground(new java.awt.Color(0, 0, 0));
+        jrbPresenteLesionG.setText("Presente");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1004,19 +1005,19 @@ public class HacerTriage extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jRadioButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jrbNoPresenteLesionG, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jrbPresenteLesionG, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jRadioButton10)
+                .addComponent(jrbNoPresenteLesionG)
                 .addGap(4, 4, 4)
-                .addComponent(jRadioButton11)
+                .addComponent(jrbPresenteLesionG)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -1191,16 +1192,21 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
-        jButton1.setBackground(new java.awt.Color(100, 196, 244));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Volver");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, -1, -1));
+        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(100, 196, 244));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Crear Triage");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 660, 140, 50));
+        btnCrearTriage.setBackground(new java.awt.Color(100, 196, 244));
+        btnCrearTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCrearTriage.setForeground(new java.awt.Color(0, 0, 0));
+        btnCrearTriage.setText("Crear Triage");
+        btnCrearTriage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearTriageActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrearTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 660, 140, 50));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -1208,15 +1214,15 @@ public class HacerTriage extends javax.swing.JFrame {
         jLabel3.setText("Edad:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Niño/Anciano" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbEdad.setBackground(new java.awt.Color(255, 255, 255));
+        cmbEdad.setForeground(new java.awt.Color(0, 0, 0));
+        cmbEdad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Niño/Anciano" }));
+        cmbEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbEdadActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+        jPanel1.add(cmbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1236,57 +1242,190 @@ public class HacerTriage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jrbNormalRespiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalRespiracionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jrbNormalRespiracionActionPerformed
 
-    private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
+    private void jrbNoPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteLesionLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton13ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteLesionLActionPerformed
 
-    private void jRadioButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton25ActionPerformed
+    private void jrbNoPresenteDolorPechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteDolorPechoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton25ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteDolorPechoActionPerformed
 
-    private void jRadioButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton28ActionPerformed
+    private void jrbNormalPulsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalPulsoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton28ActionPerformed
+    }//GEN-LAST:event_jrbNormalPulsoActionPerformed
 
-    private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
+    private void jrbSinFiebreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSinFiebreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton16ActionPerformed
+    }//GEN-LAST:event_jrbSinFiebreActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void jrbNoPresenteAbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteAbdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteAbdActionPerformed
 
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+    private void jrbNoPresenteSangradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteSangradoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteSangradoActionPerformed
 
-    private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
+    private void jrbNormalEstadoMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalEstadoMentalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton19ActionPerformed
+    }//GEN-LAST:event_jrbNormalEstadoMentalActionPerformed
 
-    private void jRadioButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton31ActionPerformed
+    private void jrbSinVomitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSinVomitoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton31ActionPerformed
+    }//GEN-LAST:event_jrbSinVomitoActionPerformed
 
-    private void jRadioButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton34ActionPerformed
+    private void jrbConcienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConcienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton34ActionPerformed
+    }//GEN-LAST:event_jrbConcienteActionPerformed
 
-    private void jRadioButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton22ActionPerformed
+    private void jrbNoPresenteSignoShockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteSignoShockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton22ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteSignoShockActionPerformed
 
-    private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
+    private void jrbNoPresenteLesionGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteLesionGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton10ActionPerformed
+    }//GEN-LAST:event_jrbNoPresenteLesionGActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbEdadActionPerformed
+
+    private void btnCrearTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTriageActionPerformed
+        String respiracion ="", dolorAbd = "", sangrado = "", lesionGrave = "", lesionLeve = "", fiebre = "",
+                estadoMental = "", signosShock = "", dolorPecho = "", pulso = "",vomito="",conciencia="";
+        
+        //Respiración
+        if(jrbNormalRespiracion.isSelected()){
+            respiracion = jrbNormalRespiracion.getText();
+            
+        }else if(jrbModeradaRespiracion.isSelected()){
+            respiracion = jrbModeradaRespiracion.getText();
+            
+        }else if(jrbGraveRespiracion.isSelected()){
+            respiracion = jrbGraveRespiracion.getText();
+            
+        }
+        
+       //Dolor Abdominal
+        if(jrbNoPresenteAbd.isSelected()){
+            dolorAbd = jrbNoPresenteAbd.getText();
+            
+        }else if(jrbModeradaAbd.isSelected()){
+            dolorAbd = jrbModeradaAbd.getText();
+            
+        }else if(jrbSeveroAbd.isSelected()){
+            dolorAbd = jrbSeveroAbd.getText();
+            
+        }
+        
+        //Sangrado
+        if(jrbNoPresenteSangrado.isSelected()){
+            sangrado = jrbNoPresenteSangrado.getText();
+            
+        }else if(jrbModeradoSangrado.isSelected()){
+            sangrado = jrbModeradoSangrado.getText();
+            
+        }else if(jrbIntensoSangrado.isSelected()){
+            sangrado = jrbIntensoSangrado.getText();
+            
+        }
+        
+        //Lesiones Graves
+        if(jrbNoPresenteLesionG.isSelected()){
+            lesionGrave = jrbNoPresenteLesionG.getText();
+            
+        }else if(jrbPresenteLesionG.isSelected()){
+            lesionGrave = jrbPresenteLesionG.getText();
+            
+        }
+        
+        //Lesiones Levis
+        if(jrbNoPresenteLesionL.isSelected()){
+            lesionLeve = jrbNoPresenteLesionL.getText();
+            
+        }else if(jrbModeradaRespiracion.isSelected()){
+            lesionLeve = jrbPresenteLesionL.getText();
+            
+        }
+        
+        //Fiebre
+        if(jrbSinFiebre.isSelected()){
+            fiebre = jrbSinFiebre.getText();
+            
+        }else if(jrbModeradoFiebre.isSelected()){
+            fiebre = jrbModeradoFiebre.getText();
+            
+        }else if(jrbAltaFiebre.isSelected()){
+            fiebre = jrbAltaFiebre.getText();
+            
+        }
+        
+        //Estado Mental
+        if(jrbNormalEstadoMental.isSelected()){
+            estadoMental = jrbNormalEstadoMental.getText();
+            
+        }else if(jrbLeveEstadoMental.isSelected()){
+            estadoMental = jrbNormalEstadoMental.getText();
+            
+        }else if(jrbGraveEstadoMental.isSelected()){
+            estadoMental = jrbNormalEstadoMental.getText();
+            
+        }
+        
+        //Signos de Shock
+        if(jrbNoPresenteSignoShock.isSelected()){
+            signosShock = jrbNoPresenteSignoShock.getText();
+            
+        }else if(jrbPresenteSignoShock.isSelected()){
+            signosShock = jrbPresenteSignoShock.getText();
+            
+        }
+        
+        //Dolor en el pecho
+        if(jrbNoPresenteDolorPecho.isSelected()){
+            dolorPecho = jrbNoPresenteDolorPecho.getText();
+            
+        }else if(jrbPresenteDolorPecho.isSelected()){
+            dolorPecho = jrbPresenteDolorPecho.getText();
+            
+        }
+        
+        //Pulso
+        if(jrbNormalPulso.isSelected()){
+            pulso = jrbNormalPulso.getText();
+            
+        }else if(jrbAnormalPulso.isSelected()){
+            pulso = jrbAnormalPulso.getText();
+            
+        }
+        
+        //Vomitos
+        if(jrbSinVomito.isSelected()){
+            vomito = jrbSinVomito.getText();
+            
+        }else if(jrbModeradoVomito.isSelected()){
+            vomito = jrbModeradoVomito.getText();
+            
+        }else if(jrbIntensoVomito.isSelected()){
+            vomito = jrbIntensoVomito.getText();
+        }
+        
+        //Conciencia
+        if(jrbConciente.isSelected()){
+            conciencia = jrbConciente.getText();
+            
+        }else if(jrbInconciente.isSelected()){
+            conciencia = jrbInconciente.getText();
+            
+        }
+        String edad = (String) cmbEdad.getSelectedItem();
+        this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad);
+        JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
+    }//GEN-LAST:event_btnCrearTriageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1294,6 +1433,8 @@ public class HacerTriage extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearTriage;
+    private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup10;
     private javax.swing.ButtonGroup buttonGroup11;
@@ -1306,9 +1447,7 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.ButtonGroup buttonGroup8;
     private javax.swing.ButtonGroup buttonGroup9;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbEdad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1339,36 +1478,6 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton13;
-    private javax.swing.JRadioButton jRadioButton14;
-    private javax.swing.JRadioButton jRadioButton16;
-    private javax.swing.JRadioButton jRadioButton17;
-    private javax.swing.JRadioButton jRadioButton18;
-    private javax.swing.JRadioButton jRadioButton19;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton20;
-    private javax.swing.JRadioButton jRadioButton21;
-    private javax.swing.JRadioButton jRadioButton22;
-    private javax.swing.JRadioButton jRadioButton23;
-    private javax.swing.JRadioButton jRadioButton25;
-    private javax.swing.JRadioButton jRadioButton26;
-    private javax.swing.JRadioButton jRadioButton28;
-    private javax.swing.JRadioButton jRadioButton29;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton31;
-    private javax.swing.JRadioButton jRadioButton32;
-    private javax.swing.JRadioButton jRadioButton33;
-    private javax.swing.JRadioButton jRadioButton34;
-    private javax.swing.JRadioButton jRadioButton35;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
@@ -1379,6 +1488,36 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JRadioButton jrbAltaFiebre;
+    private javax.swing.JRadioButton jrbAnormalPulso;
+    private javax.swing.JRadioButton jrbConciente;
+    private javax.swing.JRadioButton jrbGraveEstadoMental;
+    private javax.swing.JRadioButton jrbGraveRespiracion;
+    private javax.swing.JRadioButton jrbInconciente;
+    private javax.swing.JRadioButton jrbIntensoSangrado;
+    private javax.swing.JRadioButton jrbIntensoVomito;
+    private javax.swing.JRadioButton jrbLeveEstadoMental;
+    private javax.swing.JRadioButton jrbModeradaAbd;
+    private javax.swing.JRadioButton jrbModeradaRespiracion;
+    private javax.swing.JRadioButton jrbModeradoFiebre;
+    private javax.swing.JRadioButton jrbModeradoSangrado;
+    private javax.swing.JRadioButton jrbModeradoVomito;
+    private javax.swing.JRadioButton jrbNoPresenteAbd;
+    private javax.swing.JRadioButton jrbNoPresenteDolorPecho;
+    private javax.swing.JRadioButton jrbNoPresenteLesionG;
+    private javax.swing.JRadioButton jrbNoPresenteLesionL;
+    private javax.swing.JRadioButton jrbNoPresenteSangrado;
+    private javax.swing.JRadioButton jrbNoPresenteSignoShock;
+    private javax.swing.JRadioButton jrbNormalEstadoMental;
+    private javax.swing.JRadioButton jrbNormalPulso;
+    private javax.swing.JRadioButton jrbNormalRespiracion;
+    private javax.swing.JRadioButton jrbPresenteDolorPecho;
+    private javax.swing.JRadioButton jrbPresenteLesionG;
+    private javax.swing.JRadioButton jrbPresenteLesionL;
+    private javax.swing.JRadioButton jrbPresenteSignoShock;
+    private javax.swing.JRadioButton jrbSeveroAbd;
+    private javax.swing.JRadioButton jrbSinFiebre;
+    private javax.swing.JRadioButton jrbSinVomito;
     private javax.swing.JLabel txtRespiracion;
     private javax.swing.JLabel txtRespiracion1;
     private javax.swing.JLabel txtRespiracion10;

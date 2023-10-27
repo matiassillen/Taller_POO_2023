@@ -1,5 +1,18 @@
 package Model;
 
+import Model.Sintomas.Conciencia;
+import Model.Sintomas.DolorAbd;
+import Model.Sintomas.DolorPecho;
+import Model.Sintomas.Edad;
+import Model.Sintomas.Fiebre;
+import Model.Sintomas.LesionesGraves;
+import Model.Sintomas.LesionesLeves;
+import Model.Sintomas.Mental;
+import Model.Sintomas.Pulso;
+import Model.Sintomas.Respiracion;
+import Model.Sintomas.Sangrado;
+import Model.Sintomas.Shock;
+import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
 import static java.awt.SystemColor.control;
 import java.io.Serializable;
@@ -15,6 +28,11 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+
+/**
+ * La clase `Controladora` es el controlador principal del sistema.
+ * Administra usuarios, pacientes, consultas y otros datos relacionados con la atención médica.
+ */
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
     Usuario usu;
@@ -22,7 +40,10 @@ public class Controladora implements Serializable{
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
     
-
+ /**
+     * Constructor de la clase `Controladora`.
+     * Inicializa una instancia de `ControladoraPersistencia` y establece `usu` en `null`.
+     */
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
@@ -36,6 +57,11 @@ public class Controladora implements Serializable{
         return usu;
     }
     
+    /**
+     * Obtiene una lista de funcionarios generales.
+     *
+     * @return Lista de funcionarios generales.
+     */
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
         return controlPersis.traerFuncionariosEnGeneral();
     }
@@ -134,22 +160,32 @@ public class Controladora implements Serializable{
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
         return medicoConMasPacientesPrivate(fecha1, fecha2);
     }
-
+/**
+ * Busca y devuelve el médico con la mayor cantidad de pacientes atendidos en un rango de fechas.
+ *
+ * @param fecha1 La fecha de inicio del rango.
+ * @param fecha2 La fecha de fin del rango.
+ * @return El médico con más pacientes atendidos en el rango de fechas especificado,
+ *         o null si no hay consultas en el rango.
+ */
     private Medico medicoConMasPacientesPrivate(LocalDate fecha1, LocalDate fecha2) {
+        // Mapa para llevar un conteo de las consultas por médico
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        // Medico con la mayor cantidad de pacientes atendidos
         Medico medicoConMasPacientes = null;
+        // Obtener la lista de consultas
         List<Consulta> consultas = traerConsultas();
-
+        // Verificar si hay consultas
         if (consultas != null) { 
             int maxConsultas = 0;
-
+            // Recorremos las consultas para contar cuántas atendió cada médico en el rango de fechas
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                     Medico medico = consulta.getMedico();
                     int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
                     conteoConsultas.put(medico, consultasMedico);
-
+                    // Actualizamos al médico con más pacientes si encontramos un nuevo máximo      
                     if (consultasMedico > maxConsultas) {
                         maxConsultas = consultasMedico;
                         medicoConMasPacientes = medico;
@@ -157,6 +193,7 @@ public class Controladora implements Serializable{
                 }
             }
         } else {
+            // No hay consultas, retornar null
             return null;
         }
 
@@ -677,8 +714,10 @@ public class Controladora implements Serializable{
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
-        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+        
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);        
+        String hora = horaActual.format(formato);
         
         Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
         this.controlPersis.CrearConsulta(consu);
@@ -724,5 +763,184 @@ public class Controladora implements Serializable{
         }
         return paciente;
     }
-    
+
+    public void crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad) {
+        
+        Triage triage = new Triage();
+        
+        //Respiración 
+        if(respiracion.equals(Respiracion.GRAVE.getTipo())){
+            
+            triage.setResp(Respiracion.GRAVE);
+            
+        }else if(respiracion.equals(Respiracion.MODERADA.getTipo())){
+            
+            triage.setResp(Respiracion.MODERADA);
+            
+        }else if(respiracion.equals(Respiracion.NORMAL.getTipo())){
+           
+            triage.setResp(Respiracion.NORMAL);
+            
+        }
+        
+        //Mental
+        if(estadoMental.equals(Mental.GRAVE.getTipo())){
+            
+            triage.setEstMental(Mental.GRAVE);
+            
+        }else if(estadoMental.equals(Mental.LEVE.getTipo())){
+           
+            triage.setEstMental(Mental.LEVE);
+            
+        }else if(estadoMental.equals(Mental.NORMAL.getTipo())){
+           
+            triage.setEstMental(Mental.NORMAL);
+            
+        }
+        
+        //Fiebre
+        if(fiebre.equals(Fiebre.ALTA.getTipo())){
+            
+            triage.setFiebre(Fiebre.ALTA);
+            
+        }else if(fiebre.equals(Fiebre.MODERADA.getTipo())){
+            
+            triage.setFiebre(Fiebre.MODERADA);
+            
+        }else if(fiebre.equals(Fiebre.SIN.getTipo())){
+            
+            triage.setFiebre(Fiebre.SIN);
+            
+        }
+        
+        //Vomitos
+        if(vomito.equals(Vomitos.INTENSOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.INTENSOS);
+            
+        }else if(vomito.equals(Vomitos.MODERADOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.MODERADOS);
+            
+        }else if(vomito.equals(Vomitos.SIN.getTipo())){
+            
+            triage.setVomitos(Vomitos.SIN);
+            
+        }
+        
+        if(dolorAbd.equals(DolorAbd.SEVERO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.SEVERO);
+            
+        }else if(dolorAbd.equals(DolorAbd.MODERADO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.MODERADO);
+            
+        }else if(dolorAbd.equals(DolorAbd.NOP.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.NOP);
+            
+        }
+        
+        //Sangrado
+        if(sangrado.equals(Sangrado.INTENSO.getTipo())){
+            
+            triage.setSangrado(Sangrado.INTENSO);
+            
+        }else if(sangrado.equals(Sangrado.MODERADO.getTipo())){
+            triage.setSangrado(Sangrado.MODERADO);
+            
+        }else if(sangrado.equals(Sangrado.NOP.getTipo())){
+            
+            triage.setSangrado(Sangrado.NOP);
+            
+        }
+        
+        //Pulso
+        if(pulso.equals(Pulso.ANORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.ANORMAL);
+            
+        }else if(pulso.equals(Pulso.NORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.NORMAL);
+            
+        }
+        
+        //Conciencia
+        if(conciencia.equals(Conciencia.INCONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.INCONCIENTE);
+            
+        }else if(conciencia.equals(Conciencia.CONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.CONCIENTE);
+            
+        }
+        
+        //Dolor de Pecho
+        if(dolorPecho.equals(DolorPecho.PRESENTE.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.PRESENTE);
+            
+        }else if(dolorPecho.equals(DolorPecho.NOP.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.NOP);
+            
+        }
+        
+        //LesionesGraves
+        if(lesionGrave.equals(LesionesGraves.PRESENTES.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.PRESENTES);
+            
+        }else if(lesionGrave.equals(LesionesGraves.NOP.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.NOP);
+            
+        }
+        
+        //Edad
+        if(edad.equals(Edad.ADULTO.getTipo())){
+            
+            triage.setEdad(Edad.ADULTO);
+            
+        }else if(edad.equals(Edad.OTRO.getTipo())){
+            
+            triage.setEdad(Edad.OTRO);
+            
+        }
+        
+        //Shock
+        if(signosShock.equals(Shock.PRESENTES.getTipo())){
+            triage.setShock(Shock.PRESENTES);
+            
+        }else if(signosShock.equals(Shock.NOP.getTipo())){
+            
+            triage.setShock(Shock.NOP);
+            
+        }
+        
+        //LesionesLeves
+        if(lesionLeve.equals(LesionesLeves.PRESENTES.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.PRESENTES);
+            
+        }else if(lesionLeve.equals(LesionesLeves.NOP.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.NOP);
+            
+        }
+        
+        triage.setColorFinal(null);
+        triage.setColorInicial(null);
+        triage.setConsulta(null);
+        triage.setMedico(null);
+        triage.setMotCambio(null);
+        triage.setEnfermero(null);
+        this.controlPersis.crearTriage(triage);
+        
+    }
+
+ 
 }
