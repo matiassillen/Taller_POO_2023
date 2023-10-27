@@ -704,8 +704,9 @@ public class Controladora implements Serializable{
      * @param telFijo
      * @param personaContacto
      * @param numContacto
+     * @return 
      */
-    public void registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
@@ -719,11 +720,16 @@ public class Controladora implements Serializable{
         paciente.setTelefonoFijo(telCelular);
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
-        paciente.setDiagnosticoClinico(null);
-        paciente.setResultadoEstudio(null);
-
-        controlPersis.RegistrarPaciente(paciente);
         
+        List <Consulta> listConsultas = new ArrayList<>();
+        List <DiagnosticoClinico> listDiagnosticoClinico = new ArrayList<>();
+        List <ResultadoEstudio> listResultadoEstudio = new ArrayList<>();
+        
+        paciente.setDiagnosticoClinico(listDiagnosticoClinico);
+        paciente.setResultadoEstudio(listResultadoEstudio);
+        paciente.setConsultas(listConsultas);
+        controlPersis.RegistrarPaciente(paciente);
+        return paciente;
     }
 
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
@@ -736,7 +742,12 @@ public class Controladora implements Serializable{
         
         Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
         this.controlPersis.CrearConsulta(consu);
+        List <Consulta> consultas = p.getConsultas();
+        consultas.add(consu);
+        p.setConsultas(consultas);
+        this.controlPersis.editarPaciente(p);
         this.esperaAtencionTriage.AñadirALaFila(consu);
+        
 
     }
 

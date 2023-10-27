@@ -233,30 +233,30 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
 
     private void cargarPacientes(LocalDate fechaOne, LocalDate fechaTwo){
               
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
-
-        @Override
-        public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
-       
-        String titulos[] = {"Apellido", "Nombre", "Numero de consultas"};
-        modeloTabla.setColumnIdentifiers(titulos);
-
-        ArrayList<Object> listaPacientes = this.controlP.listaPacientesMasAtendidos(fechaOne, fechaTwo);
-        
-        if (listaPacientes != null) {
-            for (ArrayList<> pacienteAux : listaPacientes) {
-                Paciente leerPaciente = (Paciente) pacienteAux.get(0);
-                String cantOcurrencia = (String) pacienteAux.get(1);
-                
-                Object[] objeto = {leerPaciente.getApellido(), leerPaciente.getNombre(), cantOcurrencia};
-
-                modeloTabla.addRow(objeto);
-            }
-        }
-        tablaPacientes.setModel(modeloTabla);
+//        DefaultTableModel modeloTabla = new DefaultTableModel() {
+//
+//        @Override
+//        public boolean isCellEditable(int row, int colum) {
+//                return false;
+//            }
+//        };
+//       
+//        String titulos[] = {"Apellido", "Nombre", "Numero de consultas"};
+//        modeloTabla.setColumnIdentifiers(titulos);
+//
+//        ArrayList<Object> listaPacientes = this.controlP.listaPacientesMasAtendidos(fechaOne, fechaTwo);
+//        
+//        if (listaPacientes != null) {
+//            for (ArrayList<> pacienteAux : listaPacientes) {
+//                Paciente leerPaciente = (Paciente) pacienteAux.get(0);
+//                String cantOcurrencia = (String) pacienteAux.get(1);
+//                
+//                Object[] objeto = {leerPaciente.getApellido(), leerPaciente.getNombre(), cantOcurrencia};
+//
+//                modeloTabla.addRow(objeto);
+//            }
+//        }
+//        tablaPacientes.setModel(modeloTabla);
     
     }
     

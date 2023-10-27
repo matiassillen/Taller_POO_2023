@@ -12,12 +12,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class RegistrarPaciente extends javax.swing.JFrame {
+
     Paciente paciente;
     Controladora control;
+
     public RegistrarPaciente(Controladora control) {
         initComponents();
         this.control = control;
-        
+
     }
 
     /**
@@ -408,43 +410,42 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
-        if (txtDni.getText().length() > 8) {
-            JOptionPane.showMessageDialog(null, "Dni no valido");
+
+        if (txtDni.getText().length() != 8) {
+            JOptionPane.showMessageDialog(null, "Dni no válido");
             txtDni.setText("");
-        }
-        else{
-            
+        } else {
+
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String dni = txtDni.getText();
-            
-            // Crear un objeto Calendar y establecer la fecha deseada
-            Calendar calendar = Calendar.getInstance();
-            
-            Calendar fechaCal = jdcFechaNacimiento.getCalendar();
-            
-            calendar.set(fechaCal.YEAR, fechaCal.MONTH, fechaCal.DATE);
 
-            // Crear un objeto SimpleDateFormat y establecer el formato de fecha deseado
-            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-            // Convertir el objeto Calendar en un String
-            String fechaNacimiento = formato.format(calendar);
-           
+            // Se obtiene la fecha del objeto JCalendar
+            Calendar calendar = jdcFechaNacimiento.getCalendar();
+
+            // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            // Pasaje del objeto Calendar a un StringS
+            String fechaString = formato.format(calendar.getTime());
+            
+            
             String domicilio = txtDomicilio.getText();
-            String estadoCivil = (String)cmbEstadoCivil.getSelectedItem();
+            String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
             String correo = txtCorreo.getText();
             String telCelular = txtTelCelular.getText();
             String telFijo = txtTelFijo.getText();
             String personaContacto = txtPersoContacto.getText();
             String numContacto = txtTelContacto.getText();
-       
-            this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+
+            Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            this.paciente = paci;
+
             JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
-        } 
-        
+        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -463,67 +464,65 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        
+
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-        try{            
+
+        try {
             int doc = Integer.parseInt(txtDni.getText());
-            
-            
-        
-        
-        Paciente paci = new Paciente();
-        
-        
-        paci = this.control.buscarPacientePorDni(doc);
-        
-        if (paci.getDni() == 0){
-           btnGuardar.setEnabled(true);
-           btnCrearConsulta.setEnabled(false);
-        }else{
-            
-            txtDni.setText(txtDni.getText());
-            txtApellido.setText(paci.getApellido());
-            txtNombre.setText(paci.getNombre());
-            cmbEstadoCivil.setSelectedItem(paci.getEstadoCivil());
-            txtCorreo.setText(paci.getCorreoE());
-            txtDomicilio.setText(paci.getDomicilio());
-            txtTelFijo.setText(paci.getTelefonoFijo());
-            txtTelCelular.setText(paci.getTelefonoCel());
-            txtPersoContacto.setText(paci.getPersoDeContacto());
-            txtTelContacto.setText(paci.getTelDeContacto());
-            
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            Date fecha = formato.parse(paci.getFechaDeNac());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(fecha);
-            jdcFechaNacimiento.setCalendar(calendar);
-            
-            btnCrearConsulta.setEnabled(true);
-        }    
-        }catch(NumberFormatException e){
+
+            Paciente paci;
+
+            paci = this.control.buscarPacientePorDni(doc);
+
+            if (paci.getDni() == 0) {
+                btnGuardar.setEnabled(true);
+                btnCrearConsulta.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Paciente ingresado sin registrar");
+            } else {
+
+                txtDni.setText(txtDni.getText());
+                txtApellido.setText(paci.getApellido());
+                txtNombre.setText(paci.getNombre());
+                cmbEstadoCivil.setSelectedItem(paci.getEstadoCivil());
+                txtCorreo.setText(paci.getCorreoE());
+                txtDomicilio.setText(paci.getDomicilio());
+                txtTelFijo.setText(paci.getTelefonoFijo());
+                txtTelCelular.setText(paci.getTelefonoCel());
+                txtPersoContacto.setText(paci.getPersoDeContacto());
+                txtTelContacto.setText(paci.getTelDeContacto());
+
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha = formato.parse(paci.getFechaDeNac());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(fecha);
+                jdcFechaNacimiento.setCalendar(calendar);
+
+                btnCrearConsulta.setEnabled(true);
+                this.paciente = paci;
+            }
+        } catch (NumberFormatException e) {
             txtDni.setText("");
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
         } catch (ParseException ex) {
             Logger.getLogger(RegistrarPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         btnCrearConsulta.setEnabled(false);
         btnGuardar.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-        String lugar =("Hospital Masvernat");
+        String lugar = ("Hospital Masvernat");
         String motivo = txtMotivo.getText();
         Paciente p = this.paciente;
-        this.control.CrearConsulta(lugar,motivo,p);
+        this.control.CrearConsulta(lugar, motivo, p);
         
         btnCrearConsulta.setEnabled(false);
         txtMotivo.setText("");
@@ -535,7 +534,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         miUsu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

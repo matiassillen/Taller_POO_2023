@@ -231,7 +231,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbNoPresenteLesionL.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup5.add(jrbNoPresenteLesionL);
         jrbNoPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
-        jrbNoPresenteLesionL.setText("No Presente");
+        jrbNoPresenteLesionL.setText("No Presentes");
         jrbNoPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbNoPresenteLesionLActionPerformed(evt);
@@ -242,6 +242,11 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup5.add(jrbPresenteLesionL);
         jrbPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
         jrbPresenteLesionL.setText("Presente");
+        jrbPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbPresenteLesionLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -534,7 +539,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbModeradaAbd.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup2.add(jrbModeradaAbd);
         jrbModeradaAbd.setForeground(new java.awt.Color(0, 0, 0));
-        jrbModeradaAbd.setText("Moderada");
+        jrbModeradaAbd.setText("Moderado");
 
         jrbSeveroAbd.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup2.add(jrbSeveroAbd);
@@ -614,7 +619,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbModeradoSangrado.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup3.add(jrbModeradoSangrado);
         jrbModeradoSangrado.setForeground(new java.awt.Color(0, 0, 0));
-        jrbModeradoSangrado.setText("Moderada");
+        jrbModeradoSangrado.setText("Moderado");
 
         jrbIntensoSangrado.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup3.add(jrbIntensoSangrado);
@@ -764,7 +769,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbSinVomito.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup11.add(jrbSinVomito);
         jrbSinVomito.setForeground(new java.awt.Color(0, 0, 0));
-        jrbSinVomito.setText("Sin Vómito");
+        jrbSinVomito.setText("Sin Vómitos");
         jrbSinVomito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbSinVomitoActionPerformed(evt);
@@ -774,12 +779,12 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbModeradoVomito.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup11.add(jrbModeradoVomito);
         jrbModeradoVomito.setForeground(new java.awt.Color(0, 0, 0));
-        jrbModeradoVomito.setText("Moderada");
+        jrbModeradoVomito.setText("Moderados");
 
         jrbIntensoVomito.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup11.add(jrbIntensoVomito);
         jrbIntensoVomito.setForeground(new java.awt.Color(0, 0, 0));
-        jrbIntensoVomito.setText("Intenso");
+        jrbIntensoVomito.setText("Intensos");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -915,7 +920,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbNoPresenteSignoShock.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup8.add(jrbNoPresenteSignoShock);
         jrbNoPresenteSignoShock.setForeground(new java.awt.Color(0, 0, 0));
-        jrbNoPresenteSignoShock.setText("No Presente");
+        jrbNoPresenteSignoShock.setText("No Presentes");
         jrbNoPresenteSignoShock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbNoPresenteSignoShockActionPerformed(evt);
@@ -925,7 +930,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbPresenteSignoShock.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup8.add(jrbPresenteSignoShock);
         jrbPresenteSignoShock.setForeground(new java.awt.Color(0, 0, 0));
-        jrbPresenteSignoShock.setText("Presente");
+        jrbPresenteSignoShock.setText("Presentes");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -986,7 +991,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbNoPresenteLesionG.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup4.add(jrbNoPresenteLesionG);
         jrbNoPresenteLesionG.setForeground(new java.awt.Color(0, 0, 0));
-        jrbNoPresenteLesionG.setText("No Presente");
+        jrbNoPresenteLesionG.setText("No Presentes");
         jrbNoPresenteLesionG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbNoPresenteLesionGActionPerformed(evt);
@@ -996,7 +1001,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jrbPresenteLesionG.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup4.add(jrbPresenteLesionG);
         jrbPresenteLesionG.setForeground(new java.awt.Color(0, 0, 0));
-        jrbPresenteLesionG.setText("Presente");
+        jrbPresenteLesionG.setText("Presentes");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1426,6 +1431,10 @@ public class HacerTriage extends javax.swing.JFrame {
         this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad);
         JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
     }//GEN-LAST:event_btnCrearTriageActionPerformed
+
+    private void jrbPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPresenteLesionLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbPresenteLesionLActionPerformed
 
     /**
      * @param args the command line arguments
