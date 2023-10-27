@@ -388,6 +388,10 @@ public class ControladoraPersistencia implements Serializable{
         return medicoJpa.findMedicoEntities();
     }
 
+    public void crearTriage(Triage triage) {
+        this.triageJpa.create(triage);
+    }
+
     
 }
     

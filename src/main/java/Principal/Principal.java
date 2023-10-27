@@ -7,6 +7,7 @@ import Model.Paciente;
 import VentanasGUI.Administrador;
 import VentanasGUI.CantTriageColor;
 import VentanasGUI.GuiLogin;
+import VentanasGUI.HacerTriage;
 import VentanasGUI.MedicoMasPacientes;
 import VentanasGUI.RegistrarPaciente;
 import VentanasGUI.TriageCambiado;
@@ -18,7 +19,7 @@ public class Principal {
         Controladora control = new Controladora();
         Paciente p = new Paciente();
         
-        CantTriageColor pantalla= new CantTriageColor();
+        HacerTriage pantalla= new HacerTriage(control,p);
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         

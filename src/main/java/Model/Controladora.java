@@ -1,5 +1,18 @@
 package Model;
 
+import Model.Sintomas.Conciencia;
+import Model.Sintomas.DolorAbd;
+import Model.Sintomas.DolorPecho;
+import Model.Sintomas.Edad;
+import Model.Sintomas.Fiebre;
+import Model.Sintomas.LesionesGraves;
+import Model.Sintomas.LesionesLeves;
+import Model.Sintomas.Mental;
+import Model.Sintomas.Pulso;
+import Model.Sintomas.Respiracion;
+import Model.Sintomas.Sangrado;
+import Model.Sintomas.Shock;
+import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
 import static java.awt.SystemColor.control;
 import java.io.Serializable;
@@ -722,6 +735,184 @@ public class Controladora implements Serializable{
             }
         }
         return paciente;
+    }
+
+    public void crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad) {
+        
+        Triage triage = new Triage();
+        
+        //Respiración 
+        if(respiracion.equals(Respiracion.GRAVE.getTipo())){
+            
+            triage.setResp(Respiracion.GRAVE);
+            
+        }else if(respiracion.equals(Respiracion.MODERADA.getTipo())){
+            
+            triage.setResp(Respiracion.MODERADA);
+            
+        }else if(respiracion.equals(Respiracion.NORMAL.getTipo())){
+           
+            triage.setResp(Respiracion.NORMAL);
+            
+        }
+        
+        //Mental
+        if(estadoMental.equals(Mental.GRAVE.getTipo())){
+            
+            triage.setEstMental(Mental.GRAVE);
+            
+        }else if(estadoMental.equals(Mental.LEVE.getTipo())){
+           
+            triage.setEstMental(Mental.LEVE);
+            
+        }else if(estadoMental.equals(Mental.NORMAL.getTipo())){
+           
+            triage.setEstMental(Mental.NORMAL);
+            
+        }
+        
+        //Fiebre
+        if(fiebre.equals(Fiebre.ALTA.getTipo())){
+            
+            triage.setFiebre(Fiebre.ALTA);
+            
+        }else if(fiebre.equals(Fiebre.MODERADA.getTipo())){
+            
+            triage.setFiebre(Fiebre.MODERADA);
+            
+        }else if(fiebre.equals(Fiebre.SIN.getTipo())){
+            
+            triage.setFiebre(Fiebre.SIN);
+            
+        }
+        
+        //Vomitos
+        if(vomito.equals(Vomitos.INTENSOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.INTENSOS);
+            
+        }else if(vomito.equals(Vomitos.MODERADOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.MODERADOS);
+            
+        }else if(vomito.equals(Vomitos.SIN.getTipo())){
+            
+            triage.setVomitos(Vomitos.SIN);
+            
+        }
+        
+        if(dolorAbd.equals(DolorAbd.SEVERO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.SEVERO);
+            
+        }else if(dolorAbd.equals(DolorAbd.MODERADO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.MODERADO);
+            
+        }else if(dolorAbd.equals(DolorAbd.NOP.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.NOP);
+            
+        }
+        
+        //Sangrado
+        if(sangrado.equals(Sangrado.INTENSO.getTipo())){
+            
+            triage.setSangrado(Sangrado.INTENSO);
+            
+        }else if(sangrado.equals(Sangrado.MODERADO.getTipo())){
+            triage.setSangrado(Sangrado.MODERADO);
+            
+        }else if(sangrado.equals(Sangrado.NOP.getTipo())){
+            
+            triage.setSangrado(Sangrado.NOP);
+            
+        }
+        
+        //Pulso
+        if(pulso.equals(Pulso.ANORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.ANORMAL);
+            
+        }else if(pulso.equals(Pulso.NORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.NORMAL);
+            
+        }
+        
+        //Conciencia
+        if(conciencia.equals(Conciencia.INCONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.INCONCIENTE);
+            
+        }else if(conciencia.equals(Conciencia.CONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.CONCIENTE);
+            
+        }
+        
+        //Dolor de Pecho
+        if(dolorPecho.equals(DolorPecho.PRESENTE.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.PRESENTE);
+            
+        }else if(dolorPecho.equals(DolorPecho.NOP.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.NOP);
+            
+        }
+        
+        //LesionesGraves
+        if(lesionGrave.equals(LesionesGraves.PRESENTES.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.PRESENTES);
+            
+        }else if(lesionGrave.equals(LesionesGraves.NOP.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.NOP);
+            
+        }
+        
+        //Edad
+        if(edad.equals(Edad.ADULTO.getTipo())){
+            
+            triage.setEdad(Edad.ADULTO);
+            
+        }else if(edad.equals(Edad.OTRO.getTipo())){
+            
+            triage.setEdad(Edad.OTRO);
+            
+        }
+        
+        //Shock
+        if(signosShock.equals(Shock.PRESENTES.getTipo())){
+            triage.setShock(Shock.PRESENTES);
+            
+        }else if(signosShock.equals(Shock.NOP.getTipo())){
+            
+            triage.setShock(Shock.NOP);
+            
+        }
+        
+        //LesionesLeves
+        if(lesionLeve.equals(LesionesLeves.PRESENTES.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.PRESENTES);
+            
+        }else if(lesionLeve.equals(LesionesLeves.NOP.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.NOP);
+            
+        }
+        
+        triage.setColorFinal(null);
+        triage.setColorInicial(null);
+        triage.setConsulta(null);
+        triage.setMedico(null);
+        triage.setMotCambio(null);
+        triage.setEnfermero(null);
+        this.controlPersis.crearTriage(triage);
+        
     }
 
  
