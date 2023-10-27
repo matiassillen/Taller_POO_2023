@@ -676,8 +676,10 @@ public class Controladora implements Serializable{
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
-        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+        
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);        
+        String hora = horaActual.format(formato);
         
         Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
         this.controlPersis.CrearConsulta(consu);
