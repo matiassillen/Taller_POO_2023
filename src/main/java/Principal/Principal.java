@@ -19,9 +19,9 @@ public class Principal {
         Controladora control = new Controladora();
         Paciente p = new Paciente();
         
-        HacerTriage pantalla= new HacerTriage(control,p);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+//        HacerTriage pantalla= new HacerTriage(control,p);
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
         
 //        TriageCambiado pantalla= new TriageCambiado(control);
 //        pantalla.setVisible(true);

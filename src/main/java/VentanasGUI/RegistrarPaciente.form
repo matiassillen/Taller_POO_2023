@@ -275,7 +275,7 @@
                                       <Component id="txtPersoContacto" pref="250" max="32767" attributes="0"/>
                                       <Component id="txtTelContacto" pref="250" max="32767" attributes="0"/>
                                       <Component id="cmbEstadoCivil" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="jdcFechaNacimiento" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -319,7 +319,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" max="32767" attributes="0"/>
-                              <Component id="jDateChooser1" max="32767" attributes="0"/>
+                              <Component id="jdcFechaNacimiento" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -549,7 +549,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcFechaNacimiento">
                 </Component>
               </SubComponents>
             </Container>
