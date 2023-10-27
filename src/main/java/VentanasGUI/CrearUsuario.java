@@ -221,7 +221,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         FuncionarioGeneral funcGeneral = control.traerFuncionarioGeneral(id);
 
         if (funcGeneral.getUsu() == null) {
-            String nombreUsaurio = nombre + "  " + apellido;
+            String nombreUsaurio = nombre + "_" +apellido;
             String contrasenia = String.valueOf(dni);
             String rolUsu = String.valueOf(cmbRol.getSelectedItem());
 
