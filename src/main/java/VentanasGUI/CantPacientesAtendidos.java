@@ -305,19 +305,19 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         try {
             edadOne = Integer.parseInt(txtEdad1.getText());
             edadTwo = Integer.parseInt(txtEdad2.getText());
-            
-            if (edadOne <= 0) {
-                edadOne = edadOne*(-1);
-            }
-            if (edadTwo <= 0) {
-                edadTwo = edadTwo*(-1);
-            }
                     
             if (edadOne > edadTwo) {
                 Integer aux = edadTwo;
                 edadTwo = edadOne;
                 edadOne = aux;
             }
+            if (edadOne < 0) {
+                edadOne = edadOne*(-1);
+            }
+            if (edadTwo < 0) {
+                edadTwo = edadTwo*(-1);
+            }
+            
             estado = true;
         }
         catch(Exception e) {

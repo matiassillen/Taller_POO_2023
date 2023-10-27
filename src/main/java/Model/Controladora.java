@@ -132,43 +132,51 @@ public class Controladora implements Serializable{
      * @param fecha2 
      * @return
     */
+    
+    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
+        return medicoConMasPacientesPrivate(fecha1, fecha2);
+    }
 
-    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+    private Medico medicoConMasPacientesPrivate(LocalDate fecha1, LocalDate fecha2) {
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
         Medico medicoConMasPacientes = null;
         List<Consulta> consultas = traerConsultas();
 
-    if (consultas != null) { 
-        int maxConsultas = 0;
+        if (consultas != null) { 
+            int maxConsultas = 0;
 
-        for (Consulta consulta : consultas) {
-            LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
-            if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
-                Medico medico = consulta.getMedico();
-                int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
-                conteoConsultas.put(medico, consultasMedico);
+            for (Consulta consulta : consultas) {
+                LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
+                if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                    Medico medico = consulta.getMedico();
+                    int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
+                    conteoConsultas.put(medico, consultasMedico);
 
-                if (consultasMedico > maxConsultas) {
-                    maxConsultas = consultasMedico;
-                    medicoConMasPacientes = medico;
+                    if (consultasMedico > maxConsultas) {
+                        maxConsultas = consultasMedico;
+                        medicoConMasPacientes = medico;
+                    }
                 }
             }
+        } else {
+            return null;
         }
-    } else {
-        return null;
-    }
 
-    return medicoConMasPacientes;
+        return medicoConMasPacientes;
     }
     
     
     /**
     * Metodo que devuelve una lista de consultas entre dos fechas
-    * @return ArrayList<Consulta>
-    * @param LocalDate fecha1 es la fecha limite inferior para filtrar
-    * @param LocalDate fecha2 es la fecha limite superior para filtrar
+    * @return ArrayList de consultas
+    * @param fecha1 es la fecha limite inferior para filtrar
+    * @param fecha2 es la fecha limite superior para filtrar
     */
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
+        return filtraFechasPrivate(fecha1, fecha2);
+    }
+    
+    private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
 
@@ -195,7 +203,12 @@ public class Controladora implements Serializable{
      * @param fecha2 parametro limite superior de fecha para filtrar
      * @return devuelve un entero contador de ocurrencias
      */
-    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
+    
+    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2){
+        return contadorPacientesEdadPrivate(edad1, edad2, fecha1, fecha2);
+    }
+            
+    private String contadorPacientesEdadPrivate(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
         
