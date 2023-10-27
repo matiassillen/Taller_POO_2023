@@ -174,7 +174,6 @@ public class Gestor extends javax.swing.JFrame {
         CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.controlG);
         cantMedico.setVisible(true);
         cantMedico.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnCantPacienteMedicoActionPerformed
 
     private void btnCantPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteActionPerformed
@@ -182,21 +181,18 @@ public class Gestor extends javax.swing.JFrame {
         CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.controlG);
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnCantPacienteActionPerformed
 
     private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
         PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.controlG);
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnPacienteMasConsultaActionPerformed
 
     private void btnMedicoMasPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoMasPacienteActionPerformed
         MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.controlG);
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -207,7 +203,6 @@ public class Gestor extends javax.swing.JFrame {
         TriageCambiado triagesCambiados = new TriageCambiado(this.controlG);
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnTriageCambiadoActionPerformed
 
     /**

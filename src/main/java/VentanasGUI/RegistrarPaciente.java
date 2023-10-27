@@ -2,17 +2,24 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Paciente;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class RegistrarPaciente extends javax.swing.JFrame {
+
     Paciente paciente;
     Controladora control;
+
     public RegistrarPaciente(Controladora control) {
         initComponents();
         this.control = control;
-        
+
     }
 
     /**
@@ -55,7 +62,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         cmbEstadoCivil = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdcFechaNacimiento = new com.toedter.calendar.JDateChooser();
         btnCrearConsulta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -229,7 +236,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                             .addComponent(txtPersoContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtTelContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(cmbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jLabel2)
@@ -263,7 +270,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -403,33 +410,42 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
-        if (txtDni.getText().length() > 8) {
-            JOptionPane.showMessageDialog(null, "Dni no valido");
+
+        if (txtDni.getText().length() != 8) {
+            JOptionPane.showMessageDialog(null, "Dni no válido");
             txtDni.setText("");
-        }
-        else{
-            
+        } else {
+
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String dni = txtDni.getText();
-            Calendar fechaCal = jDateChooser1.getCalendar();
-            LocalDate fechaNac = LocalDate.of(fechaCal.YEAR, fechaCal.MONTH, fechaCal.DATE);
-            String fechaNacimiento = fechaNac.toString();
+
+            // Se obtiene la fecha del objeto JCalendar
+            Calendar calendar = jdcFechaNacimiento.getCalendar();
+
+            // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            // Pasaje del objeto Calendar a un StringS
+            String fechaString = formato.format(calendar.getTime());
+            
+            
             String domicilio = txtDomicilio.getText();
-            String estadoCivil = (String)cmbEstadoCivil.getSelectedItem();
+            String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
             String correo = txtCorreo.getText();
             String telCelular = txtTelCelular.getText();
             String telFijo = txtTelFijo.getText();
             String personaContacto = txtPersoContacto.getText();
             String numContacto = txtTelContacto.getText();
-       
-            this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
-            
+
+            Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+            this.paciente = paci;
+
+            JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
-        } 
-        
+        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -448,58 +464,65 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        
+
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-        try{            
+
+        try {
             int doc = Integer.parseInt(txtDni.getText());
-            Object[] dni;
-            //dni = this.control.ValidarPaciente(doc);
-        
-        String vacio = "";
-        Paciente paci = new Paciente();
-        
-        int docu = Integer.parseInt(txtDni.getText());
-        paci = this.control.buscarPacientePorDni(docu);
-        
-        if (paci.getDni() == 0){
-           btnGuardar.setEnabled(true);
-           btnCrearConsulta.setEnabled(false);
-        }else{
-            
-            txtDni.setText(txtDni.getText());
-            txtApellido.setText(paci.getApellido());
-            txtNombre.setText(paci.getNombre());
-            cmbEstadoCivil.setSelectedItem(paci.getEstadoCivil());
-            txtCorreo.setText(paci.getCorreoE());
-            txtDomicilio.setText(paci.getDomicilio());
-            txtTelFijo.setText(paci.getTelefonoFijo());
-            txtTelCelular.setText(paci.getTelefonoCel());
-            txtPersoContacto.setText(paci.getPersoDeContacto());
-            txtTelContacto.setText(paci.getTelDeContacto());
-            btnCrearConsulta.setEnabled(true);
-        }    
-        }catch(NumberFormatException e){
+
+            Paciente paci;
+
+            paci = this.control.buscarPacientePorDni(doc);
+
+            if (paci.getDni() == 0) {
+                btnGuardar.setEnabled(true);
+                btnCrearConsulta.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Paciente ingresado sin registrar");
+            } else {
+
+                txtDni.setText(txtDni.getText());
+                txtApellido.setText(paci.getApellido());
+                txtNombre.setText(paci.getNombre());
+                cmbEstadoCivil.setSelectedItem(paci.getEstadoCivil());
+                txtCorreo.setText(paci.getCorreoE());
+                txtDomicilio.setText(paci.getDomicilio());
+                txtTelFijo.setText(paci.getTelefonoFijo());
+                txtTelCelular.setText(paci.getTelefonoCel());
+                txtPersoContacto.setText(paci.getPersoDeContacto());
+                txtTelContacto.setText(paci.getTelDeContacto());
+
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha = formato.parse(paci.getFechaDeNac());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(fecha);
+                jdcFechaNacimiento.setCalendar(calendar);
+
+                btnCrearConsulta.setEnabled(true);
+                this.paciente = paci;
+            }
+        } catch (NumberFormatException e) {
             txtDni.setText("");
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistrarPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         btnCrearConsulta.setEnabled(false);
         btnGuardar.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
-        String lugar =("Hospital Masvernat");
+        String lugar = ("Hospital Masvernat");
         String motivo = txtMotivo.getText();
         Paciente p = this.paciente;
-        this.control.CrearConsulta(lugar,motivo,p);
+        this.control.CrearConsulta(lugar, motivo, p);
         
         btnCrearConsulta.setEnabled(false);
         txtMotivo.setText("");
@@ -511,7 +534,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         miUsu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -520,7 +543,6 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -543,6 +565,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private com.toedter.calendar.JDateChooser jdcFechaNacimiento;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDni;

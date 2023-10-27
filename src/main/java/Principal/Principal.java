@@ -7,6 +7,7 @@ import Model.Paciente;
 import VentanasGUI.Administrador;
 import VentanasGUI.CantTriageColor;
 import VentanasGUI.GuiLogin;
+import VentanasGUI.HacerTriage;
 import VentanasGUI.MedicoMasPacientes;
 import VentanasGUI.RegistrarPaciente;
 import VentanasGUI.TriageCambiado;
@@ -19,6 +20,9 @@ public class Principal {
 //        Paciente p = new Paciente();
 //        
 //        CantTriageColor pantalla= new CantTriageColor();
+        Paciente p = new Paciente();
+        
+//        HacerTriage pantalla= new HacerTriage(control,p);
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
@@ -26,9 +30,9 @@ public class Principal {
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
-//        RegistrarPaciente buscar = new RegistrarPaciente();
-//        buscar.setVisible(true);
-//        buscar.setLocationRelativeTo(null);
+    RegistrarPaciente buscar = new RegistrarPaciente(control);
+    buscar.setVisible(true);
+    buscar.setLocationRelativeTo(null);
         
         Administrador pantalla = new Administrador(control);
         pantalla.setVisible(true);

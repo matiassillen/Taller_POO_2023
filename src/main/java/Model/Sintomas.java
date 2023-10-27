@@ -7,9 +7,9 @@ package Model;
 public class Sintomas {
     // enumeracion de sintomas de respiracion
     public enum Respiracion {
-        NORMAL("Respiracion normal", 0),
-        MODERADA("Dificultad moderada", 1),
-        GRAVE("Dificultad grave",2);
+        NORMAL("Normal", 0),
+        MODERADA("Moderada", 1),
+        GRAVE("Grave",2);
 
         private final String tipo;
         private final int point;
@@ -33,8 +33,8 @@ public class Sintomas {
     // enumeracion de sintomas mentales
     public enum Mental{
         NORMAL("Normal", 0),
-        LEVE("Confusion leve", 1),
-        GRAVE("Confusion grave o somnolencia",2);
+        LEVE("Leve", 1),
+        GRAVE("Grave",2);
 
         private final String tipo;
         private final int point;
@@ -58,9 +58,9 @@ public class Sintomas {
     
     // enumeracion de sintomas de fiebre
     public enum Fiebre{
-        SIN("Sin fiebre", 0),
-        MODERADA("Fiebre moderada", 1),
-        ALTA("Fiebre alta",2);
+        SIN("Sin Fiebre", 0),
+        MODERADA("Moderada", 1),
+        ALTA("Alta",2);
 
         private final String tipo;
         private final int point;
@@ -84,9 +84,9 @@ public class Sintomas {
     
     // enumeracion de vomitos
     public enum Vomitos{
-        SIN("Sin Vomitos", 0),
-        MODERADOS("Vomitos moderados", 1),
-        INTENSOS("Vomitos intensos",2);
+        SIN("Sin Vómitos", 0),
+        MODERADOS("Moderados", 1),
+        INTENSOS("Intensos",2);
 
         private final String tipo;
         private final int point;
@@ -111,8 +111,8 @@ public class Sintomas {
     // enumeracion de dolor abdominales
     public enum DolorAbd{
         NOP("No Presente", 0),
-        MODERADO("Dolor abdominal moderado", 1),
-        SEVERO("Dolor abdominal severo",2);
+        MODERADO("Moderado", 1),
+        SEVERO("Severo",2);
 
         private final String tipo;
         private final int point;
@@ -137,8 +137,8 @@ public class Sintomas {
     
     public enum Sangrado{
         NOP("No Presente", 0),
-        MODERADO("Sangrado moderado", 1),
-        INTENSO("Sangrado Intenso",2);
+        MODERADO("Moderado", 1),
+        INTENSO("Intenso",2);
 
         private final String tipo;
         private final int point;
@@ -161,8 +161,8 @@ public class Sintomas {
     }
     
     public enum Pulso{
-        NORMAL("Pulso normal", 0),
-        ANORMAL("Pulso anormal", 1);
+        NORMAL("Normal", 0),
+        ANORMAL("Anormal", 1);
 
         private final String tipo;
         private final int point;
@@ -185,8 +185,8 @@ public class Sintomas {
     }
     
     public enum Conciencia{
-        CONCIENTE("Conciente y alerta", 0),
-        INCONCIENTE("Perdida de conciencia", 3);
+        CONCIENTE("Conciente", 0),
+        INCONCIENTE("Inconciente", 3);
 
         private final String tipo;
         private final int point;
@@ -209,7 +209,7 @@ public class Sintomas {
     }
         
     public enum DolorPecho{
-        NOP("No presente", 0),
+        NOP("No Presente", 0),
         PRESENTE("Presente", 1);
 
         private final String tipo;
@@ -233,7 +233,7 @@ public class Sintomas {
     }
     
     public enum LesionesGraves{
-        NOP("No presente", 0),
+        NOP("No Presentes", 0),
         PRESENTES("Presentes", 2);
 
         private final String tipo;
@@ -258,7 +258,7 @@ public class Sintomas {
     
     public enum Edad{
         ADULTO("Adulto", 0),
-        OTRO("Niño o anciano", 1);
+        OTRO("Niño/Anciano", 1);
 
         private final String tipo;
         private final int point;
@@ -281,7 +281,7 @@ public class Sintomas {
     }
 
     public enum Shock{
-        NOP("No presente", 0),
+        NOP("No Presentes", 0),
         PRESENTES("Presentes", 3);
 
         private final String tipo;
@@ -305,7 +305,7 @@ public class Sintomas {
     }
 
     public enum LesionesLeves{
-        NOP("No presente", 0),
+        NOP("No Presentes", 0),
         PRESENTES("Presentes", 1);
 
         private final String tipo;

@@ -56,6 +56,8 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -289,28 +291,37 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Gestor pantallaGestion = new Gestor(controlP);
-//        pantallaGestion.setVisible(true);
-//        pantallaGestion.setLocationRelativeTo(null);
-//        this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         Integer edadOne = 0;
         Integer edadTwo = 0;
+        // estado es un booleano para controlar que se ejecute o no parte del codigo de forma innecesaria
+        // en este caso no ejecuto codigo si hay algun error
+        boolean estado;
         
         try {
             edadOne = Integer.parseInt(txtEdad1.getText());
             edadTwo = Integer.parseInt(txtEdad2.getText());
-            
+                    
             if (edadOne > edadTwo) {
                 Integer aux = edadTwo;
                 edadTwo = edadOne;
                 edadOne = aux;
             }
+            if (edadOne < 0) {
+                edadOne = edadOne*(-1);
+            }
+            if (edadTwo < 0) {
+                edadTwo = edadTwo*(-1);
+            }
+            
+            estado = true;
         }
         catch(Exception e) {
             txtAdvertenciaOne.setVisible(true);
+            estado = false;
         }
         
         Calendar fechaOne = jDateChooser1.getCalendar();
@@ -324,21 +335,23 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
-        LocalDate fecha1= LocalDate.of(diaOne,mesOne,diaOne);
+        LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
                 
-        if(fecha1.isBefore(fecha2)){
-        JOptionPane.showMessageDialog(
-            null,
-            "La segunda fecha no puede ser mayor que la primera.", 
-            "Error",  
-            JOptionPane.ERROR_MESSAGE  
-        );
-        }else{
-            Integer resultadoCant = this.controlP.contadorPacientesEdad(edadOne, edadTwo, fecha1, fecha2);
-            txtCantidad.setText(String.valueOf(resultadoCant));
-        }
+        if(estado){
+            if(fecha1.isBefore(fecha2)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "La segunda fecha no puede ser posterior a la primera.", 
+                    "Error",  
+                    JOptionPane.ERROR_MESSAGE  
+                );
+            }else{
 
+                String resultadoCant = this.controlP.contadorPacientesEdad(edadOne, edadTwo, fecha1, fecha2);
+                txtCantidad.setText(resultadoCant);
+            }
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void txtEdad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdad1ActionPerformed

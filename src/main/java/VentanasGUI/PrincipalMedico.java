@@ -3,14 +3,21 @@ package VentanasGUI;
 import Model.Controladora;
 import Model.Rol;
 import java.util.List;
+
 /**
+ * Esta clase representa una ventana de la interfaz gráfica de usuario que
+ * permite seleccionar entre Gestionar Pacientes y Hacer Triage segun el rol del
+ * mismo.
  *
  * @author yairc
  */
 public class PrincipalMedico extends javax.swing.JFrame {
+
     Controladora control;
+
     /**
      * Constructor de PrincipalMedico
+     *
      * @param control
      */
     public PrincipalMedico(Controladora control) {
@@ -34,7 +41,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnHacerTriage = new javax.swing.JButton();
         btnGestioDePaciente = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
+        btnMiUsuario = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
 
@@ -68,13 +75,13 @@ public class PrincipalMedico extends javax.swing.JFrame {
             }
         });
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
-        btnVolver.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+        btnMiUsuario.setBackground(new java.awt.Color(0, 204, 255));
+        btnMiUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnMiUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        btnMiUsuario.setText("Mi Usuario");
+        btnMiUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+                btnMiUsuarioActionPerformed(evt);
             }
         });
 
@@ -85,27 +92,23 @@ public class PrincipalMedico extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHacerTriage, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(btnGestioDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                    .addComponent(btnGestioDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(btnHacerTriage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(btnMiUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
                 .addComponent(btnHacerTriage)
                 .addGap(18, 18, 18)
                 .addComponent(btnGestioDePaciente)
                 .addGap(18, 18, 18)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(btnMiUsuario)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 250, 190));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 250, 160));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -140,71 +143,107 @@ public class PrincipalMedico extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
-     * Este método se activa cuando se realiza una acción en el botón btnHacerTriage.
-     * Crea una nueva instancia de la clase HacerTriage, la hace visible y la centra en la pantalla.
+     * Este método se activa cuando se realiza una acción en el botón
+     * btnHacerTriage. Crea una nueva instancia de la clase HacerTriage, la hace
+     * visible y la centra en la pantalla.
+     *
      * @param evt El evento de acción que ocurrió.
      */
     private void btnHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTriageActionPerformed
+        // Creamos una nueva instancia de la ventana EsperaTriage
         EsperaTriage hacerT = new EsperaTriage(control);
+        // Hacemos visible la ventana
         hacerT.setVisible(true);
+        // Centramos la ventana en la pantalla
         hacerT.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
         this.dispose();
     }//GEN-LAST:event_btnHacerTriageActionPerformed
     /**
-     * Este método se activa cuando se realiza una acción en el botón btnGestionDePaciente.
-     * Crea una nueva instancia de la clase GestionDePaciente, la hace visible y la centra en la pantalla.
+     * Este método se activa cuando se realiza una acción en el botón
+     * btnGestionDePaciente. Crea una nueva instancia de la clase
+     * GestionDePaciente, la hace visible y la centra en la pantalla.
+     *
      * @param evt El evento de acción que ocurrió.
      */
     private void btnGestioDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestioDePacienteActionPerformed
+        // Creamos una nueva instancia de la ventana GestionDePacientes
         GestionDePacientes tomarP = new GestionDePacientes(control);
+        // Hacemos visible la ventana
         tomarP.setVisible(true);
+        // Centramos la ventana en la pantalla
         tomarP.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
         this.dispose();
     }//GEN-LAST:event_btnGestioDePacienteActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+    /**
+     * Este método se activa cuando se realiza una acción en el botón btnMiUsuario.
+     * Crea una nueva instancia de la clase MiUsuario, la hace visible y la
+     * centra en la pantalla.
+     *
+     * @param evt El evento de acción que ocurrió.
+     */
+    private void btnMiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiUsuarioActionPerformed
+        // Creamos una nueva instancia de la ventana MiUsuario
         MiUsuario miUsu = new MiUsuario(control);
+        // Hacemos visible la ventana
         miUsu.setVisible(true);
+        // Centramos la ventana en la pantalla
         miUsu.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
+    }//GEN-LAST:event_btnMiUsuarioActionPerformed
 
+    /**
+     * Este método identifica el rol del usuario y habilita los botones
+     * correspondientes en la interfaz. Recorre la lista de roles del usuario y
+     * habilita los botones de 'Gestión de Paciente' y 'Hacer Triage' según
+     * corresponda.
+     */
     private void identificarRol() {
-        List<Rol> roles = this.control.getUsu().getRol();
-        for (Rol rol : roles){
-            String nombreRol = rol.getNombre();
-            switch (nombreRol) {
-                case "Medico - Atencion" -> {
-                    btnGestioDePaciente.setEnabled(true);
-                    btnHacerTriage.setEnabled(false);
-                }
-                case "Medico - Triage" -> {
-                    btnGestioDePaciente.setEnabled(false);
-                    btnHacerTriage.setEnabled(true);
-                }
-                default -> {
-                    btnGestioDePaciente.setEnabled(true);
-                    btnHacerTriage.setEnabled(true);
+        try {
+            // Obtenemos la lista de roles del usuario
+            List<Rol> roles = this.control.getUsu().getRol();
+
+            // Recorremos la lista de roles
+            for (Rol rol : roles) {
+                // Obtenemos el nombre del rol
+                String nombreRol = rol.getNombre();
+
+                // Según el nombre del rol, habilitamos los botones correspondientes
+                switch (nombreRol) {
+                    case "Medico - Atencion" -> {
+                        // Si el rol es 'Medico - Atencion', habilitamos el botón 'GestioDePaciente' y deshabilitamos el botón 'HacerTriage'
+                        btnGestioDePaciente.setEnabled(true);
+                        btnHacerTriage.setEnabled(false);
+                    }
+                    case "Medico - Triage" -> {
+                        // Si el rol es 'Medico - Triage', deshabilitamos el botón 'GestioDePaciente' y habilitamos el botón 'HacerTriage'
+                        btnGestioDePaciente.setEnabled(false);
+                        btnHacerTriage.setEnabled(true);
+                    }
+                    default -> {
+                        // Si el rol es cualquier otro, habilitamos ambos botones
+                        btnGestioDePaciente.setEnabled(true);
+                        btnHacerTriage.setEnabled(true);
+                    }
                 }
             }
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
         }
-        
-        
-        
     }
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestioDePaciente;
     private javax.swing.JButton btnHacerTriage;
-    private javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnMiUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
