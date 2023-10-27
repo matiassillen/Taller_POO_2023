@@ -24,8 +24,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
         initComponents();
         this.control = control;
         identificarRol();
-        btnGestioDePaciente.setEnabled(false);
-        btnHacerTriage.setEnabled(false);
+        
     }
 
     /**
@@ -205,6 +204,8 @@ public class PrincipalMedico extends javax.swing.JFrame {
      * corresponda.
      */
     private void identificarRol() {
+        btnGestioDePaciente.setEnabled(false);
+        btnHacerTriage.setEnabled(false);
         try {
             // Obtenemos la lista de roles del usuario
             List<Rol> roles = this.control.getUsu().getRol();

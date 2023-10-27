@@ -19,10 +19,12 @@ public class MiUsuario extends javax.swing.JFrame {
      * @param user Es el usuario que ingreso en la aplicacion 
      */
     public MiUsuario(Controladora user) {
-        this.usuarioRegistrado = user.getUsu().getFuncionarioGeneral();
+        this.user = user;
+        this.usuarioRegistrado = this.user.getUsu().getFuncionarioGeneral();
         //getFuncionarioGeneral();
         initComponents();
         this.setMuestra();
+        
     }
 
     /**
