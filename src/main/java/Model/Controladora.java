@@ -28,6 +28,11 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+
+/**
+ * La clase `Controladora` es el controlador principal del sistema.
+ * Administra usuarios, pacientes, consultas y otros datos relacionados con la atención médica.
+ */
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
     Usuario usu;
@@ -35,7 +40,10 @@ public class Controladora implements Serializable{
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
     
-
+ /**
+     * Constructor de la clase `Controladora`.
+     * Inicializa una instancia de `ControladoraPersistencia` y establece `usu` en `null`.
+     */
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
@@ -49,6 +57,11 @@ public class Controladora implements Serializable{
         return usu;
     }
     
+    /**
+     * Obtiene una lista de funcionarios generales.
+     *
+     * @return Lista de funcionarios generales.
+     */
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
         return controlPersis.traerFuncionariosEnGeneral();
     }
@@ -147,22 +160,32 @@ public class Controladora implements Serializable{
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
         return medicoConMasPacientesPrivate(fecha1, fecha2);
     }
-
+/**
+ * Busca y devuelve el médico con la mayor cantidad de pacientes atendidos en un rango de fechas.
+ *
+ * @param fecha1 La fecha de inicio del rango.
+ * @param fecha2 La fecha de fin del rango.
+ * @return El médico con más pacientes atendidos en el rango de fechas especificado,
+ *         o null si no hay consultas en el rango.
+ */
     private Medico medicoConMasPacientesPrivate(LocalDate fecha1, LocalDate fecha2) {
+        // Mapa para llevar un conteo de las consultas por médico
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        // Medico con la mayor cantidad de pacientes atendidos
         Medico medicoConMasPacientes = null;
+        // Obtener la lista de consultas
         List<Consulta> consultas = traerConsultas();
-
+        // Verificar si hay consultas
         if (consultas != null) { 
             int maxConsultas = 0;
-
+            // Recorremos las consultas para contar cuántas atendió cada médico en el rango de fechas
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                     Medico medico = consulta.getMedico();
                     int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
                     conteoConsultas.put(medico, consultasMedico);
-
+                    // Actualizamos al médico con más pacientes si encontramos un nuevo máximo      
                     if (consultasMedico > maxConsultas) {
                         maxConsultas = consultasMedico;
                         medicoConMasPacientes = medico;
@@ -170,6 +193,7 @@ public class Controladora implements Serializable{
                 }
             }
         } else {
+            // No hay consultas, retornar null
             return null;
         }
 
@@ -236,72 +260,73 @@ public class Controladora implements Serializable{
     
     /**
     *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
+     * @param fecha1 fecha limite inferior
+     * @param fecha2 fecha limite superior
+     * @param listaFiel lista a partir de la cual se filtra el pedido
     *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
-    * @param LocalDate fecha1 parametro para pasar como argumento a otra funcion
-    * @param LocalDate fecha2 parametro para pasar como argumento a otra funcion
-    * @param ArrayList listaFiel lista donde se realizara el conteo
+    * 
     */
     public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
         Paciente pacienteOne = null;
         ArrayList<Object> devolver = new ArrayList<>();
-        Integer contador = 0;
+        Integer contadorMax = 0;
         
         if (listaFiltro.isEmpty()) {
-            devolver.add(pacienteOne);
-            devolver.add(contador);
+            devolver.add("No hay consultas");
+            devolver.add(contadorMax);
             return devolver;
         }
         
-        ArrayList<Consulta> noRepetir = new ArrayList<>();
+        ArrayList<Paciente> noRepetir = new ArrayList<>();
         for (Consulta leerConsulta : listaFiltro){
 
-            if (noRepetir.contains(leerConsulta)){
+            if (noRepetir.contains(leerConsulta.getPaciente())){
                 continue;
             }
             else {
-                noRepetir.add(leerConsulta);
+                noRepetir.add(leerConsulta.getPaciente());
             }
             Integer contadorAux = 0;
             for (Consulta leerAux : listaFiltro) {
                 if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
                     contadorAux ++;
                 }
-                if (contadorAux > contador) {
+                if (contadorAux > contadorMax) {
                     pacienteOne = leerConsulta.getPaciente();
-                    contador = contadorAux;
+                    contadorMax = contadorAux;
                 }
             }
         }
 
         devolver.add(pacienteOne);
-        devolver.add(contador);
+        devolver.add(String.valueOf(contadorMax));
         return devolver;
     }
     
-////////////////    /**
-////////////////     *
-////////////////     * @param fecha1
-////////////////     * @param fecha2
-////////////////     * @return
-////////////////     */
-//    public Map<int, Paciente> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
-//////////////////        Paciente pacienteAux = null;
-//////////////////        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
-//////////////////        Map<int, ArrayList<Object>> accesoDirecto = new HashMap<>();
-//////////////////        
-//////////////////        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
-//////////////////            
-//////////////////            ArrayList<Object> agregarPaciente = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
-//////////////////            pacienteAux = (Paciente) agregarPaciente.get(0);
-//////////////////            
-//////////////////            accesoDirecto.put((repeticiones +1), agregarPaciente);
-//////////////////            listaFiltro.remove(pacienteAux);
-//////////////////            
-//////////////////            }
-//////////////////        return accesoDirecto;
-//        return null;
-//    }
+    /**
+     *
+     * @param fecha1
+     * @param fecha2
+     * @return
+     */
+    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+        Paciente pacienteAux = null;
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+        ArrayList<Object> accesoDirecto = new ArrayList<>();
+        
+        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+            
+            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+            pacienteAux = (Paciente) agregarEstadistica.get(0);
+            for (Consulta eliminaConsulta : listaFiltro) {
+                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
+                    listaFiltro.remove(eliminaConsulta);
+            }
+            accesoDirecto.add(agregarEstadistica);
+        }
+        return accesoDirecto;
+    }
 
 
     
@@ -915,6 +940,10 @@ public class Controladora implements Serializable{
         triage.setEnfermero(null);
         this.controlPersis.crearTriage(triage);
         
+    }
+
+    public List<Paciente> traerPacientes() {
+       return controlPersis.traerPacientes();
     }
 
  
