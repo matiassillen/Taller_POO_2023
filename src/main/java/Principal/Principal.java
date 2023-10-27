@@ -30,9 +30,9 @@ public class Principal {
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
-//    RegistrarPaciente buscar = new RegistrarPaciente(control);
-//    buscar.setVisible(true);
-//    buscar.setLocationRelativeTo(null);
+    RegistrarPaciente buscar = new RegistrarPaciente(control);
+    buscar.setVisible(true);
+    buscar.setLocationRelativeTo(null);
         
 //        Administrador pantalla = new Administrador(control);
 //        pantalla.setVisible(true);

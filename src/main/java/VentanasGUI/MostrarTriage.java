@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasGUI;
 
 import Model.Controladora;
@@ -14,12 +10,16 @@ import java.util.logging.Logger;
  * @author trapo
  */
 public class MostrarTriage extends javax.swing.JFrame {
+
     Triage triage;
+    Controladora control;
+
     /**
      * Creates new form MostrarTriage
+     *
      * @param triage
      */
-    Controladora control;
+
     public MostrarTriage(Triage triage, Controladora control) {
         initComponents();
         this.triage = triage;
@@ -148,52 +148,52 @@ public class MostrarTriage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbColorActionPerformed
-        
+
     }//GEN-LAST:event_cmbColorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        if(("ROJO").equalsIgnoreCase(triage.getColorInicial().name())){
-            cmbColor.addItem("NARANJA");
-            cmbColor.addItem("AMARILLO");
-            
-        }else if(("NARANJA").equalsIgnoreCase(triage.getColorInicial().name())){
-            cmbColor.addItem("ROJO");
-            cmbColor.addItem("AMARILLO");
-            cmbColor.addItem("VERDE");
-            
-        }else if(("AMARILLO").equalsIgnoreCase(triage.getColorInicial().name())){
-            cmbColor.addItem("ROJO");
-            cmbColor.addItem("NARANJA");
-            cmbColor.addItem("VERDE");
-            cmbColor.addItem("AZUL");
-            
-        }else if(("VERDE").equalsIgnoreCase(triage.getColorInicial().name())){
-            cmbColor.addItem("NARANJA");
-            cmbColor.addItem("AMARILLO");
-            cmbColor.addItem("AZUL");
-            
-        }else if(("AZUL").equalsIgnoreCase(triage.getColorInicial().name())){
-            cmbColor.addItem("AMARILLO");
-            cmbColor.addItem("VERDE");
-            
-        }
+        this.mostrarColores();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String motivo = txtMotivo.getText();
-        String color = (String) cmbColor.getSelectedItem();
         try {
+            String motivo = txtMotivo.getText();
+            String color = (String) cmbColor.getSelectedItem();
+
             this.control.editarTriage(motivo, color, triage);
         } catch (Exception ex) {
             Logger.getLogger(MostrarTriage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
+    private void mostrarColores() {
+        if (("ROJO").equalsIgnoreCase(triage.getColorInicial().name())) {
+            cmbColor.addItem("NARANJA");
+            cmbColor.addItem("AMARILLO");
+
+        } else if (("NARANJA").equalsIgnoreCase(triage.getColorInicial().name())) {
+            cmbColor.addItem("ROJO");
+            cmbColor.addItem("AMARILLO");
+            cmbColor.addItem("VERDE");
+
+        } else if (("AMARILLO").equalsIgnoreCase(triage.getColorInicial().name())) {
+            cmbColor.addItem("ROJO");
+            cmbColor.addItem("NARANJA");
+            cmbColor.addItem("VERDE");
+            cmbColor.addItem("AZUL");
+
+        } else if (("VERDE").equalsIgnoreCase(triage.getColorInicial().name())) {
+            cmbColor.addItem("NARANJA");
+            cmbColor.addItem("AMARILLO");
+            cmbColor.addItem("AZUL");
+
+        } else if (("AZUL").equalsIgnoreCase(triage.getColorInicial().name())) {
+            cmbColor.addItem("AMARILLO");
+            cmbColor.addItem("VERDE");
+
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

@@ -4,9 +4,10 @@ import Model.Controladora;
 import Model.Paciente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -36,7 +37,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -121,12 +122,12 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(100, 196, 244));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Limpiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setBackground(new java.awt.Color(100, 196, 244));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -332,7 +333,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnLimpiar)
                         .addGap(61, 61, 61)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -387,7 +388,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnLimpiar)
                         .addGap(23, 23, 23))))
         );
 
@@ -409,46 +410,76 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Este método se encarga de validar el número de DNI ingresado por el
+     * usuario. Si la longitud del número de DNI no es igual a 8, se muestra un
+     * mensaje de error y se borra el campo de entrada. Si el número de DNI es
+     * válido, se recopilan los datos ingresados por el usuario, como nombre,
+     * apellido, fecha de nacimiento, domicilio, estado civil, correo
+     * electrónico, teléfono celular, teléfono fijo, persona de contacto y
+     * número de contacto. Luego, se crea un objeto Paciente con estos datos y
+     * se registra en el sistema. Finalmente, se muestra un mensaje de
+     * confirmación y se deshabilita el botón “Guardar” mientras se habilita el
+     * botón “Crear consulta”
+     */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        if (txtDni.getText().length() != 8) {
-            JOptionPane.showMessageDialog(null, "Dni no válido");
-            txtDni.setText("");
-        } else {
-
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            String dni = txtDni.getText();
-
-            // Se obtiene la fecha del objeto JCalendar
-            Calendar calendar = jdcFechaNacimiento.getCalendar();
-
-            // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
-            // Pasaje del objeto Calendar a un StringS
-            String fechaString = formato.format(calendar.getTime());
-            
-            
-            String domicilio = txtDomicilio.getText();
-            String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
-            String correo = txtCorreo.getText();
-            String telCelular = txtTelCelular.getText();
-            String telFijo = txtTelFijo.getText();
-            String personaContacto = txtPersoContacto.getText();
-            String numContacto = txtTelContacto.getText();
-
-            Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
-            this.paciente = paci;
-
-            JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
-            btnCrearConsulta.setEnabled(true);
-            btnGuardar.setEnabled(false);
+        List<Paciente> listPaciente = new ArrayList<>();
+        listPaciente = this.control.traerPacientes();
+        boolean dniExistente = false;
+        int doc = Integer.parseInt(txtDni.getText());
+        for (Paciente paciente : listPaciente) {
+            if (paciente.getDni() == doc) {
+                JOptionPane.showMessageDialog(null, "Paciente ya registrado");
+                dniExistente = true;
+                break;
+            }
         }
+        if (dniExistente == false) {
+            if (txtDni.getText().length() != 8) {
+                JOptionPane.showMessageDialog(null, "Dni no válido");
+                txtDni.setText("");
+            } else {
+
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                String dni = txtDni.getText();
+
+                // Se obtiene la fecha del objeto JCalendar
+                Calendar calendar = jdcFechaNacimiento.getCalendar();
+
+                // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+                // Pasaje del objeto Calendar a un StringS
+                String fechaString = formato.format(calendar.getTime());
+
+                String domicilio = txtDomicilio.getText();
+                String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
+                String correo = txtCorreo.getText();
+                String telCelular = txtTelCelular.getText();
+                String telFijo = txtTelFijo.getText();
+                String personaContacto = txtPersoContacto.getText();
+                String numContacto = txtTelContacto.getText();
+
+                Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+                this.paciente = paci;
+
+                JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
+                
+            }
+        }
+
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Este método se encarga de borrar todos los campos de entrada en la
+     * interfaz de usuario, incluyendo los campos de nombre, apellido, DNI,
+     * fecha de nacimiento, domicilio, estado civil, correo electrónico,
+     * teléfono celular, teléfono fijo, persona de contacto y número de
+     * contacto. Además, deshabilita los botones “Crear consulta” y “Guardar”
+     */
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtDni.setText("");
         txtApellido.setText("");
         txtNombre.setText("");
@@ -459,14 +490,23 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         txtPersoContacto.setText("");
         txtTelContacto.setText("");
         txtMotivo.setText("");
-        btnCrearConsulta.setEnabled(false);
-        btnGuardar.setEnabled(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        jdcFechaNacimiento.setCalendar(null);
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
 
     }//GEN-LAST:event_txtDniActionPerformed
-
+    /**
+     * Este método se encarga de buscar un paciente en el sistema utilizando el
+     * número de DNI ingresado por el usuario. Si el paciente no está
+     * registrado, se habilita el botón “Guardar” y se deshabilita el botón
+     * “Crear consulta”. Además, se muestra un mensaje de advertencia al
+     * usuario. Si el paciente está registrado, se muestran los datos del
+     * paciente en los campos correspondientes de la interfaz de usuario. Luego,
+     * se habilita el botón “Crear consulta” y se establece la variable paciente
+     * con los datos del paciente encontrado.
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         try {
@@ -477,8 +517,6 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             paci = this.control.buscarPacientePorDni(doc);
 
             if (paci.getDni() == 0) {
-                btnGuardar.setEnabled(true);
-                btnCrearConsulta.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "Paciente ingresado sin registrar");
             } else {
 
@@ -512,22 +550,39 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    /**
+     * Método que se ejecuta cuando la ventana se abre. Deshabilita los botones
+     * "Crear Consulta" y "Guardar".
+     *
+     * @param evt El evento de ventana generado al abrir la ventana.
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        btnCrearConsulta.setEnabled(false);
-        btnGuardar.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
+    /**
+     * Este método se encarga de crear una nueva consulta para el paciente
+     * seleccionado. Se recopilan los datos ingresados por el usuario, como el
+     * lugar de la consulta y el motivo de la misma. Luego, se crea un objeto
+     * Consulta con estos datos y se registra en el sistema. Finalmente, se
+     * deshabilita el botón “Crear consulta” y se borra el campo de entrada del
+     * motivo.
+     */
     private void btnCrearConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConsultaActionPerformed
         String lugar = ("Hospital Masvernat");
         String motivo = txtMotivo.getText();
         Paciente p = this.paciente;
         this.control.CrearConsulta(lugar, motivo, p);
-        
-        btnCrearConsulta.setEnabled(false);
         txtMotivo.setText("");
     }//GEN-LAST:event_btnCrearConsultaActionPerformed
 
+    /**
+     * Método que se ejecuta al hacer clic en el botón "Volver". Crea una
+     * instancia de la clase MiUsuario y la muestra en pantalla. Centra la
+     * ventana en la pantalla y cierra la ventana actual.
+     *
+     * @param evt El evento de acción generado al hacer clic en el botón.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         MiUsuario miUsu = new MiUsuario(control);
         miUsu.setVisible(true);
@@ -540,9 +595,9 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCrearConsulta;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

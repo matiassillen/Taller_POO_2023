@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasGUI;
 
+import Model.Consulta;
 import Model.Controladora;
 import Model.Triage;
 import Model.Usuario;
@@ -122,13 +119,14 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         jPanel27 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnVolver = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnCrearTriage = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbEdad = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1196,15 +1194,16 @@ public class HacerTriage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
+        btnGuardar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, -1, -1));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 670, 130, 50));
 
         btnCrearTriage.setBackground(new java.awt.Color(100, 196, 244));
         btnCrearTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -1215,7 +1214,7 @@ public class HacerTriage extends javax.swing.JFrame {
                 btnCrearTriageActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrearTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 660, 140, 50));
+        jPanel1.add(btnCrearTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 140, 50));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -1251,6 +1250,17 @@ public class HacerTriage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, -1, -1));
+
+        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
+        btnVolver.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 670, 130, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1470,19 +1480,31 @@ public class HacerTriage extends javax.swing.JFrame {
         MostrarTriage pantalla = new MostrarTriage(triage, control);
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Consulta consu = this.triage.getConsulta();
+        this.control.añadirALaFila(consu);
+        PrincipalMedico pmed = new PrincipalMedico(control);
+        pmed.setVisible(true);
+        pmed.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        
+        EsperaTriage pmed = new EsperaTriage(control);
+        pmed.setVisible(true);
+        pmed.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearTriage;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
