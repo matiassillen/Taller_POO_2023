@@ -18,6 +18,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Matías Sillen Ríos
+ */
 public class TituloJpaController implements Serializable {
 
     public TituloJpaController(EntityManagerFactory emf) {

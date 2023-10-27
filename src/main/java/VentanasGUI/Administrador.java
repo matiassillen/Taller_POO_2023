@@ -22,6 +22,7 @@ public class Administrador extends javax.swing.JFrame {
 
     AdministradorDeSistema administrador;
     Controladora control;
+    Administrador admin;
 
     /**
      * Creates new form Administrador
@@ -194,8 +195,8 @@ public class Administrador extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Funcionarios en General");
 
-        tablaFuncionariosEnGeneral.setBackground(new java.awt.Color(255, 255, 255));
-        tablaFuncionariosEnGeneral.setForeground(new java.awt.Color(255, 255, 255));
+        tablaFuncionariosEnGeneral.setBackground(new java.awt.Color(204, 204, 204));
+        tablaFuncionariosEnGeneral.setForeground(new java.awt.Color(0, 0, 0));
         tablaFuncionariosEnGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -215,8 +216,8 @@ public class Administrador extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaFuncionariosEnGeneral);
 
-        tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios.setBackground(new java.awt.Color(204, 204, 204));
+        tablaUsuarios.setForeground(new java.awt.Color(0, 0, 0));
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -336,7 +337,6 @@ public class Administrador extends javax.swing.JFrame {
         BuscarUsuario pantalla2 = new BuscarUsuario(administrador, control);
         pantalla2.setVisible(true);
         pantalla2.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
@@ -362,11 +362,6 @@ public class Administrador extends javax.swing.JFrame {
                         editar.setVisible(true);
                         editar.setLocationRelativeTo(null);
 
-                        //Avisar al administrador que se borro correctamente
-                        control.mostrarMensaje("Se editó el usuario conrrectamente", "info", "Edición correcta");
-                        
-                        cargarTablaFuncionariosEnGeneral();
-                        cargarTablaUsuarios();
                     } else {
                         control.mostrarMensaje("No selecciono ningún registro", "Error", "Error al editar");
                     }
@@ -737,9 +732,6 @@ public class Administrador extends javax.swing.JFrame {
                         pantalla1.setVisible(true);
                         pantalla1.setLocationRelativeTo(null);
 
-                        //Avisar al administrador que se creó correctamente
-                        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
-
                         cargarTablaFuncionariosEnGeneral();
                         cargarTablaUsuarios();
                     } else {
@@ -778,7 +770,11 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JTable tablaFuncionariosEnGeneral;
     private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
-
+    
+    public void recargarTablaFuncionariosEnGeneral() {
+        cargarTablaFuncionariosEnGeneral();
+    }
+    
     private void cargarTablaFuncionariosEnGeneral() {
         //Definimos el modelo que queremos que tenga la tabla
         DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -810,6 +806,10 @@ public class Administrador extends javax.swing.JFrame {
         }
 
         tablaFuncionariosEnGeneral.setModel(modeloTabla);
+    }
+    
+    public void recargarTablaUsuarios() {
+        cargarTablaUsuarios();
     }
 
     private void cargarTablaUsuarios() {

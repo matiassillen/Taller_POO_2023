@@ -19,6 +19,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Matías Sillen Ríos
+ */
 public class UsuarioJpaController implements Serializable {
 
     public UsuarioJpaController(EntityManagerFactory emf) {
@@ -28,7 +32,7 @@ public class UsuarioJpaController implements Serializable {
     public UsuarioJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

@@ -4,20 +4,26 @@
  */
 package VentanasGUI;
 
+import Model.Consulta;
 import Model.Controladora;
+import Model.Paciente;
+import Model.Triage;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Matías Sillen Ríos
+ * Esta clase representa la interfaz gráfica de usuario (GUI) para mostrar información administrativa.
+ * Muestra tablas de consultas, pacientes y triages.
+ * 
+ * 
  */
 public class InformacionAdministrativa extends javax.swing.JFrame {
 
     Controladora control;
-
-    /**
-     * Creates new form InformacionAdministrativa
+ /**
+     * Crea una nueva instancia de la ventana InformacionAdministrativa.
      *
-     * @param control
+     * @param control La instancia de la clase Controladora para gestionar los datos.
      */
     public InformacionAdministrativa(Controladora control) {
         initComponents();
@@ -36,11 +42,24 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtInfoAdministrativa = new javax.swing.JTextArea();
         btnVolver = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaTriages = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaPacientes = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaConsultas = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -48,35 +67,26 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Información Administrativa");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(307, 307, 307)
                 .addComponent(jLabel1)
-                .addGap(163, 163, 163))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
-
-        txtInfoAdministrativa.setEditable(false);
-        txtInfoAdministrativa.setBackground(new java.awt.Color(255, 255, 255));
-        txtInfoAdministrativa.setColumns(20);
-        txtInfoAdministrativa.setRows(5);
-        jScrollPane1.setViewportView(txtInfoAdministrativa);
 
         btnVolver.setBackground(new java.awt.Color(0, 204, 255));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,27 +94,107 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
             }
         });
 
+        tablaTriages.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tablaTriages);
+
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(tablaPacientes);
+
+        tablaConsultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaConsultas);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setText("Consultas");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setText("Pacientes");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setText("Triages");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
+            .addComponent(jScrollPane4)
+            .addComponent(jScrollPane3)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(14, 14, 14))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(14, 14, 14))
         );
@@ -117,7 +207,9 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,14 +221,127 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         pantalla.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+    /**
+     * Método que se ejecuta al abrir la ventana. Carga las tablas de consultas, pacientes y triages.
+     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaConsultas();
+        cargarTablaPacientes();
+        cargarTablaTriages();
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtInfoAdministrativa;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tablaConsultas;
+    private javax.swing.JTable tablaPacientes;
+    private javax.swing.JTable tablaTriages;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Carga la tabla de consultas con datos que trae de la controladora.
+     */
+    private void cargarTablaConsultas() {
+                //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Apellido","Nombre","Fecha","Hora","Lugar","Medico"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<Consulta> listaConsultas = control.traerConsultas();
+
+        if (listaConsultas != null) {
+
+            for (Consulta consulta : listaConsultas) {
+                Object[] objeto = {consulta.getPaciente().getApellido(),consulta.getPaciente().getNombre(),consulta.getFecha(),consulta.getHora(),consulta.getLugar(),consulta.getMedico().getApellido()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaConsultas.setModel(modeloTabla);
+    }
+  /**
+     * Carga la tabla de pacientes con datos de la controladora.
+     */
+    private void cargarTablaPacientes() {
+                //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Apellido","Nombre","Direccion","Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<Paciente> listaPacientes = control.traerPacientes();
+
+        if (listaPacientes != null) {
+
+            for (Paciente paciente : listaPacientes) {
+                Object[] objeto = {paciente.getApellido(),paciente.getNombre(),paciente.getDomicilio(),paciente.getTelefonoFijo()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaConsultas.setModel(modeloTabla);
+    }
+/**
+     * Carga la tabla de triages con datos de la controladora.
+     */
+    private void cargarTablaTriages() {
+                //Definimos el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            //Que fila y columna no sean editables
+            @Override
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Apellido", "Nombre","Color","Triagiador"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        //Traer de la DB la lista de Gestores
+        List<Triage> listaTriages = control.traerTriages();
+
+        if (listaTriages != null) {
+
+            for (Triage triage : listaTriages) {
+                Object[] objeto = {triage.getConsulta().getPaciente().getApellido(),triage.getConsulta().getPaciente().getNombre(),triage.getColorFinal(),triage.getEnfermero().getApellido()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaTriages.setModel(modeloTabla);
+    }
 }

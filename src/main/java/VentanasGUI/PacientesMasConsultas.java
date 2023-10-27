@@ -5,7 +5,14 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import Model.Medico;
+import Model.Paciente;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,12 +45,14 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -74,20 +83,20 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setBackground(new java.awt.Color(255, 255, 255));
+        tablaPacientes.setForeground(new java.awt.Color(0, 0, 0));
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaPacientes.setShowGrid(true);
+        jScrollPane1.setViewportView(tablaPacientes);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -103,11 +112,11 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addContainerGap(194, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,10 +191,7 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Gestor pantallaGestion = new Gestor();
-//        pantallaGestion.setVisible(true);
-//        pantallaGestion.setLocationRelativeTo(null);
-//        this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -193,14 +199,67 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
         int diaOne = fechaOne.get(Calendar.DATE);
-        int medOne = fechaOne.get(Calendar.MONTH);
-        int yearOne = fechaOne.get(Calendar.YEAR);
+        int mesOne = fechaOne.get(Calendar.MONTH);
+        int anioOne = fechaOne.get(Calendar.YEAR);
         
         int diaTwo = fechaTwo.get(Calendar.DATE);
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
+        
+        LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);
+        LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+        
+        if(fecha1.isBefore(fecha2)){
+            JOptionPane.showMessageDialog(
+                null,
+                "La segunda fecha no puede ser posterior a la primera.", 
+                "Error",  
+                JOptionPane.ERROR_MESSAGE  
+        );
+        }
+        
+        try {
+            this.cargarPacientes(fecha2, fecha2);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error en llamada a funcion, contactar area de Sistemas", 
+                "Error",  
+                JOptionPane.ERROR_MESSAGE  
+        );
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void cargarPacientes(LocalDate fechaOne, LocalDate fechaTwo){
+              
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+       
+        String titulos[] = {"Apellido", "Nombre", "Numero de consultas"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        ArrayList<Object> listaPacientes = this.controlP.listaPacientesMasAtendidos(fechaOne, fechaTwo);
+        
+        if (listaPacientes != null) {
+            for (ArrayList<> pacienteAux : listaPacientes) {
+                Paciente leerPaciente = (Paciente) pacienteAux.get(0);
+                String cantOcurrencia = (String) pacienteAux.get(1);
+                
+                Object[] objeto = {leerPaciente.getApellido(), leerPaciente.getNombre(), cantOcurrencia};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaPacientes.setModel(modeloTabla);
+    
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -218,6 +277,6 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPacientes;
     // End of variables declaration//GEN-END:variables
 }

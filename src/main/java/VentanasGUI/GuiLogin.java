@@ -143,7 +143,7 @@ public class GuiLogin extends javax.swing.JFrame {
             List<Rol> rolUser = resultado.getRol();
             
             ArrayList<String> funcionarioSalud = new ArrayList<String>();
-            String[] listaRoles = {"Medico - Atencion ", "Medico - Triagiador", "Medico - Atencion - Triagiador", "Licenciado en Enfermeria"};
+            String[] listaRoles = {"Medico - Atencion", "Medico - Triagiador", "Medico - Atencion - Triagiador", "Licenciado en Enfermeria"};
             
             for (String agregarRol : listaRoles){
                 funcionarioSalud.add(agregarRol);
@@ -164,7 +164,7 @@ public class GuiLogin extends javax.swing.JFrame {
                     break;
                 
                 case "Recepcionista":
-                    BuscarPaciente pantallaRecepcion = new BuscarPaciente(verif);
+                    RegistrarPaciente pantallaRecepcion = new RegistrarPaciente(verif);
                     pantallaRecepcion.setVisible(true);
                     pantallaRecepcion.setLocationRelativeTo(null);
                     this.dispose();                    

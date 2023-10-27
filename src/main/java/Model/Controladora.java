@@ -1,6 +1,20 @@
 package Model;
 
+import Model.Sintomas.Conciencia;
+import Model.Sintomas.DolorAbd;
+import Model.Sintomas.DolorPecho;
+import Model.Sintomas.Edad;
+import Model.Sintomas.Fiebre;
+import Model.Sintomas.LesionesGraves;
+import Model.Sintomas.LesionesLeves;
+import Model.Sintomas.Mental;
+import Model.Sintomas.Pulso;
+import Model.Sintomas.Respiracion;
+import Model.Sintomas.Sangrado;
+import Model.Sintomas.Shock;
+import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
+import static java.awt.SystemColor.control;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,14 +28,22 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class Controladora implements Serializable {
 
+/**
+ * La clase `Controladora` es el controlador principal del sistema.
+ * Administra usuarios, pacientes, consultas y otros datos relacionados con la atención médica.
+ */
+public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
     Usuario usu;
 
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
-
+    
+ /**
+     * Constructor de la clase `Controladora`.
+     * Inicializa una instancia de `ControladoraPersistencia` y establece `usu` en `null`.
+     */
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
@@ -34,7 +56,12 @@ public class Controladora implements Serializable {
     public Usuario getUsu() {
         return usu;
     }
-
+    
+    /**
+     * Obtiene una lista de funcionarios generales.
+     *
+     * @return Lista de funcionarios generales.
+     */
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
         return controlPersis.traerFuncionariosEnGeneral();
     }
@@ -46,11 +73,19 @@ public class Controladora implements Serializable {
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
-
+    
+    public List<Triage> traerTriages() {
+        return controlPersis.traerTriages();
+    }
+    public List<Medico> traerMedicos() {
+        return controlPersis.traerMedicos();
+    }
+    
     public List<Consulta> traerConsultas() {
         return controlPersis.traerConsultas();
     }
-
+    
+    
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
     }
@@ -91,48 +126,65 @@ public class Controladora implements Serializable {
         // TODO implement here
     }
 
+    
     /**
-     * @param fecha1
-     * @param fecha2
-     * @return
-     */
-    public Integer CantidadPacientesAtendidos(String fecha1, String fecha2) {
-        // TODO implement here
-        return null;
+     * @param idMedico es el numero para identificar al medico
+     * @param fecha1 parametro limite inferior
+     * @param fecha2 parametro limite superior
+     * @return String del contador de ocurrencias
+    */
+    public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
+        List<Medico> listaMed = this.traerMedicos();
+        Integer contador = 0;
+
+        for (Medico leerMed : listaMed) {
+            if (leerMed.getId() == idMedico) {       
+                for (Consulta leerConsulta : listaFiltro) {
+                    if (leerConsulta.getMedico().getDni() == leerMed.getDni()) {
+                        contador ++;
+                    }
+                }
+            }
+        }
+        return String.valueOf(contador);
     }
 
     /**
-     * @param fecha1
-     * @param fecha2
-     * @param edad1
-     * @param edad2
+     * @param fecha1 
+     * @param fecha2 
      * @return
-     */
-    public Integer PacientesAtendidosPorEdad(String fecha1, String fecha2, String edad1, String edad2) {
-        // TODO implement here
-        return null;
+    */
+    
+    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
+        return medicoConMasPacientesPrivate(fecha1, fecha2);
     }
-
-    /**
-     * @param fecha1
-     * @param fecha2
-     * @return
-     */
-    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
+/**
+ * Busca y devuelve el médico con la mayor cantidad de pacientes atendidos en un rango de fechas.
+ *
+ * @param fecha1 La fecha de inicio del rango.
+ * @param fecha2 La fecha de fin del rango.
+ * @return El médico con más pacientes atendidos en el rango de fechas especificado,
+ *         o null si no hay consultas en el rango.
+ */
+    private Medico medicoConMasPacientesPrivate(LocalDate fecha1, LocalDate fecha2) {
+        // Mapa para llevar un conteo de las consultas por médico
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
+        // Medico con la mayor cantidad de pacientes atendidos
         Medico medicoConMasPacientes = null;
+        // Obtener la lista de consultas
         List<Consulta> consultas = traerConsultas();
-
-        if (consultas != null) {
+        // Verificar si hay consultas
+        if (consultas != null) { 
             int maxConsultas = 0;
-
+            // Recorremos las consultas para contar cuántas atendió cada médico en el rango de fechas
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                     Medico medico = consulta.getMedico();
                     int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
                     conteoConsultas.put(medico, consultasMedico);
-
+                    // Actualizamos al médico con más pacientes si encontramos un nuevo máximo      
                     if (consultasMedico > maxConsultas) {
                         maxConsultas = consultasMedico;
                         medicoConMasPacientes = medico;
@@ -140,13 +192,25 @@ public class Controladora implements Serializable {
                 }
             }
         } else {
+            // No hay consultas, retornar null
             return null;
         }
 
         return medicoConMasPacientes;
     }
-
+    
+    
+    /**
+    * Metodo que devuelve una lista de consultas entre dos fechas
+    * @return ArrayList de consultas
+    * @param fecha1 es la fecha limite inferior para filtrar
+    * @param fecha2 es la fecha limite superior para filtrar
+    */
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
+        return filtraFechasPrivate(fecha1, fecha2);
+    }
+    
+    private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
 
@@ -164,56 +228,128 @@ public class Controladora implements Serializable {
 
         return listaFiltrada;
     }
-
-    public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
+    
+    /**
+     * @param edad1 parametro limite inferior de edad para filtrar
+     * @param edad2 parametro limite superior de edad para filtrar
+     * @param fecha1 parametro limite inferior de fecha para filtrar
+     * @param fecha2 parametro limite superior de fecha para filtrar
+     * @return devuelve un entero contador de ocurrencias
+     */
+    
+    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2){
+        return contadorPacientesEdadPrivate(edad1, edad2, fecha1, fecha2);
+    }
+            
+    private String contadorPacientesEdadPrivate(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
-        LocalDate fechaActual = LocalDate.now();
+        
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
-            Integer edadPaciente = (int) fechaNacimiento.until(fechaActual, YEARS);
-            if ((edadPaciente >= edad1) && (edadPaciente < edad2)) {
+            Integer edadPaciente = (int)fechaNacimiento.until(fecha2, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente <= edad2)){
                 contador = +1;
             }
         }
-        return contador;
+        return String.valueOf(contador);
+    }
+    
+    
+    /**
+    *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
+     * @param fecha1 fecha limite inferior
+     * @param fecha2 fecha limite superior
+     * @param listaFiel lista a partir de la cual se filtra el pedido
+    *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
+    * 
+    */
+    public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
+        ArrayList<Consulta> listaFiltro = listaFiel;
+        Paciente pacienteOne = null;
+        ArrayList<Object> devolver = new ArrayList<>();
+        Integer contadorMax = 0;
+        
+        if (listaFiltro.isEmpty()) {
+            devolver.add("No hay consultas");
+            devolver.add(contadorMax);
+            return devolver;
+        }
+        
+        ArrayList<Paciente> noRepetir = new ArrayList<>();
+        for (Consulta leerConsulta : listaFiltro){
+
+            if (noRepetir.contains(leerConsulta.getPaciente())){
+                continue;
+            }
+            else {
+                noRepetir.add(leerConsulta.getPaciente());
+            }
+            Integer contadorAux = 0;
+            for (Consulta leerAux : listaFiltro) {
+                if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
+                    contadorAux ++;
+                }
+                if (contadorAux > contadorMax) {
+                    pacienteOne = leerConsulta.getPaciente();
+                    contadorMax = contadorAux;
+                }
+            }
+        }
+
+        devolver.add(pacienteOne);
+        devolver.add(String.valueOf(contadorMax));
+        return devolver;
+    }
+    
+    /**
+     *
+     * @param fecha1
+     * @param fecha2
+     * @return
+     */
+    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+        Paciente pacienteAux = null;
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+        ArrayList<Object> accesoDirecto = new ArrayList<>();
+        
+        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+            
+            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+            pacienteAux = (Paciente) agregarEstadistica.get(0);
+            for (Consulta eliminaConsulta : listaFiltro) {
+                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
+                    listaFiltro.remove(eliminaConsulta);
+            }
+            accesoDirecto.add(agregarEstadistica);
+        }
+        return accesoDirecto;
     }
 
-//    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-//        
-//        return Medico;
-//    }
-    //---------Metodos estadiscticos----------
+
+    
+    //---------Metodos estadisticos----------
+    
     public void VerEstadistica() {
         // TODO implement here
     }
-    // public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
-    //    Map<String, Integer> diccionario = new HashMap<>();
-    //    for (Codigo Para Recorer Arbol de Tiage) {
-    //        if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
-    //            tipoColor clave = Triage.ColorFinal;
-    //            if(diccionario.containsKey(clave)){
-    //                diccionario.merge(clave, 1, Integer::sum);
-    //            }else{
-    //                diccionario.put(clave, 1);
-    //            }
-    //        }            
-    //    }
-    //    return diccionario;
-    // }
+////////////     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
+//////////////        Map<String, Integer> diccionario = new HashMap<>();
+//////////////        for (Codigo Para Recorer Arbol de Tiage) {
+//////////////            if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
+//////////////                tipoColor clave = Triage.ColorFinal;
+//////////////                if(diccionario.containsKey(clave)){
+//////////////                    diccionario.merge(clave, 1, Integer::sum);
+//////////////                }else{
+//////////////                    diccionario.put(clave, 1);
+//////////////                }
+//////////////            }            
+//////////////        }
+//////////////        return diccionario;
+////////////    }
 
-    public Integer triagesCambiados() {
-        int sum = 0;
-        //    int rango = len(funcionario.traigeHechos);
-        //    for (i= 0; i<rango; i++) {
-        //        Triage triageN = funcionario.traigeHechos[i];
-        //        if (triageN.colorFinal=!null) {
-        //            sum += 1;
-        //        }
-        //    }
-        return sum;
-    }
 
+    
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
 //    }
@@ -537,7 +673,39 @@ public class Controladora implements Serializable {
         return null;
     }
 
-    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public Usuario traerUsu(int dni) {
+        
+        List<Usuario> listaUsuarios = controlPersis.traerUsuarios();
+
+        if (listaUsuarios != null) {
+
+            for (Usuario usu : listaUsuarios) {
+
+                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                    
+                    mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
+                    return controlPersis.traerUsuario(usu.getId());  
+                    
+                }
+            }
+        }
+        return null;
+    }
+    /**
+     *
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param fechaNacimiento
+     * @param domicilio
+     * @param estadoCivil
+     * @param correo
+     * @param telCelular
+     * @param telFijo
+     * @param personaContacto
+     * @param numContacto
+     */
+    public void registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
@@ -555,43 +723,44 @@ public class Controladora implements Serializable {
         paciente.setResultadoEstudio(null);
 
         controlPersis.RegistrarPaciente(paciente);
-
-        return paciente;
+        
     }
 
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
-        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-
-        Consulta consu = new Consulta(p, fecha, hora, null, lugar, motivo, null, null, null);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+        
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);        
+        String hora = horaActual.format(formato);
+        
+        Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
         this.controlPersis.CrearConsulta(consu);
         this.esperaAtencionTriage.AñadirALaFila(consu);
 
     }
 
-    public Object[] ValidarPaciente(int doc) {
-        List<Paciente> pacientes = this.controlPersis.traerPacientes();
-        Object[] objetos = {11};
-        for (Paciente p : pacientes) {
-            if (p.getDni() == doc) {
-                objetos[0] = p.getDni();
-                objetos[1] = p.getApellido();
-                objetos[2] = p.getNombre();
-                objetos[3] = p.getFechaDeNac();
-                objetos[4] = p.getEstadoCivil();
-                objetos[5] = p.getCorreoE();
-                objetos[6] = p.getDomicilio();
-                objetos[7] = p.getTelefonoCel();
-                objetos[8] = p.getTelefonoFijo();
-                objetos[9] = p.getPersoDeContacto();
-                objetos[10] = p.getTelDeContacto();
-                break;
-            }
-        }
-        return objetos;
-    }
+//    public Object[] ValidarPaciente(int doc) {
+//        List<Paciente> pacientes = this.controlPersis.traerPacientes();
+//        Object[] objetos = {11};
+//        for(Paciente p : pacientes){
+//            if(p.getDni()==doc){
+//                objetos[0] = p.getDni();
+//                objetos[1] = p.getApellido();
+//                objetos[2] = p.getNombre();
+//                objetos[3] = p.getFechaDeNac();
+//                objetos[4] = p.getEstadoCivil();
+//                objetos[5] = p.getCorreoE();
+//                objetos[6] = p.getDomicilio();
+//                objetos[7] = p.getTelefonoCel();
+//                objetos[8] = p.getTelefonoFijo();
+//                objetos[9] = p.getPersoDeContacto();
+//                objetos[10] = p.getTelDeContacto();        
+//                break;
+//            }
+//        }
+//        return objetos;
+//    }
 
     public List<Consulta> traerPacientesEnEspera() {
         List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
@@ -617,4 +786,188 @@ public class Controladora implements Serializable {
         // Devolvemos el paciente encontrado (o el paciente vacío si no se encontró ninguno)
         return paciente;
     }
+
+    public void crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad) {
+        
+        Triage triage = new Triage();
+        
+        //Respiración 
+        if(respiracion.equals(Respiracion.GRAVE.getTipo())){
+            
+            triage.setResp(Respiracion.GRAVE);
+            
+        }else if(respiracion.equals(Respiracion.MODERADA.getTipo())){
+            
+            triage.setResp(Respiracion.MODERADA);
+            
+        }else if(respiracion.equals(Respiracion.NORMAL.getTipo())){
+           
+            triage.setResp(Respiracion.NORMAL);
+            
+        }
+        
+        //Mental
+        if(estadoMental.equals(Mental.GRAVE.getTipo())){
+            
+            triage.setEstMental(Mental.GRAVE);
+            
+        }else if(estadoMental.equals(Mental.LEVE.getTipo())){
+           
+            triage.setEstMental(Mental.LEVE);
+            
+        }else if(estadoMental.equals(Mental.NORMAL.getTipo())){
+           
+            triage.setEstMental(Mental.NORMAL);
+            
+        }
+        
+        //Fiebre
+        if(fiebre.equals(Fiebre.ALTA.getTipo())){
+            
+            triage.setFiebre(Fiebre.ALTA);
+            
+        }else if(fiebre.equals(Fiebre.MODERADA.getTipo())){
+            
+            triage.setFiebre(Fiebre.MODERADA);
+            
+        }else if(fiebre.equals(Fiebre.SIN.getTipo())){
+            
+            triage.setFiebre(Fiebre.SIN);
+            
+        }
+        
+        //Vomitos
+        if(vomito.equals(Vomitos.INTENSOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.INTENSOS);
+            
+        }else if(vomito.equals(Vomitos.MODERADOS.getTipo())){
+            
+            triage.setVomitos(Vomitos.MODERADOS);
+            
+        }else if(vomito.equals(Vomitos.SIN.getTipo())){
+            
+            triage.setVomitos(Vomitos.SIN);
+            
+        }
+        
+        if(dolorAbd.equals(DolorAbd.SEVERO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.SEVERO);
+            
+        }else if(dolorAbd.equals(DolorAbd.MODERADO.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.MODERADO);
+            
+        }else if(dolorAbd.equals(DolorAbd.NOP.getTipo())){
+            
+            triage.setDolorAbd(DolorAbd.NOP);
+            
+        }
+        
+        //Sangrado
+        if(sangrado.equals(Sangrado.INTENSO.getTipo())){
+            
+            triage.setSangrado(Sangrado.INTENSO);
+            
+        }else if(sangrado.equals(Sangrado.MODERADO.getTipo())){
+            triage.setSangrado(Sangrado.MODERADO);
+            
+        }else if(sangrado.equals(Sangrado.NOP.getTipo())){
+            
+            triage.setSangrado(Sangrado.NOP);
+            
+        }
+        
+        //Pulso
+        if(pulso.equals(Pulso.ANORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.ANORMAL);
+            
+        }else if(pulso.equals(Pulso.NORMAL.getTipo())){
+            
+            triage.setPulso(Pulso.NORMAL);
+            
+        }
+        
+        //Conciencia
+        if(conciencia.equals(Conciencia.INCONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.INCONCIENTE);
+            
+        }else if(conciencia.equals(Conciencia.CONCIENTE.getTipo())){
+            
+            triage.setConciencia(Conciencia.CONCIENTE);
+            
+        }
+        
+        //Dolor de Pecho
+        if(dolorPecho.equals(DolorPecho.PRESENTE.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.PRESENTE);
+            
+        }else if(dolorPecho.equals(DolorPecho.NOP.getTipo())){
+            
+            triage.setDifiResp(DolorPecho.NOP);
+            
+        }
+        
+        //LesionesGraves
+        if(lesionGrave.equals(LesionesGraves.PRESENTES.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.PRESENTES);
+            
+        }else if(lesionGrave.equals(LesionesGraves.NOP.getTipo())){
+            
+            triage.setLesGraves(LesionesGraves.NOP);
+            
+        }
+        
+        //Edad
+        if(edad.equals(Edad.ADULTO.getTipo())){
+            
+            triage.setEdad(Edad.ADULTO);
+            
+        }else if(edad.equals(Edad.OTRO.getTipo())){
+            
+            triage.setEdad(Edad.OTRO);
+            
+        }
+        
+        //Shock
+        if(signosShock.equals(Shock.PRESENTES.getTipo())){
+            triage.setShock(Shock.PRESENTES);
+            
+        }else if(signosShock.equals(Shock.NOP.getTipo())){
+            
+            triage.setShock(Shock.NOP);
+            
+        }
+        
+        //LesionesLeves
+        if(lesionLeve.equals(LesionesLeves.PRESENTES.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.PRESENTES);
+            
+        }else if(lesionLeve.equals(LesionesLeves.NOP.getTipo())){
+            
+            triage.setLesLeves(LesionesLeves.NOP);
+            
+        }
+        
+        triage.setColorFinal(null);
+        triage.setColorInicial(null);
+        triage.setConsulta(null);
+        triage.setMedico(null);
+        triage.setMotCambio(null);
+        triage.setEnfermero(null);
+        this.controlPersis.crearTriage(triage);
+        
+    }
+
+    public List<Paciente> traerPacientes() {
+       return controlPersis.traerPacientes();
+    }
+
+ 
 }

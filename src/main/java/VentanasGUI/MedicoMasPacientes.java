@@ -7,15 +7,27 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
+/**
+ * Clase MedicoMasPacientes - GUI para buscar al médico con más pacientes en un rango de fechas.
+ */
 public class MedicoMasPacientes extends javax.swing.JFrame {
-    Controladora control= null;
+        // Atributos
 
-   
+    /**
+     * Controladora que maneja la lógica del programa.
+     */
+    Controladora control;
+
+// Constructor
+
+    /**
+     * Constructor de la clase MedicoMasPacientes.
+     * @param control Controladora que maneja la lógica del programa.
+     */
     public MedicoMasPacientes(Controladora control) {
         initComponents();
         this.control = control;
-        //txtAdvertencia.setVisible(false);
+       
     }
 
     
@@ -185,15 +197,28 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ // Métodos
+
+    // Evento del botón "Volver"
+    /**
+     * Maneja el evento del botón "Volver". Vuelve a la pantalla de gestión.
+     * @param evt Evento de acción.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // Código del evento para volver a la pantalla de gestión.
         Gestor pantallaGestion = new Gestor(this.control);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+// Evento del botón "Buscar"
+    /**
+     * Maneja el evento del botón "Buscar". Realiza la búsqueda del médico con más pacientes en un rango de fechas.
+     * @param evt Evento de acción.
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
+        // Código del evento para buscar al médico con más pacientes en un rango de fechas.
         Calendar fechaOne = jDateChooser1.getCalendar();
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
@@ -205,7 +230,7 @@ public class MedicoMasPacientes extends javax.swing.JFrame {
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
-        LocalDate fecha1= LocalDate.of(yearOne,medOne,yearOne);
+        LocalDate fecha1= LocalDate.of(yearOne,medOne,diaOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
         
         if(fecha2.isBefore(fecha1)){

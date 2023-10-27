@@ -24,6 +24,7 @@ public class CrearUsuario extends javax.swing.JFrame {
     String nombre;
     String apellido;
     int dni;
+    Administrador admin;
 
     /**
      * Creates new form CrearUsuario
@@ -42,6 +43,8 @@ public class CrearUsuario extends javax.swing.JFrame {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        admin = new Administrador(control);
+
         initComponents();
     }
 
@@ -181,48 +184,23 @@ public class CrearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
-        JOptionPane.showInternalMessageDialog(null, "ID = " + id);
-        
+
         String nombreUsaurio = nombre + "  " + apellido;
-
         String contrasenia = String.valueOf(dni);
-
         String rolUsu = String.valueOf(cmbRol.getSelectedItem());
-
-//        Rol rol = new Rol();
-//        rol.setNombre(rolUsu);
-//
-//        List<Rol> roles = new ArrayList<>();
-//
-//        roles.add(rol);
-
         FuncionarioGeneral funcGeneral = control.traerFuncionarioGeneral(id);
 
         administrador.crearUsuario(nombreUsaurio, contrasenia, rolUsu, funcGeneral);
 
-        funcGeneral.setUsu(administrador.buscarUsuario(dni));
+        funcGeneral.setUsu(control.traerUsu(dni));
 
         control.editarFuncionarioGeneral(funcGeneral);
-
-//        if (rolUsu.equalsIgnoreCase("Medico")) {
-//            
-//            cbTomarPaciente.setSelected(true);
-//            cbTriagiador.setSelected(true);
-//
-//            if (cbTomarPaciente.isSelected()) {
-//                
-//                rol.setNombre("Tomar Paciente");
-//                roles.add(rol);
-//            }
-//
-//            if (cbTriagiador.isSelected()) {
-//                
-//                rol.setNombre("Triagiador");
-//                roles.add(rol);
-//            }
-//        }
-
+        
+        //Avisar al administrador que se creó correctamente
+        admin.recargarTablaFuncionariosEnGeneral();
+        admin.recargarTablaUsuarios();
+        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

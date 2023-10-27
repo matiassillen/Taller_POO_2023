@@ -17,6 +17,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Matías Sillen Ríos
+ */
 public class BoxJpaController implements Serializable {
 
     public BoxJpaController(EntityManagerFactory emf) {

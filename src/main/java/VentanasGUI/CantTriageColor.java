@@ -5,9 +5,13 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Rol;
-import Model.Usuario;
+import Model.TipoColor;
+import Model.Triage;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,12 +39,17 @@ public class CantTriageColor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnSalir = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaTriagesCambiados = new javax.swing.JTable();
+        tablaTriagesColor = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -54,16 +63,16 @@ public class CantTriageColor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSalir.setBackground(new java.awt.Color(0, 204, 204));
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnSalir.setText("Volver");
-        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 140, 30));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, 140, 30));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -77,21 +86,21 @@ public class CantTriageColor extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(226, 226, 226)
                 .addComponent(jLabel1)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 100));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tablaTriagesCambiados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTriagesColor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -102,68 +111,97 @@ public class CantTriageColor extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaTriagesCambiados);
+        jScrollPane1.setViewportView(tablaTriagesColor);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 720, 280));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 720, 280));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Primera Fecha:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Segunda Fecha:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 140, -1));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 140, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(0, 204, 255));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-//        Gestor pantallaGestion = new Gestor();
-//        pantallaGestion.setVisible(true);
-//        pantallaGestion.setLocationRelativeTo(null);
-//        this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Gestor pantallaGestion = new Gestor(control);
+        pantallaGestion.setVisible(true);
+        pantallaGestion.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaTriagesCambiados();
+
     }//GEN-LAST:event_formWindowOpened
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaTriagesCambiados;
-    // End of variables declaration//GEN-END:variables
-
-    private void cargarTablaTriagesCambiados() {
-           
-        DefaultTableModel modeloTabla= new DefaultTableModel(){
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        Calendar fechaOne = jDateChooser1.getCalendar();
+        Calendar fechaTwo = jDateChooser2.getCalendar();
+        
+        int diaOne = fechaOne.get(Calendar.DATE);
+        int medOne = fechaOne.get(Calendar.MONTH);
+        int yearOne = fechaOne.get(Calendar.YEAR);
+        
+        int diaTwo = fechaTwo.get(Calendar.DATE);
+        int mesTwo = fechaTwo.get(Calendar.MONTH);
+        int anioTwo = fechaTwo.get(Calendar.YEAR);
+        
+        LocalDate fecha1= LocalDate.of(yearOne,medOne,diaOne);
+        LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+        
+        if(fecha2.isBefore(fecha1)){
+        JOptionPane.showMessageDialog(
+            null,
+            "La segunda fecha no puede ser mayor que la primera.", 
+            "Error",  
+            JOptionPane.ERROR_MESSAGE  
+        );
+        }else{
+                
+       
+ 
+         DefaultTableModel modeloTabla= new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row,int column){
                 return false;
@@ -171,17 +209,65 @@ public class CantTriageColor extends javax.swing.JFrame {
             }
         
         };
-        String titulos []= {"Triagiador","Color propuesto","color cambiado"};
+        String titulos []= {"Color","Cantidad",};
         modeloTabla.setColumnIdentifiers(titulos);
-        
-        List <Usuario> listaTriages=control.traerTriagesCambiados();
+        List <Triage> listaTriages=control.traerTriages();
+        int verde= 0;
+        int rojo= 0;
+        int naranja=0;
+        int azul = 0;
+        int amarillo = 0;
+        Object objeto;
+            objeto = new Object [10];
         if(listaTriages != null){
-//            for(Rol triagiadores: listaTriages){
-//                Object[] objeto= {};
-//                modeloTabla.addRow(objeto);
-//            }
+            for(Triage triages: listaTriages){
+                while(fecha1.isBefore(fecha2)){
+                    if(triages.getColorFinal()== TipoColor.VERDE){
+                        objeto= triages.getColorFinal();verde++;
+                        
+                    
+                    }else if(triages.getColorFinal()==TipoColor.ROJO){
+                        objeto= triages.getColorFinal(); rojo++;
+                    
+                    }else if(triages.getColorFinal()==TipoColor.NARANJA){
+                        objeto= triages.getColorFinal(); naranja++;
+                    
+                    }else if(triages.getColorFinal()==TipoColor.AZUL){
+                        objeto= triages.getColorFinal(); azul++;
+                    
+                    }else{
+                        objeto= triages.getColorFinal(); amarillo++;
+                    
+                    }
+                
+                
+                }
+            }
+            
         
         }
-        tablaTriagesCambiados.setModel(modeloTabla);
-    }
+        modeloTabla.addRow((Object[]) objeto);
+        tablaTriagesColor.setModel(modeloTabla);
+        
+        
+       
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVolver;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaTriagesColor;
+    // End of variables declaration//GEN-END:variables
+
 }

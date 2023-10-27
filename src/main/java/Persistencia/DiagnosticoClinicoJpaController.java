@@ -17,6 +17,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *
+ * @author Matías Sillen Ríos
+ */
 public class DiagnosticoClinicoJpaController implements Serializable {
 
     public DiagnosticoClinicoJpaController(EntityManagerFactory emf) {
@@ -94,7 +98,7 @@ public class DiagnosticoClinicoJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
