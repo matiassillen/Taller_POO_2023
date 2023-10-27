@@ -272,10 +272,20 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Vuelve a la pantalla de gestor
+     * @param evt 
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * Comprueba los campos cargados por el usuario y llama a los metodos
+     * que filtran y buscan la cantidad de pacientes atendidos 
+     * por un medico en un rango de fechas
+     * @param evt 
+     */
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         boolean estado = false;
         Calendar fechaOne = jDateChooser1.getCalendar();
@@ -324,6 +334,10 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCargaIdActionPerformed
 
+    /**
+     * Carga una tabla con los medicos y prepara advertencias para los campos
+     * @param evt 
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtAdvertencia.setVisible(false);
         txtAdvertencia2.setVisible(false);
@@ -333,6 +347,9 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
     
+    /**
+     * Contiene la logica para que la GUI muestre los datos de los medicos
+     */
     private void cargarMedicos(){
       
         DefaultTableModel modeloTabla = new DefaultTableModel() {

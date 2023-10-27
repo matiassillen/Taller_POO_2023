@@ -9,7 +9,7 @@ import Model.Usuario;
 import static java.lang.String.valueOf;
 /**
  *
- * @author Usuario
+ * @author Grupo patito
  */
 public class MiUsuario extends javax.swing.JFrame {
     private FuncionarioGeneral usuarioRegistrado;
@@ -226,15 +226,26 @@ public class MiUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
+    /**
+     * Vuelve a la pantalla de gestor
+     * @param evt 
+     */
     private void buttonVolverMiUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverMiUActionPerformed
         this.dispose();
     }//GEN-LAST:event_buttonVolverMiUActionPerformed
 
+    /**
+     * Carga los datos del usuario en pantalla al abrir la ventana
+     * @param evt 
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setMuestra();
     }//GEN-LAST:event_formWindowOpened
     
+    /**
+     * Prepara los datos del usuario para ser visualizados
+     */
     private void setMuestra() {
         txtNombre2.setText(usuarioRegistrado.getNombre());    
         txtApellido2.setText(usuarioRegistrado.getApellido());

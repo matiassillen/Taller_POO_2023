@@ -127,7 +127,7 @@ public class Controladora implements Serializable{
     }
 
     
-    /**
+    /** 
      * @param idMedico es el numero para identificar al medico
      * @param fecha1 parametro limite inferior
      * @param fecha2 parametro limite superior
@@ -150,12 +150,11 @@ public class Controladora implements Serializable{
         return String.valueOf(contador);
     }
 
-    /**
-     * @param fecha1 
-     * @param fecha2 
-     * @return
+    /** Metodo que llama al metodo privado medicoConMasPacientes
+     * @param fecha1 fecha de tipo LocalDate limite inferior
+     * @param fecha2 fecha de tipo LocalDate limite superior
+     * @return devuelve un objeto de tipo Medico
     */
-    
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
         return medicoConMasPacientesPrivate(fecha1, fecha2);
     }
@@ -203,20 +202,20 @@ public class Controladora implements Serializable{
     /**
     * Metodo que llama al metodo privado filtraFechasPrivate
     * @return ArrayList de consultas
-    * @param fecha1 es la fecha limite inferior para filtrar
-    * @param fecha2 es la fecha limite superior para filtrar
+    * @param fecha1 es la fecha limite inferior para filtrar del tipo LocalDate en formato aaaa/MM/dd
+    * @param fecha2 es la fecha limite superior para filtrar del tipo LocalDate en formato aaaa/MM/dd
     */
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
         return filtraFechasPrivate(fecha1, fecha2);
     }
     
     /**
-     * Metodo que llena una lista de consultas entre dos fechas
-     * @param fecha1 limite inferior
-     * @param fecha2 limite superior
-     * @return devuelve un ArrayList de objetos Consulta
+     * Metodo que llena una lista con las consultas realizadas entre dos fechas
+     * @param fecha1 limite inferior del tipo LocalDate en formato aaaa/MM/dd
+     * @param fecha2 limite superior del tipo LocalDate en formato aaaa/MM/dd
+     * @return devuelve un ArrayList de objetos Consulta que contiene todas las consultas entre 
+     * las fechas pasadas por parametro
      */
-    
     private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
@@ -239,16 +238,25 @@ public class Controladora implements Serializable{
     }
     
     /**
-     * @param edad1 parametro limite inferior de edad para filtrar
-     * @param edad2 parametro limite superior de edad para filtrar
-     * @param fecha1 parametro limite inferior de fecha para filtrar
-     * @param fecha2 parametro limite superior de fecha para filtrar
-     * @return devuelve un entero transformado a String del contador de ocurrencias
+     * Metodo que llama al metodo privado contadorPacientesEdadPrivate
+     * @param edad1 entero de edad limite inferior
+     * @param edad2 entero de edad limite superior
+     * @param fecha1 fecha limite inferior
+     * @param fecha2 fecha limite superior
+     * @return devuelve un String con el resultado del conteo
      */
     public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2){
         return contadorPacientesEdadPrivate(edad1, edad2, fecha1, fecha2);
     }
-            
+
+    /**
+     * Metodo que cuenta las ocurrencias de un paciente en una lista de consultas filtrada
+     * @param edad1 parametro de tipo entero limite inferior de edad para filtrar
+     * @param edad2 parametro limite de tipo entero superior de edad para filtrar
+     * @param fecha1 parametro de tipo LocalDate formato aaaa/MM/dd limite inferior de fecha para filtrar
+     * @param fecha2 parametro de tipo LocalDate formato aaaa/MM/dd limite superior de fecha para filtrar
+     * @return devuelve un entero transformado a String del contador de ocurrencias
+     */
     private String contadorPacientesEdadPrivate(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
@@ -263,15 +271,11 @@ public class Controladora implements Serializable{
         return String.valueOf(contador);
     }
     
-    
     /**
-    *Metodo que utiliza una lista filtrada para contar ocurrencias
-     * @param fecha1 fecha limite inferior
-     * @param fecha2 fecha limite superior
-     * @param listaFiel lista a partir de la cual se filtra el pedido
-    *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
-    * 
-    */
+     * Metodo que cuenta y guarda los 3 pacientes mas atendidos
+     * @param listaFiel es un ArrayList de consultas filtradas por fecha
+     * @return devuelve un ArrayList de objetos de tipo paciente con los 3 pacientes mas atendidos
+     */
     public ArrayList<Paciente> listaPacientesMasAtendidos(ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
         Paciente pacienteOne = null;
@@ -312,14 +316,16 @@ public class Controladora implements Serializable{
         }
         return devolver;
     }
+    
+    
     /**
-     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList
-     * @param listaFiltro list de consultas filtrada por fecha
-     * @param listaPaciente lista de pacientes obtenida de un paso anterior
-     * @return 
+     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList de consultas filtradas
+     * @param listaFiltro ArrayList de objetos Consulta de consultas filtrada por fecha
+     * @param listaPaciente ArraList de objetos Paciente que se quiere saber cuantas veces se atendieron
+     * @return devuelve un ArrayList con Strings de los contadores de cada paciente en el mismo orden que 
+     * los pacientes estan en el ArraList de pacientes
      */
     public ArrayList<String> cantidadDeAtenciones(ArrayList<Consulta> listaFiltro, ArrayList<Paciente> listaPaciente) {
- 
         ArrayList<String> cantidadAtencion = new ArrayList<>();
         
         for(Paciente leerPaciente : listaPaciente) {
