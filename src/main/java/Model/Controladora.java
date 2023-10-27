@@ -260,72 +260,73 @@ public class Controladora implements Serializable{
     
     /**
     *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
+     * @param fecha1 fecha limite inferior
+     * @param fecha2 fecha limite superior
+     * @param listaFiel lista a partir de la cual se filtra el pedido
     *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
-    * @param LocalDate fecha1 parametro para pasar como argumento a otra funcion
-    * @param LocalDate fecha2 parametro para pasar como argumento a otra funcion
-    * @param ArrayList listaFiel lista donde se realizara el conteo
+    * 
     */
     public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
         Paciente pacienteOne = null;
         ArrayList<Object> devolver = new ArrayList<>();
-        Integer contador = 0;
+        Integer contadorMax = 0;
         
         if (listaFiltro.isEmpty()) {
-            devolver.add(pacienteOne);
-            devolver.add(contador);
+            devolver.add("No hay consultas");
+            devolver.add(contadorMax);
             return devolver;
         }
         
-        ArrayList<Consulta> noRepetir = new ArrayList<>();
+        ArrayList<Paciente> noRepetir = new ArrayList<>();
         for (Consulta leerConsulta : listaFiltro){
 
-            if (noRepetir.contains(leerConsulta)){
+            if (noRepetir.contains(leerConsulta.getPaciente())){
                 continue;
             }
             else {
-                noRepetir.add(leerConsulta);
+                noRepetir.add(leerConsulta.getPaciente());
             }
             Integer contadorAux = 0;
             for (Consulta leerAux : listaFiltro) {
                 if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
                     contadorAux ++;
                 }
-                if (contadorAux > contador) {
+                if (contadorAux > contadorMax) {
                     pacienteOne = leerConsulta.getPaciente();
-                    contador = contadorAux;
+                    contadorMax = contadorAux;
                 }
             }
         }
 
         devolver.add(pacienteOne);
-        devolver.add(contador);
+        devolver.add(String.valueOf(contadorMax));
         return devolver;
     }
     
-////////////////    /**
-////////////////     *
-////////////////     * @param fecha1
-////////////////     * @param fecha2
-////////////////     * @return
-////////////////     */
-//    public Map<int, Paciente> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
-//////////////////        Paciente pacienteAux = null;
-//////////////////        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
-//////////////////        Map<int, ArrayList<Object>> accesoDirecto = new HashMap<>();
-//////////////////        
-//////////////////        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
-//////////////////            
-//////////////////            ArrayList<Object> agregarPaciente = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
-//////////////////            pacienteAux = (Paciente) agregarPaciente.get(0);
-//////////////////            
-//////////////////            accesoDirecto.put((repeticiones +1), agregarPaciente);
-//////////////////            listaFiltro.remove(pacienteAux);
-//////////////////            
-//////////////////            }
-//////////////////        return accesoDirecto;
-//        return null;
-//    }
+    /**
+     *
+     * @param fecha1
+     * @param fecha2
+     * @return
+     */
+    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+        Paciente pacienteAux = null;
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+        ArrayList<Object> accesoDirecto = new ArrayList<>();
+        
+        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+            
+            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+            pacienteAux = (Paciente) agregarEstadistica.get(0);
+            for (Consulta eliminaConsulta : listaFiltro) {
+                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
+                    listaFiltro.remove(eliminaConsulta);
+            }
+            accesoDirecto.add(agregarEstadistica);
+        }
+        return accesoDirecto;
+    }
 
 
     
