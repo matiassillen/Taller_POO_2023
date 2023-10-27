@@ -25,6 +25,18 @@ public class EditarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form EditarUsuario
      *
+     * Este constructor tiene tres parámetros: administrador, control e
+     * idUsuario. Estos parámetros se utilizan para inicializar los campos de la
+     * clase.
+     *
+     * El primer parámetro, administrador, es un objeto de la clase
+     * AdministradorDeSistema. El segundo parámetro, control, es un objeto de la
+     * clase Controladora. El tercer parámetro, idUsuario, es un número entero
+     * largo que se utiliza para identificar al usuario.
+     *
+     * Este constructor inicializa los campos de la clase y llama al método
+     * initComponents para inicializar los componentes de la interfaz gráfica.
+     *
      * @param administrador
      * @param control
      * @param idUsuario
@@ -238,6 +250,14 @@ public class EditarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * El método btnGuardarActionPerformed se ejecuta cuando el usuario hace
+     * clic en el botón “Guardar”. Este método actualiza la información del
+     * usuario en la base de datos a partir de la información ingresada por el
+     * usuario. Luego, muestra un mensaje de éxito y cierra la ventana actual.
+     *
+     */
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         String nombreUsuario = txtNombreUsuario.getText();
@@ -245,12 +265,22 @@ public class EditarUsuario extends javax.swing.JFrame {
         String rolUsu = (String) cmbRol.getSelectedItem();
 
         administrador.editarUsuario(usuario, nombreUsuario, contrasenia, rolUsu);
-        
+
         //Avisar al administrador que se borro correctamente
         control.mostrarMensaje("Se editó el usuario conrrectamente", "info", "Edición correcta");
         admin.recargarTablaUsuarios();
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    /**
+     * El método formWindowOpened se ejecuta cuando se abre la ventana. Este
+     * método carga la información del usuario correspondiente a idUsuario y
+     * muestra su información en los campos de texto txtNombreUsuario y
+     * txtContrasenia. Además, carga los roles disponibles en un menú
+     * desplegable cmbRol para que el usuario pueda seleccionar un rol.
+     * Finalmente, selecciona el rol del usuario y lo marca en el menú
+     * desplegable.
+     */
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -280,6 +310,11 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    /**
+     * El método btnCancelarActionPerformed se ejecuta cuando el usuario hace
+     * clic en el botón “Cancelar”. Este método cierra la ventana actual.
+     */
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
