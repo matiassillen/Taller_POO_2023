@@ -27,6 +27,22 @@ public class CrearUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CrearUsuario
      *
+     * Este constructor tiene seis parámetros: administrador, control, id,
+     * nombre, apellido y dni. Estos parámetros se utilizan para inicializar los
+     * campos de la clase.
+     *
+     * El primer parámetro, administrador, es un objeto de la clase
+     * AdministradorDeSistema. El segundo parámetro, control, es un objeto de la
+     * clase Controladora. El tercer parámetro, id, es un número entero largo
+     * que se utiliza para identificar al usuario. El cuarto parámetro, nombre,
+     * es una cadena que representa el nombre del usuario. El quinto parámetro,
+     * apellido, es una cadena que representa el apellido del usuario. El sexto
+     * parámetro, dni, es un número entero que representa el número de
+     * identificación nacional (DNI) del usuario.
+     *
+     * Este constructor inicializa los campos de la clase y llama al método
+     * initComponents para inicializar los componentes de la interfaz gráfica.
+     *
      * @param administrador
      * @param control
      * @param id
@@ -171,6 +187,12 @@ public class CrearUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * El método formWindowOpened se ejecuta cuando se abre la ventana. Este
+     * método carga los roles disponibles en un menú desplegable cmbRol para que
+     * el usuario pueda seleccionar un rol.
+     */
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         List<Rol> listaRoles = control.traerRoles();
@@ -181,35 +203,45 @@ public class CrearUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    /**
+     * El método btnGuardarActionPerformed se ejecuta cuando el usuario hace
+     * clic en el botón “Guardar”. Este método crea un nuevo usuario en la base
+     * de datos a partir de la información ingresada por el usuario. Si el
+     * usuario ya existe, se muestra un mensaje de error. Si el usuario no
+     * existe, se crea un nuevo usuario y se muestra un mensaje de éxito.
+     */
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         FuncionarioGeneral funcGeneral = control.traerFuncionarioGeneral(id);
-        
+
         if (funcGeneral.getUsu() == null) {
             String nombreUsaurio = nombre + "  " + apellido;
             String contrasenia = String.valueOf(dni);
             String rolUsu = String.valueOf(cmbRol.getSelectedItem());
-        
 
             administrador.crearUsuario(nombreUsaurio, contrasenia, rolUsu, funcGeneral);
 
             funcGeneral.setUsu(control.traerUsu(dni));
 
             control.editarFuncionarioGeneral(funcGeneral);
-        
+
             //Avisar al administrador que se creó correctamente
-        
             control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
-        
+
         } else {
             control.mostrarMensaje("Usuario existente", "Error", "Error");
         }
-        
-        
+
         admin.recargarTablaFuncionariosEnGeneral();
         admin.recargarTablaUsuarios();
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    /**
+     * El método btnCancelarActionPerformed se ejecuta cuando el usuario hace
+     * clic en el botón “Cancelar”. Este método cierra la ventana actual.
+     */
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
