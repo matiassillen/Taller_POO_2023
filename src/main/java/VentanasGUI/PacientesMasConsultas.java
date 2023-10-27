@@ -5,7 +5,9 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import java.time.LocalDate;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -193,12 +195,28 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
         int diaOne = fechaOne.get(Calendar.DATE);
-        int medOne = fechaOne.get(Calendar.MONTH);
-        int yearOne = fechaOne.get(Calendar.YEAR);
+        int mesOne = fechaOne.get(Calendar.MONTH);
+        int anioOne = fechaOne.get(Calendar.YEAR);
         
         int diaTwo = fechaTwo.get(Calendar.DATE);
         int mesTwo = fechaTwo.get(Calendar.MONTH);
         int anioTwo = fechaTwo.get(Calendar.YEAR);
+        
+        LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);
+        LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
+        
+        if(fecha1.isBefore(fecha2)){
+            JOptionPane.showMessageDialog(
+                null,
+                "La segunda fecha no puede ser posterior a la primera.", 
+                "Error",  
+                JOptionPane.ERROR_MESSAGE  
+        );
+        }else{
+            ////// codigo a completar
+        }
+        
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**

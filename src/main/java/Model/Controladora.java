@@ -101,11 +101,30 @@ public class Controladora implements Serializable{
         // TODO implement here
     }
 
+    
     /**
+     * @param idMedico
      * @param fecha1 
      * @param fecha2 
      * @return
     */
+    public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
+        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
+        List<Medico> listaMed = this.traerMedicos();
+        Integer contador = 0;
+
+        for (Medico leerMed : listaMed) {
+            if (leerMed.getId() == idMedico) {       
+                for (Consulta leerConsulta : listaFiltro) {
+                    if (leerConsulta.getMedico().getDni() == leerMed.getDni()) {
+                        contador ++;
+                    }
+                }
+            }
+        }
+        return String.valueOf(contador);
+    }
+    
 
 
     /**
@@ -143,7 +162,7 @@ public class Controladora implements Serializable{
     }
     
     
-    /*
+    /**
     * Metodo que devuelve una lista de consultas entre dos fechas
     * @return ArrayList<Consulta>
     * @param LocalDate fecha1 es la fecha limite inferior para filtrar
@@ -169,9 +188,17 @@ public class Controladora implements Serializable{
         return listaFiltrada;
     }
     
-    public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
+    /**
+     * @param edad1 parametro limite inferior de edad para filtrar
+     * @param edad2 parametro limite superior de edad para filtrar
+     * @param fecha1 parametro limite inferior de fecha para filtrar
+     * @param fecha2 parametro limite superior de fecha para filtrar
+     * @return devuelve un entero contador de ocurrencias
+     */
+    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
+        
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
             Integer edadPaciente = (int)fechaNacimiento.until(fecha2, YEARS);
@@ -179,22 +206,16 @@ public class Controladora implements Serializable{
                 contador = +1;
             }
         }
-        return contador;
+        return String.valueOf(contador);
     }
     
     
-    /* Metodo que devuelve un ArrayList utilizado una lista pasada por parametro
-    *@return un objeto Paciente y un int de la cantidad de veces que se repite dicho objeto en una lista
-    * @param fecha1 es un objeto LocalDate con una fecha limite inferior para filtrar
-    * @param fecha2 es un objeto LocalDate con una fecha limite superior para filtrar 
-    */
-    
-    /*
+    /**
     *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
-    *@return ArrayList<Object> con un objeto Paciente y un int contador de ocurrencias
+    *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
     * @param LocalDate fecha1 parametro para pasar como argumento a otra funcion
     * @param LocalDate fecha2 parametro para pasar como argumento a otra funcion
-    * @param ArrayList<Object> listaFiel lista donde se realizara el conteo
+    * @param ArrayList listaFiel lista donde se realizara el conteo
     */
     public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
 ////////////////        ArrayList<Consulta> listaFiltro = listaFiel;
@@ -232,6 +253,7 @@ public class Controladora implements Serializable{
 ////////////////        devolver.add(pacienteOne);
 ////////////////        devolver.add(contador);
 ////////////////        return devolver;
+        return null;
     }
     
 ////////////////    /**
@@ -240,49 +262,45 @@ public class Controladora implements Serializable{
 ////////////////     * @param fecha2
 ////////////////     * @return
 ////////////////     */
-    public HashMap<int, ArrayList<Object>> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
-        Paciente pacienteAux = null;
-        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
-        Map<int, ArrayList<Object>> accesoDirecto = new HashMap<>();
-        
-        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
-            
-            ArrayList<Object> agregarPaciente = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
-            pacienteAux = (Paciente) agregarPaciente.get(0);
-            
-            accesoDirecto.put((repeticiones +1), agregarPaciente);
-            listaFiltro.remove(pacienteAux);
-            
-            }
-        return accesoDirecto;
-    }
-
-
-//    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
-//        
-//        return Medico;
+//    public Map<int, Paciente> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+//////////////////        Paciente pacienteAux = null;
+//////////////////        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+//////////////////        Map<int, ArrayList<Object>> accesoDirecto = new HashMap<>();
+//////////////////        
+//////////////////        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+//////////////////            
+//////////////////            ArrayList<Object> agregarPaciente = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+//////////////////            pacienteAux = (Paciente) agregarPaciente.get(0);
+//////////////////            
+//////////////////            accesoDirecto.put((repeticiones +1), agregarPaciente);
+//////////////////            listaFiltro.remove(pacienteAux);
+//////////////////            
+//////////////////            }
+//////////////////        return accesoDirecto;
+//        return null;
 //    }
 
+
     
-    //---------Metodos estadiscticos----------
+    //---------Metodos estadisticos----------
     
     public void VerEstadistica() {
         // TODO implement here
     }
-     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
-//        Map<String, Integer> diccionario = new HashMap<>();
-//        for (Codigo Para Recorer Arbol de Tiage) {
-//            if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
-//                tipoColor clave = Triage.ColorFinal;
-//                if(diccionario.containsKey(clave)){
-//                    diccionario.merge(clave, 1, Integer::sum);
-//                }else{
-//                    diccionario.put(clave, 1);
-//                }
-//            }            
-//        }
-//        return diccionario;
-    }
+////////////     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
+//////////////        Map<String, Integer> diccionario = new HashMap<>();
+//////////////        for (Codigo Para Recorer Arbol de Tiage) {
+//////////////            if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
+//////////////                tipoColor clave = Triage.ColorFinal;
+//////////////                if(diccionario.containsKey(clave)){
+//////////////                    diccionario.merge(clave, 1, Integer::sum);
+//////////////                }else{
+//////////////                    diccionario.put(clave, 1);
+//////////////                }
+//////////////            }            
+//////////////        }
+//////////////        return diccionario;
+////////////    }
 
 
     
