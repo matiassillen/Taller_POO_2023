@@ -17,6 +17,7 @@ public class EsperaTriage extends javax.swing.JFrame {
 
     private Controladora control;
     private Paciente pacienteSelecionado;
+    private int idConsulta;
 
     /**
      * Constructor de la clase EsperaTriage
@@ -201,10 +202,8 @@ public class EsperaTriage extends javax.swing.JFrame {
                 if (tablaEnEspera.getSelectedRow() != -1) {
                     // Obtiene el DNI del paciente de la fila seleccionada
                     int row = tablaEnEspera.getSelectedRow();
-                    String dniP = tablaEnEspera.getModel().getValueAt(row, 0).toString();
-                    int dni = Integer.parseInt(dniP);
-                    // Busca al paciente por DNI y lo guarda como el paciente seleccionado
-                    this.pacienteSelecionado = control.buscarPacientePorDni(dni);
+                    String idConsu = tablaEnEspera.getModel().getValueAt(row, 0).toString();
+                    this.idConsulta = Integer.parseInt(idConsu);
                     // Habilita el botón Seleccionar Paciente
                     btnSeleccionarPaciente.setEnabled(true);
                 }
@@ -251,14 +250,14 @@ public class EsperaTriage extends javax.swing.JFrame {
         try {
             // Crea un nuevo modelo de tabla
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            String titutlos[] = {"Dni", "Nombre", "Apellido", "Motivo Consulta"};
+            String titutlos[] = {"id Consulta","Dni", "Nombre", "Apellido", "Motivo Consulta"};
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene la lista de pacientes en espera
             List<Consulta> consultas = control.traerPacientesEnEspera();
             if (consultas != null) {
                 // Para cada consulta en la lista, añade una fila a la tabla con los datos del paciente y el motivo de consulta
                 for (Consulta consu : consultas) {
-                    Object[] objeto = {consu.getPaciente().getDni(), consu.getPaciente().getNombre(), consu.getPaciente().getApellido(), consu.getMotivo()};
+                    Object[] objeto = {consu.getId(),consu.getPaciente().getDni(), consu.getPaciente().getNombre(), consu.getPaciente().getApellido(), consu.getMotivo()};
                     modeloTabla.addRow(objeto);
                 }
             }

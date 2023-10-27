@@ -131,7 +131,7 @@ public class Controladora implements Serializable{
      * @param idMedico es el numero para identificar al medico
      * @param fecha1 parametro limite inferior
      * @param fecha2 parametro limite superior
-     * @return String del contador de ocurrencias
+     * @return String del contador de ocurrencias del medico en una lista de consultas entre fechas
     */
     public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
         ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
@@ -201,7 +201,7 @@ public class Controladora implements Serializable{
     
     
     /**
-    * Metodo que devuelve una lista de consultas entre dos fechas
+    * Metodo que llama al metodo privado filtraFechasPrivate
     * @return ArrayList de consultas
     * @param fecha1 es la fecha limite inferior para filtrar
     * @param fecha2 es la fecha limite superior para filtrar
@@ -209,6 +209,13 @@ public class Controladora implements Serializable{
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
         return filtraFechasPrivate(fecha1, fecha2);
     }
+    
+    /**
+     * Metodo que llena una lista de consultas entre dos fechas
+     * @param fecha1 limite inferior
+     * @param fecha2 limite superior
+     * @return devuelve un ArrayList de objetos Consulta
+     */
     
     private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
@@ -219,6 +226,8 @@ public class Controladora implements Serializable{
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
 //                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+
+
                     listaFiltrada.add(consulta);
                 }
             }
@@ -234,9 +243,8 @@ public class Controladora implements Serializable{
      * @param edad2 parametro limite superior de edad para filtrar
      * @param fecha1 parametro limite inferior de fecha para filtrar
      * @param fecha2 parametro limite superior de fecha para filtrar
-     * @return devuelve un entero contador de ocurrencias
+     * @return devuelve un entero transformado a String del contador de ocurrencias
      */
-    
     public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2){
         return contadorPacientesEdadPrivate(edad1, edad2, fecha1, fecha2);
     }
@@ -257,74 +265,106 @@ public class Controladora implements Serializable{
     
     
     /**
-    *Metodo que utiliza una lista filtrada para realizar una busqueda y conteo
+    *Metodo que utiliza una lista filtrada para contar ocurrencias
      * @param fecha1 fecha limite inferior
      * @param fecha2 fecha limite superior
      * @param listaFiel lista a partir de la cual se filtra el pedido
     *@return ArrayList con un objeto Paciente y un int contador de ocurrencias
     * 
     */
-    public ArrayList<Object> pacienteMasAtendido(LocalDate fecha1, LocalDate fecha2, ArrayList<Consulta> listaFiel) {
+    public ArrayList<Paciente> listaPacientesMasAtendidos(ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
         Paciente pacienteOne = null;
-        ArrayList<Object> devolver = new ArrayList<>();
+        ArrayList<Paciente> devolver = new ArrayList<>();
         Integer contadorMax = 0;
         
-        if (listaFiltro.isEmpty()) {
-            devolver.add("No hay consultas");
-            devolver.add(contadorMax);
-            return devolver;
-        }
-        
         ArrayList<Paciente> noRepetir = new ArrayList<>();
-        for (Consulta leerConsulta : listaFiltro){
+        
+        for(int repeticiones = 0; repeticiones <3; repeticiones++) {
+            if (listaFiltro.isEmpty()) {
+                devolver.add(null);
+            }
+        
+            for (Consulta leerConsulta : listaFiltro){
 
-            if (noRepetir.contains(leerConsulta.getPaciente())){
-                continue;
-            }
-            else {
-                noRepetir.add(leerConsulta.getPaciente());
-            }
-            Integer contadorAux = 0;
-            for (Consulta leerAux : listaFiltro) {
-                if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
-                    contadorAux ++;
+                if (noRepetir.contains(leerConsulta.getPaciente())){
+                    continue;
                 }
-                if (contadorAux > contadorMax) {
-                    pacienteOne = leerConsulta.getPaciente();
-                    contadorMax = contadorAux;
+                else {
+                    noRepetir.add(leerConsulta.getPaciente());
                 }
+                Integer contadorAux = 0;
+                for (Consulta leerAux : listaFiltro) {
+                    if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
+                        contadorAux ++;
+                    }
+                    if (contadorAux > contadorMax) {
+                        pacienteOne = leerConsulta.getPaciente();
+                        contadorMax = contadorAux;
+                    }
+                }
+            }
+            devolver.add(pacienteOne);
+            for (Consulta eliminaConsulta : listaFiltro) {
+                if (eliminaConsulta.getPaciente().getId() == pacienteOne.getId())
+                listaFiltro.remove(eliminaConsulta);
             }
         }
-
-        devolver.add(pacienteOne);
-        devolver.add(String.valueOf(contadorMax));
         return devolver;
     }
-    
     /**
-     *
-     * @param fecha1
-     * @param fecha2
-     * @return
+     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList
+     * @param listaFiltro list de consultas filtrada por fecha
+     * @param listaPaciente lista de pacientes obtenida de un paso anterior
+     * @return 
      */
-    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
-        Paciente pacienteAux = null;
-        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
-        ArrayList<Object> accesoDirecto = new ArrayList<>();
+    public ArrayList<String> cantidadDeAtenciones(ArrayList<Consulta> listaFiltro, ArrayList<Paciente> listaPaciente) {
+ 
+        ArrayList<String> cantidadAtencion = new ArrayList<>();
         
-        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
-            
-            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
-            pacienteAux = (Paciente) agregarEstadistica.get(0);
-            for (Consulta eliminaConsulta : listaFiltro) {
-                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
-                    listaFiltro.remove(eliminaConsulta);
+        for(Paciente leerPaciente : listaPaciente) {
+            if (leerPaciente == null) {
+                cantidadAtencion.add(null);
+                continue;
             }
-            accesoDirecto.add(agregarEstadistica);
+            int contador = 0;
+            for (Consulta leerConsulta : listaFiltro) {
+                if(leerConsulta.getPaciente() == leerPaciente) {
+                    contador++;
+                }
+            cantidadAtencion.add(String.valueOf(contador));
+            }
         }
-        return accesoDirecto;
+        return cantidadAtencion;
     }
+   
+    
+    
+    
+    
+////    /**
+////     * Metodo que devuelve los 3 pacientes que mas consultas tuvieron en un rango de fechas
+////     * @param fecha1 limite inferior
+////     * @param fecha2 limite superior
+////     * @return devuelve un ArrayList que contiene otros ArrayList por cada paciente
+////     */
+////    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
+////        Paciente pacienteAux = null;
+////        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
+////        ArrayList<Object> accesoDirecto = new ArrayList<>();
+////        
+////        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
+////            
+////            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
+////            pacienteAux = (Paciente) agregarEstadistica.get(0);
+////            for (Consulta eliminaConsulta : listaFiltro) {
+////                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
+////                    listaFiltro.remove(eliminaConsulta);
+////            }
+////            accesoDirecto.add(agregarEstadistica);
+////        }
+////        return accesoDirecto;
+////    }
 
 
     
@@ -639,9 +679,9 @@ public class Controladora implements Serializable{
 
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equals("info")) {
+        if (tipo.equalsIgnoreCase("info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equals("Error")) {
+        } else if (tipo.equalsIgnoreCase("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
@@ -680,14 +720,16 @@ public class Controladora implements Serializable{
         if (listaUsuarios != null) {
 
             for (Usuario usu : listaUsuarios) {
-
-                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                
+                if (usu.getFuncionarioGeneral() != null) {
+                    int dnii = usu.getFuncionarioGeneral().getDni();
                     
-                    mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
-                    return controlPersis.traerUsuario(usu.getId());  
-                    
+                    if (dnii == dni) {
+                        return controlPersis.traerUsuario(usu.getId());  
+                    }
                 }
-            }
+            }        
+
         }
         return null;
     }

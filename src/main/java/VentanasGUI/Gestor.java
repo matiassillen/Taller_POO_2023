@@ -34,11 +34,12 @@ public class Gestor extends javax.swing.JFrame {
         btnCantPaciente = new javax.swing.JButton();
         btnPacienteMasConsulta = new javax.swing.JButton();
         btnMedicoMasPaciente = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         btnCantTriage = new javax.swing.JButton();
         btnTriageCambiado = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        buttonMiUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +49,7 @@ public class Gestor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCantPacienteMedico.setBackground(new java.awt.Color(0, 204, 255));
+        btnCantPacienteMedico.setBackground(new java.awt.Color(0, 204, 204));
         btnCantPacienteMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCantPacienteMedico.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPacienteMedico.setText("Cant. de Pacientes Atendidos Por Médico");
@@ -60,7 +61,7 @@ public class Gestor extends javax.swing.JFrame {
         });
         jPanel1.add(btnCantPacienteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 300, 40));
 
-        btnCantPaciente.setBackground(new java.awt.Color(0, 204, 255));
+        btnCantPaciente.setBackground(new java.awt.Color(0, 204, 204));
         btnCantPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCantPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPaciente.setText("Cant. Pacientes Atendidos");
@@ -72,7 +73,7 @@ public class Gestor extends javax.swing.JFrame {
         });
         jPanel1.add(btnCantPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 300, 40));
 
-        btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 255));
+        btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 204));
         btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPacienteMasConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnPacienteMasConsulta.setText("Paciente con más Consultas");
@@ -84,7 +85,7 @@ public class Gestor extends javax.swing.JFrame {
         });
         jPanel1.add(btnPacienteMasConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 300, 40));
 
-        btnMedicoMasPaciente.setBackground(new java.awt.Color(0, 204, 255));
+        btnMedicoMasPaciente.setBackground(new java.awt.Color(0, 204, 204));
         btnMedicoMasPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMedicoMasPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnMedicoMasPaciente.setText("Médico con más Pacientes");
@@ -96,26 +97,26 @@ public class Gestor extends javax.swing.JFrame {
         });
         jPanel1.add(btnMedicoMasPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 300, 40));
 
-        btnSalir.setBackground(new java.awt.Color(0, 204, 255));
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir.setText("Salir");
-        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarSesion.setBackground(new java.awt.Color(255, 153, 153));
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 140, 40));
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 140, 40));
 
-        btnCantTriage.setBackground(new java.awt.Color(0, 204, 255));
+        btnCantTriage.setBackground(new java.awt.Color(0, 204, 204));
         btnCantTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCantTriage.setForeground(new java.awt.Color(0, 0, 0));
         btnCantTriage.setText("Cant. de Triage y Color");
         btnCantTriage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 300, 40));
 
-        btnTriageCambiado.setBackground(new java.awt.Color(0, 204, 255));
+        btnTriageCambiado.setBackground(new java.awt.Color(0, 204, 204));
         btnTriageCambiado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTriageCambiado.setForeground(new java.awt.Color(0, 0, 0));
         btnTriageCambiado.setText("Triage Cambiados");
@@ -151,6 +152,18 @@ public class Gestor extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
+
+        buttonMiUsuario.setBackground(new java.awt.Color(0, 204, 204));
+        buttonMiUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonMiUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        buttonMiUsuario.setText("Mi usuario");
+        buttonMiUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonMiUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonMiUsuarioMouseClicked(evt);
+            }
+        });
+        jPanel1.add(buttonMiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,15 +208,24 @@ public class Gestor extends javax.swing.JFrame {
         masPaciente.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        GuiLogin pantallaLogin = new GuiLogin();
+        pantallaLogin.setVisible(true);
+        pantallaLogin.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
         TriageCambiado triagesCambiados = new TriageCambiado(this.controlG);
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTriageCambiadoActionPerformed
+
+    private void buttonMiUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMiUsuarioMouseClicked
+        MiUsuario pantallaUsuario = new MiUsuario(this.controlG);
+        pantallaUsuario.setVisible(true);
+        pantallaUsuario.setLocationRelativeTo(null);
+    }//GEN-LAST:event_buttonMiUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -213,10 +235,11 @@ public class Gestor extends javax.swing.JFrame {
     private javax.swing.JButton btnCantPaciente;
     private javax.swing.JButton btnCantPacienteMedico;
     private javax.swing.JButton btnCantTriage;
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnMedicoMasPaciente;
     private javax.swing.JButton btnPacienteMasConsulta;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTriageCambiado;
+    private javax.swing.JButton buttonMiUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
