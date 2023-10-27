@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasGUI;
+
 import Model.Controladora;
 import Model.Consulta;
 import Model.Paciente;
@@ -10,14 +7,21 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esta clase representa una ventana de la interfaz gráfica de usuario que
+ * permite ver las consultas anteriores de un paciente.
  *
  * @author yairc
  */
 public class VerConsultasAnteriores extends javax.swing.JFrame {
-    Controladora control;
-    Paciente paciente;
+
+    private Controladora control;
+    private Paciente paciente;
+
     /**
-     * Creates new form VerConsultasAnteriores
+     * Constructor de la clase VerConsultasAnteriores
+     *
+     * @param control
+     * @param paciente
      */
     public VerConsultasAnteriores(Controladora control, Paciente paciente) {
         initComponents();
@@ -38,7 +42,6 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaConsAnteriores = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
-        btnLeerConsAnt = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtConsultasAnt = new javax.swing.JLabel();
 
@@ -77,12 +80,6 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
             }
         });
 
-        btnLeerConsAnt.setBackground(new java.awt.Color(0, 204, 153));
-        btnLeerConsAnt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnLeerConsAnt.setForeground(new java.awt.Color(0, 0, 0));
-        btnLeerConsAnt.setText("Leer");
-        btnLeerConsAnt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
         txtConsultasAnt.setBackground(new java.awt.Color(0, 204, 204));
@@ -117,8 +114,6 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,9 +126,7 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLeerConsAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -150,35 +143,78 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Este método se ejecuta cuando se hace clic en el botón 'Volver'. Cierra
+     * la ventana actual y abre una nueva instancia de la ventana
+     * DatosDePaciente.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        DatosDePaciente histCli = new DatosDePaciente(control, paciente);
-        histCli.setVisible(true);
-        histCli.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTabla();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
-        String titutlos[] = {"Medico","Fecha","Hora","Diagnostico"};
-        modeloTabla.setColumnIdentifiers(titutlos);
-        List<Consulta> listCon = this.paciente.getConsultas();
-        if (listCon!=null){
-            for(Consulta Con : listCon){
-                Object[] objeto = {Con.getMedico().getNumMat(),Con.getFecha(),Con.getHora(),Con.getDiagnConsulta()};
-                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
-            }
+        try {
+            // Creamos una nueva instancia de la ventana DatosDePaciente
+            DatosDePaciente histCli = new DatosDePaciente(control, paciente);
+            // Hacemos visible la ventana
+            histCli.setVisible(true);
+            // Centramos la ventana en la pantalla
+            histCli.setLocationRelativeTo(null);
+            // Cerramos la ventana actual
+            this.dispose();
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
         }
-        tablaConsAnteriores.setModel(modeloTabla);
+    }//GEN-LAST:event_btnVolverActionPerformed
+    /**
+     * Este método se ejecuta cuando se abre la ventana. Llama al método
+     * cargarTabla para llenar la tabla con datos.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            // Llamamos al método cargarTabla para llenar la tabla con datos
+            cargarTabla();
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
+    /**
+     * Este método carga datos en la tabla. Obtiene una lista de consultas del
+     * paciente y añade cada consulta a la tabla.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
+    private void cargarTabla() {
+        try {
+            // Creamos un nuevo modelo de tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            // Definimos los títulos de las columnas de la tabla
+            String titutlos[] = {"Medico", "Fecha", "Hora", "Diagnostico"};
+            modeloTabla.setColumnIdentifiers(titutlos);
+            // Obtenemos la lista de consultas del paciente
+            List<Consulta> listCon = this.paciente.getConsultas();
+            if (listCon != null) {
+                // Si la lista de consultas no es nula, recorremos la lista
+                for (Consulta Con : listCon) {
+                    // Creamos un objeto con los datos de la consulta
+                    Object[] objeto = {Con.getMedico().getNumMat(), Con.getFecha(), Con.getHora(), Con.getDiagnConsulta()};
+
+                    // Añadimos el objeto a la tabla
+                    modeloTabla.addRow(objeto);
+                }
+            }
+            // Establecemos el modelo de la tabla
+            tablaConsAnteriores.setModel(modeloTabla);
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
+        }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLeerConsAnt;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
