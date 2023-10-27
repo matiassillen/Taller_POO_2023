@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasGUI;
+
 import Model.Controladora;
 import Model.Paciente;
 import Model.ResultadoEstudio;
@@ -10,14 +7,22 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esta clase representa una ventana de la interfaz gráfica de usuario que
+ * permite ver los resultados de estudio de un paciente como tambien cargar
+ * nuevos.
  *
  * @author yairc
  */
 public class VerResultadoEstudio extends javax.swing.JFrame {
-    Controladora control;
-    Paciente paciente;
+
+    private Controladora control;
+    private Paciente paciente;
+
     /**
-     * Creates new form VerResultadoEstudio
+     * Constructor de la clase VerResultadoEstudio
+     *
+     * @param control
+     * @param paciente
      */
     public VerResultadoEstudio(Controladora control, Paciente paciente) {
         initComponents();
@@ -224,41 +229,93 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Este método se ejecuta cuando se hace clic en el botón btnVolver. Cierra
+     * la ventana actual y abre una nueva instancia de la ventana
+     * DatosDePaciente.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // Creamos una nueva instancia de la ventana DatosDePaciente
         DatosDePaciente histCli = new DatosDePaciente(control, paciente);
+        // Hacemos visible la ventana
         histCli.setVisible(true);
+        // Centramos la ventana en la pantalla
         histCli.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    /**
+     * Este método se ejecuta cuando se abre la ventana. Llama al método
+     * cargarTabla para llenar la tabla con datos.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Este método se ejecuta cuando se hace clic en el botón btnCargarRestEstu.
+     * Obtiene el título y la descripción seleccionados en los campos de texto
+     * correspondientes, intenta cargar un nuevo resultado de estudio con el
+     * título y la descripción proporcionados, y muestra un mensaje de éxito o
+     * error según corresponda.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnCargarRestEstuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarRestEstuActionPerformed
-        String titulo = this.txbTitulo.getSelectedText();
-        String descripcion = this.txbDescripcion.getSelectedText();
-        this.control.cargarNuevoResEstudio(paciente,titulo,descripcion);
-        String mensaje = "Cargado Correctamente";
-        String info = "infor";
-        this.control.mostrarMensaje(mensaje, info, titulo);
+        try {
+            // Obtenemos el título y la descripción seleccionados en los campos de texto correspondientes
+            String titulo = this.txbTitulo.getSelectedText();
+            String descripcion = this.txbDescripcion.getSelectedText();
+            // Intentamos cargar un nuevo resultado de estudio con el título y la descripción proporcionados
+            this.control.cargarNuevoResEstudio(paciente, titulo, descripcion);
+            // Si se carga correctamente, mostramos un mensaje de éxito
+            String mensaje = "Cargado Correctamente";
+            String info = "infor";
+            this.control.mostrarMensaje(mensaje, info, titulo);
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            String info = "error";
+            this.control.mostrarMensaje("No se ingreso titulo o descripcion", info, "Error");
+        }
     }//GEN-LAST:event_btnCargarRestEstuActionPerformed
-
+    /**
+     * Este método carga datos en la tabla. Debe implementarse para definir qué
+     * datos se cargarán en la tabla.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void cargarTabla() {
         DefaultTableModel modeloTabla = new DefaultTableModel();
-        String titutlos[] = {"Id","Fecha","Hora","Nombre"};
+        // Definimos los títulos de las columnas de la tabla
+        String titutlos[] = {"Id", "Fecha", "Hora", "Nombre"};
         modeloTabla.setColumnIdentifiers(titutlos);
-        List<ResultadoEstudio> listRes = this.control.TraerResultEstudio(paciente);
-        if (listRes!=null){
-            for(ResultadoEstudio res : listRes){
-                Object[] objeto = {res.getId(),res.getFecha(),res.getHora(),res.getNombre()};
-                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
+        List<ResultadoEstudio> listRes = null;
+        try {
+            // Intentamos obtener la lista de resultados de estudio del paciente
+            listRes = this.control.TraerResultEstudio(paciente);
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje y terminamos el método
+            String mensaje = "Error: " + e.getMessage();
+            String info = "error";
+            this.control.mostrarMensaje(mensaje, info, "No hay R.E.");
+            return;
+        }
+        if (listRes != null) {
+            // Si la lista de resultados de estudio no es nula, recorremos la lista
+            for (ResultadoEstudio res : listRes) {
+                // Creamos un objeto con los datos del resultado de estudio
+                Object[] objeto = {res.getId(), res.getFecha(), res.getHora(), res.getNombre()};
+                // Añadimos el objeto a la tabla
+                modeloTabla.addRow(objeto);
             }
         }
+        // Establecemos el modelo de la tabla
         tablaResultEstudios.setModel(modeloTabla);
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarRestEstu;

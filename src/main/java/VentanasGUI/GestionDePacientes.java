@@ -1,4 +1,3 @@
-
 package VentanasGUI;
 
 import Model.Box;
@@ -8,21 +7,30 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esta clase representa una ventana de la interfaz gráfica de usuario que
+ * permite ver los pacientes en box del medico, tomar nuevos pacientes, darlos
+ * de alta los existentes, y ver sus datos medicos
  *
  * @author yairc
  */
 public class GestionDePacientes extends javax.swing.JFrame {
+
     Controladora control;
-    Paciente pacienteSelecionado;
+    Paciente pacienteSeleccionado;
     String idBox;
+    Boolean bandera;
+
     /**
-     * Creates new form TomarPaciente
+     * Constructor de la clase TomarPaciente
+     *
+     * @param control
      */
     public GestionDePacientes(Controladora control) {
         initComponents();
         this.control = control;
         btnDatosMedicos.setEnabled(false);
         btnDarDeAlta.setEnabled(false);
+        this.bandera = false;
     }
 
     /**
@@ -42,7 +50,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         tablaBoxAtendidos = new javax.swing.JTable();
         txtTitulo2 = new javax.swing.JLabel();
         btnDarDeAlta = new javax.swing.JButton();
-        txbMotivoConsulta = new javax.swing.JTextField();
+        txbDiagnosticoConsulta = new javax.swing.JTextField();
         btnDatosMedicos = new javax.swing.JButton();
         btnNuevoPaciente = new javax.swing.JButton();
 
@@ -126,12 +134,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
-        txbMotivoConsulta.setText("Ingrese diagnostico de la consulta antes ");
-        txbMotivoConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txbMotivoConsultaActionPerformed(evt);
-            }
-        });
+        txbDiagnosticoConsulta.setText("Ingrese diagnostico de la consulta antes ");
 
         btnDatosMedicos.setBackground(new java.awt.Color(0, 204, 153));
         btnDatosMedicos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -174,7 +177,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txbMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
@@ -198,7 +201,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txbMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
 
@@ -220,80 +223,183 @@ public class GestionDePacientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
-     * Este método se activa cuando se hace clic en el botón btnVolver.
-     * Crea una nueva instancia de la clase PrincipalMedico, la hace visible y la centra en la pantalla.
-     * Cierra la instancia actual.
+     * Este método se activa cuando se hace clic en el botón btnVolver. Crea una
+     * nueva instancia de la clase PrincipalMedico, la hace visible y la centra
+     * en la pantalla. Cierra la instancia actual.
+     *
      * @param evt El evento de acción que ocurrió.
      */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // Creamos una nueva instancia de la ventana PrincipalMedico
         PrincipalMedico princM = new PrincipalMedico(control);
+        // Hacemos visible la ventana
         princM.setVisible(true);
+        // Centramos la ventana en la pantalla
         princM.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-   /**
-     * Este método se activa cuando se abre la ventana.
-     * Llama al método cargarTabla().
+    /**
+     * Este método se activa cuando se abre la ventana. Llama al método
+     * cargarTabla().
+     *
      * @param evt El evento de ventana que ocurrió.
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaBoxAtendidos();
+        try {
+            // Llamamos al método cargarTablaBoxAtendidos para llenar la tabla con datos
+            cargarTablaBoxAtendidos();
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Este método se activa cuando se hace clic en la tabla de pacientes
+     * atendidos. Verifica si la tabla tiene filas y si se seleccionó una fila.
+     * Si se seleccionó una fila, intenta obtener el id del box y el paciente en
+     * el box. Si se encuentra el paciente, se establece como el paciente
+     * seleccionado y se habilitan los botones para dar de alta y ver datos
+     * médicos.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void tablaBoxAtendidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxAtendidosMouseClicked
+        // Verifica si la tabla tiene filas
         if (tablaBoxAtendidos.getRowCount() > 0) {
+            // Verifica si se seleccionó una fila
             if (tablaBoxAtendidos.getSelectedRow() != -1) {
-                int row = tablaBoxAtendidos.getSelectedRow();
-                this.idBox = tablaBoxAtendidos.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
-                Paciente p = this.control.traerPacienteEnElBox(idBox);
-                this.pacienteSelecionado = p;
-                btnDarDeAlta.setEnabled(true);
-                btnDatosMedicos.setEnabled(true);
+                try {
+                    // Obtiene el número de fila seleccionado
+                    int row = tablaBoxAtendidos.getSelectedRow();
+                    // Intenta obtener el id del box de la fila seleccionada
+                    this.idBox = tablaBoxAtendidos.getModel().getValueAt(row, 0).toString();
+                    // Intenta obtener el paciente en el box usando el id del box
+                    Paciente p = this.control.traerPacienteEnElBox(idBox);
+                    // Si se encuentra el paciente, se establece como el paciente seleccionado
+                    this.pacienteSeleccionado = p;
+                    // Habilita los botones para dar de alta y ver datos médicos
+                    btnDarDeAlta.setEnabled(true);
+                    btnDatosMedicos.setEnabled(true);
+                } catch (Exception e) {
+                    // Imprime cualquier error que ocurra durante la ejecución del código anterior
+                    System.out.println("Error: " + e.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_tablaBoxAtendidosMouseClicked
-
+    /**
+     * Este método se activa cuando se hace clic en el botón para dar de alta a
+     * un paciente. Lee el diagnóstico de la consulta ingresado por el médico y
+     * llama al método terminarConsulta para dar de alta al paciente.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
-        String diagnostico = this.txbMotivoConsulta.getSelectedText();
-        this.control.terminarConsulta(diagnostico, idBox);
+        try {
+            //Comprueba que se haya cargado un diagnostico de consulta
+            if (txbDiagnosticoConsulta.getSelectedText() != null) {
+                //Lee el diagnostico de la consulta ingresado por el medico de la variable txbDiagnosticoConsulta
+                String diagnostico = this.txbDiagnosticoConsulta.getSelectedText();
+                //Llama al metodo terminarConsulta que da de alta el paciente pasandole el diagnostico
+                //y el id del box donde se encuentra el paciente
+                this.control.terminarConsulta(diagnostico, idBox);
+            } else {
+                control.mostrarMensaje("No ingreso un diagnostico de consulta", "Error", "Error");
+            }
+        } catch (Exception e) {
+            // Imprime cualquier error que ocurra durante la ejecución del código anterior
+            // y muestra un mensaje que dice que no se ingreso un diagnostico de consulta valido
+            control.mostrarMensaje("No ingreso un diagnostico de consulta valido", "Error", "Error");
+            System.out.println("Error: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnDarDeAltaActionPerformed
-
+    /**
+     * Este método se activa cuando se hace clic en el botón para ver los datos
+     * médicos de un paciente. Si se seleciono un paciente crea una nueva
+     * instancia de DatosDePaciente y la muestra, luego cierra la ventana
+     * actual, de lo contrario muestra un mensaje de error
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnDatosMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosMedicosActionPerformed
-        DatosDePaciente datosP = new DatosDePaciente(control,pacienteSelecionado);
-        datosP.setVisible(true);
-        datosP.setLocationRelativeTo(null);
-        this.dispose();
+        // Comprobamos que se haya seleccionado u paciente
+        if (pacienteSeleccionado != null) {
+            // Creamos una nueva instancia de la ventana DatosDePaciente
+            DatosDePaciente datosP = new DatosDePaciente(control, pacienteSeleccionado);
+            // Hacemos visible la ventana
+            datosP.setVisible(true);
+            // Centramos la ventana en la pantalla
+            datosP.setLocationRelativeTo(null);
+            // Cerramos la ventana actual
+            this.dispose();
+        } else {
+            //Si no se selecciono ninguno muestra un mensaje de error
+            control.mostrarMensaje("No selecciono ningun paciente", "Error", "Error");
+        }
     }//GEN-LAST:event_btnDatosMedicosActionPerformed
-
+    /**
+     * Este método se activa cuando se hace clic en el botón para agregar un
+     * nuevo paciente. Crea una nueva instancia de AsignarBox y la muestra,
+     * luego cierra la ventana actual.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
-        AsignarBox asigBox = new AsignarBox(control);
-        asigBox.setVisible(true);
-        asigBox.setLocationRelativeTo(null);
-        this.dispose();
+        if (bandera) {
+            // Creamos una nueva instancia de la ventana AsignarBox
+            AsignarBox asigBox = new AsignarBox(control);
+            // Hacemos visible la ventana
+            asigBox.setVisible(true);
+            // Centramos la ventana en la pantalla
+            asigBox.setLocationRelativeTo(null);
+            // Cerramos la ventana actual
+            this.dispose();
+        } else {
+            control.mostrarMensaje("No puede tomar mas pacientes", "Error", "Error");
+        }
     }//GEN-LAST:event_btnNuevoPacienteActionPerformed
 
-    private void txbMotivoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txbMotivoConsultaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txbMotivoConsultaActionPerformed
-    
     /**
-     * Este método carga los datos de los Box atendidos por el medico a una tabla.
+     * Este método carga los datos de los Box atendidos por el medico a una
+     * tabla y settea la bandera
      */
     private void cargarTablaBoxAtendidos() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();        
-        String titutlos[] = {"Box","Dni","Apellido"};
-        modeloTabla.setColumnIdentifiers(titutlos);
-        List<Box> boxes = control.TraerBoxDelMedico();// Obtiene una lista de boxes usando el controlador.
-        if (boxes!=null){
-            for(Box box : boxes){
-                Object[] objeto = {box.getId(),box.getConsulta().getPaciente().getDni(),box.getConsulta().getPaciente().getApellido()};
-                modeloTabla.addRow(objeto);// Agrega un objeto a la tabla por cada box del medico.
+        try {
+            // Crea un nuevo modelo de tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            // Define los títulos de las columnas
+            String titutlos[] = {"Box", "Dni", "Apellido"};
+            // Establece los identificadores de columna en el modelo de tabla
+            modeloTabla.setColumnIdentifiers(titutlos);
+            // Obtiene una lista de boxes usando el controlador
+            List<Box> boxes = control.TraerBoxDelMedico();
+            // Verifica si la lista de boxes no es nula
+            if (boxes != null) {
+                // Itera sobre cada box en la lista
+                for (Box box : boxes) {
+                    // Crea un objeto con los datos del box
+                    Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido()};
+                    // Agrega el objeto a la tabla
+                    modeloTabla.addRow(objeto);
+                }
             }
+            // Segun la cantidad de box que posee el medigo activa la bandera
+            // posteriormente indica si puede tomar mas pacientes o no
+            if (boxes == null || boxes.size() < 3) {
+                this.bandera = true;
+            }
+            // Establece el modelo de la tabla
+            tablaBoxAtendidos.setModel(modeloTabla);
+        } catch (Exception e) {
+            // Imprime cualquier error que ocurra durante la ejecución del código anterior
+            System.out.println("Error: " + e.getMessage());
         }
-        tablaBoxAtendidos.setModel(modeloTabla);// Establece el modelo de tabla como modeloTabla.
     }
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDarDeAlta;
     private javax.swing.JButton btnDatosMedicos;
@@ -303,7 +409,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaBoxAtendidos;
-    private javax.swing.JTextField txbMotivoConsulta;
+    private javax.swing.JTextField txbDiagnosticoConsulta;
     private javax.swing.JLabel txtTitulo2;
     private javax.swing.JLabel txtTituloPrincipal;
     // End of variables declaration//GEN-END:variables

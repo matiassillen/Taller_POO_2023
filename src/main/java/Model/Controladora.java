@@ -14,13 +14,13 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class Controladora implements Serializable{
+public class Controladora implements Serializable {
+
     ControladoraPersistencia controlPersis;
     Usuario usu;
-    
+
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
-    
 
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
@@ -34,7 +34,7 @@ public class Controladora implements Serializable{
     public Usuario getUsu() {
         return usu;
     }
-    
+
     public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
         return controlPersis.traerFuncionariosEnGeneral();
     }
@@ -42,158 +42,148 @@ public class Controladora implements Serializable{
     public List<Usuario> traerUsuarios() {
         return controlPersis.traerUsuarios();
     }
-    
+
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
-    
+
     public List<Consulta> traerConsultas() {
         return controlPersis.traerConsultas();
     }
-    
 
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
     }
-    
+
     //----------Metodos que estaban en la clase Medico----------
-    
-     /**
+    /**
      * @param paciente
-    */
+     */
     public void tomarPaciente(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerTriage(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerConsulta(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerResultadoEstudios(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerAntecedenteClinico(Paciente paciente) {
         // TODO implement here
     }
 
     /**
-     * @param fecha1 
-     * @param fecha2 
+     * @param fecha1
+     * @param fecha2
      * @return
-    */
+     */
     public Integer CantidadPacientesAtendidos(String fecha1, String fecha2) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param fecha1 
-     * @param fecha2 
-     * @param edad1 
-     * @param edad2 
+     * @param fecha1
+     * @param fecha2
+     * @param edad1
+     * @param edad2
      * @return
-    */
+     */
     public Integer PacientesAtendidosPorEdad(String fecha1, String fecha2, String edad1, String edad2) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param fecha1 
-     * @param fecha2 
+     * @param fecha1
+     * @param fecha2
      * @return
-    */
-
+     */
     public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
         Medico medicoConMasPacientes = null;
         List<Consulta> consultas = traerConsultas();
 
-    if (consultas != null) { 
-        int maxConsultas = 0;
+        if (consultas != null) {
+            int maxConsultas = 0;
 
-        for (Consulta consulta : consultas) {
-            LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
-            if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
-                Medico medico = consulta.getMedico();
-                int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
-                conteoConsultas.put(medico, consultasMedico);
+            for (Consulta consulta : consultas) {
+                LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
+                if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                    Medico medico = consulta.getMedico();
+                    int consultasMedico = conteoConsultas.getOrDefault(medico, 0) + 1;
+                    conteoConsultas.put(medico, consultasMedico);
 
-                if (consultasMedico > maxConsultas) {
-                    maxConsultas = consultasMedico;
-                    medicoConMasPacientes = medico;
+                    if (consultasMedico > maxConsultas) {
+                        maxConsultas = consultasMedico;
+                        medicoConMasPacientes = medico;
+                    }
                 }
             }
+        } else {
+            return null;
         }
-    } else {
-        return null;
+
+        return medicoConMasPacientes;
     }
 
-    return medicoConMasPacientes;
-    }
-    
-    
-    
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
 
-        if (!consultas.isEmpty()) { 
+        if (!consultas.isEmpty()) {
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
 //                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                     listaFiltrada.add(consulta);
                 }
-            } 
-        } 
-        else {
+            }
+        } else {
             return listaFiltrada;
         }
 
         return listaFiltrada;
     }
-    
+
     public int contadorPacientesEdad(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
         LocalDate fechaActual = LocalDate.now();
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
-            Integer edadPaciente = (int)fechaNacimiento.until(fechaActual, YEARS);
-            if ((edadPaciente >= edad1) && (edadPaciente < edad2)){
+            Integer edadPaciente = (int) fechaNacimiento.until(fechaActual, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente < edad2)) {
                 contador = +1;
             }
         }
         return contador;
     }
-    
 
 //    public Medico MedicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
 //        
 //        return Medico;
 //    }
-
-    
     //---------Metodos estadiscticos----------
-    
     public void VerEstadistica() {
         // TODO implement here
     }
@@ -212,22 +202,21 @@ public class Controladora implements Serializable{
     //    return diccionario;
     // }
 
-     public Integer triagesCambiados() {
+    public Integer triagesCambiados() {
         int sum = 0;
-    //    int rango = len(funcionario.traigeHechos);
-    //    for (i= 0; i<rango; i++) {
-    //        Triage triageN = funcionario.traigeHechos[i];
-    //        if (triageN.colorFinal=!null) {
-    //            sum += 1;
-    //        }
-    //    }
+        //    int rango = len(funcionario.traigeHechos);
+        //    for (i= 0; i<rango; i++) {
+        //        Triage triageN = funcionario.traigeHechos[i];
+        //        if (triageN.colorFinal=!null) {
+        //            sum += 1;
+        //        }
+        //    }
         return sum;
     }
-    
+
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
 //    }
-
 //    public Rol traerRol(String rolRecibido) {
 //        List<Rol> listaRoles = controlPersis.traerRoles();
 //        
@@ -238,7 +227,6 @@ public class Controladora implements Serializable{
 //        }
 //        return null;
 //    }
-
 //    public int buscarUltimaIdFuncionariosEnGeneral() {
 //        List<FuncionarioGeneral> listaFuncionariosEnGeneral = controlPersis.traerFuncionariosEnGeneral();
 //        
@@ -246,7 +234,6 @@ public class Controladora implements Serializable{
 //        return (int) funcionarioGeneral.getId();
 //        
 //    }
-    
 //    public int buscarUltimaIdGestores() {
 //        List<GestoresHospital> listaGestores = this.traerGestores();
 //        
@@ -331,7 +318,6 @@ public class Controladora implements Serializable{
 //
 //        return listaFuncionariosSalud;
 //    }
-
 //    public GestoresHospital traerGestor(long idUsuario) {
 //        return controlPersis.traerGestor(idUsuario);
 //    }
@@ -351,50 +337,47 @@ public class Controladora implements Serializable{
 //    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
 //        return controlPersis.traerAdministradorDeSistemas(idUsuario);
 //    }
-
     // -----
     /*
     * Validar es el metodo publico que llama a validacion
     * @return retorna un objeto Usuario
-    */
-    public Usuario validar(String uss, String pass){
+     */
+    public Usuario validar(String uss, String pass) {
         return validacion(uss, pass);
     }
+
     /*
     * @param uss String de nombre de usuario
     * @param pass String de contraseña
-    */
-    
-    /*
+     */
+
+ /*
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
     * @return Usuario
-    */
-    private Usuario validacion(String us, String pas){
+     */
+    private Usuario validacion(String us, String pas) {
         Usuario resultado = null;
-        try{
+        try {
             List<Usuario> listaBusqueda = controlPersis.traerUsuarios();
             for (Usuario comprobar : listaBusqueda) {
-                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))){
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))) {
                     resultado = comprobar;
                     return resultado;
+                } else {
                 }
-                else {}
             }
             return resultado;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return resultado;
         }
     }
-
-
 
     public List<Box> TraerBoxDelMedico() {
         long idMedico = this.usu.getFuncionarioGeneral().getId();
         Medico medico = this.controlPersis.traerMedico(idMedico);
         List<Box> boxes = this.controlPersis.traerBoxes();
-        for(Box box : boxes){
-            if(box.getConsulta().getMedico()!=medico){
+        for (Box box : boxes) {
+            if (box.getConsulta().getMedico() != medico) {
                 boxes.remove(box);
             }
         }
@@ -402,14 +385,15 @@ public class Controladora implements Serializable{
     }
 
     public List<Usuario> traerTriagesCambiados() {
-        List <Rol> usu= traerRoles();
-        
-       return null;
+        List<Rol> usu = traerRoles();
+
+        return null;
     }
+
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
-        for(Box box : boxes){
-            if(box.getConsulta().getMedico()!=null){
+        for (Box box : boxes) {
+            if (box.getConsulta().getMedico() != null) {
                 boxes.remove(box);
             }
         }
@@ -417,19 +401,19 @@ public class Controladora implements Serializable{
     }
 
     public Box traerBox(long idBox) {
-        return this.controlPersis.traerBox(idBox); 
+        return this.controlPersis.traerBox(idBox);
     }
-    
+
     public void tomarPaciente(Box box, Medico medico) throws Exception {
         List<Object> objetos = this.esperaAtencion.quitarDeFila(box, medico);
-        Consulta consuAct = (Consulta)objetos.get(0);
-        Medico medAct = (Medico)objetos.get(1);
-        Box boxAct = (Box)objetos.get(2);
-        this.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+        Consulta consuAct = (Consulta) objetos.get(0);
+        Medico medAct = (Medico) objetos.get(1);
+        Box boxAct = (Box) objetos.get(2);
+        this.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
     private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
-        this.controlPersis.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+        this.controlPersis.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
     public Paciente traerPacienteEnElBox(String idBox) {
@@ -448,52 +432,75 @@ public class Controladora implements Serializable{
     }
 
     public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
+        // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
+
+        // Creamos un formateador para la hora
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // Formateamos la fecha y la hora a cadenas de texto
         String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-        
-        ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion ,hora ,fecha);
-        
+        String hora = horaActual.format(formato);
+
+        // Creamos un nuevo resultado de estudio con los datos proporcionados
+        ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion, hora, fecha);
+
+        // Cargamos el nuevo resultado de estudio en el controlador de persistencia
         this.controlPersis.crearResultadoEstudio(res);
-        
+
+        // Añadimos el resultado de estudio al paciente y actualizamos el paciente en el controlador de persistencia
         paciente.getResultadoEstudio().add(res);
         this.controlPersis.editarPaciente(paciente);
-        
     }
-    
+
     public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
+        // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
+
+        // Creamos un formateador para la hora
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // Formateamos la fecha y la hora a cadenas de texto
         String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-        
+        String hora = horaActual.format(formato);
+
+        // Obtenemos el funcionario general del usuario actual y lo convertimos a médico
         FuncionarioGeneral func = this.usu.getFuncionarioGeneral();
         Medico medico = (Medico) func;
-  
+
+        // Creamos un nuevo diagnóstico clínico con los datos proporcionados y el médico obtenido
         DiagnosticoClinico diag = new DiagnosticoClinico(paciente, titulo, fecha, hora, descripcion, medico);
-        
+
+        // Cargamos el nuevo diagnóstico clínico en el controlador de persistencia
         this.controlPersis.cargarNuevoDiagClinico(diag);
-        
+
+        // Añadimos el diagnóstico al paciente y actualizamos el paciente en el controlador de persistencia
         paciente.getDiagnosticoClinico().add(diag);
         this.controlPersis.editarPaciente(paciente);
     }
 
     public void terminarConsulta(String diagnostico, String idBox) {
+        // Convertimos el id del box a long
         long id = Long.parseLong(idBox);
-        
-        
+
+        // Obtenemos el box a vaciar del controlador de persistencia
         Box boxAVaciar = this.controlPersis.traerBox(id);
+
+        // Obtenemos la consulta del box
         Consulta consulta = boxAVaciar.getConsulta();
-        
+
+        // Establecemos el diagnóstico de la consulta y actualizamos la consulta en el controlador de persistencia
         consulta.setDiagnConsulta(diagnostico);
         this.controlPersis.editarConsulta(consulta);
-        
+
+        // Vaciamos la consulta del box y actualizamos el box en el controlador de persistencia
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
-        
     }
-         //Metodo que muestra un mensaje por pantalla
+    //Metodo que muestra un mensaje por pantalla
+
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -520,9 +527,9 @@ public class Controladora implements Serializable{
 
     public Rol traerRol(String rolRecibido) {
         List<Rol> listaRoles = this.traerRoles();
-        
+
         for (Rol rol : listaRoles) {
-            
+
             if (rol.getNombre().equalsIgnoreCase(rolRecibido)) {
                 return rol;
             }
@@ -546,9 +553,9 @@ public class Controladora implements Serializable{
         paciente.setTelDeContacto(numContacto);
         paciente.setDiagnosticoClinico(null);
         paciente.setResultadoEstudio(null);
-        
+
         controlPersis.RegistrarPaciente(paciente);
-        
+
         return paciente;
     }
 
@@ -557,18 +564,18 @@ public class Controladora implements Serializable{
         LocalTime horaActual = LocalTime.now();
         String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
         String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-        
-        Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
+
+        Consulta consu = new Consulta(p, fecha, hora, null, lugar, motivo, null, null, null);
         this.controlPersis.CrearConsulta(consu);
         this.esperaAtencionTriage.AñadirALaFila(consu);
-        
+
     }
 
     public Object[] ValidarPaciente(int doc) {
         List<Paciente> pacientes = this.controlPersis.traerPacientes();
         Object[] objetos = {11};
-        for(Paciente p : pacientes){
-            if(p.getDni()==doc){
+        for (Paciente p : pacientes) {
+            if (p.getDni() == doc) {
                 objetos[0] = p.getDni();
                 objetos[1] = p.getApellido();
                 objetos[2] = p.getNombre();
@@ -579,7 +586,7 @@ public class Controladora implements Serializable{
                 objetos[7] = p.getTelefonoCel();
                 objetos[8] = p.getTelefonoFijo();
                 objetos[9] = p.getPersoDeContacto();
-                objetos[10] = p.getTelDeContacto();        
+                objetos[10] = p.getTelDeContacto();
                 break;
             }
         }
@@ -588,18 +595,26 @@ public class Controladora implements Serializable{
 
     public List<Consulta> traerPacientesEnEspera() {
         List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
-        return  consultas;
+        return consultas;
     }
 
     public Paciente buscarPacientePorDni(int dni) {
+        // Obtenemos la lista de pacientes del controlador de persistencia
         List<Paciente> pacientes = this.controlPersis.traerPacientes();
+
+        // Creamos un nuevo paciente
         Paciente paciente = new Paciente();
-        for(Paciente p : pacientes){
-            if(p.getDni()==dni){
-               paciente = p;
-               break;   
+
+        // Recorremos la lista de pacientes
+        for (Paciente p : pacientes) {
+            // Si el DNI del paciente coincide con el DNI proporcionado, asignamos el paciente a la variable paciente y terminamos el bucle
+            if (p.getDni() == dni) {
+                paciente = p;
+                break;
             }
         }
+
+        // Devolvemos el paciente encontrado (o el paciente vacío si no se encontró ninguno)
         return paciente;
     }
 }

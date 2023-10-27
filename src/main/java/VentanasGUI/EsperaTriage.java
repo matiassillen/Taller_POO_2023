@@ -1,31 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasGUI;
 
-import Model.Box;
 import Model.Consulta;
 import Model.Controladora;
-import Model.FuncionarioGeneral;
-import Model.Medico;
 import Model.Paciente;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esta clase representa una ventana de la interfaz gráfica de usuario que
+ * permite ver los pacientes que estan esperando ser triageados y
+ * seleccionarlos.
  *
  * @author yairc
  */
 public class EsperaTriage extends javax.swing.JFrame {
-    Controladora control;
-    Paciente pacienteSelecionado;
+
+    private Controladora control;
+    private Paciente pacienteSelecionado;
+
     /**
-     * Creates new form EsperaTriage
+     * Constructor de la clase EsperaTriage
+     *
+     * @param control
      */
     public EsperaTriage(Controladora control) {
         this.control = control;
-        
     }
 
     /**
@@ -163,53 +162,114 @@ public class EsperaTriage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el botón Seleccionar
+     * Paciente. Si se ha seleccionado un paciente, se crea una nueva instancia
+     * de HacerTriage y se desecha la actual. Si no se ha seleccionado un
+     * paciente, se muestra un mensaje de error.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnSeleccionarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPacienteActionPerformed
-        HacerTriage hacerT = new HacerTriage(control,pacienteSelecionado);
-        hacerT.setVisible(true);
-        hacerT.setLocationRelativeTo(null);
-        this.dispose();
+        // Comprueba si se ha seleccionado un paciente
+        if (pacienteSelecionado != null) {
+            // Si se ha seleccionado un paciente, crea una nueva instancia de HacerTriage
+            HacerTriage hacerT = new HacerTriage(control, pacienteSelecionado);
+            // Hace visible la nueva instancia de HacerTriage
+            hacerT.setVisible(true);
+            // Centra la nueva instancia de HacerTriage en la pantalla
+            hacerT.setLocationRelativeTo(null);
+            // Cierra la ventana actual
+            this.dispose();
+        } else {
+            // Si no se ha seleccionado un paciente, muestra un mensaje de error
+            this.control.mostrarMensaje("No se selecciono ningun paciente", "Error", "Error");
+        }
     }//GEN-LAST:event_btnSeleccionarPacienteActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se hace clic en la tabla En Espera. Si se ha
+     * seleccionado una fila, busca al paciente por DNI y habilita el botón
+     * Seleccionar Paciente.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void tablaEnEsperaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEnEsperaMouseClicked
-        if (tablaEnEspera.getRowCount() > 0) {
-            if (tablaEnEspera.getSelectedRow() != -1) {
-                int row = tablaEnEspera.getSelectedRow();
-                String dniP = tablaEnEspera.getModel().getValueAt(row, 0).toString();
-                int dni = Integer.parseInt(dniP);
-                this.pacienteSelecionado = control.buscarPacientePorDni(dni);
-                btnSeleccionarPaciente.setEnabled(true);
+        try {
+            // Comprueba si la tabla tiene filas
+            if (tablaEnEspera.getRowCount() > 0) {
+                // Comprueba si se ha seleccionado una fila
+                if (tablaEnEspera.getSelectedRow() != -1) {
+                    // Obtiene el DNI del paciente de la fila seleccionada
+                    int row = tablaEnEspera.getSelectedRow();
+                    String dniP = tablaEnEspera.getModel().getValueAt(row, 0).toString();
+                    int dni = Integer.parseInt(dniP);
+                    // Busca al paciente por DNI y lo guarda como el paciente seleccionado
+                    this.pacienteSelecionado = control.buscarPacientePorDni(dni);
+                    // Habilita el botón Seleccionar Paciente
+                    btnSeleccionarPaciente.setEnabled(true);
+                }
             }
+        } catch (Exception e) {
+            // Imprime el mensaje de error si ocurre una excepción
+            System.out.println("Error: " + e.getMessage());
         }
     }//GEN-LAST:event_tablaEnEsperaMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el botón Volver. Crea una
+     * nueva instancia de PrincipalMedico y desecha la actual.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // Crea una nueva instancia de PrincipalMedico
         PrincipalMedico ppalMedico = new PrincipalMedico(control);
+        // Hace visible la nueva instancia de PrincipalMedico
         ppalMedico.setVisible(true);
+        // Centra la nueva instancia de PrincipalMedico en la pantalla
         ppalMedico.setLocationRelativeTo(null);
+        // Cierra la ventana actual
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se abre la ventana. Llama al método para
+     * cargar la tabla En Espera.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Cuando se abre la ventana, carga la tabla En Espera
         this.cargartablaEnEspera();
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Método para cargar la tabla En Espera con los pacientes en espera. Crea
+     * un nuevo modelo de tabla y lo llena con los datos de los pacientes en
+     * espera.
+     *
+     * @param evt El evento de ventana que ocurrió.
+     */
     private void cargartablaEnEspera() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
-        String titutlos[] = {"Dni","Nombre","Apellido","Motivo Consulta"};
-        modeloTabla.setColumnIdentifiers(titutlos);
-        List<Consulta> consultas = control.traerPacientesEnEspera();
-        if (consultas != null) {
-            for (Consulta consu : consultas) {
-                Object[] objeto = {consu.getPaciente().getDni(),consu.getPaciente().getNombre(),consu.getPaciente().getApellido(),consu.getMotivo()};
-                modeloTabla.addRow(objeto);
+        try {
+            // Crea un nuevo modelo de tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            String titutlos[] = {"Dni", "Nombre", "Apellido", "Motivo Consulta"};
+            modeloTabla.setColumnIdentifiers(titutlos);
+            // Obtiene la lista de pacientes en espera
+            List<Consulta> consultas = control.traerPacientesEnEspera();
+            if (consultas != null) {
+                // Para cada consulta en la lista, añade una fila a la tabla con los datos del paciente y el motivo de consulta
+                for (Consulta consu : consultas) {
+                    Object[] objeto = {consu.getPaciente().getDni(), consu.getPaciente().getNombre(), consu.getPaciente().getApellido(), consu.getMotivo()};
+                    modeloTabla.addRow(objeto);
+                }
             }
+            // Establece el modelo de la tabla con el nuevo modelo lleno de datos
+            tablaEnEspera.setModel(modeloTabla);
+        } catch (Exception e) {
+            // Imprime el mensaje de error si ocurre una excepción
+            System.out.println("Error: " + e.getMessage());
         }
-        tablaEnEspera.setModel(modeloTabla);
     }
-    
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeleccionarPaciente;
