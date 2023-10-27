@@ -392,6 +392,14 @@ public class ControladoraPersistencia implements Serializable{
         this.triageJpa.create(triage);
     }
 
+    public Consulta traerConsulta(int idConsulta) {
+        return consultaJpa.findConsulta(idConsulta);
+    }
+
+    public void editarTriage(Triage triage) throws Exception {
+        this.triageJpa.edit(triage);
+    }
+
     
 }
     
