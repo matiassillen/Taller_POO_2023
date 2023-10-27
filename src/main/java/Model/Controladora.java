@@ -157,6 +157,8 @@ public class Controladora implements Serializable{
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
 //                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+
+
                     listaFiltrada.add(consulta);
                 }
             } 
@@ -482,9 +484,9 @@ public class Controladora implements Serializable{
          //Metodo que muestra un mensaje por pantalla
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equals("info")) {
+        if (tipo.equalsIgnoreCase("info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equals("Error")) {
+        } else if (tipo.equalsIgnoreCase("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
@@ -523,14 +525,16 @@ public class Controladora implements Serializable{
         if (listaUsuarios != null) {
 
             for (Usuario usu : listaUsuarios) {
-
-                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                
+                if (usu.getFuncionarioGeneral() != null) {
+                    int dnii = usu.getFuncionarioGeneral().getDni();
                     
-                    mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
-                    return controlPersis.traerUsuario(usu.getId());  
-                    
+                    if (dnii == dni) {
+                        return controlPersis.traerUsuario(usu.getId());  
+                    }
                 }
-            }
+            }        
+
         }
         return null;
     }

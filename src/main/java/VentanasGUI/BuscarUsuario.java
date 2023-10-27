@@ -7,8 +7,10 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
     AdministradorDeSistema administrador;
     Controladora control;
+
     /**
      * Creates new form BuscarUsuario
+     *
      * @param administrador
      * @param control
      */
@@ -35,8 +37,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMostrarUsuario = new javax.swing.JTextArea();
-        btnCancelar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,11 +83,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtDni.setBackground(new java.awt.Color(255, 255, 255));
         txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDni.setForeground(new java.awt.Color(0, 0, 0));
-        txtDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDniActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -107,29 +105,29 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 280, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, 60));
 
         txtMostrarUsuario.setEditable(false);
         txtMostrarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtMostrarUsuario.setColumns(20);
-        txtMostrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMostrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtMostrarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtMostrarUsuario.setRows(5);
         jScrollPane1.setViewportView(txtMostrarUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 390, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 140));
 
-        btnCancelar.setBackground(new java.awt.Color(0, 204, 204));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 90, 30));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 90, 30));
 
         btnBuscar.setBackground(new java.awt.Color(0, 204, 204));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -141,13 +139,25 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 90, -1));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 90, -1));
+
+        btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,35 +168,38 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-        try {
 
-          int doc = Integer.parseInt(txtDni.getText());
+        String documento = txtDni.getText();
+        String usuario;
 
-        } catch (NumberFormatException e) {
+        if (documento.length() != 8) {
+            
             txtDni.setText("");
             control.mostrarMensaje("DNI no valido", "Error", "Error");
+            
+        } else {
+            
+            int dni = Integer.parseInt(txtDni.getText());
+            usuario = control.mostrarUsuario(administrador.buscarUsuario(dni));
+            txtMostrarUsuario.setText(usuario);
+            
         }
-        
-        int dni = Integer.parseInt(txtDni.getText());
 
-        String usuario = control.mostrarUsuario(administrador.buscarUsuario(dni));
-        
-        txtMostrarUsuario.setText(usuario);
-        this.dispose();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        
-    }//GEN-LAST:event_txtDniActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtDni.setText("");
+        txtMostrarUsuario.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

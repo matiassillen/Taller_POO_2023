@@ -8,9 +8,7 @@ import Model.AdministradorDeSistema;
 import Model.Controladora;
 import Model.FuncionarioGeneral;
 import Model.Rol;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,7 +76,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Asignar Roles");
+        jLabel1.setText("Crear Usuario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,21 +183,31 @@ public class CrearUsuario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-        String nombreUsaurio = nombre + "  " + apellido;
-        String contrasenia = String.valueOf(dni);
-        String rolUsu = String.valueOf(cmbRol.getSelectedItem());
         FuncionarioGeneral funcGeneral = control.traerFuncionarioGeneral(id);
-
-        administrador.crearUsuario(nombreUsaurio, contrasenia, rolUsu, funcGeneral);
-
-        funcGeneral.setUsu(control.traerUsu(dni));
-
-        control.editarFuncionarioGeneral(funcGeneral);
         
-        //Avisar al administrador que se creó correctamente
+        if (funcGeneral.getUsu() == null) {
+            String nombreUsaurio = nombre + "  " + apellido;
+            String contrasenia = String.valueOf(dni);
+            String rolUsu = String.valueOf(cmbRol.getSelectedItem());
+        
+
+            administrador.crearUsuario(nombreUsaurio, contrasenia, rolUsu, funcGeneral);
+
+            funcGeneral.setUsu(control.traerUsu(dni));
+
+            control.editarFuncionarioGeneral(funcGeneral);
+        
+            //Avisar al administrador que se creó correctamente
+        
+            control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
+        
+        } else {
+            control.mostrarMensaje("Usuario existente", "Error", "Error");
+        }
+        
+        
         admin.recargarTablaFuncionariosEnGeneral();
         admin.recargarTablaUsuarios();
-        control.mostrarMensaje("Se creo el usuario correctamente", "info", "Creación Exitosa");
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
