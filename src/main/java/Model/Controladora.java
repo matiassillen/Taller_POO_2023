@@ -1004,15 +1004,12 @@ public class Controladora implements Serializable{
             
         }else if(lesionLeve.equals(LesionesLeves.NOP.getTipo())){
             
-            triage.setLesLeves(LesionesLeves.NOP);
-            
+            triage.setLesLeves(LesionesLeves.NOP);   
         }
         
         Consulta consulta = this.controlPersis.traerConsulta(idConsulta);
         triage.setConsulta(consulta);
-        
-     
-        
+
         triage.setMedico(null);
         triage.setEnfermero(null);
         
@@ -1041,6 +1038,10 @@ public class Controladora implements Serializable{
         triage.obtenerPuntos();
         
         this.controlPersis.crearTriage(triage);
+        
+        consulta.setTriage(triage);
+        this.controlPersis.editarConsulta(consulta);
+        
         return triage;
         
     }
@@ -1051,11 +1052,18 @@ public class Controladora implements Serializable{
 
     public void editarTriage(String motivo, String color,Triage triage) throws Exception {
         triage.setMotCambio(motivo);
-        TipoColor color2 = TipoColor.valueOf(color);
-        triage.setColorFinal(color2);
+        TipoColor colorNuevo = TipoColor.valueOf(color);
+        triage.setColorFinal(colorNuevo);
         
         this.controlPersis.editarTriage(triage);
-        
+        Consulta consu = triage.getConsulta();
+        consu.setTriage(triage);
+        this.controlPersis.editarConsulta(consu);
+        this.añadirALaFila(consu);
+    }
+
+    public void añadirALaFila(Consulta consu) {
+        this.esperaAtencion.añadirAFila(consu);
     }
 
  
