@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author trapo
+ * @author Grupo patito
  */
 public class PacientesMasConsultas extends javax.swing.JFrame {
     Controladora controlP;
@@ -190,11 +190,18 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Vuelve a la pantalla de gestor
+     * @param evt 
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * Ejecuta la logica y muestra los pacientes que mas consultaron en un rango de fechas
+     * @param evt 
+     */
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         
         Calendar fechaOne = jDateChooser1.getCalendar();
@@ -243,6 +250,11 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultarMouseClicked
 
+    /**
+     * Logica que carga los datos de los pacientes en la tabla
+     * @param fechaOne
+     * @param fechaTwo 
+     */
     private void cargarPacientes(LocalDate fechaOne, LocalDate fechaTwo){
               
         DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -274,11 +286,7 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         }
         tablaPacientes.setModel(modeloTabla);
     }
-    
-    /**
-     * @param args the command line arguments
-     */
-    
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;

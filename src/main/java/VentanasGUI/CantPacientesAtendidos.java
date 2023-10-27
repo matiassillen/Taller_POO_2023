@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author trapo/Agus
+ * @ grupo patito
  */
 public class CantPacientesAtendidos extends javax.swing.JFrame {
     Controladora controlP;
@@ -290,10 +290,21 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+    * Vuelve a la pantalla de Gestor
+    */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    
+    /**
+     * 
+     * Al cliquear el boton se realiza la extraccion de los datos de los campos
+     * y se llaman a los metodos necesarios para obtener y mostrar la cantidad
+     * de pacientes atendidos en un rango de edades y fechas
+     */
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         Integer edadOne = 0;
         Integer edadTwo = 0;

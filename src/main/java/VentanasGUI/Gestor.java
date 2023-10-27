@@ -8,7 +8,10 @@ import Model.Controladora;
 
 /**
  *
- * @author Usuario
+ * @author Grupo patito
+ * Ventana principal para el rol de Gestor del Hospital
+ * Contiene las opciones para visualizar datos estadisticos
+ * 
  */
 public class Gestor extends javax.swing.JFrame {
     Controladora controlG;
@@ -31,7 +34,7 @@ public class Gestor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnCantPacienteMedico = new javax.swing.JButton();
-        btnCantPaciente = new javax.swing.JButton();
+        btnCantPacienteEdadFecha = new javax.swing.JButton();
         btnPacienteMasConsulta = new javax.swing.JButton();
         btnMedicoMasPaciente = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
@@ -61,17 +64,17 @@ public class Gestor extends javax.swing.JFrame {
         });
         jPanel1.add(btnCantPacienteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 300, 40));
 
-        btnCantPaciente.setBackground(new java.awt.Color(0, 204, 204));
-        btnCantPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantPaciente.setForeground(new java.awt.Color(0, 0, 0));
-        btnCantPaciente.setText("Cant. Pacientes Atendidos");
-        btnCantPaciente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCantPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnCantPacienteEdadFecha.setBackground(new java.awt.Color(0, 204, 204));
+        btnCantPacienteEdadFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCantPacienteEdadFecha.setForeground(new java.awt.Color(0, 0, 0));
+        btnCantPacienteEdadFecha.setText("Cant. pacientes atendidos por edad");
+        btnCantPacienteEdadFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCantPacienteEdadFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCantPacienteActionPerformed(evt);
+                btnCantPacienteEdadFechaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCantPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 300, 40));
+        jPanel1.add(btnCantPacienteEdadFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 300, 40));
 
         btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 204));
         btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -183,31 +186,58 @@ public class Gestor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Los siguientes botones llevan a las ventanas de carga de datos y visualizacion
+     * de cada metodo estadistico en particular
+     * @param evt 
+     */
+    
+    /**
+     * Cantidad de pacientes atendidos por un medico en particular
+     * @param evt 
+     */
     private void btnCantPacienteMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteMedicoActionPerformed
         CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.controlG);
         cantMedico.setVisible(true);
         cantMedico.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnCantPacienteMedicoActionPerformed
 
-    private void btnCantPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteActionPerformed
+    /**
+     * Cantidad de pacientes atendidos en rango de edad y rango de fechas
+     * @param evt 
+     */
+    private void btnCantPacienteEdadFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteEdadFechaActionPerformed
 
         CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.controlG);
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnCantPacienteActionPerformed
+    }//GEN-LAST:event_btnCantPacienteEdadFechaActionPerformed
 
+    /**
+     * Pacientes que mas consultaron en un rango de fechas
+     * @param evt 
+     */
     private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
         PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.controlG);
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnPacienteMasConsultaActionPerformed
 
+    
+    /**
+     * Medico que mas pacientes atendio en un rango de fechas
+     * @param evt 
+     */
     private void btnMedicoMasPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoMasPacienteActionPerformed
         MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.controlG);
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
 
+    /**
+     * Boton que devuelve al Login
+     * @param evt 
+     */
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         GuiLogin pantallaLogin = new GuiLogin();
         pantallaLogin.setVisible(true);
@@ -215,12 +245,20 @@ public class Gestor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    /**
+     * Cantidad de triages cambiados
+     * @param evt 
+     */
     private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
         TriageCambiado triagesCambiados = new TriageCambiado(this.controlG);
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTriageCambiadoActionPerformed
 
+    /**
+     * La informacion del propio usuario
+     * @param evt 
+     */
     private void buttonMiUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMiUsuarioMouseClicked
         MiUsuario pantallaUsuario = new MiUsuario(this.controlG);
         pantallaUsuario.setVisible(true);
@@ -232,7 +270,7 @@ public class Gestor extends javax.swing.JFrame {
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCantPaciente;
+    private javax.swing.JButton btnCantPacienteEdadFecha;
     private javax.swing.JButton btnCantPacienteMedico;
     private javax.swing.JButton btnCantTriage;
     private javax.swing.JButton btnCerrarSesion;

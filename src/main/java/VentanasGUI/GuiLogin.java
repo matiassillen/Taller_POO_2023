@@ -11,10 +11,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Agus
+ * @author Grupo patito
+ * Ventana que valida al usuario y le devuelve la ventana correspondiente al rol
  */
 public class GuiLogin extends javax.swing.JFrame {
-    Controladora verif = new Controladora();
+    Controladora controlBase = new Controladora();
     /**
      * Creates new form Login
      */
@@ -110,6 +111,11 @@ public class GuiLogin extends javax.swing.JFrame {
         txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtContrasenia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtContrasenia.setSelectionColor(new java.awt.Color(204, 204, 204));
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseniaActionPerformed(evt);
+            }
+        });
         jPanel4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 174, 34));
 
         buttonSesion.setBackground(new java.awt.Color(102, 204, 255));
@@ -129,16 +135,19 @@ public class GuiLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*
-    * Al cliquear el boton de iniciar sesion se ejecuta toda la comprobacion y seleccion de ventana
-    */
+
+    /**
+     *Al cliquear el boton de iniciar sesion se ejecuta toda la validacion de
+     * usuario y contraseña, en caso afirmativo se abre la ventana correspondiente al rol
+     * @param evt 
+     */
     private void buttonSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSesionMouseClicked
         String usern = txtUsuario.getText();
         String passw = String.valueOf(txtContrasenia.getPassword());
-        Usuario resultado = verif.validar(usern, passw);
+        Usuario resultado = controlBase.validar(usern, passw);
         
         if (resultado != null) {
-            verif.setUsu(resultado);
+            controlBase.setUsu(resultado);
             
             List<Rol> rolUser = resultado.getRol();
             
@@ -149,7 +158,7 @@ public class GuiLogin extends javax.swing.JFrame {
                 funcionarioSalud.add(agregarRol);
             }
             if (funcionarioSalud.contains(rolUser.get(0).getNombre())) {
-                PrincipalMedico pantallaSalud = new PrincipalMedico(verif);
+                PrincipalMedico pantallaSalud = new PrincipalMedico(controlBase);
                 pantallaSalud.setVisible(true);
                 pantallaSalud.setLocationRelativeTo(null);
                 this.dispose();    
@@ -157,21 +166,21 @@ public class GuiLogin extends javax.swing.JFrame {
             
             switch (rolUser.get(0).getNombre()) {
                 case "Gestor":
-                    Gestor pantallaGestion = new Gestor(verif);
+                    Gestor pantallaGestion = new Gestor(controlBase);
                     pantallaGestion.setVisible(true);
                     pantallaGestion.setLocationRelativeTo(null);
                     this.dispose();
                     break;
                 
                 case "Recepcionista":
-                    RegistrarPaciente pantallaRecepcion = new RegistrarPaciente(verif);
+                    RegistrarPaciente pantallaRecepcion = new RegistrarPaciente(controlBase);
                     pantallaRecepcion.setVisible(true);
                     pantallaRecepcion.setLocationRelativeTo(null);
                     this.dispose();                    
                     break;
                 
                 case "Administrador de Sistema":
-                    Administrador pantallaAdmin = new Administrador(verif);
+                    Administrador pantallaAdmin = new Administrador(controlBase);
                     pantallaAdmin.setVisible(true);
                     pantallaAdmin.setLocationRelativeTo(null);
                     this.dispose();
@@ -187,6 +196,10 @@ public class GuiLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSesionMouseClicked
 
+    /**
+     * Campo para completar por el usuario. Nombre de Usuario
+     * @param evt 
+     */
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -194,6 +207,14 @@ public class GuiLogin extends javax.swing.JFrame {
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseñaActionPerformed
+
+    /**
+     * Campo para completar por el usuario. Contraseña
+     * @param evt 
+     */
+    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseniaActionPerformed
 
     /**
      * @param args the command line arguments
