@@ -1199,6 +1199,11 @@ public class HacerTriage extends javax.swing.JFrame {
         btnVolver.setBackground(new java.awt.Color(100, 196, 244));
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, -1, -1));
 
         btnCrearTriage.setBackground(new java.awt.Color(100, 196, 244));
@@ -1462,10 +1467,14 @@ public class HacerTriage extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbPresenteLesionLActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        MostrarTriage pantalla = new MostrarTriage(triage);
+        MostrarTriage pantalla = new MostrarTriage(triage, control);
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,8 +14,8 @@ import Model.Sintomas.Sangrado;
 import Model.Sintomas.Shock;
 import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
-import static java.awt.SystemColor.control;
 import java.io.Serializable;
+import static java.lang.String.valueOf;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -1047,6 +1047,15 @@ public class Controladora implements Serializable{
 
     public List<Paciente> traerPacientes() {
        return controlPersis.traerPacientes();
+    }
+
+    public void editarTriage(String motivo, String color,Triage triage) throws Exception {
+        triage.setMotCambio(motivo);
+        TipoColor color2 = TipoColor.valueOf(color);
+        triage.setColorFinal(color2);
+        
+        this.controlPersis.editarTriage(triage);
+        
     }
 
  

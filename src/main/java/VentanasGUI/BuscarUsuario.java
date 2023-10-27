@@ -11,6 +11,16 @@ public class BuscarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form BuscarUsuario
      *
+     * Este constructor tiene dos parámetros: administrador y control. Estos
+     * parámetros se utilizan para inicializar los campos de la clase.
+     *
+     * El primer parámetro, administrador, es un objeto de la clase
+     * AdministradorDeSistema. El segundo parámetro, control, es un objeto de la
+     * clase Controladora.
+     *
+     * Este constructor inicializa los campos de la clase y llama al método
+     * initComponents para inicializar los componentes de la interfaz gráfica.
+     *
      * @param administrador
      * @param control
      */
@@ -167,29 +177,49 @@ public class BuscarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * El método se ejecuta cuando el usuario hace clic en el botón “Buscar”.
+     * Este método busca un usuario en la base de datos a través del número de
+     * identificación nacional (DNI) ingresado por el usuario. Si el DNI no es
+     * válido, se muestra un mensaje de error. Si el DNI es válido, se llama al
+     * método buscarUsuario del objeto administrador para buscar al usuario
+     * correspondiente y se muestra la información del usuario en la interfaz
+     * gráfica.
+     */
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         String documento = txtDni.getText();
         String usuario;
 
         if (documento.length() != 8) {
-            
+
             txtDni.setText("");
             control.mostrarMensaje("DNI no valido", "Error", "Error");
-            
+
         } else {
-            
+
             int dni = Integer.parseInt(txtDni.getText());
             usuario = control.mostrarUsuario(administrador.buscarUsuario(dni));
             txtMostrarUsuario.setText(usuario);
-            
+
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    /**
+     * El método se ejecuta cuando el usuario hace clic en el botón “Volver”.
+     * Este método cierra la ventana actual.
+     */
+
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    /**
+     * El método se ejecuta cuando el usuario hace clic en el botón “Limpiar”.
+     * Este método borra los campos de texto txtDni y txtMostrarUsuario.
+     */
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtDni.setText("");

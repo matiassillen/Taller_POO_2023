@@ -22,7 +22,12 @@ public class Administrador extends javax.swing.JFrame {
     Controladora control;
 
     /**
-     * Creates new form Administrador
+     * Creates new form
+     *
+     * Este constructor tiene un parámetro: control. Este parámetro es un objeto
+     * de la clase Controladora. Este constructor inicializa los campos de la
+     * clase y llama al método initComponents para inicializar los componentes
+     * de la interfaz gráfica.
      *
      * @param control
      *
@@ -45,7 +50,6 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnCerrarSesion = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnCrearUsuario = new javax.swing.JButton();
         btnBuscarUsuario = new javax.swing.JButton();
@@ -53,6 +57,7 @@ public class Administrador extends javax.swing.JFrame {
         btnBorrarUsuario = new javax.swing.JButton();
         btnRecargarTablas = new javax.swing.JButton();
         btnMiUsuario = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -81,18 +86,6 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Administrador del sistema");
 
-        btnCerrarSesion.setBackground(new java.awt.Color(153, 204, 255));
-        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
-        btnCerrarSesion.setText("Cerrar Sesión");
-        btnCerrarSesion.setBorder(null);
-        btnCerrarSesion.setPreferredSize(new java.awt.Dimension(136, 40));
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -100,17 +93,13 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(301, 301, 301)
                 .addComponent(jLabel1)
-                .addGap(372, 372, 372)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -185,6 +174,18 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        btnCerrarSesion.setBackground(new java.awt.Color(153, 204, 255));
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setPreferredSize(new java.awt.Dimension(136, 40));
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -200,7 +201,8 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnMiUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnMiUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,7 +219,9 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMiUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -367,10 +371,11 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Método de acción que se llama cuando se hace clic en el botón “Buscar
-     * Usuario”. Este método crea una nueva instancia de la clase BuscarUsuario
-     * y la muestra en la pantalla. La instancia de la clase BuscarUsuario se
-     * inicializa con los objetos administrador y control.
+     * El método de acción btnBuscarUsuarioActionPerformed se llama cuando se
+     * hace clic en el botón “Buscar Usuario”. Este método crea una nueva
+     * instancia de la clase BuscarUsuario y la muestra en la pantalla. La
+     * instancia de la clase BuscarUsuario se inicializa con los objetos
+     * administrador y control.
      */
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
@@ -379,13 +384,13 @@ public class Administrador extends javax.swing.JFrame {
         pantalla2.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
     /**
-     * Es un método de acción que se llama cuando se hace clic en el botón
-     * “Editar Usuario”. Este método comprueba si se ha seleccionado una fila en
-     * la tabla de usuarios. Si se ha seleccionado una fila, se obtiene el ID
-     * del usuario seleccionado y se crea una nueva instancia de la clase
-     * EditarUsuario. La instancia de la clase EditarUsuario se inicializa con
-     * los objetos administrador, control e id. Si no se ha seleccionado ninguna
-     * fila, se muestra un mensaje de error.
+     * El método de acción btnEditarUsuarioActionPerformed se llama cuando se
+     * hace clic en el botón “Editar Usuario”. Este método comprueba si se ha
+     * seleccionado una fila en la tabla de usuarios. Si se ha seleccionado una
+     * fila, se obtiene el ID del usuario seleccionado y se crea una nueva
+     * instancia de la clase EditarUsuario. La instancia de la clase
+     * EditarUsuario se inicializa con los objetos administrador, control e id.
+     * Si no se ha seleccionado ninguna fila, se muestra un mensaje de error.
      *
      */
 
@@ -417,11 +422,12 @@ public class Administrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
     /**
-     * Es un método de acción que se llama cuando se hace clic en el botón
-     * “Información Administrativa”. Este método crea una nueva instancia de la
-     * clase InformacionAdministrativa y la muestra en la pantalla. La instancia
-     * de la clase InformacionAdministrativa se inicializa con el objeto
-     * control. Además, este método cierra la ventana actual.
+     * El método de acción btnInfoAdministrativaActionPerformed se llama cuando
+     * se hace clic en el botón “Información Administrativa”. Este método crea
+     * una nueva instancia de la clase InformacionAdministrativa y la muestra en
+     * la pantalla. La instancia de la clase InformacionAdministrativa se
+     * inicializa con el objeto control. Además, este método cierra la ventana
+     * actual.
      */
 
     private void btnInfoAdministrativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAdministrativaActionPerformed
@@ -431,13 +437,13 @@ public class Administrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInfoAdministrativaActionPerformed
     /**
-     * es un método de acción que se llama cuando se hace clic en el botón
-     * “Borrar Usuario”. Este método comprueba si se ha seleccionado una fila en
-     * la tabla de usuarios. Si se ha seleccionado una fila, se obtiene el ID
-     * del usuario seleccionado y se llama al método borrarUsuario(id) de la
-     * instancia de la clase AdministradorDeSistema para eliminar el usuario de
-     * la base de datos. Si no se ha seleccionado ninguna fila, se muestra un
-     * mensaje de error.
+     * El método de acción btnBorrarUsuarioActionPerformed se llama cuando se
+     * hace clic en el botón “Borrar Usuario”. Este método comprueba si se ha
+     * seleccionado una fila en la tabla de usuarios. Si se ha seleccionado una
+     * fila, se obtiene el ID del usuario seleccionado y se llama al método
+     * borrarUsuario(id) de la instancia de la clase AdministradorDeSistema para
+     * eliminar el usuario de la base de datos. Si no se ha seleccionado ninguna
+     * fila, se muestra un mensaje de error.
      */
 
     private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
@@ -471,10 +477,10 @@ public class Administrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
     /**
-     * método que se llama cuando se abre la ventana. Este método carga los
-     * datos de los funcionarios generales y los usuarios en las tablas
-     * correspondientes. Además, deshabilita los botones “Crear Usuario”,
-     * “Borrar Usuario” y “Editar Usuario”.
+     * El método formWindowOpened se llama cuando se abre la ventana. Este
+     * método carga los datos de los funcionarios generales y los usuarios en
+     * las tablas correspondientes. Además, deshabilita los botones “Crear
+     * Usuario”, “Borrar Usuario” y “Editar Usuario”.
      */
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -485,10 +491,10 @@ public class Administrador extends javax.swing.JFrame {
         btnEditarUsuario.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
     /**
-     * El método se llama cuando se hace clic en una fila de la tabla de
-     * funcionarios generales. Este método habilita el botón “Crear Usuario”,
-     * deshabilita los botones “Borrar Usuario” y “Editar Usuario” y carga la
-     * tabla de usuarios.
+     * El método tablaFuncionariosEnGeneralMouseClicked se llama cuando se hace
+     * clic en una fila de la tabla de funcionarios generales. Este método
+     * habilita el botón “Crear Usuario”, deshabilita los botones “Borrar
+     * Usuario” y “Editar Usuario” y carga la tabla de usuarios.
      */
 
     private void tablaFuncionariosEnGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFuncionariosEnGeneralMouseClicked
@@ -498,10 +504,10 @@ public class Administrador extends javax.swing.JFrame {
         cargarTablaUsuarios();
     }//GEN-LAST:event_tablaFuncionariosEnGeneralMouseClicked
     /**
-     * El método se llama cuando se hace clic en una fila de la tabla de
-     * usuarios. Este método deshabilita el botón “Crear Usuario” y habilita los
-     * botones “Borrar Usuario” y “Editar Usuario”. Además, carga la tabla de
-     * funcionarios generales.
+     * El método tablaUsuariosMouseClicked se llama cuando se hace clic en una
+     * fila de la tabla de usuarios. Este método deshabilita el botón “Crear
+     * Usuario” y habilita los botones “Borrar Usuario” y “Editar Usuario”.
+     * Además, carga la tabla de funcionarios generales.
      */
     private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
         btnCrearUsuario.setEnabled(false);
@@ -511,14 +517,14 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
     /**
-     * El método es un método de acción que se llama cuando se hace clic en el
-     * botón “Crear Usuario”. Este método comprueba si se ha seleccionado una
-     * fila en la tabla de funcionarios generales. Si se ha seleccionado una
-     * fila, se obtiene el ID, nombre, apellido y DNI del funcionario general
-     * seleccionado y se crea una nueva instancia de la clase CrearUsuario. La
-     * instancia de la clase CrearUsuario se inicializa con los objetos
-     * administrador, control, id, nombre, apellido y dni. Si no se ha
-     * seleccionado ninguna fila, se muestra un mensaje de error.
+     * El método de acción btnCrearUsuarioActionPerformed se llama cuando se
+     * hace clic en el botón “Crear Usuario”. Este método comprueba si se ha
+     * seleccionado una fila en la tabla de funcionarios generales. Si se ha
+     * seleccionado una fila, se obtiene el ID, nombre, apellido y DNI del
+     * funcionario general seleccionado y se crea una nueva instancia de la
+     * clase CrearUsuario. La instancia de la clase CrearUsuario se inicializa
+     * con los objetos administrador, control, id, nombre, apellido y dni. Si no
+     * se ha seleccionado ninguna fila, se muestra un mensaje de error.
      */
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
@@ -552,9 +558,9 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     /**
-     * El método es un método de acción que se llama cuando se hace clic en el
-     * botón “Recargar Tablas”. Este método carga los datos de los funcionarios
-     * generales y los usuarios en las tablas correspondientes.
+     * El método de acción btnRecargarTablasActionPerformed se llama cuando se
+     * hace clic en el botón “Recargar Tablas”. Este método carga los datos de
+     * los funcionarios generales y los usuarios en las tablas correspondientes.
      */
 
     private void btnRecargarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarTablasActionPerformed
@@ -563,11 +569,11 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecargarTablasActionPerformed
 
     /**
-     * Es un método de acción que se llama cuando se hace clic en el botón
-     * “Cerrar Sesión”. Este método crea una nueva instancia de la clase
-     * GuiLogin y la muestra en la pantalla. La instancia de la clase GuiLogin
-     * se inicializa sin ningún argumento. Además, este método cierra la ventana
-     * actual.
+     * El método de acción btnCerrarSesionActionPerformed se llama cuando se
+     * hace clic en el botón “Cerrar Sesión”. Este método crea una nueva
+     * instancia de la clase GuiLogin y la muestra en la pantalla. La instancia
+     * de la clase GuiLogin se inicializa sin ningún argumento. Además, este
+     * método cierra la ventana actual.
      */
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -578,15 +584,15 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
-     * El método es un método de acción que se llama cuando se hace clic en el
-     * botón “Mi Usuario”. Este método está actualmente comentado y no realiza
-     * ninguna acción.
+     * El método de acción btnMiUsuarioActionPerformed se llama cuando se hace
+     * clic en el botón “Mi Usuario”. Este método está actualmente comentado y
+     * no realiza ninguna acción.
      */
 
     private void btnMiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiUsuarioActionPerformed
-//        MiUsuario datos = new MiUsuario(control);
-//        datos.setVisible(true);
-//        datos.setLocationRelativeTo(null);
+        MiUsuario datos = new MiUsuario(control);
+        datos.setVisible(true);
+        datos.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_btnMiUsuarioActionPerformed
 
@@ -614,20 +620,21 @@ public class Administrador extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * El método llama al método privado cargarTablaFuncionariosEnGeneral para
-     * actualizar la tabla de funcionarios generales.
+     * El método recargarTablaFuncionariosEnGeneral llama al método privado
+     * cargarTablaFuncionariosEnGeneral para actualizar la tabla de funcionarios
+     * generales.
      */
     public void recargarTablaFuncionariosEnGeneral() {
         cargarTablaFuncionariosEnGeneral();
     }
 
     /**
-     * El método define el modelo que se utilizará para la tabla de funcionarios
-     * generales. Luego, establece los nombres de las columnas y recupera la
-     * lista de funcionarios generales de la base de datos. Si la lista no es
-     * nula, se recorre la lista y se agregan los objetos a la tabla.
-     * Finalmente, se establece el modelo de tabla en la tabla de funcionarios
-     * generales.
+     * El método cargarTablaFuncionariosEnGeneral define el modelo que se
+     * utilizará para la tabla de funcionarios generales. Luego, establece los
+     * nombres de las columnas y recupera la lista de funcionarios generales de
+     * la base de datos. Si la lista no es nula, se recorre la lista y se
+     * agregan los objetos a la tabla. Finalmente, se establece el modelo de
+     * tabla en la tabla de funcionarios generales.
      */
     private void cargarTablaFuncionariosEnGeneral() {
         //Definimos el modelo que queremos que tenga la tabla
@@ -663,20 +670,21 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     /**
-     * El método llama al método privado cargarTablaUsuarios para actualizar la
-     * tabla de usuarios.
+     * El método recargarTablaUsuarios llama al método privado
+     * cargarTablaUsuarios para actualizar la tabla de usuarios.
      */
     public void recargarTablaUsuarios() {
         cargarTablaUsuarios();
     }
 
     /**
-     * El método define el modelo que se utilizará para la tabla de usuarios.
-     * Luego, establece los nombres de las columnas y recupera la lista de
-     * usuarios de la base de datos. Si la lista no es nula, se recorre la lista
-     * y se agregan los objetos a la tabla. Finalmente, se establece el modelo
-     * de tabla en la tabla de usuarios. Si se produce una excepción
-     * NoSuchElementException, se muestra un mensaje de error.
+     * El método cargarTablaUsuarios define el modelo que se utilizará para la
+     * tabla de usuarios. Luego, establece los nombres de las columnas y
+     * recupera la lista de usuarios de la base de datos. Si la lista no es
+     * nula, se recorre la lista y se agregan los objetos a la tabla.
+     * Finalmente, se establece el modelo de tabla en la tabla de usuarios. Si
+     * se produce una excepción NoSuchElementException, se muestra un mensaje de
+     * error.
      */
     private void cargarTablaUsuarios() {
         //Bloque try-catch para manejar la excepción "NoSuchElementException" 
