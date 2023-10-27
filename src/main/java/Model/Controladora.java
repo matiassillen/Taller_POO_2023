@@ -36,7 +36,7 @@ import javax.swing.JOptionPane;
 public class Controladora implements Serializable{
     ControladoraPersistencia controlPersis;
     Usuario usu;
-    
+
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
     
@@ -69,7 +69,7 @@ public class Controladora implements Serializable{
     public List<Usuario> traerUsuarios() {
         return controlPersis.traerUsuarios();
     }
-    
+
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
@@ -89,40 +89,39 @@ public class Controladora implements Serializable{
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
     }
-    
+
     //----------Metodos que estaban en la clase Medico----------
-    
-     /**
+    /**
      * @param paciente
-    */
+     */
     public void tomarPaciente(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerTriage(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerConsulta(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerResultadoEstudios(Paciente paciente) {
         // TODO implement here
     }
 
     /**
      * @param paciente
-    */
+     */
     public void VerAntecedenteClinico(Paciente paciente) {
         // TODO implement here
     }
@@ -222,16 +221,17 @@ public class Controladora implements Serializable{
         ArrayList<Consulta> listaFiltrada = null;
         List<Consulta> consultas = traerConsultas();
 
-        if (!consultas.isEmpty()) { 
+        if (!consultas.isEmpty()) {
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
 //                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+
+
                     listaFiltrada.add(consulta);
                 }
-            } 
-        } 
-        else {
+            }
+        } else {
             return listaFiltrada;
         }
 
@@ -393,7 +393,6 @@ public class Controladora implements Serializable{
 //    public List<Rol> traerRoles() {
 //        return controlPersis.traerRoles();
 //    }
-
 //    public Rol traerRol(String rolRecibido) {
 //        List<Rol> listaRoles = controlPersis.traerRoles();
 //        
@@ -404,7 +403,6 @@ public class Controladora implements Serializable{
 //        }
 //        return null;
 //    }
-
 //    public int buscarUltimaIdFuncionariosEnGeneral() {
 //        List<FuncionarioGeneral> listaFuncionariosEnGeneral = controlPersis.traerFuncionariosEnGeneral();
 //        
@@ -412,7 +410,6 @@ public class Controladora implements Serializable{
 //        return (int) funcionarioGeneral.getId();
 //        
 //    }
-    
 //    public int buscarUltimaIdGestores() {
 //        List<GestoresHospital> listaGestores = this.traerGestores();
 //        
@@ -497,7 +494,6 @@ public class Controladora implements Serializable{
 //
 //        return listaFuncionariosSalud;
 //    }
-
 //    public GestoresHospital traerGestor(long idUsuario) {
 //        return controlPersis.traerGestor(idUsuario);
 //    }
@@ -517,50 +513,47 @@ public class Controladora implements Serializable{
 //    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
 //        return controlPersis.traerAdministradorDeSistemas(idUsuario);
 //    }
-
     // -----
     /*
     * Validar es el metodo publico que llama a validacion
     * @return retorna un objeto Usuario
-    */
-    public Usuario validar(String uss, String pass){
+     */
+    public Usuario validar(String uss, String pass) {
         return validacion(uss, pass);
     }
+
     /*
     * @param uss String de nombre de usuario
     * @param pass String de contraseña
-    */
-    
-    /*
+     */
+
+ /*
     * Validacion hace la logica de buscar y confirmar la existencia del usuario
     * @return Usuario
-    */
-    private Usuario validacion(String us, String pas){
+     */
+    private Usuario validacion(String us, String pas) {
         Usuario resultado = null;
-        try{
+        try {
             List<Usuario> listaBusqueda = controlPersis.traerUsuarios();
             for (Usuario comprobar : listaBusqueda) {
-                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))){
+                if ((comprobar.getNomUsuario().equals(us)) && (comprobar.getPassw().equals(pas))) {
                     resultado = comprobar;
                     return resultado;
+                } else {
                 }
-                else {}
             }
             return resultado;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return resultado;
         }
     }
-
-
 
     public List<Box> TraerBoxDelMedico() {
         long idMedico = this.usu.getFuncionarioGeneral().getId();
         Medico medico = this.controlPersis.traerMedico(idMedico);
         List<Box> boxes = this.controlPersis.traerBoxes();
-        for(Box box : boxes){
-            if(box.getConsulta().getMedico()!=medico){
+        for (Box box : boxes) {
+            if (box.getConsulta().getMedico() != medico) {
                 boxes.remove(box);
             }
         }
@@ -568,14 +561,15 @@ public class Controladora implements Serializable{
     }
 
     public List<Usuario> traerTriagesCambiados() {
-        List <Rol> usu= traerRoles();
-        
-       return null;
+        List<Rol> usu = traerRoles();
+
+        return null;
     }
+
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
-        for(Box box : boxes){
-            if(box.getConsulta().getMedico()!=null){
+        for (Box box : boxes) {
+            if (box.getConsulta().getMedico() != null) {
                 boxes.remove(box);
             }
         }
@@ -583,19 +577,19 @@ public class Controladora implements Serializable{
     }
 
     public Box traerBox(long idBox) {
-        return this.controlPersis.traerBox(idBox); 
+        return this.controlPersis.traerBox(idBox);
     }
-    
+
     public void tomarPaciente(Box box, Medico medico) throws Exception {
         List<Object> objetos = this.esperaAtencion.quitarDeFila(box, medico);
-        Consulta consuAct = (Consulta)objetos.get(0);
-        Medico medAct = (Medico)objetos.get(1);
-        Box boxAct = (Box)objetos.get(2);
-        this.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+        Consulta consuAct = (Consulta) objetos.get(0);
+        Medico medAct = (Medico) objetos.get(1);
+        Box boxAct = (Box) objetos.get(2);
+        this.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
     private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
-        this.controlPersis.tomarPacientePersistirDatos(consuAct,medAct,boxAct);
+        this.controlPersis.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
     public Paciente traerPacienteEnElBox(String idBox) {
@@ -614,57 +608,80 @@ public class Controladora implements Serializable{
     }
 
     public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
+        // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
+
+        // Creamos un formateador para la hora
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // Formateamos la fecha y la hora a cadenas de texto
         String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-        
-        ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion ,hora ,fecha);
-        
+        String hora = horaActual.format(formato);
+
+        // Creamos un nuevo resultado de estudio con los datos proporcionados
+        ResultadoEstudio res = new ResultadoEstudio(paciente, titulo, descripcion, hora, fecha);
+
+        // Cargamos el nuevo resultado de estudio en el controlador de persistencia
         this.controlPersis.crearResultadoEstudio(res);
-        
+
+        // Añadimos el resultado de estudio al paciente y actualizamos el paciente en el controlador de persistencia
         paciente.getResultadoEstudio().add(res);
         this.controlPersis.editarPaciente(paciente);
-        
     }
-    
+
     public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
+        // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
+
+        // Creamos un formateador para la hora
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // Formateamos la fecha y la hora a cadenas de texto
         String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
-        String hora = horaActual.format(DateTimeFormatter.ISO_DATE);
-        
+        String hora = horaActual.format(formato);
+
+        // Obtenemos el funcionario general del usuario actual y lo convertimos a médico
         FuncionarioGeneral func = this.usu.getFuncionarioGeneral();
         Medico medico = (Medico) func;
-  
+
+        // Creamos un nuevo diagnóstico clínico con los datos proporcionados y el médico obtenido
         DiagnosticoClinico diag = new DiagnosticoClinico(paciente, titulo, fecha, hora, descripcion, medico);
-        
+
+        // Cargamos el nuevo diagnóstico clínico en el controlador de persistencia
         this.controlPersis.cargarNuevoDiagClinico(diag);
-        
+
+        // Añadimos el diagnóstico al paciente y actualizamos el paciente en el controlador de persistencia
         paciente.getDiagnosticoClinico().add(diag);
         this.controlPersis.editarPaciente(paciente);
     }
 
     public void terminarConsulta(String diagnostico, String idBox) {
+        // Convertimos el id del box a long
         long id = Long.parseLong(idBox);
-        
-        
+
+        // Obtenemos el box a vaciar del controlador de persistencia
         Box boxAVaciar = this.controlPersis.traerBox(id);
+
+        // Obtenemos la consulta del box
         Consulta consulta = boxAVaciar.getConsulta();
-        
+
+        // Establecemos el diagnóstico de la consulta y actualizamos la consulta en el controlador de persistencia
         consulta.setDiagnConsulta(diagnostico);
         this.controlPersis.editarConsulta(consulta);
-        
+
+        // Vaciamos la consulta del box y actualizamos el box en el controlador de persistencia
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
-        
     }
-         //Metodo que muestra un mensaje por pantalla
+    //Metodo que muestra un mensaje por pantalla
+
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if (tipo.equals("info")) {
+        if (tipo.equalsIgnoreCase("info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        } else if (tipo.equals("Error")) {
+        } else if (tipo.equalsIgnoreCase("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
@@ -686,9 +703,9 @@ public class Controladora implements Serializable{
 
     public Rol traerRol(String rolRecibido) {
         List<Rol> listaRoles = this.traerRoles();
-        
+
         for (Rol rol : listaRoles) {
-            
+
             if (rol.getNombre().equalsIgnoreCase(rolRecibido)) {
                 return rol;
             }
@@ -703,14 +720,16 @@ public class Controladora implements Serializable{
         if (listaUsuarios != null) {
 
             for (Usuario usu : listaUsuarios) {
-
-                if (usu.getFuncionarioGeneral().getDni() == dni) {
+                
+                if (usu.getFuncionarioGeneral() != null) {
+                    int dnii = usu.getFuncionarioGeneral().getDni();
                     
-                    mostrarMensaje("Usuario encotrado", "Info", "Busqueda exitosa");    
-                    return controlPersis.traerUsuario(usu.getId());  
-                    
+                    if (dnii == dni) {
+                        return controlPersis.traerUsuario(usu.getId());  
+                    }
                 }
-            }
+            }        
+
         }
         return null;
     }
@@ -727,8 +746,9 @@ public class Controladora implements Serializable{
      * @param telFijo
      * @param personaContacto
      * @param numContacto
+     * @return 
      */
-    public void registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
+    public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
         int documento = Integer.parseInt(dni);
         paciente.setNombre(nombre);
@@ -742,11 +762,16 @@ public class Controladora implements Serializable{
         paciente.setTelefonoFijo(telCelular);
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
-        paciente.setDiagnosticoClinico(null);
-        paciente.setResultadoEstudio(null);
         
+        List <Consulta> listConsultas = new ArrayList<>();
+        List <DiagnosticoClinico> listDiagnosticoClinico = new ArrayList<>();
+        List <ResultadoEstudio> listResultadoEstudio = new ArrayList<>();
+        
+        paciente.setDiagnosticoClinico(listDiagnosticoClinico);
+        paciente.setResultadoEstudio(listResultadoEstudio);
+        paciente.setConsultas(listConsultas);
         controlPersis.RegistrarPaciente(paciente);
-        
+        return paciente;
     }
 
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
@@ -759,8 +784,13 @@ public class Controladora implements Serializable{
         
         Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
         this.controlPersis.CrearConsulta(consu);
+        List <Consulta> consultas = p.getConsultas();
+        consultas.add(consu);
+        p.setConsultas(consultas);
+        this.controlPersis.editarPaciente(p);
         this.esperaAtencionTriage.AñadirALaFila(consu);
         
+
     }
 
 //    public Object[] ValidarPaciente(int doc) {
@@ -787,18 +817,26 @@ public class Controladora implements Serializable{
 
     public List<Consulta> traerPacientesEnEspera() {
         List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
-        return  consultas;
+        return consultas;
     }
 
     public Paciente buscarPacientePorDni(int dni) {
+        // Obtenemos la lista de pacientes del controlador de persistencia
         List<Paciente> pacientes = this.controlPersis.traerPacientes();
+
+        // Creamos un nuevo paciente
         Paciente paciente = new Paciente();
-        for(Paciente p : pacientes){
-            if(p.getDni()==dni){
-               paciente = p;
-               break;   
+
+        // Recorremos la lista de pacientes
+        for (Paciente p : pacientes) {
+            // Si el DNI del paciente coincide con el DNI proporcionado, asignamos el paciente a la variable paciente y terminamos el bucle
+            if (p.getDni() == dni) {
+                paciente = p;
+                break;
             }
         }
+
+        // Devolvemos el paciente encontrado (o el paciente vacío si no se encontró ninguno)
         return paciente;
     }
 
@@ -978,6 +1016,10 @@ public class Controladora implements Serializable{
         triage.setEnfermero(null);
         this.controlPersis.crearTriage(triage);
         
+    }
+
+    public List<Paciente> traerPacientes() {
+       return controlPersis.traerPacientes();
     }
 
  

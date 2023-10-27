@@ -467,7 +467,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="No Presente"/>
+                        <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteLesionLActionPerformed"/>
@@ -486,6 +486,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Presente"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbPresenteLesionLActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1004,7 +1007,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Moderada"/>
+                        <Property name="text" type="java.lang.String" value="Moderado"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbSeveroAbd">
@@ -1147,7 +1150,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Moderada"/>
+                        <Property name="text" type="java.lang.String" value="Moderado"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbIntensoSangrado">
@@ -1416,7 +1419,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Sin V&#xf3;mito"/>
+                        <Property name="text" type="java.lang.String" value="Sin V&#xf3;mitos"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbSinVomitoActionPerformed"/>
@@ -1433,7 +1436,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Moderada"/>
+                        <Property name="text" type="java.lang.String" value="Moderados"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbIntensoVomito">
@@ -1447,7 +1450,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Intenso"/>
+                        <Property name="text" type="java.lang.String" value="Intensos"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1678,7 +1681,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="No Presente"/>
+                        <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteSignoShockActionPerformed"/>
@@ -1695,7 +1698,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Presente"/>
+                        <Property name="text" type="java.lang.String" value="Presentes"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1802,7 +1805,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="No Presente"/>
+                        <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteLesionGActionPerformed"/>
@@ -1819,7 +1822,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Presente"/>
+                        <Property name="text" type="java.lang.String" value="Presentes"/>
                       </Properties>
                     </Component>
                   </SubComponents>

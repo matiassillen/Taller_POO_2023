@@ -8,7 +8,6 @@ import Model.AdministradorDeSistema;
 import Model.Controladora;
 import Model.Rol;
 import Model.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -142,7 +141,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -214,7 +213,8 @@ public class EditarUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnCancelar)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnGuardar))
+                                .addComponent(btnGuardar)
+                                .addGap(8, 8, 8))
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -224,7 +224,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
@@ -240,24 +240,9 @@ public class EditarUsuario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-//        String nombre = txtNombre.getText();
-//        String apellido = txtApellido.getText();
-//        String FechaNacimiento = txtFechaNacimiento.getText();
-//        int documento = Integer.parseInt(txtDni.getText());
-//        String domicilio = txtDomicilio.getText();
-//        String telFijo = txtTelFijo.getText();
-//        String telCel = txtTelCel.getText();
-//        String correoE = txtCorreoE.getText();
-//        String estadoCivil = (String) cbEstadoCivil.getSelectedItem();
         String nombreUsuario = txtNombreUsuario.getText();
         String contrasenia = txtContrasenia.getText();
         String rolUsu = (String) cmbRol.getSelectedItem();
-
-//        Rol rol = new Rol();
-//        rol.setNombre(rolUsu);
-//
-//        List<Rol> roles = new ArrayList<>();
-//        roles.add(rol);
 
         administrador.editarUsuario(usuario, nombreUsuario, contrasenia, rolUsu);
         
@@ -294,120 +279,6 @@ public class EditarUsuario extends javax.swing.JFrame {
                 cmbRol.setSelectedIndex(i);
             }
         }
-
-//        if (rolUsuario.equalsIgnoreCase("Recepcionista")) {
-//            //Buscar el Recepcionista
-//
-//            recepcionista = control.traerRecepcionista(idUsuario);
-//            txtNombreUsuario.setText(recepcionista.getNomUsuario());
-//            txtContrasenia.setText(recepcionista.getPassw());
-//
-//            //cargar roles de forma genérica
-//            List<Rol> listaRoles = control.traerRoles();
-//
-//            if (listaRoles != null) {
-//                for (Rol rol : listaRoles) {
-//                    cbRol.addItem(rol.getNombre());
-//                }
-//            }
-//
-//            //Marcar/Selecionar el rol del usuario
-//            String rol = recepcionista.getRol().getNombre();
-//
-//            int cantidadItems = cbRol.getItemCount();
-//
-//            for (int i = 0; i < cantidadItems; i++) {
-//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-//                    cbRol.setSelectedIndex(i);
-//                }
-//            }
-//        }
-//        
-//        if (rolUsuario.equalsIgnoreCase("Medico")) {
-//            //Buscar el Recepcionista
-//
-//            medico = control.traerMedico(idUsuario);
-//            txtNombreUsuario.setText(medico.getNomUsuario());
-//            txtContrasenia.setText(medico.getPassw());
-//
-//            //cargar roles de forma genérica
-//            List<Rol> listaRoles = control.traerRoles();
-//
-//            if (listaRoles != null) {
-//                for (Rol rol : listaRoles) {
-//                    cbRol.addItem(rol.getNombre());
-//                }
-//            }
-//
-//            //Marcar/Selecionar el rol del usuario
-//            String rol = medico.getRol().getNombre();
-//
-//            int cantidadItems = cbRol.getItemCount();
-//
-//            for (int i = 0; i < cantidadItems; i++) {
-//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-//                    cbRol.setSelectedIndex(i);
-//                }
-//            }
-//        }
-//        
-//        if (rolUsuario.equalsIgnoreCase("Licenciado en Enfermeria")) {
-//            //Buscar el Recepcionista
-//
-//            licenciado = control.traerLicEnEnfermeria(idUsuario);
-//            txtNombreUsuario.setText(licenciado.getNomUsuario());
-//            txtContrasenia.setText(licenciado.getPassw());
-//
-//            //cargar roles de forma genérica
-//            List<Rol> listaRoles = control.traerRoles();
-//
-//            if (listaRoles != null) {
-//                for (Rol rol : listaRoles) {
-//                    cbRol.addItem(rol.getNombre());
-//                }
-//            }
-//
-//            //Marcar/Selecionar el rol del usuario
-//            String rol = licenciado.getRol().getNombre();
-//
-//            int cantidadItems = cbRol.getItemCount();
-//
-//            for (int i = 0; i < cantidadItems; i++) {
-//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-//                    cbRol.setSelectedIndex(i);
-//                }
-//            }
-//        }
-//        
-//        if (rolUsuario.equalsIgnoreCase("Administrador de Sistema")) {
-//            //Buscar el Recepcionista
-//
-//            admin = control.traerAdministradorDeSitema(idUsuario);
-//            txtNombreUsuario.setText(admin.getNomUsuario());
-//            txtContrasenia.setText(admin.getPassw());
-//
-//            //cargar roles de forma genérica
-//            List<Rol> listaRoles = control.traerRoles();
-//
-//            if (listaRoles != null) {
-//                for (Rol rol : listaRoles) {
-//                    cbRol.addItem(rol.getNombre());
-//                }
-//            }
-//
-//            //Marcar/Selecionar el rol del usuario
-//            String rol = admin.getRol().getNombre();
-//
-//            int cantidadItems = cbRol.getItemCount();
-//
-//            for (int i = 0; i < cantidadItems; i++) {
-//                if (String.valueOf(cbRol.getItemAt(i)).equalsIgnoreCase(rol)) {
-//                    cbRol.setSelectedIndex(i);
-//                }
-//            }
-//        }
-//        jLabelNumMatricula.setVisible(false);
-//        txtNumMatricula.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
