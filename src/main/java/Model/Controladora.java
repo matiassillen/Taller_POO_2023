@@ -941,5 +941,9 @@ public class Controladora implements Serializable{
         
     }
 
+    public List<Paciente> traerPacientes() {
+       return controlPersis.traerPacientes();
+    }
+
  
 }
