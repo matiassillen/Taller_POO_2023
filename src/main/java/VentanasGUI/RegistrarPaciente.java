@@ -2,8 +2,13 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Paciente;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class RegistrarPaciente extends javax.swing.JFrame {
@@ -55,7 +60,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         cmbEstadoCivil = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdcFechaNacimiento = new com.toedter.calendar.JDateChooser();
         btnCrearConsulta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -229,7 +234,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                             .addComponent(txtPersoContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtTelContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(cmbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jLabel2)
@@ -263,7 +268,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -413,9 +418,19 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String dni = txtDni.getText();
-            Calendar fechaCal = jDateChooser1.getCalendar();
-            LocalDate fechaNac = LocalDate.of(fechaCal.YEAR, fechaCal.MONTH, fechaCal.DATE);
-            String fechaNacimiento = fechaNac.toString();
+            
+            // Crear un objeto Calendar y establecer la fecha deseada
+            Calendar calendar = Calendar.getInstance();
+            
+            Calendar fechaCal = jdcFechaNacimiento.getCalendar();
+            
+            calendar.set(fechaCal.YEAR, fechaCal.MONTH, fechaCal.DATE);
+
+            // Crear un objeto SimpleDateFormat y establecer el formato de fecha deseado
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            // Convertir el objeto Calendar en un String
+            String fechaNacimiento = formato.format(calendar);
+           
             String domicilio = txtDomicilio.getText();
             String estadoCivil = (String)cmbEstadoCivil.getSelectedItem();
             String correo = txtCorreo.getText();
@@ -425,7 +440,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             String numContacto = txtTelContacto.getText();
        
             this.control.registrarPaciente(dni, nombre, apellido, fechaNacimiento, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
-            
+            JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
             btnCrearConsulta.setEnabled(true);
             btnGuardar.setEnabled(false);
         } 
@@ -455,14 +470,14 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         
         try{            
             int doc = Integer.parseInt(txtDni.getText());
-            Object[] dni;
-            //dni = this.control.ValidarPaciente(doc);
+            
+            
         
-        String vacio = "";
+        
         Paciente paci = new Paciente();
         
-        int docu = Integer.parseInt(txtDni.getText());
-        paci = this.control.buscarPacientePorDni(docu);
+        
+        paci = this.control.buscarPacientePorDni(doc);
         
         if (paci.getDni() == 0){
            btnGuardar.setEnabled(true);
@@ -479,11 +494,20 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             txtTelCelular.setText(paci.getTelefonoCel());
             txtPersoContacto.setText(paci.getPersoDeContacto());
             txtTelContacto.setText(paci.getTelDeContacto());
+            
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = formato.parse(paci.getFechaDeNac());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(fecha);
+            jdcFechaNacimiento.setCalendar(calendar);
+            
             btnCrearConsulta.setEnabled(true);
         }    
         }catch(NumberFormatException e){
             txtDni.setText("");
             JOptionPane.showMessageDialog(null, "Ingresar solo números");
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistrarPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -520,7 +544,6 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -543,6 +566,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private com.toedter.calendar.JDateChooser jdcFechaNacimiento;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDni;
