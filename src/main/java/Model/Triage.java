@@ -43,12 +43,10 @@ public class Triage implements Serializable {
         
     }
 
-    public Triage(int id, String motivoCambio, TipoColor colorOriginal, TipoColor colorFinal, Respiracion respiración, Pulso pulso, Mental estadoMental, Conciencia conciencia, DolorPecho dificultadRespiratoria, LesionesGraves lesionesGraves, LesionesLeves lesionesLeves, Edad edad, Fiebre fiebre, Vomitos vómitos, DolorAbd dolorAbdominal, Shock signosShock, Sangrado sangrado, Consulta consulta, Medico realizoTriage, LicEnEnfermeria enfermero) {
+    public Triage(int id, String motivoCambio, Respiracion respiracion, Pulso pulso, Mental estadoMental, Conciencia conciencia, DolorPecho dificultadRespiratoria, LesionesGraves lesionesGraves, LesionesLeves lesionesLeves, Edad edad, Fiebre fiebre, Vomitos vómitos, DolorAbd dolorAbdominal, Shock signosShock, Sangrado sangrado, Consulta consulta, Medico realizoTriage, LicEnEnfermeria enfermero) {
         this.id = id;
         this.motCambio = motivoCambio;
-        this.colorInicial = colorOriginal;
-        this.colorFinal = colorFinal;
-        this.resp = respiración;
+        this.resp = respiracion;
         this.pulso = pulso;
         this.estMental = estadoMental;
         this.conciencia = conciencia;
@@ -64,6 +62,7 @@ public class Triage implements Serializable {
         this.consulta = consulta;
         this.medico = realizoTriage;
         this.enfermero = enfermero;
+        this.obtenerPuntos();
     }
 
     public long getId() {

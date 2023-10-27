@@ -5,23 +5,19 @@
 package VentanasGUI;
 
 import Model.Controladora;
-import Model.Paciente;
+import Model.Triage;
+import Model.Usuario;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author trapo
- */
 public class HacerTriage extends javax.swing.JFrame {
     Controladora control;
-    private final Paciente paciente;
-    /**
-     * Creates new form HacerTriage2
-     */
-    public HacerTriage(Controladora control, Paciente pacienteSelecionado) {
+    int idConsulta;
+    Triage triage;
+    public HacerTriage(Controladora control, int idConsulta) {
         initComponents();
         this.control = control;
-        this.paciente = pacienteSelecionado;
+        this.idConsulta = idConsulta;
+        
     }
 
     /**
@@ -130,6 +126,9 @@ public class HacerTriage extends javax.swing.JFrame {
         btnCrearTriage = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbEdad = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        txtColor = new javax.swing.JTextField();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1229,6 +1228,25 @@ public class HacerTriage extends javax.swing.JFrame {
         });
         jPanel1.add(cmbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Color del triage");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, -1, -1));
+
+        txtColor.setBackground(new java.awt.Color(255, 255, 255));
+        txtColor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 150, -1));
+
+        btnModificar.setBackground(new java.awt.Color(72, 141, 175));
+        btnModificar.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1428,13 +1446,26 @@ public class HacerTriage extends javax.swing.JFrame {
             
         }
         String edad = (String) cmbEdad.getSelectedItem();
-        this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad);
+        
+        Usuario usuario = this.control.getUsu();
+        
+        Triage t = this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad,idConsulta,usuario);
+        this.triage = t;
+        
+        txtColor.setText(t.getColorInicial().name());
+        
         JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
     }//GEN-LAST:event_btnCrearTriageActionPerformed
 
     private void jrbPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPresenteLesionLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbPresenteLesionLActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        MostrarTriage pantalla = new MostrarTriage(triage);
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1443,6 +1474,7 @@ public class HacerTriage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearTriage;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup10;
@@ -1460,6 +1492,7 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1527,6 +1560,7 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrbSeveroAbd;
     private javax.swing.JRadioButton jrbSinFiebre;
     private javax.swing.JRadioButton jrbSinVomito;
+    private javax.swing.JTextField txtColor;
     private javax.swing.JLabel txtRespiracion;
     private javax.swing.JLabel txtRespiracion1;
     private javax.swing.JLabel txtRespiracion10;
