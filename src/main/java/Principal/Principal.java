@@ -18,11 +18,11 @@ public class Principal {
     public static void main(String[] args) {
         Controladora control = new Controladora();
 //        Paciente p = new Paciente();
-//        
+
 //        CantTriageColor pantalla= new CantTriageColor();
-        Paciente p = new Paciente();
+         //Paciente p = new Paciente();
         
-//        HacerTriage pantalla= new HacerTriage(control,p);
+//        HacerTriage pantalla= new HacerTriage(control,idConsulta);
 //        pantalla.setVisible(true);
 //        pantalla.setLocationRelativeTo(null);
         
@@ -34,9 +34,9 @@ public class Principal {
 //    buscar.setVisible(true);
 //    buscar.setLocationRelativeTo(null);
         
-        Administrador pantalla = new Administrador(control);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+//        Administrador pantalla = new Administrador(control);
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
         
 //        MedicoMasPacientes pantalla= new MedicoMasPacientes(control);
 //        pantalla.setVisible(true);
