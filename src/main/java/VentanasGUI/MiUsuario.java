@@ -230,7 +230,7 @@ public class MiUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonVolverMiUActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        this.setMuestra();
     }//GEN-LAST:event_formWindowOpened
     
     private void setMuestra() {
