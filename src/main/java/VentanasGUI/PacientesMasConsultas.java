@@ -4,6 +4,7 @@
  */
 package VentanasGUI;
 
+import Model.Consulta;
 import Model.Controladora;
 import Model.Medico;
 import Model.Paciente;
@@ -77,9 +78,9 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         btnConsultar.setForeground(new java.awt.Color(0, 0, 0));
         btnConsultar.setText("Consultar");
         btnConsultar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
+        btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarMouseClicked(evt);
             }
         });
 
@@ -194,7 +195,8 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
+        
         Calendar fechaOne = jDateChooser1.getCalendar();
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
@@ -217,19 +219,29 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE  
         );
         }
-        
-        try {
+        ArrayList<Consulta> listaConsulta = controlP.filtraFechas(fecha1, fecha2);
+        if (!listaConsulta.isEmpty()) {
+            try {
             this.cargarPacientes(fecha2, fecha2);
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error en llamada a funcion, contactar area de Sistemas", 
+                    "Error",  
+                    JOptionPane.ERROR_MESSAGE  
+            );
+            } 
         }
-        catch (Exception e) {
+        else {
             JOptionPane.showMessageDialog(
-                null,
-                "Error en llamada a funcion, contactar area de Sistemas", 
-                "Error",  
-                JOptionPane.ERROR_MESSAGE  
-        );
+            null,
+            "Lista de consultas vacia", 
+            "Error",  
+            JOptionPane.ERROR_MESSAGE  
+            );
         }
-    }//GEN-LAST:event_btnConsultarActionPerformed
+    }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void cargarPacientes(LocalDate fechaOne, LocalDate fechaTwo){
               
@@ -243,21 +255,24 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
        
         String titulos[] = {"Apellido", "Nombre", "Numero de consultas"};
         modeloTabla.setColumnIdentifiers(titulos);
-
-        ArrayList<Object> listaPacientes = this.controlP.listaPacientesMasAtendidos(fechaOne, fechaTwo);
+        ArrayList<Consulta> listaFiltrada = this.controlP.filtraFechas(fechaTwo, fechaTwo);
+        ArrayList<Paciente> listaPacientes = this.controlP.listaPacientesMasAtendidos(listaFiltrada);
+        ArrayList<String> cantidadOcurrencias = this.controlP.cantidadDeAtenciones(listaFiltrada, listaPacientes);
         
-        if (listaPacientes != null) {
-            for (ArrayList<> pacienteAux : listaPacientes) {
-                Paciente leerPaciente = (Paciente) pacienteAux.get(0);
-                String cantOcurrencia = (String) pacienteAux.get(1);
+        if (listaPacientes.get(0) != null) {
+            for (int repeticion = 0; repeticion < 3; repeticion++) {
                 
-                Object[] objeto = {leerPaciente.getApellido(), leerPaciente.getNombre(), cantOcurrencia};
+       
+                Object[] objeto = {listaPacientes.get(repeticion).getApellido(), listaPacientes.get(repeticion).getNombre(), cantidadOcurrencias.get(repeticion)};
 
                 modeloTabla.addRow(objeto);
             }
         }
+        else {
+                Object[] objeto = {"Sin datos", "SinDatos", "0"};
+                modeloTabla.addRow(objeto);
+        }
         tablaPacientes.setModel(modeloTabla);
-    
     }
     
     /**
