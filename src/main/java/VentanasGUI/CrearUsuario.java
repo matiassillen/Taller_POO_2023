@@ -104,6 +104,11 @@ public class CrearUsuario extends javax.swing.JFrame {
         cmbRol.setBackground(new java.awt.Color(255, 255, 255));
         cmbRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbRol.setForeground(new java.awt.Color(0, 0, 0));
+        cmbRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRolActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -206,6 +211,10 @@ public class CrearUsuario extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cmbRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRolActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

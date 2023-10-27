@@ -798,7 +798,7 @@ public class Controladora implements Serializable{
         return paciente;
     }
 
-    public void crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad) {
+    public Triage crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad, int idConsulta,Usuario usu) {
         
         Triage triage = new Triage();
         
@@ -966,13 +966,40 @@ public class Controladora implements Serializable{
             
         }
         
-        triage.setColorFinal(null);
-        triage.setColorInicial(null);
-        triage.setConsulta(null);
+        Consulta consulta = this.controlPersis.traerConsulta(idConsulta);
+        triage.setConsulta(consulta);
+        
+     
+        
         triage.setMedico(null);
-        triage.setMotCambio(null);
         triage.setEnfermero(null);
+        
+        if(("Medico - Triagiador").equalsIgnoreCase(usu.getRol().getFirst().getNombre())){
+            
+            FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
+            
+            triage.setMedico((Medico) funcGeneral);
+            
+        }else if (("Licenciado en Enfermeria").equalsIgnoreCase(usu.getRol().getFirst().getNombre())){
+            
+             FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
+            
+            triage.setEnfermero((LicEnEnfermeria) funcGeneral);
+            
+        }else{
+            
+            FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
+            
+            triage.setMedico((Medico) funcGeneral);
+            
+        }
+        
+        
+        triage.setMotCambio(null);
+        triage.obtenerPuntos();
+        
         this.controlPersis.crearTriage(triage);
+        return triage;
         
     }
 
