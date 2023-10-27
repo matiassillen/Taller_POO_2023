@@ -209,8 +209,6 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
         
-        this.cargarPacientes(fecha2, fecha2);
-        
         if(fecha1.isBefore(fecha2)){
             JOptionPane.showMessageDialog(
                 null,
@@ -218,11 +216,19 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
                 "Error",  
                 JOptionPane.ERROR_MESSAGE  
         );
-        }else{
-            ////// codigo a completar
         }
         
-        
+        try {
+            this.cargarPacientes(fecha2, fecha2);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error en llamada a funcion, contactar area de Sistemas", 
+                "Error",  
+                JOptionPane.ERROR_MESSAGE  
+        );
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void cargarPacientes(LocalDate fechaOne, LocalDate fechaTwo){
@@ -241,7 +247,6 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         ArrayList<Object> listaPacientes = this.controlP.listaPacientesMasAtendidos(fechaOne, fechaTwo);
         
         if (listaPacientes != null) {
-
             for (ArrayList<> pacienteAux : listaPacientes) {
                 Paciente leerPaciente = (Paciente) pacienteAux.get(0);
                 String cantOcurrencia = (String) pacienteAux.get(1);
