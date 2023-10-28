@@ -225,7 +225,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
         jLabel9.setText("atendidos por edad");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\escritorio\\Nueva carpeta\\resumen-difuminar-hospital-clinica-interior (1).jpg")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/resumen-difuminar-hospital-clinica-interior (1).jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -201,7 +201,7 @@ public class Gestor extends javax.swing.JFrame {
         jPanel1.add(jlbMiUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 370, 10));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/administracion (2).jpg"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
