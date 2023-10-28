@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @ grupo patito
+ * @
  */
 public class CantPacientesAtendidos extends javax.swing.JFrame {
     Controladora controlP;
