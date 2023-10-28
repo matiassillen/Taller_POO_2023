@@ -47,6 +47,8 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jlbCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -135,6 +137,23 @@ public class PrincipalMedico extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/medico (1).png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 250, 20));
+
+        jlbCerrar.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCerrar.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCerrar.setText("Cerrar sesión");
+        jlbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCerrarMouseExited(evt);
+            }
+        });
+        jPanel1.add(jlbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,6 +224,21 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jlbMiUsu.setForeground(Color.black);
     }//GEN-LAST:event_jlbMiUsuMouseExited
 
+    private void jlbCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseClicked
+        GuiLogin pantallaLogin = new GuiLogin();
+        pantallaLogin.setVisible(true);
+        pantallaLogin.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbCerrarMouseClicked
+
+    private void jlbCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseEntered
+        jlbCerrar.setForeground(Color.white);
+    }//GEN-LAST:event_jlbCerrarMouseEntered
+
+    private void jlbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseExited
+        jlbCerrar.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCerrarMouseExited
+
     /**
      * Este método identifica el rol del usuario y habilita los botones
      * correspondientes en la interfaz. Recorre la lista de roles del usuario y
@@ -257,6 +291,8 @@ public class PrincipalMedico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jlbCerrar;
     private javax.swing.JLabel jlbGestionPaciente;
     private javax.swing.JLabel jlbHacerTriage;
     private javax.swing.JLabel jlbMiUsu;
