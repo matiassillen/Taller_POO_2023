@@ -584,10 +584,11 @@ public class RegistrarPaciente extends javax.swing.JFrame {
      * @param evt El evento de acción generado al hacer clic en el botón.
      */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MiUsuario miUsu = new MiUsuario(control);
-        miUsu.setVisible(true);
-        miUsu.setLocationRelativeTo(null);
         this.dispose();
+        GuiLogin pantalla = new GuiLogin();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

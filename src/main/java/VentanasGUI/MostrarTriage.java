@@ -164,6 +164,11 @@ public class MostrarTriage extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(MostrarTriage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        EsperaTriage pmed = new EsperaTriage(control);
+        pmed.setVisible(true);
+        pmed.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void mostrarColores() {

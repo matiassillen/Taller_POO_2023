@@ -23,6 +23,7 @@ public class MiUsuario extends javax.swing.JFrame {
         this.usuarioRegistrado = user.getUsu().getFuncionarioGeneral();
         initComponents();
         this.setMuestra();
+        
     }
 
     /**
