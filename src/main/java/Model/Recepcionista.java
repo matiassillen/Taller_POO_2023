@@ -51,13 +51,4 @@ public class Recepcionista extends FuncionarioGeneral {
         this.paciente = paciente;
     }
 
-    /**
-     *
-     * @param dni
-     * @return
-     */
-    public int BuscarPaciente(int dni) {
-
-        return 0;
-    }
 }

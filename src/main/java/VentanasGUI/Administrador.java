@@ -554,12 +554,14 @@ public class Administrador extends javax.swing.JFrame {
         btnCrearUsuario.setEnabled(true);
         btnBorrarUsuario.setEnabled(false);
         btnEditarUsuario.setEnabled(false);
+        cargarTablaUsuarios();
     }//GEN-LAST:event_tablaFuncionariosEnGeneralMouseClicked
 
     private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
         btnCrearUsuario.setEnabled(false);
         btnBorrarUsuario.setEnabled(true);
         btnEditarUsuario.setEnabled(true);
+        cargarTablaFuncionariosEnGeneral();
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

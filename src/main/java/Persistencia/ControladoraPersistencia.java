@@ -26,11 +26,7 @@ public class ControladoraPersistencia implements Serializable{
     MedicoJpaController medicoJpa = new MedicoJpaController();
     TriageJpaController triageJpa = new TriageJpaController();
     ConsultaJpaController consultaJpa = new ConsultaJpaController();
-    SectorJpaController sectorJpa = new SectorJpaController();
-    TituloJpaController tituloJpa = new TituloJpaController();
     ResultadoEstudioJpaController resEstudioJpa = new ResultadoEstudioJpaController();
-    FuncAdministrativoJpaController funcAdminJpa = new FuncAdministrativoJpaController();
-    EspecialidadJpaController especialidadJpa = new EspecialidadJpaController();
     DiagnosticoClinicoJpaController diagnosticoJpa = new DiagnosticoClinicoJpaController();
     BoxJpaController boxJpa = new BoxJpaController();
     
@@ -38,7 +34,6 @@ public class ControladoraPersistencia implements Serializable{
 
     public void RegistrarPaciente(Paciente paciente) {
         pacienteJpa.create(paciente);
-        
     }
 
     public List<Paciente> traerPacientes() {

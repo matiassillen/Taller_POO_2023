@@ -63,8 +63,4 @@ public class FuncionarioGeneral extends Persona {
         this.usu = usu;
     }
 
-    public void verifLogin() {
-        // TODO implement here
-    }
-
 }
