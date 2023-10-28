@@ -312,7 +312,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             // Imprime cualquier error que ocurra durante la ejecución del código anterior
             // y muestra un mensaje que dice que no se ingreso un diagnostico de consulta valido
             control.mostrarMensaje("No ingreso un diagnostico de consulta valido", "Error", "Error");
-            System.out.println("Error: " + e.getMessage());
+            
         }
 
     }//GEN-LAST:event_btnDarDeAltaActionPerformed
@@ -382,6 +382,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene una lista de boxes usando el controlador
             List<Box> boxes = this.control.TraerBoxDelMedico();
+            
             // Verifica si la lista de boxes no es nula
             if (boxes != null) {
                 // Itera sobre cada box en la lista
@@ -390,18 +391,16 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido()};
                     // Agrega el objeto a la tabla
                     modeloTabla.addRow(objeto);
+                    
                 }
             }
             // Segun la cantidad de box que posee el medigo activa la bandera
             // posteriormente indica si puede tomar mas pacientes o no
-            if (boxes == null || boxes.size() < 3) {
-                this.bandera = true;
-            }
             // Establece el modelo de la tabla
             tablaBoxAtendidos.setModel(modeloTabla);
         } catch (Exception e) {
             // Imprime cualquier error que ocurra durante la ejecución del código anterior
-            System.out.println("Error: " + e.getMessage());
+            control.mostrarMensaje("No posee pacientes en box", "Sin pacientes", "");
         }
     }
 

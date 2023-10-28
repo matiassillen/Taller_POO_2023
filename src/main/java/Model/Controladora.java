@@ -719,14 +719,15 @@ public class Controladora implements Serializable {
 
         // Obtenemos el box a vaciar del controlador de persistencia
         Box boxAVaciar = this.controlPersis.traerBox(id);
-
+        boxAVaciar.setConsulta(null);
         // Obtenemos la consulta del box
         Consulta consulta = boxAVaciar.getConsulta();
 
         // Establecemos el diagnóstico de la consulta y actualizamos la consulta en el controlador de persistencia
         consulta.setDiagnConsulta(diagnostico);
+        consulta.setBox(null);
         this.controlPersis.editarConsulta(consulta);
-
+   
         // Vaciamos la consulta del box y actualizamos el box en el controlador de persistencia
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);

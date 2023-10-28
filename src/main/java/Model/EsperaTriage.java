@@ -1,18 +1,12 @@
 package Model;
 
-
-import java.util.List;
 import java.util.Queue;
 
 
 
 public class EsperaTriage {
-
-   
     // Cola para las consultas en espera de triage
     private Queue<Consulta> enEsperaT;
-
-    private List<Consulta> EnEsperaPersis;
 
     public EsperaTriage(Queue<Consulta> fila) {
         this.enEsperaT = fila;
