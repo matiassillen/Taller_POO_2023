@@ -149,11 +149,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup1.add(jrbNormalRespiracion);
         jrbNormalRespiracion.setForeground(new java.awt.Color(0, 0, 0));
         jrbNormalRespiracion.setText("Normal");
-        jrbNormalRespiracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNormalRespiracionActionPerformed(evt);
-            }
-        });
 
         jrbModeradaRespiracion.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jrbModeradaRespiracion);
@@ -229,21 +224,11 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup5.add(jrbNoPresenteLesionL);
         jrbNoPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteLesionL.setText("No Presentes");
-        jrbNoPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteLesionLActionPerformed(evt);
-            }
-        });
 
         jrbPresenteLesionL.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup5.add(jrbPresenteLesionL);
         jrbPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
         jrbPresenteLesionL.setText("Presente");
-        jrbPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbPresenteLesionLActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -305,11 +290,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup9.add(jrbNoPresenteDolorPecho);
         jrbNoPresenteDolorPecho.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteDolorPecho.setText("No Presente");
-        jrbNoPresenteDolorPecho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteDolorPechoActionPerformed(evt);
-            }
-        });
 
         jrbPresenteDolorPecho.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup9.add(jrbPresenteDolorPecho);
@@ -376,11 +356,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup10.add(jrbNormalPulso);
         jrbNormalPulso.setForeground(new java.awt.Color(0, 0, 0));
         jrbNormalPulso.setText("Normal");
-        jrbNormalPulso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNormalPulsoActionPerformed(evt);
-            }
-        });
 
         jrbAnormalPulso.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup10.add(jrbAnormalPulso);
@@ -447,11 +422,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup6.add(jrbSinFiebre);
         jrbSinFiebre.setForeground(new java.awt.Color(0, 0, 0));
         jrbSinFiebre.setText("Sin Fiebre");
-        jrbSinFiebre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbSinFiebreActionPerformed(evt);
-            }
-        });
 
         jrbModeradoFiebre.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup6.add(jrbModeradoFiebre);
@@ -527,11 +497,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup2.add(jrbNoPresenteAbd);
         jrbNoPresenteAbd.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteAbd.setText("No Presente");
-        jrbNoPresenteAbd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteAbdActionPerformed(evt);
-            }
-        });
 
         jrbModeradaAbd.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup2.add(jrbModeradaAbd);
@@ -607,11 +572,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup3.add(jrbNoPresenteSangrado);
         jrbNoPresenteSangrado.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteSangrado.setText("No Presente");
-        jrbNoPresenteSangrado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteSangradoActionPerformed(evt);
-            }
-        });
 
         jrbModeradoSangrado.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup3.add(jrbModeradoSangrado);
@@ -687,11 +647,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup7.add(jrbNormalEstadoMental);
         jrbNormalEstadoMental.setForeground(new java.awt.Color(0, 0, 0));
         jrbNormalEstadoMental.setText("Normal");
-        jrbNormalEstadoMental.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNormalEstadoMentalActionPerformed(evt);
-            }
-        });
 
         jrbLeveEstadoMental.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup7.add(jrbLeveEstadoMental);
@@ -767,11 +722,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup11.add(jrbSinVomito);
         jrbSinVomito.setForeground(new java.awt.Color(0, 0, 0));
         jrbSinVomito.setText("Sin Vómitos");
-        jrbSinVomito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbSinVomitoActionPerformed(evt);
-            }
-        });
 
         jrbModeradoVomito.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup11.add(jrbModeradoVomito);
@@ -847,11 +797,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup12.add(jrbConciente);
         jrbConciente.setForeground(new java.awt.Color(0, 0, 0));
         jrbConciente.setText("Conciente");
-        jrbConciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbConcienteActionPerformed(evt);
-            }
-        });
 
         jrbInconciente.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup12.add(jrbInconciente);
@@ -918,11 +863,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup8.add(jrbNoPresenteSignoShock);
         jrbNoPresenteSignoShock.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteSignoShock.setText("No Presentes");
-        jrbNoPresenteSignoShock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteSignoShockActionPerformed(evt);
-            }
-        });
 
         jrbPresenteSignoShock.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup8.add(jrbPresenteSignoShock);
@@ -989,11 +929,6 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup4.add(jrbNoPresenteLesionG);
         jrbNoPresenteLesionG.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteLesionG.setText("No Presentes");
-        jrbNoPresenteLesionG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNoPresenteLesionGActionPerformed(evt);
-            }
-        });
 
         jrbPresenteLesionG.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup4.add(jrbPresenteLesionG);
@@ -1225,11 +1160,6 @@ public class HacerTriage extends javax.swing.JFrame {
         cmbEdad.setBackground(new java.awt.Color(255, 255, 255));
         cmbEdad.setForeground(new java.awt.Color(0, 0, 0));
         cmbEdad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Niño/Anciano" }));
-        cmbEdad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEdadActionPerformed(evt);
-            }
-        });
         jPanel1.add(cmbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1279,58 +1209,6 @@ public class HacerTriage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jrbNormalRespiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalRespiracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNormalRespiracionActionPerformed
-
-    private void jrbNoPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteLesionLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteLesionLActionPerformed
-
-    private void jrbNoPresenteDolorPechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteDolorPechoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteDolorPechoActionPerformed
-
-    private void jrbNormalPulsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalPulsoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNormalPulsoActionPerformed
-
-    private void jrbSinFiebreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSinFiebreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbSinFiebreActionPerformed
-
-    private void jrbNoPresenteAbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteAbdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteAbdActionPerformed
-
-    private void jrbNoPresenteSangradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteSangradoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteSangradoActionPerformed
-
-    private void jrbNormalEstadoMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNormalEstadoMentalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNormalEstadoMentalActionPerformed
-
-    private void jrbSinVomitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSinVomitoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbSinVomitoActionPerformed
-
-    private void jrbConcienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConcienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbConcienteActionPerformed
-
-    private void jrbNoPresenteSignoShockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteSignoShockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteSignoShockActionPerformed
-
-    private void jrbNoPresenteLesionGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteLesionGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbNoPresenteLesionGActionPerformed
-
-    private void cmbEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEdadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbEdadActionPerformed
 
     private void btnCrearTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTriageActionPerformed
         String respiracion ="", dolorAbd = "", sangrado = "", lesionGrave = "", lesionLeve = "", fiebre = "",
@@ -1465,16 +1343,13 @@ public class HacerTriage extends javax.swing.JFrame {
         Usuario usuario = this.control.getUsu();
         
         Triage t = this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad,idConsulta,usuario);
+        
         this.triage = t;
         
         txtColor.setText(t.getColorInicial().name());
         
         JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
     }//GEN-LAST:event_btnCrearTriageActionPerformed
-
-    private void jrbPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPresenteLesionLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbPresenteLesionLActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         MostrarTriage pantalla = new MostrarTriage(triage, control);
@@ -1484,8 +1359,7 @@ public class HacerTriage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Consulta consu = this.triage.getConsulta();
-        this.control.añadirALaFila(consu);
+        this.control.persistirDatos(triage);
         PrincipalMedico pmed = new PrincipalMedico(control);
         pmed.setVisible(true);
         pmed.setLocationRelativeTo(null);

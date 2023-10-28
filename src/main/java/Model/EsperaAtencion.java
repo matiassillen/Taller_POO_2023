@@ -5,35 +5,26 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Queue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+
 
 /**
  * Clase EsperaAtencion que gestiona la cola de espera de las consultas.
  *
  * @author yairc
  */
-@Entity
+
 public class EsperaAtencion {
 
-    @Transient
+
     // Cola de prioridad para las consultas en espera
     private PriorityQueue<Consulta> enEspera;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
     private List<Consulta> EnEsperaPersis;
 
     /**
      * Constructor de la clase EsperaAtencion.
      */
-    public EsperaAtencion() {
-        this.enEspera = new PriorityQueue<>(new ComparadorDeConsultas());
-        this.EnEsperaPersis = new LinkedList<>();
+    public EsperaAtencion(PriorityQueue<Consulta> fila) {
+        this.enEspera = fila;
     }
 
     /**
@@ -59,7 +50,6 @@ public class EsperaAtencion {
         medico.setConsulta(consultas);
         objetos.add(medico);
 
-        this.espejarFilas();
 
         return objetos;
     }
@@ -80,30 +70,9 @@ public class EsperaAtencion {
      */
     public void añadirAFila(Consulta consu) {
         enEspera.add(consu);
-        this.espejarFilas();
     }
 
-    /**
-     * Este método se utiliza para obtener la lista de consultas en espera
-     * persistente.
-     *
-     * @return EnEsperaPersis, que es una lista de objetos Consulta que están en
-     * espera.
-     */
-    public List<Consulta> getEnEsperaPersis() {
-        return EnEsperaPersis;
-    }
 
-    /**
-     * Este método se utiliza para espejar las filas de la cola enEspera en la
-     * lista EnEsperaPersis. Primero, convierte la cola enEspera en una lista.
-     * Luego, asigna esta lista a EnEsperaPersis.
-     */
-    public void espejarFilas() {
-        Queue<Consulta> cola = this.enEspera;
-        List<Consulta> lista = new ArrayList<>(cola);
-        this.EnEsperaPersis = lista;
-    }
 
     /**
      * Clase interna ComparadorDeConsultas que implementa Comparator para

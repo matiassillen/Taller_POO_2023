@@ -16,13 +16,20 @@ import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import static java.time.temporal.ChronoUnit.YEARS;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -36,8 +43,10 @@ public class Controladora implements Serializable {
     ControladoraPersistencia controlPersis;
     Usuario usu;
 
-    private EsperaAtencion esperaAtencion = new EsperaAtencion();
-    private EsperaTriage esperaAtencionTriage = new EsperaTriage();
+    PriorityQueue<Consulta> filaAten;
+    Queue<Consulta> filaTriag;
+    EsperaAtencion esperaAtencion;
+    EsperaTriage esperaAtencionTriage;
 
     /**
      * Constructor de la clase `Controladora`. Inicializa una instancia de
@@ -46,6 +55,10 @@ public class Controladora implements Serializable {
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
+        this.filaAten = actualizarColaAtencion();
+        this.filaTriag = this.actualizarColaTriage();
+        this.esperaAtencion = new EsperaAtencion(filaAten);
+        this.esperaAtencionTriage = new EsperaTriage(filaTriag);
     }
 
     /**
@@ -1151,11 +1164,6 @@ public class Controladora implements Serializable {
         triage.setMotCambio(null);
         triage.obtenerPuntos();
 
-        this.controlPersis.crearTriage(triage);
-
-        consulta.setTriage(triage);
-        this.controlPersis.editarConsulta(consulta);
-
         return triage;
 
     }
@@ -1187,12 +1195,7 @@ public class Controladora implements Serializable {
         triage.setMotCambio(motivo);
         TipoColor colorNuevo = TipoColor.valueOf(color);
         triage.setColorFinal(colorNuevo);
-
-        this.controlPersis.editarTriage(triage);
-        Consulta consu = triage.getConsulta();
-        consu.setTriage(triage);
-        this.controlPersis.editarConsulta(consu);
-        this.añadirALaFila(consu);
+        this.persistirDatos(triage);
     }
 
     /**
@@ -1202,7 +1205,108 @@ public class Controladora implements Serializable {
      * @param consu
      */
     public void añadirALaFila(Consulta consu) {
-        this.esperaAtencion.añadirAFila(consu);
+        Consulta consuActualizada = this.esperaAtencionTriage.QuitarDeFila(consu.getTriage());
+        this.esperaAtencion.añadirAFila(consuActualizada);
     }
 
+    private PriorityQueue<Consulta> actualizarColaAtencion() {
+        List<Consulta> consultas = this.controlPersis.traerConsultas();
+        this.ordenarPorFechaYHora(consultas);
+        this.filtrarConBox(consultas);
+        PriorityQueue<Consulta> colaDeAtencion = new PriorityQueue<>(new ComparadorDeConsultas());
+        for (Consulta consu : consultas) {
+            colaDeAtencion.add(consu);
+        }
+        return colaDeAtencion;
+    }
+
+    private Queue<Consulta> actualizarColaTriage() {
+        List<Consulta> consultas = this.controlPersis.traerConsultas();
+        this.filtrarConTriage(consultas);
+        this.ordenarPorFechaYHora(consultas);
+        Queue<Consulta> colaDeTriage = new LinkedList<>();
+        for (Consulta consu : consultas) {
+            colaDeTriage.add(consu);
+        }
+        return colaDeTriage;
+    }
+
+    public void persistirDatos(Triage triage) {
+        Consulta consu = triage.getConsulta();
+        this.controlPersis.crearTriage(triage);
+        consu.setTriage(triage);
+        this.controlPersis.editarConsulta(consu);
+        this.cambiarDeFila(consu);
+    }
+
+    public void cambiarDeFila(Consulta consu) {
+        this.esperaAtencionTriage.quitarDeLista(consu);
+        this.esperaAtencion.añadirAFila(consu);
+        
+    }
+
+    class ComparadorDeConsultas implements Comparator<Consulta> {
+
+        /**
+         * Método para comparar dos consultas basándose en el color del triage.
+         *
+         * @param c1 La primera consulta a comparar.
+         * @param c2 La segunda consulta a comparar.
+         * @return Un entero que indica el resultado de la comparación.
+         */
+        @Override
+        public int compare(Consulta c1, Consulta c2) {
+            if (c1.getTriage().getColorFinal() != null) {
+                if (c2.getTriage().getColorFinal() != null) {
+                    return c1.getTriage().getColorFinal().getValorNumerico().compareTo(c2.getTriage().getColorFinal().getValorNumerico());
+                } else {
+                    return c1.getTriage().getColorFinal().getValorNumerico().compareTo(c2.getTriage().getColorInicial().getValorNumerico());
+
+                }
+            } else {
+                if (c2.getTriage().getColorFinal() != null) {
+                    return c1.getTriage().getColorInicial().getValorNumerico().compareTo(c2.getTriage().getColorFinal().getValorNumerico());
+                } else {
+                    return c1.getTriage().getColorInicial().getValorNumerico().compareTo(c2.getTriage().getColorInicial().getValorNumerico());
+                }
+            }
+        }
+    }
+
+    public void ordenarPorFechaYHora(List<Consulta> lista) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        Collections.sort(lista, new Comparator<Consulta>() {
+            @Override
+            public int compare(Consulta c1, Consulta c2) {
+                LocalDateTime dateTime1 = LocalDateTime.parse(c1.getFecha() + " " + c1.getHora(), formatter);
+                LocalDateTime dateTime2 = LocalDateTime.parse(c2.getFecha() + " " + c2.getHora(), formatter);
+                return dateTime1.compareTo(dateTime2);
+            }
+        });
+    }
+
+    public void filtrarConTriage(List<Consulta> lista) {
+    Iterator<Consulta> iterador = lista.iterator();
+
+    while (iterador.hasNext()) {
+        Consulta consu = iterador.next();
+
+        if (consu.getTriage() != null) {
+            iterador.remove();
+        }
+    }
+}
+
+    public void filtrarConBox(List<Consulta> lista) {
+    Iterator<Consulta> iterador = lista.iterator();
+
+    while (iterador.hasNext()) {
+        Consulta consu = iterador.next();
+
+        if (consu.getBox() != null) {
+            iterador.remove();
+        }
+    }
+}
 }
