@@ -8,6 +8,7 @@ import Model.Box;
 import Model.Controladora;
 import Model.FuncionarioGeneral;
 import Model.Medico;
+import Model.Usuario;
 import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class AsignarBox extends javax.swing.JFrame {
 
     Controladora control;
-    Box boxSeleccionado;
+    long idBoxSelect;
 
     /**
      * Creates new form AsignarBox
@@ -31,6 +32,8 @@ public class AsignarBox extends javax.swing.JFrame {
     public AsignarBox(Controladora control) {
         initComponents();
         this.control = control;
+        this.idBoxSelect = -1;
+        cargarTablaBoxDisponibles();
     }
 
     /**
@@ -214,7 +217,7 @@ public class AsignarBox extends javax.swing.JFrame {
                 int row = tablaBox.getSelectedRow();
                 String idBox = tablaBox.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
                 long id = Long.parseLong(idBox);
-                this.boxSeleccionado = control.traerBox(id);
+                this.idBoxSelect = id;
                 jlbSeleccionar.setEnabled(true);
             }
         }
@@ -235,17 +238,22 @@ public class AsignarBox extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbPrincipalMouseClicked
 
     private void jlbSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseClicked
-        FuncionarioGeneral func = control.getUsu().getFuncionarioGeneral();
-        Medico medico = (Medico) func;
-        try {
-            control.tomarPaciente(boxSeleccionado, medico);
-        } catch (Exception ex) {
-            Logger.getLogger(AsignarBox.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (idBoxSelect != -1) {
+            Usuario usu = this.control.getUsu();
+            try {
+                control.tomarPaciente(idBoxSelect, usu);
+            } catch (Exception ex) {
+                Logger.getLogger(AsignarBox.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GestionDePacientes gestP = new GestionDePacientes(control);
+            gestP.setVisible(true);
+            gestP.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+            control.mostrarMensaje("No seleciono box", "Error", "Error");
         }
-        GestionDePacientes gestP = new GestionDePacientes(control);
-        gestP.setVisible(true);
-        gestP.setLocationRelativeTo(null);
-        this.dispose();
+
     }//GEN-LAST:event_jlbSeleccionarMouseClicked
 
     private void jlbSeleccionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseEntered
@@ -273,10 +281,16 @@ public class AsignarBox extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbVolverMouseExited
 
     private void cargarTablaBoxDisponibles() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Todas las celdas son falsas, es decir, no editables.
+                return false;
+            }
+        };
         String titutlos[] = {"numero"};
         modeloTabla.setColumnIdentifiers(titutlos);
-        List<Box> boxes = control.TraerBoxDisponibles();
+        List<Box> boxes = this.control.TraerBoxDisponibles();
         if (boxes != null) {
             for (Box box : boxes) {
                 Object[] objeto = {box.getId()};

@@ -369,13 +369,19 @@ public class GestionDePacientes extends javax.swing.JFrame {
     private void cargarTablaBoxAtendidos() {
         try {
             // Crea un nuevo modelo de tabla
-            DefaultTableModel modeloTabla = new DefaultTableModel();
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Todas las celdas son falsas, es decir, no editables.
+                    return false;
+                }
+            };
             // Define los títulos de las columnas
             String titutlos[] = {"Box", "Dni", "Apellido"};
             // Establece los identificadores de columna en el modelo de tabla
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene una lista de boxes usando el controlador
-            List<Box> boxes = control.TraerBoxDelMedico();
+            List<Box> boxes = this.control.TraerBoxDelMedico();
             // Verifica si la lista de boxes no es nula
             if (boxes != null) {
                 // Itera sobre cada box en la lista

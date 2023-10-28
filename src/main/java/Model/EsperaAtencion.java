@@ -34,24 +34,9 @@ public class EsperaAtencion {
      * @param medico El médico asignado a la consulta.
      * @return Una lista de objetos que incluye la consulta, el box y el médico.
      */
-    public List<Object> quitarDeFila(Box box, Medico medico) {
-        List<Object> objetos = new ArrayList<>();
-        Consulta consu = enEspera.poll();
+    public Consulta quitarDeFila() { 
+        return enEspera.poll();
 
-        consu.setBox(box);
-        consu.setMedico(medico);
-        objetos.add(consu);
-
-        box.setConsulta(consu);
-        objetos.add(box);
-
-        List<Consulta> consultas = medico.getConsulta();
-        consultas.add(consu);
-        medico.setConsulta(consultas);
-        objetos.add(medico);
-
-
-        return objetos;
     }
 
     /**

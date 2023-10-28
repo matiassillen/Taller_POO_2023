@@ -540,11 +540,16 @@ public class Controladora implements Serializable {
      */
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
-        for (Box box : boxes) {
-            if (box.getConsulta().getMedico() != null) {
-                boxes.remove(box);
+        Iterator<Box> iterador = boxes.iterator();
+
+        while (iterador.hasNext()) {
+            Box box = iterador.next();
+
+            if (box.getConsulta() != null) {
+                iterador.remove();
             }
         }
+
         return boxes;
     }
 
@@ -564,26 +569,28 @@ public class Controladora implements Serializable {
      * entrada. Luego, utiliza estos objetos para quitar al paciente
      * correspondiente de la fila de espera y asignarlo al box especificado.
      *
-     * @param box
-     * @param medico
+     * @param id
+     * @param usu
      * @throws java.lang.Exception
      */
-    public void tomarPaciente(Box box, Medico medico) throws Exception {
-        List<Object> objetos = this.esperaAtencion.quitarDeFila(box, medico);
-        Consulta consuAct = (Consulta) objetos.get(0);
-        Medico medAct = (Medico) objetos.get(1);
-        Box boxAct = (Box) objetos.get(2);
-        this.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
-    }
+    public void tomarPaciente(Long id, Usuario usu) throws Exception {
+        
+        FuncionarioGeneral func = usu.getFuncionarioGeneral();
+        Medico medico = (Medico) func;
+        
+        Box box = this.traerBox(id);
+        
+        Consulta consu = this.esperaAtencion.quitarDeFila();
+        
+        consu.setBox(box);
+        consu.setMedico(medico);
+        
+        medico.getConsulta().add(consu);
+                
+        box.setConsulta(consu);
+        
+        this.controlPersis.tomarPacientePersistirDatos(consu, medico, box);
 
-    /**
-     * Este método toma tres objetos como entrada: un objeto de tipo Consulta,
-     * un objeto de tipo Medico y un objeto de tipo Box. Luego, utiliza estos
-     * objetos para actualizar la base de datos con la información
-     * correspondiente.
-     */
-    private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
-        this.controlPersis.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
     /**
@@ -1242,7 +1249,7 @@ public class Controladora implements Serializable {
     public void cambiarDeFila(Consulta consu) {
         this.esperaAtencionTriage.quitarDeLista(consu);
         this.esperaAtencion.añadirAFila(consu);
-        
+
     }
 
     class ComparadorDeConsultas implements Comparator<Consulta> {
@@ -1274,39 +1281,39 @@ public class Controladora implements Serializable {
     }
 
     public void ordenarPorFechaYHora(List<Consulta> lista) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        Collections.sort(lista, new Comparator<Consulta>() {
-            @Override
-            public int compare(Consulta c1, Consulta c2) {
-                LocalDateTime dateTime1 = LocalDateTime.parse(c1.getFecha() + " " + c1.getHora(), formatter);
-                LocalDateTime dateTime2 = LocalDateTime.parse(c2.getFecha() + " " + c2.getHora(), formatter);
-                return dateTime1.compareTo(dateTime2);
-            }
-        });
-    }
+    Collections.sort(lista, new Comparator<Consulta>() {
+        @Override
+        public int compare(Consulta c1, Consulta c2) {
+            LocalDateTime dateTime1 = LocalDateTime.parse(c1.getFecha() + " " + c1.getHora(), formatter);
+            LocalDateTime dateTime2 = LocalDateTime.parse(c2.getFecha() + " " + c2.getHora(), formatter);
+            return dateTime1.compareTo(dateTime2);
+        }
+    });
+}
 
     public void filtrarConTriage(List<Consulta> lista) {
-    Iterator<Consulta> iterador = lista.iterator();
+        Iterator<Consulta> iterador = lista.iterator();
 
-    while (iterador.hasNext()) {
-        Consulta consu = iterador.next();
+        while (iterador.hasNext()) {
+            Consulta consu = iterador.next();
 
-        if (consu.getTriage() != null) {
-            iterador.remove();
+            if (consu.getTriage() != null) {
+                iterador.remove();
+            }
         }
     }
-}
 
     public void filtrarConBox(List<Consulta> lista) {
-    Iterator<Consulta> iterador = lista.iterator();
+        Iterator<Consulta> iterador = lista.iterator();
 
-    while (iterador.hasNext()) {
-        Consulta consu = iterador.next();
+        while (iterador.hasNext()) {
+            Consulta consu = iterador.next();
 
-        if (consu.getBox() != null) {
-            iterador.remove();
+            if (consu.getBox() != null) {
+                iterador.remove();
+            }
         }
     }
-}
 }

@@ -90,10 +90,10 @@ public class ControladoraPersistencia implements Serializable{
         return boxJpa.findBox(idBox);
     }
 
-    public void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
-        boxJpa.edit(boxAct);
-        medicoJpa.edit(medAct);
-        consultaJpa.edit(consuAct);
+    public void tomarPacientePersistirDatos(Consulta consu, Medico med, Box box) throws Exception {
+        boxJpa.edit(box);
+        medicoJpa.edit(med);
+        consultaJpa.edit(consu);
     }
     
     public List<Rol>  traerRoles() {
