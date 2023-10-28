@@ -269,12 +269,11 @@ public class Controladora implements Serializable {
      */
     private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
-        List<Consulta> consultas = traerConsultas();
+        List<Consulta> consultas = this.traerConsultas();
 
         if (!consultas.isEmpty()) {
             for (Consulta consulta : consultas) {
                 LocalDate fechaConsulta = LocalDate.parse(consulta.getFecha());
-//                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
 
                     listaFiltrada.add(consulta);
@@ -316,6 +315,7 @@ public class Controladora implements Serializable {
      * ocurrencias
      */
     private String contadorPacientesEdadPrivate(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
+        // this.traerPacientes();
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
 
@@ -339,6 +339,7 @@ public class Controladora implements Serializable {
      */
     public ArrayList<Paciente> listaPacientesMasAtendidos(ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
+        // this.traerPacientes();
         Paciente pacienteOne = null;
         ArrayList<Paciente> devolver = new ArrayList<>();
         Integer contadorMax = 0;
