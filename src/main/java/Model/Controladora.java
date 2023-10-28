@@ -15,48 +15,55 @@ import Model.Sintomas.Shock;
 import Model.Sintomas.Vomitos;
 import Persistencia.ControladoraPersistencia;
 import java.io.Serializable;
-import static java.lang.String.valueOf;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import static java.time.temporal.ChronoUnit.YEARS;
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-
 /**
- * La clase `Controladora` es el controlador principal del sistema.
- * Administra usuarios, pacientes, consultas y otros datos relacionados con la atención médica.
+ * La clase `Controladora` es el controlador principal del sistema. Administra
+ * usuarios, pacientes, consultas y otros datos relacionados con la atención
+ * médica.
  */
-public class Controladora implements Serializable{
+public class Controladora implements Serializable {
+
     ControladoraPersistencia controlPersis;
     Usuario usu;
 
     private EsperaAtencion esperaAtencion = new EsperaAtencion();
     private EsperaTriage esperaAtencionTriage = new EsperaTriage();
-    
- /**
-     * Constructor de la clase `Controladora`.
-     * Inicializa una instancia de `ControladoraPersistencia` y establece `usu` en `null`.
+
+    /**
+     * Constructor de la clase `Controladora`. Inicializa una instancia de
+     * `ControladoraPersistencia` y establece `usu` en `null`.
      */
     public Controladora() {
         this.controlPersis = new ControladoraPersistencia();
         this.usu = null;
     }
 
+    /**
+     *
+     * @param usu
+     */
     public void setUsu(Usuario usu) {
         this.usu = usu;
     }
 
+    /**
+     *
+     * @return
+     */
     public Usuario getUsu() {
         return usu;
     }
-    
+
     /**
      * Obtiene una lista de funcionarios generales.
      *
@@ -66,26 +73,63 @@ public class Controladora implements Serializable{
         return controlPersis.traerFuncionariosEnGeneral();
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Usuario. Esta lista
+     * contiene todos los usuarios almacenados en la base de datos.
+     *
+     * @return
+     */
     public List<Usuario> traerUsuarios() {
         return controlPersis.traerUsuarios();
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Rol. Esta lista
+     * contiene todos los roles almacenados en la base de datos.
+     *
+     * @return
+     */
     public List<Rol> traerRoles() {
         return controlPersis.traerRoles();
     }
-    
+
+    /**
+     * Este método devuelve una lista de objetos de tipo Triage. Esta lista
+     * contiene todos los triages almacenados en la base de datos.
+     *
+     * @return
+     */
     public List<Triage> traerTriages() {
         return controlPersis.traerTriages();
     }
+
+    /**
+     * Este método devuelve una lista de objetos de tipo Medico. Esta lista
+     * contiene todos los médicos almacenados en la base de datos.
+     *
+     * @return
+     */
     public List<Medico> traerMedicos() {
         return controlPersis.traerMedicos();
     }
-    
+
+    /**
+     * Este método devuelve una lista de objetos de tipo Consulta. Esta lista
+     * contiene todas las consultas almacenadas en la base de datos.
+     *
+     * @return
+     */
     public List<Consulta> traerConsultas() {
         return controlPersis.traerConsultas();
     }
-    
-    
+
+    /**
+     * Este método devuelve un objeto de tipo Usuario que corresponde al usuario
+     * con el ID especificado.
+     *
+     * @param idUsuario
+     * @return
+     */
     public Usuario traerUsuario(long idUsuario) {
         return controlPersis.traerUsuarios(idUsuario);
     }
@@ -126,23 +170,23 @@ public class Controladora implements Serializable{
         // TODO implement here
     }
 
-    
-    /** 
+    /**
      * @param idMedico es el numero para identificar al medico
      * @param fecha1 parametro limite inferior
      * @param fecha2 parametro limite superior
-     * @return String del contador de ocurrencias del medico en una lista de consultas entre fechas
-    */
+     * @return String del contador de ocurrencias del medico en una lista de
+     * consultas entre fechas
+     */
     public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
         ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
         List<Medico> listaMed = this.traerMedicos();
         Integer contador = 0;
 
         for (Medico leerMed : listaMed) {
-            if (leerMed.getId() == idMedico) {       
+            if (leerMed.getId() == idMedico) {
                 for (Consulta leerConsulta : listaFiltro) {
                     if (leerConsulta.getMedico().getDni() == leerMed.getDni()) {
-                        contador ++;
+                        contador++;
                     }
                 }
             }
@@ -150,22 +194,26 @@ public class Controladora implements Serializable{
         return String.valueOf(contador);
     }
 
-    /** Metodo que llama al metodo privado medicoConMasPacientes
+    /**
+     * Metodo que llama al metodo privado medicoConMasPacientes
+     *
      * @param fecha1 fecha de tipo LocalDate limite inferior
      * @param fecha2 fecha de tipo LocalDate limite superior
      * @return devuelve un objeto de tipo Medico
-    */
-    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2){
+     */
+    public Medico medicoConMasPacientes(LocalDate fecha1, LocalDate fecha2) {
         return medicoConMasPacientesPrivate(fecha1, fecha2);
     }
-/**
- * Busca y devuelve el médico con la mayor cantidad de pacientes atendidos en un rango de fechas.
- *
- * @param fecha1 La fecha de inicio del rango.
- * @param fecha2 La fecha de fin del rango.
- * @return El médico con más pacientes atendidos en el rango de fechas especificado,
- *         o null si no hay consultas en el rango.
- */
+
+    /**
+     * Busca y devuelve el médico con la mayor cantidad de pacientes atendidos
+     * en un rango de fechas.
+     *
+     * @param fecha1 La fecha de inicio del rango.
+     * @param fecha2 La fecha de fin del rango.
+     * @return El médico con más pacientes atendidos en el rango de fechas
+     * especificado, o null si no hay consultas en el rango.
+     */
     private Medico medicoConMasPacientesPrivate(LocalDate fecha1, LocalDate fecha2) {
         // Mapa para llevar un conteo de las consultas por médico
         Map<Medico, Integer> conteoConsultas = new HashMap<>();
@@ -174,7 +222,7 @@ public class Controladora implements Serializable{
         // Obtener la lista de consultas
         List<Consulta> consultas = traerConsultas();
         // Verificar si hay consultas
-        if (consultas != null) { 
+        if (consultas != null) {
             int maxConsultas = 0;
             // Recorremos las consultas para contar cuántas atendió cada médico en el rango de fechas
             for (Consulta consulta : consultas) {
@@ -197,24 +245,27 @@ public class Controladora implements Serializable{
 
         return medicoConMasPacientes;
     }
-    
-    
+
     /**
-    * Metodo que llama al metodo privado filtraFechasPrivate
-    * @return ArrayList de consultas
-    * @param fecha1 es la fecha limite inferior para filtrar del tipo LocalDate en formato aaaa/MM/dd
-    * @param fecha2 es la fecha limite superior para filtrar del tipo LocalDate en formato aaaa/MM/dd
-    */
+     * Metodo que llama al metodo privado filtraFechasPrivate
+     *
+     * @return ArrayList de consultas
+     * @param fecha1 es la fecha limite inferior para filtrar del tipo LocalDate
+     * en formato aaaa/MM/dd
+     * @param fecha2 es la fecha limite superior para filtrar del tipo LocalDate
+     * en formato aaaa/MM/dd
+     */
     public ArrayList<Consulta> filtraFechas(LocalDate fecha1, LocalDate fecha2) {
         return filtraFechasPrivate(fecha1, fecha2);
     }
-    
+
     /**
      * Metodo que llena una lista con las consultas realizadas entre dos fechas
+     *
      * @param fecha1 limite inferior del tipo LocalDate en formato aaaa/MM/dd
      * @param fecha2 limite superior del tipo LocalDate en formato aaaa/MM/dd
-     * @return devuelve un ArrayList de objetos Consulta que contiene todas las consultas entre 
-     * las fechas pasadas por parametro
+     * @return devuelve un ArrayList de objetos Consulta que contiene todas las
+     * consultas entre las fechas pasadas por parametro
      */
     private ArrayList<Consulta> filtraFechasPrivate(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = null;
@@ -226,7 +277,6 @@ public class Controladora implements Serializable{
 //                LocalDate fechaConsulta = consulta.getFecha();
                 if (fechaConsulta != null && fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
 
-
                     listaFiltrada.add(consulta);
                 }
             }
@@ -236,72 +286,81 @@ public class Controladora implements Serializable{
 
         return listaFiltrada;
     }
-    
+
     /**
      * Metodo que llama al metodo privado contadorPacientesEdadPrivate
+     *
      * @param edad1 entero de edad limite inferior
      * @param edad2 entero de edad limite superior
      * @param fecha1 fecha limite inferior
      * @param fecha2 fecha limite superior
      * @return devuelve un String con el resultado del conteo
      */
-    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2){
+    public String contadorPacientesEdad(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         return contadorPacientesEdadPrivate(edad1, edad2, fecha1, fecha2);
     }
 
     /**
-     * Metodo que cuenta las ocurrencias de un paciente en una lista de consultas filtrada
-     * @param edad1 parametro de tipo entero limite inferior de edad para filtrar
-     * @param edad2 parametro limite de tipo entero superior de edad para filtrar
-     * @param fecha1 parametro de tipo LocalDate formato aaaa/MM/dd limite inferior de fecha para filtrar
-     * @param fecha2 parametro de tipo LocalDate formato aaaa/MM/dd limite superior de fecha para filtrar
-     * @return devuelve un entero transformado a String del contador de ocurrencias
+     * Metodo que cuenta las ocurrencias de un paciente en una lista de
+     * consultas filtrada
+     *
+     * @param edad1 parametro de tipo entero limite inferior de edad para
+     * filtrar
+     * @param edad2 parametro limite de tipo entero superior de edad para
+     * filtrar
+     * @param fecha1 parametro de tipo LocalDate formato aaaa/MM/dd limite
+     * inferior de fecha para filtrar
+     * @param fecha2 parametro de tipo LocalDate formato aaaa/MM/dd limite
+     * superior de fecha para filtrar
+     * @return devuelve un entero transformado a String del contador de
+     * ocurrencias
      */
     private String contadorPacientesEdadPrivate(Integer edad1, Integer edad2, LocalDate fecha1, LocalDate fecha2) {
         ArrayList<Consulta> listaFiltrada = filtraFechas(fecha1, fecha2);
         Integer contador = 0;
-        
+
         for (Consulta consultaPaciente : listaFiltrada) {
             LocalDate fechaNacimiento = LocalDate.parse(consultaPaciente.getPaciente().getFechaDeNac());
-            Integer edadPaciente = (int)fechaNacimiento.until(fecha2, YEARS);
-            if ((edadPaciente >= edad1) && (edadPaciente <= edad2)){
+            Integer edadPaciente = (int) fechaNacimiento.until(fecha2, YEARS);
+            if ((edadPaciente >= edad1) && (edadPaciente <= edad2)) {
                 contador = +1;
             }
         }
         return String.valueOf(contador);
     }
-    
+
     /**
-     * Metodo guarda los 3 pacientes mas atendidos evaluando la cantidad
-     * de veces que aparece un paciente en el ArrayList de consultas
+     * Metodo guarda los 3 pacientes mas atendidos evaluando la cantidad de
+     * veces que aparece un paciente en el ArrayList de consultas
+     *
      * @param listaFiel es un ArrayList de consultas filtradas por fecha
-     * @return devuelve un ArrayList de objetos de tipo paciente con los 3 pacientes mas atendidos
+     * @return devuelve un ArrayList de objetos de tipo paciente con los 3
+     * pacientes mas atendidos
      */
     public ArrayList<Paciente> listaPacientesMasAtendidos(ArrayList<Consulta> listaFiel) {
         ArrayList<Consulta> listaFiltro = listaFiel;
         Paciente pacienteOne = null;
         ArrayList<Paciente> devolver = new ArrayList<>();
         Integer contadorMax = 0;
-        
+
         ArrayList<Paciente> noRepetir = new ArrayList<>();
-        
-        for(int repeticiones = 0; repeticiones <3; repeticiones++) {
+
+        for (int repeticiones = 0; repeticiones < 3; repeticiones++) {
             if (listaFiltro.isEmpty()) {
                 devolver.add(null);
             }
-        
-            for (Consulta leerConsulta : listaFiltro){
 
-                if (noRepetir.contains(leerConsulta.getPaciente())){
+            for (Consulta leerConsulta : listaFiltro) {
+
+                if (noRepetir.contains(leerConsulta.getPaciente())) {
                     continue;
-                }
-                else {
+                } else {
                     noRepetir.add(leerConsulta.getPaciente());
                 }
                 Integer contadorAux = 0;
                 for (Consulta leerAux : listaFiltro) {
                     if (leerConsulta.getPaciente().getDni() == leerAux.getPaciente().getDni()) {
-                        contadorAux ++;
+                        contadorAux++;
                     }
                     if (contadorAux > contadorMax) {
                         pacienteOne = leerConsulta.getPaciente();
@@ -311,46 +370,46 @@ public class Controladora implements Serializable{
             }
             devolver.add(pacienteOne);
             for (Consulta eliminaConsulta : listaFiltro) {
-                if (eliminaConsulta.getPaciente().getId() == pacienteOne.getId())
-                listaFiltro.remove(eliminaConsulta);
+                if (eliminaConsulta.getPaciente().getId() == pacienteOne.getId()) {
+                    listaFiltro.remove(eliminaConsulta);
+                }
             }
         }
         return devolver;
     }
-    
-    
+
     /**
-     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList de consultas
+     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList
+     * de consultas
+     *
      * @param listaFiltro ArrayList de objetos Consulta
-     * @param listaPaciente ArraList de objetos Paciente
-     * En el ArrayList de pacientes estan aquellos que se quiere contabilizar sus atenciones
-     * Generalmente se usa luego de obtener un ArrayList con el metodo listaPacientesMasAtendidos
-     * @return devuelve un ArrayList con Strings de los contadores de cada paciente en el mismo orden que 
-     * los pacientes estan en el ArraList de pacientes
+     * @param listaPaciente ArraList de objetos Paciente En el ArrayList de
+     * pacientes estan aquellos que se quiere contabilizar sus atenciones
+     * Generalmente se usa luego de obtener un ArrayList con el metodo
+     * listaPacientesMasAtendidos
+     * @return devuelve un ArrayList con Strings de los contadores de cada
+     * paciente en el mismo orden que los pacientes estan en el ArraList de
+     * pacientes
      */
     public ArrayList<String> cantidadDeAtenciones(ArrayList<Consulta> listaFiltro, ArrayList<Paciente> listaPaciente) {
         ArrayList<String> cantidadAtencion = new ArrayList<>();
-        
-        for(Paciente leerPaciente : listaPaciente) {
+
+        for (Paciente leerPaciente : listaPaciente) {
             if (leerPaciente == null) {
                 cantidadAtencion.add(null);
                 continue;
             }
             int contador = 0;
             for (Consulta leerConsulta : listaFiltro) {
-                if(leerConsulta.getPaciente() == leerPaciente) {
+                if (leerConsulta.getPaciente() == leerPaciente) {
                     contador++;
                 }
-            cantidadAtencion.add(String.valueOf(contador));
+                cantidadAtencion.add(String.valueOf(contador));
             }
         }
         return cantidadAtencion;
     }
-   
-    
-    
-    
-    
+
 ////    /**
 ////     * Metodo que devuelve los 3 pacientes que mas consultas tuvieron en un rango de fechas
 ////     * @param fecha1 limite inferior
@@ -374,11 +433,7 @@ public class Controladora implements Serializable{
 ////        }
 ////        return accesoDirecto;
 ////    }
-
-
-    
     //---------Metodos estadisticos----------
-    
     public void VerEstadistica() {
         // TODO implement here
     }
@@ -397,132 +452,6 @@ public class Controladora implements Serializable{
 //////////////        return diccionario;
 ////////////    }
 
-
-    
-//    public List<Rol> traerRoles() {
-//        return controlPersis.traerRoles();
-//    }
-//    public Rol traerRol(String rolRecibido) {
-//        List<Rol> listaRoles = controlPersis.traerRoles();
-//        
-//        for (Rol rol : listaRoles) {
-//            if (rol.getNombre().equals(rolRecibido)) {
-//                return rol;
-//            }
-//        }
-//        return null;
-//    }
-//    public int buscarUltimaIdFuncionariosEnGeneral() {
-//        List<FuncionarioGeneral> listaFuncionariosEnGeneral = controlPersis.traerFuncionariosEnGeneral();
-//        
-//        FuncionarioGeneral funcionarioGeneral = listaFuncionariosEnGeneral.get(listaFuncionariosEnGeneral.size()-1);
-//        return (int) funcionarioGeneral.getId();
-//        
-//    }
-//    public int buscarUltimaIdGestores() {
-//        List<GestoresHospital> listaGestores = this.traerGestores();
-//        
-//        GestoresHospital gestor = listaGestores.get(listaGestores.size()-1);
-//        return (int) gestor.getId();
-//        
-//    }
-//
-//    public List<GestoresHospital> traerGestores() {
-//        return controlPersis.traerGestores(); 
-//    }
-//
-//    public int buscarUltimaIdRecepcionistas() {
-//        List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
-//        
-//        Recepcionista recepcionista = listaRecepcionistas.get(listaRecepcionistas.size()-1);
-//        return (int) recepcionista.getId();
-//    }
-//
-//    public List<Recepcionista> traerRecepcionistas() {
-//        return controlPersis.traerRecepcionistas();
-//    }
-//
-//    public int buscarUltimaIdMedicos() {
-//        List<Medico> listaMedicos = this.traerMedicos();
-//        
-//        Medico medico = listaMedicos.get(listaMedicos.size()-1);
-//        return (int) medico.getId();
-//    }
-//
-//    public List<Medico> traerMedicos() {
-//        return controlPersis.traerMedicos();
-//    }
-//
-//    public int buscarUltimaIdlicenciadosEnEnfermeria() {
-//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
-//        
-//        LicEnEnfermeria licEnEnfermeria = listaLicenciados.get(listaLicenciados.size()-1);
-//        return (int) licEnEnfermeria.getId();
-//    }
-//
-//    public List<LicEnEnfermeria> traerLicenciadosEnEnfermeria() {
-//        return controlPersis.traerLicenciadosEnEnfermeria();
-//    }
-//
-//    public int buscarUltimaIdAdministradoresDeSistema() {
-//        List<AdministradorDeSistema> listaAdministradores = this.traerAdministradoresDeSistema();
-//        
-//        AdministradorDeSistema administrador = listaAdministradores.get(listaAdministradores.size()-1);
-//        return (int) administrador.getId();
-//    }
-//
-//    public List<AdministradorDeSistema> traerAdministradoresDeSistema() {
-//        return controlPersis.traerAdministradoresDeSistema();
-//    }
-//
-//    public List<FuncionarioGeneral> traerFuncionariosEnGeneral() {
-//        List<FuncionarioGeneral> listaFuncionariosEnGeneral = new ArrayList<FuncionarioGeneral>();
-//        List<GestoresHospital> listaGestores = this.traerGestores();
-//        List<Recepcionista> listaRecepcionistas = this.traerRecepcionistas();
-//        List<Medico> listaMedicos = this.traerMedicos();
-//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
-//        List<AdministradorDeSistema> listaAdministradores = this.traerAdministradoresDeSistema();
-//        
-//        listaFuncionariosEnGeneral.addAll(listaGestores);
-//        listaFuncionariosEnGeneral.addAll(listaRecepcionistas);
-//        listaFuncionariosEnGeneral.addAll(listaMedicos);
-//        listaFuncionariosEnGeneral.addAll(listaLicenciados);
-//        listaFuncionariosEnGeneral.addAll(listaAdministradores);
-//
-//        return listaFuncionariosEnGeneral;
-//    }
-//    
-//   public List<FuncSalud> traerFuncionariosSalud() {
-//        List<FuncSalud> listaFuncionariosSalud = new ArrayList<FuncSalud>();
-//        List<Medico> listaMedicos = this.traerMedicos();
-//        List<LicEnEnfermeria> listaLicenciados = this.traerLicenciadosEnEnfermeria();
-//        
-//        
-//        listaFuncionariosSalud.addAll(listaMedicos);
-//        listaFuncionariosSalud.addAll(listaLicenciados);
-//
-//        return listaFuncionariosSalud;
-//    }
-//    public GestoresHospital traerGestor(long idUsuario) {
-//        return controlPersis.traerGestor(idUsuario);
-//    }
-//
-//    public Recepcionista traerRecepcionista(long idUsuario) {
-//       return controlPersis.traerRecepcionista(idUsuario);
-//    }
-//
-//    public Medico traerMedico(long idUsuario) {
-//        return controlPersis.traerMedico(idUsuario);
-//    }
-//
-//    public LicEnEnfermeria traerLicEnEnfermeria(long idUsuario) {
-//        return controlPersis.traerLicEnEnfermeria(idUsuario);
-//    }
-//
-//    public AdministradorDeSistema traerAdministradorDeSitema(long idUsuario) {
-//        return controlPersis.traerAdministradorDeSistemas(idUsuario);
-//    }
-    // -----
     /*
     * Validar es el metodo publico que llama a validacion
     * @return retorna un objeto Usuario
@@ -557,6 +486,13 @@ public class Controladora implements Serializable{
         }
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Box. Esta lista
+     * contiene todos los boxes que están asignados al médico que está
+     * actualmente conectado.
+     *
+     * @return
+     */
     public List<Box> TraerBoxDelMedico() {
         long idMedico = this.usu.getFuncionarioGeneral().getId();
         Medico medico = this.controlPersis.traerMedico(idMedico);
@@ -569,12 +505,25 @@ public class Controladora implements Serializable{
         return boxes;
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Usuario. Esta lista
+     * contiene todos los usuarios que tienen el rol de triage y han sido
+     * modificados.
+     *
+     * @return
+     */
     public List<Usuario> traerTriagesCambiados() {
         List<Rol> usu = traerRoles();
 
         return null;
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Box. Esta lista
+     * contiene todos los boxes que no están asignados a ningún médico.
+     *
+     * @return
+     */
     public List<Box> TraerBoxDisponibles() {
         List<Box> boxes = this.controlPersis.traerBoxes();
         for (Box box : boxes) {
@@ -585,10 +534,26 @@ public class Controladora implements Serializable{
         return boxes;
     }
 
+    /**
+     * Este método devuelve un objeto de tipo Box que corresponde al box con el
+     * ID especificado.
+     *
+     * @param idBox
+     * @return
+     */
     public Box traerBox(long idBox) {
         return this.controlPersis.traerBox(idBox);
     }
 
+    /**
+     * Este método toma un objeto de tipo Box y un objeto de tipo Medico como
+     * entrada. Luego, utiliza estos objetos para quitar al paciente
+     * correspondiente de la fila de espera y asignarlo al box especificado.
+     *
+     * @param box
+     * @param medico
+     * @throws java.lang.Exception
+     */
     public void tomarPaciente(Box box, Medico medico) throws Exception {
         List<Object> objetos = this.esperaAtencion.quitarDeFila(box, medico);
         Consulta consuAct = (Consulta) objetos.get(0);
@@ -597,25 +562,65 @@ public class Controladora implements Serializable{
         this.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
+    /**
+     * Este método toma tres objetos como entrada: un objeto de tipo Consulta,
+     * un objeto de tipo Medico y un objeto de tipo Box. Luego, utiliza estos
+     * objetos para actualizar la base de datos con la información
+     * correspondiente.
+     */
     private void tomarPacientePersistirDatos(Consulta consuAct, Medico medAct, Box boxAct) throws Exception {
         this.controlPersis.tomarPacientePersistirDatos(consuAct, medAct, boxAct);
     }
 
+    /**
+     * Este método toma un ID de box como entrada y devuelve un objeto de tipo
+     * Paciente que corresponde al paciente asignado a ese box.
+     *
+     * @param idBox
+     * @return
+     */
     public Paciente traerPacienteEnElBox(String idBox) {
         long id = Long.parseLong(idBox);
         return this.controlPersis.traerBox(id).getConsulta().getPaciente();
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo ResultadoEstudio. Esta
+     * lista contiene todos los resultados de estudio asociados con el paciente
+     * especificado.
+     *
+     * @param paciente
+     * @return
+     */
     public List<ResultadoEstudio> TraerResultEstudio(Paciente paciente) {
         List<ResultadoEstudio> restEstu = paciente.getResultadoEstudio();
         return restEstu;
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo DiagnosticoClinico.
+     * Esta lista contiene todos los diagnósticos clínicos asociados con el
+     * paciente especificado.
+     *
+     * @param paciente
+     * @return
+     */
     public List<DiagnosticoClinico> traerDiagnosticoClinico(Paciente paciente) {
         List<DiagnosticoClinico> diagCli = paciente.getDiagnosticoClinico();
         return diagCli;
     }
 
+    /**
+     * Este método toma tres argumentos: un objeto de tipo Paciente, un título y
+     * una descripción. Luego, utiliza estos argumentos para crear un nuevo
+     * objeto de tipo ResultadoEstudio y lo agrega a la lista de resultados de
+     * estudio del paciente especificado. Finalmente, actualiza la base de datos
+     * con la información correspondiente.
+     *
+     * @param paciente
+     * @param titulo
+     * @param descripcion
+     */
     public void cargarNuevoResEstudio(Paciente paciente, String titulo, String descripcion) {
         // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
@@ -639,6 +644,17 @@ public class Controladora implements Serializable{
         this.controlPersis.editarPaciente(paciente);
     }
 
+    /**
+     * Este método toma tres argumentos: un objeto de tipo Paciente, un título y
+     * una descripción. Luego, utiliza estos argumentos para crear un nuevo
+     * objeto de tipo DiagnosticoClinico y lo agrega a la lista de diagnósticos
+     * clínicos del paciente especificado. Finalmente, actualiza la base de
+     * datos con la información correspondiente.
+     *
+     * @param paciente
+     * @param titulo
+     * @param descripcion
+     */
     public void cargarNuevoDiagClinico(Paciente paciente, String titulo, String descripcion) {
         // Obtenemos la fecha y hora actual
         LocalDate fechaActual = LocalDate.now();
@@ -666,6 +682,16 @@ public class Controladora implements Serializable{
         this.controlPersis.editarPaciente(paciente);
     }
 
+    /**
+     * Este método toma dos argumentos: un objeto de tipo String llamado
+     * diagnostico y un objeto de tipo String llamado idBox. Luego, utiliza
+     * estos argumentos para establecer el diagnóstico de la consulta
+     * correspondiente y vaciar el box especificado. Finalmente, actualiza la
+     * base de datos con la información correspondiente.
+     *
+     * @param diagnostico
+     * @param idBox
+     */
     public void terminarConsulta(String diagnostico, String idBox) {
         // Convertimos el id del box a long
         long id = Long.parseLong(idBox);
@@ -684,8 +710,19 @@ public class Controladora implements Serializable{
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
     }
-    //Metodo que muestra un mensaje por pantalla
 
+    /**
+     * Este método toma tres argumentos: un objeto de tipo String llamado
+     * mensaje, un objeto de tipo String llamado tipo y un objeto de tipo String
+     * llamado titulo. Luego, utiliza estos argumentos para mostrar un mensaje
+     * emergente en la pantalla del usuario. El mensaje emergente puede ser de
+     * dos tipos: información o error. El tipo se especifica mediante el
+     * argumento tipo.
+     *
+     * @param mensaje
+     * @param tipo
+     * @param titulo
+     */
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
         if (tipo.equalsIgnoreCase("info")) {
@@ -698,18 +735,50 @@ public class Controladora implements Serializable{
         dialog.setVisible(true);
     }
 
+    /**
+     * Este método toma un argumento de tipo long llamado id. Luego, utiliza
+     * este argumento para buscar y devolver un objeto de tipo
+     * FuncionarioGeneral correspondiente al ID especificado.
+     *
+     * @param id
+     * @return
+     */
     public FuncionarioGeneral traerFuncionarioGeneral(long id) {
         return controlPersis.traerFuncionarioGeneral(id);
     }
 
+    /**
+     * Este método toma un objeto de tipo FuncionarioGeneral como entrada.
+     * Luego, utiliza este objeto para actualizar la base de datos con la
+     * información correspondiente.
+     *
+     * @param funcGeneral
+     */
     public void editarFuncionarioGeneral(FuncionarioGeneral funcGeneral) {
         controlPersis.editarFuncionarioGeneral(funcGeneral);
     }
 
+    /**
+     * Este método toma un objeto de tipo Usuario como entrada. Luego, utiliza
+     * este objeto para crear una cadena de texto que contiene información sobre
+     * el usuario. La cadena de texto contiene el ID del usuario, el nombre de
+     * usuario y los roles asociados con el usuario.
+     *
+     * @param buscarUsuario
+     * @return
+     */
     public String mostrarUsuario(Usuario buscarUsuario) {
         return "Id: " + buscarUsuario.getId() + "\nNombre de Usuario: " + buscarUsuario.getNomUsuario() + "\nRol/es: " + buscarUsuario.getRol().getFirst().getNombre();
     }
 
+    /**
+     * Este método toma un argumento de tipo String llamado rolRecibido. Luego,
+     * utiliza este argumento para buscar y devolver un objeto de tipo Rol
+     * correspondiente al nombre del rol especificado.
+     *
+     * @param rolRecibido
+     * @return
+     */
     public Rol traerRol(String rolRecibido) {
         List<Rol> listaRoles = this.traerRoles();
 
@@ -722,27 +791,39 @@ public class Controladora implements Serializable{
         return null;
     }
 
+    /**
+     * Este método toma un argumento de tipo int llamado dni. Luego, utiliza
+     * este argumento para buscar y devolver un objeto de tipo Usuario
+     * correspondiente al DNI especificado.
+     *
+     * @param dni
+     * @return
+     */
     public Usuario traerUsu(int dni) {
-        
+
         List<Usuario> listaUsuarios = controlPersis.traerUsuarios();
 
         if (listaUsuarios != null) {
 
             for (Usuario usu : listaUsuarios) {
-                
+
                 if (usu.getFuncionarioGeneral() != null) {
                     int dnii = usu.getFuncionarioGeneral().getDni();
-                    
+
                     if (dnii == dni) {
-                        return controlPersis.traerUsuario(usu.getId());  
+                        return controlPersis.traerUsuario(usu.getId());
                     }
                 }
-            }        
+            }
 
         }
         return null;
     }
+
     /**
+     * Este método se llama registrarPaciente y toma 11 argumentos de tipo
+     * String. Luego, utiliza estos argumentos para crear un nuevo objeto de
+     * tipo Paciente y lo agrega a la base de datos.
      *
      * @param dni
      * @param nombre
@@ -755,7 +836,7 @@ public class Controladora implements Serializable{
      * @param telFijo
      * @param personaContacto
      * @param numContacto
-     * @return 
+     * @return
      */
     public Paciente registrarPaciente(String dni, String nombre, String apellido, String fechaNacimiento, String domicilio, String estadoCivil, String correo, String telCelular, String telFijo, String personaContacto, String numContacto) {
         Paciente paciente = new Paciente();
@@ -771,11 +852,11 @@ public class Controladora implements Serializable{
         paciente.setTelefonoFijo(telCelular);
         paciente.setPersoDeContacto(personaContacto);
         paciente.setTelDeContacto(numContacto);
-        
-        List <Consulta> listConsultas = new ArrayList<>();
-        List <DiagnosticoClinico> listDiagnosticoClinico = new ArrayList<>();
-        List <ResultadoEstudio> listResultadoEstudio = new ArrayList<>();
-        
+
+        List<Consulta> listConsultas = new ArrayList<>();
+        List<DiagnosticoClinico> listDiagnosticoClinico = new ArrayList<>();
+        List<ResultadoEstudio> listResultadoEstudio = new ArrayList<>();
+
         paciente.setDiagnosticoClinico(listDiagnosticoClinico);
         paciente.setResultadoEstudio(listResultadoEstudio);
         paciente.setConsultas(listConsultas);
@@ -783,30 +864,54 @@ public class Controladora implements Serializable{
         return paciente;
     }
 
+    /**
+     * Este método toma tres argumentos: un objeto de tipo String llamado lugar,
+     * un objeto de tipo String llamado motivo y un objeto de tipo Paciente
+     * llamado p. Luego, utiliza estos argumentos para crear un nuevo objeto de
+     * tipo Consulta y lo agrega a la lista de consultas del paciente
+     * especificado. Finalmente, actualiza la base de datos con la información
+     * correspondiente.
+     *
+     * @param lugar
+     * @param motivo
+     * @param p
+     */
     public void CrearConsulta(String lugar, String motivo, Paciente p) {
         LocalDate fechaActual = LocalDate.now();
         LocalTime horaActual = LocalTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
-        
-        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);        
+
+        String fecha = fechaActual.format(DateTimeFormatter.ISO_DATE);
         String hora = horaActual.format(formato);
-        
-        Consulta consu = new Consulta(p ,fecha ,hora ,null ,lugar ,motivo ,null ,null , null);
+
+        Consulta consu = new Consulta(p, fecha, hora, null, lugar, motivo, null, null, null);
         this.controlPersis.CrearConsulta(consu);
-        List <Consulta> consultas = p.getConsultas();
+        List<Consulta> consultas = p.getConsultas();
         consultas.add(consu);
         p.setConsultas(consultas);
         this.controlPersis.editarPaciente(p);
-        this.esperaAtencionTriage.AñadirALaFila(consu);
-        
 
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Consulta. Esta lista
+     * contiene todas las consultas que están en espera.
+     *
+     * @return
+     */
     public List<Consulta> traerPacientesEnEspera() {
         List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
         return consultas;
     }
 
+    /**
+     * Este método toma un argumento de tipo int llamado dni. Luego, utiliza
+     * este argumento para buscar y devolver un objeto de tipo Paciente
+     * correspondiente al DNI especificado.
+     *
+     * @param dni
+     * @return
+     */
     public Paciente buscarPacientePorDni(int dni) {
         // Obtenemos la lista de pacientes del controlador de persistencia
         List<Paciente> pacientes = this.controlPersis.traerPacientes();
@@ -827,222 +932,261 @@ public class Controladora implements Serializable{
         return paciente;
     }
 
-    public Triage crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad, int idConsulta,Usuario usu) {
-        
+    /**
+     * Crea una instancia de la clase Triage con información específica y
+     * realiza varias operaciones relacionadas.
+     *
+     * @param respiracion El estado de la respiración.
+     * @param dolorAbd La intensidad del dolor abdominal.
+     * @param sangrado La intensidad del sangrado.
+     * @param lesionGrave La presencia de lesiones graves.
+     * @param lesionLeve La presencia de lesiones leves.
+     * @param fiebre La intensidad de la fiebre.
+     * @param estadoMental El estado mental del paciente.
+     * @param signosShock La presencia de signos de shock.
+     * @param dolorPecho La presencia de dolor en el pecho.
+     * @param pulso El estado del pulso.
+     * @param vomito La intensidad de los vómitos.
+     * @param conciencia El estado de conciencia del paciente.
+     * @param edad El grupo de edad del paciente.
+     * @param idConsulta El ID de la consulta asociada.
+     * @param usu El objeto Usuario asociado a esta operación.
+     * @return Una instancia de Triage creada y configurada con la información
+     * proporcionada.
+     */
+    public Triage crearTriage(String respiracion, String dolorAbd, String sangrado, String lesionGrave, String lesionLeve, String fiebre, String estadoMental, String signosShock, String dolorPecho, String pulso, String vomito, String conciencia, String edad, int idConsulta, Usuario usu) {
+
         Triage triage = new Triage();
-        
+
         //Respiración 
-        if(respiracion.equals(Respiracion.GRAVE.getTipo())){
-            
+        if (respiracion.equals(Respiracion.GRAVE.getTipo())) {
+
             triage.setResp(Respiracion.GRAVE);
-            
-        }else if(respiracion.equals(Respiracion.MODERADA.getTipo())){
-            
+
+        } else if (respiracion.equals(Respiracion.MODERADA.getTipo())) {
+
             triage.setResp(Respiracion.MODERADA);
-            
-        }else if(respiracion.equals(Respiracion.NORMAL.getTipo())){
-           
+
+        } else if (respiracion.equals(Respiracion.NORMAL.getTipo())) {
+
             triage.setResp(Respiracion.NORMAL);
-            
+
         }
-        
+
         //Mental
-        if(estadoMental.equals(Mental.GRAVE.getTipo())){
-            
+        if (estadoMental.equals(Mental.GRAVE.getTipo())) {
+
             triage.setEstMental(Mental.GRAVE);
-            
-        }else if(estadoMental.equals(Mental.LEVE.getTipo())){
-           
+
+        } else if (estadoMental.equals(Mental.LEVE.getTipo())) {
+
             triage.setEstMental(Mental.LEVE);
-            
-        }else if(estadoMental.equals(Mental.NORMAL.getTipo())){
-           
+
+        } else if (estadoMental.equals(Mental.NORMAL.getTipo())) {
+
             triage.setEstMental(Mental.NORMAL);
-            
+
         }
-        
+
         //Fiebre
-        if(fiebre.equals(Fiebre.ALTA.getTipo())){
-            
+        if (fiebre.equals(Fiebre.ALTA.getTipo())) {
+
             triage.setFiebre(Fiebre.ALTA);
-            
-        }else if(fiebre.equals(Fiebre.MODERADA.getTipo())){
-            
+
+        } else if (fiebre.equals(Fiebre.MODERADA.getTipo())) {
+
             triage.setFiebre(Fiebre.MODERADA);
-            
-        }else if(fiebre.equals(Fiebre.SIN.getTipo())){
-            
+
+        } else if (fiebre.equals(Fiebre.SIN.getTipo())) {
+
             triage.setFiebre(Fiebre.SIN);
-            
+
         }
-        
+
         //Vomitos
-        if(vomito.equals(Vomitos.INTENSOS.getTipo())){
-            
+        if (vomito.equals(Vomitos.INTENSOS.getTipo())) {
+
             triage.setVomitos(Vomitos.INTENSOS);
-            
-        }else if(vomito.equals(Vomitos.MODERADOS.getTipo())){
-            
+
+        } else if (vomito.equals(Vomitos.MODERADOS.getTipo())) {
+
             triage.setVomitos(Vomitos.MODERADOS);
-            
-        }else if(vomito.equals(Vomitos.SIN.getTipo())){
-            
+
+        } else if (vomito.equals(Vomitos.SIN.getTipo())) {
+
             triage.setVomitos(Vomitos.SIN);
-            
+
         }
-        
-        if(dolorAbd.equals(DolorAbd.SEVERO.getTipo())){
-            
+
+        if (dolorAbd.equals(DolorAbd.SEVERO.getTipo())) {
+
             triage.setDolorAbd(DolorAbd.SEVERO);
-            
-        }else if(dolorAbd.equals(DolorAbd.MODERADO.getTipo())){
-            
+
+        } else if (dolorAbd.equals(DolorAbd.MODERADO.getTipo())) {
+
             triage.setDolorAbd(DolorAbd.MODERADO);
-            
-        }else if(dolorAbd.equals(DolorAbd.NOP.getTipo())){
-            
+
+        } else if (dolorAbd.equals(DolorAbd.NOP.getTipo())) {
+
             triage.setDolorAbd(DolorAbd.NOP);
-            
+
         }
-        
+
         //Sangrado
-        if(sangrado.equals(Sangrado.INTENSO.getTipo())){
-            
+        if (sangrado.equals(Sangrado.INTENSO.getTipo())) {
+
             triage.setSangrado(Sangrado.INTENSO);
-            
-        }else if(sangrado.equals(Sangrado.MODERADO.getTipo())){
+
+        } else if (sangrado.equals(Sangrado.MODERADO.getTipo())) {
             triage.setSangrado(Sangrado.MODERADO);
-            
-        }else if(sangrado.equals(Sangrado.NOP.getTipo())){
-            
+
+        } else if (sangrado.equals(Sangrado.NOP.getTipo())) {
+
             triage.setSangrado(Sangrado.NOP);
-            
+
         }
-        
+
         //Pulso
-        if(pulso.equals(Pulso.ANORMAL.getTipo())){
-            
+        if (pulso.equals(Pulso.ANORMAL.getTipo())) {
+
             triage.setPulso(Pulso.ANORMAL);
-            
-        }else if(pulso.equals(Pulso.NORMAL.getTipo())){
-            
+
+        } else if (pulso.equals(Pulso.NORMAL.getTipo())) {
+
             triage.setPulso(Pulso.NORMAL);
-            
+
         }
-        
+
         //Conciencia
-        if(conciencia.equals(Conciencia.INCONCIENTE.getTipo())){
-            
+        if (conciencia.equals(Conciencia.INCONCIENTE.getTipo())) {
+
             triage.setConciencia(Conciencia.INCONCIENTE);
-            
-        }else if(conciencia.equals(Conciencia.CONCIENTE.getTipo())){
-            
+
+        } else if (conciencia.equals(Conciencia.CONCIENTE.getTipo())) {
+
             triage.setConciencia(Conciencia.CONCIENTE);
-            
+
         }
-        
+
         //Dolor de Pecho
-        if(dolorPecho.equals(DolorPecho.PRESENTE.getTipo())){
-            
+        if (dolorPecho.equals(DolorPecho.PRESENTE.getTipo())) {
+
             triage.setDifiResp(DolorPecho.PRESENTE);
-            
-        }else if(dolorPecho.equals(DolorPecho.NOP.getTipo())){
-            
+
+        } else if (dolorPecho.equals(DolorPecho.NOP.getTipo())) {
+
             triage.setDifiResp(DolorPecho.NOP);
-            
+
         }
-        
+
         //LesionesGraves
-        if(lesionGrave.equals(LesionesGraves.PRESENTES.getTipo())){
-            
+        if (lesionGrave.equals(LesionesGraves.PRESENTES.getTipo())) {
+
             triage.setLesGraves(LesionesGraves.PRESENTES);
-            
-        }else if(lesionGrave.equals(LesionesGraves.NOP.getTipo())){
-            
+
+        } else if (lesionGrave.equals(LesionesGraves.NOP.getTipo())) {
+
             triage.setLesGraves(LesionesGraves.NOP);
-            
+
         }
-        
+
         //Edad
-        if(edad.equals(Edad.ADULTO.getTipo())){
-            
+        if (edad.equals(Edad.ADULTO.getTipo())) {
+
             triage.setEdad(Edad.ADULTO);
-            
-        }else if(edad.equals(Edad.OTRO.getTipo())){
-            
+
+        } else if (edad.equals(Edad.OTRO.getTipo())) {
+
             triage.setEdad(Edad.OTRO);
-            
+
         }
-        
+
         //Shock
-        if(signosShock.equals(Shock.PRESENTES.getTipo())){
+        if (signosShock.equals(Shock.PRESENTES.getTipo())) {
             triage.setShock(Shock.PRESENTES);
-            
-        }else if(signosShock.equals(Shock.NOP.getTipo())){
-            
+
+        } else if (signosShock.equals(Shock.NOP.getTipo())) {
+
             triage.setShock(Shock.NOP);
-            
+
         }
-        
+
         //LesionesLeves
-        if(lesionLeve.equals(LesionesLeves.PRESENTES.getTipo())){
-            
+        if (lesionLeve.equals(LesionesLeves.PRESENTES.getTipo())) {
+
             triage.setLesLeves(LesionesLeves.PRESENTES);
-            
-        }else if(lesionLeve.equals(LesionesLeves.NOP.getTipo())){
-            
-            triage.setLesLeves(LesionesLeves.NOP);   
+
+        } else if (lesionLeve.equals(LesionesLeves.NOP.getTipo())) {
+
+            triage.setLesLeves(LesionesLeves.NOP);
         }
-        
+
         Consulta consulta = this.controlPersis.traerConsulta(idConsulta);
         triage.setConsulta(consulta);
 
         triage.setMedico(null);
         triage.setEnfermero(null);
-        
-        if(("Medico - Triagiador").equalsIgnoreCase(usu.getRol().getFirst().getNombre())){
-            
+
+        if (("Medico - Triagiador").equalsIgnoreCase(usu.getRol().getFirst().getNombre())) {
+
             FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
-            
+
             triage.setMedico((Medico) funcGeneral);
-            
-        }else if (("Licenciado en Enfermeria").equalsIgnoreCase(usu.getRol().getFirst().getNombre())){
-            
-             FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
-            
+
+        } else if (("Licenciado en Enfermeria").equalsIgnoreCase(usu.getRol().getFirst().getNombre())) {
+
+            FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
+
             triage.setEnfermero((LicEnEnfermeria) funcGeneral);
-            
-        }else{
-            
+
+        } else {
+
             FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
-            
+
             triage.setMedico((Medico) funcGeneral);
-            
+
         }
-        
-        
+
         triage.setMotCambio(null);
         triage.obtenerPuntos();
-        
+
         this.controlPersis.crearTriage(triage);
-        
+
         consulta.setTriage(triage);
         this.controlPersis.editarConsulta(consulta);
-        
+
         return triage;
-        
+
     }
 
+    /**
+     * Este método devuelve una lista de objetos de tipo Paciente. Esta lista
+     * contiene todos los pacientes almacenados en la base de datos.
+     *
+     * @return
+     */
     public List<Paciente> traerPacientes() {
-       return controlPersis.traerPacientes();
-       
+        return controlPersis.traerPacientes();
+
     }
 
-    public void editarTriage(String motivo, String color,Triage triage) throws Exception {
+    /**
+     * Este método toma tres argumentos: un objeto de tipo String llamado
+     * motivo, un objeto de tipo String llamado color y un objeto de tipo
+     * Triage. Luego, utiliza estos argumentos para actualizar el triage
+     * correspondiente con el motivo y el color especificados. Finalmente,
+     * actualiza la base de datos con la información correspondiente.
+     *
+     * @param motivo
+     * @param color
+     * @param triage
+     * @throws java.lang.Exception
+     */
+    public void editarTriage(String motivo, String color, Triage triage) throws Exception {
         triage.setMotCambio(motivo);
         TipoColor colorNuevo = TipoColor.valueOf(color);
         triage.setColorFinal(colorNuevo);
-        
+
         this.controlPersis.editarTriage(triage);
         Consulta consu = triage.getConsulta();
         consu.setTriage(triage);
@@ -1050,9 +1194,14 @@ public class Controladora implements Serializable{
         this.añadirALaFila(consu);
     }
 
+    /**
+     * Este método toma un objeto de tipo Consulta como entrada. Luego, utiliza
+     * este objeto para agregar la consulta a la fila de espera.
+     *
+     * @param consu
+     */
     public void añadirALaFila(Consulta consu) {
         this.esperaAtencion.añadirAFila(consu);
     }
 
- 
 }

@@ -76,7 +76,6 @@ public class GuiLogin extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAdvertencia.setForeground(new java.awt.Color(255, 51, 51));
-        txtAdvertencia.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\pngwing.com (2).png")); // NOI18N
         txtAdvertencia.setText("Contraseña o nombre de usuario incorrectos.");
         jPanel4.add(txtAdvertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 290, 20));
 
