@@ -67,7 +67,6 @@ public class GuiLogin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("MingLiU-ExtB", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Login");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
@@ -76,14 +75,13 @@ public class GuiLogin extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAdvertencia.setForeground(new java.awt.Color(255, 51, 51));
-        txtAdvertencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/Advertencia.png"))); // NOI18N
+        txtAdvertencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Advertencia.png"))); // NOI18N
         txtAdvertencia.setText("Contraseña o nombre de usuario incorrectos.");
         jPanel4.add(txtAdvertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 290, 20));
 
         jPanel1.setBackground(new java.awt.Color(149, 210, 255));
 
         btnSesion.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
-        btnSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSesion.setText("Iniciar sesión");
         btnSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -139,13 +137,11 @@ public class GuiLogin extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Usuario");
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Contraseña");
 
@@ -205,7 +201,6 @@ public class GuiLogin extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hospital Masvernat");
         jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
@@ -229,7 +224,6 @@ public class GuiLogin extends javax.swing.JFrame {
 
         txtSalir.setBackground(new java.awt.Color(255, 255, 255));
         txtSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSalir.setForeground(new java.awt.Color(0, 0, 0));
         txtSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtSalir.setText("X");
         txtSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
