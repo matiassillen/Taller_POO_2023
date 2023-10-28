@@ -5,6 +5,8 @@
 package VentanasGUI;
 
 import Model.Controladora;
+import java.awt.Color;
+import static java.awt.SystemColor.control;
 
 /**
  *
@@ -14,13 +16,13 @@ import Model.Controladora;
  * 
  */
 public class Gestor extends javax.swing.JFrame {
-    Controladora controlG;
+    Controladora control;
     /**
      * Creates new form Gestor
      */
     public Gestor(Controladora control) {
         initComponents();
-        this.controlG = control;
+        this.control = control;
     }
 
     /**
@@ -32,17 +34,29 @@ public class Gestor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnCantPacienteMedico = new javax.swing.JButton();
-        btnCantPacienteEdadFecha = new javax.swing.JButton();
-        btnPacienteMasConsulta = new javax.swing.JButton();
-        btnMedicoMasPaciente = new javax.swing.JButton();
-        btnCerrarSesion = new javax.swing.JButton();
-        btnCantTriage = new javax.swing.JButton();
-        btnTriageCambiado = new javax.swing.JButton();
+        jlbCantPacXMedi = new javax.swing.JLabel();
+        CantPacEdad = new javax.swing.JLabel();
+        jblMasConsu = new javax.swing.JLabel();
+        jlbMedMasPac = new javax.swing.JLabel();
+        jlbCantTriage = new javax.swing.JLabel();
+        jlbTriageCambiados = new javax.swing.JLabel();
+        jlbCerrarSesion = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jlbMiUsu = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        buttonMiUsuario = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+
+        jLabel10.setText("jLabel10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,117 +66,161 @@ public class Gestor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCantPacienteMedico.setBackground(new java.awt.Color(0, 204, 204));
-        btnCantPacienteMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnCantPacienteMedico.setText("Cant. de Pacientes Atendidos Por Médico");
-        btnCantPacienteMedico.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCantPacienteMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCantPacienteMedicoActionPerformed(evt);
+        jlbCantPacXMedi.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCantPacXMedi.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCantPacXMedi.setText("Cant. de Pacientes Atendidos Por Medico");
+        jlbCantPacXMedi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCantPacXMediMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCantPacXMediMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCantPacXMediMouseExited(evt);
             }
         });
-        jPanel1.add(btnCantPacienteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 300, 40));
+        jPanel1.add(jlbCantPacXMedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        btnCantPacienteEdadFecha.setBackground(new java.awt.Color(0, 204, 204));
-        btnCantPacienteEdadFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantPacienteEdadFecha.setText("Cant. pacientes atendidos por edad");
-        btnCantPacienteEdadFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCantPacienteEdadFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCantPacienteEdadFechaActionPerformed(evt);
+        CantPacEdad.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        CantPacEdad.setForeground(new java.awt.Color(0, 0, 0));
+        CantPacEdad.setText("Cant. pacientes atendidos por edad");
+        CantPacEdad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CantPacEdadMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CantPacEdadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CantPacEdadMouseExited(evt);
             }
         });
-        jPanel1.add(btnCantPacienteEdadFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 300, 40));
+        jPanel1.add(CantPacEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
-        btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 204));
-        btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPacienteMasConsulta.setText("Paciente con más Consultas");
-        btnPacienteMasConsulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPacienteMasConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPacienteMasConsultaActionPerformed(evt);
+        jblMasConsu.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jblMasConsu.setForeground(new java.awt.Color(0, 0, 0));
+        jblMasConsu.setText("Paciente con más Consultas");
+        jblMasConsu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jblMasConsuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jblMasConsuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jblMasConsuMouseExited(evt);
             }
         });
-        jPanel1.add(btnPacienteMasConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 300, 40));
+        jPanel1.add(jblMasConsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
-        btnMedicoMasPaciente.setBackground(new java.awt.Color(0, 204, 204));
-        btnMedicoMasPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnMedicoMasPaciente.setText("Médico con más Pacientes");
-        btnMedicoMasPaciente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnMedicoMasPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMedicoMasPacienteActionPerformed(evt);
+        jlbMedMasPac.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbMedMasPac.setForeground(new java.awt.Color(0, 0, 0));
+        jlbMedMasPac.setText("Médico con más Pacientes");
+        jlbMedMasPac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbMedMasPacMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbMedMasPacMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbMedMasPacMouseExited(evt);
             }
         });
-        jPanel1.add(btnMedicoMasPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 300, 40));
+        jPanel1.add(jlbMedMasPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        btnCerrarSesion.setBackground(new java.awt.Color(255, 153, 153));
-        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCerrarSesion.setText("Cerrar Sesion");
-        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
+        jlbCantTriage.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCantTriage.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCantTriage.setText("Cant. de Triage y Color");
+        jlbCantTriage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCantTriageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCantTriageMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCantTriageMouseExited(evt);
             }
         });
-        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 140, 40));
+        jPanel1.add(jlbCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
-        btnCantTriage.setBackground(new java.awt.Color(0, 204, 204));
-        btnCantTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantTriage.setText("Cant. de Triage y Color");
-        btnCantTriage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCantTriage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCantTriageActionPerformed(evt);
+        jlbTriageCambiados.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbTriageCambiados.setForeground(new java.awt.Color(0, 0, 0));
+        jlbTriageCambiados.setText("Triage Cambiados");
+        jlbTriageCambiados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbTriageCambiadosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbTriageCambiadosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbTriageCambiadosMouseExited(evt);
             }
         });
-        jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 300, 40));
+        jPanel1.add(jlbTriageCambiados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
-        btnTriageCambiado.setBackground(new java.awt.Color(0, 204, 204));
-        btnTriageCambiado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnTriageCambiado.setText("Triage Cambiados");
-        btnTriageCambiado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTriageCambiado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTriageCambiadoActionPerformed(evt);
+        jlbCerrarSesion.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCerrarSesion.setText("Cerrar Sesion");
+        jlbCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCerrarSesionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCerrarSesionMouseExited(evt);
             }
         });
-        jPanel1.add(btnTriageCambiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 300, 40));
+        jPanel1.add(jlbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 370, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 370, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 370, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 370, 20));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 370, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 370, 20));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jlbMiUsu.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbMiUsu.setForeground(new java.awt.Color(0, 0, 0));
+        jlbMiUsu.setText("Mi usuario");
+        jlbMiUsu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseExited(evt);
+            }
+        });
+        jPanel1.add(jlbMiUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 370, 10));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Gestores Hospitalarios");
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(263, 263, 263)
-                .addComponent(jLabel1)
-                .addContainerGap(280, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addContainerGap(32, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
 
-        buttonMiUsuario.setBackground(new java.awt.Color(0, 204, 204));
-        buttonMiUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonMiUsuario.setText("Mi usuario");
-        buttonMiUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buttonMiUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonMiUsuarioMouseClicked(evt);
-            }
-        });
-        jPanel1.add(buttonMiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 40));
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Gestores Hospitalarios");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,109 +240,145 @@ public class Gestor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Los siguientes botones llevan a las ventanas de carga de datos y visualizacion
-     * de cada metodo estadistico en particular
-     * @param evt 
-     */
     
-    /**
-     * Cantidad de pacientes atendidos por un medico en particular
-     * @param evt 
-     */
-    private void btnCantPacienteMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteMedicoActionPerformed
-        CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.controlG);
+    private void jlbCantPacXMediMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantPacXMediMouseClicked
+        CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.control);
         cantMedico.setVisible(true);
         cantMedico.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnCantPacienteMedicoActionPerformed
+    }//GEN-LAST:event_jlbCantPacXMediMouseClicked
 
-    /**
-     * Cantidad de pacientes atendidos en rango de edad y rango de fechas
-     * @param evt 
-     */
-    private void btnCantPacienteEdadFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantPacienteEdadFechaActionPerformed
-
-        CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.controlG);
+    private void CantPacEdadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantPacEdadMouseClicked
+        CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.control);
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnCantPacienteEdadFechaActionPerformed
+    }//GEN-LAST:event_CantPacEdadMouseClicked
 
-    /**
-     * Pacientes que mas consultaron en un rango de fechas
-     * @param evt 
-     */
-    private void btnPacienteMasConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMasConsultaActionPerformed
-        PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.controlG);
+    private void jblMasConsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblMasConsuMouseClicked
+        PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.control);
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnPacienteMasConsultaActionPerformed
+    }//GEN-LAST:event_jblMasConsuMouseClicked
 
-    
-    /**
-     * Medico que mas pacientes atendio en un rango de fechas
-     * @param evt 
-     */
-    private void btnMedicoMasPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoMasPacienteActionPerformed
-        MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.controlG);
+    private void jlbMedMasPacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMedMasPacMouseClicked
+        MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.control);
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnMedicoMasPacienteActionPerformed
+    }//GEN-LAST:event_jlbMedMasPacMouseClicked
 
-    /**
-     * Boton que devuelve al Login
-     * @param evt 
-     */
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+    private void jlbCantTriageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantTriageMouseClicked
+        CantTriageColor pantalla= new CantTriageColor();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jlbCantTriageMouseClicked
+
+    private void jlbTriageCambiadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbTriageCambiadosMouseClicked
+        TriageCambiado triagesCambiados = new TriageCambiado(this.control);
+        triagesCambiados.setVisible(true);
+        triagesCambiados.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jlbTriageCambiadosMouseClicked
+
+    private void jlbCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarSesionMouseClicked
         GuiLogin pantallaLogin = new GuiLogin();
         pantallaLogin.setVisible(true);
         pantallaLogin.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+    }//GEN-LAST:event_jlbCerrarSesionMouseClicked
 
-    /**
-     * Cantidad de triages cambiados
-     * @param evt 
-     */
-    private void btnTriageCambiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriageCambiadoActionPerformed
-        TriageCambiado triagesCambiados = new TriageCambiado(this.controlG);
-        triagesCambiados.setVisible(true);
-        triagesCambiados.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnTriageCambiadoActionPerformed
+    private void jlbCantPacXMediMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantPacXMediMouseEntered
+        jlbCantPacXMedi.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbCantPacXMediMouseEntered
 
-    /**
-     * La informacion del propio usuario
-     * @param evt 
-     */
-    private void buttonMiUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMiUsuarioMouseClicked
-        MiUsuario pantallaUsuario = new MiUsuario(this.controlG);
-        pantallaUsuario.setVisible(true);
-        pantallaUsuario.setLocationRelativeTo(null);
-    }//GEN-LAST:event_buttonMiUsuarioMouseClicked
-    /**
-     * Cantidad de triages cambiados en un rango de fechas.
-     * @param evt 
-     */
-    private void btnCantTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantTriageActionPerformed
-        CantTriageColor pantalla= new CantTriageColor();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnCantTriageActionPerformed
+    private void jlbCantPacXMediMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantPacXMediMouseExited
+        jlbCantPacXMedi.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCantPacXMediMouseExited
+
+    private void CantPacEdadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantPacEdadMouseEntered
+        CantPacEdad.setForeground(Color.cyan);
+    }//GEN-LAST:event_CantPacEdadMouseEntered
+
+    private void CantPacEdadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantPacEdadMouseExited
+        CantPacEdad.setForeground(Color.black);
+    }//GEN-LAST:event_CantPacEdadMouseExited
+
+    private void jblMasConsuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblMasConsuMouseEntered
+        jblMasConsu.setForeground(Color.cyan);
+    }//GEN-LAST:event_jblMasConsuMouseEntered
+
+    private void jblMasConsuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblMasConsuMouseExited
+        jblMasConsu.setForeground(Color.black);
+    }//GEN-LAST:event_jblMasConsuMouseExited
+
+    private void jlbMedMasPacMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMedMasPacMouseEntered
+        jlbMedMasPac.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbMedMasPacMouseEntered
+
+    private void jlbMedMasPacMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMedMasPacMouseExited
+        jlbMedMasPac.setForeground(Color.black);
+    }//GEN-LAST:event_jlbMedMasPacMouseExited
+
+    private void jlbCantTriageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantTriageMouseEntered
+        jlbCantTriage.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbCantTriageMouseEntered
+
+    private void jlbCantTriageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantTriageMouseExited
+        jlbCantTriage.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCantTriageMouseExited
+
+    private void jlbTriageCambiadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbTriageCambiadosMouseEntered
+        jlbTriageCambiados.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbTriageCambiadosMouseEntered
+
+    private void jlbTriageCambiadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbTriageCambiadosMouseExited
+        jlbTriageCambiados.setForeground(Color.black);
+    }//GEN-LAST:event_jlbTriageCambiadosMouseExited
+
+    private void jlbMiUsuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseEntered
+        jlbMiUsu.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbMiUsuMouseEntered
+
+    private void jlbMiUsuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseExited
+        jlbMiUsu.setForeground(Color.black);
+    }//GEN-LAST:event_jlbMiUsuMouseExited
+
+    private void jlbCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarSesionMouseEntered
+        jlbCerrarSesion.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbCerrarSesionMouseEntered
+
+    private void jlbCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarSesionMouseExited
+        jlbCerrarSesion.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCerrarSesionMouseExited
+
+    private void jlbMiUsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseClicked
+        MiUsuario datos = new MiUsuario(control);
+        datos.setVisible(true);
+        datos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jlbMiUsuMouseClicked
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCantPacienteEdadFecha;
-    private javax.swing.JButton btnCantPacienteMedico;
-    private javax.swing.JButton btnCantTriage;
-    private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnMedicoMasPaciente;
-    private javax.swing.JButton btnPacienteMasConsulta;
-    private javax.swing.JButton btnTriageCambiado;
-    private javax.swing.JButton buttonMiUsuario;
+    private javax.swing.JLabel CantPacEdad;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JLabel jblMasConsu;
+    private javax.swing.JLabel jlbCantPacXMedi;
+    private javax.swing.JLabel jlbCantTriage;
+    private javax.swing.JLabel jlbCerrarSesion;
+    private javax.swing.JLabel jlbMedMasPac;
+    private javax.swing.JLabel jlbMiUsu;
+    private javax.swing.JLabel jlbTriageCambiados;
     // End of variables declaration//GEN-END:variables
 }

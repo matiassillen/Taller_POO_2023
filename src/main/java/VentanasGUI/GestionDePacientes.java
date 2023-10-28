@@ -18,7 +18,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
     Controladora control;
     Paciente pacienteSeleccionado;
     String idBox;
-    Boolean bandera;
+    private boolean bandera;
+
 
     /**
      * Constructor de la clase TomarPaciente
@@ -30,7 +31,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         this.control = control;
         btnDatosMedicos.setEnabled(false);
         btnDarDeAlta.setEnabled(false);
-        this.bandera = false;
+
     }
 
     /**
@@ -63,8 +64,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnVolver.setBackground(new java.awt.Color(0, 153, 153));
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnVolver.setBackground(new java.awt.Color(149, 210, 255));
+        btnVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
         btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -74,14 +75,14 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(149, 210, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         txtTituloPrincipal.setBackground(new java.awt.Color(0, 153, 153));
-        txtTituloPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTituloPrincipal.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
         txtTituloPrincipal.setForeground(new java.awt.Color(0, 0, 0));
         txtTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtTituloPrincipal.setText("Gestion de Pacientes");
+        txtTituloPrincipal.setText("Gestión de Pacientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -89,7 +90,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTituloPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(393, 393, 393))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,13 +119,13 @@ public class GestionDePacientes extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tablaBoxAtendidos);
 
         txtTitulo2.setBackground(new java.awt.Color(0, 153, 153));
-        txtTitulo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtTitulo2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtTitulo2.setForeground(new java.awt.Color(0, 0, 0));
         txtTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtTitulo2.setText("Pacientes en Box");
 
-        btnDarDeAlta.setBackground(new java.awt.Color(0, 204, 153));
-        btnDarDeAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnDarDeAlta.setBackground(new java.awt.Color(149, 210, 255));
+        btnDarDeAlta.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
         btnDarDeAlta.setForeground(new java.awt.Color(0, 0, 0));
         btnDarDeAlta.setText("Dar de alta");
         btnDarDeAlta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -136,8 +137,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
 
         txbDiagnosticoConsulta.setText("Ingrese diagnostico de la consulta antes ");
 
-        btnDatosMedicos.setBackground(new java.awt.Color(0, 204, 153));
-        btnDatosMedicos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnDatosMedicos.setBackground(new java.awt.Color(149, 210, 255));
+        btnDatosMedicos.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
         btnDatosMedicos.setForeground(new java.awt.Color(0, 0, 0));
         btnDatosMedicos.setText("Datos Medicos");
         btnDatosMedicos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -147,8 +148,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
-        btnNuevoPaciente.setBackground(new java.awt.Color(0, 204, 255));
-        btnNuevoPaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNuevoPaciente.setBackground(new java.awt.Color(149, 210, 255));
+        btnNuevoPaciente.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
         btnNuevoPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnNuevoPaciente.setText("Nuevo Paciente");
         btnNuevoPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +169,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(txtTitulo2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevoPaciente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDatosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -182,9 +183,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                                 .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
                         .addContainerGap(18, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +347,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
      * @param evt El evento de ventana que ocurrió.
      */
     private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
-        if (bandera) {
+        if(bandera){
             // Creamos una nueva instancia de la ventana AsignarBox
             AsignarBox asigBox = new AsignarBox(control);
             // Hacemos visible la ventana
@@ -382,7 +381,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene una lista de boxes usando el controlador
             List<Box> boxes = this.control.TraerBoxDelMedico();
-            
+            int sum = 0;
             // Verifica si la lista de boxes no es nula
             if (boxes != null) {
                 // Itera sobre cada box en la lista
@@ -391,9 +390,13 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido()};
                     // Agrega el objeto a la tabla
                     modeloTabla.addRow(objeto);
-                    
+                    sum+=1;
+                }
+                if(sum>2){
+                    this.bandera = true;
                 }
             }
+            
             // Segun la cantidad de box que posee el medigo activa la bandera
             // posteriormente indica si puede tomar mas pacientes o no
             // Establece el modelo de la tabla
@@ -401,6 +404,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         } catch (Exception e) {
             // Imprime cualquier error que ocurra durante la ejecución del código anterior
             control.mostrarMensaje("No posee pacientes en box", "Sin pacientes", "");
+            this.bandera = true;
         }
     }
 

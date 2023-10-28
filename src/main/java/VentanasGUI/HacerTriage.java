@@ -4,6 +4,7 @@ import Model.Consulta;
 import Model.Controladora;
 import Model.Triage;
 import Model.Usuario;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class HacerTriage extends javax.swing.JFrame {
@@ -117,16 +118,21 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
-        jPanel27 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnCrearTriage = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbEdad = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
-        btnModificar = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel27 = new javax.swing.JPanel();
+        jlbVolver = new javax.swing.JLabel();
+        jPanel28 = new javax.swing.JPanel();
+        jlbGuardar = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        jlbCrear2 = new javax.swing.JLabel();
+        jPanel30 = new javax.swing.JPanel();
+        jlbModi = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,7 +145,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion.setText("Respiración:");
 
@@ -214,7 +220,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion4.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion4.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion4.setText("Lesiones Leves:");
 
@@ -280,7 +286,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion8.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion8.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion8.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion8.setText("Dolor en el Pecho:");
 
@@ -331,7 +337,7 @@ public class HacerTriage extends javax.swing.JFrame {
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +352,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion9.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion9.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion9.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion9.setText("Pulso:");
 
@@ -412,7 +418,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion5.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion5.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion5.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion5.setText("Fiebre:");
 
@@ -487,7 +493,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion1.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion1.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion1.setText("Dolor Abdominal:");
 
@@ -562,7 +568,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion2.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion2.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion2.setText("Sangrado:");
 
@@ -637,7 +643,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion6.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion6.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion6.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion6.setText("Estado Mental:");
 
@@ -712,7 +718,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion10.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion10.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion10.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion10.setText("Vómitos:");
 
@@ -787,7 +793,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel25.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion11.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion11.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion11.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion11.setText("Conciencia:");
 
@@ -853,7 +859,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion7.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion7.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion7.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion7.setText("Signos de Shock:");
 
@@ -919,7 +925,7 @@ public class HacerTriage extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
         txtRespiracion3.setBackground(new java.awt.Color(0, 0, 0));
-        txtRespiracion3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRespiracion3.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         txtRespiracion3.setForeground(new java.awt.Color(0, 0, 0));
         txtRespiracion3.setText("Lesiones Graves:");
 
@@ -1104,55 +1110,8 @@ public class HacerTriage extends javax.swing.JFrame {
         jSeparator10.setBackground(new java.awt.Color(100, 196, 244));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 760, 10));
 
-        jPanel27.setBackground(new java.awt.Color(100, 196, 244));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Hacer Triage");
-
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addComponent(jLabel2)
-                .addContainerGap(359, Short.MAX_VALUE))
-        );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
-
-        btnGuardar.setBackground(new java.awt.Color(100, 196, 244));
-        btnGuardar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 670, 130, 50));
-
-        btnCrearTriage.setBackground(new java.awt.Color(100, 196, 244));
-        btnCrearTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCrearTriage.setForeground(new java.awt.Color(0, 0, 0));
-        btnCrearTriage.setText("Crear Triage");
-        btnCrearTriage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearTriageActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCrearTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 140, 50));
-
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Edad:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
@@ -1160,45 +1119,161 @@ public class HacerTriage extends javax.swing.JFrame {
         cmbEdad.setBackground(new java.awt.Color(255, 255, 255));
         cmbEdad.setForeground(new java.awt.Color(0, 0, 0));
         cmbEdad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Niño/Anciano" }));
-        jPanel1.add(cmbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+        jPanel1.add(cmbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 110, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Color del triage");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, -1, -1));
 
         txtColor.setBackground(new java.awt.Color(255, 255, 255));
         txtColor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 150, -1));
+        txtColor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtColor.setBorder(null);
+        jPanel1.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 150, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 683, 150, 10));
 
-        btnModificar.setBackground(new java.awt.Color(72, 141, 175));
-        btnModificar.setForeground(new java.awt.Color(0, 0, 0));
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Hacer Triage");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
+
+        jPanel27.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbVolver.setText("Volver");
+        jlbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, -1, -1));
 
-        btnVolver.setBackground(new java.awt.Color(100, 196, 244));
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 670, 130, 50));
+
+        jPanel28.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbGuardar.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        jlbGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbGuardar.setText("Guardar");
+        jlbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbGuardarMouseExited(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 670, 130, 50));
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 670, 130, 50));
+
+        jPanel29.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbCrear2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCrear2.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCrear2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbCrear2.setText("Crear Triage");
+        jlbCrear2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbCrear2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCrear2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCrear2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCrear2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbCrear2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbCrear2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 140, 50));
+
+        jPanel30.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbModi.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 12)); // NOI18N
+        jlbModi.setForeground(new java.awt.Color(0, 0, 0));
+        jlbModi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbModi.setText("Modificar");
+        jlbModi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbModi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbModiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbModiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbModiMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbModi, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbModi, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, 80, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cruz.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1210,7 +1285,62 @@ public class HacerTriage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTriageActionPerformed
+                                         
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    
+    
+    private void jlbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseClicked
+        Consulta consu = this.triage.getConsulta();
+        this.control.añadirALaFila(consu);
+        PrincipalMedico pmed = new PrincipalMedico(control);
+        pmed.setVisible(true);
+        pmed.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbGuardarMouseClicked
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        EsperaTriage pmed = new EsperaTriage(control);
+        pmed.setVisible(true);
+        pmed.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbModiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbModiMouseClicked
+        MostrarTriage pantalla = new MostrarTriage(triage, control);
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbModiMouseClicked
+
+    private void jlbGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseEntered
+        jlbGuardar.setForeground(Color.white);
+    }//GEN-LAST:event_jlbGuardarMouseEntered
+
+    private void jlbGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseExited
+        jlbGuardar.setForeground(Color.black);
+    }//GEN-LAST:event_jlbGuardarMouseExited
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+       jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVolverMouseExited
+
+    private void jlbModiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbModiMouseEntered
+        jlbModi.setForeground(Color.white);
+    }//GEN-LAST:event_jlbModiMouseEntered
+
+    private void jlbModiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbModiMouseExited
+        jlbModi.setForeground(Color.black);
+    }//GEN-LAST:event_jlbModiMouseExited
+
+    private void jlbCrear2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseClicked
         String respiracion ="", dolorAbd = "", sangrado = "", lesionGrave = "", lesionLeve = "", fiebre = "",
                 estadoMental = "", signosShock = "", dolorPecho = "", pulso = "",vomito="",conciencia="";
         
@@ -1349,38 +1479,20 @@ public class HacerTriage extends javax.swing.JFrame {
         txtColor.setText(t.getColorInicial().name());
         
         JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
-    }//GEN-LAST:event_btnCrearTriageActionPerformed
+    }//GEN-LAST:event_jlbCrear2MouseClicked
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        MostrarTriage pantalla = new MostrarTriage(triage, control);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnModificarActionPerformed
+    private void jlbCrear2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseEntered
+        jlbCrear2.setForeground(Color.white);
+    }//GEN-LAST:event_jlbCrear2MouseEntered
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        this.control.persistirDatos(triage);
-        PrincipalMedico pmed = new PrincipalMedico(control);
-        pmed.setVisible(true);
-        pmed.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        EsperaTriage pmed = new EsperaTriage(control);
-        pmed.setVisible(true);
-        pmed.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
+    private void jlbCrear2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseExited
+        jlbCrear2.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCrear2MouseExited
 
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrearTriage;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnVolver;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup10;
     private javax.swing.ButtonGroup buttonGroup11;
@@ -1398,6 +1510,7 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1418,7 +1531,10 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1427,6 +1543,7 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1435,6 +1552,10 @@ public class HacerTriage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel jlbCrear2;
+    private javax.swing.JLabel jlbGuardar;
+    private javax.swing.JLabel jlbModi;
+    private javax.swing.JLabel jlbVolver;
     private javax.swing.JRadioButton jrbAltaFiebre;
     private javax.swing.JRadioButton jrbAnormalPulso;
     private javax.swing.JRadioButton jrbConciente;

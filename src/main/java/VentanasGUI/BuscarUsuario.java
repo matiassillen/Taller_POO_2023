@@ -53,6 +53,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtMostrarUsuario = new javax.swing.JTextArea();
         jlbVolver = new javax.swing.JLabel();
         jlbLimpiar = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -188,6 +189,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
         });
         jPanel5.add(jlbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 90, 30));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 410, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,6 +271,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel btnBuscarr;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

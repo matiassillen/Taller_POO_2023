@@ -48,8 +48,6 @@ public class Administrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnCrearUsuario = new javax.swing.JButton();
         btnBuscarUsuario = new javax.swing.JButton();
@@ -65,6 +63,8 @@ public class Administrador extends javax.swing.JFrame {
         tablaUsuarios = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -78,33 +78,11 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(100, 196, 244));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Administrador del sistema");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addComponent(jLabel1)
-                .addContainerGap(508, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 9, Short.MAX_VALUE))
-        );
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnCrearUsuario.setBackground(new java.awt.Color(0, 204, 153));
-        btnCrearUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCrearUsuario.setBackground(new java.awt.Color(149, 210, 255));
+        btnCrearUsuario.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnCrearUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearUsuario.setText("Crear Usuario");
         btnCrearUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -114,8 +92,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarUsuario.setBackground(new java.awt.Color(0, 204, 153));
-        btnBuscarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBuscarUsuario.setBackground(new java.awt.Color(149, 210, 255));
+        btnBuscarUsuario.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnBuscarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscarUsuario.setText("Buscar Usuario");
         btnBuscarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -125,8 +103,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnEditarUsuario.setBackground(new java.awt.Color(0, 204, 153));
-        btnEditarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEditarUsuario.setBackground(new java.awt.Color(149, 210, 255));
+        btnEditarUsuario.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnEditarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnEditarUsuario.setText("Editar Usuario");
         btnEditarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -136,8 +114,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnBorrarUsuario.setBackground(new java.awt.Color(0, 204, 153));
-        btnBorrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBorrarUsuario.setBackground(new java.awt.Color(149, 210, 255));
+        btnBorrarUsuario.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnBorrarUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnBorrarUsuario.setText("Borrar Usuario");
         btnBorrarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -148,8 +126,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnRecargarTablas.setBackground(new java.awt.Color(0, 204, 153));
-        btnRecargarTablas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRecargarTablas.setBackground(new java.awt.Color(149, 210, 255));
+        btnRecargarTablas.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnRecargarTablas.setForeground(new java.awt.Color(0, 0, 0));
         btnRecargarTablas.setText("Recargar Tablas");
         btnRecargarTablas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -160,8 +138,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnMiUsuario.setBackground(new java.awt.Color(102, 204, 255));
-        btnMiUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnMiUsuario.setBackground(new java.awt.Color(149, 210, 255));
+        btnMiUsuario.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnMiUsuario.setForeground(new java.awt.Color(0, 0, 0));
         btnMiUsuario.setText("Mi Usuario");
         btnMiUsuario.setBorder(null);
@@ -172,8 +150,8 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        btnCerrarSesion.setBackground(new java.awt.Color(153, 204, 255));
-        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCerrarSesion.setBackground(new java.awt.Color(149, 210, 255));
+        btnCerrarSesion.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnCerrarSesion.setText("Cerrar Sesión");
         btnCerrarSesion.setBorder(null);
@@ -191,16 +169,15 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(btnEditarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMiUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRecargarTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -222,8 +199,8 @@ public class Administrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnInfoAdministrativa.setBackground(new java.awt.Color(0, 204, 153));
-        btnInfoAdministrativa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnInfoAdministrativa.setBackground(new java.awt.Color(149, 210, 255));
+        btnInfoAdministrativa.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         btnInfoAdministrativa.setForeground(new java.awt.Color(0, 0, 0));
         btnInfoAdministrativa.setText("Ver infromación administrativa");
         btnInfoAdministrativa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -232,6 +209,8 @@ public class Administrador extends javax.swing.JFrame {
                 btnInfoAdministrativaActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setBackground(new java.awt.Color(149, 210, 255));
 
         tablaFuncionariosEnGeneral.setBackground(new java.awt.Color(255, 255, 255));
         tablaFuncionariosEnGeneral.setModel(new javax.swing.table.DefaultTableModel(
@@ -256,6 +235,8 @@ public class Administrador extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaFuncionariosEnGeneral);
 
+        jScrollPane2.setBackground(new java.awt.Color(149, 210, 255));
+
         tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -279,24 +260,29 @@ public class Administrador extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaUsuarios);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Funcionarios en General");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Usuarios");
+
+        jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Administrador del sistema");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cruz.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnInfoAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInfoAdministrativa)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,16 +296,28 @@ public class Administrador extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(493, 493, 493)
                                         .addComponent(jLabel3)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 366, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4)))
+                .addGap(32, 32, 32)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,8 +574,8 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
