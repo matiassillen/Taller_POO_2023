@@ -922,8 +922,10 @@ public class Controladora implements Serializable {
      * @return
      */
     public List<Consulta> traerPacientesEnEspera() {
-        List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
+//        List<Consulta> consultas = (List<Consulta>) this.esperaAtencionTriage.getEnEspera();
+        List<Consulta> consultas = (List<Consulta>) this.actualizarColaTriage();
         return consultas;
+
     }
 
     /**

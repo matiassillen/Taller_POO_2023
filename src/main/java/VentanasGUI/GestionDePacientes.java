@@ -18,7 +18,8 @@ public class GestionDePacientes extends javax.swing.JFrame {
     Controladora control;
     Paciente pacienteSeleccionado;
     String idBox;
-    Boolean bandera;
+    private boolean bandera;
+
 
     /**
      * Constructor de la clase TomarPaciente
@@ -30,7 +31,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         this.control = control;
         btnDatosMedicos.setEnabled(false);
         btnDarDeAlta.setEnabled(false);
-        this.bandera = false;
+
     }
 
     /**
@@ -348,7 +349,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
      * @param evt El evento de ventana que ocurrió.
      */
     private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
-        if (bandera) {
+        if(bandera){
             // Creamos una nueva instancia de la ventana AsignarBox
             AsignarBox asigBox = new AsignarBox(control);
             // Hacemos visible la ventana
@@ -382,7 +383,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene una lista de boxes usando el controlador
             List<Box> boxes = this.control.TraerBoxDelMedico();
-            
+            int sum = 0;
             // Verifica si la lista de boxes no es nula
             if (boxes != null) {
                 // Itera sobre cada box en la lista
@@ -391,9 +392,13 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido()};
                     // Agrega el objeto a la tabla
                     modeloTabla.addRow(objeto);
-                    
+                    sum+=1;
+                }
+                if(sum>2){
+                    this.bandera = true;
                 }
             }
+            
             // Segun la cantidad de box que posee el medigo activa la bandera
             // posteriormente indica si puede tomar mas pacientes o no
             // Establece el modelo de la tabla
@@ -401,6 +406,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         } catch (Exception e) {
             // Imprime cualquier error que ocurra durante la ejecución del código anterior
             control.mostrarMensaje("No posee pacientes en box", "Sin pacientes", "");
+            this.bandera = true;
         }
     }
 
