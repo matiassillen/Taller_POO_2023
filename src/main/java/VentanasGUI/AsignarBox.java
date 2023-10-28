@@ -145,7 +145,7 @@ public class AsignarBox extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\kisspng-clinic-hospital-community-health-center-medicine-c-calculation-of-ideal-weight-5b0dc4a0e1bda3.2838225215276289609247 (1).png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kisspng-clinic-hospital-community-health-center-medicine-c-calculation-of-ideal-weight-5b0dc4a0e1bda3.2838225215276289609247 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

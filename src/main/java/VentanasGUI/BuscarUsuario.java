@@ -107,7 +107,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jlbBuscar.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
         jlbBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jlbBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\pngwing.com (3).png")); // NOI18N
+        jlbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngwing.com (3).png"))); // NOI18N
         jlbBuscar.setText("Buscar");
         jlbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,7 +147,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(149, 210, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\usersgroup_99737 (1).png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usersgroup_99737 (1).png"))); // NOI18N
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         txtMostrarUsuario.setEditable(false);

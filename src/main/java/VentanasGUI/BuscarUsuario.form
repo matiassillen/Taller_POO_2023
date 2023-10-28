@@ -183,7 +183,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\trapo\Downloads\pngwing.com (3).png"/>
+                  <Image iconType="3" name="/Imagenes/pngwing.com (3).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -233,7 +233,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\trapo\Downloads\usersgroup_99737 (1).png"/>
+                  <Image iconType="3" name="/Imagenes/usersgroup_99737 (1).png"/>
                 </Property>
               </Properties>
               <Constraints>
