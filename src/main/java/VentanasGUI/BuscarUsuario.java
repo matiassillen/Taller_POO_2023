@@ -2,6 +2,7 @@ package VentanasGUI;
 
 import Model.AdministradorDeSistema;
 import Model.Controladora;
+import java.awt.Color;
 
 public class BuscarUsuario extends javax.swing.JFrame {
 
@@ -40,18 +41,22 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel3 = new javax.swing.JPanel();
+        jlbBuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMostrarUsuario = new javax.swing.JTextArea();
-        btnVolver = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        jlbVolver = new javax.swing.JLabel();
+        jlbLimpiar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -59,63 +64,91 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Buscar Usuario");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabel1)
-                .addContainerGap(460, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 783, 60));
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("DNI:");
-
-        txtDni.setBackground(new java.awt.Color(255, 255, 255));
-        txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtDni.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("DNI");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 7, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 280, 30));
+
+        txtDni.setBackground(new java.awt.Color(255, 255, 255));
+        txtDni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDni.setForeground(new java.awt.Color(204, 204, 204));
+        txtDni.setText("Ingresar dni");
+        txtDni.setBorder(null);
+        txtDni.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtDniMousePressed(evt);
+            }
+        });
+        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 200, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, 10));
+
+        jPanel3.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbBuscar.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
+        jlbBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        jlbBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\pngwing.com (3).png")); // NOI18N
+        jlbBuscar.setText("Buscar");
+        jlbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbBuscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbBuscarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 90, 30));
+
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Buscar Usuario");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(149, 210, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\usersgroup_99737 (1).png")); // NOI18N
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         txtMostrarUsuario.setEditable(false);
         txtMostrarUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -125,70 +158,59 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtMostrarUsuario.setRows(5);
         jScrollPane1.setViewportView(txtMostrarUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 140));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 370, -1));
 
-        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
-        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+        jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbVolver.setText("Volver");
+        jlbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 90, 30));
+        jPanel5.add(jlbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 90, 30));
 
-        btnBuscar.setBackground(new java.awt.Color(0, 204, 204));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setText("Buscar");
-        btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+        jlbLimpiar.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
+        jlbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        jlbLimpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbLimpiar.setText("Limpiar");
+        jlbLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbLimpiarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbLimpiarMouseEntered(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 90, -1));
+        jPanel5.add(jlbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 90, 30));
 
-        btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
-        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, new java.awt.Color(0, 153, 153)));
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, 30));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 410, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * El método se ejecuta cuando el usuario hace clic en el botón “Buscar”.
-     * Este método busca un usuario en la base de datos a través del número de
-     * identificación nacional (DNI) ingresado por el usuario. Si el DNI no es
-     * válido, se muestra un mensaje de error. Si el DNI es válido, se llama al
-     * método buscarUsuario del objeto administrador para buscar al usuario
-     * correspondiente y se muestra la información del usuario en la interfaz
-     * gráfica.
-     */
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+    private void jlbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseClicked
         String documento = txtDni.getText();
         String usuario;
 
@@ -204,38 +226,53 @@ public class BuscarUsuario extends javax.swing.JFrame {
             txtMostrarUsuario.setText(usuario);
 
         }
+    }//GEN-LAST:event_jlbBuscarMouseClicked
 
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    /**
-     * El método se ejecuta cuando el usuario hace clic en el botón “Volver”.
-     * Este método cierra la ventana actual.
-     */
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    /**
-     * El método se ejecuta cuando el usuario hace clic en el botón “Limpiar”.
-     * Este método borra los campos de texto txtDni y txtMostrarUsuario.
-     */
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+    private void jlbLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseClicked
         txtDni.setText("");
         txtMostrarUsuario.setText("");
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    }//GEN-LAST:event_jlbLimpiarMouseClicked
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseEntered
+        jlbBuscar.setForeground(Color.white);
+    }//GEN-LAST:event_jlbBuscarMouseEntered
+
+    private void jlbBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseExited
+        jlbBuscar.setForeground(Color.black);
+    }//GEN-LAST:event_jlbBuscarMouseExited
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseEntered
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbLimpiarMouseEntered
+
+    private void txtDniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniMousePressed
+        if(txtDni.getText().equalsIgnoreCase("Ingresar dni")){
+            txtDni.setText("");
+            txtDni.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtDniMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jlbBuscar;
+    private javax.swing.JLabel jlbLimpiar;
+    private javax.swing.JLabel jlbVolver;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextArea txtMostrarUsuario;
     // End of variables declaration//GEN-END:variables
