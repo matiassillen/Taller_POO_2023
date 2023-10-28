@@ -1218,8 +1218,9 @@ public class Controladora implements Serializable {
 
     private PriorityQueue<Consulta> actualizarColaAtencion() {
         List<Consulta> consultas = this.controlPersis.traerConsultas();
-        this.ordenarPorFechaYHora(consultas);
         this.filtrarConBox(consultas);
+        this.filtrarSinTriage(consultas);
+        this.ordenarPorFechaYHora(consultas);
         PriorityQueue<Consulta> colaDeAtencion = new PriorityQueue<>(new ComparadorDeConsultas());
         for (Consulta consu : consultas) {
             colaDeAtencion.add(consu);
@@ -1263,18 +1264,19 @@ public class Controladora implements Serializable {
          */
         @Override
         public int compare(Consulta c1, Consulta c2) {
-            if (c1.getTriage().getColorFinal() != null) {
-                if (c2.getTriage().getColorFinal() != null) {
-                    return c1.getTriage().getColorFinal().getValorNumerico().compareTo(c2.getTriage().getColorFinal().getValorNumerico());
+            Triage triage1 = c1.getTriage();
+            Triage triage2 = c2.getTriage();
+            if (triage1.getColorFinal() != null) {
+                if (triage2.getColorFinal() != null) {
+                    return triage1.getColorFinal().getValorNumerico().compareTo(triage2.getColorFinal().getValorNumerico());
                 } else {
-                    return c1.getTriage().getColorFinal().getValorNumerico().compareTo(c2.getTriage().getColorInicial().getValorNumerico());
-
+                    return triage1.getColorFinal().getValorNumerico().compareTo(triage2.getColorInicial().getValorNumerico());
                 }
             } else {
-                if (c2.getTriage().getColorFinal() != null) {
-                    return c1.getTriage().getColorInicial().getValorNumerico().compareTo(c2.getTriage().getColorFinal().getValorNumerico());
+                if (triage2.getColorFinal() != null) {
+                    return triage1.getColorInicial().getValorNumerico().compareTo(triage2.getColorFinal().getValorNumerico());
                 } else {
-                    return c1.getTriage().getColorInicial().getValorNumerico().compareTo(c2.getTriage().getColorInicial().getValorNumerico());
+                    return triage1.getColorInicial().getValorNumerico().compareTo(triage2.getColorInicial().getValorNumerico());
                 }
             }
         }
@@ -1291,8 +1293,21 @@ public class Controladora implements Serializable {
             return dateTime1.compareTo(dateTime2);
         }
     });
-}
+    }
+    
+    
+    public void filtrarSinTriage(List<Consulta> lista) {
+        Iterator<Consulta> iterador = lista.iterator();
 
+        while (iterador.hasNext()) {
+            Consulta consu = iterador.next();
+
+            if (consu.getTriage() == null) {
+                iterador.remove();
+            }
+        }
+    }
+    
     public void filtrarConTriage(List<Consulta> lista) {
         Iterator<Consulta> iterador = lista.iterator();
 
