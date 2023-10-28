@@ -9,9 +9,9 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class DiagnosticoClinico implements Serializable {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @ManyToOne
     private Paciente paciente;
@@ -21,7 +21,10 @@ public class DiagnosticoClinico implements Serializable {
     private String descripcion;
     @ManyToOne
     private Medico medico;
-    
+
+    /**
+     * Default constructor
+     */
     public DiagnosticoClinico() {
         this.paciente = null;
         this.nombreDiagnostico = null;
@@ -29,10 +32,19 @@ public class DiagnosticoClinico implements Serializable {
         this.hora = null;
         this.descripcion = null;
         this.medico = null;
-
     }
 
-    public DiagnosticoClinico( Paciente paciente, String nombreDiagnostico, String fecha, String hora, String descripcion, Medico medico) {
+    /**
+     * Constructor con parámetros
+     *
+     * @param paciente
+     * @param nombreDiagnostico
+     * @param fecha
+     * @param hora
+     * @param descripcion
+     * @param medico
+     */
+    public DiagnosticoClinico(Paciente paciente, String nombreDiagnostico, String fecha, String hora, String descripcion, Medico medico) {
         this.paciente = paciente;
         this.nombreDiagnostico = nombreDiagnostico;
         this.fecha = fecha;
@@ -41,58 +53,114 @@ public class DiagnosticoClinico implements Serializable {
         this.medico = medico;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Paciente getPaciente() {
         return paciente;
     }
 
+    /**
+     *
+     * @param paciente
+     */
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombreDiagnostico() {
         return nombreDiagnostico;
     }
 
+    /**
+     *
+     * @param nombreDiagnostico
+     */
     public void setNombreDiagnostico(String nombreDiagnostico) {
         this.nombreDiagnostico = nombreDiagnostico;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFecha() {
         return fecha;
     }
 
+    /**
+     *
+     * @param fecha
+     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHora() {
         return hora;
     }
 
+    /**
+     *
+     * @param hora
+     */
     public void setHora(String hora) {
         this.hora = hora;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     *
+     * @param descripcion
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Medico getMedico() {
         return medico;
     }
 
+    /**
+     *
+     * @param medico
+     */
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
