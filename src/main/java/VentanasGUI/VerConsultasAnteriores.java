@@ -3,6 +3,7 @@ package VentanasGUI;
 import Model.Controladora;
 import Model.Consulta;
 import Model.Paciente;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,9 +42,10 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaConsAnteriores = new javax.swing.JTable();
-        btnVolver = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jlbVolver = new javax.swing.JLabel();
         txtConsultasAnt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -53,8 +55,9 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaConsAnteriores.setBackground(new java.awt.Color(255, 255, 255));
+        tablaConsAnteriores.setBackground(new java.awt.Color(149, 210, 255));
         tablaConsAnteriores.setForeground(new java.awt.Color(0, 0, 0));
         tablaConsAnteriores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,103 +72,70 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaConsAnteriores);
 
-        btnVolver.setBackground(new java.awt.Color(0, 153, 153));
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1113, 354));
+
+        jPanel3.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbVolver.setText("Volver");
+        jlbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 90, 30));
 
         txtConsultasAnt.setBackground(new java.awt.Color(0, 204, 204));
-        txtConsultasAnt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        txtConsultasAnt.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         txtConsultasAnt.setForeground(new java.awt.Color(0, 0, 0));
         txtConsultasAnt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtConsultasAnt.setText("Consultas Anteriores");
         txtConsultasAnt.setToolTipText("");
+        jPanel1.add(txtConsultasAnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 410, 40));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtConsultasAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cruz.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este método se ejecuta cuando se hace clic en el botón 'Volver'. Cierra
-     * la ventana actual y abre una nueva instancia de la ventana
-     * DatosDePaciente.
-     *
-     * @param evt El evento de ventana que ocurrió.
-     */
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        try {
-            // Creamos una nueva instancia de la ventana DatosDePaciente
-            DatosDePaciente histCli = new DatosDePaciente(control, paciente);
-            // Hacemos visible la ventana
-            histCli.setVisible(true);
-            // Centramos la ventana en la pantalla
-            histCli.setLocationRelativeTo(null);
-            // Cerramos la ventana actual
-            this.dispose();
-        } catch (Exception e) {
-            // Si ocurre un error, mostramos un mensaje de error
-            System.out.println("Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_btnVolverActionPerformed
-    /**
+
+   /**
      * Este método se ejecuta cuando se abre la ventana. Llama al método
      * cargarTabla para llenar la tabla con datos.
      *
@@ -180,6 +150,30 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+         try {
+            // Creamos una nueva instancia de la ventana DatosDePaciente
+            DatosDePaciente histCli = new DatosDePaciente(control, paciente);
+            // Hacemos visible la ventana
+            histCli.setVisible(true);
+            // Centramos la ventana en la pantalla
+            histCli.setLocationRelativeTo(null);
+            // Cerramos la ventana actual
+            this.dispose();
+        } catch (Exception e) {
+            // Si ocurre un error, mostramos un mensaje de error
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVolverMouseExited
     /**
      * Este método carga datos en la tabla. Obtiene una lista de consultas del
      * paciente y añade cada consulta a la tabla.
@@ -215,10 +209,11 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlbVolver;
     private javax.swing.JTable tablaConsAnteriores;
     private javax.swing.JLabel txtConsultasAnt;
     // End of variables declaration//GEN-END:variables

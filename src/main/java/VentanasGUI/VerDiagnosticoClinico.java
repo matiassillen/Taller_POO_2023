@@ -3,6 +3,7 @@ package VentanasGUI;
 import Model.Controladora;
 import Model.DiagnosticoClinico;
 import Model.Paciente;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,17 +43,20 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDiagnosticoCli = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        txbTitulo = new javax.swing.JTextField();
-        btnCargarDiagClinico = new javax.swing.JButton();
         txtTitulo = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JLabel();
+        txbTitulo = new javax.swing.JTextField();
         txbDescripcion = new javax.swing.JTextField();
-        btnVolver = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jlbCrear = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jlbVolver = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -60,6 +64,7 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaDiagnosticoCli.setBackground(new java.awt.Color(255, 255, 255));
         tablaDiagnosticoCli.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -76,33 +81,24 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaDiagnosticoCli);
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1160, 326));
 
         jLabel1.setBackground(new java.awt.Color(0, 153, 153));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Diagnosticos Clinicos");
+        jLabel1.setText("Diagnósticos Clínicos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 411, 46));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        txtTitulo.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        txtTitulo.setText("Título");
+        jPanel1.add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 92, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        txtDescripcion.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        txtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        txtDescripcion.setText("Descripción");
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, -1));
 
         txbTitulo.setBackground(new java.awt.Color(255, 255, 255));
         txbTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -111,25 +107,7 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         txbTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txbTitulo.setCaretColor(new java.awt.Color(0, 0, 0));
         txbTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        btnCargarDiagClinico.setBackground(new java.awt.Color(0, 204, 153));
-        btnCargarDiagClinico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnCargarDiagClinico.setForeground(new java.awt.Color(0, 0, 0));
-        btnCargarDiagClinico.setText("Crear Nuevo ");
-        btnCargarDiagClinico.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCargarDiagClinico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarDiagClinicoActionPerformed(evt);
-            }
-        });
-
-        txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtTitulo.setForeground(new java.awt.Color(0, 0, 0));
-        txtTitulo.setText("Titulo");
-
-        txtDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
-        txtDescripcion.setText("Descripcion");
+        jPanel1.add(txbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 310, -1));
 
         txbDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         txbDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -138,15 +116,24 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         txbDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txbDescripcion.setCaretColor(new java.awt.Color(0, 0, 0));
         txbDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel1.add(txbDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 670, 70));
 
-        btnVolver.setBackground(new java.awt.Color(0, 153, 153));
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+
+        jlbCrear.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbCrear.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbCrear.setText("Crear Nuevo");
+        jlbCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbCrearMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbCrearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbCrearMouseExited(evt);
             }
         });
 
@@ -155,65 +142,56 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCargarDiagClinico, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txbDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jlbCrear)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtTitulo)
-                        .addGap(53, 53, 53))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(txbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDescripcion)
-                            .addComponent(txbDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarDiagClinico, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(169, 169, 169))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 540, 120, 30));
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+
+        jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbVolver.setText("Volver");
+        jlbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, 100, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sl_021921_40900_13.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,24 +206,8 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este método se ejecuta cuando se hace clic en el botón 'Volver'. Cierra
-     * la ventana actual y abre una nueva instancia de la ventana
-     * DatosDePaciente.
-     *
-     * @param evt El evento de ventana que ocurrió.
-     */
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // Creamos una nueva instancia de la ventana DatosDePaciente
-        DatosDePaciente histCli = new DatosDePaciente(control, paciente);
-        // Hacemos visible la ventana
-        histCli.setVisible(true);
-        // Centramos la ventana en la pantalla
-        histCli.setLocationRelativeTo(null);
-        // Cerramos la ventana actual
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-    /**
+
+   /**
      * Método que se ejecuta cuando se abre la ventana. Llama al método para
      * cargar la tabla de diagnostico clinico.
      *
@@ -254,14 +216,8 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
-    /**
-     * Este método se ejecuta cuando se hace clic en el botón
-     * 'CargarDiagClinico'. Intenta cargar un nuevo diagnóstico clínico con el
-     * título y la descripción proporcionados, y muestra un mensaje de éxito.
-     *
-     * @param evt El evento de ventana que ocurrió.
-     */
-    private void btnCargarDiagClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDiagClinicoActionPerformed
+
+    private void jlbCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrearMouseClicked
         try {
             // Obtenemos el título y la descripción seleccionados en los campos de texto correspondientes
             String titulo = this.txbTitulo.getSelectedText();
@@ -277,7 +233,34 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
             String info = "error";
             this.control.mostrarMensaje("No se ingreso titulo o descripcion", info, "Error al cargar D.C.");
         }
-    }//GEN-LAST:event_btnCargarDiagClinicoActionPerformed
+    }//GEN-LAST:event_jlbCrearMouseClicked
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        // Creamos una nueva instancia de la ventana DatosDePaciente
+        DatosDePaciente histCli = new DatosDePaciente(control, paciente);
+        // Hacemos visible la ventana
+        histCli.setVisible(true);
+        // Centramos la ventana en la pantalla
+        histCli.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
+        this.dispose();
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrearMouseEntered
+        jlbCrear.setForeground(Color.white);
+    }//GEN-LAST:event_jlbCrearMouseEntered
+
+    private void jlbCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrearMouseExited
+        jlbCrear.setForeground(Color.black);
+    }//GEN-LAST:event_jlbCrearMouseExited
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVolverMouseExited
     /**
      * Este método carga datos en la tabla. Obtiene una lista de diagnósticos
      * clínicos del paciente y añade cada diagnóstico a la tabla.
@@ -311,13 +294,14 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarDiagClinico;
-    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlbCrear;
+    private javax.swing.JLabel jlbVolver;
     private javax.swing.JTable tablaDiagnosticoCli;
     private javax.swing.JTextField txbDescripcion;
     private javax.swing.JTextField txbTitulo;

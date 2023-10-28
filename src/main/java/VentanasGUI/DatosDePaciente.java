@@ -6,6 +6,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Paciente;
+import java.awt.Color;
 
 /**
  *
@@ -35,13 +36,15 @@ public class DatosDePaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        txtVerDiagnosticosClinicos = new javax.swing.JButton();
-        txtVerResultEstudios = new javax.swing.JButton();
-        txtVerConsultasAnteriores = new javax.swing.JButton();
-        btnVolverPrincipal = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jlbVerResEstudios = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jlbVerDiagClinico = new javax.swing.JLabel();
+        jlbVerConsuAnteriores = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jlbVolver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,108 +54,90 @@ public class DatosDePaciente extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtVerDiagnosticosClinicos.setBackground(new java.awt.Color(0, 204, 255));
-        txtVerDiagnosticosClinicos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtVerDiagnosticosClinicos.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerDiagnosticosClinicos.setText("Ver Diagnosticos Clinicos");
-        txtVerDiagnosticosClinicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVerDiagnosticosClinicosActionPerformed(evt);
-            }
-        });
-
-        txtVerResultEstudios.setBackground(new java.awt.Color(0, 204, 255));
-        txtVerResultEstudios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtVerResultEstudios.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerResultEstudios.setText("Ver Resultados de Estudio");
-        txtVerResultEstudios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVerResultEstudiosActionPerformed(evt);
-            }
-        });
-
-        txtVerConsultasAnteriores.setBackground(new java.awt.Color(0, 204, 255));
-        txtVerConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtVerConsultasAnteriores.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerConsultasAnteriores.setText("Ver Consultas Anteriores");
-        txtVerConsultasAnteriores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVerConsultasAnterioresActionPerformed(evt);
-            }
-        });
-
-        btnVolverPrincipal.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnVolverPrincipal.setText("Volver");
-        btnVolverPrincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverPrincipalActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtVerDiagnosticosClinicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtVerResultEstudios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                    .addComponent(txtVerConsultasAnteriores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(btnVolverPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(txtVerResultEstudios)
-                .addGap(18, 18, 18)
-                .addComponent(txtVerDiagnosticosClinicos)
-                .addGap(18, 18, 18)
-                .addComponent(txtVerConsultasAnteriores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnVolverPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 260, 220));
-
-        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Datos De Paciente");
+        jLabel1.setText("Datos de paciente");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel1)
-                .addContainerGap(506, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
+        jPanel4.setBackground(new java.awt.Color(149, 210, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        jlbVerResEstudios.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVerResEstudios.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVerResEstudios.setText("Ver Resultados de estudios");
+        jlbVerResEstudios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVerResEstudiosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVerResEstudiosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVerResEstudiosMouseExited(evt);
+            }
+        });
+        jPanel4.add(jlbVerResEstudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 240, 10));
+
+        jlbVerDiagClinico.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVerDiagClinico.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVerDiagClinico.setText("Ver Diagnosticos Clinicos");
+        jlbVerDiagClinico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVerDiagClinicoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVerDiagClinicoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVerDiagClinicoMouseExited(evt);
+            }
+        });
+        jPanel4.add(jlbVerDiagClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jlbVerConsuAnteriores.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVerConsuAnteriores.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVerConsuAnteriores.setText("Ver Consultas Anteriores");
+        jlbVerConsuAnteriores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVerConsuAnterioresMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVerConsuAnterioresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVerConsuAnterioresMouseExited(evt);
+            }
+        });
+        jPanel4.add(jlbVerConsuAnteriores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 240, -1));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 240, 10));
+
+        jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setText("Volver");
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
+            }
+        });
+        jPanel4.add(jlbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 390, 310));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,43 +147,77 @@ public class DatosDePaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtVerDiagnosticosClinicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerDiagnosticosClinicosActionPerformed
-        VerDiagnosticoClinico verAntCli = new VerDiagnosticoClinico(control, paciente);
-        verAntCli.setVisible(true);
-        verAntCli.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_txtVerDiagnosticosClinicosActionPerformed
-
-    private void txtVerResultEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerResultEstudiosActionPerformed
+    private void jlbVerResEstudiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerResEstudiosMouseClicked
         VerResultadoEstudio verResEstu = new VerResultadoEstudio(control, paciente);
         verResEstu.setVisible(true);
         verResEstu.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_txtVerResultEstudiosActionPerformed
+    }//GEN-LAST:event_jlbVerResEstudiosMouseClicked
 
-    private void txtVerConsultasAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerConsultasAnterioresActionPerformed
+    private void jlbVerDiagClinicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerDiagClinicoMouseClicked
+        VerDiagnosticoClinico verAntCli = new VerDiagnosticoClinico(control, paciente);
+        verAntCli.setVisible(true);
+        verAntCli.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbVerDiagClinicoMouseClicked
+
+    private void jlbVerConsuAnterioresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerConsuAnterioresMouseClicked
         VerConsultasAnteriores verHistCli = new VerConsultasAnteriores(control, paciente);
         verHistCli.setVisible(true);
         verHistCli.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_txtVerConsultasAnterioresActionPerformed
+    }//GEN-LAST:event_jlbVerConsuAnterioresMouseClicked
 
-    private void btnVolverPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPrincipalActionPerformed
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
         GestionDePacientes gestP = new GestionDePacientes(control);
         gestP.setVisible(true);
         gestP.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnVolverPrincipalActionPerformed
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbVerResEstudiosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerResEstudiosMouseEntered
+        jlbVerResEstudios.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVerResEstudiosMouseEntered
+
+    private void jlbVerResEstudiosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerResEstudiosMouseExited
+        jlbVerResEstudios.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVerResEstudiosMouseExited
+
+    private void jlbVerDiagClinicoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerDiagClinicoMouseExited
+        jlbVerDiagClinico.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVerDiagClinicoMouseExited
+
+    private void jlbVerDiagClinicoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerDiagClinicoMouseEntered
+        jlbVerDiagClinico.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVerDiagClinicoMouseEntered
+
+    private void jlbVerConsuAnterioresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerConsuAnterioresMouseEntered
+        jlbVerConsuAnteriores.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVerConsuAnterioresMouseEntered
+
+    private void jlbVerConsuAnterioresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerConsuAnterioresMouseExited
+        jlbVerConsuAnteriores.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVerConsuAnterioresMouseExited
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVolverMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolverPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton txtVerConsultasAnteriores;
-    private javax.swing.JButton txtVerDiagnosticosClinicos;
-    private javax.swing.JButton txtVerResultEstudios;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jlbVerConsuAnteriores;
+    private javax.swing.JLabel jlbVerDiagClinico;
+    private javax.swing.JLabel jlbVerResEstudios;
+    private javax.swing.JLabel jlbVolver;
     // End of variables declaration//GEN-END:variables
 }

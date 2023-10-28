@@ -2,6 +2,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Rol;
+import java.awt.Color;
 import java.util.List;
 
 /**
@@ -37,14 +38,19 @@ public class PrincipalMedico extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        btnHacerTriage = new javax.swing.JButton();
-        btnGestioDePaciente = new javax.swing.JButton();
-        btnMiUsuario = new javax.swing.JButton();
+        jlbHacerTriage = new javax.swing.JLabel();
+        jlbGestionPaciente = new javax.swing.JLabel();
+        jlbMiUsu = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        label2 = new java.awt.Label();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -52,87 +58,83 @@ public class PrincipalMedico extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnHacerTriage.setBackground(new java.awt.Color(0, 204, 255));
-        btnHacerTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
-        btnHacerTriage.setText("Hacer Triage");
-        btnHacerTriage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHacerTriageActionPerformed(evt);
+        jlbHacerTriage.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
+        jlbHacerTriage.setForeground(new java.awt.Color(0, 0, 0));
+        jlbHacerTriage.setText("Hacer Triage");
+        jlbHacerTriage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbHacerTriage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbHacerTriageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbHacerTriageMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbHacerTriageMouseExited(evt);
             }
         });
+        jPanel1.add(jlbHacerTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, -1, -1));
 
-        btnGestioDePaciente.setBackground(new java.awt.Color(0, 204, 255));
-        btnGestioDePaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnGestioDePaciente.setForeground(new java.awt.Color(0, 0, 0));
-        btnGestioDePaciente.setText("Gestion de Pacientes");
-        btnGestioDePaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGestioDePacienteActionPerformed(evt);
+        jlbGestionPaciente.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
+        jlbGestionPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        jlbGestionPaciente.setText("Gestion de Pacientes");
+        jlbGestionPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbGestionPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbGestionPacienteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbGestionPacienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbGestionPacienteMouseExited(evt);
             }
         });
+        jPanel1.add(jlbGestionPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
 
-        btnMiUsuario.setBackground(new java.awt.Color(0, 204, 255));
-        btnMiUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnMiUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        btnMiUsuario.setText("Mi Usuario");
-        btnMiUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMiUsuarioActionPerformed(evt);
+        jlbMiUsu.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 24)); // NOI18N
+        jlbMiUsu.setForeground(new java.awt.Color(0, 0, 0));
+        jlbMiUsu.setText("Mi Usuario");
+        jlbMiUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbMiUsu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbMiUsuMouseExited(evt);
             }
         });
+        jPanel1.add(jlbMiUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGestioDePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(btnHacerTriage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(btnMiUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnHacerTriage)
-                .addGap(18, 18, 18)
-                .addComponent(btnGestioDePaciente)
-                .addGap(18, 18, 18)
-                .addComponent(btnMiUsuario)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Gestión Médica");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 250, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 250, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 250, 160));
-
-        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
-
-        label2.setAlignment(java.awt.Label.CENTER);
-        label2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        label2.setText("Gestion Medica");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoMedico.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 380));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/medico (1).png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,31 +149,8 @@ public class PrincipalMedico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este método se activa cuando se realiza una acción en el botón
-     * btnHacerTriage. Crea una nueva instancia de la clase HacerTriage, la hace
-     * visible y la centra en la pantalla.
-     *
-     * @param evt El evento de acción que ocurrió.
-     */
-    private void btnHacerTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTriageActionPerformed
-        // Creamos una nueva instancia de la ventana EsperaTriage
-        EsperaTriage hacerT = new EsperaTriage(control);
-        // Hacemos visible la ventana
-        hacerT.setVisible(true);
-        // Centramos la ventana en la pantalla
-        hacerT.setLocationRelativeTo(null);
-        // Cerramos la ventana actual
-        this.dispose();
-    }//GEN-LAST:event_btnHacerTriageActionPerformed
-    /**
-     * Este método se activa cuando se realiza una acción en el botón
-     * btnGestionDePaciente. Crea una nueva instancia de la clase
-     * GestionDePaciente, la hace visible y la centra en la pantalla.
-     *
-     * @param evt El evento de acción que ocurrió.
-     */
-    private void btnGestioDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestioDePacienteActionPerformed
+
+    private void jlbGestionPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGestionPacienteMouseClicked
         // Creamos una nueva instancia de la ventana GestionDePacientes
         GestionDePacientes tomarP = new GestionDePacientes(control);
         // Hacemos visible la ventana
@@ -180,22 +159,51 @@ public class PrincipalMedico extends javax.swing.JFrame {
         tomarP.setLocationRelativeTo(null);
         // Cerramos la ventana actual
         this.dispose();
-    }//GEN-LAST:event_btnGestioDePacienteActionPerformed
-    /**
-     * Este método se activa cuando se realiza una acción en el botón btnMiUsuario.
-     * Crea una nueva instancia de la clase MiUsuario, la hace visible y la
-     * centra en la pantalla.
-     *
-     * @param evt El evento de acción que ocurrió.
-     */
-    private void btnMiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiUsuarioActionPerformed
+    }//GEN-LAST:event_jlbGestionPacienteMouseClicked
+
+    private void jlbHacerTriageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbHacerTriageMouseClicked
+        // Creamos una nueva instancia de la ventana EsperaTriage
+        EsperaTriage hacerT = new EsperaTriage(control);
+        // Hacemos visible la ventana
+        hacerT.setVisible(true);
+        // Centramos la ventana en la pantalla
+        hacerT.setLocationRelativeTo(null);
+        // Cerramos la ventana actual
+        this.dispose();
+    }//GEN-LAST:event_jlbHacerTriageMouseClicked
+
+    private void jlbMiUsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseClicked
         // Creamos una nueva instancia de la ventana MiUsuario
         MiUsuario miUsu = new MiUsuario(control);
         // Hacemos visible la ventana
         miUsu.setVisible(true);
         // Centramos la ventana en la pantalla
         miUsu.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnMiUsuarioActionPerformed
+    }//GEN-LAST:event_jlbMiUsuMouseClicked
+
+    private void jlbGestionPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGestionPacienteMouseEntered
+        jlbGestionPaciente.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbGestionPacienteMouseEntered
+
+    private void jlbGestionPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGestionPacienteMouseExited
+        jlbGestionPaciente.setForeground(Color.black);
+    }//GEN-LAST:event_jlbGestionPacienteMouseExited
+
+    private void jlbHacerTriageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbHacerTriageMouseEntered
+        jlbHacerTriage.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbHacerTriageMouseEntered
+
+    private void jlbHacerTriageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbHacerTriageMouseExited
+        jlbHacerTriage.setForeground(Color.black);
+    }//GEN-LAST:event_jlbHacerTriageMouseExited
+
+    private void jlbMiUsuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseEntered
+        jlbMiUsu.setForeground(Color.cyan);
+    }//GEN-LAST:event_jlbMiUsuMouseEntered
+
+    private void jlbMiUsuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMiUsuMouseExited
+        jlbMiUsu.setForeground(Color.black);
+    }//GEN-LAST:event_jlbMiUsuMouseExited
 
     /**
      * Este método identifica el rol del usuario y habilita los botones
@@ -204,8 +212,8 @@ public class PrincipalMedico extends javax.swing.JFrame {
      * corresponda.
      */
     private void identificarRol() {
-        btnGestioDePaciente.setEnabled(false);
-        btnHacerTriage.setEnabled(false);
+        jlbGestionPaciente.setEnabled(false);
+        jlbHacerTriage.setEnabled(false);
         try {
             // Obtenemos la lista de roles del usuario
             List<Rol> roles = this.control.getUsu().getRol();
@@ -219,18 +227,18 @@ public class PrincipalMedico extends javax.swing.JFrame {
                 switch (nombreRol) {
                     case "Medico - Atencion" -> {
                         // Si el rol es 'Medico - Atencion', habilitamos el botón 'GestioDePaciente' y deshabilitamos el botón 'HacerTriage'
-                        btnGestioDePaciente.setEnabled(true);
-                        btnHacerTriage.setEnabled(false);
+                        jlbGestionPaciente.setEnabled(true);
+                        jlbHacerTriage.setEnabled(false);
                     }
                     case "Medico - Triage" -> {
                         // Si el rol es 'Medico - Triage', deshabilitamos el botón 'GestioDePaciente' y habilitamos el botón 'HacerTriage'
-                        btnGestioDePaciente.setEnabled(false);
-                        btnHacerTriage.setEnabled(true);
+                        jlbGestionPaciente.setEnabled(false);
+                        jlbHacerTriage.setEnabled(true);
                     }
                     default -> {
                         // Si el rol es cualquier otro, habilitamos ambos botones
-                        btnGestioDePaciente.setEnabled(true);
-                        btnHacerTriage.setEnabled(true);
+                        jlbGestionPaciente.setEnabled(true);
+                        jlbHacerTriage.setEnabled(true);
                     }
                 }
             }
@@ -242,12 +250,15 @@ public class PrincipalMedico extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGestioDePaciente;
-    private javax.swing.JButton btnHacerTriage;
-    private javax.swing.JButton btnMiUsuario;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private java.awt.Label label2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jlbGestionPaciente;
+    private javax.swing.JLabel jlbHacerTriage;
+    private javax.swing.JLabel jlbMiUsu;
     // End of variables declaration//GEN-END:variables
 }
