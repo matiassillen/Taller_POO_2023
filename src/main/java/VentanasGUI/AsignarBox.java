@@ -8,6 +8,7 @@ import Model.Box;
 import Model.Controladora;
 import Model.FuncionarioGeneral;
 import Model.Medico;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,15 +43,21 @@ public class AsignarBox extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        btnVolverAPrincipal = new javax.swing.JButton();
-        btnSeleccionarBox = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaBox = new javax.swing.JTable();
-        btnVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jlbSeleccionar = new javax.swing.JLabel();
+        jlbPrincipal = new javax.swing.JLabel();
+        jlbVolver = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -58,53 +65,10 @@ public class AsignarBox extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnVolverAPrincipal.setBackground(new java.awt.Color(0, 204, 255));
-        btnVolverAPrincipal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVolverAPrincipal.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolverAPrincipal.setText("Principal");
-        btnVolverAPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVolverAPrincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverAPrincipalActionPerformed(evt);
-            }
-        });
-
-        btnSeleccionarBox.setBackground(new java.awt.Color(0, 204, 153));
-        btnSeleccionarBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSeleccionarBox.setForeground(new java.awt.Color(0, 0, 0));
-        btnSeleccionarBox.setText("Seleccionar");
-        btnSeleccionarBox.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSeleccionarBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarBoxActionPerformed(evt);
-            }
-        });
-
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Boxes Disponibles");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(312, 312, 312)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-
+        tablaBox.setBackground(new java.awt.Color(149, 210, 255));
+        tablaBox.setForeground(new java.awt.Color(0, 0, 0));
         tablaBox.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -123,74 +87,150 @@ public class AsignarBox extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaBox);
 
-        btnVolver.setBackground(new java.awt.Color(0, 204, 255));
-        btnVolver.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolver.setText("Volver");
-        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 719, 218));
+
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Boxes Disponibles");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 340, 50));
+
+        jPanel1.setBackground(new java.awt.Color(149, 210, 255));
+
+        jlbSeleccionar.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
+        jlbSeleccionar.setForeground(new java.awt.Color(0, 0, 0));
+        jlbSeleccionar.setText("Seleccionar");
+        jlbSeleccionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbSeleccionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbSeleccionarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbSeleccionarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbSeleccionarMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolverAPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSeleccionarBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+        jlbPrincipal.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
+        jlbPrincipal.setForeground(new java.awt.Color(0, 0, 0));
+        jlbPrincipal.setText("Principal");
+        jlbPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbPrincipalMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbPrincipalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbPrincipalMouseExited(evt);
+            }
+        });
+
+        jlbVolver.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
+        jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jlbVolver.setText("Volver");
+        jlbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\trapo\\Downloads\\kisspng-clinic-hospital-community-health-center-medicine-c-calculation-of-ideal-weight-5b0dc4a0e1bda3.2838225215276289609247 (1).png")); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(jlbVolver)
+                    .addComponent(jlbPrincipal)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbSeleccionar))
+                .addGap(23, 23, 23))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(btnSeleccionarBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVolverAPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(9, 9, 9)
+                .addComponent(jlbSeleccionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbPrincipal)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlbVolver)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 0, 170, 370));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVolverAPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAPrincipalActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaBoxDisponibles();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tablaBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxMouseClicked
+        if (tablaBox.getRowCount() > 0) {
+            if (tablaBox.getSelectedRow() != -1) {
+                int row = tablaBox.getSelectedRow();
+                String idBox = tablaBox.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
+                long id = Long.parseLong(idBox);
+                this.boxSeleccionado = control.traerBox(id);
+                jlbSeleccionar.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_tablaBoxMouseClicked
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        GestionDePacientes tomarP = new GestionDePacientes(control);
+        tomarP.setVisible(true);
+        tomarP.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbPrincipalMouseClicked
         PrincipalMedico principal = new PrincipalMedico(control);
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnVolverAPrincipalActionPerformed
+    }//GEN-LAST:event_jlbPrincipalMouseClicked
 
-    private void btnSeleccionarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarBoxActionPerformed
+    private void jlbSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseClicked
         FuncionarioGeneral func = control.getUsu().getFuncionarioGeneral();
         Medico medico = (Medico) func;
         try {
@@ -202,30 +242,31 @@ public class AsignarBox extends javax.swing.JFrame {
         gestP.setVisible(true);
         gestP.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnSeleccionarBoxActionPerformed
+    }//GEN-LAST:event_jlbSeleccionarMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaBoxDisponibles();
-    }//GEN-LAST:event_formWindowOpened
+    private void jlbSeleccionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseEntered
+        jlbSeleccionar.setForeground(Color.white);
+    }//GEN-LAST:event_jlbSeleccionarMouseEntered
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        GestionDePacientes tomarP = new GestionDePacientes(control);
-        tomarP.setVisible(true);
-        tomarP.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
+    private void jlbSeleccionarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseExited
+        jlbSeleccionar.setForeground(Color.black);
+    }//GEN-LAST:event_jlbSeleccionarMouseExited
 
-    private void tablaBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxMouseClicked
-        if (tablaBox.getRowCount() > 0) {
-            if (tablaBox.getSelectedRow() != -1) {
-                int row = tablaBox.getSelectedRow();
-                String idBox = tablaBox.getModel().getValueAt(row, 0).toString();//se obtiene el id del box
-                long id = Long.parseLong(idBox);
-                this.boxSeleccionado = control.traerBox(id);
-                btnSeleccionarBox.setEnabled(true);
-            }
-        }
-    }//GEN-LAST:event_tablaBoxMouseClicked
+    private void jlbPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbPrincipalMouseEntered
+        jlbPrincipal.setForeground(Color.white);
+    }//GEN-LAST:event_jlbPrincipalMouseEntered
+
+    private void jlbPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbPrincipalMouseExited
+        jlbPrincipal.setForeground(Color.black);
+    }//GEN-LAST:event_jlbPrincipalMouseExited
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
+        jlbVolver.setForeground(Color.black);
+    }//GEN-LAST:event_jlbVolverMouseExited
 
     private void cargarTablaBoxDisponibles() {
         DefaultTableModel modeloTabla = new DefaultTableModel();
@@ -243,13 +284,17 @@ public class AsignarBox extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSeleccionarBox;
-    private javax.swing.JButton btnVolver;
-    private javax.swing.JButton btnVolverAPrincipal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jlbPrincipal;
+    private javax.swing.JLabel jlbSeleccionar;
+    private javax.swing.JLabel jlbVolver;
     private javax.swing.JTable tablaBox;
     // End of variables declaration//GEN-END:variables
 }
