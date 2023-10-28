@@ -331,9 +331,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNormalRespiracionActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbModeradaRespiracion">
                       <Properties>
@@ -469,9 +466,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteLesionLActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbPresenteLesionL">
                       <Properties>
@@ -486,9 +480,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Presente"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbPresenteLesionLActionPerformed"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -596,9 +587,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presente"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteDolorPechoActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbPresenteDolorPecho">
                       <Properties>
@@ -720,9 +708,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNormalPulsoActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbAnormalPulso">
                       <Properties>
@@ -849,9 +834,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Sin Fiebre"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbSinFiebreActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbModeradoFiebre">
                       <Properties>
@@ -992,9 +974,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presente"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteAbdActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbModeradaAbd">
                       <Properties>
@@ -1135,9 +1114,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presente"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteSangradoActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbModeradoSangrado">
                       <Properties>
@@ -1278,9 +1254,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNormalEstadoMentalActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbLeveEstadoMental">
                       <Properties>
@@ -1421,9 +1394,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Sin V&#xf3;mitos"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbSinVomitoActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbModeradoVomito">
                       <Properties>
@@ -1559,9 +1529,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Conciente"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbConcienteActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbInconciente">
                       <Properties>
@@ -1683,9 +1650,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteSignoShockActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbPresenteSignoShock">
                       <Properties>
@@ -1807,9 +1771,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteLesionGActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbPresenteLesionG">
                       <Properties>
@@ -2030,9 +1991,6 @@
               </StringArray>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEdadActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

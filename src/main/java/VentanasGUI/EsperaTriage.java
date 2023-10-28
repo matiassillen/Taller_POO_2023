@@ -16,7 +16,6 @@ import javax.swing.table.DefaultTableModel;
 public class EsperaTriage extends javax.swing.JFrame {
     
     private Controladora control;
-    private Paciente pacienteSelecionado;
     private int idConsulta;
 
     /**
@@ -27,6 +26,8 @@ public class EsperaTriage extends javax.swing.JFrame {
     public EsperaTriage(Controladora control) {
         initComponents();
         this.control = control;
+        this.idConsulta = -1;
+        this.cargartablaEnEspera();
     }
 
     /**
@@ -176,7 +177,7 @@ public class EsperaTriage extends javax.swing.JFrame {
      */
     private void btnSeleccionarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPacienteActionPerformed
         // Comprueba si se ha seleccionado un paciente
-        if (pacienteSelecionado != null) {
+        if (this.idConsulta != -1) {
             // Si se ha seleccionado un paciente, crea una nueva instancia de HacerTriage
             HacerTriage hacerT = new HacerTriage(control, idConsulta);
             // Hace visible la nueva instancia de HacerTriage
@@ -203,7 +204,7 @@ public class EsperaTriage extends javax.swing.JFrame {
             if (tablaEnEspera.getRowCount() > 0) {
                 // Comprueba si se ha seleccionado una fila
                 if (tablaEnEspera.getSelectedRow() != -1) {
-                    // Obtiene el DNI del paciente de la fila seleccionada
+                    // Obtiene el id de la consulta
                     int row = tablaEnEspera.getSelectedRow();
                     String idConsu = tablaEnEspera.getModel().getValueAt(row, 0).toString();
                     this.idConsulta = Integer.parseInt(idConsu);
