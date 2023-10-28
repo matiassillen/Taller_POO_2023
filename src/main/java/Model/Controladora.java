@@ -272,7 +272,8 @@ public class Controladora implements Serializable{
     }
     
     /**
-     * Metodo que cuenta y guarda los 3 pacientes mas atendidos
+     * Metodo guarda los 3 pacientes mas atendidos evaluando la cantidad
+     * de veces que aparece un paciente en el ArrayList de consultas
      * @param listaFiel es un ArrayList de consultas filtradas por fecha
      * @return devuelve un ArrayList de objetos de tipo paciente con los 3 pacientes mas atendidos
      */
@@ -319,9 +320,11 @@ public class Controladora implements Serializable{
     
     
     /**
-     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList de consultas filtradas
-     * @param listaFiltro ArrayList de objetos Consulta de consultas filtrada por fecha
-     * @param listaPaciente ArraList de objetos Paciente que se quiere saber cuantas veces se atendieron
+     * Metodo que devuelve cuantas vecces aparece un paciente en una ArrayList de consultas
+     * @param listaFiltro ArrayList de objetos Consulta
+     * @param listaPaciente ArraList de objetos Paciente
+     * En el ArrayList de pacientes estan aquellos que se quiere contabilizar sus atenciones
+     * Generalmente se usa luego de obtener un ArrayList con el metodo listaPacientesMasAtendidos
      * @return devuelve un ArrayList con Strings de los contadores de cada paciente en el mismo orden que 
      * los pacientes estan en el ArraList de pacientes
      */

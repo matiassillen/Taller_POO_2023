@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Grupo patito
+ *
  */
 public class PacientesMasConsultas extends javax.swing.JFrame {
     Controladora controlP;

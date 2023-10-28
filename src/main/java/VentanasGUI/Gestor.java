@@ -54,7 +54,6 @@ public class Gestor extends javax.swing.JFrame {
 
         btnCantPacienteMedico.setBackground(new java.awt.Color(0, 204, 204));
         btnCantPacienteMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnCantPacienteMedico.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPacienteMedico.setText("Cant. de Pacientes Atendidos Por Médico");
         btnCantPacienteMedico.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCantPacienteMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +65,6 @@ public class Gestor extends javax.swing.JFrame {
 
         btnCantPacienteEdadFecha.setBackground(new java.awt.Color(0, 204, 204));
         btnCantPacienteEdadFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantPacienteEdadFecha.setForeground(new java.awt.Color(0, 0, 0));
         btnCantPacienteEdadFecha.setText("Cant. pacientes atendidos por edad");
         btnCantPacienteEdadFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCantPacienteEdadFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +76,6 @@ public class Gestor extends javax.swing.JFrame {
 
         btnPacienteMasConsulta.setBackground(new java.awt.Color(0, 204, 204));
         btnPacienteMasConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPacienteMasConsulta.setForeground(new java.awt.Color(0, 0, 0));
         btnPacienteMasConsulta.setText("Paciente con más Consultas");
         btnPacienteMasConsulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPacienteMasConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +87,6 @@ public class Gestor extends javax.swing.JFrame {
 
         btnMedicoMasPaciente.setBackground(new java.awt.Color(0, 204, 204));
         btnMedicoMasPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnMedicoMasPaciente.setForeground(new java.awt.Color(0, 0, 0));
         btnMedicoMasPaciente.setText("Médico con más Pacientes");
         btnMedicoMasPaciente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnMedicoMasPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +98,6 @@ public class Gestor extends javax.swing.JFrame {
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 153, 153));
         btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -114,14 +109,17 @@ public class Gestor extends javax.swing.JFrame {
 
         btnCantTriage.setBackground(new java.awt.Color(0, 204, 204));
         btnCantTriage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCantTriage.setForeground(new java.awt.Color(0, 0, 0));
         btnCantTriage.setText("Cant. de Triage y Color");
         btnCantTriage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCantTriage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCantTriageActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCantTriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 300, 40));
 
         btnTriageCambiado.setBackground(new java.awt.Color(0, 204, 204));
         btnTriageCambiado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnTriageCambiado.setForeground(new java.awt.Color(0, 0, 0));
         btnTriageCambiado.setText("Triage Cambiados");
         btnTriageCambiado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnTriageCambiado.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +132,6 @@ public class Gestor extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestores Hospitalarios");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -158,7 +155,6 @@ public class Gestor extends javax.swing.JFrame {
 
         buttonMiUsuario.setBackground(new java.awt.Color(0, 204, 204));
         buttonMiUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonMiUsuario.setForeground(new java.awt.Color(0, 0, 0));
         buttonMiUsuario.setText("Mi usuario");
         buttonMiUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonMiUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,6 +260,15 @@ public class Gestor extends javax.swing.JFrame {
         pantallaUsuario.setVisible(true);
         pantallaUsuario.setLocationRelativeTo(null);
     }//GEN-LAST:event_buttonMiUsuarioMouseClicked
+    /**
+     * Cantidad de triages cambiados en un rango de fechas.
+     * @param evt 
+     */
+    private void btnCantTriageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCantTriageActionPerformed
+        CantTriageColor pantalla= new CantTriageColor();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCantTriageActionPerformed
 
     /**
      * @param args the command line arguments

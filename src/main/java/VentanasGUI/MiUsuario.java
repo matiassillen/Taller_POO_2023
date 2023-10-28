@@ -9,7 +9,7 @@ import Model.Usuario;
 import static java.lang.String.valueOf;
 /**
  *
- * @author Grupo patito
+ * @author
  */
 public class MiUsuario extends javax.swing.JFrame {
     private FuncionarioGeneral usuarioRegistrado;
@@ -20,8 +20,7 @@ public class MiUsuario extends javax.swing.JFrame {
      */
     public MiUsuario(Controladora user) {
         this.user = user;
-        this.usuarioRegistrado = this.user.getUsu().getFuncionarioGeneral();
-        //getFuncionarioGeneral();
+        this.usuarioRegistrado = user.getUsu().getFuncionarioGeneral();
         initComponents();
         this.setMuestra();
         

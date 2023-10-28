@@ -4,8 +4,14 @@
  */
 package Model;
 
+/**
+ * Esta clase contiene todos los sintomas enumerados con su nivel y puntuacion
+ */
 public class Sintomas {
-    // enumeracion de sintomas de respiracion
+    
+    /**
+     * Enumeraciones de sintomas con descripcion de nivel y puntuacion
+     */
     public enum Respiracion {
         NORMAL("Normal", 0),
         MODERADA("Moderada", 1),
@@ -19,6 +25,12 @@ public class Sintomas {
             this.point = b;
         }
 
+        /**
+         * Se documento solo este primer sintoma ya que el resto posee los mismos
+         * metodos
+         * getValorNumerico es el metodo para leer el puntaje del nivel del sintoma
+         * @return devuelve un int con el puntaje de gravedad del sintoma
+         */
         public int getValorNumerico(){
             return this.point;
         }

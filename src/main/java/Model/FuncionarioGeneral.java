@@ -26,60 +26,30 @@ public class FuncionarioGeneral extends Persona {
         super(id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
         this.usu = usu;
     }
-
+    
+    /**
+     *  Deprecated
+     * Metodo que no se utiliza mas, se agrego similar en otra clase
+     * @return
+     */
+    
     public Usuario getUsu() {
         return usu;
     }
 
+    /**
+     * Deprecated
+     * Metodo que no se utiliza mas, se agrego similar en otra clase
+     * @param usu 
+     */
     public void setUsu(Usuario usu) {
         this.usu = usu;
     }
 
-
-    /**
-     * Metodo que genera una ID para el usuario
-     * Accede y modifica la variable static idTotales de la clase Funcionario General
-     * @return devuelve un entero con el valor de la variable luego de su modificacion
-     */
-    /**private static int generarId(){
-        FuncionarioGeneral.idTotales += 1;
-        return FuncionarioGeneral.idTotales;
-    }
-    */
     
     public void verifLogin() {
         // TODO implement here
     }
 
-   
-
-
+  
 }
-
-    /**
-     * @return retorna el id del propio usuario
-     */
-    /**
-     * 
-    public String getIdPersonal() {
-       return String.format("%d",idPersonal);
-    }
-    */
-
-    /**
-     * Metodo para que un usuario con privilegios pueda ver la id de otro usuario
-     * @param otroFuncionario funcionario a consultar la Id
-     * @return retorna el valor de id del funcionario pasado por parametro
-     */
-//    public String getIdAdministrador(FuncionarioGeneral otroFuncionario){
-//        if (this instanceof AdministradorDeSistema){
-//            FuncionarioGeneral varTemp2 = otroFuncionario;
-//            return String.format("%d", varTemp2.idPersonal);
-//        }
-//        else {
-//            return "Error, usuario sin privilegios necesarios";
-//            }
-//        }
-//    }
-    
-    // El siguiente metodo debe verificar que un funcionario tenga privilegios
