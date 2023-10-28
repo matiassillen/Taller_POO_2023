@@ -249,6 +249,11 @@ public class Administrador extends javax.swing.JFrame {
         tablaFuncionariosEnGeneral.setRowHeight(22);
         tablaFuncionariosEnGeneral.setSelectionBackground(new java.awt.Color(51, 153, 255));
         tablaFuncionariosEnGeneral.getTableHeader().setReorderingAllowed(false);
+        tablaFuncionariosEnGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaFuncionariosEnGeneralMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaFuncionariosEnGeneral);
 
         tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
@@ -264,8 +269,14 @@ public class Administrador extends javax.swing.JFrame {
             }
         ));
         tablaUsuarios.setFocusable(false);
+        tablaUsuarios.setRowHeight(22);
         tablaUsuarios.setSelectionBackground(new java.awt.Color(51, 153, 255));
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
+        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaUsuarios);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -538,6 +549,18 @@ public class Administrador extends javax.swing.JFrame {
         datos.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_btnMiUsuarioActionPerformed
+
+    private void tablaFuncionariosEnGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFuncionariosEnGeneralMouseClicked
+        btnCrearUsuario.setEnabled(true);
+        btnBorrarUsuario.setEnabled(false);
+        btnEditarUsuario.setEnabled(false);
+    }//GEN-LAST:event_tablaFuncionariosEnGeneralMouseClicked
+
+    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
+        btnCrearUsuario.setEnabled(false);
+        btnBorrarUsuario.setEnabled(true);
+        btnEditarUsuario.setEnabled(true);
+    }//GEN-LAST:event_tablaUsuariosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarUsuario;

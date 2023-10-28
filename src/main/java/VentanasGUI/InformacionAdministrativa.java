@@ -266,7 +266,7 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         String titulos[] = {"Apellido","Nombre","Fecha","Hora","Lugar","Medico"};
         modeloTabla.setColumnIdentifiers(titulos);
 
-        //Traer de la DB la lista de Gestores
+        
         List<Consulta> listaConsultas = control.traerConsultas();
 
         if (listaConsultas != null) {
@@ -276,6 +276,17 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
 
                 modeloTabla.addRow(objeto);
             }
+        }else {
+    
+    Object[] objeto = {
+        "Lista de consultas vacias", 
+        "", 
+        "", 
+        "", 
+        "", 
+        ""  
+    };
+    modeloTabla.addRow(objeto);
         }
 
         tablaConsultas.setModel(modeloTabla);
@@ -298,7 +309,7 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         String titulos[] = {"Apellido","Nombre","Direccion","Telefono"};
         modeloTabla.setColumnIdentifiers(titulos);
 
-        //Traer de la DB la lista de Gestores
+        
         List<Paciente> listaPacientes = control.traerPacientes();
 
         if (listaPacientes != null) {
@@ -308,9 +319,20 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
 
                 modeloTabla.addRow(objeto);
             }
+        }else {
+    
+    Object[] objeto = {
+        "Lista de pacientes vacia", 
+        "", 
+        "", 
+        "", 
+        "", 
+        ""  
+    };
+    modeloTabla.addRow(objeto);
         }
 
-        tablaConsultas.setModel(modeloTabla);
+        tablaPacientes.setModel(modeloTabla);
     }
 /**
      * Carga la tabla de triages con datos de la controladora.
@@ -326,22 +348,28 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
             }
         };
 
-        //Establecemos los nombres de las columnas
-        String titulos[] = {"Apellido", "Nombre","Color","Triagiador"};
+    
+        String titulos[] = {"Apellido", "Nombre","Color","Enfermero","Medico"};
         modeloTabla.setColumnIdentifiers(titulos);
 
-        //Traer de la DB la lista de Gestores
+    
         List<Triage> listaTriages = control.traerTriages();
 
-        if (listaTriages != null) {
-
-            for (Triage triage : listaTriages) {
-                Object[] objeto = {triage.getConsulta().getPaciente().getApellido(),triage.getConsulta().getPaciente().getNombre(),triage.getColorFinal(),triage.getEnfermero().getApellido()};
-
-                modeloTabla.addRow(objeto);
+    if (listaTriages != null) {
+        for (Triage triage : listaTriages) {
+            if (triage != null) {
+                Consulta consulta = triage.getConsulta();
+                if (consulta != null) {
+                    Paciente paciente = consulta.getPaciente();
+                    if (paciente != null) {
+                        Object[] objeto = {paciente.getApellido(), paciente.getNombre(), triage.getColorFinal(), triage.getEnfermero().getApellido(), triage.getMedico().getApellido()};
+                        modeloTabla.addRow(objeto);
+                    }
+                }
             }
         }
+    }
 
-        tablaTriages.setModel(modeloTabla);
+    tablaTriages.setModel(modeloTabla);
     }
 }
