@@ -46,22 +46,22 @@ public class BuscarUsuario extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        jlbBuscar = new javax.swing.JLabel();
+        btnBuscarr = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMostrarUsuario = new javax.swing.JTextArea();
         jlbVolver = new javax.swing.JLabel();
         jlbLimpiar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(730, 294));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,21 +104,20 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(149, 210, 255));
 
-        jlbBuscar.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
-        jlbBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        jlbBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngwing.com (3).png"))); // NOI18N
-        jlbBuscar.setText("Buscar");
-        jlbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBuscarr.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
+        btnBuscarr.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscarr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBuscarr.setText("Buscar");
+        btnBuscarr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlbBuscarMouseClicked(evt);
+                btnBuscarrMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlbBuscarMouseEntered(evt);
+                btnBuscarrMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlbBuscarMouseExited(evt);
+                btnBuscarrMouseExited(evt);
             }
         });
 
@@ -126,15 +125,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jlbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnBuscarr, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jlbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnBuscarr, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 90, 30));
@@ -146,9 +141,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(149, 210, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usersgroup_99737 (1).png"))); // NOI18N
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         txtMostrarUsuario.setEditable(false);
         txtMostrarUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -172,6 +164,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlbVolverMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbVolverMouseExited(evt);
+            }
         });
         jPanel5.add(jlbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 90, 30));
 
@@ -187,6 +182,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlbLimpiarMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlbLimpiarMouseExited(evt);
+            }
         });
         jPanel5.add(jlbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 90, 30));
 
@@ -196,21 +194,41 @@ public class BuscarUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jlbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseClicked
+    private void jlbLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseClicked
+        txtDni.setText("");
+        txtMostrarUsuario.setText("");
+    }//GEN-LAST:event_jlbLimpiarMouseClicked
+
+    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jlbVolverMouseClicked
+
+    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
+        jlbVolver.setForeground(Color.white);
+    }//GEN-LAST:event_jlbVolverMouseEntered
+
+    private void jlbLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseEntered
+        jlbLimpiar.setForeground(Color.white);
+    }//GEN-LAST:event_jlbLimpiarMouseEntered
+
+    private void txtDniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniMousePressed
+        if(txtDni.getText().equalsIgnoreCase("Ingresar dni")){
+            txtDni.setText("");
+            txtDni.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtDniMousePressed
+
+    private void btnBuscarrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarrMouseClicked
         String documento = txtDni.getText();
         String usuario;
 
@@ -226,51 +244,35 @@ public class BuscarUsuario extends javax.swing.JFrame {
             txtMostrarUsuario.setText(usuario);
 
         }
-    }//GEN-LAST:event_jlbBuscarMouseClicked
+                     
+    }//GEN-LAST:event_btnBuscarrMouseClicked
 
-    private void jlbLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseClicked
-        txtDni.setText("");
-        txtMostrarUsuario.setText("");
-    }//GEN-LAST:event_jlbLimpiarMouseClicked
+    private void btnBuscarrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarrMouseExited
+        btnBuscarr.setForeground(Color.black);
+    }//GEN-LAST:event_btnBuscarrMouseExited
 
-    private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jlbVolverMouseClicked
+    private void btnBuscarrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarrMouseEntered
+        btnBuscarr.setForeground(Color.white);
+    }//GEN-LAST:event_btnBuscarrMouseEntered
 
-    private void jlbBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseEntered
-        jlbBuscar.setForeground(Color.white);
-    }//GEN-LAST:event_jlbBuscarMouseEntered
-
-    private void jlbBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseExited
-        jlbBuscar.setForeground(Color.black);
-    }//GEN-LAST:event_jlbBuscarMouseExited
-
-    private void jlbVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseEntered
-        jlbVolver.setForeground(Color.white);
-    }//GEN-LAST:event_jlbVolverMouseEntered
-
-    private void jlbLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseEntered
+    private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
         jlbVolver.setForeground(Color.black);
-    }//GEN-LAST:event_jlbLimpiarMouseEntered
+    }//GEN-LAST:event_jlbVolverMouseExited
 
-    private void txtDniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniMousePressed
-        if(txtDni.getText().equalsIgnoreCase("Ingresar dni")){
-            txtDni.setText("");
-            txtDni.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_txtDniMousePressed
+    private void jlbLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseExited
+        jlbLimpiar.setForeground(Color.black);
+    }//GEN-LAST:event_jlbLimpiarMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBuscarr;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel jlbBuscar;
     private javax.swing.JLabel jlbLimpiar;
     private javax.swing.JLabel jlbVolver;
     private javax.swing.JTextField txtDni;
