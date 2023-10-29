@@ -24,20 +24,49 @@ import javax.persistence.Persistence;
  */
 public class TituloJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase TituloJpaController con un EntityManagerFactory
+     * proporcionado.
+     *
+     * @param emf El EntityManagerFactory utilizado para interactuar con la base
+     * de datos.
+     */
     public TituloJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase TituloJpaController que crea un
+     * EntityManagerFactory interno.
+     */
     public TituloJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
+    /**
+     * Obtiene un EntityManager para interactuar con la base de datos.
+     *
+     * @return Un EntityManager.
+     */
     private EntityManagerFactory emf = null;
 
+    /**
+     * Crea un nuevo título en la base de datos.
+     *
+     * @param titulo El título que se va a crear.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Edita un título existente en la base de datos.
+     *
+     * @param titulo El título que se va a editar.
+     * @throws NonexistentEntityException Si el título no existe en la base de
+     * datos.
+     * @throws Exception Si se produce un error durante la edición.
+     */
     public void create(Titulo titulo) {
         EntityManager em = null;
         try {
@@ -80,6 +109,14 @@ public class TituloJpaController implements Serializable {
         }
     }
 
+    /**
+     * Edita un título existente en la base de datos.
+     *
+     * @param titulo El título que se va a editar.
+     * @throws NonexistentEntityException Si el título no existe en la base de
+     * datos.
+     * @throws Exception Si se produce un error durante la edición.
+     */
     public void edit(Titulo titulo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -142,6 +179,13 @@ public class TituloJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un título de la base de datos por su ID.
+     *
+     * @param id El ID del título que se va a eliminar.
+     * @throws NonexistentEntityException Si el título no existe en la base de
+     * datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -173,10 +217,22 @@ public class TituloJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene una lista de títulos desde la base de datos.
+     *
+     * @return Una lista de títulos.
+     */
     public List<Titulo> findTituloEntities() {
         return findTituloEntities(true, -1, -1);
     }
 
+    /**
+     * Obtiene una lista de títulos con opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a obtener.
+     * @param firstResult El índice del primer resultado a obtener.
+     * @return Una lista de títulos con opciones de paginación.
+     */
     public List<Titulo> findTituloEntities(int maxResults, int firstResult) {
         return findTituloEntities(false, maxResults, firstResult);
     }
@@ -197,6 +253,12 @@ public class TituloJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca y devuelve un título por su ID en la base de datos.
+     *
+     * @param id El ID del título que se desea buscar.
+     * @return El título con el ID especificado.
+     */
     public Titulo findTitulo(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -206,6 +268,11 @@ public class TituloJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene el número total de títulos en la base de datos.
+     *
+     * @return El número total de títulos.
+     */
     public int getTituloCount() {
         EntityManager em = getEntityManager();
         try {
@@ -218,5 +285,5 @@ public class TituloJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

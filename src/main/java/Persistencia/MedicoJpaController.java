@@ -26,20 +26,41 @@ import javax.persistence.Persistence;
  */
 public class MedicoJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite asignar una instancia de
+     * EntityManagerFactory al controlador de médicos.
+     *
+     * @param emf La fábrica de EntityManagers que se utilizará para gestionar
+     * entidades.
+     */
     public MedicoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase que crea una instancia de EntityManagerFactory
+     * con un nombre específico ("TallerPooPU").
+     */
     public MedicoJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo registro de un médico en la base de datos.
+     *
+     * @param medico El objeto de tipo Medico que se va a crear en la base de
+     * datos.
+     */
     public void create(Medico medico) {
         if (medico.getEspecialidad() == null) {
             medico.setEspecialidad(new ArrayList<Especialidad>());
@@ -95,6 +116,16 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Edita un registro existente de un médico en la base de datos,
+     * actualizando sus atributos y relaciones.
+     *
+     * @param medico El objeto de tipo Medico que se va a editar en la base de
+     * datos.
+     * @throws NonexistentEntityException Si el médico no existe en la base de
+     * datos.
+     * @throws Exception Si se produce un error durante la edición.
+     */
     public void edit(Medico medico) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -178,6 +209,14 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un registro de un médico de la base de datos, incluyendo la
+     * desasociación de relaciones con otras entidades.
+     *
+     * @param id El ID del médico que se va a eliminar de la base de datos.
+     * @throws NonexistentEntityException Si el médico no existe en la base de
+     * datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -214,14 +253,38 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Recupera una lista de todos los registros de médicos en la base de datos.
+     *
+     * @return Una lista de objetos de tipo Medico.
+     */
     public List<Medico> findMedicoEntities() {
         return findMedicoEntities(true, -1, -1);
     }
 
+    /**
+     * Recupera una lista de registros de médicos en la base de datos con
+     * opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Una lista de objetos de tipo Medico, con resultados paginados.
+     */
     public List<Medico> findMedicoEntities(int maxResults, int firstResult) {
         return findMedicoEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * Método privado que realiza la consulta para recuperar una lista de
+     * registros de médicos en la base de datos.
+     *
+     * @param all Determina si se deben recuperar todos los registros o usar
+     * paginación.
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Una lista de objetos de tipo Medico, con resultados paginados si
+     * es necesario.
+     */
     private List<Medico> findMedicoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -238,6 +301,12 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca y recupera un registro de médico en la base de datos por su ID.
+     *
+     * @param id El ID del médico que se va a buscar.
+     * @return El objeto de tipo Medico encontrado, o null si no se encuentra.
+     */
     public Medico findMedico(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -247,6 +316,11 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene el número total de registros de médicos en la base de datos.
+     *
+     * @return El número total de registros de médicos.
+     */
     public int getMedicoCount() {
         EntityManager em = getEntityManager();
         try {
@@ -259,5 +333,5 @@ public class MedicoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

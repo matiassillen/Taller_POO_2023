@@ -28,8 +28,8 @@ public class FuncionarioGeneral extends Persona {
     /**
      * Constructor con parametros
      *
-     * @param usu
-     * @param id
+     * @param usu 
+     * @param id 
      * @param nombre
      * @param apellido
      * @param fechaDeNac

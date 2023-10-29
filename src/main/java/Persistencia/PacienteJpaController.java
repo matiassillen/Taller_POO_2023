@@ -26,20 +26,44 @@ import javax.persistence.Persistence;
  */
 public class PacienteJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite asignar una instancia de
+     * EntityManagerFactory al controlador de pacientes.
+     *
+     * @param emf La fábrica de EntityManagers que se utilizará para gestionar
+     * entidades.
+     */
     public PacienteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase que crea una instancia de EntityManagerFactory
+     * con un nombre específico ("TallerPooPU").
+     */
     public PacienteJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     * Obtiene un EntityManager a partir de la EntityManagerFactory.
+     *
+     * @return Un EntityManager que se utilizará para realizar operaciones en la
+     * base de datos.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo registro de paciente en la base de datos y asocia
+     * diagnósticos clínicos, resultados de estudio y consultas si están
+     * presentes en el objeto Paciente.
+     *
+     * @param paciente El objeto Paciente que se va a crear en la base de datos.
+     */
     public void create(Paciente paciente) {
         if (paciente.getDiagnosticoClinico() == null) {
             paciente.setDiagnosticoClinico(new ArrayList<DiagnosticoClinico>());
@@ -108,6 +132,17 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
+    /**
+     * Actualiza un registro existente de paciente en la base de datos y
+     * gestiona las asociaciones con diagnósticos clínicos, resultados de
+     * estudio y consultas.
+     *
+     * @param paciente El objeto Paciente que se va a actualizar en la base de
+     * datos.
+     * @throws NonexistentEntityException Si el paciente no existe en la base de
+     * datos.
+     * @throws Exception Si ocurre un error durante la actualización.
+     */
     public void edit(Paciente paciente) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -210,6 +245,15 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un registro de paciente de la base de datos, incluyendo la
+     * desasociación de diagnósticos clínicos, resultados de estudio y
+     * consultas.
+     *
+     * @param id El ID del paciente que se va a eliminar de la base de datos.
+     * @throws NonexistentEntityException Si el paciente no existe en la base de
+     * datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -246,14 +290,39 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
+    /**
+     * Recupera una lista de todos los registros de pacientes en la base de
+     * datos.
+     *
+     * @return Una lista de objetos de tipo Paciente.
+     */
     public List<Paciente> findPacienteEntities() {
         return findPacienteEntities(true, -1, -1);
     }
 
+    /**
+     * Recupera una lista de registros de pacientes en la base de datos con
+     * opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Una lista de objetos de tipo Paciente, con resultados paginados.
+     */
     public List<Paciente> findPacienteEntities(int maxResults, int firstResult) {
         return findPacienteEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * Método privado que realiza la consulta para recuperar una lista de
+     * registros de pacientes en la base de datos.
+     *
+     * @param all Determina si se deben recuperar todos los registros o usar
+     * paginación.
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Una lista de objetos de tipo Paciente, con resultados paginados
+     * si es necesario.
+     */
     private List<Paciente> findPacienteEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -270,6 +339,12 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca y recupera un registro de paciente en la base de datos por su ID.
+     *
+     * @param id El ID del paciente que se va a buscar.
+     * @return El objeto de tipo Paciente encontrado, o null si no se encuentra.
+     */
     public Paciente findPaciente(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -279,6 +354,12 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca y recupera un registro de paciente en la base de datos por su ID.
+     *
+     * @param id El ID del paciente que se va a buscar.
+     * @return El objeto de tipo Paciente encontrado, o null si no se encuentra.
+     */
     public int getPacienteCount() {
         EntityManager em = getEntityManager();
         try {
@@ -291,5 +372,5 @@ public class PacienteJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
