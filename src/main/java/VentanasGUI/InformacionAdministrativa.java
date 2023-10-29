@@ -12,18 +12,20 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Esta clase representa la interfaz gráfica de usuario (GUI) para mostrar información administrativa.
- * Muestra tablas de consultas, pacientes y triages.
- * 
- * 
+ * Esta clase representa la interfaz gráfica de usuario (GUI) para mostrar
+ * información administrativa. Muestra tablas de consultas, pacientes y triages.
+ *
+ *
  */
 public class InformacionAdministrativa extends javax.swing.JFrame {
 
     Controladora control;
- /**
+
+    /**
      * Crea una nueva instancia de la ventana InformacionAdministrativa.
      *
-     * @param control La instancia de la clase Controladora para gestionar los datos.
+     * @param control La instancia de la clase Controladora para gestionar los
+     * datos.
      */
     public InformacionAdministrativa(Controladora control) {
         initComponents();
@@ -66,7 +68,8 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Información Administrativa");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -86,7 +89,8 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         );
 
         btnVolver.setBackground(new java.awt.Color(0, 204, 255));
-        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,13 +137,13 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaConsultas);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel2.setText("Consultas");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel4.setText("Pacientes");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel3.setText("Triages");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -194,7 +198,7 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(14, 14, 14))
         );
@@ -208,8 +212,8 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,7 +226,8 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
     /**
-     * Método que se ejecuta al abrir la ventana. Carga las tablas de consultas, pacientes y triages.
+     * Método que se ejecuta al abrir la ventana. Carga las tablas de consultas,
+     * pacientes y triages.
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaConsultas();
@@ -252,50 +257,54 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
      * Carga la tabla de consultas con datos que trae de la controladora.
      */
     private void cargarTablaConsultas() {
-                //Definimos el modelo que queremos que tenga la tabla
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
+        try {
+            //Definimos el modelo que queremos que tenga la tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-            //Que fila y columna no sean editables
-            @Override
-            public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
+                //Que fila y columna no sean editables
+                @Override
+                public boolean isCellEditable(int row, int colum) {
+                    return false;
+                }
+            };
 
-        //Establecemos los nombres de las columnas
-        String titulos[] = {"Apellido","Nombre","Fecha","Hora","Lugar","Medico"};
-        modeloTabla.setColumnIdentifiers(titulos);
+            //Establecemos los nombres de las columnas
+            String titulos[] = {"Apellido", "Nombre", "Fecha", "Hora", "Lugar", "Medico"};
+            modeloTabla.setColumnIdentifiers(titulos);
 
-        
-        List<Consulta> listaConsultas = control.traerConsultas();
+            List<Consulta> listaConsultas = control.traerConsultas();
 
-        if (listaConsultas != null) {
+            if (listaConsultas != null) {
 
-            for (Consulta consulta : listaConsultas) {
-                Object[] objeto = {consulta.getPaciente().getApellido(),consulta.getPaciente().getNombre(),consulta.getFecha(),consulta.getHora(),consulta.getLugar(),consulta.getMedico().getApellido()};
+                for (Consulta consulta : listaConsultas) {
+                    Object[] objeto = {consulta.getPaciente().getApellido(), consulta.getPaciente().getNombre(), consulta.getFecha(), consulta.getHora(), consulta.getLugar(), consulta.getMedico().getApellido()};
 
+                    modeloTabla.addRow(objeto);
+                }
+            } else {
+
+                Object[] objeto = {
+                    "Lista de consultas vacias",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                };
                 modeloTabla.addRow(objeto);
             }
-        }else {
-    
-    Object[] objeto = {
-        "Lista de consultas vacias", 
-        "", 
-        "", 
-        "", 
-        "", 
-        ""  
-    };
-    modeloTabla.addRow(objeto);
-        }
 
-        tablaConsultas.setModel(modeloTabla);
+            tablaConsultas.setModel(modeloTabla);
+        } catch (NullPointerException e) {
+            control.mostrarMensaje("No hay medicos asociados a las consultas", "Error", "Error");
+        }
     }
-  /**
+
+    /**
      * Carga la tabla de pacientes con datos de la controladora.
      */
     private void cargarTablaPacientes() {
-                //Definimos el modelo que queremos que tenga la tabla
+        //Definimos el modelo que queremos que tenga la tabla
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 
             //Que fila y columna no sean editables
@@ -306,70 +315,73 @@ public class InformacionAdministrativa extends javax.swing.JFrame {
         };
 
         //Establecemos los nombres de las columnas
-        String titulos[] = {"Apellido","Nombre","Direccion","Telefono"};
+        String titulos[] = {"Apellido", "Nombre", "Direccion", "Telefono"};
         modeloTabla.setColumnIdentifiers(titulos);
 
-        
         List<Paciente> listaPacientes = control.traerPacientes();
 
         if (listaPacientes != null) {
 
             for (Paciente paciente : listaPacientes) {
-                Object[] objeto = {paciente.getApellido(),paciente.getNombre(),paciente.getDomicilio(),paciente.getTelefonoFijo()};
+                Object[] objeto = {paciente.getApellido(), paciente.getNombre(), paciente.getDomicilio(), paciente.getTelefonoFijo()};
 
                 modeloTabla.addRow(objeto);
             }
-        }else {
-    
-    Object[] objeto = {
-        "Lista de pacientes vacia", 
-        "", 
-        "", 
-        "", 
-        "", 
-        ""  
-    };
-    modeloTabla.addRow(objeto);
+        } else {
+
+            Object[] objeto = {
+                "Lista de pacientes vacia",
+                "",
+                "",
+                "",
+                "",
+                ""
+            };
+            modeloTabla.addRow(objeto);
         }
 
         tablaPacientes.setModel(modeloTabla);
     }
-/**
+
+    /**
      * Carga la tabla de triages con datos de la controladora.
      */
     private void cargarTablaTriages() {
-                //Definimos el modelo que queremos que tenga la tabla
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
+        try {
+            //Definimos el modelo que queremos que tenga la tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-            //Que fila y columna no sean editables
-            @Override
-            public boolean isCellEditable(int row, int colum) {
-                return false;
-            }
-        };
+                //Que fila y columna no sean editables
+                @Override
+                public boolean isCellEditable(int row, int colum) {
+                    return false;
+                }
+            };
 
-    
-        String titulos[] = {"Apellido", "Nombre","Color","Enfermero","Medico"};
-        modeloTabla.setColumnIdentifiers(titulos);
+            String titulos[] = {"Apellido", "Nombre", "Color", "Enfermero", "Medico"};
+            modeloTabla.setColumnIdentifiers(titulos);
 
-    
-        List<Triage> listaTriages = control.traerTriages();
+            List<Triage> listaTriages = control.traerTriages();
 
-    if (listaTriages != null) {
-        for (Triage triage : listaTriages) {
-            if (triage != null) {
-                Consulta consulta = triage.getConsulta();
-                if (consulta != null) {
-                    Paciente paciente = consulta.getPaciente();
-                    if (paciente != null) {
-                        Object[] objeto = {paciente.getApellido(), paciente.getNombre(), triage.getColorFinal(), triage.getEnfermero().getApellido(), triage.getMedico().getApellido()};
-                        modeloTabla.addRow(objeto);
+            if (listaTriages != null) {
+                for (Triage triage : listaTriages) {
+                    if (triage != null) {
+                        Consulta consulta = triage.getConsulta();
+                        if (consulta != null) {
+                            Paciente paciente = consulta.getPaciente();
+                            if (paciente != null) {
+                                Object[] objeto = {paciente.getApellido(), paciente.getNombre(), triage.getColorFinal(), triage.getEnfermero().getApellido(), triage.getMedico().getApellido()};
+                                modeloTabla.addRow(objeto);
+                            }
+                        }
                     }
                 }
             }
+
+            tablaTriages.setModel(modeloTabla);
+        } catch (NullPointerException e) {
+            control.mostrarMensaje("No hay Licenciados en Enfermeria asociados a los triages realizados", "Error", "Error");
         }
     }
 
-    tablaTriages.setModel(modeloTabla);
-    }
 }

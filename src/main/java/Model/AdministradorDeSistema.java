@@ -36,10 +36,7 @@ public class AdministradorDeSistema extends FuncAdministrativo {
     public AdministradorDeSistema(Sector sector, Usuario usu, long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         super(sector, usu, id, nombre, apellido, fechaDeNac, domicilio, dni, telefonoFijo, telefonoCel, correoE, estadoCivil);
     }
-
-    public void VerInfoAdministrativa() {
-        // TODO implement here
-    }
+    
 
     /**
      * Método que crea un nuevo usuario con el nombre de usuario y contraseña

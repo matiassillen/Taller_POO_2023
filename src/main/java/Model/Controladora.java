@@ -424,48 +424,6 @@ public class Controladora implements Serializable {
         return cantidadAtencion;
     }
 
-////    /**
-////     * Metodo que devuelve los 3 pacientes que mas consultas tuvieron en un rango de fechas
-////     * @param fecha1 limite inferior
-////     * @param fecha2 limite superior
-////     * @return devuelve un ArrayList que contiene otros ArrayList por cada paciente
-////     */
-////    public ArrayList<Object> listaPacientesMasAtendidos(LocalDate fecha1, LocalDate fecha2) {
-////        Paciente pacienteAux = null;
-////        ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha2);
-////        ArrayList<Object> accesoDirecto = new ArrayList<>();
-////        
-////        for(int repeticiones = 0; repeticiones < 3; repeticiones ++){
-////            
-////            ArrayList<Object> agregarEstadistica = this.pacienteMasAtendido(fecha1, fecha2, listaFiltro);
-////            pacienteAux = (Paciente) agregarEstadistica.get(0);
-////            for (Consulta eliminaConsulta : listaFiltro) {
-////                if (eliminaConsulta.getPaciente().getId() == pacienteAux.getId())
-////                    listaFiltro.remove(eliminaConsulta);
-////            }
-////            accesoDirecto.add(agregarEstadistica);
-////        }
-////        return accesoDirecto;
-////    }
-    //---------Metodos estadisticos----------
-    public void VerEstadistica() {
-        // TODO implement here
-    }
-////////////     public static Map<TipoColor, Integer> triageFiltrarColorYFecha(String fecha1, String fecha2) {
-//////////////        Map<String, Integer> diccionario = new HashMap<>();
-//////////////        for (Codigo Para Recorer Arbol de Tiage) {
-//////////////            if (Clase.fecha<fecha1&&Clase.fecha<fecha2) {
-//////////////                tipoColor clave = Triage.ColorFinal;
-//////////////                if(diccionario.containsKey(clave)){
-//////////////                    diccionario.merge(clave, 1, Integer::sum);
-//////////////                }else{
-//////////////                    diccionario.put(clave, 1);
-//////////////                }
-//////////////            }            
-//////////////        }
-//////////////        return diccionario;
-////////////    }
-
     /*
     * Validar es el metodo publico que llama a validacion
     * @return retorna un objeto Usuario
