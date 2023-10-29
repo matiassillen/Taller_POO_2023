@@ -19,25 +19,50 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
- * @author Matías Sillen Ríos
+ * La clase `FuncAdministrativoJpaController` se encarga de controlar la
+ * persistencia de los funcionarios administrativos en la base de datos.
+ * Proporciona métodos para crear, editar, eliminar y recuperar funcionarios
+ * administrativos.
  */
 public class FuncAdministrativoJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite especificar la `EntityManagerFactory`
+     * a utilizar.
+     *
+     * @param emf La `EntityManagerFactory` que se utilizará para interactuar
+     * con la base de datos.
+     */
     public FuncAdministrativoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase que utiliza la configuración predeterminada para
+     * la `EntityManagerFactory`.
+     */
     public FuncAdministrativoJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     * Obtiene una instancia de `EntityManager` para interactuar con la base de
+     * datos.
+     *
+     * @return Una instancia de `EntityManager`.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo funcionario administrativo en la base de datos.
+     *
+     * @param funcAdministrativo El objeto `FuncAdministrativo` que se
+     * registrará en la base de datos.
+     */
     public void create(FuncAdministrativo funcAdministrativo) {
         EntityManager em = null;
         try {
@@ -75,6 +100,15 @@ public class FuncAdministrativoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Edita un funcionario administrativo existente en la base de datos.
+     *
+     * @param funcAdministrativo El objeto `FuncAdministrativo` con los cambios
+     * que se aplicarán en la base de datos.
+     * @throws NonexistentEntityException Si el funcionario administrativo no
+     * existe en la base de datos.
+     * @throws Exception Si ocurre un error durante la edición.
+     */
     public void edit(FuncAdministrativo funcAdministrativo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -132,6 +166,14 @@ public class FuncAdministrativoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un funcionario administrativo de la base de datos por su ID.
+     *
+     * @param id El ID del funcionario administrativo que se eliminará de la
+     * base de datos.
+     * @throws NonexistentEntityException Si el funcionario administrativo no
+     * existe en la base de datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -163,14 +205,40 @@ public class FuncAdministrativoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene una lista de todos los funcionarios administrativos registrados
+     * en la base de datos.
+     *
+     * @return Lista de objetos `FuncAdministrativo`.
+     */
     public List<FuncAdministrativo> findFuncAdministrativoEntities() {
         return findFuncAdministrativoEntities(true, -1, -1);
     }
 
+    /**
+     * Obtiene una lista de funcionarios administrativos registrados en la base
+     * de datos con opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `FuncAdministrativo` que cumplen con las
+     * opciones de paginación.
+     */
     public List<FuncAdministrativo> findFuncAdministrativoEntities(int maxResults, int firstResult) {
         return findFuncAdministrativoEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * Obtiene una lista de funcionarios administrativos registrados en la base
+     * de datos con opciones de paginación.
+     *
+     * @param all Indica si se deben devolver todos los funcionarios
+     * administrativos sin aplicar opciones de paginación.
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `FuncAdministrativo` que cumplen con las
+     * opciones de paginación.
+     */
     private List<FuncAdministrativo> findFuncAdministrativoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -187,6 +255,12 @@ public class FuncAdministrativoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene un funcionario administrativo por su ID.
+     *
+     * @param id El ID del funcionario administrativo que se busca.
+     * @return El objeto `FuncAdministrativo` encontrado o null si no existe.
+     */
     public FuncAdministrativo findFuncAdministrativo(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -196,6 +270,12 @@ public class FuncAdministrativoJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene la cantidad de funcionarios administrativos registrados en la
+     * base de datos.
+     *
+     * @return El número de funcionarios administrativos registrados.
+     */
     public int getFuncAdministrativoCount() {
         EntityManager em = getEntityManager();
         try {
@@ -208,5 +288,5 @@ public class FuncAdministrativoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

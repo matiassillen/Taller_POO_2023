@@ -18,25 +18,41 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
- * @author Matías Sillen Ríos
+ * La clase `DiagnosticoClinicoJpaController` se encarga de controlar la persistencia de los diagnósticos clínicos en la base de datos.
+ * Proporciona métodos para crear, editar, eliminar y recuperar diagnósticos clínicos.
  */
 public class DiagnosticoClinicoJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite especificar la `EntityManagerFactory` a utilizar.
+     * 
+     * @param emf La `EntityManagerFactory` que se utilizará para interactuar con la base de datos.
+     */
     public DiagnosticoClinicoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+    /**
+     * Constructor de la clase que utiliza la configuración predeterminada para la `EntityManagerFactory`.
+     */
     public DiagnosticoClinicoJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
     
     private EntityManagerFactory emf = null;
-
+   /**
+     * Obtiene una instancia de `EntityManager` para interactuar con la base de datos.
+     * 
+     * @return Una instancia de `EntityManager`.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo diagnóstico clínico en la base de datos.
+     * 
+     * @param diagnosticoClinico El objeto `DiagnosticoClinico` que se registrará en la base de datos.
+     */
     public void create(DiagnosticoClinico diagnosticoClinico) {
         EntityManager em = null;
         try {
@@ -59,7 +75,13 @@ public class DiagnosticoClinicoJpaController implements Serializable {
             }
         }
     }
-
+    /**
+     * Edita un diagnóstico clínico existente en la base de datos.
+     * 
+     * @param diagnosticoClinico El objeto `DiagnosticoClinico` con los cambios que se aplicarán en la base de datos.
+     * @throws NonexistentEntityException Si el diagnóstico clínico no existe en la base de datos.
+     * @throws Exception Si ocurre un error durante la edición.
+     */
     public void edit(DiagnosticoClinico diagnosticoClinico) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -97,7 +119,12 @@ public class DiagnosticoClinicoJpaController implements Serializable {
             }
         }
     }
-
+    /**
+     * Elimina un diagnóstico clínico de la base de datos por su ID.
+     * 
+     * @param id El ID del diagnóstico clínico que se eliminará de la base de datos.
+     * @throws NonexistentEntityException Si el diagnóstico clínico no existe en la base de datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -123,15 +150,33 @@ public class DiagnosticoClinicoJpaController implements Serializable {
             }
         }
     }
-
+    /**
+     * Obtiene una lista de todos los diagnósticos clínicos registrados en la base de datos.
+     * 
+     * @return Lista de objetos `DiagnosticoClinico`.
+     */
     public List<DiagnosticoClinico> findDiagnosticoClinicoEntities() {
         return findDiagnosticoClinicoEntities(true, -1, -1);
     }
-
+    /**
+     * Obtiene una lista de diagnósticos clínicos registrados en la base de datos con opciones de paginación.
+     * 
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `DiagnosticoClinico` que cumplen con las opciones de paginación.
+     */
     public List<DiagnosticoClinico> findDiagnosticoClinicoEntities(int maxResults, int firstResult) {
         return findDiagnosticoClinicoEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * Obtiene una lista de diagnósticos clínicos registrados en la base de datos con opciones de paginación.
+     * 
+     * @param all Indica si se deben devolver todos los diagnósticos clínicos sin aplicar opciones de paginación.
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `DiagnosticoClinico` que cumplen con las opciones de paginación.
+     */
     private List<DiagnosticoClinico> findDiagnosticoClinicoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -147,7 +192,12 @@ public class DiagnosticoClinicoJpaController implements Serializable {
             em.close();
         }
     }
-
+    /**
+     * Obtiene un diagnóstico clínico por su ID.
+     * 
+     * @param id El ID del diagnóstico clínico que se busca.
+     * @return El objeto `DiagnosticoClinico` encontrado o null si no existe.
+     */
     public DiagnosticoClinico findDiagnosticoClinico(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -156,7 +206,11 @@ public class DiagnosticoClinicoJpaController implements Serializable {
             em.close();
         }
     }
-
+   /**
+     * Obtiene la cantidad de diagnósticos clínicos registrados en la base de datos.
+     * 
+     * @return El número de diagnósticos clínicos registrados.
+     */
     public int getDiagnosticoClinicoCount() {
         EntityManager em = getEntityManager();
         try {

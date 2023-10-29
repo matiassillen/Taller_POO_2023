@@ -18,25 +18,49 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
- * @author Matías Sillen Ríos
+ * La clase `FuncionarioGeneralJpaController` se encarga de controlar la
+ * persistencia de los funcionarios generales en la base de datos. Proporciona
+ * métodos para crear, editar, eliminar y recuperar funcionarios generales.
  */
 public class FuncionarioGeneralJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite especificar la `EntityManagerFactory`
+     * a utilizar.
+     *
+     * @param emf La `EntityManagerFactory` que se utilizará para interactuar
+     * con la base de datos.
+     */
     public FuncionarioGeneralJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase que utiliza la configuración predeterminada para
+     * la `EntityManagerFactory`.
+     */
     public FuncionarioGeneralJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     * Obtiene una instancia de `EntityManager` para interactuar con la base de
+     * datos.
+     *
+     * @return Una instancia de `EntityManager`.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo funcionario general en la base de datos.
+     *
+     * @param funcionarioGeneral El objeto `FuncionarioGeneral` que se
+     * registrará en la base de datos.
+     */
     public void create(FuncionarioGeneral funcionarioGeneral) {
         EntityManager em = null;
         try {
@@ -65,6 +89,15 @@ public class FuncionarioGeneralJpaController implements Serializable {
         }
     }
 
+    /**
+     * Edita un funcionario general existente en la base de datos.
+     *
+     * @param funcionarioGeneral El objeto `FuncionarioGeneral` con los cambios
+     * que se aplicarán en la base de datos.
+     * @throws NonexistentEntityException Si el funcionario general no existe en
+     * la base de datos.
+     * @throws Exception Si ocurre un error durante la edición.
+     */
     public void edit(FuncionarioGeneral funcionarioGeneral) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -108,6 +141,14 @@ public class FuncionarioGeneralJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un funcionario general de la base de datos por su ID.
+     *
+     * @param id El ID del funcionario general que se eliminará de la base de
+     * datos.
+     * @throws NonexistentEntityException Si el funcionario general no existe en
+     * la base de datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -134,14 +175,42 @@ public class FuncionarioGeneralJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene una lista de todos los funcionarios generales registrados en la
+     * base de datos.
+     *
+     * @return Lista de objetos `FuncionarioGeneral`.
+     */
     public List<FuncionarioGeneral> findFuncionarioGeneralEntities() {
         return findFuncionarioGeneralEntities(true, -1, -1);
     }
 
+    /**
+     * Obtiene una lista de funcionarios generales registrados en la base de
+     * datos con opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `FuncionarioGeneral` que cumplen con las
+     * opciones de paginación.
+     */
     public List<FuncionarioGeneral> findFuncionarioGeneralEntities(int maxResults, int firstResult) {
         return findFuncionarioGeneralEntities(false, maxResults, firstResult);
     }
 
+ 
+
+    /**
+     * Obtiene una lista de funcionarios generales registrados en la base de
+     * datos con opciones de paginación.
+     *
+     * @param all Indica si se deben devolver todos los funcionarios generales
+     * sin aplicar opciones de paginación.
+     * @param maxResults El número máximo de resultados a devolver.
+     * @param firstResult El índice del primer resultado a devolver.
+     * @return Lista de objetos `FuncionarioGeneral` que cumplen con las
+     * opciones de paginación.
+     */
     private List<FuncionarioGeneral> findFuncionarioGeneralEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -158,6 +227,12 @@ public class FuncionarioGeneralJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene un funcionario general por su ID.
+     *
+     * @param id El ID del funcionario general que se busca.
+     * @return El objeto `FuncionarioGeneral` encontrado o null si no existe.
+     */
     public FuncionarioGeneral findFuncionarioGeneral(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -166,7 +241,6 @@ public class FuncionarioGeneralJpaController implements Serializable {
             em.close();
         }
     }
-
     public int getFuncionarioGeneralCount() {
         EntityManager em = getEntityManager();
         try {
