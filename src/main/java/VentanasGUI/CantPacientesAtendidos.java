@@ -319,7 +319,23 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
             }else{
 
                 String resultadoCant = this.controlP.contadorPacientesEdad(edadOne, edadTwo, fecha1, fecha2);
-                txtCantidad.setText(resultadoCant);
+                
+                if (resultadoCant == null) {
+                    JOptionPane.showMessageDialog(
+                    null,
+                    "Error en ejecucion", 
+                    "Error",  
+                    JOptionPane.ERROR_MESSAGE  
+                );   
+                    
+                }else {
+                    if(resultadoCant == "0") {
+                        txtCantidad.setText(resultadoCant);
+                    }
+                    else {
+                    txtCantidad.setText(resultadoCant);
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jlbConsuMouseClicked
