@@ -6,8 +6,6 @@ package VentanasGUI;
 
 import Model.Box;
 import Model.Controladora;
-import Model.FuncionarioGeneral;
-import Model.Medico;
 import Model.Usuario;
 import java.awt.Color;
 import java.util.List;
@@ -208,7 +206,13 @@ public class AsignarBox extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaBoxDisponibles();
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Método que se ejecuta cuando se hace clic en la tabla 'tablaBox'. Este
+     * método verifica si la tabla tiene filas y si se ha seleccionado una fila,
+     * luego obtiene el ID del box de la fila seleccionada y lo guarda.
+     *
+     * @param evt El evento del ratón.
+     */
     private void tablaBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBoxMouseClicked
         if (tablaBox.getRowCount() > 0) {
             if (tablaBox.getSelectedRow() != -1) {
@@ -220,21 +224,39 @@ public class AsignarBox extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tablaBoxMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente 'jlbVolver'.
+     * Este método abre la ventana de gestión de pacientes y cierra la ventana
+     * actual.
+     *
+     * @param evt El evento .
+     */
     private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
         GestionDePacientes tomarP = new GestionDePacientes(control);
         tomarP.setVisible(true);
         tomarP.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVolverMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente
+     * 'jlbPrincipal'. Este método abre la ventana principal del médico y cierra
+     * la ventana actual.
+     *
+     * @param evt El evento .
+     */
     private void jlbPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbPrincipalMouseClicked
         PrincipalMedico principal = new PrincipalMedico(control);
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbPrincipalMouseClicked
-
+    /**
+     * Este método verifica si se ha seleccionado un box, toma el paciente para
+     * ese box, abre la ventana de gestión de pacientes y cierra la ventana
+     * actual. Si no se ha seleccionado un box, muestra un mensaje de error.
+     *
+     * @param evt El evento .
+     */
     private void jlbSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbSeleccionarMouseClicked
 
         if (idBoxSelect != -1) {
@@ -277,7 +299,12 @@ public class AsignarBox extends javax.swing.JFrame {
     private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
         jlbVolver.setForeground(Color.black);
     }//GEN-LAST:event_jlbVolverMouseExited
-
+    /**
+     * Método para cargar una tabla con los boxes disponibles. Este método crea
+     * un nuevo modelo de tabla, establece los identificadores de las columnas,
+     * recupera una lista de boxes disponibles, añade cada box a la tabla y
+     * luego establece el modelo de la tabla.
+     */
     private void cargarTablaBoxDisponibles() {
         DefaultTableModel modeloTabla = new DefaultTableModel() {
             @Override
