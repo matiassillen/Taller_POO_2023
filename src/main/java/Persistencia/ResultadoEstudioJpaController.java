@@ -23,20 +23,43 @@ import javax.persistence.Persistence;
  */
 public class ResultadoEstudioJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase que permite asignar una instancia de
+     * EntityManagerFactory al controlador de resultados de estudios.
+     *
+     * @param emf La fábrica de EntityManagers que se utilizará para gestionar
+     * entidades.
+     */
     public ResultadoEstudioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase que crea una instancia de EntityManagerFactory
+     * con un nombre específico ("TallerPooPU").
+     */
     public ResultadoEstudioJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     * Obtiene una instancia de EntityManager del EntityManagerFactory asociado
+     * al controlador.
+     *
+     * @return Una instancia de EntityManager para gestionar entidades.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo resultado de estudio en la base de datos y establece la
+     * relación con el paciente correspondiente.
+     *
+     * @param resultadoEstudio El resultado de estudio que se va a crear.
+     */
     public void create(ResultadoEstudio resultadoEstudio) {
         EntityManager em = null;
         try {
@@ -60,6 +83,12 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
+    /**
+     * Crea un nuevo resultado de estudio en la base de datos y establece la
+     * relación con el paciente correspondiente.
+     *
+     * @param resultadoEstudio El resultado de estudio que se va a crear.
+     */
     public void edit(ResultadoEstudio resultadoEstudio) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -98,6 +127,14 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un resultado de estudio de la base de datos y actualiza la
+     * relación con el paciente.
+     *
+     * @param id El ID del resultado de estudio que se va a eliminar.
+     * @throws NonexistentEntityException Si el resultado de estudio no existe
+     * en la base de datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -124,6 +161,14 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un resultado de estudio de la base de datos y actualiza la
+     * relación con el paciente.
+     *
+     * @param id El ID del resultado de estudio que se va a eliminar.
+     * @throws NonexistentEntityException Si el resultado de estudio no existe
+     * en la base de datos.
+     */
     public List<ResultadoEstudio> findResultadoEstudioEntities() {
         return findResultadoEstudioEntities(true, -1, -1);
     }
@@ -132,6 +177,13 @@ public class ResultadoEstudioJpaController implements Serializable {
         return findResultadoEstudioEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * Obtiene una lista de resultados de estudio con opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a obtener.
+     * @param firstResult El índice del primer resultado a obtener.
+     * @return Una lista de resultados de estudio con paginación.
+     */
     private List<ResultadoEstudio> findResultadoEstudioEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -148,6 +200,12 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca un resultado de estudio por su ID en la base de datos.
+     *
+     * @param id El ID del resultado de estudio que se busca.
+     * @return El resultado de estudio encontrado o null si no se encuentra.
+     */
     public ResultadoEstudio findResultadoEstudio(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -157,6 +215,11 @@ public class ResultadoEstudioJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene el número total de resultados de estudio en la base de datos.
+     *
+     * @return El número total de resultados de estudio.
+     */
     public int getResultadoEstudioCount() {
         EntityManager em = getEntityManager();
         try {
@@ -169,5 +232,5 @@ public class ResultadoEstudioJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -25,19 +25,40 @@ import javax.persistence.Persistence;
  */
 public class UsuarioJpaController implements Serializable {
 
+    /**
+ * Constructor de la clase UsuarioJpaController con un EntityManagerFactory proporcionado.
+ *
+ * @param emf El EntityManagerFactory utilizado para interactuar con la base de datos.
+ */
+    
     public UsuarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
+    /**
+ * Constructor de la clase UsuarioJpaController que crea un EntityManagerFactory interno.
+ */
     public UsuarioJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
 
     private EntityManagerFactory emf = null;
 
+    /**
+ * Obtiene un EntityManager para interactuar con la base de datos.
+ *
+ * @return Un EntityManager.
+ */
+    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    
+    /**
+ * Crea un nuevo registro de usuario en la base de datos.
+ *
+ * @param usuario El registro de usuario que se va a crear.
+ */
 
     public void create(Usuario usuario) {
         if (usuario.getRol() == null) {
@@ -80,6 +101,14 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+ * Edita un registro de usuario existente en la base de datos.
+ *
+ * @param usuario El registro de usuario que se va a editar.
+ * @throws NonexistentEntityException Si el registro de usuario no existe en la base de datos.
+ * @throws Exception Si se produce un error durante la edición.
+ */
+    
     public void edit(Usuario usuario) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -143,6 +172,13 @@ public class UsuarioJpaController implements Serializable {
             }
         }
     }
+    
+    /**
+ * Elimina un registro de usuario de la base de datos por su ID.
+ *
+ * @param id El ID del registro de usuario que se va a eliminar.
+ * @throws NonexistentEntityException Si el registro de usuario no existe en la base de datos.
+ */
 
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
@@ -174,11 +210,25 @@ public class UsuarioJpaController implements Serializable {
             }
         }
     }
+    
+    /**
+ * Obtiene una lista de registros de usuario desde la base de datos.
+ *
+ * @return Una lista de registros de usuario.
+ */
 
     public List<Usuario> findUsuarioEntities() {
         return findUsuarioEntities(true, -1, -1);
     }
 
+    /**
+ * Obtiene una lista de registros de usuario con opciones de paginación.
+ *
+ * @param maxResults El número máximo de resultados a obtener.
+ * @param firstResult El índice del primer resultado a obtener.
+ * @return Una lista de registros de usuario con opciones de paginación.
+ */
+    
     public List<Usuario> findUsuarioEntities(int maxResults, int firstResult) {
         return findUsuarioEntities(false, maxResults, firstResult);
     }
@@ -199,6 +249,12 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+   /**
+ * Busca y devuelve un registro de usuario por su ID en la base de datos.
+ *
+ * @param id El ID del registro de usuario que se desea buscar.
+ * @return El registro de usuario con el ID especificado.
+ */
     public Usuario findUsuario(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -208,6 +264,12 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+ * Obtiene el número total de registros de usuario en la base de datos.
+ *
+ * @return El número total de registros de usuario.
+ */
+    
     public int getUsuarioCount() {
         EntityManager em = getEntityManager();
         try {

@@ -23,20 +23,41 @@ import javax.persistence.Persistence;
  */
 public class TriageJpaController implements Serializable {
 
+    /**
+     * Constructor de la clase TriageJpaController con un EntityManagerFactory
+     * proporcionado.
+     *
+     * @param emf El EntityManagerFactory utilizado para interactuar con la base
+     * de datos.
+     */
     public TriageJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
+    /**
+     * Constructor de la clase TriageJpaController que crea un
+     * EntityManagerFactory interno.
+     */
     public TriageJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
+    /**
+     * Obtiene un EntityManager para interactuar con la base de datos.
+     *
+     * @return Un EntityManager.
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * Crea un nuevo registro de triaje en la base de datos.
+     *
+     * @param triage El registro de triaje que se va a crear.
+     */
     public void create(Triage triage) {
         EntityManager em = null;
         try {
@@ -65,6 +86,14 @@ public class TriageJpaController implements Serializable {
         }
     }
 
+    /**
+     * Edita un registro de triaje existente en la base de datos.
+     *
+     * @param triage El registro de triaje que se va a editar.
+     * @throws NonexistentEntityException Si el registro de triaje no existe en
+     * la base de datos.
+     * @throws Exception Si se produce un error durante la edición.
+     */
     public void edit(Triage triage) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -108,6 +137,13 @@ public class TriageJpaController implements Serializable {
         }
     }
 
+    /**
+     * Elimina un registro de triaje de la base de datos por su ID.
+     *
+     * @param id El ID del registro de triaje que se va a eliminar.
+     * @throws NonexistentEntityException Si el registro de triaje no existe en
+     * la base de datos.
+     */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -134,10 +170,22 @@ public class TriageJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene una lista de registros de triaje desde la base de datos.
+     *
+     * @return Una lista de registros de triaje.
+     */
     public List<Triage> findTriageEntities() {
         return findTriageEntities(true, -1, -1);
     }
 
+    /**
+     * Obtiene una lista de registros de triaje con opciones de paginación.
+     *
+     * @param maxResults El número máximo de resultados a obtener.
+     * @param firstResult El índice del primer resultado a obtener.
+     * @return Una lista de registros de triaje con opciones de paginación.
+     */
     public List<Triage> findTriageEntities(int maxResults, int firstResult) {
         return findTriageEntities(false, maxResults, firstResult);
     }
@@ -158,6 +206,12 @@ public class TriageJpaController implements Serializable {
         }
     }
 
+    /**
+     * Busca y devuelve un registro de triaje por su ID en la base de datos.
+     *
+     * @param id El ID del registro de triaje que se desea buscar.
+     * @return El registro de triaje con el ID especificado.
+     */
     public Triage findTriage(long id) {
         EntityManager em = getEntityManager();
         try {
@@ -167,6 +221,11 @@ public class TriageJpaController implements Serializable {
         }
     }
 
+    /**
+     * Obtiene el número total de registros de triaje en la base de datos.
+     *
+     * @return El número total de registros de triaje.
+     */
     public int getTriageCount() {
         EntityManager em = getEntityManager();
         try {
@@ -179,5 +238,5 @@ public class TriageJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
