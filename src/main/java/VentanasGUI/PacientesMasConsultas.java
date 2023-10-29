@@ -233,7 +233,7 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
         
         if (estado){
             int diaOne = fechaOne.get(Calendar.DATE);
-            int mesOne = fechaOne.get(Calendar.MONTH);
+            int mesOne = fechaOne.get(Calendar.MONTH) + 1 ;
             int anioOne = fechaOne.get(Calendar.YEAR);
 
             fecha1 = LocalDate.of(anioOne,mesOne,diaOne);
@@ -243,7 +243,7 @@ public class PacientesMasConsultas extends javax.swing.JFrame {
             }
             else {
                 int diaTwo = fechaTwo.get(Calendar.DATE);
-                int mesTwo = fechaTwo.get(Calendar.MONTH);
+                int mesTwo = fechaTwo.get(Calendar.MONTH) + 1 ;
                 int anioTwo = fechaTwo.get(Calendar.YEAR);
                 fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
             }

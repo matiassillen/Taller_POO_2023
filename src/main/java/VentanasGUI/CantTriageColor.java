@@ -211,11 +211,11 @@ public class CantTriageColor extends javax.swing.JFrame {
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
         int diaOne = fechaOne.get(Calendar.DATE);
-        int medOne = fechaOne.get(Calendar.MONTH);
+        int medOne = fechaOne.get(Calendar.MONTH) +1 ;
         int yearOne = fechaOne.get(Calendar.YEAR);
         
         int diaTwo = fechaTwo.get(Calendar.DATE);
-        int mesTwo = fechaTwo.get(Calendar.MONTH);
+        int mesTwo = fechaTwo.get(Calendar.MONTH) +1 ;
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
         LocalDate fecha1= LocalDate.of(yearOne,medOne,diaOne);
