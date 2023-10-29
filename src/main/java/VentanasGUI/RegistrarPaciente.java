@@ -448,6 +448,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
                 // Se obtiene la fecha del objeto JCalendar
                 Calendar calendar = jdcFechaNacimiento.getCalendar();
+                calendar.add(Calendar.MONTH, 1);
 
                 // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
                 SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");

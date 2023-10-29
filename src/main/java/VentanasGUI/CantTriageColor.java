@@ -16,14 +16,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esta clase representa la ventana que muestra la cantidad de triages según el color.
+ * Permite al usuario seleccionar un rango de fechas y ver la cantidad de triages de cada color dentro de ese rango.
  *
- * @author Matías Sillen Ríos
+ * 
  */
 public class CantTriageColor extends javax.swing.JFrame {
     Controladora control= null;
 
     /**
-     * Creates new form CantTriageColor
+     * Constructor de la clase CantTriageColor.
+     * Inicializa la instancia de la clase y la configuración inicial de la interfaz de usuario.
      */
     public CantTriageColor() {
         control=new Controladora();
@@ -197,17 +200,22 @@ public class CantTriageColor extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-
+ /**
+     * Manejador de eventos que se ejecuta al hacer clic en el botón "Buscar".
+     * Realiza la búsqueda de triages en el rango de fechas especificado y muestra los resultados en la tabla.
+     *
+     * @param evt Evento de clic del mouse.
+     */
     private void jlbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseClicked
         Calendar fechaOne = jDateChooser1.getCalendar();
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
         int diaOne = fechaOne.get(Calendar.DATE);
-        int medOne = fechaOne.get(Calendar.MONTH);
+        int medOne = fechaOne.get(Calendar.MONTH) +1 ;
         int yearOne = fechaOne.get(Calendar.YEAR);
         
         int diaTwo = fechaTwo.get(Calendar.DATE);
-        int mesTwo = fechaTwo.get(Calendar.MONTH);
+        int mesTwo = fechaTwo.get(Calendar.MONTH) +1 ;
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
         LocalDate fecha1= LocalDate.of(yearOne,medOne,diaOne);
@@ -276,26 +284,52 @@ public class CantTriageColor extends javax.swing.JFrame {
        
         }
     }//GEN-LAST:event_jlbBuscarMouseClicked
-
+ /**
+     * Manejador de eventos que se ejecuta al hacer clic en el botón "Volver".
+     * Permite regresar a la pantalla de gestión principal.
+     *
+     * @param evt Evento de clic del mouse.
+     */
     private void jlbVovlerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVovlerMouseClicked
         Gestor pantallaGestion = new Gestor(control);
         pantallaGestion.setVisible(true);
         pantallaGestion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVovlerMouseClicked
-
+/**
+     * Manejador de eventos que se ejecuta cuando el mouse entra en el área del botón "Buscar".
+     * Cambia el color del texto para resaltar el botón.
+     *
+     * @param evt Evento de entrada del mouse.
+     */
     private void jlbBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseEntered
         jlbBuscar.setForeground(Color.white);
     }//GEN-LAST:event_jlbBuscarMouseEntered
 
+    /**
+     * Manejador de eventos que se ejecuta cuando el mouse sale del área del botón "Buscar".
+     * Restaura el color original del texto del botón.
+     *
+     * @param evt Evento de salida del mouse.
+     */
     private void jlbBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseExited
         jlbBuscar.setForeground(Color.black);
     }//GEN-LAST:event_jlbBuscarMouseExited
-
+    /**
+     * Manejador de eventos que se ejecuta cuando el mouse entra en el área del botón "Volver".
+     * Cambia el color del texto para resaltar el botón.
+     *
+     * @param evt Evento de entrada del mouse.
+     */
     private void jlbVovlerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVovlerMouseEntered
         jlbVovler.setForeground(Color.white);
     }//GEN-LAST:event_jlbVovlerMouseEntered
-
+    /**
+     * Manejador de eventos que se ejecuta cuando el mouse sale del área del botón "Volver".
+     * Restaura el color original del texto del botón.
+     *
+     * @param evt Evento de salida del mouse.
+     */
     private void jlbVovlerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVovlerMouseExited
         jlbVovler.setForeground(Color.black);
     }//GEN-LAST:event_jlbVovlerMouseExited

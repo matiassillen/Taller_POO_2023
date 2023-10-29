@@ -246,11 +246,11 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         Calendar fechaTwo = jDateChooser2.getCalendar();
         
         int diaOne = fechaOne.get(Calendar.DATE);
-        int mesOne = fechaOne.get(Calendar.MONTH);
+        int mesOne = fechaOne.get(Calendar.MONTH) + 1;
         int anioOne = fechaOne.get(Calendar.YEAR);
         
         int diaTwo = fechaTwo.get(Calendar.DATE);
-        int mesTwo = fechaTwo.get(Calendar.MONTH);
+        int mesTwo = fechaTwo.get(Calendar.MONTH) + 1;
         int anioTwo = fechaTwo.get(Calendar.YEAR);
         
         LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);

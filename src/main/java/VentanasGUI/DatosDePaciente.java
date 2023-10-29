@@ -13,10 +13,13 @@ import java.awt.Color;
  * @author yairc
  */
 public class DatosDePaciente extends javax.swing.JFrame {
+
     Controladora control;
     Paciente paciente;
+
     /**
      * Creates new form DatosDePaciente
+     *
      * @param control
      * @param paciente
      */
@@ -146,28 +149,52 @@ public class DatosDePaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente
+     * 'jlbVerResEstudios'. Este método abre la ventana para ver los resultados
+     * de los estudios y cierra la ventana actual.
+     *
+     * @param evt El evento.
+     */
     private void jlbVerResEstudiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerResEstudiosMouseClicked
         VerResultadoEstudio verResEstu = new VerResultadoEstudio(control, paciente);
         verResEstu.setVisible(true);
         verResEstu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVerResEstudiosMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente
+     * 'jlbVerConsuAnteriores'. Este método abre la ventana para ver las
+     * consultas anteriores y cierra la ventana actual.
+     *
+     * @param evt El evento.
+     */
     private void jlbVerDiagClinicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerDiagClinicoMouseClicked
         VerDiagnosticoClinico verAntCli = new VerDiagnosticoClinico(control, paciente);
         verAntCli.setVisible(true);
         verAntCli.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVerDiagClinicoMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente 'jlbVolver'.
+     * Este método abre la ventana de gestión de pacientes y cierra la ventana
+     * actual.
+     *
+     * @param evt El evento.
+     */
     private void jlbVerConsuAnterioresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVerConsuAnterioresMouseClicked
         VerConsultasAnteriores verHistCli = new VerConsultasAnteriores(control, paciente);
         verHistCli.setVisible(true);
         verHistCli.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVerConsuAnterioresMouseClicked
-
+    /**
+     * Método que se ejecuta cuando se hace clic en el componente 'jlbVolver'.
+     * Este método abre la ventana de gestión de pacientes y cierra la ventana
+     * actual.
+     *
+     * @param evt El evento.
+     */
     private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
         GestionDePacientes gestP = new GestionDePacientes(control);
         gestP.setVisible(true);

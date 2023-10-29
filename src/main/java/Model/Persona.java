@@ -31,17 +31,17 @@ public abstract class Persona implements Serializable {
 
     /**
      * Contructor con parametros
-     *
-     * @param id
-     * @param nombre
-     * @param apellido
-     * @param fechaDeNac
-     * @param domicilio
-     * @param dni
-     * @param telefonoFijo
-     * @param telefonoCel
-     * @param correoE
-     * @param estadoCivil
+     * 
+     * @param id es un long Id generado automaticamente, en este caso es extraido de las tablas de la base de datos
+     * @param nombre String nombre de la persona
+     * @param apellido String apellido de la persona
+     * @param fechaDeNac String de la fecha de nacimiento en formato aaaa/MM/dd
+     * @param domicilio String del domicilio de la persona
+     * @param dni int del DNI de la persona
+     * @param telefonoFijo String del telefono fijo de la persona
+     * @param telefonoCel String del telefono celular de la persona
+     * @param correoE String del correo de la persona
+     * @param estadoCivil String del estado civil de la persona
      */
     public Persona(long id, String nombre, String apellido, String fechaDeNac, String domicilio, int dni, String telefonoFijo, String telefonoCel, String correoE, String estadoCivil) {
         this.id = id;
@@ -58,7 +58,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return retorna el Id de la persona
      */
     public long getId() {
         return id;
@@ -66,7 +66,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param id
+     * @param id long con el Id de la persona a modificar / no se usa
      */
     public void setId(long id) {
         this.id = id;
@@ -74,7 +74,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String del nombre de la persona
      */
     public String getNombre() {
         return nombre;
@@ -82,7 +82,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param nombre
+     * @param nombre String con el nombre de la persona amodificar
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -90,7 +90,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String del apellido de la persona
      */
     public String getApellido() {
         return apellido;
@@ -98,7 +98,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param apellido
+     * @param apellido String con el apellido de la persona a modificar
      */
     public void setApellido(String apellido) {
         this.apellido = apellido;
@@ -106,7 +106,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con la fecha de nacimiento de la persona
      */
     public String getFechaDeNac() {
         return fechaDeNac;
@@ -114,7 +114,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param fechaDeNac
+     * @param fechaDeNac String fecha en formato aaaa/MM/dd
      */
     public void setFechaDeNac(String fechaDeNac) {
         this.fechaDeNac = fechaDeNac;
@@ -122,7 +122,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con el domicilio de la persona
      */
     public String getDomicilio() {
         return domicilio;
@@ -130,7 +130,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param domicilio
+     * @param domicilio String con un domicilio para modificar
      */
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
@@ -138,7 +138,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return un int con el DNI de la persona
      */
     public int getDni() {
         return dni;
@@ -146,7 +146,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param dni
+     * @param dni un int para cambiar en el atributo Dni
      */
     public void setDni(int dni) {
         this.dni = dni;
@@ -154,7 +154,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con el numero de telefono fijo de la persona
      */
     public String getTelefonoFijo() {
         return telefonoFijo;
@@ -162,7 +162,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param telefonoFijo
+     * @param telefonoFijo String con un numero de telefono para la persona
      */
     public void setTelefonoFijo(String telefonoFijo) {
         this.telefonoFijo = telefonoFijo;
@@ -170,7 +170,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con el numero de telefono celular de la persona
      */
     public String getTelefonoCel() {
         return telefonoCel;
@@ -178,7 +178,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param telefonoCel
+     * @param telefonoCel String con un numero para el telefono celular de la persona
      */
     public void setTelefonoCel(String telefonoCel) {
         this.telefonoCel = telefonoCel;
@@ -186,7 +186,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con el correo de la persona
      */
     public String getCorreoE() {
         return correoE;
@@ -194,7 +194,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param correoE
+     * @param correoE String con un correo para la persona
      */
     public void setCorreoE(String correoE) {
         this.correoE = correoE;
@@ -202,7 +202,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @return
+     * @return String con el estado civil de la persona
      */
     public String getEstadoCivil() {
         return estadoCivil;
@@ -210,7 +210,7 @@ public abstract class Persona implements Serializable {
 
     /**
      *
-     * @param estadoCivil
+     * @param estadoCivil String con el estado civil para la persona
      */
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;

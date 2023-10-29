@@ -16,7 +16,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * La clase `ControladoraPersistencia` se encarga de controlar la persistencia de las entidades del sistema.
+ * Proporciona métodos para interactuar con diferentes entidades como `Paciente`, `Usuario`, `Medico`, `Box`, etc.
+ */
 public class ControladoraPersistencia implements Serializable{
     
     PacienteJpaController pacienteJpa = new PacienteJpaController();
@@ -31,15 +34,29 @@ public class ControladoraPersistencia implements Serializable{
     BoxJpaController boxJpa = new BoxJpaController();
     
     //---------Metodos para Paciente---------
-
+    /**
+     * Registra un nuevo paciente en la base de datos.
+     * 
+     * @param paciente El objeto `Paciente` que se registrará en la base de datos.
+     */
     public void RegistrarPaciente(Paciente paciente) {
         pacienteJpa.create(paciente);
     }
 
+    /**
+     * Obtiene una lista de todos los pacientes registrados en la base de datos.
+     * 
+     * @return Lista de objetos `Paciente`.
+     */
     public List<Paciente> traerPacientes() {
         return pacienteJpa.findPacienteEntities();
     }
-    
+    /**
+     * Obtiene un paciente por su ID.
+     * 
+     * @param id_Paciente El ID del paciente que se busca.
+     * @return El objeto `Paciente` encontrado o null si no existe.
+     */
     public Paciente traerPaciente(int id_Paciente) {
         
         return pacienteJpa.findPaciente(id_Paciente);
@@ -60,7 +77,11 @@ public class ControladoraPersistencia implements Serializable{
     public Usuario traerUsuarios(long idUsuario) {
         return usuJpa.findUsuario(idUsuario);
     }
-
+    /**
+     * Edita un paciente existente en la base de datos.
+     * 
+     * @param paciente El objeto `Paciente` con los cambios que se aplicarán en la base de datos.
+     */
     public void editarUsuario(Usuario usuario) {
         try {
             usuJpa.edit(usuario);
@@ -126,7 +147,11 @@ public class ControladoraPersistencia implements Serializable{
     public List<DiagnosticoClinico> traerDiagnosticoClinico() {
         return this.diagnosticoJpa.findDiagnosticoClinicoEntities();
     }
-
+/**
+     * Crea un nuevo resultado de estudio en la base de datos.
+     * 
+     * @param res El objeto `ResultadoEstudio` que se registrará en la base de datos.
+     */
     public void crearResultadoEstudio(ResultadoEstudio res) {
         this.resEstudioJpa.create(res);
     }

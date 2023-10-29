@@ -532,21 +532,21 @@ public class Controladora implements Serializable {
      * @throws java.lang.Exception
      */
     public void tomarPaciente(Long id, Usuario usu) throws Exception {
-        
+
         FuncionarioGeneral func = usu.getFuncionarioGeneral();
         Medico medico = (Medico) func;
-        
+
         Box box = this.traerBox(id);
-        
+
         Consulta consu = this.esperaAtencion.quitarDeFila();
-        
+
         consu.setBox(box);
         consu.setMedico(medico);
-        
+
         medico.getConsulta().add(consu);
-                
+
         box.setConsulta(consu);
-        
+
         this.controlPersis.tomarPacientePersistirDatos(consu, medico, box);
 
     }
@@ -685,7 +685,7 @@ public class Controladora implements Serializable {
         consulta.setDiagnConsulta(diagnostico);
         consulta.setBox(null);
         this.controlPersis.editarConsulta(consulta);
-   
+
         // Vaciamos la consulta del box y actualizamos el box en el controlador de persistencia
         boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
@@ -1177,6 +1177,14 @@ public class Controladora implements Serializable {
         this.esperaAtencion.añadirAFila(consuActualizada);
     }
 
+    /**
+     * Método para actualizar la cola de atención. Este método recupera todas
+     * las consultas, filtra las que tienen un box asignado y las que no tienen
+     * un triage asignado, las ordena por fecha y hora, y luego las añade a una
+     * cola de prioridad.
+     *
+     * @return Una cola de prioridad con las consultas ordenadas.
+     */
     private PriorityQueue<Consulta> actualizarColaAtencion() {
         List<Consulta> consultas = this.controlPersis.traerConsultas();
         this.filtrarConBox(consultas);
@@ -1189,6 +1197,13 @@ public class Controladora implements Serializable {
         return colaDeAtencion;
     }
 
+    /**
+     * Método para actualizar la cola de triage. Este método recupera todas las
+     * consultas, filtra las que tienen un triage asignado, las ordena por fecha
+     * y hora, y luego las añade a una cola.
+     *
+     * @return Una cola con las consultas ordenadas.
+     */
     private Queue<Consulta> actualizarColaTriage() {
         List<Consulta> consultas = this.controlPersis.traerConsultas();
         this.filtrarConTriage(consultas);
@@ -1200,6 +1215,14 @@ public class Controladora implements Serializable {
         return colaDeTriage;
     }
 
+    /**
+     * Método para persistir los datos de un triage. Este método crea un nuevo
+     * triage en la base de datos, asigna el triage a la consulta
+     * correspondiente, edita la consulta en la base de datos, y luego cambia la
+     * consulta de fila.
+     *
+     * @param triage El triage a persistir.
+     */
     public void persistirDatos(Triage triage) {
         Consulta consu = triage.getConsulta();
         this.controlPersis.crearTriage(triage);
@@ -1208,6 +1231,13 @@ public class Controladora implements Serializable {
         this.cambiarDeFila(consu);
     }
 
+    /**
+     * Método para cambiar una consulta de fila. Este método quita la consulta
+     * de la cola de espera de triage y la añade a la cola de espera de
+     * atención.
+     *
+     * @param consu La consulta a cambiar de fila.
+     */
     public void cambiarDeFila(Consulta consu) {
         this.esperaAtencionTriage.quitarDeLista(consu);
         this.esperaAtencion.añadirAFila(consu);
@@ -1243,20 +1273,30 @@ public class Controladora implements Serializable {
         }
     }
 
+    /**
+     * Método para ordenar una lista de consultas por fecha y hora.
+     *
+     * @param lista La lista de consultas a ordenar.
+     */
     public void ordenarPorFechaYHora(List<Consulta> lista) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    Collections.sort(lista, new Comparator<Consulta>() {
-        @Override
-        public int compare(Consulta c1, Consulta c2) {
-            LocalDateTime dateTime1 = LocalDateTime.parse(c1.getFecha() + " " + c1.getHora(), formatter);
-            LocalDateTime dateTime2 = LocalDateTime.parse(c2.getFecha() + " " + c2.getHora(), formatter);
-            return dateTime1.compareTo(dateTime2);
-        }
-    });
+        Collections.sort(lista, new Comparator<Consulta>() {
+            @Override
+            public int compare(Consulta c1, Consulta c2) {
+                LocalDateTime dateTime1 = LocalDateTime.parse(c1.getFecha() + " " + c1.getHora(), formatter);
+                LocalDateTime dateTime2 = LocalDateTime.parse(c2.getFecha() + " " + c2.getHora(), formatter);
+                return dateTime1.compareTo(dateTime2);
+            }
+        });
     }
-    
-    
+
+    /**
+     * Método para filtrar las consultas que no tienen un triage asignado de una
+     * lista de consultas.
+     *
+     * @param lista La lista de consultas a filtrar.
+     */
     public void filtrarSinTriage(List<Consulta> lista) {
         Iterator<Consulta> iterador = lista.iterator();
 
@@ -1268,7 +1308,13 @@ public class Controladora implements Serializable {
             }
         }
     }
-    
+
+    /**
+     * Método para filtrar las consultas que tienen un triage asignado de una
+     * lista de consultas.
+     *
+     * @param lista La lista de consultas a filtrar.
+     */
     public void filtrarConTriage(List<Consulta> lista) {
         Iterator<Consulta> iterador = lista.iterator();
 
@@ -1281,6 +1327,12 @@ public class Controladora implements Serializable {
         }
     }
 
+    /**
+     * Método para filtrar las consultas que tienen un box asignado de una lista
+     * de consultas.
+     *
+     * @param lista La lista de consultas a filtrar.
+     */
     public void filtrarConBox(List<Consulta> lista) {
         Iterator<Consulta> iterador = lista.iterator();
 
