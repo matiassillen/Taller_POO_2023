@@ -28,8 +28,6 @@ public class EsperaAtencion {
     /**
      * Método para quitar una consulta de la fila de espera.
      *
-     * @param box El box asignado a la consulta.
-     * @param medico El médico asignado a la consulta.
      * @return Una lista de objetos que incluye la consulta, el box y el médico.
      */
     public Consulta quitarDeFila() { 

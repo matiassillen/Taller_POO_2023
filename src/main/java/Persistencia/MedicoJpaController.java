@@ -22,7 +22,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `MedicoJpaController` se encarga de controlar la persistencia de los
+ * Médicos en la base de datos. Proporciona métodos para crear, editar, eliminar
+ * y recuperar Médicos.
  */
 public class MedicoJpaController implements Serializable {
 

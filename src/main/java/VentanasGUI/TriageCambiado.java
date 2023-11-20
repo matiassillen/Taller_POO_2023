@@ -176,6 +176,9 @@ public class TriageCambiado extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void txtSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSalirMouseClicked
+        Gestor pantallaGestor = new Gestor(control);
+        pantallaGestor.setVisible(true);
+        pantallaGestor.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_txtSalirMouseClicked
 

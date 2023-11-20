@@ -18,39 +18,50 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 /**
- * La clase `EspecialidadJpaController` se encarga de controlar la persistencia de las especialidades médicas en la base de datos.
- * Proporciona métodos para crear, editar, eliminar y recuperar especialidades médicas.
+ * La clase `EspecialidadJpaController` se encarga de controlar la persistencia
+ * de las especialidades médicas en la base de datos. Proporciona métodos para
+ * crear, editar, eliminar y recuperar especialidades médicas.
  */
 public class EspecialidadJpaController implements Serializable {
-/**
-     * Constructor de la clase que permite especificar la `EntityManagerFactory` a utilizar.
-     * 
-     * @param emf La `EntityManagerFactory` que se utilizará para interactuar con la base de datos.
+
+    /**
+     * Constructor de la clase que permite especificar la `EntityManagerFactory`
+     * a utilizar.
+     *
+     * @param emf La `EntityManagerFactory` que se utilizará para interactuar
+     * con la base de datos.
      */
     public EspecialidadJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-     /**
-     * Constructor de la clase que utiliza la configuración predeterminada para la `EntityManagerFactory`.
+
+    /**
+     * Constructor de la clase que utiliza la configuración predeterminada para
+     * la `EntityManagerFactory`.
      */
     public EspecialidadJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
-/**
-     * Obtiene una instancia de `EntityManager` para interactuar con la base de datos.
-     * 
+
+    /**
+     * Obtiene una instancia de `EntityManager` para interactuar con la base de
+     * datos.
+     *
      * @return Una instancia de `EntityManager`.
      */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
     /**
      * Crea una nueva especialidad médica en la base de datos.
-     * 
-     * @param especialidad El objeto `Especialidad` que se registrará en la base de datos.
+     *
+     * @param especialidad El objeto `Especialidad` que se registrará en la base
+     * de datos.
      */
     public void create(Especialidad especialidad) {
         if (especialidad.getMedico() == null) {
@@ -92,11 +103,14 @@ public class EspecialidadJpaController implements Serializable {
             }
         }
     }
-/**
+
+    /**
      * Edita una especialidad médica existente en la base de datos.
-     * 
-     * @param especialidad El objeto `Especialidad` con los cambios que se aplicarán en la base de datos.
-     * @throws NonexistentEntityException Si la especialidad médica no existe en la base de datos.
+     *
+     * @param especialidad El objeto `Especialidad` con los cambios que se
+     * aplicarán en la base de datos.
+     * @throws NonexistentEntityException Si la especialidad médica no existe en
+     * la base de datos.
      * @throws Exception Si ocurre un error durante la edición.
      */
     public void edit(Especialidad especialidad) throws NonexistentEntityException, Exception {
@@ -162,11 +176,14 @@ public class EspecialidadJpaController implements Serializable {
             }
         }
     }
+
     /**
      * Elimina una especialidad médica de la base de datos por su ID.
-     * 
-     * @param id El ID de la especialidad médica que se eliminará de la base de datos.
-     * @throws NonexistentEntityException Si la especialidad médica no existe en la base de datos.
+     *
+     * @param id El ID de la especialidad médica que se eliminará de la base de
+     * datos.
+     * @throws NonexistentEntityException Si la especialidad médica no existe en
+     * la base de datos.
      */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
@@ -198,31 +215,40 @@ public class EspecialidadJpaController implements Serializable {
             }
         }
     }
+
     /**
-     * Obtiene una lista de todas las especialidades médicas registradas en la base de datos.
-     * 
+     * Obtiene una lista de todas las especialidades médicas registradas en la
+     * base de datos.
+     *
      * @return Lista de objetos `Especialidad`.
      */
     public List<Especialidad> findEspecialidadEntities() {
         return findEspecialidadEntities(true, -1, -1);
     }
+
     /**
-     * Obtiene una lista de especialidades médicas registradas en la base de datos con opciones de paginación.
-     * 
+     * Obtiene una lista de especialidades médicas registradas en la base de
+     * datos con opciones de paginación.
+     *
      * @param maxResults El número máximo de resultados a devolver.
      * @param firstResult El índice del primer resultado a devolver.
-     * @return Lista de objetos `Especialidad` que cumplen con las opciones de paginación.
+     * @return Lista de objetos `Especialidad` que cumplen con las opciones de
+     * paginación.
      */
     public List<Especialidad> findEspecialidadEntities(int maxResults, int firstResult) {
         return findEspecialidadEntities(false, maxResults, firstResult);
     }
+
     /**
-     * Obtiene una lista de especialidades médicas registradas en la base de datos con opciones de paginación.
-     * 
-     * @param all Indica si se deben devolver todas las especialidades médicas sin aplicar opciones de paginación.
+     * Obtiene una lista de especialidades médicas registradas en la base de
+     * datos con opciones de paginación.
+     *
+     * @param all Indica si se deben devolver todas las especialidades médicas
+     * sin aplicar opciones de paginación.
      * @param maxResults El número máximo de resultados a devolver.
      * @param firstResult El índice del primer resultado a devolver.
-     * @return Lista de objetos `Especialidad` que cumplen con las opciones de paginación.
+     * @return Lista de objetos `Especialidad` que cumplen con las opciones de
+     * paginación.
      */
     private List<Especialidad> findEspecialidadEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
@@ -239,9 +265,10 @@ public class EspecialidadJpaController implements Serializable {
             em.close();
         }
     }
+
     /**
      * Obtiene una especialidad médica por su ID.
-     * 
+     *
      * @param id El ID de la especialidad médica que se busca.
      * @return El objeto `Especialidad` encontrado o null si no existe.
      */
@@ -253,9 +280,11 @@ public class EspecialidadJpaController implements Serializable {
             em.close();
         }
     }
+
     /**
-     * Obtiene la cantidad de especialidades médicas registradas en la base de datos.
-     * 
+     * Obtiene la cantidad de especialidades médicas registradas en la base de
+     * datos.
+     *
      * @return El número de especialidades médicas registradas.
      */
     public int getEspecialidadCount() {
@@ -270,5 +299,5 @@ public class EspecialidadJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

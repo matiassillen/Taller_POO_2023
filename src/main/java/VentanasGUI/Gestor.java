@@ -59,6 +59,8 @@ public class Gestor extends javax.swing.JFrame {
         jLabel10.setText("jLabel10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -245,36 +247,42 @@ public class Gestor extends javax.swing.JFrame {
         CantPacientesAtendidosPorMedico cantMedico = new CantPacientesAtendidosPorMedico(this.control);
         cantMedico.setVisible(true);
         cantMedico.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jlbCantPacXMediMouseClicked
 
     private void CantPacEdadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantPacEdadMouseClicked
         CantPacientesAtendidos cantPaciente = new CantPacientesAtendidos(this.control);
         cantPaciente.setVisible(true);
         cantPaciente.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_CantPacEdadMouseClicked
 
     private void jblMasConsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblMasConsuMouseClicked
         PacientesMasConsultas masConsulta = new PacientesMasConsultas(this.control);
         masConsulta.setVisible(true);
         masConsulta.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jblMasConsuMouseClicked
 
     private void jlbMedMasPacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbMedMasPacMouseClicked
         MedicoMasPacientes masPaciente = new MedicoMasPacientes(this.control);
         masPaciente.setVisible(true);
         masPaciente.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jlbMedMasPacMouseClicked
 
     private void jlbCantTriageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCantTriageMouseClicked
         CantTriageColor pantalla= new CantTriageColor();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jlbCantTriageMouseClicked
 
     private void jlbTriageCambiadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbTriageCambiadosMouseClicked
         TriageCambiado triagesCambiados = new TriageCambiado(this.control);
         triagesCambiados.setVisible(true);
         triagesCambiados.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jlbTriageCambiadosMouseClicked
 
     private void jlbCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarSesionMouseClicked
@@ -354,9 +362,6 @@ public class Gestor extends javax.swing.JFrame {
         datos.setLocationRelativeTo(null);
     }//GEN-LAST:event_jlbMiUsuMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CantPacEdad;

@@ -19,7 +19,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `TriageJpaController` se encarga de controlar la persistencia de los
+ * Triages en la base de datos. Proporciona métodos para crear, editar, eliminar
+ * y recuperar Triages.
  */
 public class TriageJpaController implements Serializable {
 

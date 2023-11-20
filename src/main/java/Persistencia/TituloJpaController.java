@@ -20,7 +20,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `TituloJpaController` se encarga de controlar la persistencia de los
+ * Titulos en la base de datos. Proporciona métodos para crear, editar, eliminar
+ * y recuperar Titulos.
  */
 public class TituloJpaController implements Serializable {
 
@@ -46,14 +48,12 @@ public class TituloJpaController implements Serializable {
     /**
      * Obtiene un EntityManager para interactuar con la base de datos.
      *
-     * @return Un EntityManager.
      */
     private EntityManagerFactory emf = null;
 
     /**
      * Crea un nuevo título en la base de datos.
      *
-     * @param titulo El título que se va a crear.
      */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -63,9 +63,6 @@ public class TituloJpaController implements Serializable {
      * Edita un título existente en la base de datos.
      *
      * @param titulo El título que se va a editar.
-     * @throws NonexistentEntityException Si el título no existe en la base de
-     * datos.
-     * @throws Exception Si se produce un error durante la edición.
      */
     public void create(Titulo titulo) {
         EntityManager em = null;

@@ -411,9 +411,6 @@ public class GuiLogin extends javax.swing.JFrame {
         txtAdvertencia.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnSalir;

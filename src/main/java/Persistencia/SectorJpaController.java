@@ -20,7 +20,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `SectorJpaController` se encarga de controlar la persistencia de los
+ * Sectores en la base de datos. Proporciona métodos para crear, editar,
+ * eliminar y recuperar Sectores.
  */
 public class SectorJpaController implements Serializable {
 

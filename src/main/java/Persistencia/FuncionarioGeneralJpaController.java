@@ -198,8 +198,6 @@ public class FuncionarioGeneralJpaController implements Serializable {
         return findFuncionarioGeneralEntities(false, maxResults, firstResult);
     }
 
- 
-
     /**
      * Obtiene una lista de funcionarios generales registrados en la base de
      * datos con opciones de paginación.
@@ -241,6 +239,7 @@ public class FuncionarioGeneralJpaController implements Serializable {
             em.close();
         }
     }
+
     public int getFuncionarioGeneralCount() {
         EntityManager em = getEntityManager();
         try {
@@ -253,5 +252,5 @@ public class FuncionarioGeneralJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -19,38 +19,45 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 /**
- * Esta clase es responsable de controlar la persistencia de las entidades de tipo Consulta.
- * Proporciona métodos para crear, editar y eliminar registros de la base de datos.
+ * Esta clase es responsable de controlar la persistencia de las entidades de
+ * tipo Consulta. Proporciona métodos para crear, editar y eliminar registros de
+ * la base de datos.
  */
 public class ConsultaJpaController implements Serializable {
-/**
+
+    /**
      * Constructor de la clase ConsultaJpaController.
-     * 
+     *
      * @param emf El EntityManagerFactory que se utilizará para la persistencia.
      */
     public ConsultaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-        /**
-     * Constructor de la clase ConsultaJpaController que crea un EntityManagerFactory utilizando la unidad de persistencia "TallerPooPU".
+
+    /**
+     * Constructor de la clase ConsultaJpaController que crea un
+     * EntityManagerFactory utilizando la unidad de persistencia "TallerPooPU".
      */
     public ConsultaJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
-/**
+
+    /**
      * Obtiene un EntityManager asociado al EntityManagerFactory.
-     * 
+     *
      * @return EntityManager para interactuar con la base de datos.
      */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
     /**
      * Crea un nuevo registro de tipo Consulta en la base de datos.
-     * 
+     *
      * @param consulta El objeto Consulta que se va a crear en la base de datos.
      */
     public void create(Consulta consulta) {
@@ -112,11 +119,14 @@ public class ConsultaJpaController implements Serializable {
             }
         }
     }
-/**
+
+    /**
      * Edita un registro existente de tipo Consulta en la base de datos.
-     * 
-     * @param consulta El objeto Consulta con los cambios que se van a aplicar en la base de datos.
-     * @throws NonexistentEntityException Si el registro no existe en la base de datos.
+     *
+     * @param consulta El objeto Consulta con los cambios que se van a aplicar
+     * en la base de datos.
+     * @throws NonexistentEntityException Si el registro no existe en la base de
+     * datos.
      * @throws Exception Si ocurre un error durante la edición.
      */
     public void edit(Consulta consulta) throws NonexistentEntityException, Exception {
@@ -208,11 +218,13 @@ public class ConsultaJpaController implements Serializable {
             }
         }
     }
- /**
+
+    /**
      * Destruye (elimina) un registro de tipo `Consulta` de la base de datos.
-     * 
+     *
      * @param id El ID del registro de `Consulta` que se va a eliminar.
-     * @throws NonexistentEntityException Si el registro no existe en la base de datos.
+     * @throws NonexistentEntityException Si el registro no existe en la base de
+     * datos.
      */
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
@@ -300,5 +312,5 @@ public class ConsultaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

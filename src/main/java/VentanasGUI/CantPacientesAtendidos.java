@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @
- */
+
 public class CantPacientesAtendidos extends javax.swing.JFrame {
     Controladora controlP;
     /**
@@ -341,6 +338,9 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbConsuMouseClicked
 
     private void jlbVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseClicked
+        Gestor pantallaGestor = new Gestor(controlP);
+        pantallaGestor.setVisible(true);
+        pantallaGestor.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jlbVolverMouseClicked
 
@@ -359,11 +359,7 @@ public class CantPacientesAtendidos extends javax.swing.JFrame {
     private void jlbVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbVolverMouseExited
         jlbVolver.setForeground(Color.black);
     }//GEN-LAST:event_jlbVolverMouseExited
-
-    /**
-     * @param args the command line arguments
-     */
-    
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;

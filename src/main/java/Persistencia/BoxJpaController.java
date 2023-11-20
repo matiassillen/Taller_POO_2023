@@ -18,40 +18,45 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Esta clase es responsable de controlar la persistencia de las entidades de tipo Box.
- * Proporciona métodos para crear, editar y eliminar registros de la base de datos.
- * 
- * 
+ * Esta clase es responsable de controlar la persistencia de las entidades de
+ * tipo Box. Proporciona métodos para crear, editar y eliminar registros de la
+ * base de datos.
+ *
+ *
  */
 public class BoxJpaController implements Serializable {
 
     /**
      * Constructor de la clase BoxJpaController.
-     * 
+     *
      * @param emf El EntityManagerFactory que se utilizará para la persistencia.
      */
     public BoxJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-        /**
-     * Constructor de la clase BoxJpaController que crea un EntityManagerFactory utilizando la unidad de persistencia "TallerPooPU".
+
+    /**
+     * Constructor de la clase BoxJpaController que crea un EntityManagerFactory
+     * utilizando la unidad de persistencia "TallerPooPU".
      */
     public BoxJpaController() {
         emf = Persistence.createEntityManagerFactory("TallerPooPU");
     }
-    
+
     private EntityManagerFactory emf = null;
-/**
+
+    /**
      * Obtiene un EntityManager asociado al EntityManagerFactory.
-     * 
+     *
      * @return EntityManager para interactuar con la base de datos.
      */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
     /**
      * Crea un nuevo registro de tipo Box en la base de datos.
-     * 
+     *
      * @param box El objeto Box que se va a crear en la base de datos.
      */
     public void create(Box box) {
@@ -81,11 +86,14 @@ public class BoxJpaController implements Serializable {
             }
         }
     }
+
     /**
      * Edita un registro existente de tipo Box en la base de datos.
-     * 
-     * @param box El objeto Box con los cambios que se van a aplicar en la base de datos.
-     * @throws NonexistentEntityException Si el registro no existe en la base de datos.
+     *
+     * @param box El objeto Box con los cambios que se van a aplicar en la base
+     * de datos.
+     * @throws NonexistentEntityException Si el registro no existe en la base de
+     * datos.
      * @throws Exception Si ocurre un error durante la edición.
      */
     public void edit(Box box) throws NonexistentEntityException, Exception {
@@ -130,11 +138,13 @@ public class BoxJpaController implements Serializable {
             }
         }
     }
+
     /**
      * Elimina un registro de tipo Box de la base de datos.
-     * 
+     *
      * @param id El ID del registro que se va a eliminar.
-     * @throws NonexistentEntityException Si el registro no existe en la base de datos.
+     * @throws NonexistentEntityException Si el registro no existe en la base de
+     * datos.
      */
     public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
@@ -207,5 +217,5 @@ public class BoxJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -232,7 +232,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbCerrarMouseClicked
 
     private void jlbCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseEntered
-        jlbCerrar.setForeground(Color.white);
+        jlbCerrar.setForeground(Color.cyan);
     }//GEN-LAST:event_jlbCerrarMouseEntered
 
     private void jlbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseExited
@@ -264,7 +264,7 @@ public class PrincipalMedico extends javax.swing.JFrame {
                         jlbGestionPaciente.setEnabled(true);
                         jlbHacerTriage.setEnabled(false);
                     }
-                    case "Medico - Triage" -> {
+                    case "Medico - Triagiador" -> {
                         // Si el rol es 'Medico - Triage', deshabilitamos el botón 'GestioDePaciente' y habilitamos el botón 'HacerTriage'
                         jlbGestionPaciente.setEnabled(false);
                         jlbHacerTriage.setEnabled(true);

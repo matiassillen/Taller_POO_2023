@@ -22,7 +22,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `PacienteJpaController` se encarga de controlar la persistencia de
+ * los Pacientes en la base de datos. Proporciona métodos para crear, editar,
+ * eliminar y recuperar ¨Pacientes.
  */
 public class PacienteJpaController implements Serializable {
 
@@ -356,8 +358,6 @@ public class PacienteJpaController implements Serializable {
 
     /**
      * Busca y recupera un registro de paciente en la base de datos por su ID.
-     *
-     * @param id El ID del paciente que se va a buscar.
      * @return El objeto de tipo Paciente encontrado, o null si no se encuentra.
      */
     public int getPacienteCount() {

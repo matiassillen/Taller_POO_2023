@@ -19,7 +19,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `ResultadoEstudioJpaController` se encarga de controlar la
+ * persistencia de los Resultados de estudio en la base de datos. Proporciona
+ * métodos para crear, editar, eliminar y recuperar Resultados de estudio.
  */
 public class ResultadoEstudioJpaController implements Serializable {
 
@@ -164,10 +166,6 @@ public class ResultadoEstudioJpaController implements Serializable {
     /**
      * Elimina un resultado de estudio de la base de datos y actualiza la
      * relación con el paciente.
-     *
-     * @param id El ID del resultado de estudio que se va a eliminar.
-     * @throws NonexistentEntityException Si el resultado de estudio no existe
-     * en la base de datos.
      */
     public List<ResultadoEstudio> findResultadoEstudioEntities() {
         return findResultadoEstudioEntities(true, -1, -1);

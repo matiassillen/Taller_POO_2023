@@ -58,6 +58,8 @@ public class CantTriageColor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -100,20 +102,17 @@ public class CantTriageColor extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Primera Fecha:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Segunda Fecha:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, -1));
         jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 140, -1));
 
         jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cantidad de triage y color");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
 
@@ -121,7 +120,6 @@ public class CantTriageColor extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(149, 210, 255));
 
         jlbBuscar.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
-        jlbBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jlbBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbBuscar.setText("Buscar");
         jlbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,7 +150,6 @@ public class CantTriageColor extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(149, 210, 255));
 
         jlbVovler.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
-        jlbVovler.setForeground(new java.awt.Color(0, 0, 0));
         jlbVovler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbVovler.setText("Volver");
         jlbVovler.addMouseListener(new java.awt.event.MouseAdapter() {

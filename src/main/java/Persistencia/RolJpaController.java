@@ -20,7 +20,9 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Matías Sillen Ríos
+ * La clase `RolJpaController` se encarga de controlar la persistencia de los
+ * Roles en la base de datos. Proporciona métodos para crear, editar, eliminar y
+ * recuperar Roles.
  */
 public class RolJpaController implements Serializable {
 
@@ -238,7 +240,6 @@ public class RolJpaController implements Serializable {
     /**
      * Busca y devuelve un rol por su ID en la base de datos.
      *
-     * @param id El ID del rol que se desea buscar.
      * @return El rol con el ID especificado.
      */
     public int getRolCount() {
