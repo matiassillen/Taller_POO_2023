@@ -422,6 +422,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         Paciente p = this.paciente;
         this.control.CrearConsulta(lugar, motivo, p);
         txtMotivo.setText("");
+        control.mostrarMensaje("Consulta creada correctamenta", "Mensaje", "Exito");
     }//GEN-LAST:event_jlbCrearMouseClicked
 
     private void jlbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseClicked

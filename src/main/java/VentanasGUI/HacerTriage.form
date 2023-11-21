@@ -463,6 +463,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="No Presentes"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbNoPresenteLesionLActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="jrbPresenteLesionL">
                       <Properties>
@@ -475,8 +478,11 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Presente"/>
+                        <Property name="text" type="java.lang.String" value="Presentes"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbPresenteLesionLActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

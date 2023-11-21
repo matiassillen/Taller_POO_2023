@@ -42,9 +42,8 @@ public class EsperaTriage {
      * @param t El triage a asignar a la consulta.
      * @return La consulta que ha sido quitada de la cola y a la que se le ha asignado el triage.
      */
-    public Consulta QuitarDeFila(Triage t) {
-        Consulta consu = this.enEsperaT.poll();
-        consu.setTriage(t);
+    public Consulta QuitarDeFila(Consulta consu) {
+        this.enEsperaT.remove(consu);
         return consu;
     }
 

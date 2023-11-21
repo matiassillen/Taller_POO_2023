@@ -15,6 +15,7 @@ public class HacerTriage extends javax.swing.JFrame {
         initComponents();
         this.control = control;
         this.idConsulta = idConsulta;
+        this.jlbGuardar.setEnabled(false);
         
     }
 
@@ -230,11 +231,21 @@ public class HacerTriage extends javax.swing.JFrame {
         buttonGroup5.add(jrbNoPresenteLesionL);
         jrbNoPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
         jrbNoPresenteLesionL.setText("No Presentes");
+        jrbNoPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNoPresenteLesionLActionPerformed(evt);
+            }
+        });
 
         jrbPresenteLesionL.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup5.add(jrbPresenteLesionL);
         jrbPresenteLesionL.setForeground(new java.awt.Color(0, 0, 0));
-        jrbPresenteLesionL.setText("Presente");
+        jrbPresenteLesionL.setText("Presentes");
+        jrbPresenteLesionL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbPresenteLesionLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1294,8 +1305,8 @@ public class HacerTriage extends javax.swing.JFrame {
     
     
     private void jlbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseClicked
-        Consulta consu = this.triage.getConsulta();
-        this.control.añadirALaFila(consu);
+        Triage t = this.triage;
+        this.control.añadirALaFila(t);
         PrincipalMedico pmed = new PrincipalMedico(control);
         pmed.setVisible(true);
         pmed.setLocationRelativeTo(null);
@@ -1341,144 +1352,150 @@ public class HacerTriage extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbModiMouseExited
 
     private void jlbCrear2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseClicked
-        String respiracion ="", dolorAbd = "", sangrado = "", lesionGrave = "", lesionLeve = "", fiebre = "",
-                estadoMental = "", signosShock = "", dolorPecho = "", pulso = "",vomito="",conciencia="";
-        
-        //Respiración
-        if(jrbNormalRespiracion.isSelected()){
-            respiracion = jrbNormalRespiracion.getText();
-            
-        }else if(jrbModeradaRespiracion.isSelected()){
-            respiracion = jrbModeradaRespiracion.getText();
-            
-        }else if(jrbGraveRespiracion.isSelected()){
-            respiracion = jrbGraveRespiracion.getText();
-            
+        try{
+            String respiracion ="", dolorAbd = "", sangrado = "", lesionGrave = "", lesionLeve = "", fiebre = "",
+                    estadoMental = "", signosShock = "", dolorPecho = "", pulso = "",vomito="",conciencia="";
+
+            //Respiración
+            if(jrbNormalRespiracion.isSelected()){
+                respiracion = jrbNormalRespiracion.getText();
+
+            }else if(jrbModeradaRespiracion.isSelected()){
+                respiracion = jrbModeradaRespiracion.getText();
+
+            }else if(jrbGraveRespiracion.isSelected()){
+                respiracion = jrbGraveRespiracion.getText();
+
+            }
+
+           //Dolor Abdominal
+            if(jrbNoPresenteAbd.isSelected()){
+                dolorAbd = jrbNoPresenteAbd.getText();
+
+            }else if(jrbModeradaAbd.isSelected()){
+                dolorAbd = jrbModeradaAbd.getText();
+
+            }else if(jrbSeveroAbd.isSelected()){
+                dolorAbd = jrbSeveroAbd.getText();
+
+            }
+
+            //Sangrado
+            if(jrbNoPresenteSangrado.isSelected()){
+                sangrado = jrbNoPresenteSangrado.getText();
+
+            }else if(jrbModeradoSangrado.isSelected()){
+                sangrado = jrbModeradoSangrado.getText();
+
+            }else if(jrbIntensoSangrado.isSelected()){
+                sangrado = jrbIntensoSangrado.getText();
+
+            }
+
+            //Lesiones Graves
+            if(jrbNoPresenteLesionG.isSelected()){
+                lesionGrave = jrbNoPresenteLesionG.getText();
+
+            }else if(jrbPresenteLesionG.isSelected()){
+                lesionGrave = jrbPresenteLesionG.getText();
+
+            }
+
+            //Lesiones Levis
+            if(jrbNoPresenteLesionL.isSelected()){
+                lesionLeve = jrbNoPresenteLesionL.getText();
+
+            }else if(jrbModeradaRespiracion.isSelected()){
+                lesionLeve = jrbPresenteLesionL.getText();
+
+            }
+
+            //Fiebre
+            if(jrbSinFiebre.isSelected()){
+                fiebre = jrbSinFiebre.getText();
+
+            }else if(jrbModeradoFiebre.isSelected()){
+                fiebre = jrbModeradoFiebre.getText();
+
+            }else if(jrbAltaFiebre.isSelected()){
+                fiebre = jrbAltaFiebre.getText();
+
+            }
+
+            //Estado Mental
+            if(jrbNormalEstadoMental.isSelected()){
+                estadoMental = jrbNormalEstadoMental.getText();
+
+            }else if(jrbLeveEstadoMental.isSelected()){
+                estadoMental = jrbNormalEstadoMental.getText();
+
+            }else if(jrbGraveEstadoMental.isSelected()){
+                estadoMental = jrbNormalEstadoMental.getText();
+
+            }
+
+            //Signos de Shock
+            if(jrbNoPresenteSignoShock.isSelected()){
+                signosShock = jrbNoPresenteSignoShock.getText();
+
+            }else if(jrbPresenteSignoShock.isSelected()){
+                signosShock = jrbPresenteSignoShock.getText();
+
+            }
+
+            //Dolor en el pecho
+            if(jrbNoPresenteDolorPecho.isSelected()){
+                dolorPecho = jrbNoPresenteDolorPecho.getText();
+
+            }else if(jrbPresenteDolorPecho.isSelected()){
+                dolorPecho = jrbPresenteDolorPecho.getText();
+
+            }
+
+            //Pulso
+            if(jrbNormalPulso.isSelected()){
+                pulso = jrbNormalPulso.getText();
+
+            }else if(jrbAnormalPulso.isSelected()){
+                pulso = jrbAnormalPulso.getText();
+
+            }
+
+            //Vomitos
+            if(jrbSinVomito.isSelected()){
+                vomito = jrbSinVomito.getText();
+
+            }else if(jrbModeradoVomito.isSelected()){
+                vomito = jrbModeradoVomito.getText();
+
+            }else if(jrbIntensoVomito.isSelected()){
+                vomito = jrbIntensoVomito.getText();
+            }
+
+            //Conciencia
+            if(jrbConciente.isSelected()){
+                conciencia = jrbConciente.getText();
+
+            }else if(jrbInconciente.isSelected()){
+                conciencia = jrbInconciente.getText();
+
+            }
+            String edad = (String) cmbEdad.getSelectedItem();
+
+            Usuario usuario = this.control.getUsu();
+
+            Triage t = this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad,idConsulta,usuario);
+
+            this.triage = t;
+
+            txtColor.setText(t.getColorInicial().name());
+
+            JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
+            this.jlbGuardar.setEnabled(true);
+            this.jlbVolver.setEnabled(false);
+        }catch(Exception e){
+            control.mostrarMensaje("Seleccione todos los campos", "Error", "Error");
         }
-        
-       //Dolor Abdominal
-        if(jrbNoPresenteAbd.isSelected()){
-            dolorAbd = jrbNoPresenteAbd.getText();
-            
-        }else if(jrbModeradaAbd.isSelected()){
-            dolorAbd = jrbModeradaAbd.getText();
-            
-        }else if(jrbSeveroAbd.isSelected()){
-            dolorAbd = jrbSeveroAbd.getText();
-            
-        }
-        
-        //Sangrado
-        if(jrbNoPresenteSangrado.isSelected()){
-            sangrado = jrbNoPresenteSangrado.getText();
-            
-        }else if(jrbModeradoSangrado.isSelected()){
-            sangrado = jrbModeradoSangrado.getText();
-            
-        }else if(jrbIntensoSangrado.isSelected()){
-            sangrado = jrbIntensoSangrado.getText();
-            
-        }
-        
-        //Lesiones Graves
-        if(jrbNoPresenteLesionG.isSelected()){
-            lesionGrave = jrbNoPresenteLesionG.getText();
-            
-        }else if(jrbPresenteLesionG.isSelected()){
-            lesionGrave = jrbPresenteLesionG.getText();
-            
-        }
-        
-        //Lesiones Levis
-        if(jrbNoPresenteLesionL.isSelected()){
-            lesionLeve = jrbNoPresenteLesionL.getText();
-            
-        }else if(jrbModeradaRespiracion.isSelected()){
-            lesionLeve = jrbPresenteLesionL.getText();
-            
-        }
-        
-        //Fiebre
-        if(jrbSinFiebre.isSelected()){
-            fiebre = jrbSinFiebre.getText();
-            
-        }else if(jrbModeradoFiebre.isSelected()){
-            fiebre = jrbModeradoFiebre.getText();
-            
-        }else if(jrbAltaFiebre.isSelected()){
-            fiebre = jrbAltaFiebre.getText();
-            
-        }
-        
-        //Estado Mental
-        if(jrbNormalEstadoMental.isSelected()){
-            estadoMental = jrbNormalEstadoMental.getText();
-            
-        }else if(jrbLeveEstadoMental.isSelected()){
-            estadoMental = jrbNormalEstadoMental.getText();
-            
-        }else if(jrbGraveEstadoMental.isSelected()){
-            estadoMental = jrbNormalEstadoMental.getText();
-            
-        }
-        
-        //Signos de Shock
-        if(jrbNoPresenteSignoShock.isSelected()){
-            signosShock = jrbNoPresenteSignoShock.getText();
-            
-        }else if(jrbPresenteSignoShock.isSelected()){
-            signosShock = jrbPresenteSignoShock.getText();
-            
-        }
-        
-        //Dolor en el pecho
-        if(jrbNoPresenteDolorPecho.isSelected()){
-            dolorPecho = jrbNoPresenteDolorPecho.getText();
-            
-        }else if(jrbPresenteDolorPecho.isSelected()){
-            dolorPecho = jrbPresenteDolorPecho.getText();
-            
-        }
-        
-        //Pulso
-        if(jrbNormalPulso.isSelected()){
-            pulso = jrbNormalPulso.getText();
-            
-        }else if(jrbAnormalPulso.isSelected()){
-            pulso = jrbAnormalPulso.getText();
-            
-        }
-        
-        //Vomitos
-        if(jrbSinVomito.isSelected()){
-            vomito = jrbSinVomito.getText();
-            
-        }else if(jrbModeradoVomito.isSelected()){
-            vomito = jrbModeradoVomito.getText();
-            
-        }else if(jrbIntensoVomito.isSelected()){
-            vomito = jrbIntensoVomito.getText();
-        }
-        
-        //Conciencia
-        if(jrbConciente.isSelected()){
-            conciencia = jrbConciente.getText();
-            
-        }else if(jrbInconciente.isSelected()){
-            conciencia = jrbInconciente.getText();
-            
-        }
-        String edad = (String) cmbEdad.getSelectedItem();
-        
-        Usuario usuario = this.control.getUsu();
-        
-        Triage t = this.control.crearTriage(respiracion,dolorAbd,sangrado,lesionGrave,lesionLeve,fiebre,estadoMental,signosShock,dolorPecho,pulso,vomito,conciencia,edad,idConsulta,usuario);
-        
-        this.triage = t;
-        
-        txtColor.setText(t.getColorInicial().name());
-        
-        JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
     }//GEN-LAST:event_jlbCrear2MouseClicked
 
     private void jlbCrear2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseEntered
@@ -1488,6 +1505,14 @@ public class HacerTriage extends javax.swing.JFrame {
     private void jlbCrear2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrear2MouseExited
         jlbCrear2.setForeground(Color.black);
     }//GEN-LAST:event_jlbCrear2MouseExited
+
+    private void jrbNoPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoPresenteLesionLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbNoPresenteLesionLActionPerformed
+
+    private void jrbPresenteLesionLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPresenteLesionLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbPresenteLesionLActionPerformed
 
 
     
