@@ -539,7 +539,7 @@ public class Controladora implements Serializable {
         Box box = this.traerBox(id);
 
         Consulta consu = this.esperaAtencion.quitarDeFila();
-
+        
         consu.setBox(box);
         consu.setMedico(medico);
 

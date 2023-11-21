@@ -32,7 +32,6 @@ public class EsperaAtencion {
      */
     public Consulta quitarDeFila() { 
         return enEspera.poll();
-
     }
 
     /**

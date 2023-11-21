@@ -264,7 +264,7 @@ public class AsignarBox extends javax.swing.JFrame {
             try {
                 control.tomarPaciente(idBoxSelect, usu);
             } catch (Exception ex) {
-                Logger.getLogger(AsignarBox.class.getName()).log(Level.SEVERE, null, ex);
+                control.mostrarMensaje("No hay pacientes para atender", "Error", "Error");
             }
             GestionDePacientes gestP = new GestionDePacientes(control);
             gestP.setVisible(true);
