@@ -190,7 +190,7 @@ public class Controladora implements Serializable {
      * @return String del contador de ocurrencias del medico en una lista de
      * consultas entre fechas
      */
-    public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, Integer idMedico) {
+    public String pacientesPorMedico(LocalDate fecha1, LocalDate fecha2, long idMedico) {
         ArrayList<Consulta> listaFiltro = this.filtraFechas(fecha1, fecha1);
         List<Medico> listaMed = this.traerMedicos();
         Integer contador = 0;

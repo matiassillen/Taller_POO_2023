@@ -289,11 +289,11 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
         
         LocalDate fecha1= LocalDate.of(anioOne,mesOne,diaOne);
         LocalDate fecha2= LocalDate.of(anioTwo,mesTwo,diaTwo);
-        Integer pruebaId = null;
+        Integer pruebaId;
         try {
-            pruebaId = Integer.parseInt(this.txtCargaId.getText());
+            pruebaId = Integer.valueOf(this.txtCargaId.getText());
             
-            if (pruebaId != null && pruebaId > 0) {
+            if ((pruebaId != null) && (pruebaId > 0)) {
                 estado = true;
             }
             else {
@@ -305,8 +305,9 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
             estado = false;
         }
         try {
+            long parseId = pruebaId.longValue();
             if (estado) {
-                String resultado = controlPA.pacientesPorMedico(fecha1, fecha2, pruebaId);
+                String resultado = controlPA.pacientesPorMedico(fecha1, fecha2, parseId);
                 txtResultado.setText(resultado);
             }
         }
