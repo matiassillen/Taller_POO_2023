@@ -1491,6 +1491,27 @@ public class HacerTriage extends javax.swing.JFrame {
             this.triage = t;
 
             txtColor.setText(t.getColorInicial().name());
+            
+            switch (t.getColorInicial().name()) {
+                    case "ROJO" -> {
+                        txtColor.setBackground(Color.red);
+                    }
+                    case "NARANJA" -> {
+                       txtColor.setBackground(Color.orange);
+                    }
+                    case "AMARILLO" -> {
+                        txtColor.setBackground(Color.yellow);
+                    }
+                    case "VERDE" -> {
+                        txtColor.setBackground(Color.green);
+                    }
+                    case "AZUL" -> {
+                        txtColor.setBackground(Color.blue);
+                    }
+                    default -> {
+                        txtColor.setBackground(Color.white);
+                    }
+                }
 
             JOptionPane.showMessageDialog(null, "Triage registrado exitosamente");
             this.jlbGuardar.setEnabled(true);

@@ -269,6 +269,11 @@ public class PrincipalMedico extends javax.swing.JFrame {
                         jlbGestionPaciente.setEnabled(false);
                         jlbHacerTriage.setEnabled(true);
                     }
+                    case "Licenciado en Enfermeria" -> {
+                        // Si el rol es 'Licenciado en Enfermeria', deshabilitamos el botón 'GestioDePaciente' y habilitamos el botón 'HacerTriage'
+                        jlbGestionPaciente.setEnabled(false);
+                        jlbHacerTriage.setEnabled(true);
+                    }
                     default -> {
                         // Si el rol es cualquier otro, habilitamos ambos botones
                         jlbGestionPaciente.setEnabled(true);
