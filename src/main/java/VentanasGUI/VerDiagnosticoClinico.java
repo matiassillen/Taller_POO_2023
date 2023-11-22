@@ -279,8 +279,16 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
      */
     private void cargarTabla() {
         try {
-            DefaultTableModel modeloTabla = new DefaultTableModel();
-            String titutlos[] = {"Id", "Fecha", "Hora", "Nombre", "Medico"};
+            // Crea un nuevo modelo de tabla
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Todas las celdas son falsas, es decir, no editables.
+                    return false;
+                }
+            };
+            
+            String titutlos[] = {"Id", "Fecha", "Hora", "Nombre", "Descripcion", "Medico num Mat", "Medico Apellido"};
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtenemos la lista de diagnósticos clínicos del paciente
             List<DiagnosticoClinico> listDiag = this.control.traerDiagnosticoClinico(paciente);
@@ -288,7 +296,7 @@ public class VerDiagnosticoClinico extends javax.swing.JFrame {
                 // Si la lista de diagnósticos clínicos no es nula, recorremos la lista
                 for (DiagnosticoClinico res : listDiag) {
                     // Creamos un objeto con los datos del diagnóstico clínico
-                    Object[] objeto = {res.getId(), res.getFecha(), res.getHora(), res.getNombreDiagnostico(), res.getMedico().getNumMat()};
+                    Object[] objeto = {res.getId(), res.getFecha(), res.getHora(), res.getNombreDiagnostico(), res.getDescripcion(), res.getMedico().getNumMat(), res.getMedico().getApellido()};
 
                     // Añadimos el objeto a la tabla
                     modeloTabla.addRow(objeto);

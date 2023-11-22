@@ -438,18 +438,17 @@ public class Controladora implements Serializable {
                 medi = m;
             }
         }
-        System.out.println(medi.getDni());
+        
         List<Box> boxes = this.controlPersis.traerBoxes();
         List<Box> boxesP = new ArrayList<>();
         for (Box box : boxes) {
             if(box.getConsulta()!=null){
                 if(box.getConsulta().getMedico()!=null){
                     if (box.getConsulta().getMedico().getDni()==medi.getDni()) {
-                        System.out.println("entro");
+                        
                         boxesP.add(box);
 
                     }
-                    System.out.println(box.getId());
 
                 }
             }
@@ -515,12 +514,12 @@ public class Controladora implements Serializable {
     public void tomarPaciente(Long id, Usuario usu) throws Exception {
         Consulta consu = this.esperaAtencion.quitarDeFila();
 
-        System.out.println(consu.getMotivo());
+        
 
         FuncionarioGeneral func = usu.getFuncionarioGeneral();
         List<Medico> medicos = this.traerMedicos();
         Medico medi = null;
-        System.out.println(func.getDni());
+        
         for (Medico m : medicos) {
             if (m.getDni() == func.getDni()) {
                 medi = m;

@@ -48,6 +48,8 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -183,17 +185,25 @@ public class VerConsultasAnteriores extends javax.swing.JFrame {
     private void cargarTabla() {
         try {
             // Creamos un nuevo modelo de tabla
-            DefaultTableModel modeloTabla = new DefaultTableModel();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Todas las celdas son falsas, es decir, no editables.
+                    return false;
+                }
+            };
+
             // Definimos los títulos de las columnas de la tabla
-            String titutlos[] = {"Medico", "Fecha", "Hora", "Diagnostico"};
+            String titutlos[] = {"Medico num mat", "Fecha", "Hora", "Motivo Consulta", "Diagnostico"};
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtenemos la lista de consultas del paciente
             List<Consulta> listCon = this.paciente.getConsultas();
             if (listCon != null) {
                 // Si la lista de consultas no es nula, recorremos la lista
-                for (Consulta Con : listCon) {
+                for (Consulta con : listCon) {
                     // Creamos un objeto con los datos de la consulta
-                    Object[] objeto = {Con.getMedico().getNumMat(), Con.getFecha(), Con.getHora(), Con.getDiagnConsulta()};
+                    Object[] objeto = {con.getMedico().getNumMat(), con.getFecha(), con.getHora(), con.getMotivo(), con.getDiagnConsulta()};
 
                     // Añadimos el objeto a la tabla
                     modeloTabla.addRow(objeto);

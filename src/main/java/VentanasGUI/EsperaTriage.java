@@ -51,6 +51,8 @@ public class EsperaTriage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -289,7 +291,13 @@ public class EsperaTriage extends javax.swing.JFrame {
     private void cargartablaEnEspera() {
         try {
             // Crea un nuevo modelo de tabla
-            DefaultTableModel modeloTabla = new DefaultTableModel();
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Todas las celdas son falsas, es decir, no editables.
+                    return false;
+                }
+            };
             String titutlos[] = {"id Consulta","Dni", "Nombre", "Apellido", "Motivo Consulta"};
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene la lista de pacientes en espera

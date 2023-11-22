@@ -136,6 +136,8 @@ public class HacerTriage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1401,11 +1403,11 @@ public class HacerTriage extends javax.swing.JFrame {
 
             }
 
-            //Lesiones Levis
+            //Lesiones Leves
             if(jrbNoPresenteLesionL.isSelected()){
                 lesionLeve = jrbNoPresenteLesionL.getText();
 
-            }else if(jrbModeradaRespiracion.isSelected()){
+            }else if(jrbPresenteLesionL.isSelected()){
                 lesionLeve = jrbPresenteLesionL.getText();
 
             }
@@ -1427,10 +1429,10 @@ public class HacerTriage extends javax.swing.JFrame {
                 estadoMental = jrbNormalEstadoMental.getText();
 
             }else if(jrbLeveEstadoMental.isSelected()){
-                estadoMental = jrbNormalEstadoMental.getText();
+                estadoMental = jrbLeveEstadoMental.getText();
 
             }else if(jrbGraveEstadoMental.isSelected()){
-                estadoMental = jrbNormalEstadoMental.getText();
+                estadoMental = jrbGraveEstadoMental.getText();
 
             }
 

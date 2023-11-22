@@ -275,9 +275,16 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
      * @param evt El evento de ventana que ocurrió.
      */
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
+        // Crea un nuevo modelo de tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Todas las celdas son falsas, es decir, no editables.
+                return false;
+            }
+        };
         // Definimos los títulos de las columnas de la tabla
-        String titutlos[] = {"Id", "Fecha", "Hora", "Nombre"};
+        String titutlos[] = {"Id", "Fecha", "Hora", "Nombre", "Descripcion"};
         modeloTabla.setColumnIdentifiers(titutlos);
         List<ResultadoEstudio> listRes = null;
         try {
@@ -294,7 +301,7 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
             // Si la lista de resultados de estudio no es nula, recorremos la lista
             for (ResultadoEstudio res : listRes) {
                 // Creamos un objeto con los datos del resultado de estudio
-                Object[] objeto = {res.getId(), res.getFecha(), res.getHora(), res.getNombre()};
+                Object[] objeto = {res.getId(), res.getFecha(), res.getHora(), res.getNombre(), res.getInforme()};
                 // Añadimos el objeto a la tabla
                 modeloTabla.addRow(objeto);
             }
