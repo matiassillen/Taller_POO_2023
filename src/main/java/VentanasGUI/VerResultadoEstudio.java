@@ -203,7 +203,7 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   /**
+    /**
      * Este método se ejecuta cuando se abre la ventana. Llama al método
      * cargarTabla para llenar la tabla con datos.
      *
@@ -216,18 +216,29 @@ public class VerResultadoEstudio extends javax.swing.JFrame {
     private void jlbCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrearMouseClicked
         try {
             // Obtenemos el título y la descripción seleccionados en los campos de texto correspondientes
-            String titulo = this.txbTitulo.getSelectedText();
-            String descripcion = this.txbDescripcion.getSelectedText();
-            // Intentamos cargar un nuevo resultado de estudio con el título y la descripción proporcionados
-            this.control.cargarNuevoResEstudio(paciente, titulo, descripcion);
-            // Si se carga correctamente, mostramos un mensaje de éxito
-            String mensaje = "Cargado Correctamente";
-            String info = "infor";
-            this.control.mostrarMensaje(mensaje, info, titulo);
+            String titulo = this.txbTitulo.getText();
+            String descripcion = this.txbDescripcion.getText();
+            if (titulo == null || titulo.isEmpty() || descripcion == null || descripcion.isEmpty()) {
+                this.control.mostrarMensaje("No se ingreso titulo o descripcion", "Error", "Error");
+            } else {
+
+                // Intentamos cargar un nuevo resultado de estudio con el título y la descripción proporcionados
+                this.control.cargarNuevoResEstudio(paciente, titulo, descripcion);
+                // Si se carga correctamente, mostramos un mensaje de éxito
+                String mensaje = "Cargado Correctamente";
+                String info = "infor";
+                //Recargamos la tabla
+                this.cargarTabla();
+                // Limpiamos los campos de texto
+                this.txbTitulo.setText("");
+                this.txbDescripcion.setText("");
+                //Mostramos mensaje de cnfirmación
+                this.control.mostrarMensaje(mensaje, info, titulo);
+            }
         } catch (Exception e) {
             // Si ocurre un error, mostramos un mensaje de error
             String info = "error";
-            this.control.mostrarMensaje("No se ingreso titulo o descripcion", info, "Error");
+            this.control.mostrarMensaje("Se ingreso un titulo o descripcion incorrectos", "Error", "Error");
         }
     }//GEN-LAST:event_jlbCrearMouseClicked
 

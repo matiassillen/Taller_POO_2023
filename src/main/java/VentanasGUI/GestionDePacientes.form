@@ -241,6 +241,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingrese diagnostico de la consulta antes "/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txbDiagnosticoConsultaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDatosMedicos">
           <Properties>

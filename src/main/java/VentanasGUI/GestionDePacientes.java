@@ -20,7 +20,6 @@ public class GestionDePacientes extends javax.swing.JFrame {
     String idBox;
     private boolean bandera;
 
-
     /**
      * Constructor de la clase TomarPaciente
      *
@@ -136,6 +135,11 @@ public class GestionDePacientes extends javax.swing.JFrame {
         });
 
         txbDiagnosticoConsulta.setText("Ingrese diagnostico de la consulta antes ");
+        txbDiagnosticoConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txbDiagnosticoConsultaMouseClicked(evt);
+            }
+        });
 
         btnDatosMedicos.setBackground(new java.awt.Color(149, 210, 255));
         btnDatosMedicos.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
@@ -297,21 +301,28 @@ public class GestionDePacientes extends javax.swing.JFrame {
      */
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
         try {
+            String diagnostico = this.txbDiagnosticoConsulta.getText();
             //Comprueba que se haya cargado un diagnostico de consulta
-            if (txbDiagnosticoConsulta.getSelectedText() != null) {
-                //Lee el diagnostico de la consulta ingresado por el medico de la variable txbDiagnosticoConsulta
-                String diagnostico = this.txbDiagnosticoConsulta.getSelectedText();
+            if (diagnostico.isEmpty()||diagnostico == null) {
+                this.control.mostrarMensaje("No se ingreso titulo o descripcion", "Error", "Error");
+            } else {
+
                 //Llama al metodo terminarConsulta que da de alta el paciente pasandole el diagnostico
                 //y el id del box donde se encuentra el paciente
                 this.control.terminarConsulta(diagnostico, idBox);
-            } else {
-                control.mostrarMensaje("No ingreso un diagnostico de consulta", "Error", "Error");
+                //Recargamos la tabla
+                this.cargarTablaBoxAtendidos();
+                // Limpiamos los campos de texto
+                this.txbDiagnosticoConsulta.setText("");
+
+                //Mostramos mensaje de confirmación
+                this.control.mostrarMensaje("Paciente dado de alta", "info", "info");
+
             }
         } catch (Exception e) {
-            // Imprime cualquier error que ocurra durante la ejecución del código anterior
             // y muestra un mensaje que dice que no se ingreso un diagnostico de consulta valido
             control.mostrarMensaje("No ingreso un diagnostico de consulta valido", "Error", "Error");
-            
+
         }
 
     }//GEN-LAST:event_btnDarDeAltaActionPerformed
@@ -347,7 +358,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
      * @param evt El evento de ventana que ocurrió.
      */
     private void btnNuevoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPacienteActionPerformed
-        if(bandera){
+        if (bandera) {
             // Creamos una nueva instancia de la ventana AsignarBox
             AsignarBox asigBox = new AsignarBox(control);
             // Hacemos visible la ventana
@@ -360,6 +371,10 @@ public class GestionDePacientes extends javax.swing.JFrame {
             control.mostrarMensaje("No puede tomar mas pacientes", "Error", "Error");
         }
     }//GEN-LAST:event_btnNuevoPacienteActionPerformed
+
+    private void txbDiagnosticoConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txbDiagnosticoConsultaMouseClicked
+        txbDiagnosticoConsulta.setText("");
+    }//GEN-LAST:event_txbDiagnosticoConsultaMouseClicked
 
     /**
      * Este método carga los datos de los Box atendidos por el medico a una
@@ -390,13 +405,13 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido()};
                     // Agrega el objeto a la tabla
                     modeloTabla.addRow(objeto);
-                    sum+=1;
+                    sum += 1;
                 }
-                if(sum<3){
+                if (sum < 3) {
                     this.bandera = true;
                 }
             }
-            
+
             // Segun la cantidad de box que posee el medigo activa la bandera
             // posteriormente indica si puede tomar mas pacientes o no
             // Establece el modelo de la tabla

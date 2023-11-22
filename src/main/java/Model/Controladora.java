@@ -668,20 +668,17 @@ public class Controladora implements Serializable {
     public void terminarConsulta(String diagnostico, String idBox) {
         // Convertimos el id del box a long
         long id = Long.parseLong(idBox);
-
         // Obtenemos el box a vaciar del controlador de persistencia
         Box boxAVaciar = this.controlPersis.traerBox(id);
-        boxAVaciar.setConsulta(null);
         // Obtenemos la consulta del box
         Consulta consulta = boxAVaciar.getConsulta();
-
+        // Vaciamos el box
+        boxAVaciar.setConsulta(null);
         // Establecemos el diagnóstico de la consulta y actualizamos la consulta en el controlador de persistencia
         consulta.setDiagnConsulta(diagnostico);
         consulta.setBox(null);
         this.controlPersis.editarConsulta(consulta);
-
         // Vaciamos la consulta del box y actualizamos el box en el controlador de persistencia
-        boxAVaciar.setConsulta(null);
         this.controlPersis.editarBox(boxAVaciar);
     }
 
