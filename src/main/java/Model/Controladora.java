@@ -1208,6 +1208,7 @@ public class Controladora implements Serializable {
         List<Consulta> consultas = this.controlPersis.traerConsultas();
         this.filtrarConBox(consultas);
         this.filtrarSinTriage(consultas);
+        this.filtrarConDiagnostco(consultas);
         this.ordenarPorFechaYHora(consultas);
         PriorityQueue<Consulta> colaDeAtencion = new PriorityQueue<>(new ComparadorDeConsultas());
         for (Consulta consu : consultas) {
@@ -1358,6 +1359,23 @@ public class Controladora implements Serializable {
         while (iterador.hasNext()) {
             Consulta consu = iterador.next();
             if (consu.getBox() != null) {
+                iterador.remove();
+            }
+        }
+    }
+    
+    /**
+     * Método para filtrar las consultas que tienen un box asignado de una lista
+     * de consultas.
+     *
+     * @param lista La lista de consultas a filtrar.
+     */
+    public void filtrarConDiagnostco(List<Consulta> lista) {
+        Iterator<Consulta> iterador = lista.iterator();
+
+        while (iterador.hasNext()) {
+            Consulta consu = iterador.next();
+            if (consu.getDiagnConsulta() != null) {
                 iterador.remove();
             }
         }

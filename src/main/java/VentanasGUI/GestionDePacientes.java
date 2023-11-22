@@ -53,6 +53,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
         txbDiagnosticoConsulta = new javax.swing.JTextField();
         btnDatosMedicos = new javax.swing.JButton();
         btnNuevoPaciente = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -134,13 +135,6 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
-        txbDiagnosticoConsulta.setText("Ingrese diagnostico de la consulta antes ");
-        txbDiagnosticoConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txbDiagnosticoConsultaMouseClicked(evt);
-            }
-        });
-
         btnDatosMedicos.setBackground(new java.awt.Color(149, 210, 255));
         btnDatosMedicos.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 14)); // NOI18N
         btnDatosMedicos.setForeground(new java.awt.Color(0, 0, 0));
@@ -162,6 +156,10 @@ public class GestionDePacientes extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Diagnostico:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -182,7 +180,9 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
@@ -199,12 +199,13 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     .addComponent(btnNuevoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(btnDatosMedicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDarDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txbDiagnosticoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(9, 9, 9))
         );
 
@@ -304,7 +305,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
             String diagnostico = this.txbDiagnosticoConsulta.getText();
             //Comprueba que se haya cargado un diagnostico de consulta
             if (diagnostico.isEmpty()||diagnostico == null) {
-                this.control.mostrarMensaje("No se ingreso titulo o descripcion", "Error", "Error");
+                this.control.mostrarMensaje("No se ingreso diagnostico para la consulta", "Error", "Error");
             } else {
 
                 //Llama al metodo terminarConsulta que da de alta el paciente pasandole el diagnostico
@@ -372,10 +373,6 @@ public class GestionDePacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNuevoPacienteActionPerformed
 
-    private void txbDiagnosticoConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txbDiagnosticoConsultaMouseClicked
-        txbDiagnosticoConsulta.setText("");
-    }//GEN-LAST:event_txbDiagnosticoConsultaMouseClicked
-
     /**
      * Este método carga los datos de los Box atendidos por el medico a una
      * tabla y settea la bandera
@@ -429,6 +426,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
     private javax.swing.JButton btnDatosMedicos;
     private javax.swing.JButton btnNuevoPaciente;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
