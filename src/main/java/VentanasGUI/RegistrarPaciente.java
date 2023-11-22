@@ -2,6 +2,7 @@ package VentanasGUI;
 
 import Model.Controladora;
 import Model.Paciente;
+import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -375,7 +376,9 @@ public class RegistrarPaciente extends javax.swing.JFrame {
      * @param evt El evento de ventana generado al abrir la ventana.
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        jlbCrear.setEnabled(false);
+        jlbGuardar.setEnabled(false);
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void jlbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBuscarMouseClicked
@@ -388,6 +391,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
             if (paci.getDni() == 0) {
                 JOptionPane.showMessageDialog(null, "Paciente ingresado sin registrar");
+                jlbGuardar.setEnabled(true);
             } else {
 
                 txtDni.setText(txtDni.getText());
@@ -419,61 +423,73 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbBuscarMouseClicked
 
     private void jlbCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCrearMouseClicked
-        String lugar = ("Hospital Masvernat");
-        String motivo = txtMotivo.getText();
-        Paciente p = this.paciente;
-        this.control.CrearConsulta(lugar, motivo, p);
-        txtMotivo.setText("");
-        control.mostrarMensaje("Consulta creada correctamenta", "Mensaje", "Exito");
+       
+            String lugar = ("Hospital Masvernat");
+            String motivo = txtMotivo.getText();
+            
+            if(!"".equals(motivo)) {
+                Paciente p = this.paciente;
+                this.control.CrearConsulta(lugar, motivo, p);
+                txtMotivo.setText("");
+                control.mostrarMensaje("Consulta creada correctamenta", "Mensaje", "Exito");
+            } else {
+                control.mostrarMensaje("Falta cargar el motivo", "Error", "Error");
+            }  
+        
     }//GEN-LAST:event_jlbCrearMouseClicked
 
     private void jlbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGuardarMouseClicked
-        List<Paciente> listPaciente = new ArrayList<>();
-        listPaciente = this.control.traerPacientes();
-        boolean dniExistente = false;
-        int doc = Integer.parseInt(txtDni.getText());
-        for (Paciente paciente : listPaciente) {
-            if (paciente.getDni() == doc) {
-                JOptionPane.showMessageDialog(null, "Paciente ya registrado");
-                dniExistente = true;
-                break;
+        try {
+            List<Paciente> listPaciente = new ArrayList<>();
+            listPaciente = this.control.traerPacientes();
+            boolean dniExistente = false;
+            int doc = Integer.parseInt(txtDni.getText());
+            for (Paciente paciente : listPaciente) {
+                if (paciente.getDni() == doc) {
+                    JOptionPane.showMessageDialog(null, "Paciente ya registrado");
+                    dniExistente = true;
+                    break;
+                }
             }
-        }
-        if (dniExistente == false) {
-            if (txtDni.getText().length() != 8) {
-                JOptionPane.showMessageDialog(null, "Dni no válido");
-                txtDni.setText("");
-            } else {
+            if (dniExistente == false) {
+                if (txtDni.getText().length() != 8) {
+                    JOptionPane.showMessageDialog(null, "Dni no válido");
+                    txtDni.setText("");
+                } else {
+                    
+                    String nombre = txtNombre.getText();
+                    String apellido = txtApellido.getText();
+                    String dni = txtDni.getText();
 
-                String nombre = txtNombre.getText();
-                String apellido = txtApellido.getText();
-                String dni = txtDni.getText();
+                    // Se obtiene la fecha del objeto JCalendar
+                    Calendar calendar = jdcFechaNacimiento.getCalendar();
+                    calendar.add(Calendar.MONTH, 1);
 
-                // Se obtiene la fecha del objeto JCalendar
-                Calendar calendar = jdcFechaNacimiento.getCalendar();
-                calendar.add(Calendar.MONTH, 1);
+                    // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
-                // Se crea un objeto SimpleDateFormat y se establece el formato de fecha
-                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
-                // Pasaje del objeto Calendar a un StringS
-                String fechaString = formato.format(calendar.getTime());
-
-                String domicilio = txtDomicilio.getText();
-                String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
-                String correo = txtCorreo.getText();
-                String telCelular = txtTelCelular.getText();
-                String telFijo = txtTelFijo.getText();
-                String personaContacto = txtPersoContacto.getText();
-                String numContacto = txtTelContacto.getText();
-
-                Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
-                this.paciente = paci;
-
-                JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
-                
+                    // Pasaje del objeto Calendar a un StringS
+                    String fechaString = formato.format(calendar.getTime());
+                    
+                    String domicilio = txtDomicilio.getText();
+                    String estadoCivil = (String) cmbEstadoCivil.getSelectedItem();
+                    String correo = txtCorreo.getText();
+                    String telCelular = txtTelCelular.getText();
+                    String telFijo = txtTelFijo.getText();
+                    String personaContacto = txtPersoContacto.getText();
+                    String numContacto = txtTelContacto.getText();
+                    
+                    Paciente paci = this.control.registrarPaciente(dni, nombre, apellido, fechaString, domicilio, estadoCivil, correo, telCelular, telFijo, personaContacto, numContacto);
+                    this.paciente = paci;
+                    
+                    JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente");
+                    jlbCrear.setEnabled(true);
+                    
+                }
             }
-        }
+        } catch (Exception e) {
+            control.mostrarMensaje("Faltan cargar los datos del paciente ", "Error", "Error");
+        } 
     }//GEN-LAST:event_jlbGuardarMouseClicked
 
     private void jlbLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbLimpiarMouseClicked
@@ -488,6 +504,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         txtTelContacto.setText("");
         txtMotivo.setText("");
         jdcFechaNacimiento.setCalendar(null);
+        jlbCrear.setEnabled(false);
+        jlbGuardar.setEnabled(false);
     }//GEN-LAST:event_jlbLimpiarMouseClicked
 
     private void jlbCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbCerrarMouseClicked
