@@ -305,11 +305,11 @@ public class CantPacientesAtendidosPorMedico extends javax.swing.JFrame {
             estado = false;
         }
         try {
-            long parseId = pruebaId.longValue();
-            if (estado) {
-                String resultado = controlPA.pacientesPorMedico(fecha1, fecha2, parseId);
-                txtResultado.setText(resultado);
-            }
+//            long parseId = pruebaId.longValue();
+//            if (estado) {
+//                String resultado = controlPA.pacientesPorMedico(fecha1, fecha2, parseId);
+//                txtResultado.setText(resultado);
+//            }
         }
         catch (Exception e) {
             txtAdvertencia3.setText("FatalError \n No se pudo completar la peticion \n Comuniquese con el area de Sistemas");

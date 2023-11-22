@@ -392,7 +392,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                     modeloTabla.addRow(objeto);
                     sum+=1;
                 }
-                if(sum>2){
+                if(sum<3){
                     this.bandera = true;
                 }
             }

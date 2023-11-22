@@ -39,7 +39,6 @@ public class EsperaTriage {
     /**
      * Método para quitar una consulta de la cola de espera de triage y asignarle un triage.
      *
-     * @param t El triage a asignar a la consulta.
      * @return La consulta que ha sido quitada de la cola y a la que se le ha asignado el triage.
      */
     public Consulta QuitarDeFila(Consulta consu) {

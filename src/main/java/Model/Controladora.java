@@ -147,42 +147,6 @@ public class Controladora implements Serializable {
         return controlPersis.traerUsuarios(idUsuario);
     }
 
-    //----------Metodos que estaban en la clase Medico----------
-    /**
-     * @param paciente
-     */
-    public void tomarPaciente(Paciente paciente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param paciente
-     */
-    public void VerTriage(Paciente paciente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param paciente
-     */
-    public void VerConsulta(Paciente paciente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param paciente
-     */
-    public void VerResultadoEstudios(Paciente paciente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param paciente
-     */
-    public void VerAntecedenteClinico(Paciente paciente) {
-        // TODO implement here
-    }
-
     /**
      * @param idMedico es el numero para identificar al medico
      * @param fecha1 parametro limite inferior
@@ -466,15 +430,32 @@ public class Controladora implements Serializable {
      * @return
      */
     public List<Box> TraerBoxDelMedico() {
-        long idMedico = this.usu.getFuncionarioGeneral().getId();
-        Medico medico = this.controlPersis.traerMedico(idMedico);
-        List<Box> boxes = this.controlPersis.traerBoxes();
-        for (Box box : boxes) {
-            if (box.getConsulta().getMedico() != medico) {
-                boxes.remove(box);
+        FuncionarioGeneral func = usu.getFuncionarioGeneral();
+        List<Medico> medicos = this.traerMedicos();
+        Medico medi = null;
+        for (Medico m : medicos) {
+            if (m.getDni() == func.getDni()) {
+                medi = m;
             }
         }
-        return boxes;
+        System.out.println(medi.getDni());
+        List<Box> boxes = this.controlPersis.traerBoxes();
+        List<Box> boxesP = new ArrayList<>();
+        for (Box box : boxes) {
+            if(box.getConsulta()!=null){
+                if(box.getConsulta().getMedico()!=null){
+                    if (box.getConsulta().getMedico().getDni()==medi.getDni()) {
+                        System.out.println("entro");
+                        boxesP.add(box);
+
+                    }
+                    System.out.println(box.getId());
+
+                }
+            }
+            
+        }
+        return boxesP;
     }
 
     /**
@@ -533,29 +514,31 @@ public class Controladora implements Serializable {
      */
     public void tomarPaciente(Long id, Usuario usu) throws Exception {
         Consulta consu = this.esperaAtencion.quitarDeFila();
-        
+
         System.out.println(consu.getMotivo());
-        
+
         FuncionarioGeneral func = usu.getFuncionarioGeneral();
         List<Medico> medicos = this.traerMedicos();
         Medico medi = null;
-        for(Medico m : medicos){
-            System.out.println(m.getApellido());
-            if(m.getDni()==func.getDni()){
+        System.out.println(func.getDni());
+        for (Medico m : medicos) {
+            if (m.getDni() == func.getDni()) {
                 medi = m;
-            }      
+            }
         }
-
         Box box = this.traerBox(id);
 
-        
-        
         consu.setBox(box);
         consu.setMedico(medi);
-        System.out.println("el siguiente print no lo hace, pq el medico es null");
-        System.out.println(medi.getApellido());
-        medi.getConsulta().add(consu);
+        if(medi.getConsulta()!=null){
+            medi.getConsulta().add(consu);
+        } else {
+            List<Consulta> lista = new ArrayList <>();
+            medi.setConsulta(lista);
+            medi.getConsulta().add(consu);
+        }
         
+
         box.setConsulta(consu);
 
         this.controlPersis.tomarPacientePersistirDatos(consu, medi, box);
@@ -1121,14 +1104,14 @@ public class Controladora implements Serializable {
         triage.setEnfermero(null);
 
         if (("Medico - Triagiador").equalsIgnoreCase(usu.getRol().getFirst().getNombre())) {
-            
+
             FuncionarioGeneral funcGeneral = usu.getFuncionarioGeneral();
             List<Medico> medicos = this.traerMedicos();
             Medico medi = null;
-            for(Medico m : medicos){
-                if(m.getDni()==funcGeneral.getDni()){
+            for (Medico m : medicos) {
+                if (m.getDni() == funcGeneral.getDni()) {
                     medi = m;
-                }      
+                }
             }
             triage.setMedico(medi);
 
@@ -1146,7 +1129,7 @@ public class Controladora implements Serializable {
             enfermero.setFechaDeNac(funcG.getFechaDeNac());
             enfermero.setNombre(funcG.getNombre());
             enfermero.setTelefonoCel(funcG.getTelefonoCel());
-            
+
             triage.setEnfermero(enfermero);
 
         } else {
@@ -1155,10 +1138,10 @@ public class Controladora implements Serializable {
 
             List<Medico> medicos = this.traerMedicos();
             Medico medi = null;
-            for(Medico m : medicos){
-                if(m.getDni()==funcGeneral.getDni()){
+            for (Medico m : medicos) {
+                if (m.getDni() == funcGeneral.getDni()) {
                     medi = m;
-                }      
+                }
             }
             triage.setMedico(medi);
 
@@ -1205,7 +1188,6 @@ public class Controladora implements Serializable {
      * Este método toma un objeto de tipo Consulta como entrada. Luego, utiliza
      * este objeto para agregar la consulta a la fila de espera.
      *
-     * @param consu
      */
     public void añadirALaFila(Triage t) {
         Consulta consu = t.getConsulta();
