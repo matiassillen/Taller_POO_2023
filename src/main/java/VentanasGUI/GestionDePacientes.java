@@ -390,7 +390,7 @@ public class GestionDePacientes extends javax.swing.JFrame {
                 }
             };
             // Define los títulos de las columnas
-            String titutlos[] = {"Box", "Dni", "Apellido","Nombre", "Motivo"};
+            String titutlos[] = {"Box", "Dni", "Apellido","Nombre", "Motivo", "Color Triage"};
             // Establece los identificadores de columna en el modelo de tabla
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene una lista de boxes usando el controlador
@@ -400,8 +400,15 @@ public class GestionDePacientes extends javax.swing.JFrame {
             if (boxes != null) {
                 // Itera sobre cada box en la lista
                 for (Box box : boxes) {
+                    String color;
+                    if(box.getConsulta().getTriage().getColorInicial().toString()!=null){
+                        color = box.getConsulta().getTriage().getColorInicial().toString();
+                    } else {
+                        color = box.getConsulta().getTriage().getColorFinal().toString();
+                    }
+                    
                     // Crea un objeto con los datos del box
-                    Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido(), box.getConsulta().getPaciente().getNombre(), box.getConsulta().getMotivo()};
+                    Object[] objeto = {box.getId(), box.getConsulta().getPaciente().getDni(), box.getConsulta().getPaciente().getApellido(), box.getConsulta().getPaciente().getNombre(), box.getConsulta().getMotivo(), color};
                     // Agrega el objeto a la tabla
                     modeloTabla.addRow(objeto);
                     sum += 1;

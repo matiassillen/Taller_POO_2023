@@ -27,6 +27,7 @@ public class DatosDePaciente extends javax.swing.JFrame {
         initComponents();
         this.control = control;
         this.paciente = paciente;
+        this.datosPActual.setText(paciente.getNombre()+" "+paciente.getApellido());
     }
 
     /**
@@ -40,6 +41,7 @@ public class DatosDePaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jlbVerResEstudios = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -48,6 +50,8 @@ public class DatosDePaciente extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jlbVolver = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        datosPActual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -62,14 +66,17 @@ public class DatosDePaciente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Datos de paciente");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(149, 210, 255));
 
         jPanel4.setBackground(new java.awt.Color(149, 210, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jlbVerResEstudios.setBackground(new java.awt.Color(255, 255, 255));
         jlbVerResEstudios.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jlbVerResEstudios.setForeground(new java.awt.Color(0, 0, 0));
-        jlbVerResEstudios.setText("Ver Resultados de estudios");
+        jlbVerResEstudios.setText("Ver Resultados de Estudios");
         jlbVerResEstudios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlbVerResEstudiosMouseClicked(evt);
@@ -81,12 +88,15 @@ public class DatosDePaciente extends javax.swing.JFrame {
                 jlbVerResEstudiosMouseExited(evt);
             }
         });
-        jPanel4.add(jlbVerResEstudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 240, 10));
+        jPanel4.add(jlbVerResEstudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 53, -1, 30));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 238, 60, 10));
 
+        jlbVerDiagClinico.setBackground(new java.awt.Color(255, 255, 255));
         jlbVerDiagClinico.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jlbVerDiagClinico.setForeground(new java.awt.Color(0, 0, 0));
         jlbVerDiagClinico.setText("Ver Diagnosticos Clinicos");
+        jlbVerDiagClinico.setMaximumSize(new java.awt.Dimension(242, 23));
+        jlbVerDiagClinico.setMinimumSize(new java.awt.Dimension(242, 23));
         jlbVerDiagClinico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlbVerDiagClinicoMouseClicked(evt);
@@ -98,11 +108,14 @@ public class DatosDePaciente extends javax.swing.JFrame {
                 jlbVerDiagClinicoMouseExited(evt);
             }
         });
-        jPanel4.add(jlbVerDiagClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        jPanel4.add(jlbVerDiagClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 103, 240, 30));
 
+        jlbVerConsuAnteriores.setBackground(new java.awt.Color(255, 255, 255));
         jlbVerConsuAnteriores.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jlbVerConsuAnteriores.setForeground(new java.awt.Color(0, 0, 0));
         jlbVerConsuAnteriores.setText("Ver Consultas Anteriores");
+        jlbVerConsuAnteriores.setMaximumSize(new java.awt.Dimension(242, 23));
+        jlbVerConsuAnteriores.setMinimumSize(new java.awt.Dimension(242, 23));
         jlbVerConsuAnteriores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlbVerConsuAnterioresMouseClicked(evt);
@@ -114,10 +127,11 @@ public class DatosDePaciente extends javax.swing.JFrame {
                 jlbVerConsuAnterioresMouseExited(evt);
             }
         });
-        jPanel4.add(jlbVerConsuAnteriores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+        jPanel4.add(jlbVerConsuAnteriores, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 230, -1));
         jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 240, -1));
         jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 240, 10));
 
+        jlbVolver.setBackground(new java.awt.Color(255, 255, 255));
         jlbVolver.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 18)); // NOI18N
         jlbVolver.setForeground(new java.awt.Color(0, 0, 0));
         jlbVolver.setText("Volver");
@@ -132,21 +146,39 @@ public class DatosDePaciente extends javax.swing.JFrame {
                 jlbVolverMouseExited(evt);
             }
         });
-        jPanel4.add(jlbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+        jPanel4.add(jlbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 203, 60, 30));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 240, 10));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 390, 310));
+        datosPActual.setBackground(new java.awt.Color(153, 204, 255));
+        datosPActual.setOpaque(true);
+        jPanel4.add(datosPActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 240, 31));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 270, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 630, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
         );
 
         pack();
@@ -238,12 +270,15 @@ public class DatosDePaciente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel datosPActual;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel jlbVerConsuAnteriores;
     private javax.swing.JLabel jlbVerDiagClinico;
     private javax.swing.JLabel jlbVerResEstudios;
