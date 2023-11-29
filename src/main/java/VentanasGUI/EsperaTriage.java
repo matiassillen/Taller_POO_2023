@@ -298,14 +298,14 @@ public class EsperaTriage extends javax.swing.JFrame {
                     return false;
                 }
             };
-            String titutlos[] = {"id Consulta","Dni", "Nombre", "Apellido", "Motivo Consulta","Hora", "Fecha"};
+            String titutlos[] = {"id Consulta", "Motivo Consulta","Hora", "Fecha"};
             modeloTabla.setColumnIdentifiers(titutlos);
             // Obtiene la lista de pacientes en espera
             List<Consulta> consultas = control.traerPacientesEnEspera();
             if (consultas != null) {
                 // Para cada consulta en la lista, añade una fila a la tabla con los datos del paciente y el motivo de consulta
                 for (Consulta consu : consultas) {
-                    Object[] objeto = {consu.getId(),consu.getPaciente().getDni(), consu.getPaciente().getNombre(), consu.getPaciente().getApellido(), consu.getMotivo(), consu.getHora(), consu.getFecha()};
+                    Object[] objeto = {consu.getId(), consu.getMotivo(), consu.getHora(), consu.getFecha()};
                     modeloTabla.addRow(objeto);
                 }
             }
